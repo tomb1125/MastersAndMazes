@@ -1,0 +1,10 @@
+Split effects from modifiers
+Replace bonus and multiplier with lambda functions.
+add modfiers as denial of action and modifiers as bonus
+
+
+numbers
+ - wounded in combat
+ - your current health
+ - round number
+ - 

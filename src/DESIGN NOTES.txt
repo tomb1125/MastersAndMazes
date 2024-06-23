@@ -1,0 +1,1 @@
+Bonus to hit - must be % based.
