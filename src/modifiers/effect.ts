@@ -2,6 +2,8 @@ import { Modifier } from "./modifier"
 
 export class Effect extends Modifier {
     subtype: Effect.Subtype;
+    duration: number;
+    value: number;
     
     constructor(otherName?: string) {
       super(otherName);
@@ -13,9 +15,8 @@ export namespace Effect
 {
     export enum Subtype
     {
-        Idle,
-        Loading,
-        Ready,
-        Error
+      Buff,
+      Debuff,
+      Single
     }
 }

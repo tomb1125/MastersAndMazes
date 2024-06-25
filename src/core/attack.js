@@ -18,7 +18,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Attack = void 0;
 var activity_1 = require("./activity");
 var utils_1 = require("./utils");
-var abilityType_1 = require("./abilityType");
 var modifiersSingleton_1 = require("./../modifiers/modifiersSingleton");
 var Attack = /** @class */ (function (_super) {
     __extends(Attack, _super);
@@ -36,10 +35,10 @@ var Attack = /** @class */ (function (_super) {
     Attack.prototype.initType = function () {
         if (!this.type) {
             if (utils_1.Utils.random() > 0.5) {
-                this.type = abilityType_1.abilityType.Attack;
+                this.type = activity_1.Activity.Type.Attack;
             }
             else {
-                this.type = abilityType_1.abilityType.Spell;
+                this.type = activity_1.Activity.Type.Spell;
             }
         }
     };
@@ -71,18 +70,20 @@ var Attack = /** @class */ (function (_super) {
         var _this = this;
         var roll = utils_1.Utils.random();
         var numberOfModifiers = -1;
-        Attack.MODIFIER_CHANCE.forEach(function (value, key) {
-            if (roll <= key && numberOfModifiers === -1) {
-                numberOfModifiers = value;
-            }
-            if (numberOfModifiers > 0) {
-                var shuffled = modifiersSingleton_1.modifiers.sort(function () { return 0.5 - utils_1.Utils.random(); });
-                _this.modifiers = shuffled.slice(0, numberOfModifiers);
-            }
-            else {
-                _this.modifiers = [];
-            }
-        });
+        if (!this.modifiers) {
+            Attack.MODIFIER_CHANCE.forEach(function (value, key) {
+                if (roll <= key && numberOfModifiers === -1) {
+                    numberOfModifiers = value;
+                }
+                if (numberOfModifiers > 0) {
+                    var shuffled = modifiersSingleton_1.modifiers.items.sort(function () { return 0.5 - utils_1.Utils.random(); });
+                    _this.modifiers = shuffled.slice(0, numberOfModifiers);
+                }
+                else {
+                    _this.modifiers = [];
+                }
+            });
+        }
     };
     Attack.prototype.compensate = function () {
         if (!this.manaCost) {
@@ -102,15 +103,22 @@ var Attack = /** @class */ (function (_super) {
         return 0;
     };
     Attack.prototype.getTrueDPS = function () {
+        var _this = this;
         var dps = utils_1.Utils.DPS;
         this.modifiers.forEach(function (m) {
             if (m.powerBonus) {
-                dps += m.powerBonus;
+                dps += m.powerBonus(_this);
+            }
+            if (m.effect && m.effect.powerBonus) {
+                dps += m.effect.powerBonus(_this);
             }
         });
         this.modifiers.forEach(function (m) {
             if (m.powerMultiplier) {
-                dps *= m.powerMultiplier;
+                dps *= m.powerMultiplier(_this);
+            }
+            if (m.effect && m.effect.powerMultiplier(_this)) {
+                dps *= m.powerMultiplier(_this);
             }
         });
         return dps;

@@ -1,10 +1,10 @@
 import { Activity } from "./activity"
 import { Utils } from "./utils"
-import { abilityType } from "./abilityType"
 import { Modifier } from "./../modifiers/modifier"
+import { PowerModifier } from "./powerModifier"
 import { modifiers } from "./../modifiers/modifiersSingleton"
 
-export class Attack extends Activity {
+export class Attack extends Activity implements PowerModifier {
   static MODIFIER_CHANCE: Map<number, number> = new Map([
     [0.2, 0],
     [0.7, 1],
@@ -32,9 +32,9 @@ export class Attack extends Activity {
   private initType() {
     if(!this.type) {
       if(Utils.random() > 0.5) {
-        this.type = abilityType.Attack;
+        this.type = Activity.Type.Attack;
       } else {
-        this.type = abilityType.Spell;
+        this.type = Activity.Type.Spell;
       }
     }
   }
@@ -68,20 +68,20 @@ export class Attack extends Activity {
   private initModifiers() {
     const roll = Utils.random();
     let numberOfModifiers: number = -1;
-    Attack.MODIFIER_CHANCE.forEach((value: number, key: number) => {
+    if(!this.modifiers) {
+      Attack.MODIFIER_CHANCE.forEach((value: number, key: number) => {
+        if(roll <= key && numberOfModifiers === -1) {
+          numberOfModifiers = value;
+        }
 
-
-      if(roll <= key && numberOfModifiers === -1) {
-        numberOfModifiers = value;
-      }
-
-      if(numberOfModifiers > 0) {
-        const shuffled = modifiers.sort(() => 0.5 - Utils.random());
-        this.modifiers = shuffled.slice(0, numberOfModifiers);
-      } else {
-        this.modifiers = [];
-      }
-    });
+        if(numberOfModifiers > 0) {
+          const shuffled = modifiers.items.sort(() => 0.5 - Utils.random());
+          this.modifiers = shuffled.slice(0, numberOfModifiers) as Modifier[];
+        } else {
+          this.modifiers = [];
+        }
+      });
+    }
   }
 
   private compensate() {
@@ -110,14 +110,22 @@ export class Attack extends Activity {
     let dps: number = Utils.DPS;
     this.modifiers.forEach(m => {
       if(m.powerBonus) {
-        dps += m.powerBonus;
+        dps += m.powerBonus(this);
+      }
+
+      if(m.effect && m.effect.powerBonus) {
+        dps += m.effect.powerBonus(this);
       }
     });
 
     
     this.modifiers.forEach(m => {
       if(m.powerMultiplier) {
-        dps *= m.powerMultiplier;
+        dps *= m.powerMultiplier(this);
+      }
+
+      if(m.effect && m.effect.powerMultiplier(this)) {
+        dps *= m.powerMultiplier(this);
       }
     })
 

@@ -1,10 +1,8 @@
-import { abilityType } from "./abilityType";
-
 export class Ability {
     readonly name: string;
     chance: number;
     manaCost: number;
-    type: abilityType;
+    type: Ability.Type;
    
     constructor(otherName?: string) {
       if (otherName !== undefined) {
@@ -15,4 +13,14 @@ export class Ability {
     generate() {
 
     }
+  }
+  export namespace Ability
+  {
+      export enum Type
+      {
+        Attack,
+        Spell,
+        Technique,
+        Passive
+      }
   }

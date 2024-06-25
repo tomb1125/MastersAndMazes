@@ -1,6 +1,6 @@
-Split effects from modifiers
 Replace bonus and multiplier with lambda functions.
 add modfiers as denial of action and modifiers as bonus
+create Attack.getPlayerText function
 
 
 numbers

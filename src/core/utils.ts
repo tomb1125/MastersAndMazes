@@ -8,12 +8,7 @@ export class Utils {
     //since High Accuracy and Low Accuracy attacks are easily exploitable. Thus we provide bonus to Medium Accuracy attacks.
     public static getDPSCoefficient(chance: number): number {
         return 1 - 0.2 * Math.abs(0.5 - chance);
-    }
-
-
-    //TODO continue from here
-    public static getRandomWeightedObject(objectList: [any]): any {
-        return 0;
+        //return 1;
     }
 
 }
