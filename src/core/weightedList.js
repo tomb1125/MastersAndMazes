@@ -3,8 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.WeightedList = void 0;
 var utils_1 = require("./utils");
 var WeightedList = /** @class */ (function () {
-    function WeightedList() {
+    function WeightedList(items) {
         this.items = [];
+        if (items) {
+            this.items = items;
+        }
     }
     WeightedList.prototype.push = function (item) {
         this.items.push(item);

@@ -4,7 +4,13 @@ import { Utils } from "./utils"
 
 export class WeightedList {
     public items: HasWeigth[] = []
-    
+
+    constructor(items?: HasWeigth[]) {
+        if(items) {
+            this.items = items;
+        }
+    }
+
     push(item :HasWeigth): void {
         this.items.push(item);
     }

@@ -3,6 +3,7 @@ import { Utils } from "../core/utils"
 import { effects } from "./../modifiers/effectsSingleton"
 import { PowerModifier } from "../core/powerModifier";
 import { WeightedList } from "../core/weightedList";
+import { Effect } from "./effect";
 
 
 //TODO Make this cleaner
@@ -42,7 +43,7 @@ signature.type = Modifier.Type.Constraint;
 mods.push(signature);
 
 const layline = new Modifier();
-layline.powerMultiplier = (x: PowerModifier) => {return x.range ? Math.max(1.1, 2.4 - x.range/10) : 1}; 1.7; //TODO should be related to range ZROBIĆ TO INTERFACEM!
+layline.powerMultiplier = (x: PowerModifier) => {return x.range ? Math.max(1.1, 2.4 - x.range/10) : 1}; 1.7; 
 layline.namePrefix = 'Layline';
 layline.description = 'Can be used while adjacent to place of power.';
 layline.longDescription = '';
@@ -80,7 +81,7 @@ applyEffect.description = 'There is a chance to apply following effect, when you
 applyEffect.longDescription = '';
 applyEffect.type = Modifier.Type.Improvement;
 applyEffect.weight = mods.items.length/3;
-applyEffect.effect = effects[0];
+applyEffect.effect = effects.get() as Effect;
 mods.push(applyEffect);
 
 export const modifiers: WeightedList = mods;

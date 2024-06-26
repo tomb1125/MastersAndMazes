@@ -36,7 +36,7 @@ signature.type = modifier_1.Modifier.Type.Constraint;
 mods.push(signature);
 var layline = new modifier_1.Modifier();
 layline.powerMultiplier = function (x) { return x.range ? Math.max(1.1, 2.4 - x.range / 10) : 1; };
-1.7; //TODO should be related to range ZROBIĆ TO INTERFACEM!
+1.7;
 layline.namePrefix = 'Layline';
 layline.description = 'Can be used while adjacent to place of power.';
 layline.longDescription = '';
@@ -68,7 +68,7 @@ applyEffect.namePrefix = '';
 applyEffect.description = 'There is a chance to apply following effect, when you hit:';
 applyEffect.longDescription = '';
 applyEffect.type = modifier_1.Modifier.Type.Improvement;
-applyEffect.weight = 100;
-applyEffect.effect = effectsSingleton_1.effects[0];
+applyEffect.weight = mods.items.length / 3;
+applyEffect.effect = effectsSingleton_1.effects.get();
 mods.push(applyEffect);
 exports.modifiers = mods;
