@@ -1,25 +1,22 @@
 import { Attack } from "./src/core/attack";
 import { Modifier } from "./src/modifiers/modifier";
-import { modifiers } from "./src/modifiers/modifiersSingleton"
-
+import { Utils } from "./src/core/utils";
+import { ModifierFactory } from "./src/modifiers/modifierFactory";
+import { HasWeigth } from "./src/core/hasWeigth";
 //console.log(new Attack(''))
 let att1 = new Attack();
-att1.chance = 0.5;
-att1.modifiers = [modifiers.get() as Modifier];
-att1.range = 1;
+//att1.chance = 1;
+att1.modifiers = ModifierFactory.getAll().filter((x: any) => {return x.name.includes('Apply')}).get(1) as Modifier[];
+//att1.range = 1;
 att1.generate();
-console.log(att1);
 
-let att2 = new Attack();
-att2.chance = 0.25
-att2.modifiers = [modifiers.get() as Modifier];
-att2.range = 1;
-att2.generate();
-//console.log(att2);
+console.dir(att1, { depth: null })
+console.log(att1.getDescription())
 
+/*
 let att3 = new Attack();
 att3.chance = 1;
-att3.modifiers = [modifiers.get() as Modifier];
+att3.modifiers = [modifiers.get(1)[0] as Modifier];
 att3.range = 1;
-att3.generate();
+att3.generate();*/
 //console.log(att3);

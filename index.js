@@ -1,23 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var attack_1 = require("./src/core/attack");
-var modifiersSingleton_1 = require("./src/modifiers/modifiersSingleton");
+var modifierFactory_1 = require("./src/modifiers/modifierFactory");
 //console.log(new Attack(''))
 var att1 = new attack_1.Attack();
-att1.chance = 0.5;
-att1.modifiers = [modifiersSingleton_1.modifiers.get()];
-att1.range = 1;
+//att1.chance = 1;
+att1.modifiers = modifierFactory_1.ModifierFactory.getAll().filter(function (x) { return x.name.includes('Apply'); }).get(1);
+//att1.range = 1;
 att1.generate();
-console.log(att1);
-var att2 = new attack_1.Attack();
-att2.chance = 0.25;
-att2.modifiers = [modifiersSingleton_1.modifiers.get()];
-att2.range = 1;
-att2.generate();
-//console.log(att2);
-var att3 = new attack_1.Attack();
+console.dir(att1, { depth: null });
+console.log(att1.getDescription());
+/*
+let att3 = new Attack();
 att3.chance = 1;
-att3.modifiers = [modifiersSingleton_1.modifiers.get()];
+att3.modifiers = [modifiers.get(1)[0] as Modifier];
 att3.range = 1;
-att3.generate();
+att3.generate();*/
 //console.log(att3);

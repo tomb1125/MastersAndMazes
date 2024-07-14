@@ -11,21 +11,44 @@ export class WeightedList {
         }
     }
 
+    filter(z: (x: any) => boolean): WeightedList {
+        return new WeightedList(this.items.filter(z));
+    }
+
     push(item :HasWeigth): void {
         this.items.push(item);
     }
 
-    get(): HasWeigth {
-        const allWeight = this.items.reduce((sum: number, item: HasWeigth) => {return sum + item.weight}, 0);
-        let roll = Utils.random() * allWeight;
-        console.log(roll);
-        for(let i = 0; i < this.items.length; i++) {
-            roll -= this.items[i].weight;
+    get(num: number): HasWeigth[] {
+        return WeightedList.getRandomFromList([...this.items], num);
+    }
+
+    private static getRandomFromList(array: HasWeigth[], num: number): HasWeigth[] {
+        if(array.length < num) {
+            throw 'cannot find '+num+' items in array with '+array.length+' elements';
+        }
+
+        const allWeight = array.reduce((sum: number, item: HasWeigth) => {return sum + item.weight}, 0);
+        let roll: number = Utils.random() * allWeight;
+        let randomElement: HasWeigth;
+        let newArray: HasWeigth[];
+        for(let i = 0; i < array.length; i++) {
+            roll -= array[i].weight;
             if(roll < 0) {
-                return this.items[i];
+                randomElement = array[i];
+                newArray = array.filter( n => n != randomElement)
+                break;
             }
         }
 
-        throw 'randomness out of bound';
+        if(randomElement! && newArray!) { 
+            if(num <= 1) {
+                return [randomElement];
+            } else {
+                return [randomElement, ...WeightedList.getRandomFromList(newArray, num - 1)]
+            }
+        }
+
+        throw 'bad randomness';
     }
 }
