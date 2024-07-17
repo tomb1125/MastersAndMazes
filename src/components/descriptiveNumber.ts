@@ -3,10 +3,11 @@ import { HasWeigth } from "../core/hasWeigth";
 export class DescriptiveNumber implements HasWeigth{
     value: number;
     description: String;
-    type: DescriptiveNumber.Type;
+    type: DescriptiveNumber.Type = DescriptiveNumber.Type.Common;
     weight: number = 1;
 
-    constructor() {
+    constructor(value: number) {
+        this.value = value == undefined ? 0 : value;
     }
 
     public getDescription(): String {
@@ -29,7 +30,9 @@ export namespace DescriptiveNumber
 {
     export enum Type
     {
+        
       Common, //damage and healing
-      Range
+      Range,
+      Small //duration etc.
     }
 }

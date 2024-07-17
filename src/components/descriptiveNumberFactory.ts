@@ -9,10 +9,30 @@ export class DescriptiveNumberFactory {
         const nums: WeightedList = new WeightedList();
 
         
-        const numericD6 = new DescriptiveNumber();
-        numericD6.value = Math.ceil(Utils.random() * 6);
-        numericD6.type = DescriptiveNumber.Type.Common;
-        nums.push(numericD6);
+        const numericD10 = new DescriptiveNumber(Math.ceil(Utils.random() * 10));
+        numericD10.type = DescriptiveNumber.Type.Common;
+        nums.push(numericD10);
+
+        const numberOfEnemies = new DescriptiveNumber(Utils.avgEnemies);
+        numberOfEnemies.description = 'the number of enemies in this combat';
+        numberOfEnemies.type = DescriptiveNumber.Type.Common;
+        nums.push(numberOfEnemies);
+
+        const numberOfTurns = new DescriptiveNumber(Utils.avgTurn);
+        numberOfTurns.description = 'the turn number of this combat';
+        numberOfTurns.type = DescriptiveNumber.Type.Common;
+        nums.push(numberOfTurns);
+        
+        const currentHealth = new DescriptiveNumber(Utils.avgHealth);
+        currentHealth.description = 'your current health';
+        currentHealth.type = DescriptiveNumber.Type.Common;
+        nums.push(currentHealth);
+
+        
+        const assassin = new DescriptiveNumber(Utils.avgEnemies * 2);
+        assassin.description = 'the number of enemies you defeated today';
+        assassin.type = DescriptiveNumber.Type.Common;
+        nums.push(assassin);
 
         return nums.get(count) as DescriptiveNumber[];
     }

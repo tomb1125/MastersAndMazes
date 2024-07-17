@@ -40,7 +40,6 @@ export class Attack extends Activity implements PowerModifier {
   private initType() {
     if(this.type === undefined) {
       const roll = Utils.random();
-      console.log(roll);
       if(roll > 0.5) {      
         this.type = Activity.Type.Attack;
       } else {
@@ -66,13 +65,15 @@ export class Attack extends Activity implements PowerModifier {
   }
   
   private initDamage() {
+    let tempDamage = this.manaCost +
+      this.getTrueDPS() 
+      * Utils.getRangeCoeficient(this.range)
+      * Utils.getDPSCoefficient(this.chance)
+      / this.chance;
     if(!this.damage) {
-      this.damage = 
-        this.manaCost +
-        this.getTrueDPS() 
-        * Utils.getRangeCoeficient(this.range)
-        * Utils.getDPSCoefficient(this.chance)
-        / this.chance;
+      this.damage = tempDamage;
+    } else {
+      this.chance = this.chance * tempDamage / this.damage;
     }
   }
 
@@ -104,13 +105,11 @@ export class Attack extends Activity implements PowerModifier {
   }
 
   private compensate() {
-      if(this.damage < 0) {
-        this.damage = 0;
+      if(this.damage < 2.5) {
+        this.damage = 2.5;
       }
       
-      if(!this.manaCost) {
-        this.manaCost += Math.ceil(this.getPower() - 0.00001);
-      }
+      this.manaCost += Math.ceil(this.getPower() - 0.00001);
   }
 
   public getPower(): number {
@@ -121,8 +120,7 @@ export class Attack extends Activity implements PowerModifier {
       -this.getTrueDPS()
       -this.manaCost;
 
-    if(power) return power;
-    return 0;
+    return power;
      
   }
 
@@ -130,16 +128,17 @@ export class Attack extends Activity implements PowerModifier {
     let dps: number = Utils.DPS;
 
     this.modifiers.forEach(m => {
-      if(m.powerMultiplier) {
-        dps *= m.powerMultiplier(this);
-      }
-    })
-
-    this.modifiers.forEach(m => {
       if(m.powerBonus) {
         dps += m.powerBonus(this);
       }
     });
+
+
+    this.modifiers.forEach(m => {
+      if(m.powerMultiplier) {
+        dps *= m.powerMultiplier(this); //TODO double check
+      }
+    })
 
     return dps;
   }

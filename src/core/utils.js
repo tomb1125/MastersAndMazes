@@ -10,7 +10,7 @@ var Utils = /** @class */ (function () {
     ;
     //since High Accuracy and Low Accuracy attacks are easily exploitable. Thus we provide bonus to Medium Accuracy attacks.
     Utils.getDPSCoefficient = function (chance) {
-        //return 1 - 0.2 * Math.abs(0.5 - chance);
+        //return 1.1 - 0.2 * Math.abs(0.5 - chance);
         return 1; //TODO restore
     };
     Utils.getRangeCoeficient = function (range) {
@@ -39,6 +39,8 @@ var Utils = /** @class */ (function () {
             return 'D6';
         if (num < 5)
             return 'D8';
+        if (num < 6)
+            return 'D10';
         if (num < 14)
             return 'D10 + ' + Math.round(num - 5.5);
         if (num < 20) {
@@ -65,6 +67,10 @@ var Utils = /** @class */ (function () {
         return Math.round(num * 2) % 2 === 1;
     };
     Utils.DPS = 5;
+    Utils.BoonValue = Utils.DPS * 6;
+    Utils.avgHealth = 25;
+    Utils.avgEnemies = 7;
+    Utils.avgTurn = 5;
     return Utils;
 }());
 exports.Utils = Utils;

@@ -12,8 +12,9 @@ export class EffectFactory {
         const eff : WeightedList = new WeightedList();
 
         const stun = new Effect(); 
-        stun.powerBonus = () => {return - Utils.DPS}; 
+        stun.powerBonus = () => {return - 1.5 * Utils.DPS}; //something is wrong here
         stun.name = 'Stun'; 
+        stun.weight = 1;
         stun.namePrefix = 'Stunning'; 
         stun.description = 'Stunned - character cannot take actions. Stunned ends at the end of a turn.';
         stun.subtype = Effect.Subtype.Debuff;
@@ -24,6 +25,7 @@ export class EffectFactory {
         const eviscerate = new Effect(); 
         eviscerate.powerBonus = () => {return -1000};
         eviscerate.weight = 0.1; 
+        eviscerate.name = 'Mortal'; 
         eviscerate.namePrefix = 'Mortal'; 
         eviscerate.description = 'Instakill - if applied successfully, character dies.';
         eviscerate.subtype = Effect.Subtype.Debuff;
@@ -37,6 +39,7 @@ export class EffectFactory {
         dot.duration = Math.ceil(Math.random() * 3) + 1;
         dot.powerBonus = (x: PowerModifier) => {return - dot.value * dot.duration * 0.5 * (x.chance ?? 1) }; //this means stun is worth regular DPS damage
         dot.elements =  [dotInit[0] as Modifier.Element];
+        dot.name = dotInit[1] as string;  
         dot.namePrefix = dotInit[1] as string;  
         dot.description = dot.namePrefix + ' - at the end of each turn take '+dot.value+' damage, lasts for '+dot.duration+' turns.';
         dot.subtype = Effect.Subtype.Debuff;
@@ -44,14 +47,15 @@ export class EffectFactory {
 
 
         const accuracy = new Effect(); 
-        accuracy.powerBonus = () => {return - Utils.DPS}; 
-        accuracy.weight = 100;
-        accuracy.duration = Math.ceil(Math.random() * 3) + 1;
+        accuracy.weight = 1;
+        accuracy.value = Math.ceil(Math.random() * 2.2);
+        accuracy.duration = Math.ceil(Math.random() * 2 + 0.5);
         accuracy.name = 'Accuracy'; 
         accuracy.namePrefix = 'Accurate'; 
-        accuracy.description = 'Accuract - when making attacks gain 1 Boon, lasts for '+accuracy.description+'turns. ';
+        accuracy.description = 'Accuracy - when rolling for an Ability chance gain '+accuracy.value+' Boon, lasts for '+accuracy.duration+' turns. ';
         accuracy.subtype = Effect.Subtype.Buff;
-        accuracy.elements =  [[Modifier.Element.Physical, Modifier.Element.Ice].sort(() => 0.5 - Utils.random())[1]];
+        accuracy.elements =  [[Modifier.Element.Holy, Modifier.Element.Psychic].sort(() => 0.5 - Utils.random())[1]];
+        accuracy.powerBonus = (x: PowerModifier) => {return - Utils.BoonValue * (1 - Math.pow(5/6, accuracy.value)) * accuracy.duration / 2}; 
         eff.push(accuracy);
                 
         return eff;

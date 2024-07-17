@@ -31,7 +31,7 @@ var ModifierFactory = /** @class */ (function () {
         var ultimate = new modifier_1.Modifier();
         ultimate.powerMultiplier = function () { return 2.5; };
         ultimate.name = 'Ultimate';
-        ultimate.namePrefix = 'Ultimate';
+        ultimate.namePrefix = 'Ultimate'; //numeric component
         ultimate.description = 'Can be used only on turn 8 or later.';
         ultimate.longDescription = '';
         ultimate.type = modifier_1.Modifier.Type.Constraint;
@@ -40,7 +40,7 @@ var ModifierFactory = /** @class */ (function () {
         signature.powerMultiplier = function () { return 1.2; };
         signature.name = 'Signature';
         signature.namePrefix = 'Signature';
-        signature.description = 'Can be used only on an even round (2, 4, 6...).';
+        signature.description = 'First Signature Ability you use each combat gains 1 Boon for its chance.';
         signature.longDescription = '';
         signature.type = modifier_1.Modifier.Type.Constraint;
         mods.push(signature);
@@ -64,7 +64,7 @@ var ModifierFactory = /** @class */ (function () {
         var momentum = new modifier_1.Modifier();
         momentum.powerMultiplier = function (x) { return 2.5; };
         momentum.name = 'Inertia';
-        momentum.namePrefix = 'Inertia';
+        momentum.namePrefix = 'Inertia'; //TODO add small numeric component here
         momentum.description = 'Can be only used when you missed with two attacks in a row. ';
         momentum.longDescription = '';
         momentum.type = modifier_1.Modifier.Type.Constraint;
@@ -93,28 +93,38 @@ var ModifierFactory = /** @class */ (function () {
         fast.longDescription = '';
         fast.type = modifier_1.Modifier.Type.Improvement;
         mods.push(fast);
-        var applyEffect = new modifier_1.Modifier();
-        applyEffect.longDescription = '';
-        applyEffect.type = modifier_1.Modifier.Type.Improvement;
-        applyEffect.weight = mods.items.length / 3;
-        applyEffect.effect = effectFactory_1.EffectFactory.getAll().filter(function (eff) { return eff.subtype === effect_1.Effect.Subtype.Debuff; }).get(1)[0];
-        applyEffect.description = 'When you hit, apply effect: ' + applyEffect.effect.description;
-        applyEffect.namePrefix = applyEffect.effect.namePrefix;
-        applyEffect.name = 'Apply ' + applyEffect.effect.name;
-        applyEffect.powerBonus = function (x) { return x.chance != null && x.range != null ? x.chance / utils_1.Utils.getRangeCoeficient(x.range) * applyEffect.effect.powerBonus(x) : applyEffect.effect.powerBonus(x); };
-        applyEffect.powerMultiplier = function (x) { return x.chance != null && x.range != null ? x.chance / utils_1.Utils.getRangeCoeficient(x.range) * applyEffect.effect.powerMultiplier(x) : applyEffect.effect.powerMultiplier(x); };
-        mods.push(applyEffect);
         var lifesteal = new modifier_1.Modifier();
         lifesteal.weight = 1;
         lifesteal.type = modifier_1.Modifier.Type.Improvement;
         lifesteal.name = 'Lifesteal';
         lifesteal.numericComponents = descriptiveNumberFactory_1.DescriptiveNumberFactory.get(1);
         lifesteal.namePrefix = 'Leeching';
-        lifesteal.description = 'When you hit, heal ' + lifesteal.numericComponents[0].getDescription() + '.';
+        lifesteal.description = 'When you hit, heal yourself equal to: ' + lifesteal.numericComponents[0].getDescription() + '.';
         lifesteal.powerBonus = function () { return -lifesteal.numericComponents[0].getNumber(); };
         lifesteal.longDescription = '';
         lifesteal.elements = [[modifier_1.Modifier.Element.Holy, modifier_1.Modifier.Element.Shadow, modifier_1.Modifier.Element.Curse, modifier_1.Modifier.Element.Nature].sort(function () { return 0.5 - utils_1.Utils.random(); })[1]];
         mods.push(lifesteal);
+        var applyEffect = new modifier_1.Modifier();
+        applyEffect.longDescription = '';
+        applyEffect.type = modifier_1.Modifier.Type.Improvement;
+        applyEffect.weight = mods.items.length / 5;
+        applyEffect.effect = effectFactory_1.EffectFactory.getAll().filter(function (eff) { return eff.subtype === effect_1.Effect.Subtype.Debuff; }).get(1)[0];
+        applyEffect.description = 'When you hit, apply effect: ' + applyEffect.effect.description;
+        applyEffect.namePrefix = applyEffect.effect.namePrefix;
+        applyEffect.name = 'Apply ' + applyEffect.effect.name;
+        applyEffect.powerBonus = function (x) { return x.chance != null && x.range != null ? x.chance / utils_1.Utils.getRangeCoeficient(x.range) * applyEffect.effect.powerBonus(x) : -1000000; };
+        applyEffect.powerMultiplier = function (x) { return applyEffect.effect.powerMultiplier(x); }; //TODO test if true
+        mods.push(applyEffect);
+        var gainEffect = new modifier_1.Modifier(); //TODO continue from here
+        gainEffect.type = modifier_1.Modifier.Type.Improvement;
+        gainEffect.weight = mods.items.length / 5;
+        gainEffect.effect = effectFactory_1.EffectFactory.getAll().filter(function (eff) { return eff.subtype === effect_1.Effect.Subtype.Buff; }).get(1)[0];
+        gainEffect.description = 'When you hit, gain effect: ' + gainEffect.effect.description;
+        gainEffect.namePrefix = gainEffect.effect.namePrefix;
+        gainEffect.name = 'Gain ' + gainEffect.effect.name;
+        gainEffect.powerBonus = function (x) { return x.chance != null ? x.chance * gainEffect.effect.powerBonus(x) : -100000; };
+        gainEffect.powerMultiplier = function (x) { return gainEffect.effect.powerMultiplier(x); }; //TODO test if true
+        mods.push(gainEffect);
         return mods;
     };
     ModifierFactory.get = function (count) {

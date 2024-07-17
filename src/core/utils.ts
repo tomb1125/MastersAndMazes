@@ -1,5 +1,9 @@
 export class Utils {
     public static DPS: number = 5;
+    public static BoonValue: number = Utils.DPS * 6;
+    public static avgHealth: number = 25;
+    public static avgEnemies: number = 7;
+    public static avgTurn: number = 5;
 
     public static random(): number {
         return Math.random();
@@ -7,7 +11,7 @@ export class Utils {
 
     //since High Accuracy and Low Accuracy attacks are easily exploitable. Thus we provide bonus to Medium Accuracy attacks.
     public static getDPSCoefficient(chance: number): number {
-        //return 1 - 0.2 * Math.abs(0.5 - chance);
+        //return 1.1 - 0.2 * Math.abs(0.5 - chance);
         return 1; //TODO restore
     }
 
@@ -38,6 +42,7 @@ export class Utils {
         if(num < 3) return 'D4';
         if(num < 4) return 'D6';
         if(num < 5) return 'D8';
+        if(num < 6) return 'D10';
         if(num < 14) return 'D10 + '+Math.round(num - 5.5);
         if(num < 20) {
             if(this.isOneDie(num)) {

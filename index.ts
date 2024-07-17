@@ -6,11 +6,13 @@ import { HasWeigth } from "./src/core/hasWeigth";
 //console.log(new Attack(''))
 let att1 = new Attack();
 //att1.chance = 1;
-att1.modifiers = ModifierFactory.getAll().filter((x: any) => {return x.name.includes('Apply')}).get(1) as Modifier[];
-//att1.range = 1;
+att1.modifiers = [] as Modifier[]; //ModifierFactory.getAll().filter((x: any) => {return x.name.includes('Lifesteal')}).get(1) as Modifier[];
+att1.range = 1;
+att1.damage = 15;
+att1.type = Attack.Type.Attack;
 att1.generate();
 
-console.dir(att1, { depth: null })
+//console.dir(att1, { depth: null })
 console.log(att1.getDescription())
 
 /*

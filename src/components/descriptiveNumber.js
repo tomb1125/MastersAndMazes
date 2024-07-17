@@ -2,8 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DescriptiveNumber = void 0;
 var DescriptiveNumber = /** @class */ (function () {
-    function DescriptiveNumber() {
+    function DescriptiveNumber(value) {
+        this.type = DescriptiveNumber.Type.Common;
         this.weight = 1;
+        this.value = value == undefined ? 0 : value;
     }
     DescriptiveNumber.prototype.getDescription = function () {
         if (this.description != undefined)
@@ -24,5 +26,6 @@ exports.DescriptiveNumber = DescriptiveNumber;
     (function (Type) {
         Type[Type["Common"] = 0] = "Common";
         Type[Type["Range"] = 1] = "Range";
+        Type[Type["Small"] = 2] = "Small"; //duration etc.
     })(Type = DescriptiveNumber.Type || (DescriptiveNumber.Type = {}));
 })(DescriptiveNumber || (exports.DescriptiveNumber = DescriptiveNumber = {}));

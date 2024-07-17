@@ -41,7 +41,6 @@ var Attack = /** @class */ (function (_super) {
     Attack.prototype.initType = function () {
         if (this.type === undefined) {
             var roll = utils_1.Utils.random();
-            console.log(roll);
             if (roll > 0.5) {
                 this.type = activity_1.Activity.Type.Attack;
             }
@@ -66,13 +65,16 @@ var Attack = /** @class */ (function (_super) {
         }
     };
     Attack.prototype.initDamage = function () {
+        var tempDamage = this.manaCost +
+            this.getTrueDPS()
+                * utils_1.Utils.getRangeCoeficient(this.range)
+                * utils_1.Utils.getDPSCoefficient(this.chance)
+                / this.chance;
         if (!this.damage) {
-            this.damage =
-                this.manaCost +
-                    this.getTrueDPS()
-                        * utils_1.Utils.getRangeCoeficient(this.range)
-                        * utils_1.Utils.getDPSCoefficient(this.chance)
-                        / this.chance;
+            this.damage = tempDamage;
+        }
+        else {
+            this.chance = this.chance * tempDamage / this.damage;
         }
     };
     //TODO split modifiers and improvements
@@ -102,12 +104,10 @@ var Attack = /** @class */ (function (_super) {
         }
     };
     Attack.prototype.compensate = function () {
-        if (this.damage < 0) {
-            this.damage = 0;
+        if (this.damage < 2.5) {
+            this.damage = 2.5;
         }
-        if (!this.manaCost) {
-            this.manaCost += Math.ceil(this.getPower() - 0.00001);
-        }
+        this.manaCost += Math.ceil(this.getPower() - 0.00001);
     };
     Attack.prototype.getPower = function () {
         var power = this.damage * this.chance
@@ -115,21 +115,19 @@ var Attack = /** @class */ (function (_super) {
             / utils_1.Utils.getDPSCoefficient(this.chance)
             - this.getTrueDPS()
             - this.manaCost;
-        if (power)
-            return power;
-        return 0;
+        return power;
     };
     Attack.prototype.getTrueDPS = function () {
         var _this = this;
         var dps = utils_1.Utils.DPS;
         this.modifiers.forEach(function (m) {
-            if (m.powerMultiplier) {
-                dps *= m.powerMultiplier(_this);
+            if (m.powerBonus) {
+                dps += m.powerBonus(_this);
             }
         });
         this.modifiers.forEach(function (m) {
-            if (m.powerBonus) {
-                dps += m.powerBonus(_this);
+            if (m.powerMultiplier) {
+                dps *= m.powerMultiplier(_this); //TODO double check
             }
         });
         return dps;
