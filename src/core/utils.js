@@ -13,20 +13,26 @@ var Utils = /** @class */ (function () {
         //return 1.1 - 0.2 * Math.abs(0.5 - chance);
         return 1; //TODO restore
     };
+    Utils.getDPS = function (level) {
+        return Utils.DPS + Utils.POWER_PER_LEVEL * (level - 1);
+    };
     Utils.getRangeCoeficient = function (range) {
         return (21 + range) / (20 + 2 * range);
     };
-    Utils.getInefficiencyCurve = function (num) {
-        return num + num / 5 * (num / 5 - 2);
-    };
-    Utils.getRandomMultipler = function () {
-        if (Utils.random() > 0.9) {
-            return 2 * Utils.getRandomMultipler();
+    Utils.getDurationCoeficient = function (dur) {
+        var coef = 0;
+        if (dur >= 1)
+            coef += 0.7;
+        if (dur >= 2)
+            coef += 0.6;
+        if (dur >= 3)
+            coef += 0.5;
+        if (dur >= 4)
+            coef += 0.4;
+        if (dur >= 5) {
+            coef += (dur - 4) * 0.3;
         }
-        if (Utils.random() > 0.3) {
-            return 1 + Utils.getRandomMultipler();
-        }
-        return 1;
+        return coef;
     };
     Utils.valueToDiceRoll = function (num) {
         if (num < 0)
@@ -67,6 +73,7 @@ var Utils = /** @class */ (function () {
         return Math.round(num * 2) % 2 === 1;
     };
     Utils.DPS = 5;
+    Utils.POWER_PER_LEVEL = 0.2;
     Utils.BoonValue = Utils.DPS * 6;
     Utils.avgHealth = 25;
     Utils.avgEnemies = 7;

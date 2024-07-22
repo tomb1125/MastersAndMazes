@@ -1,0 +1,38 @@
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.stunEffect = void 0;
+var characterContext_1 = require("../../core/characterContext");
+var utils_1 = require("../../core/utils");
+var effect_1 = require("../effect");
+var modifier_1 = require("../modifier");
+var stunEffect = /** @class */ (function (_super) {
+    __extends(stunEffect, _super);
+    function stunEffect() {
+        var _this = _super.call(this) || this;
+        _this.powerBonus = function () { return -1.5 * characterContext_1.CharacterContext.getDPS(); };
+        _this.name = 'Stun';
+        _this.weight = 1;
+        _this.namePrefix = 'Stunning';
+        _this.description = 'Stunned - character cannot take actions. Stunned ends at the end of a turn.';
+        _this.subtype = effect_1.Effect.Subtype.Debuff;
+        _this.elements = [[modifier_1.Modifier.Element.Physical, modifier_1.Modifier.Element.Ice].sort(function () { return 0.5 - utils_1.Utils.random(); })[1]];
+        return _this;
+    }
+    return stunEffect;
+}(effect_1.Effect));
+exports.stunEffect = stunEffect;

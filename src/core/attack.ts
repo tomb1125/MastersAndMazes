@@ -4,6 +4,8 @@ import { Modifier } from "./../modifiers/modifier"
 import { ModifierFactory } from "./../modifiers/modifierFactory"
 import { PowerModifier } from "./powerModifier"
 import { Ability } from "./ability"
+import { DescriptiveNumber } from "../components/descriptiveNumber"
+import { CharacterContext } from "./characterContext"
 
 export class Attack extends Activity implements PowerModifier {
   static MODIFIER_CHANCE: Map<number, number> = new Map([
@@ -15,7 +17,7 @@ export class Attack extends Activity implements PowerModifier {
   ]);
 
   modifiers: Modifier[];
-  damage: number;
+  damage: DescriptiveNumber;
 
  
   constructor(otherName?: string) {
@@ -41,7 +43,7 @@ export class Attack extends Activity implements PowerModifier {
     if(this.type === undefined) {
       const roll = Utils.random();
       if(roll > 0.5) {      
-        this.type = Activity.Type.Attack;
+        this.type = Activity.Type.Weapon;
       } else {
         this.type = Activity.Type.Spell;
       }
@@ -66,14 +68,14 @@ export class Attack extends Activity implements PowerModifier {
   
   private initDamage() {
     let tempDamage = this.manaCost +
-      this.getTrueDPS() 
+      this.getDPSFromModifiers() 
       * Utils.getRangeCoeficient(this.range)
       * Utils.getDPSCoefficient(this.chance)
       / this.chance;
     if(!this.damage) {
-      this.damage = tempDamage;
+      this.damage = new DescriptiveNumber(tempDamage);
     } else {
-      this.chance = this.chance * tempDamage / this.damage;
+      this.chance = this.chance * tempDamage / this.damage.getValue();
     }
   }
 
@@ -98,15 +100,18 @@ export class Attack extends Activity implements PowerModifier {
 
   private finalAdjustments() {
     if(this.type === Ability.Type.Spell) { //TODO allow for disabling compensation
-      this.damage += Math.ceil(Utils.random()*2.1);
+      if(this.damage.description != null) {
+        this.damage.value += Math.ceil(Utils.random()*2.1);
+      }
+      
       this.chance = Math.min(1, this.chance + 0.1);
       this.range = (this.range === 1 ? 0 : this.range) + 5;
     }
   }
 
   private compensate() {
-      if(this.damage < 2.5) {
-        this.damage = 2.5;
+      if(this.damage.value < 2.5 && this.damage.description == undefined) {
+        this.damage.value = 2.5;
       }
       
       this.manaCost += Math.ceil(this.getPower() - 0.00001);
@@ -114,25 +119,24 @@ export class Attack extends Activity implements PowerModifier {
 
   public getPower(): number {
     let power = 
-      this.damage * this.chance 
+      this.damage.value * this.chance 
       / Utils.getRangeCoeficient(this.range)
       / Utils.getDPSCoefficient(this.chance)
-      -this.getTrueDPS()
+      -this.getDPSFromModifiers()
       -this.manaCost;
 
     return power;
      
   }
 
-  private getTrueDPS(): number {
-    let dps: number = Utils.DPS;
+  private getDPSFromModifiers(): number {
+    let dps: number = CharacterContext.getDPS();
 
     this.modifiers.forEach(m => {
       if(m.powerBonus) {
         dps += m.powerBonus(this);
       }
     });
-
 
     this.modifiers.forEach(m => {
       if(m.powerMultiplier) {
@@ -148,7 +152,7 @@ export class Attack extends Activity implements PowerModifier {
     return '' +
       'Name: ' + this.generateName() +
       '\nChance: ' + Math.ceil(this.chance * 100) + '%' +
-      '\nDamage: ' + Utils.valueToDiceRoll(this.damage) +
+      '\nDamage: ' + (this.damage.description ? this.damage.getDescription() : Utils.valueToDiceRoll(this.damage.value)) +
       '\nMana Cost: ' + this.manaCost +
       '\nRange: ' + this.range +
       '\nModifiers: ' + this.modifiers.reduce(function (sum, mod) { return sum + ', ' + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
@@ -158,7 +162,7 @@ export class Attack extends Activity implements PowerModifier {
   }
 
   private generateName(): string { 
-    const attackPortion: string = this.type === Activity.Type.Attack ? [
+    const attackPortion: string = this.type === Activity.Type.Weapon ? [
       'Slam',
       'Stab',
       'Strike',

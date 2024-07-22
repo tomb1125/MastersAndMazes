@@ -2,24 +2,25 @@ import { HasWeigth } from "../core/hasWeigth";
 
 export class DescriptiveNumber implements HasWeigth{
     value: number;
-    description: String;
+    lowValue: number;
+    name: string;
+    description: string;
     type: DescriptiveNumber.Type = DescriptiveNumber.Type.Common;
     weight: number = 1;
 
-    constructor(value: number) {
+    constructor(value?: number) {
         this.value = value == undefined ? 0 : value;
     }
 
-    public getDescription(): String {
+    public getDescription(): string {
         if(this.description != undefined) return this.description;
-        if(this.value != undefined) return this.value as unknown as String;
+        if(this.value != undefined) return this.value as unknown as string;
         
-        console.dir(this);
         throw 'Undefined Descriptive Number Error';
 
     }
 
-    public getNumber() : number {
+    public getValue() : number {
         return this.value;
     }
 

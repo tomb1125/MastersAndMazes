@@ -13,6 +13,7 @@ non-efficiency curve x + x/5 * (x/5 - 2)
 add level to generation
 add seed to randomness
 add modfiers as denial of action and modifiers as bonus
+rework factory to expand modifer with new constructor
 
 numbers
  - wounded in combat

@@ -1,5 +1,7 @@
 export class Utils {
     public static DPS: number = 5;
+    public static POWER_PER_LEVEL = 0.2;
+    
     public static BoonValue: number = Utils.DPS * 6;
     public static avgHealth: number = 25;
     public static avgEnemies: number = 7;
@@ -15,26 +17,27 @@ export class Utils {
         return 1; //TODO restore
     }
 
+    public static getDPS(level: number) {
+        return Utils.DPS + Utils.POWER_PER_LEVEL * (level - 1)
+    }
     
     public static getRangeCoeficient(range: number): number {
         return (21 + range )/(20 + 2 * range)
     }
+
+    public static getDurationCoeficient(dur: number): number {
+        let coef: number = 0;
+        if(dur >= 1) coef += 0.7;
+        if(dur >= 2) coef += 0.6;
+        if(dur >= 3) coef += 0.5;
+        if(dur >= 4) coef += 0.4;
+        if(dur >= 5) {
+            coef += (dur - 4) * 0.3
+        }
+        
+        return coef;
+    }
     
-    public static getInefficiencyCurve(num: number): number {
-        return num + num/5 * (num/5 - 2)
-    }
-
-    public static getRandomMultipler(): number {
-        if(Utils.random() > 0.9) {
-            return 2 * Utils.getRandomMultipler();
-        }
-
-        if(Utils.random() > 0.3) {
-            return 1 + Utils.getRandomMultipler();
-        }
-
-        return 1;
-    }
 
     public static valueToDiceRoll(num: number): string {
         if(num < 0) throw('damage too low to represent');

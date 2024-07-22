@@ -20,6 +20,8 @@ var activity_1 = require("./activity");
 var utils_1 = require("./utils");
 var modifierFactory_1 = require("./../modifiers/modifierFactory");
 var ability_1 = require("./ability");
+var descriptiveNumber_1 = require("../components/descriptiveNumber");
+var characterContext_1 = require("./characterContext");
 var Attack = /** @class */ (function (_super) {
     __extends(Attack, _super);
     function Attack(otherName) {
@@ -42,7 +44,7 @@ var Attack = /** @class */ (function (_super) {
         if (this.type === undefined) {
             var roll = utils_1.Utils.random();
             if (roll > 0.5) {
-                this.type = activity_1.Activity.Type.Attack;
+                this.type = activity_1.Activity.Type.Weapon;
             }
             else {
                 this.type = activity_1.Activity.Type.Spell;
@@ -66,15 +68,15 @@ var Attack = /** @class */ (function (_super) {
     };
     Attack.prototype.initDamage = function () {
         var tempDamage = this.manaCost +
-            this.getTrueDPS()
+            this.getDPSFromModifiers()
                 * utils_1.Utils.getRangeCoeficient(this.range)
                 * utils_1.Utils.getDPSCoefficient(this.chance)
                 / this.chance;
         if (!this.damage) {
-            this.damage = tempDamage;
+            this.damage = new descriptiveNumber_1.DescriptiveNumber(tempDamage);
         }
         else {
-            this.chance = this.chance * tempDamage / this.damage;
+            this.chance = this.chance * tempDamage / this.damage.getValue();
         }
     };
     //TODO split modifiers and improvements
@@ -98,28 +100,30 @@ var Attack = /** @class */ (function (_super) {
     };
     Attack.prototype.finalAdjustments = function () {
         if (this.type === ability_1.Ability.Type.Spell) { //TODO allow for disabling compensation
-            this.damage += Math.ceil(utils_1.Utils.random() * 2.1);
+            if (this.damage.description != null) {
+                this.damage.value += Math.ceil(utils_1.Utils.random() * 2.1);
+            }
             this.chance = Math.min(1, this.chance + 0.1);
             this.range = (this.range === 1 ? 0 : this.range) + 5;
         }
     };
     Attack.prototype.compensate = function () {
-        if (this.damage < 2.5) {
-            this.damage = 2.5;
+        if (this.damage.value < 2.5 && this.damage.description == undefined) {
+            this.damage.value = 2.5;
         }
         this.manaCost += Math.ceil(this.getPower() - 0.00001);
     };
     Attack.prototype.getPower = function () {
-        var power = this.damage * this.chance
+        var power = this.damage.value * this.chance
             / utils_1.Utils.getRangeCoeficient(this.range)
             / utils_1.Utils.getDPSCoefficient(this.chance)
-            - this.getTrueDPS()
+            - this.getDPSFromModifiers()
             - this.manaCost;
         return power;
     };
-    Attack.prototype.getTrueDPS = function () {
+    Attack.prototype.getDPSFromModifiers = function () {
         var _this = this;
-        var dps = utils_1.Utils.DPS;
+        var dps = characterContext_1.CharacterContext.getDPS();
         this.modifiers.forEach(function (m) {
             if (m.powerBonus) {
                 dps += m.powerBonus(_this);
@@ -136,7 +140,7 @@ var Attack = /** @class */ (function (_super) {
         return '' +
             'Name: ' + this.generateName() +
             '\nChance: ' + Math.ceil(this.chance * 100) + '%' +
-            '\nDamage: ' + utils_1.Utils.valueToDiceRoll(this.damage) +
+            '\nDamage: ' + (this.damage.description ? this.damage.getDescription() : utils_1.Utils.valueToDiceRoll(this.damage.value)) +
             '\nMana Cost: ' + this.manaCost +
             '\nRange: ' + this.range +
             '\nModifiers: ' + this.modifiers.reduce(function (sum, mod) { return sum + ', ' + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
@@ -144,7 +148,7 @@ var Attack = /** @class */ (function (_super) {
             '\nDescription: ' + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1);
     };
     Attack.prototype.generateName = function () {
-        var attackPortion = this.type === activity_1.Activity.Type.Attack ? [
+        var attackPortion = this.type === activity_1.Activity.Type.Weapon ? [
             'Slam',
             'Stab',
             'Strike',

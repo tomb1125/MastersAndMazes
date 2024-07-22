@@ -18,7 +18,7 @@ export class Ability {
   {
       export enum Type
       {
-        Attack,
+        Weapon,
         Spell,
         Technique,
         Passive

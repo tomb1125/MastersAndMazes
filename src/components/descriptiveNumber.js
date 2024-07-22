@@ -12,10 +12,9 @@ var DescriptiveNumber = /** @class */ (function () {
             return this.description;
         if (this.value != undefined)
             return this.value;
-        console.dir(this);
         throw 'Undefined Descriptive Number Error';
     };
-    DescriptiveNumber.prototype.getNumber = function () {
+    DescriptiveNumber.prototype.getValue = function () {
         return this.value;
     };
     return DescriptiveNumber;
