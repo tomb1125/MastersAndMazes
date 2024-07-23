@@ -13,7 +13,7 @@ var exhaustingModifer_1 = require("./modifiersRepository/exhaustingModifer");
 var multipleModifer_1 = require("./modifiersRepository/multipleModifer");
 var cleaveModifier_1 = require("./modifiersRepository/cleaveModifier");
 var fastModifier_1 = require("./modifiersRepository/fastModifier");
-var lifestealModifier_1 = require("./modifiersRepository/lifestealModifier");
+var selfHealModifier_1 = require("./modifiersRepository/selfHealModifier");
 var applyEffectModifier_1 = require("./modifiersRepository/applyEffectModifier");
 var gainEffectModifier_1 = require("./modifiersRepository/gainEffectModifier");
 var ModifierFactory = /** @class */ (function () {
@@ -32,7 +32,7 @@ var ModifierFactory = /** @class */ (function () {
         mods.push(new multipleModifer_1.multipleModifier());
         mods.push(new cleaveModifier_1.cleaveModifier());
         mods.push(new fastModifier_1.fastModifier());
-        mods.push(new lifestealModifier_1.lifestealModifier());
+        mods.push(new selfHealModifier_1.selfHealModifier());
         mods.push(new applyEffectModifier_1.applyEffectModifier());
         mods.push(new gainEffectModifier_1.gainEffectModifier());
         return mods;

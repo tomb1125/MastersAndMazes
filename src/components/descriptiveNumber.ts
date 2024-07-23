@@ -24,6 +24,10 @@ export class DescriptiveNumber implements HasWeigth{
         return this.value;
     }
 
+    public getLowValue() : number {
+        return this.lowValue == undefined ? this.value : this.lowValue;
+    }
+
 }
 
 

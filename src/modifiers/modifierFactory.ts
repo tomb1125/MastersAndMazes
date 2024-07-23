@@ -17,7 +17,7 @@ import { exhaustingModifer } from "./modifiersRepository/exhaustingModifer";
 import { multipleModifier } from "./modifiersRepository/multipleModifer";
 import { cleaveModifier } from "./modifiersRepository/cleaveModifier";
 import { fastModifier } from "./modifiersRepository/fastModifier";
-import { lifestealModifier } from "./modifiersRepository/lifestealModifier";
+import { selfHealModifier } from "./modifiersRepository/selfHealModifier";
 import { applyEffectModifier } from "./modifiersRepository/applyEffectModifier";
 import { gainEffectModifier } from "./modifiersRepository/gainEffectModifier";
 
@@ -38,7 +38,7 @@ export class ModifierFactory {
         mods.push(new multipleModifier());
         mods.push(new cleaveModifier());
         mods.push(new fastModifier());
-        mods.push(new lifestealModifier());
+        mods.push(new selfHealModifier());
         mods.push(new applyEffectModifier());
         mods.push(new gainEffectModifier());
 

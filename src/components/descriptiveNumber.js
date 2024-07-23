@@ -17,6 +17,9 @@ var DescriptiveNumber = /** @class */ (function () {
     DescriptiveNumber.prototype.getValue = function () {
         return this.value;
     };
+    DescriptiveNumber.prototype.getLowValue = function () {
+        return this.lowValue == undefined ? this.value : this.lowValue;
+    };
     return DescriptiveNumber;
 }());
 exports.DescriptiveNumber = DescriptiveNumber;
