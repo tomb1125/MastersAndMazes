@@ -23,4 +23,30 @@ export class Ability {
         Technique,
         Passive
       }
+
+      export enum Source
+      {
+        Alchemical,
+        Arcane, 
+        Curse,
+        Holy,
+        Nature,
+        Psychic,
+        Skill,
+        Shadow,
+        Technology
+      }
+
+      export enum Element
+      {
+        Dark,
+        Emotion,
+        Fire, 
+        Force,
+        Ice,
+        Lightning,
+        Physical,
+        Poison,
+        Radiant
+      }
   }

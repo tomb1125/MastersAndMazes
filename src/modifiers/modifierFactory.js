@@ -16,6 +16,7 @@ var fastModifier_1 = require("./modifiersRepository/fastModifier");
 var selfHealModifier_1 = require("./modifiersRepository/selfHealModifier");
 var applyEffectModifier_1 = require("./modifiersRepository/applyEffectModifier");
 var gainEffectModifier_1 = require("./modifiersRepository/gainEffectModifier");
+var lifestealModifier_1 = require("./modifiersRepository/lifestealModifier");
 var ModifierFactory = /** @class */ (function () {
     function ModifierFactory() {
     }
@@ -35,6 +36,7 @@ var ModifierFactory = /** @class */ (function () {
         mods.push(new selfHealModifier_1.selfHealModifier());
         mods.push(new applyEffectModifier_1.applyEffectModifier());
         mods.push(new gainEffectModifier_1.gainEffectModifier());
+        mods.push(new lifestealModifier_1.lifestealModifier());
         return mods;
     };
     ModifierFactory.get = function (count) {

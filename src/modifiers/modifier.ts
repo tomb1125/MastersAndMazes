@@ -1,4 +1,5 @@
 import { Effect } from "./effect"
+import { Ability } from "../core/ability"
 import { PowerModifier } from "../core/powerModifier"
 import { HasWeigth } from "../core/hasWeigth";
 import { DescriptiveNumber } from "../components/descriptiveNumber";
@@ -8,7 +9,7 @@ export class Modifier implements HasWeigth {
     powerBonus: (x: PowerModifier) => number = (x: PowerModifier) => {return 0};
     powerMultiplier: (x: PowerModifier) => number = (x: PowerModifier) => {return 1};
     type: Modifier.Type;
-    elements: Modifier.Element[];
+    elements: Ability.Element[];
     weight: number = 1;
     chance: number = 1;
     numericComponents: DescriptiveNumber[];
@@ -36,19 +37,5 @@ export namespace Modifier
       Improvement,
       Effect,
       Other
-    }
-
-    export enum Element
-    {
-      Fire, 
-      Ice,
-      Physical,
-      Arcane, 
-      Holy, 
-      Shadow, 
-      Psychic, 
-      Nature,
-      Lightning,
-      Curse
     }
 }

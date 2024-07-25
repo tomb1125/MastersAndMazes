@@ -1,10 +1,5 @@
-import { PowerModifier } from "../core/powerModifier";
-import { Utils } from "../core/utils";
 import { WeightedList } from "../core/weightedList";
 import { Modifier } from "./modifier"
-import { EffectFactory } from "./effectFactory"
-import { Effect } from "./effect"
-import { DescriptiveNumberFactory } from "./../components/descriptiveNumberFactory"
 
 import { nightlyModifier } from "./modifiersRepository/nightlyModifier";
 import { laylineModifier } from "./modifiersRepository/laylineModifier";
@@ -20,6 +15,7 @@ import { fastModifier } from "./modifiersRepository/fastModifier";
 import { selfHealModifier } from "./modifiersRepository/selfHealModifier";
 import { applyEffectModifier } from "./modifiersRepository/applyEffectModifier";
 import { gainEffectModifier } from "./modifiersRepository/gainEffectModifier";
+import { lifestealModifier } from "./modifiersRepository/lifestealModifier";
 
 
 export class ModifierFactory {
@@ -41,6 +37,7 @@ export class ModifierFactory {
         mods.push(new selfHealModifier());
         mods.push(new applyEffectModifier());
         mods.push(new gainEffectModifier());
+        mods.push(new lifestealModifier());
 
         return mods;
     }

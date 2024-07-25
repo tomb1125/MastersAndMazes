@@ -16,9 +16,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.damageBonusEffect = void 0;
+var ability_1 = require("../../core/ability");
 var utils_1 = require("../../core/utils");
 var effect_1 = require("../effect");
-var modifier_1 = require("../modifier");
 var damageBonusEffect = /** @class */ (function (_super) {
     __extends(damageBonusEffect, _super);
     function damageBonusEffect() {
@@ -29,7 +29,7 @@ var damageBonusEffect = /** @class */ (function (_super) {
         _this.namePrefix = 'Empowering';
         _this.description = 'Empower - when dealing damage with an Ability deal ' + _this.value + ' bonus damage. This effect lasts for ' + _this.duration + ' turns. ';
         _this.subtype = effect_1.Effect.Subtype.Buff;
-        _this.elements = [[modifier_1.Modifier.Element.Physical, modifier_1.Modifier.Element.Lightning, modifier_1.Modifier.Element.Fire, modifier_1.Modifier.Element.Ice, modifier_1.Modifier.Element.Shadow].sort(function () { return 0.5 - utils_1.Utils.random(); })[1]];
+        _this.elements = [[ability_1.Ability.Element.Physical, ability_1.Ability.Element.Lightning, ability_1.Ability.Element.Fire, ability_1.Ability.Element.Ice, ability_1.Ability.Element.Dark].sort(function () { return 0.5 - utils_1.Utils.random(); })[1]];
         _this.powerBonus = function (x) { return -_this.value * utils_1.Utils.getDurationCoeficient(_this.duration); };
         return _this;
     }

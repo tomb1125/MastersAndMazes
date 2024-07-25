@@ -16,10 +16,10 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.stunEffect = void 0;
+var ability_1 = require("../../core/ability");
 var characterContext_1 = require("../../core/characterContext");
 var utils_1 = require("../../core/utils");
 var effect_1 = require("../effect");
-var modifier_1 = require("../modifier");
 var stunEffect = /** @class */ (function (_super) {
     __extends(stunEffect, _super);
     function stunEffect() {
@@ -30,7 +30,7 @@ var stunEffect = /** @class */ (function (_super) {
         _this.namePrefix = 'Stunning';
         _this.description = 'Stunned - character cannot take actions. Stunned ends at the end of a turn.';
         _this.subtype = effect_1.Effect.Subtype.Debuff;
-        _this.elements = [[modifier_1.Modifier.Element.Physical, modifier_1.Modifier.Element.Ice].sort(function () { return 0.5 - utils_1.Utils.random(); })[1]];
+        _this.elements = [[ability_1.Ability.Element.Physical, ability_1.Ability.Element.Ice].sort(function () { return 0.5 - utils_1.Utils.random(); })[1]];
         return _this;
     }
     return stunEffect;

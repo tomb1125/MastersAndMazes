@@ -1,7 +1,7 @@
+import { Ability } from "../../core/ability";
 import { CharacterContext } from "../../core/characterContext";
 import { Utils } from "../../core/utils";
 import { Effect } from "../effect";
-import { Modifier } from "../modifier";
 
 export class stunEffect extends Effect {
     
@@ -14,7 +14,7 @@ export class stunEffect extends Effect {
         this.namePrefix = 'Stunning'; 
         this.description = 'Stunned - character cannot take actions. Stunned ends at the end of a turn.';
         this.subtype = Effect.Subtype.Debuff;
-        this.elements =  [[Modifier.Element.Physical, Modifier.Element.Ice].sort(() => 0.5 - Utils.random())[1]];
+        this.elements =  [[Ability.Element.Physical, Ability.Element.Ice].sort(() => 0.5 - Utils.random())[1]];
        
     }
 }

@@ -1,3 +1,4 @@
+import { Ability } from "../../core/ability";
 import { PowerModifier } from "../../core/powerModifier";
 import { Utils } from "../../core/utils";
 import { Effect } from "../effect";
@@ -14,7 +15,7 @@ export class guidingEffect extends Effect {
         this.namePrefix = 'Guiding'; 
         this.description = 'Guide - when rolling for an Ability chance gain '+this.value+' Boon. This effect lasts for '+this.duration+' turns. ';
         this.subtype = Effect.Subtype.Buff;
-        this.elements =  [[Modifier.Element.Holy, Modifier.Element.Psychic].sort(() => 0.5 - Utils.random())[1]];
+        this.elements =  [[Ability.Element.Radiant, Ability.Element.Emotion].sort(() => 0.5 - Utils.random())[1]];
         this.powerBonus = (x: PowerModifier) => {return - Utils.BoonValue * (1 - Math.pow(5/6, this.value)) * Utils.getDurationCoeficient(this.duration)}; 
 
     }

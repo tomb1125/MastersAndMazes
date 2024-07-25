@@ -16,14 +16,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.dotEffect = void 0;
+var ability_1 = require("../../core/ability");
 var utils_1 = require("../../core/utils");
 var effect_1 = require("../effect");
-var modifier_1 = require("../modifier");
 var dotEffect = /** @class */ (function (_super) {
     __extends(dotEffect, _super);
     function dotEffect() {
         var _this = _super.call(this) || this;
-        var dotInit = [[modifier_1.Modifier.Element.Physical, 'Bleeding'], [modifier_1.Modifier.Element.Fire, 'Burning'], [modifier_1.Modifier.Element.Curse, 'Diseased']].sort(function () { return 0.5 - utils_1.Utils.random(); })[0];
+        var dotInit = [[ability_1.Ability.Element.Physical, 'Bleeding'], [ability_1.Ability.Element.Fire, 'Burning'], [ability_1.Ability.Element.Poison, 'Poisoned']].sort(function () { return 0.5 - utils_1.Utils.random(); })[0];
         _this.value = Math.ceil(utils_1.Utils.DPS * (Math.random()));
         _this.duration = Math.ceil(Math.random() * 3) + 1;
         _this.powerBonus = function (x) { return -_this.value * utils_1.Utils.getDurationCoeficient(_this.duration); }; //this means stun is worth regular DPS damage

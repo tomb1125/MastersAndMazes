@@ -16,9 +16,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.instakillEffect = void 0;
+var ability_1 = require("../../core/ability");
 var utils_1 = require("../../core/utils");
 var effect_1 = require("../effect");
-var modifier_1 = require("../modifier");
 var instakillEffect = /** @class */ (function (_super) {
     __extends(instakillEffect, _super);
     function instakillEffect() {
@@ -29,7 +29,7 @@ var instakillEffect = /** @class */ (function (_super) {
         _this.namePrefix = 'Instakill';
         _this.description = 'Instakill - if applied successfully, character dies.';
         _this.subtype = effect_1.Effect.Subtype.Debuff;
-        _this.elements = [[modifier_1.Modifier.Element.Physical, modifier_1.Modifier.Element.Shadow, modifier_1.Modifier.Element.Curse, modifier_1.Modifier.Element.Nature].sort(function () { return 0.5 - utils_1.Utils.random(); })[1]];
+        _this.elements = [[ability_1.Ability.Element.Dark, ability_1.Ability.Element.Physical, ability_1.Ability.Element.Poison].sort(function () { return 0.5 - utils_1.Utils.random(); })[1]];
         return _this;
     }
     return instakillEffect;

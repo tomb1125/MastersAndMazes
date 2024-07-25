@@ -16,9 +16,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.guidingEffect = void 0;
+var ability_1 = require("../../core/ability");
 var utils_1 = require("../../core/utils");
 var effect_1 = require("../effect");
-var modifier_1 = require("../modifier");
 var guidingEffect = /** @class */ (function (_super) {
     __extends(guidingEffect, _super);
     function guidingEffect() {
@@ -29,7 +29,7 @@ var guidingEffect = /** @class */ (function (_super) {
         _this.namePrefix = 'Guiding';
         _this.description = 'Guide - when rolling for an Ability chance gain ' + _this.value + ' Boon. This effect lasts for ' + _this.duration + ' turns. ';
         _this.subtype = effect_1.Effect.Subtype.Buff;
-        _this.elements = [[modifier_1.Modifier.Element.Holy, modifier_1.Modifier.Element.Psychic].sort(function () { return 0.5 - utils_1.Utils.random(); })[1]];
+        _this.elements = [[ability_1.Ability.Element.Radiant, ability_1.Ability.Element.Emotion].sort(function () { return 0.5 - utils_1.Utils.random(); })[1]];
         _this.powerBonus = function (x) { return -utils_1.Utils.BoonValue * (1 - Math.pow(5 / 6, _this.value)) * utils_1.Utils.getDurationCoeficient(_this.duration); };
         return _this;
     }
