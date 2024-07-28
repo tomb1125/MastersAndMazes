@@ -44,4 +44,9 @@ exports.Ability = Ability;
         Element[Element["Poison"] = 7] = "Poison";
         Element[Element["Radiant"] = 8] = "Radiant";
     })(Element = Ability.Element || (Ability.Element = {}));
+    var Cooldown;
+    (function (Cooldown) {
+        Cooldown[Cooldown["Encounter"] = 0] = "Encounter";
+        Cooldown[Cooldown["Daily"] = 1] = "Daily";
+    })(Cooldown = Ability.Cooldown || (Ability.Cooldown = {}));
 })(Ability || (exports.Ability = Ability = {}));

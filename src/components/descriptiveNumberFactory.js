@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DescriptiveNumberFactory = void 0;
 var weightedList_1 = require("../core/weightedList");
+var AdjacentEnemiesDescriptiveNumber_1 = require("./descriptiveNumberRepository/AdjacentEnemiesDescriptiveNumber");
 var assassinDescriptiveNumber_1 = require("./descriptiveNumberRepository/assassinDescriptiveNumber");
 var currentHealthDescriptiveNumber_1 = require("./descriptiveNumberRepository/currentHealthDescriptiveNumber");
 var d10DescriptiveNumber_1 = require("./descriptiveNumberRepository/d10DescriptiveNumber");
@@ -23,6 +24,7 @@ var DescriptiveNumberFactory = /** @class */ (function () {
         nums.push(new currentHealthDescriptiveNumber_1.currentHealthDescriptiveNumber());
         nums.push(new currentHealthDescriptiveNumber_1.currentHealthDescriptiveNumber());
         nums.push(new assassinDescriptiveNumber_1.assassinDescriptiveNumber());
+        nums.push(new AdjacentEnemiesDescriptiveNumber_1.adjacentEnemiesDescriptiveNumber());
         return nums;
     };
     return DescriptiveNumberFactory;

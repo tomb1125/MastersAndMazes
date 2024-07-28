@@ -1,12 +1,11 @@
-import { Utils } from "../../core/utils";
 import { DescriptiveNumber } from "../descriptiveNumber";
 
-export class d4DescriptiveNumber extends DescriptiveNumber {
+export class adjacentEnemiesDescriptiveNumber extends DescriptiveNumber {
     
     constructor(value?: number) {
         super(value);        
-        this.value = Math.ceil(Utils.random() * 4);
+        this.value = 3;
         this.type = DescriptiveNumber.Type.Small;
-        this.name = 'D4';
+        this.name = 'the number of enemies adjacent to you.';
     }
 }

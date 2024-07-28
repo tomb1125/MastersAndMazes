@@ -1,6 +1,7 @@
 export class Ability {
     readonly name: string;
     chance: number;
+    cooldown: Ability.Cooldown;
     manaCost: number;
     type: Ability.Type;
    
@@ -48,5 +49,11 @@ export class Ability {
         Physical,
         Poison,
         Radiant
+      }
+
+      export enum Cooldown
+      {
+        Encounter,
+        Daily
       }
   }

@@ -21,7 +21,8 @@ export class Attack extends Activity implements PowerModifier {
 
  
   constructor(otherName?: string) {
-    super(otherName)
+    super(otherName);
+    this.cooldown = Ability.Cooldown.Encounter;
   }
 
   generate() {

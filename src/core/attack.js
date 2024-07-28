@@ -25,7 +25,9 @@ var characterContext_1 = require("./characterContext");
 var Attack = /** @class */ (function (_super) {
     __extends(Attack, _super);
     function Attack(otherName) {
-        return _super.call(this, otherName) || this;
+        var _this = _super.call(this, otherName) || this;
+        _this.cooldown = ability_1.Ability.Cooldown.Encounter;
+        return _this;
     }
     Attack.prototype.generate = function () {
         this.initMana();

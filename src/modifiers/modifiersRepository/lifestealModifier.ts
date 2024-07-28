@@ -1,6 +1,5 @@
 import { DescriptiveNumberFactory } from "../../components/descriptiveNumberFactory";
 import { PowerModifier } from "../../core/powerModifier";
-import { Utils } from "../../core/utils";
 import { Modifier } from "../modifier";
 
 export class lifestealModifier extends Modifier {

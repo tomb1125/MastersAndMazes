@@ -15,18 +15,17 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.d4DescriptiveNumber = void 0;
-var utils_1 = require("../../core/utils");
+exports.adjacentEnemiesDescriptiveNumber = void 0;
 var descriptiveNumber_1 = require("../descriptiveNumber");
-var d4DescriptiveNumber = /** @class */ (function (_super) {
-    __extends(d4DescriptiveNumber, _super);
-    function d4DescriptiveNumber(value) {
+var adjacentEnemiesDescriptiveNumber = /** @class */ (function (_super) {
+    __extends(adjacentEnemiesDescriptiveNumber, _super);
+    function adjacentEnemiesDescriptiveNumber(value) {
         var _this = _super.call(this, value) || this;
-        _this.value = Math.ceil(utils_1.Utils.random() * 4);
+        _this.value = 3;
         _this.type = descriptiveNumber_1.DescriptiveNumber.Type.Small;
-        _this.name = 'D4';
+        _this.name = 'the number of enemies adjacent to you.';
         return _this;
     }
-    return d4DescriptiveNumber;
+    return adjacentEnemiesDescriptiveNumber;
 }(descriptiveNumber_1.DescriptiveNumber));
-exports.d4DescriptiveNumber = d4DescriptiveNumber;
+exports.adjacentEnemiesDescriptiveNumber = adjacentEnemiesDescriptiveNumber;

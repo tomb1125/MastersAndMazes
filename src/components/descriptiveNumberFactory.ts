@@ -1,6 +1,7 @@
 import { Utils } from "../core/utils";
 import { WeightedList } from "../core/weightedList";
 import { DescriptiveNumber } from "./descriptiveNumber";
+import { adjacentEnemiesDescriptiveNumber } from "./descriptiveNumberRepository/AdjacentEnemiesDescriptiveNumber";
 import { assassinDescriptiveNumber } from "./descriptiveNumberRepository/assassinDescriptiveNumber";
 import { currentHealthDescriptiveNumber } from "./descriptiveNumberRepository/currentHealthDescriptiveNumber";
 import { d10DescriptiveNumber } from "./descriptiveNumberRepository/d10DescriptiveNumber";
@@ -25,6 +26,7 @@ export class DescriptiveNumberFactory {
         nums.push(new currentHealthDescriptiveNumber());
         nums.push(new currentHealthDescriptiveNumber());
         nums.push(new assassinDescriptiveNumber());
+        nums.push(new adjacentEnemiesDescriptiveNumber());
 
         return nums as WeightedList;
     }
