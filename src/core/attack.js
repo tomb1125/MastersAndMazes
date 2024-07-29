@@ -70,16 +70,29 @@ var Attack = /** @class */ (function (_super) {
     };
     Attack.prototype.initDamage = function () {
         var tempDamage = this.manaCost +
-            this.getDPSFromModifiers()
+            (characterContext_1.CharacterContext.getDPS()
+                //this.getDPSFromModifiers() //here as well
                 * utils_1.Utils.getRangeCoeficient(this.range)
                 * utils_1.Utils.getDPSCoefficient(this.chance)
-                / this.chance;
+                - this.getDPSBonus())
+                / this.chance
+                * this.getDPSMultiplier();
         if (!this.damage) {
             this.damage = new descriptiveNumber_1.DescriptiveNumber(tempDamage);
         }
         else {
             this.chance = this.chance * tempDamage / this.damage.getValue();
         }
+    };
+    Attack.prototype.getPower = function () {
+        var power = (this.damage.value *
+            this.chance
+            / utils_1.Utils.getRangeCoeficient(this.range)
+            / utils_1.Utils.getDPSCoefficient(this.chance)
+            + this.getDPSBonus()) / this.getDPSMultiplier()
+            - characterContext_1.CharacterContext.getDPS()
+            - this.manaCost;
+        return power;
     };
     //TODO split modifiers and improvements
     Attack.prototype.initModifiers = function () {
@@ -115,13 +128,25 @@ var Attack = /** @class */ (function (_super) {
         }
         this.manaCost += Math.ceil(this.getPower() - 0.00001);
     };
-    Attack.prototype.getPower = function () {
-        var power = this.damage.value * this.chance
-            / utils_1.Utils.getRangeCoeficient(this.range)
-            / utils_1.Utils.getDPSCoefficient(this.chance)
-            - this.getDPSFromModifiers()
-            - this.manaCost;
-        return power;
+    Attack.prototype.getDPSBonus = function () {
+        var _this = this;
+        var dps = 0;
+        this.modifiers.forEach(function (m) {
+            if (m.powerBonus) {
+                dps += m.powerBonus(_this);
+            }
+        });
+        return dps;
+    };
+    Attack.prototype.getDPSMultiplier = function () {
+        var _this = this;
+        var dps = 1;
+        this.modifiers.forEach(function (m) {
+            if (m.powerMultiplier) {
+                dps *= m.powerMultiplier(_this);
+            }
+        });
+        return dps;
     };
     Attack.prototype.getDPSFromModifiers = function () {
         var _this = this;

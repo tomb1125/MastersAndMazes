@@ -90,7 +90,7 @@ export class Attack extends Activity implements PowerModifier {
       / Utils.getRangeCoeficient(this.range)
       / Utils.getDPSCoefficient(this.chance)
       + this.getDPSBonus()
-      ) * this.getDPSMultiplier()
+      ) / this.getDPSMultiplier()
 
       - CharacterContext.getDPS()
       - this.manaCost;

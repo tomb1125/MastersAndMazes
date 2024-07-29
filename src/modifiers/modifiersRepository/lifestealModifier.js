@@ -28,7 +28,8 @@ var lifestealModifier = /** @class */ (function (_super) {
         _this.numericComponents = descriptiveNumberFactory_1.DescriptiveNumberFactory.get(1);
         _this.namePrefix = 'Leeching';
         _this.description = 'When you hit, heal yourself equal to damage taken by enemy.';
-        _this.powerMultiplier = function (x) { return 0.55; };
+        //this.powerMultiplier = (x: PowerModifier) => {return 0.55};
+        _this.powerBonus = function (x) { return x.damage ? -x.damage : 0; };
         _this.longDescription = '';
         return _this;
     }
