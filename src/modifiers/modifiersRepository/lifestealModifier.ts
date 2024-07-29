@@ -12,7 +12,8 @@ export class lifestealModifier extends Modifier {
         this.numericComponents = DescriptiveNumberFactory.get(1);
         this.namePrefix = 'Leeching'; 
         this.description = 'When you hit, heal yourself equal to damage taken by enemy.';
-        this.powerMultiplier = (x: PowerModifier) => {return 0.55};
+        //this.powerMultiplier = (x: PowerModifier) => {return 0.55};
+        this.powerBonus = (x: PowerModifier) => {return x.damage ? - x.damage : 0}
         this.longDescription = '';
     }
 }

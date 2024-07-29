@@ -69,15 +69,34 @@ export class Attack extends Activity implements PowerModifier {
   
   private initDamage() {
     let tempDamage = this.manaCost +
-      this.getDPSFromModifiers() 
+      (CharacterContext.getDPS()
+      //this.getDPSFromModifiers() //here as well
       * Utils.getRangeCoeficient(this.range)
       * Utils.getDPSCoefficient(this.chance)
-      / this.chance;
+      - this.getDPSBonus())
+      / this.chance 
+      * this.getDPSMultiplier();
     if(!this.damage) {
       this.damage = new DescriptiveNumber(tempDamage);
     } else {
       this.chance = this.chance * tempDamage / this.damage.getValue();
     }
+  }
+
+  public getPower(): number {
+    let power = 
+      (this.damage.value * 
+      this.chance 
+      / Utils.getRangeCoeficient(this.range)
+      / Utils.getDPSCoefficient(this.chance)
+      + this.getDPSBonus()
+      ) * this.getDPSMultiplier()
+
+      - CharacterContext.getDPS()
+      - this.manaCost;
+
+    return power;
+     
   }
 
   //TODO split modifiers and improvements
@@ -118,16 +137,29 @@ export class Attack extends Activity implements PowerModifier {
       this.manaCost += Math.ceil(this.getPower() - 0.00001);
   }
 
-  public getPower(): number {
-    let power = 
-      this.damage.value * this.chance 
-      / Utils.getRangeCoeficient(this.range)
-      / Utils.getDPSCoefficient(this.chance)
-      -this.getDPSFromModifiers()
-      -this.manaCost;
 
-    return power;
-     
+  private getDPSBonus(): number {
+    let dps: number = 0;
+
+    this.modifiers.forEach(m => {
+      if(m.powerBonus) {
+        dps += m.powerBonus(this);
+      }
+    });
+
+    return dps;
+  }
+  
+  private getDPSMultiplier(): number {
+    let dps: number = 1
+
+    this.modifiers.forEach(m => {
+      if(m.powerMultiplier) {
+        dps *= m.powerMultiplier(this); 
+      }
+    })
+
+    return dps;
   }
 
   private getDPSFromModifiers(): number {
