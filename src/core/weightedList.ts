@@ -1,3 +1,4 @@
+import { allAnimalsAbilityObject } from "../components/abilityObjectRepository/allAnimalsAbilityObject";
 import { HasWeigth } from "./hasWeigth"
 import { Utils } from "./utils"
 
@@ -15,7 +16,7 @@ export class WeightedList {
         return new WeightedList(this.items.filter(z));
     }
 
-    push(item :HasWeigth): void {
+    push(item: HasWeigth): void {
         this.items.push(item);
     }
 

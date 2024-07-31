@@ -8,6 +8,7 @@ export class Modifier implements HasWeigth {
     name: string;
     powerBonus: (x: PowerModifier) => number = (x: PowerModifier) => {return 0};
     powerMultiplier: (x: PowerModifier) => number = (x: PowerModifier) => {return 1};
+    isApplicable: (x: PowerModifier) => boolean = (x: PowerModifier) => {return true};
     type: Modifier.Type;
     elements: Ability.Element[];
     weight: number = 1;

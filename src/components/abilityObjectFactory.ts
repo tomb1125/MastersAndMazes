@@ -1,4 +1,5 @@
 import { WeightedList } from "../core/weightedList";
+import { allAnimalsAbilityObject } from "./abilityObjectRepository/allAnimalsAbilityObject";
 import { DescriptiveNumber } from "./descriptiveNumber";
 
 export class AbilityObjectFactory {
@@ -7,8 +8,10 @@ export class AbilityObjectFactory {
     }
 
     public static getAll(): WeightedList {
-        const nums: WeightedList = new WeightedList();
+        const objs: WeightedList = new WeightedList();
 
-        return nums as WeightedList;
+        objs.push(new allAnimalsAbilityObject());
+
+        return objs as WeightedList;
     }
 }
