@@ -1,0 +1,53 @@
+MAKING ROLLS:
+Use D100, if you roll lesser or equal than your attribute, you win.
+If the roll is difficult you may gain Boons. For each Boon roll D6, on 6 automatically win the roll, regardless of D100 roll.
+If the roll is difficult you may gain Banes. For each Boon roll D6, on 1 automatically lose the roll, regardless of D100 roll.
+Boons and Banes cancel each other out.
+
+COMBAT AND ACTIONS:
+Combat is divided into players round and enemy round.
+During players turn, players take actions in any order.
+During enemy turn, enemies take actions in any order.
+Players round is first, however players roll for initiative. If they lose, they do not gain Standard Action turn 1.
+Players during their turn can perform: Move Action and Standard Action in this order. They also can use Swift Action once per turn.
+
+Move Action is used to move your character, usually by 6 meters.
+Standard Action is used mostly to attack and perform other key actions
+Swift Action is used to perform actions of lesser importance: drinking potion, changing weapon.
+
+CHARACTER CREATION:
+Players have 6 attributes:
+Strenght
+Dexterity
+Constitution
+Intelligence
+Wisdom
+Charisma.
+
+During Character creation assign 60, 50, 40, 30, 30, 20 to each attribute. Then choose one:
+- add 5 to each attribute
+- add 10 to two attributes
+- add 15 to one attribute
+
+Note that attributes can influence your combat skills, but do not have to.
+
+Players have 17 skills:
+Athletics (STR)        //TODO MORE CON/STR
+Sleight of Hand (DEX)
+Stealth (DEX)
+Endurance (CON)
+Arcana (INT)
+History (INT)
+Religion (INT)
+Medicine (WIS)
+Perception (WIS)
+Survival (WIS)
+Intimidation (CHA)
+Persuasion (CHA)
+
+Each Character additionall has following resources:
+30 Maximum Health. If reduced to 0, you can die, but usually won't.
+10 Maximum Mana. Can be used to improve combat abilities. Restored to maximum value after each combat.
+6 Movement Speed. How fast you can move during combat.
+0 Scars. Each time you are close to death, add a scar. Someday your luck can run out.
+

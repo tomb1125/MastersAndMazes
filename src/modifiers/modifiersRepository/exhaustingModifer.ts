@@ -7,7 +7,7 @@ export class exhaustingModifer extends Modifier {
         this.powerMultiplier = () => {return 2.5};
         this.name = 'Exhausting';
         this.namePrefix = 'Exhausting';
-        this.description = 'After this action, reduce your health to 1.';
+        this.description = 'When you hit or miss with this action, reduce your health to 1.';
         this.type = Modifier.Type.Constraint;
     }
 }

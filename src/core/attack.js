@@ -69,15 +69,13 @@ var Attack = /** @class */ (function (_super) {
         }
     };
     Attack.prototype.initDamage = function () {
-        var tempDamage = this.manaCost +
-            (characterContext_1.CharacterContext.getDPS()
-                //this.getDPSFromModifiers() //here as well
-                * utils_1.Utils.getRangeCoeficient(this.range)
-                * utils_1.Utils.getDPSCoefficient(this.chance)
-                - this.getDPSBonus())
-                / this.chance
-                * this.getDPSMultiplier();
-        if (!this.damage) {
+        var tempDamage = ((this.manaCost +
+            characterContext_1.CharacterContext.getDPS()) * this.getDPSMultiplier()
+            - this.getDPSBonus())
+            * utils_1.Utils.getRangeCoeficient(this.range)
+            * utils_1.Utils.getDPSCoefficient(this.chance)
+            / this.chance;
+        if (!this.damage) { //TODO here get common descriptive number
             this.damage = new descriptiveNumber_1.DescriptiveNumber(tempDamage);
         }
         else {
@@ -144,21 +142,6 @@ var Attack = /** @class */ (function (_super) {
         this.modifiers.forEach(function (m) {
             if (m.powerMultiplier) {
                 dps *= m.powerMultiplier(_this);
-            }
-        });
-        return dps;
-    };
-    Attack.prototype.getDPSFromModifiers = function () {
-        var _this = this;
-        var dps = characterContext_1.CharacterContext.getDPS();
-        this.modifiers.forEach(function (m) {
-            if (m.powerBonus) {
-                dps += m.powerBonus(_this);
-            }
-        });
-        this.modifiers.forEach(function (m) {
-            if (m.powerMultiplier) {
-                dps *= m.powerMultiplier(_this); //TODO double check
             }
         });
         return dps;

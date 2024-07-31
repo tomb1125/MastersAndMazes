@@ -13,7 +13,7 @@ export class dotEffect extends Effect {
         this.duration = Math.ceil(Math.random() * 3) + 1;
         this.powerBonus = (x: PowerModifier) => {return - this.value * Utils.getDurationCoeficient(this.duration) }; //this means stun is worth regular DPS damage
         this.elements =  [dotInit[0] as Ability.Element];
-        this.name = dotInit[1] as string;  
+        this.name = dotInit[1]+' '+this.value+'x'+this.duration as string;  
         this.namePrefix = dotInit[1] as string;  
         this.description = this.namePrefix + ' - at the end of each turn take '+this.value+' damage, lasts for '+this.duration+' turns.';
         this.subtype = Effect.Subtype.Debuff;

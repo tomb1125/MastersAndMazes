@@ -68,15 +68,20 @@ export class Attack extends Activity implements PowerModifier {
   }
   
   private initDamage() {
-    let tempDamage = this.manaCost +
-      (CharacterContext.getDPS()
-      //this.getDPSFromModifiers() //here as well
+    let tempDamage = 
+      (
+        (
+          this.manaCost +
+          CharacterContext.getDPS()
+        ) * this.getDPSMultiplier()
+        - this.getDPSBonus()
+      )
       * Utils.getRangeCoeficient(this.range)
       * Utils.getDPSCoefficient(this.chance)
-      - this.getDPSBonus())
       / this.chance 
-      * this.getDPSMultiplier();
-    if(!this.damage) {
+      
+  
+    if(!this.damage) { //TODO here get common descriptive number
       this.damage = new DescriptiveNumber(tempDamage);
     } else {
       this.chance = this.chance * tempDamage / this.damage.getValue();
@@ -85,14 +90,13 @@ export class Attack extends Activity implements PowerModifier {
 
   public getPower(): number {
     let power = 
-      (this.damage.value * 
-      this.chance 
+      (this.damage.value *      
+      this.chance                
       / Utils.getRangeCoeficient(this.range)
       / Utils.getDPSCoefficient(this.chance)
       + this.getDPSBonus()
       ) / this.getDPSMultiplier()
-
-      - CharacterContext.getDPS()
+      - CharacterContext.getDPS() 
       - this.manaCost;
 
     return power;
@@ -133,7 +137,7 @@ export class Attack extends Activity implements PowerModifier {
       if(this.damage.value < 2.5 && this.damage.description == undefined) {
         this.damage.value = 2.5;
       }
-      
+
       this.manaCost += Math.ceil(this.getPower() - 0.00001);
   }
 
@@ -156,24 +160,6 @@ export class Attack extends Activity implements PowerModifier {
     this.modifiers.forEach(m => {
       if(m.powerMultiplier) {
         dps *= m.powerMultiplier(this); 
-      }
-    })
-
-    return dps;
-  }
-
-  private getDPSFromModifiers(): number {
-    let dps: number = CharacterContext.getDPS();
-
-    this.modifiers.forEach(m => {
-      if(m.powerBonus) {
-        dps += m.powerBonus(this);
-      }
-    });
-
-    this.modifiers.forEach(m => {
-      if(m.powerMultiplier) {
-        dps *= m.powerMultiplier(this); //TODO double check
       }
     })
 
