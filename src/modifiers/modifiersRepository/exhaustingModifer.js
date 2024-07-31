@@ -24,7 +24,7 @@ var exhaustingModifer = /** @class */ (function (_super) {
         _this.powerMultiplier = function () { return 2.5; };
         _this.name = 'Exhausting';
         _this.namePrefix = 'Exhausting';
-        _this.description = 'After this action, reduce your health to 1.';
+        _this.description = 'When you hit or miss with this action, reduce your health to 1.';
         _this.type = modifier_1.Modifier.Type.Constraint;
         return _this;
     }

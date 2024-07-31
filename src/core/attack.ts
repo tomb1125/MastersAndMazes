@@ -16,7 +16,6 @@ export class Attack extends Activity implements PowerModifier {
     [1.4, 4]
   ]);
 
-  modifiers: Modifier[];
   damage: DescriptiveNumber;
 
  
@@ -176,7 +175,8 @@ export class Attack extends Activity implements PowerModifier {
       '\nRange: ' + this.range +
       '\nModifiers: ' + this.modifiers.reduce(function (sum, mod) { return sum + ', ' + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
       '\nType: ' + Ability.Type[this.type] + 
-      '\nDescription: ' + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1);
+      '\nDescription: ' + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
+      '\nCooldown: ' + Ability.Cooldown[this.cooldown];
 
   }
 

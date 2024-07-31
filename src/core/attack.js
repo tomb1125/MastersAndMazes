@@ -155,7 +155,8 @@ var Attack = /** @class */ (function (_super) {
             '\nRange: ' + this.range +
             '\nModifiers: ' + this.modifiers.reduce(function (sum, mod) { return sum + ', ' + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
             '\nType: ' + ability_1.Ability.Type[this.type] +
-            '\nDescription: ' + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1);
+            '\nDescription: ' + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
+            '\nCooldown: ' + ability_1.Ability.Cooldown[this.cooldown];
     };
     Attack.prototype.generateName = function () {
         var attackPortion = this.type === activity_1.Activity.Type.Weapon ? [
