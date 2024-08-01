@@ -1,4 +1,4 @@
-import { AbilityObject } from "../abilityObject";
+import { AbilityObject } from "../../abilityObject";
 
 export class allAnimalsAbilityObject extends AbilityObject {
     

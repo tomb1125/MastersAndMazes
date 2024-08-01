@@ -1,4 +1,4 @@
-import { allAnimalsAbilityObject } from "../components/abilityObjectRepository/allAnimalsAbilityObject";
+import { allAnimalsAbilityObject } from "../components/abilityObjectRepository/animals/allAnimalsAbilityObject";
 import { HasWeigth } from "./hasWeigth"
 import { Utils } from "./utils"
 

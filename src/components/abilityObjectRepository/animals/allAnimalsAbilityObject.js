@@ -16,7 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.allAnimalsAbilityObject = void 0;
-var abilityObject_1 = require("../abilityObject");
+var abilityObject_1 = require("../../abilityObject");
 var allAnimalsAbilityObject = /** @class */ (function (_super) {
     __extends(allAnimalsAbilityObject, _super);
     function allAnimalsAbilityObject() {
