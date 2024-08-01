@@ -1,6 +1,6 @@
 import { AbilityObject } from "../../abilityObject";
 
-export class catAbilityObject extends AbilityObject {
+export class gainUnderstandingAbilityObject extends AbilityObject {
     
     constructor() {
         super('Cat');        
