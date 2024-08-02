@@ -1,4 +1,5 @@
 import { Utility } from "./utility";
+import { AnimalSpeak } from "./utilityRepository/animalSpeak";
 import { WeightedList } from "./weightedList";
 
 export class UtilityFactory {
@@ -9,8 +10,9 @@ export class UtilityFactory {
 
     public static getAll(): WeightedList {
 
-        const nums: WeightedList = new WeightedList();
+        const utls: WeightedList = new WeightedList();
+        utls.push(new AnimalSpeak());
 
-        return nums as WeightedList;
+        return utls as WeightedList;
     }
 }

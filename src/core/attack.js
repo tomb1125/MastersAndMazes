@@ -71,7 +71,7 @@ var Attack = /** @class */ (function (_super) {
     Attack.prototype.initDamage = function () {
         var tempDamage = ((this.manaCost +
             characterContext_1.CharacterContext.getDPS()) * this.getDPSMultiplier()
-            - this.getDPSBonus())
+            + this.getDPSBonus())
             * utils_1.Utils.getRangeCoeficient(this.range)
             * utils_1.Utils.getDPSCoefficient(this.chance)
             / this.chance;
@@ -87,7 +87,7 @@ var Attack = /** @class */ (function (_super) {
             this.chance
             / utils_1.Utils.getRangeCoeficient(this.range)
             / utils_1.Utils.getDPSCoefficient(this.chance)
-            + this.getDPSBonus()) / this.getDPSMultiplier()
+            - this.getDPSBonus()) / this.getDPSMultiplier()
             - characterContext_1.CharacterContext.getDPS()
             - this.manaCost;
         return power;

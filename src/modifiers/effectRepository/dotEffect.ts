@@ -9,8 +9,8 @@ export class dotEffect extends Effect {
         super();
         const dotInit: any [] = [[Ability.Element.Physical, 'Bleeding'], [Ability.Element.Fire, 'Burning'], [Ability.Element.Poison, 'Poisoned']].sort(() => 0.5 - Utils.random())[0];
         
-        this.value = Math.ceil(Utils.DPS * (Math.random()));
-        this.duration = Math.ceil(Math.random() * 3) + 1;
+        this.value = Math.ceil(Utils.DPS * (Utils.random()));
+        this.duration = Math.ceil(Utils.random() * 3) + 1;
         this.powerBonus = (x: PowerModifier) => {return - this.value * Utils.getDurationCoeficient(this.duration) }; //this means stun is worth regular DPS damage
         this.elements =  [dotInit[0] as Ability.Element];
         this.name = dotInit[1]+' '+this.value+'x'+this.duration as string;  

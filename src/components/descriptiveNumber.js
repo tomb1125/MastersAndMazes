@@ -28,6 +28,7 @@ exports.DescriptiveNumber = DescriptiveNumber;
     (function (Type) {
         Type[Type["Common"] = 0] = "Common";
         Type[Type["Range"] = 1] = "Range";
-        Type[Type["Small"] = 2] = "Small"; //duration etc.
+        Type[Type["Small"] = 2] = "Small";
+        Type[Type["UtilityDuration"] = 3] = "UtilityDuration";
     })(Type = DescriptiveNumber.Type || (DescriptiveNumber.Type = {}));
 })(DescriptiveNumber || (exports.DescriptiveNumber = DescriptiveNumber = {}));

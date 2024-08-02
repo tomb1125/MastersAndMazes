@@ -1,19 +1,18 @@
 
 gives spells elemental effects and add to playerTex
-context of player
-attack level
 linking buffs (eg. bonus to all cold damage)
 non-attack abilities
 tricks
 improve to text function
 introduce efficiency curve
 introduce 1% chance for attacks to be more crazy
-range as descriptive number
 non-efficiency curve x + x/5 * (x/5 - 2)
-add level to generation
 add seed to randomness
 add modfiers as denial of action and modifiers as bonus
 rework factory to expand modifer with new constructor
+use description as field in attack obcect
+range as descriptive number
+
 
 numbers
  - wounded in combat

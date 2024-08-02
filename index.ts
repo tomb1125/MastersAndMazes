@@ -4,6 +4,8 @@ import { Utils } from "./src/core/utils";
 import { ModifierFactory } from "./src/modifiers/modifierFactory";
 import { HasWeigth } from "./src/core/hasWeigth";
 import { DescriptiveNumber } from "./src/components/descriptiveNumber";
+import { UtilityFactory } from "./src/core/utilityFactory";
+import { Utility } from "./src/core/utility";
 //console.log(new Attack(''))
 let att1 = new Attack();
 //att1.chance = 1;
@@ -14,7 +16,10 @@ att1.type = Attack.Type.Weapon;
 att1.generate();
 
 //console.dir(att1, { depth: null })
-console.log(att1.getDescription())
+//console.log(att1.getDescription())
+
+const utl: Utility = UtilityFactory.get(1)[0];
+console.log(utl.getDescription());
 
 /*
 let att3 = new Attack();

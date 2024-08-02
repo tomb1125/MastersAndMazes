@@ -73,7 +73,7 @@ export class Attack extends Activity implements PowerModifier {
           this.manaCost +
           CharacterContext.getDPS()
         ) * this.getDPSMultiplier()
-        - this.getDPSBonus()
+        + this.getDPSBonus()
       )
       * Utils.getRangeCoeficient(this.range)
       * Utils.getDPSCoefficient(this.chance)
@@ -93,7 +93,7 @@ export class Attack extends Activity implements PowerModifier {
       this.chance                
       / Utils.getRangeCoeficient(this.range)
       / Utils.getDPSCoefficient(this.chance)
-      + this.getDPSBonus()
+      - this.getDPSBonus()
       ) / this.getDPSMultiplier()
       - CharacterContext.getDPS() 
       - this.manaCost;

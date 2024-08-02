@@ -38,6 +38,7 @@ export namespace DescriptiveNumber
         
       Common, //damage and healing
       Range,
-      Small //duration etc.
+      Small, //duration etc.
+      UtilityDuration
     }
 }

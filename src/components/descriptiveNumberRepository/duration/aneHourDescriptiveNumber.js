@@ -15,18 +15,18 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.allAnimalsAbilityObject = void 0;
-var abilityObject_1 = require("../../abilityObject");
-var allAnimalsAbilityObject = /** @class */ (function (_super) {
-    __extends(allAnimalsAbilityObject, _super);
-    function allAnimalsAbilityObject() {
-        var _this = _super.call(this, 'AllAnimals') || this;
-        _this.description = 'any animal';
-        _this.rarity = 1;
-        _this.prefix = 'Animal';
-        _this.isAnimal = true;
+exports.oneHourDescriptiveNumber = void 0;
+var descriptiveNumber_1 = require("../../descriptiveNumber");
+var oneHourDescriptiveNumber = /** @class */ (function (_super) {
+    __extends(oneHourDescriptiveNumber, _super);
+    function oneHourDescriptiveNumber(value) {
+        var _this = _super.call(this, value) || this;
+        _this.value = 1;
+        _this.description = 'one hour';
+        _this.type = descriptiveNumber_1.DescriptiveNumber.Type.UtilityDuration;
+        _this.name = 'One Hour';
         return _this;
     }
-    return allAnimalsAbilityObject;
-}(abilityObject_1.AbilityObject));
-exports.allAnimalsAbilityObject = allAnimalsAbilityObject;
+    return oneHourDescriptiveNumber;
+}(descriptiveNumber_1.DescriptiveNumber));
+exports.oneHourDescriptiveNumber = oneHourDescriptiveNumber;

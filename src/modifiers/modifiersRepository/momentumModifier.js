@@ -22,6 +22,7 @@ var momentumModifier = /** @class */ (function (_super) {
     __extends(momentumModifier, _super);
     function momentumModifier() {
         var _this = _super.call(this) || this;
+        _this.weight = 1000;
         _this.name = 'Inertia';
         _this.numericComponents = descriptiveNumberFactory_1.DescriptiveNumberFactory.getAll().filter(function (x) { var _a; return (_a = x.name) === null || _a === void 0 ? void 0 : _a.includes('D4'); }).get(1);
         _this.namePrefix = 'Inertia';

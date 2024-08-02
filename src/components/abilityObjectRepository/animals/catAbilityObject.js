@@ -15,18 +15,18 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.allAnimalsAbilityObject = void 0;
+exports.catAbilityObject = void 0;
 var abilityObject_1 = require("../../abilityObject");
-var allAnimalsAbilityObject = /** @class */ (function (_super) {
-    __extends(allAnimalsAbilityObject, _super);
-    function allAnimalsAbilityObject() {
-        var _this = _super.call(this, 'AllAnimals') || this;
-        _this.description = 'any animal';
-        _this.rarity = 1;
-        _this.prefix = 'Animal';
+var catAbilityObject = /** @class */ (function (_super) {
+    __extends(catAbilityObject, _super);
+    function catAbilityObject() {
+        var _this = _super.call(this, 'Cat') || this;
+        _this.description = 'any feline';
+        _this.rarity = 0.3;
+        _this.prefix = 'Feline';
         _this.isAnimal = true;
         return _this;
     }
-    return allAnimalsAbilityObject;
+    return catAbilityObject;
 }(abilityObject_1.AbilityObject));
-exports.allAnimalsAbilityObject = allAnimalsAbilityObject;
+exports.catAbilityObject = catAbilityObject;

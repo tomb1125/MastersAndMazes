@@ -7,6 +7,7 @@ export class momentumModifier extends Modifier {
     
     constructor() {
         super();
+        this.weight = 1000;
         this.name = 'Inertia' 
         this.numericComponents = DescriptiveNumberFactory.getAll().filter((x: any) => {return x.name?.includes('D4')}).get(1) as DescriptiveNumber[];
         this.namePrefix = 'Inertia';

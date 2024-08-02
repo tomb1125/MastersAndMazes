@@ -15,18 +15,18 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.allAnimalsAbilityObject = void 0;
+exports.gainUnderstandingAbilityObject = void 0;
 var abilityObject_1 = require("../../abilityObject");
-var allAnimalsAbilityObject = /** @class */ (function (_super) {
-    __extends(allAnimalsAbilityObject, _super);
-    function allAnimalsAbilityObject() {
-        var _this = _super.call(this, 'AllAnimals') || this;
-        _this.description = 'any animal';
+var gainUnderstandingAbilityObject = /** @class */ (function (_super) {
+    __extends(gainUnderstandingAbilityObject, _super);
+    function gainUnderstandingAbilityObject() {
+        var _this = _super.call(this, 'Gain Understanding') || this;
+        _this.description = 'For the duration you can both speak in your languages, yet you can understand each other. ';
         _this.rarity = 1;
-        _this.prefix = 'Animal';
-        _this.isAnimal = true;
+        _this.prefix = 'Polyglotic';
+        _this.isCommunication = true;
         return _this;
     }
-    return allAnimalsAbilityObject;
+    return gainUnderstandingAbilityObject;
 }(abilityObject_1.AbilityObject));
-exports.allAnimalsAbilityObject = allAnimalsAbilityObject;
+exports.gainUnderstandingAbilityObject = gainUnderstandingAbilityObject;

@@ -7,6 +7,6 @@ export class assassinDescriptiveNumber extends DescriptiveNumber {
         super(Utils.avgEnemies * 2);        
         this.description = 'the number of enemies you defeated today';
         this.type = DescriptiveNumber.Type.Common;
-        this.name = 'D4';
+        this.name = 'assassin';
     }
 }

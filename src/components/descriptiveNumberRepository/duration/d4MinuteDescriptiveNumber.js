@@ -15,18 +15,21 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.allAnimalsAbilityObject = void 0;
-var abilityObject_1 = require("../../abilityObject");
-var allAnimalsAbilityObject = /** @class */ (function (_super) {
-    __extends(allAnimalsAbilityObject, _super);
-    function allAnimalsAbilityObject() {
-        var _this = _super.call(this, 'AllAnimals') || this;
-        _this.description = 'any animal';
-        _this.rarity = 1;
-        _this.prefix = 'Animal';
-        _this.isAnimal = true;
+exports.d4MinuteDescriptiveNumber = void 0;
+var utils_1 = require("../../../core/utils");
+var descriptiveNumber_1 = require("../../descriptiveNumber");
+var d4MinuteDescriptiveNumber = /** @class */ (function (_super) {
+    __extends(d4MinuteDescriptiveNumber, _super);
+    function d4MinuteDescriptiveNumber(value) {
+        var _this = _super.call(this, value) || this;
+        var initValue = [1, 5].sort(function () { return 0.5 - utils_1.Utils.random(); })[0];
+        ;
+        _this.value = initValue / 10;
+        _this.type = descriptiveNumber_1.DescriptiveNumber.Type.UtilityDuration;
+        _this.name = 'D4';
+        _this.description = initValue + ' minutes';
         return _this;
     }
-    return allAnimalsAbilityObject;
-}(abilityObject_1.AbilityObject));
-exports.allAnimalsAbilityObject = allAnimalsAbilityObject;
+    return d4MinuteDescriptiveNumber;
+}(descriptiveNumber_1.DescriptiveNumber));
+exports.d4MinuteDescriptiveNumber = d4MinuteDescriptiveNumber;

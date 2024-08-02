@@ -2,6 +2,7 @@ export class Ability {
     readonly name: string;
     chance: number;
     cooldown: Ability.Cooldown;
+    description: string;
     manaCost: number;
     type: Ability.Type;
    

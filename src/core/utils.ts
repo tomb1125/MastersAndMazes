@@ -1,6 +1,7 @@
 export class Utils {
     public static DPS: number = 5;
     public static POWER_PER_LEVEL = 0.2;
+    public static BASIC_ATTACK_DPS: number = 2.5
     
     public static BoonValue: number = Utils.DPS * 6;
     public static avgHealth: number = 25;

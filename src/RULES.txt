@@ -24,10 +24,7 @@ Intelligence
 Wisdom
 Charisma.
 
-During Character creation assign 60, 50, 40, 30, 30, 20 to each attribute. Then choose one:
-- add 5 to each attribute
-- add 10 to two attributes
-- add 15 to one attribute
+During Character creation assign 60, 50, 40, 30, 30, 20 to each attribute.
 
 Note that attributes can influence your combat skills, but do not have to.
 

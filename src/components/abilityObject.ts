@@ -5,6 +5,7 @@ export class AbilityObject implements HasWeigth {
     name: string;
     description: string;
     weight: number = 1;
+    prefix: string;
     
     isAnimal : boolean = false;
     isCommunication : boolean = false;

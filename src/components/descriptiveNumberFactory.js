@@ -7,6 +7,8 @@ var assassinDescriptiveNumber_1 = require("./descriptiveNumberRepository/assassi
 var currentHealthDescriptiveNumber_1 = require("./descriptiveNumberRepository/currentHealthDescriptiveNumber");
 var d10DescriptiveNumber_1 = require("./descriptiveNumberRepository/d10DescriptiveNumber");
 var d4DescriptiveNumber_1 = require("./descriptiveNumberRepository/d4DescriptiveNumber");
+var d4MinuteDescriptiveNumber_1 = require("./descriptiveNumberRepository/duration/d4MinuteDescriptiveNumber");
+var aneHourDescriptiveNumber_1 = require("./descriptiveNumberRepository/duration/aneHourDescriptiveNumber");
 var numberOfEnemiesDescriptiveNumber_1 = require("./descriptiveNumberRepository/numberOfEnemiesDescriptiveNumber");
 var numberOfTurnsDescriptiveNumber_1 = require("./descriptiveNumberRepository/numberOfTurnsDescriptiveNumber");
 var DescriptiveNumberFactory = /** @class */ (function () {
@@ -25,6 +27,8 @@ var DescriptiveNumberFactory = /** @class */ (function () {
         nums.push(new currentHealthDescriptiveNumber_1.currentHealthDescriptiveNumber());
         nums.push(new assassinDescriptiveNumber_1.assassinDescriptiveNumber());
         nums.push(new AdjacentEnemiesDescriptiveNumber_1.adjacentEnemiesDescriptiveNumber());
+        nums.push(new d4MinuteDescriptiveNumber_1.d4MinuteDescriptiveNumber());
+        nums.push(new aneHourDescriptiveNumber_1.oneHourDescriptiveNumber());
         return nums;
     };
     return DescriptiveNumberFactory;

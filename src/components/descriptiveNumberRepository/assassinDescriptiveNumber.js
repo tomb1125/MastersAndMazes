@@ -24,7 +24,7 @@ var assassinDescriptiveNumber = /** @class */ (function (_super) {
         var _this = _super.call(this, utils_1.Utils.avgEnemies * 2) || this;
         _this.description = 'the number of enemies you defeated today';
         _this.type = descriptiveNumber_1.DescriptiveNumber.Type.Common;
-        _this.name = 'D4';
+        _this.name = 'assassin';
         return _this;
     }
     return assassinDescriptiveNumber;
