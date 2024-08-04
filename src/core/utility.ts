@@ -4,11 +4,12 @@ import { Modifier } from "../modifiers/modifier";
 import { repeatableModifier } from "../modifiers/modifiersRepository/repeatableModifier";
 import { Ability } from "./ability";
 import { Activity } from "./activity";
+import { HasFactory } from "./hasFactory";
 import { HasWeigth } from "./hasWeigth";
 import { PowerModifier } from "./powerModifier";
 
 export class Utility extends Activity implements PowerModifier, HasWeigth {
-    weight: number = 1;
+    weight = (x: HasFactory) => {return 1};
     objects: AbilityObject[];
     duration: DescriptiveNumber;
 
@@ -17,6 +18,7 @@ export class Utility extends Activity implements PowerModifier, HasWeigth {
         this.cooldown = Ability.Cooldown.Daily;
         this.objects = [] as AbilityObject[];
         this.modifiers = [] as Modifier[];
+        this.type = Ability.Type.Utility;
     }
 
     public getDescription(): string {
@@ -58,7 +60,7 @@ export class Utility extends Activity implements PowerModifier, HasWeigth {
       } else if(this.chance > 1) {
           repeat.setValue(2);
           this.chance/=2;
-          this.modifiers.push(repeat);        
+          this.modifiers.push(repeat);
       }
     }
 }

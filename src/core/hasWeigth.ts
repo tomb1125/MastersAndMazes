@@ -1,3 +1,5 @@
+import { HasFactory } from "./hasFactory";
+
 export interface HasWeigth {
-    weight: number;
+    weight: (x: HasFactory) => number;
 }

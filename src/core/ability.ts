@@ -22,8 +22,9 @@ export class Ability {
       {
         Weapon,
         Spell,
-        Technique,
-        Passive
+        Technique, //?
+        Passive, //?
+        Utility
       }
 
       export enum Source

@@ -5,7 +5,6 @@ var Modifier = /** @class */ (function () {
     function Modifier(otherName) {
         this.powerBonus = function (x) { return 0; };
         this.powerMultiplier = function (x) { return 1; };
-        this.isApplicable = function (x) { return true; };
         this.weight = 1;
         this.chance = 1;
         this.weight = 1;
