@@ -103,7 +103,7 @@ var Attack = /** @class */ (function (_super) {
                     numberOfModifiers = value;
                 }
                 if (numberOfModifiers > 0) {
-                    _this.modifiers = new modifierFactory_1.ModifierFactory().get(numberOfModifiers);
+                    _this.modifiers = new modifierFactory_1.ModifierFactory().get(numberOfModifiers, _this);
                 }
                 else {
                     _this.modifiers = [];
@@ -202,7 +202,7 @@ var Attack = /** @class */ (function (_super) {
         [0.1, 0],
         [0.7, 1],
         [1, 2],
-        [1.1, 3],
+        [1.2, 3],
         [1.4, 4]
     ]);
     return Attack;

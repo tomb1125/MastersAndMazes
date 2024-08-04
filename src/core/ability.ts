@@ -1,4 +1,6 @@
-export class Ability {
+import { AffectsWeight } from "./affectsWeight";
+
+export class Ability implements AffectsWeight {
     readonly name: string;
     chance: number;
     cooldown: Ability.Cooldown;

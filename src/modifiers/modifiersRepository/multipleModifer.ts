@@ -26,7 +26,7 @@ export class multipleModifier extends Modifier {
         this.powerMultiplier = () => {return 0.8 / this.numericComponents[0].getValue()};
         this.name = 'Multi';
         this.namePrefix = this.numericComponents[0].name;
-        this.description = 'After this action, repeat this action '+(this.numericComponents[0].getValue() - 1)+' time, without paying any costs. You cannot change targets.';
+        this.description = 'After this action, repeat this action '+(this.numericComponents[0].getValue() - 1)+' time, without paying mana cost. You cannot change targets.';
         this.modifierType =Modifier.Type.Improvement;
     }
 }

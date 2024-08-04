@@ -22,6 +22,8 @@ var bloodiedModifier = /** @class */ (function (_super) {
     function bloodiedModifier() {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 1.5; };
+        //this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Weapon ? 1000 : 1}
+        _this.weight = function () { return 1; };
         _this.name = 'Bloody';
         _this.namePrefix = 'Bloody';
         _this.description = 'Can be used only when you have half or less Health.';

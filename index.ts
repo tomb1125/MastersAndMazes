@@ -12,7 +12,7 @@ let att1 = new Attack();
 //att1.modifiers = ModifierFactory.getAll().filter((x: any) => {return x.name.includes('Apply')}).get(1) as Modifier[];
 att1.range = 1;
 //att1.damage = new DescriptiveNumber(15);
-att1.type = Attack.Type.Weapon;
+att1.type = Attack.Type.Spell;
 att1.generate();
 
 //console.dir(att1, { depth: null })

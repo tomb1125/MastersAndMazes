@@ -1,6 +1,5 @@
 import { Activity } from "./activity"
 import { Utils } from "./utils"
-import { Modifier } from "./../modifiers/modifier"
 import { ModifierFactory } from "./../modifiers/modifierFactory"
 import { PowerModifier } from "./powerModifier"
 import { Ability } from "./ability"
@@ -12,7 +11,7 @@ export class Attack extends Activity implements PowerModifier {
     [0.1, 0],
     [0.7, 1],
     [1, 2],
-    [1.1, 3],
+    [1.2, 3],
     [1.4, 4]
   ]);
 
@@ -113,7 +112,7 @@ export class Attack extends Activity implements PowerModifier {
         }
 
         if(numberOfModifiers > 0) {
-          this.modifiers = new ModifierFactory().get(numberOfModifiers);
+          this.modifiers = new ModifierFactory().get(numberOfModifiers, this);
         } else {
           this.modifiers = [];
         }

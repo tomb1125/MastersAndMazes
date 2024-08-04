@@ -44,8 +44,8 @@ var ModifierFactory = /** @class */ (function () {
     ModifierFactory.prototype.getAll = function () {
         return this.modifiers;
     };
-    ModifierFactory.prototype.get = function (count) {
-        return this.modifiers.get(count);
+    ModifierFactory.prototype.get = function (count, affector) {
+        return this.modifiers.get(count, affector);
     };
     ModifierFactory.prototype.filter = function (z) {
         this.modifiers = this.modifiers.filter(z);

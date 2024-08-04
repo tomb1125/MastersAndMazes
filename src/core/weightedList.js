@@ -24,19 +24,19 @@ var WeightedList = /** @class */ (function () {
     WeightedList.prototype.push = function (item) {
         this.items.push(item);
     };
-    WeightedList.prototype.get = function (num) {
-        return WeightedList.getRandomFromList(__spreadArray([], this.items, true), num);
+    WeightedList.prototype.get = function (num, affector) {
+        return WeightedList.getRandomFromList(__spreadArray([], this.items, true), num, affector);
     };
-    WeightedList.getRandomFromList = function (array, num) {
+    WeightedList.getRandomFromList = function (array, num, affector) {
         if (array.length < num) {
             throw 'cannot find ' + num + ' items in array with ' + array.length + ' elements';
         }
-        var allWeight = array.reduce(function (sum, item) { return sum + item.weight(); }, 0);
+        var allWeight = array.reduce(function (sum, item) { return sum + item.weight(affector); }, 0);
         var roll = utils_1.Utils.random() * allWeight;
         var randomElement;
         var newArray;
         for (var i = 0; i < array.length; i++) {
-            roll -= array[i].weight();
+            roll -= array[i].weight(affector);
             if (roll < 0) {
                 randomElement = array[i];
                 newArray = array.filter(function (n) { return n != randomElement; });

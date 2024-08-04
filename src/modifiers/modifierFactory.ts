@@ -16,6 +16,7 @@ import { selfHealModifier } from "./modifiersRepository/selfHealModifier";
 import { applyEffectModifier } from "./modifiersRepository/applyEffectModifier";
 import { gainEffectModifier } from "./modifiersRepository/gainEffectModifier";
 import { lifestealModifier } from "./modifiersRepository/lifestealModifier";
+import { AffectsWeight } from "../core/affectsWeight";
 
 
 export class ModifierFactory {
@@ -49,8 +50,8 @@ export class ModifierFactory {
         return this.modifiers;
     }
 
-    public get(count: number) {
-        return this.modifiers.get(count) as Modifier[];
+    public get(count: number, affector: AffectsWeight) {
+        return this.modifiers.get(count, affector) as Modifier[];
     }
 
     public filter(z: (x: any) => boolean): ModifierFactory {

@@ -41,7 +41,7 @@ var multipleModifier = /** @class */ (function (_super) {
         _this.powerMultiplier = function () { return 0.8 / _this.numericComponents[0].getValue(); };
         _this.name = 'Multi';
         _this.namePrefix = _this.numericComponents[0].name;
-        _this.description = 'After this action, repeat this action ' + (_this.numericComponents[0].getValue() - 1) + ' time, without paying any costs. You cannot change targets.';
+        _this.description = 'After this action, repeat this action ' + (_this.numericComponents[0].getValue() - 1) + ' time, without paying mana cost. You cannot change targets.';
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;
     }
