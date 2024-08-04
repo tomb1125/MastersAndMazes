@@ -9,7 +9,7 @@ export class cleaveModifier extends Modifier {
         this.namePrefix = 'Cleaving';
         this.description = 'This action also targets one creature adjacent to initial target.';
         this.longDescription = '';
-        this.type = Modifier.Type.Improvement;
+        this.modifierType =Modifier.Type.Improvement;
 
     }
 }

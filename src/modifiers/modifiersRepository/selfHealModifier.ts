@@ -7,8 +7,7 @@ export class selfHealModifier extends Modifier {
     
     constructor() {
         super();
-        this.weight = 1; 
-        this.type = Modifier.Type.Improvement;
+        this.modifierType =Modifier.Type.Improvement;
         this.name = 'Self Heal'; 
         this.numericComponents = DescriptiveNumberFactory.get(1);
         this.namePrefix = 'Healing'; 

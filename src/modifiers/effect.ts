@@ -7,7 +7,7 @@ export class Effect extends Modifier {
     
     constructor(otherName?: string) {
       super(otherName);
-      this.type = Modifier.Type.Effect;
+      this.modifierType = Modifier.Type.Effect;
     }
 }
 

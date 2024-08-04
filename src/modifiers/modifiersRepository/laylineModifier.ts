@@ -10,6 +10,6 @@ export class laylineModifier extends Modifier {
         this.namePrefix = 'Layline';
         this.description = 'Can be used only while adjacent to place of power.';
         this.longDescription = '';
-        this.type = Modifier.Type.Constraint;
+        this.modifierType =Modifier.Type.Constraint;
     }
 }

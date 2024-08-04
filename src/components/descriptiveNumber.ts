@@ -1,4 +1,4 @@
-import { HasFactory } from "../core/hasFactory";
+import { AffectsWeight } from "../core/affectsWeight";
 import { HasWeigth } from "../core/hasWeigth";
 
 export class DescriptiveNumber implements HasWeigth{
@@ -7,7 +7,7 @@ export class DescriptiveNumber implements HasWeigth{
     name: string;
     description: string;
     type: DescriptiveNumber.Type = DescriptiveNumber.Type.Common;
-    weight = (x: HasFactory) => {return 1};;
+    weight = (x?: AffectsWeight) => {return 1};;
 
     constructor(value?: number) {
         this.value = value == undefined ? 0 : value;

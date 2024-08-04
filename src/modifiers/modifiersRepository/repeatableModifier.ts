@@ -1,4 +1,5 @@
 import { DescriptiveNumber } from "../../components/descriptiveNumber";
+import { AffectsWeight } from "../../core/affectsWeight";
 import { WeightedList } from "../../core/weightedList";
 import { Modifier } from "../modifier";
 
@@ -9,13 +10,13 @@ export class repeatableModifier extends Modifier {
 
         let multiDistribution: WeightedList = new WeightedList();
         const two = new DescriptiveNumber(2);
-        two.weight = 9;
+        two.weight = () => {return 9};
         const three = new DescriptiveNumber(3);
-        three.weight = 3;
+        three.weight =() => {return 3};
         const four = new DescriptiveNumber(4);
-        four.weight = 1;
+        four.weight = () => {return 1};
         const five = new DescriptiveNumber(5);
-        five.weight = 0.333;
+        five.weight = () => {return 0.333};
         
         multiDistribution.items = [two, three, four, five];
         this.numericComponents = multiDistribution.get(1) as DescriptiveNumber[];
@@ -23,7 +24,7 @@ export class repeatableModifier extends Modifier {
         this.name = 'Repeat '+this.numericComponents[0].getValue();
         this.namePrefix = 'Repeatable '
         this.description = 'You can use this ability '+this.numericComponents[0].getValue()+' times before it goes on cooldown.';
-        this.type = Modifier.Type.Improvement;
+        this.modifierType =Modifier.Type.Improvement;
     }
 
     setValue(x: number) {

@@ -1,5 +1,5 @@
-import { HasFactory } from "./hasFactory";
+import { AffectsWeight } from "./affectsWeight";
 
 export interface HasWeigth {
-    weight: (x: HasFactory) => number;
+    weight: (x?: AffectsWeight) => number;
 }

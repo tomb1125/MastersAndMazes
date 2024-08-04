@@ -4,9 +4,10 @@ exports.DescriptiveNumber = void 0;
 var DescriptiveNumber = /** @class */ (function () {
     function DescriptiveNumber(value) {
         this.type = DescriptiveNumber.Type.Common;
-        this.weight = 1;
+        this.weight = function (x) { return 1; };
         this.value = value == undefined ? 0 : value;
     }
+    ;
     DescriptiveNumber.prototype.getDescription = function () {
         if (this.description != undefined)
             return this.description;

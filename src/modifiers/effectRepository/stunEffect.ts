@@ -10,7 +10,6 @@ export class stunEffect extends Effect {
         
         this.powerBonus = () => {return - 1.5 * CharacterContext.getDPS()};
         this.name = 'Stun'; 
-        this.weight = 1;
         this.namePrefix = 'Stunning'; 
         this.description = 'Stunned - character cannot take actions. Stunned ends at the end of a turn.';
         this.subtype = Effect.Subtype.Debuff;

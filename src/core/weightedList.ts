@@ -29,12 +29,12 @@ export class WeightedList {
             throw 'cannot find '+num+' items in array with '+array.length+' elements';
         }
 
-        const allWeight = array.reduce((sum: number, item: HasWeigth) => {return sum + item.weight}, 0);
+        const allWeight = array.reduce((sum: number, item: HasWeigth) => {return sum + item.weight()}, 0);
         let roll: number = Utils.random() * allWeight;
         let randomElement: HasWeigth;
         let newArray: HasWeigth[];
         for(let i = 0; i < array.length; i++) {
-            roll -= array[i].weight;
+            roll -= array[i].weight();
             if(roll < 0) {
                 randomElement = array[i];
                 newArray = array.filter( n => n != randomElement)

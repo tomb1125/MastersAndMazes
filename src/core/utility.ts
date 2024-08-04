@@ -4,12 +4,12 @@ import { Modifier } from "../modifiers/modifier";
 import { repeatableModifier } from "../modifiers/modifiersRepository/repeatableModifier";
 import { Ability } from "./ability";
 import { Activity } from "./activity";
-import { HasFactory } from "./hasFactory";
+import { AffectsWeight } from "./affectsWeight";
 import { HasWeigth } from "./hasWeigth";
 import { PowerModifier } from "./powerModifier";
 
 export class Utility extends Activity implements PowerModifier, HasWeigth {
-    weight = (x: HasFactory) => {return 1};
+    weight = (x?: AffectsWeight) => {return 1};
     objects: AbilityObject[];
     duration: DescriptiveNumber;
 

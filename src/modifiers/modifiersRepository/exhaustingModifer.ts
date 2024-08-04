@@ -8,6 +8,6 @@ export class exhaustingModifer extends Modifier {
         this.name = 'Exhausting';
         this.namePrefix = 'Exhausting';
         this.description = 'When you hit or miss with this action, reduce your health to 1.';
-        this.type = Modifier.Type.Constraint;
+        this.modifierType =Modifier.Type.Constraint;
     }
 }

@@ -3,15 +3,15 @@ import { Ability } from "../core/ability"
 import { PowerModifier } from "../core/powerModifier"
 import { HasWeigth } from "../core/hasWeigth";
 import { DescriptiveNumber } from "../components/descriptiveNumber";
-import { HasFactory } from "../core/hasFactory";
+import { AffectsWeight } from "../core/affectsWeight";
 
 export class Modifier implements HasWeigth {
     name: string;
     powerBonus: (x: PowerModifier) => number = (x: PowerModifier) => {return 0};
     powerMultiplier: (x: PowerModifier) => number = (x: PowerModifier) => {return 1};
-    type: Modifier.Type;
+    modifierType: Modifier.Type;
     elements: Ability.Element[];
-    weight = (x: HasFactory) => {return 1};
+    weight: (x?: AffectsWeight) => number = (x?: AffectsWeight) => {return 1};
     chance: number = 1;
     numericComponents: DescriptiveNumber[];
 
@@ -21,7 +21,6 @@ export class Modifier implements HasWeigth {
     effect: Effect;
 
     constructor(otherName?: string) {
-      this.weight = 1; 
       if (otherName !== undefined) {
         this.name = otherName;
       }

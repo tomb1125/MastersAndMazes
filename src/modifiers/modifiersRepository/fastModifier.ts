@@ -10,6 +10,6 @@ export class fastModifier extends Modifier {
         this.namePrefix = 'Fast';
         this.description = 'You can use Swift Action to use this ability.';
         this.longDescription = '';
-        this.type = Modifier.Type.Improvement;
+        this.modifierType =Modifier.Type.Improvement;
     }
 }

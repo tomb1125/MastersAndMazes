@@ -9,6 +9,6 @@ export class signatureModifier extends Modifier {
         this.namePrefix = 'Signature';
         this.description = 'This is Signature Ability - First Signature Ability you use each combat gains 1 Boon for its chance or +4 damage, before rolling.';
         this.longDescription = '';
-        this.type = Modifier.Type.Constraint;
+        this.modifierType =Modifier.Type.Constraint;
     }
 }

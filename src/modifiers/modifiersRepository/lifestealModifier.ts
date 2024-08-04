@@ -6,8 +6,7 @@ export class lifestealModifier extends Modifier {
     
     constructor() {
         super();
-        this.weight = 1; 
-        this.type = Modifier.Type.Improvement;
+        this.modifierType =Modifier.Type.Improvement;
         this.name = 'Lifesteal'; 
         this.numericComponents = DescriptiveNumberFactory.get(1);
         this.namePrefix = 'Leeching'; 

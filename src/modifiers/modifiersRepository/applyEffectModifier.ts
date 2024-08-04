@@ -9,8 +9,8 @@ export class applyEffectModifier extends Modifier {
     constructor() {
         super();
         this.longDescription = '';
-        this.type = Modifier.Type.Improvement;
-        this.weight = 4;
+        this.modifierType =Modifier.Type.Improvement;
+        this.weight = () => {return 4};
         this.effect = EffectFactory.getAll().filter((eff: Effect) => eff.subtype === Effect.Subtype.Debuff).get(1)[0] as Effect;
         this.description = 'When you hit, apply effect: '+this.effect.description;
         this.namePrefix = this.effect.namePrefix;

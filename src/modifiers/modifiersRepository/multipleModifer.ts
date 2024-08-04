@@ -9,16 +9,16 @@ export class multipleModifier extends Modifier {
 
         let multiDistribution: WeightedList = new WeightedList();
         const two = new DescriptiveNumber(2);
-        two.weight = 9;
+        two.weight = () => {return 9};
         two.name = 'Double';
         const three = new DescriptiveNumber(3);
-        three.weight = 3;
+        three.weight = () => {return 3};
         three.name = 'Triple';
         const four = new DescriptiveNumber(4);
-        four.weight = 1;
+        four.weight = () => {return 1};
         four.name = 'Quadruple';
         const five = new DescriptiveNumber(5);
-        five.weight = 0.333;
+        five.weight = () => {return 0.33};
         five.name = 'Quintiple';
         multiDistribution.items = [two, three, four, five];
 
@@ -27,6 +27,6 @@ export class multipleModifier extends Modifier {
         this.name = 'Multi';
         this.namePrefix = this.numericComponents[0].name;
         this.description = 'After this action, repeat this action '+(this.numericComponents[0].getValue() - 1)+' time, without paying any costs. You cannot change targets.';
-        this.type = Modifier.Type.Improvement;
+        this.modifierType =Modifier.Type.Improvement;
     }
 }

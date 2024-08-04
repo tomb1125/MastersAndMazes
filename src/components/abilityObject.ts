@@ -1,4 +1,4 @@
-import { HasFactory } from "../core/hasFactory";
+import { AffectsWeight } from "../core/affectsWeight";
 import { HasWeigth } from "../core/hasWeigth";
 
 export class AbilityObject implements HasWeigth {
@@ -6,7 +6,7 @@ export class AbilityObject implements HasWeigth {
     name: string;
     description: string;
     prefix: string;
-    weight = (x: HasFactory) => {return 1};
+    weight = (x?: AffectsWeight) => {return 1};
     
     isAnimal : boolean = false;
     isCommunication : boolean = false;
