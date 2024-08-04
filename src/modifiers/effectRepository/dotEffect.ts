@@ -15,7 +15,7 @@ export class dotEffect extends Effect {
         this.elements =  [dotInit[0] as Ability.Element];
         this.name = dotInit[1]+' '+this.value+'x'+this.duration as string;  
         this.namePrefix = dotInit[1] as string;  
-        this.description = this.namePrefix + ' - at the end of each turn take '+this.value+' damage, lasts for '+this.duration+' turns.';
+        this.description = this.namePrefix + ' - at the end of each turn target takes '+this.value+' damage, lasts for '+this.duration+' turns.';
         this.subtype = Effect.Subtype.Debuff;
     }
 }

@@ -16,10 +16,10 @@ att1.type = Attack.Type.Weapon;
 att1.generate();
 
 //console.dir(att1, { depth: null })
-//console.log(att1.getDescription())
+console.log(att1.getDescription())
 
 const utl: Utility = UtilityFactory.get(1)[0];
-console.log(utl.getDescription());
+//console.log(utl.getDescription());
 
 /*
 let att3 = new Attack();

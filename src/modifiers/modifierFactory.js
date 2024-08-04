@@ -18,29 +18,38 @@ var applyEffectModifier_1 = require("./modifiersRepository/applyEffectModifier")
 var gainEffectModifier_1 = require("./modifiersRepository/gainEffectModifier");
 var lifestealModifier_1 = require("./modifiersRepository/lifestealModifier");
 var ModifierFactory = /** @class */ (function () {
-    function ModifierFactory() {
+    function ModifierFactory(list) {
+        if (list === undefined) {
+            this.modifiers = new weightedList_1.WeightedList();
+            this.modifiers.push(new nightlyModifier_1.nightlyModifier());
+            this.modifiers.push(new bloodiedModifier_1.bloodiedModifier());
+            this.modifiers.push(new ultimateModifier_1.ultimateModifier());
+            this.modifiers.push(new signatureModifier_1.signatureModifier());
+            this.modifiers.push(new laylineModifier_1.laylineModifier());
+            this.modifiers.push(new vengefulModifier_1.vengefulModifier());
+            this.modifiers.push(new momentumModifier_1.momentumModifier());
+            this.modifiers.push(new exhaustingModifer_1.exhaustingModifer());
+            this.modifiers.push(new multipleModifer_1.multipleModifier());
+            this.modifiers.push(new cleaveModifier_1.cleaveModifier());
+            this.modifiers.push(new fastModifier_1.fastModifier());
+            this.modifiers.push(new selfHealModifier_1.selfHealModifier());
+            this.modifiers.push(new applyEffectModifier_1.applyEffectModifier());
+            this.modifiers.push(new gainEffectModifier_1.gainEffectModifier());
+            this.modifiers.push(new lifestealModifier_1.lifestealModifier());
+        }
+        else {
+            this.modifiers = list;
+        }
     }
-    ModifierFactory.getAll = function () {
-        var mods = new weightedList_1.WeightedList();
-        mods.push(new nightlyModifier_1.nightlyModifier());
-        mods.push(new bloodiedModifier_1.bloodiedModifier());
-        mods.push(new ultimateModifier_1.ultimateModifier());
-        mods.push(new signatureModifier_1.signatureModifier());
-        mods.push(new laylineModifier_1.laylineModifier());
-        mods.push(new vengefulModifier_1.vengefulModifier());
-        mods.push(new momentumModifier_1.momentumModifier());
-        mods.push(new exhaustingModifer_1.exhaustingModifer());
-        mods.push(new multipleModifer_1.multipleModifier());
-        mods.push(new cleaveModifier_1.cleaveModifier());
-        mods.push(new fastModifier_1.fastModifier());
-        mods.push(new selfHealModifier_1.selfHealModifier());
-        mods.push(new applyEffectModifier_1.applyEffectModifier());
-        mods.push(new gainEffectModifier_1.gainEffectModifier());
-        mods.push(new lifestealModifier_1.lifestealModifier());
-        return mods;
+    ModifierFactory.prototype.getAll = function () {
+        return this.modifiers;
     };
-    ModifierFactory.get = function (count) {
-        return ModifierFactory.getAll().get(count);
+    ModifierFactory.prototype.get = function (count) {
+        return this.modifiers.get(count);
+    };
+    ModifierFactory.prototype.filter = function (z) {
+        this.modifiers = this.modifiers.filter(z);
+        return this;
     };
     return ModifierFactory;
 }());

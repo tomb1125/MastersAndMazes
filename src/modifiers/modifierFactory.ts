@@ -19,31 +19,43 @@ import { lifestealModifier } from "./modifiersRepository/lifestealModifier";
 
 
 export class ModifierFactory {
+    modifiers: WeightedList;
 
-    public static getAll(): WeightedList {
-        const mods: WeightedList = new WeightedList();
-
-        mods.push(new nightlyModifier());
-        mods.push(new bloodiedModifier());
-        mods.push(new ultimateModifier());
-        mods.push(new signatureModifier());
-        mods.push(new laylineModifier());
-        mods.push(new vengefulModifier());
-        mods.push(new momentumModifier());
-        mods.push(new exhaustingModifer());
-        mods.push(new multipleModifier());
-        mods.push(new cleaveModifier());
-        mods.push(new fastModifier());
-        mods.push(new selfHealModifier());
-        mods.push(new applyEffectModifier());
-        mods.push(new gainEffectModifier());
-        mods.push(new lifestealModifier());
-
-        return mods;
+    constructor(list?: WeightedList) {
+        if(list === undefined) {
+            this.modifiers = new WeightedList();
+            
+            this.modifiers.push(new nightlyModifier());
+            this.modifiers.push(new bloodiedModifier());
+            this.modifiers.push(new ultimateModifier());
+            this.modifiers.push(new signatureModifier());
+            this.modifiers.push(new laylineModifier());
+            this.modifiers.push(new vengefulModifier());
+            this.modifiers.push(new momentumModifier());
+            this.modifiers.push(new exhaustingModifer());
+            this.modifiers.push(new multipleModifier());
+            this.modifiers.push(new cleaveModifier());
+            this.modifiers.push(new fastModifier());
+            this.modifiers.push(new selfHealModifier());
+            this.modifiers.push(new applyEffectModifier());
+            this.modifiers.push(new gainEffectModifier());
+            this.modifiers.push(new lifestealModifier());
+        } else {
+            this.modifiers = list;
+        }
     }
 
-    public static get(count: number) {
-        return ModifierFactory.getAll().get(count) as Modifier[];
+    public getAll(): WeightedList {
+        return this.modifiers;
+    }
+
+    public get(count: number) {
+        return this.modifiers.get(count) as Modifier[];
+    }
+
+    public filter(z: (x: any) => boolean): ModifierFactory {
+        this.modifiers = this.modifiers.filter(z)
+        return this;
     }
     
 }

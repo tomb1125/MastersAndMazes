@@ -103,7 +103,7 @@ var Attack = /** @class */ (function (_super) {
                     numberOfModifiers = value;
                 }
                 if (numberOfModifiers > 0) {
-                    _this.modifiers = modifierFactory_1.ModifierFactory.get(numberOfModifiers);
+                    _this.modifiers = new modifierFactory_1.ModifierFactory().get(numberOfModifiers);
                 }
                 else {
                     _this.modifiers = [];
