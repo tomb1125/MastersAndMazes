@@ -1,4 +1,5 @@
 import { allAnimalsAbilityObject } from "../components/abilityObjectRepository/animals/allAnimalsAbilityObject";
+import { AffectsWeight } from "./affectsWeight";
 import { HasWeigth } from "./hasWeigth"
 import { Utils } from "./utils"
 
@@ -20,21 +21,21 @@ export class WeightedList {
         this.items.push(item);
     }
 
-    get(num: number): HasWeigth[] {
-        return WeightedList.getRandomFromList([...this.items], num);
+    get(num: number, affector?: AffectsWeight): HasWeigth[] {
+        return WeightedList.getRandomFromList([...this.items], num, affector);
     }
 
-    private static getRandomFromList(array: HasWeigth[], num: number): HasWeigth[] {
+    private static getRandomFromList(array: HasWeigth[], num: number, affector?: AffectsWeight): HasWeigth[] {
         if(array.length < num) {
             throw 'cannot find '+num+' items in array with '+array.length+' elements';
         }
 
-        const allWeight = array.reduce((sum: number, item: HasWeigth) => {return sum + item.weight()}, 0);
+        const allWeight = array.reduce((sum: number, item: HasWeigth) => {return sum + item.weight(affector)}, 0);
         let roll: number = Utils.random() * allWeight;
         let randomElement: HasWeigth;
         let newArray: HasWeigth[];
         for(let i = 0; i < array.length; i++) {
-            roll -= array[i].weight();
+            roll -= array[i].weight(affector);
             if(roll < 0) {
                 randomElement = array[i];
                 newArray = array.filter( n => n != randomElement)
