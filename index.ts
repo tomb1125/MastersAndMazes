@@ -28,3 +28,8 @@ att3.modifiers = [modifiers.get(1)[0] as Modifier];
 att3.range = 1;
 att3.generate();*/
 //console.log(att3);
+
+
+  const onCharacterNameChange = (val): void => {
+    return console.log('aods');
+    };export {};

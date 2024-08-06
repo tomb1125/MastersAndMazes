@@ -14,14 +14,14 @@ export namespace CharacterContext
 {
     export enum Class
     {
-      Cleric,
-      Fighter,
-      Leader,
-      Paladin,
-      Ranger,
-      Rogue,
-      Warlock,
-      Wizard,
+      Cleric, //Heavy
+      Fighter, //Heavy, Medium
+      Leader, //Medium, Light
+      Paladin, //Heavy
+      Ranger, //Medium
+      Rogue, //Medium
+      Warlock, //Light
+      Wizard, //Light
 
       Assassin, 
       Barbarian,
