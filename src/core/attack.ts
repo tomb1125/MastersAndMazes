@@ -6,6 +6,7 @@ import { Ability } from "./ability"
 import { DescriptiveNumber } from "../components/descriptiveNumber"
 import { CharacterContext } from "./characterContext"
 import { DescriptiveNumberFactory } from "../components/descriptiveNumberFactory"
+import { Modifier } from "../modifiers/modifier"
 
 export class Attack extends Activity implements PowerModifier {
   static MODIFIER_CHANCE: Map<number, number> = new Map([
@@ -82,7 +83,8 @@ export class Attack extends Activity implements PowerModifier {
     if(!this.damage && Utils.random() < Utils.ATTACK_DESCRIPTIVE_NUMBER_CHANCE) {
       this.damage = DescriptiveNumberFactory.getAll().filter((x: DescriptiveNumber) => x.type === DescriptiveNumber.Type.Common).get(1)[0] as DescriptiveNumber;
     }
-    if(!this.damage) { //TODO here get common descriptive number
+
+    if(!this.damage) { 
       this.damage = new DescriptiveNumber(tempDamage);
     } else {
       if(tempDamage > 0) {
@@ -123,7 +125,7 @@ export class Attack extends Activity implements PowerModifier {
         }
 
         if(numberOfModifiers > 0) {
-          this.modifiers = new ModifierFactory().get(numberOfModifiers, this);
+          this.modifiers = new ModifierFactory().filter(mod => mod.modifierType === Modifier.Type.Constraint && !this.modifiers.map(mod => mod.name).includes(mod.name)).get(1, this)
         } else {
           this.modifiers = [];
         }
@@ -145,6 +147,7 @@ export class Attack extends Activity implements PowerModifier {
   private compensate() {
       if(this.damage.value < 2.5 && this.damage.description == undefined) {
         this.damage.value = 2.5;
+        this.modifiers.push[]
       }
 
       this.manaCost += Math.ceil(this.getPower() - 0.00001);
