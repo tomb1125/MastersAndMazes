@@ -10,12 +10,4 @@ non-efficiency curve x + x/5 * (x/5 - 2)
 add seed to randomness
 add modfiers as denial of action and modifiers as bonus
 rework factory to expand modifer with new constructor
-use description as field in attack obcect
 range as descriptive number
-
-
-numbers
- - wounded in combat
- - your current health
- - round number
- - 

@@ -10,6 +10,7 @@ import { d4MinuteDescriptiveNumber } from "./descriptiveNumberRepository/duratio
 import { oneHourDescriptiveNumber } from "./descriptiveNumberRepository/duration/aneHourDescriptiveNumber";
 import { numberOfEnemiesDescriptiveNumber } from "./descriptiveNumberRepository/numberOfEnemiesDescriptiveNumber";
 import { numberOfTurnsDescriptiveNumber } from "./descriptiveNumberRepository/numberOfTurnsDescriptiveNumber";
+import { damageTakenDescriptiveNumber } from "./descriptiveNumberRepository/damageTakenDescriptiveNumber";
 
 export class DescriptiveNumberFactory {
     
@@ -21,16 +22,15 @@ export class DescriptiveNumberFactory {
 
         const nums: WeightedList = new WeightedList();
 
-        nums.push(new d10DescriptiveNumber());
+        nums.push(new adjacentEnemiesDescriptiveNumber());
+        nums.push(new assassinDescriptiveNumber());
+        nums.push(new currentHealthDescriptiveNumber());
         nums.push(new d4DescriptiveNumber());
+        nums.push(new d10DescriptiveNumber());
+        nums.push(new damageTakenDescriptiveNumber());
         nums.push(new numberOfEnemiesDescriptiveNumber());
         nums.push(new numberOfTurnsDescriptiveNumber());
-        nums.push(new currentHealthDescriptiveNumber());
-        nums.push(new currentHealthDescriptiveNumber());
-        nums.push(new assassinDescriptiveNumber());
-        nums.push(new adjacentEnemiesDescriptiveNumber());
 
-        
         nums.push(new d4MinuteDescriptiveNumber());
         nums.push(new oneHourDescriptiveNumber());
 

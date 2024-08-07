@@ -26,7 +26,7 @@ var gainEffectModifier = /** @class */ (function (_super) {
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         _this.weight = function () { return 4; };
         _this.effect = effectFactory_1.EffectFactory.getAll().filter(function (eff) { return eff.subtype === effect_1.Effect.Subtype.Buff; }).get(1)[0];
-        _this.description = 'When you hit, gain effect: ' + _this.effect.description;
+        _this.description = 'When you hit, gain an effect: ' + _this.effect.description;
         _this.namePrefix = _this.effect.namePrefix;
         _this.name = 'Gain ' + _this.effect.name;
         _this.powerBonus = function (x) { return x.chance != null ? x.chance * _this.effect.powerBonus(x) : -100000; };

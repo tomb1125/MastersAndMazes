@@ -5,6 +5,7 @@ import { PowerModifier } from "./powerModifier"
 import { Ability } from "./ability"
 import { DescriptiveNumber } from "../components/descriptiveNumber"
 import { CharacterContext } from "./characterContext"
+import { DescriptiveNumberFactory } from "../components/descriptiveNumberFactory"
 
 export class Attack extends Activity implements PowerModifier {
   static MODIFIER_CHANCE: Map<number, number> = new Map([
@@ -56,7 +57,7 @@ export class Attack extends Activity implements PowerModifier {
   }
 
   private initRange() {
-    if(!this.range) {
+    if(!this.range) { //weapon should be closers
       if(Math.random() > 0.5) {
         this.range = 1;
       } else {
@@ -78,11 +79,21 @@ export class Attack extends Activity implements PowerModifier {
       * Utils.getDPSCoefficient(this.chance)
       / this.chance 
       
-  
+    if(!this.damage && Utils.random() < Utils.ATTACK_DESCRIPTIVE_NUMBER_CHANCE) {
+      this.damage = DescriptiveNumberFactory.getAll().filter((x: DescriptiveNumber) => x.type === DescriptiveNumber.Type.Common).get(1)[0] as DescriptiveNumber;
+    }
     if(!this.damage) { //TODO here get common descriptive number
       this.damage = new DescriptiveNumber(tempDamage);
     } else {
-      this.chance = this.chance * tempDamage / this.damage.getValue();
+      if(tempDamage > 0) {
+        this.chance = this.chance * tempDamage / this.damage.getValue(); //TODO this calculation is wrong when descriptive number is applied and we have modifier
+      } else {
+        
+      }
+
+      if(this.chance > 1) {
+        this.chance = 1;
+      }
     }
   }
 
@@ -167,15 +178,15 @@ export class Attack extends Activity implements PowerModifier {
   public getDescription(): string {
     
     return '' +
-      'Name: ' + this.generateName() +
-      '\nChance: ' + Math.ceil(this.chance * 100) + '%' +
-      '\nDamage: ' + (this.damage.description ? this.damage.getDescription() : Utils.valueToDiceRoll(this.damage.value)) +
-      '\nMana Cost: ' + this.manaCost +
-      '\nRange: ' + this.range +
-      '\nModifiers: ' + this.modifiers.reduce(function (sum, mod) { return sum + ', ' + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
-      '\nType: ' + Ability.Type[this.type] + 
-      '\nDescription: ' + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
-      '\nCooldown: ' + Ability.Cooldown[this.cooldown];
+      '<b>Name: ' + this.generateName() +
+      '</b><br><b>Chance</b>: ' + Math.ceil(this.chance * 100) + '%' +
+      '<br><b>Damage</b>: ' + (this.damage.description ? this.damage.getDescription() : Utils.valueToDiceRoll(this.damage.value)) +
+      '<br><b>Mana Cost</b>: ' + this.manaCost +
+      '<br><b>Range</b>: ' + this.range +
+      '<br><b>Modifiers</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + ', ' + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
+      '<br><b>Type</b>: ' + Ability.Type[this.type] + 
+      '<br><b>Description</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
+      '<br><b>Cooldown</b>: ' + Ability.Cooldown[this.cooldown];
 
   }
 

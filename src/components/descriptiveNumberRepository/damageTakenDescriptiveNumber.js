@@ -15,20 +15,17 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.signatureModifier = void 0;
-var modifier_1 = require("../modifier");
-var signatureModifier = /** @class */ (function (_super) {
-    __extends(signatureModifier, _super);
-    function signatureModifier() {
-        var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 1.2; };
-        _this.name = 'Signature';
-        _this.namePrefix = 'Signature';
-        _this.description = 'This is a Signature Ability - First Signature Ability you use each combat gains 1 Boon for its chance and +2 damage, before rolling.';
-        _this.longDescription = '';
-        _this.modifierType = modifier_1.Modifier.Type.Constraint;
+exports.damageTakenDescriptiveNumber = void 0;
+var utils_1 = require("../../core/utils");
+var descriptiveNumber_1 = require("../descriptiveNumber");
+var damageTakenDescriptiveNumber = /** @class */ (function (_super) {
+    __extends(damageTakenDescriptiveNumber, _super);
+    function damageTakenDescriptiveNumber(value) {
+        var _this = _super.call(this, utils_1.Utils.avgHealth - 1) || this;
+        _this.description = 'your current damage taken';
+        _this.type = descriptiveNumber_1.DescriptiveNumber.Type.Common;
         return _this;
     }
-    return signatureModifier;
-}(modifier_1.Modifier));
-exports.signatureModifier = signatureModifier;
+    return damageTakenDescriptiveNumber;
+}(descriptiveNumber_1.DescriptiveNumber));
+exports.damageTakenDescriptiveNumber = damageTakenDescriptiveNumber;

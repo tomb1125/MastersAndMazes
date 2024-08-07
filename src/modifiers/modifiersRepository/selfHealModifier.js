@@ -16,6 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.selfHealModifier = void 0;
+var descriptiveNumber_1 = require("../../components/descriptiveNumber");
 var descriptiveNumberFactory_1 = require("../../components/descriptiveNumberFactory");
 var ability_1 = require("../../core/ability");
 var utils_1 = require("../../core/utils");
@@ -26,7 +27,7 @@ var selfHealModifier = /** @class */ (function (_super) {
         var _this = _super.call(this) || this;
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         _this.name = 'Self Heal';
-        _this.numericComponents = descriptiveNumberFactory_1.DescriptiveNumberFactory.get(1);
+        _this.numericComponents = [descriptiveNumberFactory_1.DescriptiveNumberFactory.getAll().filter(function (x) { return x.type === descriptiveNumber_1.DescriptiveNumber.Type.Small; }).get(1)[0]];
         _this.namePrefix = 'Healing';
         _this.description = 'When you hit, heal yourself equal to: ' + _this.numericComponents[0].getDescription() + '.';
         _this.powerBonus = function () { return -_this.numericComponents[0].getValue(); };

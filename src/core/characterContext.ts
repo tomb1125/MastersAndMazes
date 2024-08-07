@@ -2,6 +2,8 @@ import { Utils } from "./utils";
 
 export class CharacterContext {
     public static level: number = 1;
+    public static class: CharacterContext.Class = 0;
+    public static seed: string = '' + Math.random();
 
     public static getDPS() {
         return Utils.getDPS(CharacterContext.level);
@@ -14,14 +16,14 @@ export namespace CharacterContext
 {
     export enum Class
     {
-      Cleric, //Heavy
-      Fighter, //Heavy, Medium
-      Leader, //Medium, Light
-      Paladin, //Heavy
-      Ranger, //Medium
-      Rogue, //Medium
-      Warlock, //Light
-      Wizard, //Light
+      Cleric,
+      Fighter,
+      Leader,
+      Paladin,
+      Ranger,
+      Rogue,
+      Sorcerer,
+      Wizard, 
 
       Assassin, 
       Barbarian,
@@ -30,7 +32,7 @@ export namespace CharacterContext
       Monk,
       Runepriest,
       Shaman,
-      Sorcerer
+      Warlock
 
     }
 }

@@ -75,6 +75,7 @@ var Utils = /** @class */ (function () {
     Utils.DPS = 5;
     Utils.POWER_PER_LEVEL = 0.2;
     Utils.BASIC_ATTACK_DPS = 2.5;
+    Utils.ATTACK_DESCRIPTIVE_NUMBER_CHANCE = 0.15;
     Utils.BoonValue = Utils.DPS * 6;
     Utils.avgHealth = 25;
     Utils.avgEnemies = 7;

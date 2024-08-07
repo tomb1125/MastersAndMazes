@@ -1,7 +1,7 @@
 import { Utils } from "../../core/utils";
 import { DescriptiveNumber } from "../descriptiveNumber";
 
-export class currentHealthDescriptiveNumber extends DescriptiveNumber {
+export class damageTakenDescriptiveNumber extends DescriptiveNumber {
     
     constructor(value?: number) {
         super(Utils.avgHealth -1);    

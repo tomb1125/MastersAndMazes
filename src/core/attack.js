@@ -22,6 +22,7 @@ var modifierFactory_1 = require("./../modifiers/modifierFactory");
 var ability_1 = require("./ability");
 var descriptiveNumber_1 = require("../components/descriptiveNumber");
 var characterContext_1 = require("./characterContext");
+var descriptiveNumberFactory_1 = require("../components/descriptiveNumberFactory");
 var Attack = /** @class */ (function (_super) {
     __extends(Attack, _super);
     function Attack(otherName) {
@@ -59,7 +60,7 @@ var Attack = /** @class */ (function (_super) {
         }
     };
     Attack.prototype.initRange = function () {
-        if (!this.range) {
+        if (!this.range) { //weapon should be closers
             if (Math.random() > 0.5) {
                 this.range = 1;
             }
@@ -75,11 +76,21 @@ var Attack = /** @class */ (function (_super) {
             * utils_1.Utils.getRangeCoeficient(this.range)
             * utils_1.Utils.getDPSCoefficient(this.chance)
             / this.chance;
+        if (!this.damage && utils_1.Utils.random() < utils_1.Utils.ATTACK_DESCRIPTIVE_NUMBER_CHANCE) {
+            this.damage = descriptiveNumberFactory_1.DescriptiveNumberFactory.getAll().filter(function (x) { return x.type === descriptiveNumber_1.DescriptiveNumber.Type.Common; }).get(1)[0];
+        }
         if (!this.damage) { //TODO here get common descriptive number
             this.damage = new descriptiveNumber_1.DescriptiveNumber(tempDamage);
         }
         else {
-            this.chance = this.chance * tempDamage / this.damage.getValue();
+            if (tempDamage > 0) {
+                this.chance = this.chance * tempDamage / this.damage.getValue(); //TODO this calculation is wrong when descriptive number is applied and we have modifier
+            }
+            else {
+            }
+            if (this.chance > 1) {
+                this.chance = 1;
+            }
         }
     };
     Attack.prototype.getPower = function () {
@@ -148,15 +159,15 @@ var Attack = /** @class */ (function (_super) {
     };
     Attack.prototype.getDescription = function () {
         return '' +
-            'Name: ' + this.generateName() +
-            '\nChance: ' + Math.ceil(this.chance * 100) + '%' +
-            '\nDamage: ' + (this.damage.description ? this.damage.getDescription() : utils_1.Utils.valueToDiceRoll(this.damage.value)) +
-            '\nMana Cost: ' + this.manaCost +
-            '\nRange: ' + this.range +
-            '\nModifiers: ' + this.modifiers.reduce(function (sum, mod) { return sum + ', ' + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
-            '\nType: ' + ability_1.Ability.Type[this.type] +
-            '\nDescription: ' + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
-            '\nCooldown: ' + ability_1.Ability.Cooldown[this.cooldown];
+            '<b>Name: ' + this.generateName() +
+            '</b><br><b>Chance</b>: ' + Math.ceil(this.chance * 100) + '%' +
+            '<br><b>Damage</b>: ' + (this.damage.description ? this.damage.getDescription() : utils_1.Utils.valueToDiceRoll(this.damage.value)) +
+            '<br><b>Mana Cost</b>: ' + this.manaCost +
+            '<br><b>Range</b>: ' + this.range +
+            '<br><b>Modifiers</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + ', ' + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
+            '<br><b>Type</b>: ' + ability_1.Ability.Type[this.type] +
+            '<br><b>Description</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
+            '<br><b>Cooldown</b>: ' + ability_1.Ability.Cooldown[this.cooldown];
     };
     Attack.prototype.generateName = function () {
         var attackPortion = this.type === activity_1.Activity.Type.Weapon ? [

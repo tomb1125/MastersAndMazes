@@ -1,12 +1,32 @@
-<h1>Monsters and Mazes</h1>
-<p></p>
-<div>
-    <input type="text" name="Character Name" placeholder="Seed" onchange="onCharacterNameChange(this.value)">
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-</div>
-<script>
-var exports = {};
-</script>
-<script src='index.ts'
-type="module" >
+    <h1>Monsters and Mazes</h1>
+    <p></p>
+    <div>
+        <input type="text" name="CharacterName" placeholder="Seed" onchange="onSeedChange(this.value)">
+        <input type="number" name="Level" value="1" placeholder="Level" onchange="onLevelChange(this.value)">
+        <select id="cars" onchange="onClassChange(this.value)">
+            <option value="Cleric">Cleric</option>
+            <option value="Fighter">Fighter</option>
+            <option value="Leader">Leader</option>
+            <option value="Paladin">Paladin</option>
+            <option value="Ranger">Ranger</option>
+            <option value="Rogue">Rogue</option>
+            <option value="Sorcerer">Sorcerer</option>
+            <option value="Wizard">Wizard</option>        
+        </select>
+        <button onclick="generateAbilities()">Generate Abilities</button>
+        <div id="output"></div>
+    
+    
+    </div>
+</body>
+</html>
+<script src='main.js'>
+
 </script>
