@@ -61,7 +61,7 @@ export class Attack extends Activity implements PowerModifier {
       if(Math.random() > 0.5) {
         this.range = 1;
       } else {
-        this.range = (Math.ceil(Utils.random() * 4) * 5)
+        this.range = (Math.ceil(Utils.random() * 3) * 5)
       }
     }
   }
