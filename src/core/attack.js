@@ -65,7 +65,7 @@ var Attack = /** @class */ (function (_super) {
                 this.range = 1;
             }
             else {
-                this.range = (Math.ceil(utils_1.Utils.random() * 4) * 5);
+                this.range = (Math.ceil(utils_1.Utils.random() * 3) * 5);
             }
         }
     };

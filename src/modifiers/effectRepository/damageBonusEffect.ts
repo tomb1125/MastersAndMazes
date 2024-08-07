@@ -11,7 +11,7 @@ export class damageBonusEffect extends Effect {
         
         this.value = Math.ceil(Math.random() * 4) + 1;
         this.duration = Math.ceil(Math.random() * 2 + 0.5);
-        this.name = 'Empower ' + this.value; 
+        this.name = 'Empower ' + this.value +'x' +this.duration; 
         this.namePrefix = 'Empowering'; 
         this.description = 'Empower '+this.value+' - when dealing damage with an Ability deal +'+this.value+' bonus damage. This effect lasts for '+this.duration+' turns. ';
         this.subtype = Effect.Subtype.Buff;
