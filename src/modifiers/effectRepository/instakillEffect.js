@@ -27,7 +27,7 @@ var instakillEffect = /** @class */ (function (_super) {
         _this.weight = function () { return 0.1; };
         _this.name = 'Instakill';
         _this.namePrefix = 'Instakill';
-        _this.description = 'Instakill - if applied successfully, character dies.';
+        _this.description = 'Instakill - if applied successfully, target dies.';
         _this.subtype = effect_1.Effect.Subtype.Debuff;
         _this.elements = [[ability_1.Ability.Element.Dark, ability_1.Ability.Element.Physical, ability_1.Ability.Element.Poison].sort(function () { return 0.5 - utils_1.Utils.random(); })[1]];
         return _this;

@@ -11,7 +11,7 @@ export class instakillEffect extends Effect {
         this.weight = () => {return 0.1}; 
         this.name = 'Instakill'; 
         this.namePrefix = 'Instakill'; 
-        this.description = 'Instakill - if applied successfully, character dies.';
+        this.description = 'Instakill - if applied successfully, target dies.';
         this.subtype = Effect.Subtype.Debuff;
         this.elements =  [[Ability.Element.Dark, Ability.Element.Physical, Ability.Element.Poison].sort(() => 0.5 - Utils.random())[1]];
       

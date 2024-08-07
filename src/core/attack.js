@@ -70,16 +70,14 @@ var Attack = /** @class */ (function (_super) {
         }
     };
     Attack.prototype.initDamage = function () {
-        var tempDamage = ((this.manaCost +
-            characterContext_1.CharacterContext.getDPS()) * this.getDPSMultiplier()
-            + this.getDPSBonus())
-            * utils_1.Utils.getRangeCoeficient(this.range)
-            * utils_1.Utils.getDPSCoefficient(this.chance)
-            / this.chance;
+        var tempDamage = this.getTempDamage();
         if (!this.damage && utils_1.Utils.random() < utils_1.Utils.ATTACK_DESCRIPTIVE_NUMBER_CHANCE) {
             this.damage = descriptiveNumberFactory_1.DescriptiveNumberFactory.getAll().filter(function (x) { return x.type === descriptiveNumber_1.DescriptiveNumber.Type.Common; }).get(1)[0];
         }
-        if (!this.damage) { //TODO here get common descriptive number
+        //if((this.damage && this.damage?.getValue() < 5) || (!this.damage && tempDamage < 5)) {
+        //  this.modifiers.push(new ModifierFactory().filter(mod => mod.modifierType === Modifier.Type.Constraint && !this.modifiers.map(mod => mod.name).includes(mod.name)).get(1, this)[0]);
+        //}
+        if (!this.damage) {
             this.damage = new descriptiveNumber_1.DescriptiveNumber(tempDamage);
         }
         else {
@@ -88,10 +86,15 @@ var Attack = /** @class */ (function (_super) {
             }
             else {
             }
-            if (this.chance > 1) {
-                this.chance = 1;
-            }
         }
+    };
+    Attack.prototype.getTempDamage = function () {
+        return ((this.manaCost +
+            characterContext_1.CharacterContext.getDPS()) * this.getDPSMultiplier()
+            + this.getDPSBonus())
+            * utils_1.Utils.getRangeCoeficient(this.range)
+            * utils_1.Utils.getDPSCoefficient(this.chance)
+            / this.chance;
     };
     Attack.prototype.getPower = function () {
         var power = (this.damage.value *
@@ -134,6 +137,9 @@ var Attack = /** @class */ (function (_super) {
     Attack.prototype.compensate = function () {
         if (this.damage.value < 2.5 && this.damage.description == undefined) {
             this.damage.value = 2.5;
+        }
+        if (this.chance > 1) {
+            this.chance = 1;
         }
         this.manaCost += Math.ceil(this.getPower() - 0.00001);
     };

@@ -68,21 +68,15 @@ export class Attack extends Activity implements PowerModifier {
   }
   
   private initDamage() {
-    let tempDamage = 
-      (
-        (
-          this.manaCost +
-          CharacterContext.getDPS()
-        ) * this.getDPSMultiplier()
-        + this.getDPSBonus()
-      )
-      * Utils.getRangeCoeficient(this.range)
-      * Utils.getDPSCoefficient(this.chance)
-      / this.chance 
+    let tempDamage = this.getTempDamage();
       
     if(!this.damage && Utils.random() < Utils.ATTACK_DESCRIPTIVE_NUMBER_CHANCE) {
       this.damage = DescriptiveNumberFactory.getAll().filter((x: DescriptiveNumber) => x.type === DescriptiveNumber.Type.Common).get(1)[0] as DescriptiveNumber;
     }
+
+    //if((this.damage && this.damage?.getValue() < 5) || (!this.damage && tempDamage < 5)) {
+    //  this.modifiers.push(new ModifierFactory().filter(mod => mod.modifierType === Modifier.Type.Constraint && !this.modifiers.map(mod => mod.name).includes(mod.name)).get(1, this)[0]);
+    //}
 
     if(!this.damage) { 
       this.damage = new DescriptiveNumber(tempDamage);
@@ -90,13 +84,23 @@ export class Attack extends Activity implements PowerModifier {
       if(tempDamage > 0) {
         this.chance = this.chance * tempDamage / this.damage.getValue(); //TODO this calculation is wrong when descriptive number is applied and we have modifier
       } else {
-        
+
       }
 
-      if(this.chance > 1) {
-        this.chance = 1;
-      }
     }
+  }
+
+  public getTempDamage(): number {
+    return (
+      (
+        this.manaCost +
+        CharacterContext.getDPS()
+      ) * this.getDPSMultiplier()
+      + this.getDPSBonus()
+    )
+    * Utils.getRangeCoeficient(this.range)
+    * Utils.getDPSCoefficient(this.chance)
+    / this.chance 
   }
 
   public getPower(): number {
@@ -125,7 +129,7 @@ export class Attack extends Activity implements PowerModifier {
         }
 
         if(numberOfModifiers > 0) {
-          this.modifiers = new ModifierFactory().filter(mod => mod.modifierType === Modifier.Type.Constraint && !this.modifiers.map(mod => mod.name).includes(mod.name)).get(1, this)
+          this.modifiers = new ModifierFactory().get(numberOfModifiers, this);
         } else {
           this.modifiers = [];
         }
@@ -147,7 +151,10 @@ export class Attack extends Activity implements PowerModifier {
   private compensate() {
       if(this.damage.value < 2.5 && this.damage.description == undefined) {
         this.damage.value = 2.5;
-        this.modifiers.push[]
+      }
+      
+      if(this.chance > 1) {
+        this.chance = 1;
       }
 
       this.manaCost += Math.ceil(this.getPower() - 0.00001);
