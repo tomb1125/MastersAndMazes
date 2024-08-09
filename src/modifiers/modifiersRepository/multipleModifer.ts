@@ -24,7 +24,7 @@ export class multipleModifier extends Modifier {
 
         this.numericComponents = multiDistribution.get(1) as DescriptiveNumber[];
         this.powerMultiplier = () => {return 0.8 / this.numericComponents[0].getValue()};
-        this.name = 'Multi';
+        this.name = 'Multi '+this.numericComponents[0].getValue();
         this.namePrefix = this.numericComponents[0].name;
         this.description = 'After this action, repeat this action '+(this.numericComponents[0].getValue() - 1)+' time, without paying mana cost. You cannot change targets.';
         this.modifierType =Modifier.Type.Improvement;
