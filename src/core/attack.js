@@ -135,13 +135,21 @@ var Attack = /** @class */ (function (_super) {
         }
     };
     Attack.prototype.compensate = function () {
-        if (this.damage.value < 2.5 && this.damage.description == undefined) {
-            this.damage.value = 2.5;
+        if (this.damage.value < 3.5 && this.damage.description == undefined) {
+            this.damage.value = 3.5;
         }
         if (this.chance > 1) {
             this.chance = 1;
         }
-        this.manaCost += Math.ceil(this.getPower() - 0.00001);
+        var tempMana = Math.ceil(this.getPower() - 0.00001);
+        if (tempMana < 0) {
+            this.chance += 0.1;
+            if (this.chance > 1) {
+                this.damage = new descriptiveNumber_1.DescriptiveNumber(this.damage.getValue() + 1);
+            }
+            this.compensate();
+        }
+        this.manaCost += tempMana;
     };
     Attack.prototype.getDPSBonus = function () {
         var _this = this;

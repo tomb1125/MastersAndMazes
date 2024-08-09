@@ -6,8 +6,8 @@ export class cleaveModifier extends Modifier {
         super();
         this.powerMultiplier = () => {return 0.5};
         this.name = 'Cleave'
-        this.namePrefix = 'Cleaving';
-        this.description = 'This action also targets one creature adjacent to initial target.';
+        this.namePrefix = 'Cleaving'; //TODO cleave could scale
+        this.description = 'After this action, repeat this action 1 time, without paying mana cost. With this repeated attack you must target an enemy adjacent to you or last target.';
         this.longDescription = '';
         this.modifierType =Modifier.Type.Improvement;
 

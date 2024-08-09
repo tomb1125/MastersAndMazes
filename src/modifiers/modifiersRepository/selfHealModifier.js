@@ -26,8 +26,8 @@ var selfHealModifier = /** @class */ (function (_super) {
     function selfHealModifier() {
         var _this = _super.call(this) || this;
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
-        _this.name = 'Self Heal';
         _this.numericComponents = [descriptiveNumberFactory_1.DescriptiveNumberFactory.getAll().filter(function (x) { return x.type === descriptiveNumber_1.DescriptiveNumber.Type.Small; }).get(1)[0]];
+        _this.name = 'Self Heal ' + _this.numericComponents[0].getValue();
         _this.namePrefix = 'Healing';
         _this.description = 'When you hit, heal yourself equal to: ' + _this.numericComponents[0].getDescription() + '.';
         _this.powerBonus = function () { return -_this.numericComponents[0].getValue(); };

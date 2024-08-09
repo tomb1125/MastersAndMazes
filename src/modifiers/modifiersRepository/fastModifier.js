@@ -16,12 +16,13 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fastModifier = void 0;
+var utils_1 = require("../../core/utils");
 var modifier_1 = require("../modifier");
 var fastModifier = /** @class */ (function (_super) {
     __extends(fastModifier, _super);
     function fastModifier() {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 0.5; };
+        _this.powerBonus = function () { return -utils_1.Utils.DPS; };
         _this.name = 'Fast';
         _this.namePrefix = 'Fast';
         _this.description = 'You can use Swift Action to use this ability.';

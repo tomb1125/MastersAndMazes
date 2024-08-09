@@ -4,9 +4,9 @@ import { DescriptiveNumber } from "../descriptiveNumber";
 export class numberOfTurnsDescriptiveNumber extends DescriptiveNumber {
     
     constructor(value?: number) {
-        super(Utils.avgEnemies);    
+        super(2 * Utils.AVG_TURN);    
         this.lowValue = 1;    
-        this.description = 'the number of enemies in this combat';
+        this.description = 'two times the number of rounds in combat';
         this.type = DescriptiveNumber.Type.Common;
     }
 }

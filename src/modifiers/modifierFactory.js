@@ -18,7 +18,6 @@ var applyEffectModifier_1 = require("./modifiersRepository/applyEffectModifier")
 var gainEffectModifier_1 = require("./modifiersRepository/gainEffectModifier");
 var lifestealModifier_1 = require("./modifiersRepository/lifestealModifier");
 var scalingDotEffect_1 = require("./effectRepository/scalingDotEffect");
-var repeatableModifier_1 = require("./modifiersRepository/repeatableModifier");
 var ModifierFactory = /** @class */ (function () {
     function ModifierFactory(list) {
         if (list === undefined) {
@@ -38,7 +37,7 @@ var ModifierFactory = /** @class */ (function () {
             this.modifiers.push(new signatureModifier_1.signatureModifier());
             this.modifiers.push(new vengefulModifier_1.vengefulModifier());
             this.modifiers.push(new ultimateModifier_1.ultimateModifier());
-            this.modifiers.push(new repeatableModifier_1.repeatableModifier());
+            //this.modifiers.push(new repeatableModifier()); //this modifier is excluded for now purposfully. It behaves differently for utilities and for attacks.
             this.modifiers.push(new scalingDotEffect_1.scalingDotEffect());
         }
         else {

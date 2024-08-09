@@ -23,8 +23,8 @@ var cleaveModifier = /** @class */ (function (_super) {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 0.5; };
         _this.name = 'Cleave';
-        _this.namePrefix = 'Cleaving';
-        _this.description = 'This action also targets one creature adjacent to initial target.';
+        _this.namePrefix = 'Cleaving'; //TODO cleave could scale
+        _this.description = 'After this action, repeat this action 1 time, without paying mana cost. With this repeated attack you must target an enemy adjacent to you or last target.';
         _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;

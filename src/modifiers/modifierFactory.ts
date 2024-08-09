@@ -37,13 +37,13 @@ export class ModifierFactory {
             this.modifiers.push(new laylineModifier());
             this.modifiers.push(new lifestealModifier());
             this.modifiers.push(new momentumModifier());
-            this.modifiers.push(new multipleModifier());
+            this.modifiers.push(new multipleModifier()); 
             this.modifiers.push(new nightlyModifier());
             this.modifiers.push(new selfHealModifier());
             this.modifiers.push(new signatureModifier());
             this.modifiers.push(new vengefulModifier());
             this.modifiers.push(new ultimateModifier());
-            this.modifiers.push(new repeatableModifier());
+            //this.modifiers.push(new repeatableModifier()); //this modifier is excluded for now purposfully. It behaves differently for utilities and for attacks.
             this.modifiers.push(new scalingDotEffect());
         } else {
             this.modifiers = list;

@@ -4,10 +4,10 @@ export class Utils {
     public static BASIC_ATTACK_DPS: number = 2.5
     public static ATTACK_DESCRIPTIVE_NUMBER_CHANCE: number = 0.15;
     
-    public static BoonValue: number = Utils.DPS * 6;
+    public static BoonValue: number = Utils.DPS * 5;
     public static avgHealth: number = 25;
-    public static avgEnemies: number = 7;
-    public static avgTurn: number = 5;
+    public static AVG_ENEMIES_PER_PLAYER: number = 1.7;
+    public static AVG_TURN: number = 4;
 
     public static random(): number {
         return Math.random();

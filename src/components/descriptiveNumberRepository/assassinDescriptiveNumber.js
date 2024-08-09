@@ -21,7 +21,7 @@ var descriptiveNumber_1 = require("../descriptiveNumber");
 var assassinDescriptiveNumber = /** @class */ (function (_super) {
     __extends(assassinDescriptiveNumber, _super);
     function assassinDescriptiveNumber(value) {
-        var _this = _super.call(this, utils_1.Utils.avgEnemies * 2) || this;
+        var _this = _super.call(this, utils_1.Utils.AVG_ENEMIES_PER_PLAYER * 1.5) || this;
         _this.description = 'the number of enemies you defeated today';
         _this.type = descriptiveNumber_1.DescriptiveNumber.Type.Common;
         _this.name = 'assassin';

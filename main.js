@@ -365,7 +365,7 @@ var descriptiveNumber_1 = require("../descriptiveNumber");
 var assassinDescriptiveNumber = /** @class */ (function (_super) {
     __extends(assassinDescriptiveNumber, _super);
     function assassinDescriptiveNumber(value) {
-        var _this = _super.call(this, utils_1.Utils.avgEnemies * 2) || this;
+        var _this = _super.call(this, utils_1.Utils.AVG_ENEMIES_PER_PLAYER * 1.5) || this;
         _this.description = 'the number of enemies you defeated today';
         _this.type = descriptiveNumber_1.DescriptiveNumber.Type.Common;
         _this.name = 'assassin';
@@ -602,9 +602,9 @@ var descriptiveNumber_1 = require("../descriptiveNumber");
 var numberOfEnemiesDescriptiveNumber = /** @class */ (function (_super) {
     __extends(numberOfEnemiesDescriptiveNumber, _super);
     function numberOfEnemiesDescriptiveNumber(value) {
-        var _this = _super.call(this, utils_1.Utils.avgEnemies) || this;
+        var _this = _super.call(this, 5 * utils_1.Utils.AVG_ENEMIES_PER_PLAYER) || this;
         _this.lowValue = 1;
-        _this.description = 'the number of enemies in this combat';
+        _this.description = '5 times the number of enemies per player in combat (rounded up)';
         _this.type = descriptiveNumber_1.DescriptiveNumber.Type.Common;
         return _this;
     }
@@ -636,9 +636,9 @@ var descriptiveNumber_1 = require("../descriptiveNumber");
 var numberOfTurnsDescriptiveNumber = /** @class */ (function (_super) {
     __extends(numberOfTurnsDescriptiveNumber, _super);
     function numberOfTurnsDescriptiveNumber(value) {
-        var _this = _super.call(this, utils_1.Utils.avgEnemies) || this;
+        var _this = _super.call(this, 2 * utils_1.Utils.AVG_TURN) || this;
         _this.lowValue = 1;
-        _this.description = 'the number of enemies in this combat';
+        _this.description = 'two times the number of rounds in combat';
         _this.type = descriptiveNumber_1.DescriptiveNumber.Type.Common;
         return _this;
     }
@@ -870,13 +870,21 @@ var Attack = /** @class */ (function (_super) {
         }
     };
     Attack.prototype.compensate = function () {
-        if (this.damage.value < 2.5 && this.damage.description == undefined) {
-            this.damage.value = 2.5;
+        if (this.damage.value < 3.5 && this.damage.description == undefined) {
+            this.damage.value = 3.5;
         }
         if (this.chance > 1) {
             this.chance = 1;
         }
-        this.manaCost += Math.ceil(this.getPower() - 0.00001);
+        var tempMana = Math.ceil(this.getPower() - 0.00001);
+        if (tempMana < 0) {
+            this.chance += 0.1;
+            if (this.chance > 1) {
+                this.damage = new descriptiveNumber_1.DescriptiveNumber(this.damage.getValue() + 1);
+            }
+            this.compensate();
+        }
+        this.manaCost += tempMana;
     };
     Attack.prototype.getDPSBonus = function () {
         var _this = this;
@@ -1223,10 +1231,10 @@ var Utils = /** @class */ (function () {
     Utils.POWER_PER_LEVEL = 0.2;
     Utils.BASIC_ATTACK_DPS = 2.5;
     Utils.ATTACK_DESCRIPTIVE_NUMBER_CHANCE = 0.15;
-    Utils.BoonValue = Utils.DPS * 6;
+    Utils.BoonValue = Utils.DPS * 5;
     Utils.avgHealth = 25;
-    Utils.avgEnemies = 7;
-    Utils.avgTurn = 5;
+    Utils.AVG_ENEMIES_PER_PLAYER = 1.7;
+    Utils.AVG_TURN = 4;
     return Utils;
 }());
 exports.Utils = Utils;
@@ -1392,7 +1400,7 @@ var damageBonusEffect = /** @class */ (function (_super) {
         _this.description = 'Empower ' + _this.value + ' - when dealing damage with an Ability deal +' + _this.value + ' bonus damage. This effect lasts for ' + _this.duration + ' turns. ';
         _this.subtype = effect_1.Effect.Subtype.Buff;
         _this.elements = [[ability_1.Ability.Element.Physical, ability_1.Ability.Element.Lightning, ability_1.Ability.Element.Fire, ability_1.Ability.Element.Ice, ability_1.Ability.Element.Dark].sort(function () { return 0.5 - utils_1.Utils.random(); })[1]];
-        _this.powerBonus = function (x) { return -_this.value * utils_1.Utils.getDurationCoeficient(_this.duration); };
+        _this.powerBonus = function (x) { return -0.5 * _this.value * utils_1.Utils.getDurationCoeficient(_this.duration); };
         return _this;
     }
     return damageBonusEffect;
@@ -1427,8 +1435,8 @@ var dotEffect = /** @class */ (function (_super) {
         var _this = _super.call(this) || this;
         var dotInit = [[ability_1.Ability.Element.Physical, 'Bleeding'], [ability_1.Ability.Element.Fire, 'Burning'], [ability_1.Ability.Element.Poison, 'Poisoned']].sort(function () { return 0.5 - utils_1.Utils.random(); })[0];
         _this.value = Math.ceil(utils_1.Utils.DPS * (utils_1.Utils.random()));
-        _this.duration = Math.ceil(utils_1.Utils.random() * 3) + 1;
-        _this.powerBonus = function (x) { return -_this.value * utils_1.Utils.getDurationCoeficient(_this.duration); }; //this means stun is worth regular DPS damage
+        _this.duration = Math.ceil(utils_1.Utils.random() * 3 + 1) + 1;
+        _this.powerBonus = function (x) { return -_this.value * utils_1.Utils.getDurationCoeficient(_this.duration); };
         _this.elements = [dotInit[0]];
         _this.name = dotInit[1] + ' ' + _this.value + 'x' + _this.duration;
         _this.namePrefix = dotInit[1];
@@ -1548,7 +1556,7 @@ var scalingDotEffect = /** @class */ (function (_super) {
         var dotInit = [[ability_1.Ability.Element.Physical, 'Bleeding'], [ability_1.Ability.Element.Fire, 'Burning'], [ability_1.Ability.Element.Poison, 'Poisoned']].sort(function () { return 0.5 - utils_1.Utils.random(); })[0];
         _this.value = Math.ceil(utils_1.Utils.DPS * (utils_1.Utils.random()));
         _this.duration = Math.ceil(utils_1.Utils.random() * 3) + 1;
-        _this.powerMultiplier = function (x) { return 1 + utils_1.Utils.getDurationCoeficient(_this.duration); };
+        _this.powerMultiplier = function (x) { return 1 / (1 + utils_1.Utils.getDurationCoeficient(_this.duration)); };
         _this.elements = [dotInit[0]];
         _this.name = dotInit[1] + ' ?x' + _this.duration;
         _this.namePrefix = dotInit[1];
@@ -1647,7 +1655,6 @@ var applyEffectModifier_1 = require("./modifiersRepository/applyEffectModifier")
 var gainEffectModifier_1 = require("./modifiersRepository/gainEffectModifier");
 var lifestealModifier_1 = require("./modifiersRepository/lifestealModifier");
 var scalingDotEffect_1 = require("./effectRepository/scalingDotEffect");
-var repeatableModifier_1 = require("./modifiersRepository/repeatableModifier");
 var ModifierFactory = /** @class */ (function () {
     function ModifierFactory(list) {
         if (list === undefined) {
@@ -1667,7 +1674,7 @@ var ModifierFactory = /** @class */ (function () {
             this.modifiers.push(new signatureModifier_1.signatureModifier());
             this.modifiers.push(new vengefulModifier_1.vengefulModifier());
             this.modifiers.push(new ultimateModifier_1.ultimateModifier());
-            this.modifiers.push(new repeatableModifier_1.repeatableModifier());
+            //this.modifiers.push(new repeatableModifier()); //this modifier is excluded for now purposfully. It behaves differently for utilities and for attacks.
             this.modifiers.push(new scalingDotEffect_1.scalingDotEffect());
         }
         else {
@@ -1688,7 +1695,7 @@ var ModifierFactory = /** @class */ (function () {
 }());
 exports.ModifierFactory = ModifierFactory;
 
-},{"../core/weightedList":28,"./effectRepository/scalingDotEffect":35,"./modifiersRepository/applyEffectModifier":39,"./modifiersRepository/bloodiedModifier":40,"./modifiersRepository/cleaveModifier":41,"./modifiersRepository/exhaustingModifer":42,"./modifiersRepository/fastModifier":43,"./modifiersRepository/gainEffectModifier":44,"./modifiersRepository/laylineModifier":45,"./modifiersRepository/lifestealModifier":46,"./modifiersRepository/momentumModifier":47,"./modifiersRepository/multipleModifer":48,"./modifiersRepository/nightlyModifier":49,"./modifiersRepository/repeatableModifier":50,"./modifiersRepository/selfHealModifier":51,"./modifiersRepository/signatureModifier":52,"./modifiersRepository/ultimateModifier":53,"./modifiersRepository/vengefulModifier":54}],39:[function(require,module,exports){
+},{"../core/weightedList":28,"./effectRepository/scalingDotEffect":35,"./modifiersRepository/applyEffectModifier":39,"./modifiersRepository/bloodiedModifier":40,"./modifiersRepository/cleaveModifier":41,"./modifiersRepository/exhaustingModifer":42,"./modifiersRepository/fastModifier":43,"./modifiersRepository/gainEffectModifier":44,"./modifiersRepository/laylineModifier":45,"./modifiersRepository/lifestealModifier":46,"./modifiersRepository/momentumModifier":47,"./modifiersRepository/multipleModifer":48,"./modifiersRepository/nightlyModifier":49,"./modifiersRepository/selfHealModifier":51,"./modifiersRepository/signatureModifier":52,"./modifiersRepository/ultimateModifier":53,"./modifiersRepository/vengefulModifier":54}],39:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1794,8 +1801,8 @@ var cleaveModifier = /** @class */ (function (_super) {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 0.5; };
         _this.name = 'Cleave';
-        _this.namePrefix = 'Cleaving';
-        _this.description = 'This action also targets one creature adjacent to initial target.';
+        _this.namePrefix = 'Cleaving'; //TODO cleave could scale
+        _this.description = 'After this action, repeat this action 1 time, without paying mana cost. With this repeated attack you must target an enemy adjacent to you or last target.';
         _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;
@@ -1858,12 +1865,13 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fastModifier = void 0;
+var utils_1 = require("../../core/utils");
 var modifier_1 = require("../modifier");
 var fastModifier = /** @class */ (function (_super) {
     __extends(fastModifier, _super);
     function fastModifier() {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 0.5; };
+        _this.powerBonus = function () { return -utils_1.Utils.DPS; };
         _this.name = 'Fast';
         _this.namePrefix = 'Fast';
         _this.description = 'You can use Swift Action to use this ability.';
@@ -1875,7 +1883,7 @@ var fastModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.fastModifier = fastModifier;
 
-},{"../modifier":37}],44:[function(require,module,exports){
+},{"../../core/utils":27,"../modifier":37}],44:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2070,7 +2078,7 @@ var multipleModifier = /** @class */ (function (_super) {
         multiDistribution.items = [two, three, four, five];
         _this.numericComponents = multiDistribution.get(1);
         _this.powerMultiplier = function () { return 0.8 / _this.numericComponents[0].getValue(); };
-        _this.name = 'Multi';
+        _this.name = 'Multi ' + _this.numericComponents[0].getValue();
         _this.namePrefix = _this.numericComponents[0].name;
         _this.description = 'After this action, repeat this action ' + (_this.numericComponents[0].getValue() - 1) + ' time, without paying mana cost. You cannot change targets.';
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
@@ -2199,8 +2207,8 @@ var selfHealModifier = /** @class */ (function (_super) {
     function selfHealModifier() {
         var _this = _super.call(this) || this;
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
-        _this.name = 'Self Heal';
         _this.numericComponents = [descriptiveNumberFactory_1.DescriptiveNumberFactory.getAll().filter(function (x) { return x.type === descriptiveNumber_1.DescriptiveNumber.Type.Small; }).get(1)[0]];
+        _this.name = 'Self Heal ' + _this.numericComponents[0].getValue();
         _this.namePrefix = 'Healing';
         _this.description = 'When you hit, heal yourself equal to: ' + _this.numericComponents[0].getDescription() + '.';
         _this.powerBonus = function () { return -_this.numericComponents[0].getValue(); };
@@ -2311,7 +2319,7 @@ var vengefulModifier = /** @class */ (function (_super) {
         _this.powerMultiplier = function (x) { return 1.3; };
         _this.name = 'Vengeance';
         _this.namePrefix = 'Vengeful';
-        _this.description = 'Can be only used against enemy which attacked you last turn. ';
+        _this.description = 'Can be only used against enemy which attacked, damaged or affected you last turn. ';
         _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;

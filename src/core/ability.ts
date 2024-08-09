@@ -60,4 +60,14 @@ export class Ability implements AffectsWeight {
         Encounter,
         Daily
       }
+
+      export enum Attribute
+      {
+        Strength,
+        Dexterity,
+        Constitution,
+        Intelligence,
+        Wisdom,
+        Charisma
+      }
   }

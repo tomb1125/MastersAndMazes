@@ -1,11 +1,12 @@
 import { PowerModifier } from "../../core/powerModifier";
+import { Utils } from "../../core/utils";
 import { Modifier } from "../modifier";
 
 export class fastModifier extends Modifier {
     
     constructor() {
         super();
-        this.powerMultiplier = () => {return 0.5};
+        this.powerBonus = () => {return - Utils.DPS};
         this.name = 'Fast'
         this.namePrefix = 'Fast';
         this.description = 'You can use Swift Action to use this ability.';

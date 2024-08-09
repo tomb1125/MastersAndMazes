@@ -146,18 +146,30 @@ export class Attack extends Activity implements PowerModifier {
       this.chance = Math.min(1, this.chance + 0.1);
       this.range = (this.range === 1 ? 0 : this.range) + 5;
     }
+    
   }
 
   private compensate() {
-      if(this.damage.value < 2.5 && this.damage.description == undefined) {
-        this.damage.value = 2.5;
+      if(this.damage.value < 3.5 && this.damage.description == undefined) {
+        this.damage.value = 3.5;
       }
       
       if(this.chance > 1) {
         this.chance = 1;
       }
 
-      this.manaCost += Math.ceil(this.getPower() - 0.00001);
+      let tempMana: number = Math.ceil(this.getPower() - 0.00001);
+
+      if(tempMana < 0) {
+        this.chance += 0.1;
+        if(this.chance > 1) {
+          this.damage = new DescriptiveNumber(this.damage.getValue()+1);
+        }
+
+        this.compensate();
+      }
+
+      this.manaCost += tempMana;
   }
 
 
@@ -185,7 +197,7 @@ export class Attack extends Activity implements PowerModifier {
     return dps;
   }
 
-  public getDescription(): string {
+  public getDescription(): string { //TODO rework, incorporate descriptive numbers
     
     return '' +
       '<b>Name: ' + this.generateName() +

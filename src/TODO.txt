@@ -11,3 +11,4 @@ add seed to randomness
 add modfiers as denial of action and modifiers as bonus
 rework factory to expand modifer with new constructor
 range as descriptive number
+add correlaction between fast and duration effects

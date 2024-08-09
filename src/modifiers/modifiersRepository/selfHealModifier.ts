@@ -9,8 +9,8 @@ export class selfHealModifier extends Modifier {
     constructor() {
         super();
         this.modifierType =Modifier.Type.Improvement;
-        this.name = 'Self Heal'; 
         this.numericComponents = [DescriptiveNumberFactory.getAll().filter((x: DescriptiveNumber) => x.type === DescriptiveNumber.Type.Small).get(1)[0] as DescriptiveNumber];
+        this.name = 'Self Heal '+this.numericComponents[0].getValue(); 
         this.namePrefix = 'Healing'; 
         this.description = 'When you hit, heal yourself equal to: '+this.numericComponents[0].getDescription()+'.';
         this.powerBonus = () => {return - this.numericComponents[0].getValue()};

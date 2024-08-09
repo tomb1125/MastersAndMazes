@@ -9,13 +9,21 @@ Combat is divided into players round and enemy round.
 During players turn, players take actions in any order.
 During enemy turn, enemies take actions in any order.
 Players round is first, however players roll for initiative. If they lose, they do not gain Standard Action turn 1.
-Players during their turn can perform: Move Action and Standard Action in this order. They also can use Swift Action once per turn.
+Players during their turn can perform once each of following actions: Move Action, Standard Action and Swift Action.
 
-Move Action is used to move your character, usually by 6 meters.
+Move Action is used to move your character by their speed, usually by 6 meters.
 Standard Action is used mostly to attack and perform other key actions
 Swift Action is used to perform actions of lesser importance: drinking potion, changing weapon.
 
-CHARACTER CREATION:
+HEALTH AND DYING:
+After each combat regain all mana.
+
+When you are reduced to 0 HP, gain 1 Experience Point and roll for dying: Roll D10 and add number of your Scars:
+1-9 - You become unconcious until end of combat. Gain 1 permament Scar. After combat regain 1 HP.
+10 - You rally! Set your HP to 1 and until start of your turn you have 30% chance to ingnore any damage.
+11+ - roll D10 again: 1-3 you die, 4-10 you rally as above.
+
+CHARACTER STATS AND CREATION:
 Players have 6 attributes:
 Strenght
 Dexterity
@@ -24,27 +32,36 @@ Intelligence
 Wisdom
 Charisma.
 
-During Character creation assign 60, 50, 40, 30, 30, 20 to each attribute.
+(!) During Character creation assign 60, 50, 40, 30, 30, 20 to each attribute.
 
 Note that attributes can influence your combat skills, but do not have to.
 
-Players have 17 skills:
-Athletics (STR)        //TODO MORE CON/STR
+Players have 12 skills:
+Athletics (STR)
+Intimidation (STR)
 Sleight of Hand (DEX)
 Stealth (DEX)
 Endurance (CON)
-Arcana (INT)
-History (INT)
-Religion (INT)
-Medicine (WIS)
+Survival (CON)
+Knowledge (INT)
+Crafting (INT)
+Dungeoneering (WIS)
 Perception (WIS)
-Survival (WIS)
-Intimidation (CHA)
 Persuasion (CHA)
+Streetwise (CHA)
+
+(!) During creation, you set 3 skills as trained. Gain 1 Boon when rolling for this skill.
 
 Each Character additionall has following resources:
 30 Maximum Health. If reduced to 0, you can die, but usually won't.
 10 Maximum Mana. Can be used to improve combat abilities. Restored to maximum value after each combat.
 6 Movement Speed. How fast you can move during combat.
 0 Scars. Each time you are close to death, add a scar. Someday your luck can run out.
+
+LEVELING UP
+Whenever you gather 10 XP, gain a level.
+Whenever you gain a level:
+ - gain 1 ability, chosen from 3 generated abilities
+ - gain 1 maximum Health
+ - gain 1 maximum Mana
 
