@@ -1,3 +1,4 @@
+import { AffectsWeight } from "../../core/affectsWeight";
 import { PowerModifier } from "../../core/powerModifier";
 import { Utils } from "../../core/utils";
 import { Effect } from "../effect";
@@ -6,12 +7,12 @@ import { Modifier } from "../modifier";
 
 export class applyEffectModifier extends Modifier {
     
-    constructor() {
+    constructor(aff: AffectsWeight) {
         super();
         this.longDescription = '';
         this.modifierType =Modifier.Type.Improvement;
         this.weight = () => {return 4};
-        this.effect = EffectFactory.getAll().filter((eff: Effect) => eff.subtype === Effect.Subtype.Debuff).get(1)[0] as Effect;
+        this.effect = new EffectFactory(aff).filter((eff: Effect) => eff.subtype === Effect.Subtype.Debuff).get(1)[0] as Effect;
         this.description = 'When you hit, apply effect: '+this.effect.description;
         this.namePrefix = this.effect.namePrefix;
         this.name = 'Apply '+this.effect.name;

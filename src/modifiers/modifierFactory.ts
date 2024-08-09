@@ -18,49 +18,44 @@ import { gainEffectModifier } from "./modifiersRepository/gainEffectModifier";
 import { lifestealModifier } from "./modifiersRepository/lifestealModifier";
 import { AffectsWeight } from "../core/affectsWeight";
 import { scalingDotEffect } from "./effectRepository/scalingDotEffect";
-import { repeatableModifier } from "./modifiersRepository/repeatableModifier";
+import { Factory } from "../core/factory";
 
 
-export class ModifierFactory {
-    modifiers: WeightedList;
+export class ModifierFactory extends Factory {
 
-    constructor(list?: WeightedList) {
+    constructor(affector: AffectsWeight, list?: WeightedList) {
+        super(affector);
         if(list === undefined) {
-            this.modifiers = new WeightedList();
+            this.items = new WeightedList();
             
-            this.modifiers.push(new applyEffectModifier());
-            this.modifiers.push(new bloodiedModifier());
-            this.modifiers.push(new cleaveModifier());
-            this.modifiers.push(new exhaustingModifer());
-            this.modifiers.push(new fastModifier());
-            this.modifiers.push(new gainEffectModifier());
-            this.modifiers.push(new laylineModifier());
-            this.modifiers.push(new lifestealModifier());
-            this.modifiers.push(new momentumModifier());
-            this.modifiers.push(new multipleModifier()); 
-            this.modifiers.push(new nightlyModifier());
-            this.modifiers.push(new selfHealModifier());
-            this.modifiers.push(new signatureModifier());
-            this.modifiers.push(new vengefulModifier());
-            this.modifiers.push(new ultimateModifier());
-            //this.modifiers.push(new repeatableModifier()); //this modifier is excluded for now purposfully. It behaves differently for utilities and for attacks.
-            this.modifiers.push(new scalingDotEffect());
+            this.items.push(new applyEffectModifier(affector));
+            this.items.push(new bloodiedModifier());
+            this.items.push(new cleaveModifier());
+            this.items.push(new exhaustingModifer());
+            this.items.push(new fastModifier());
+            this.items.push(new gainEffectModifier(affector));
+            this.items.push(new laylineModifier());
+            this.items.push(new lifestealModifier());
+            this.items.push(new momentumModifier());
+            this.items.push(new multipleModifier()); 
+            this.items.push(new nightlyModifier());
+            this.items.push(new selfHealModifier());
+            this.items.push(new signatureModifier());
+            this.items.push(new vengefulModifier());
+            this.items.push(new ultimateModifier());
+            //this.items.push(new repeatableModifier()); //this modifier is excluded for now purposfully. It behaves differently for utilities and for attacks.
+            this.items.push(new scalingDotEffect());
         } else {
-            this.modifiers = list;
+            this.items = list;
         }
     }
 
-    public getAll(): WeightedList {
-        return this.modifiers;
-    }
-
-    public get(count: number, affector: AffectsWeight) {
-        return this.modifiers.get(count, affector) as Modifier[];
+    public get(count: number) {
+        return super.get(count) as Modifier[];
     }
 
     public filter(z: (x: any) => boolean): ModifierFactory {
-        this.modifiers = this.modifiers.filter(z)
-        return this;
+        return super.filter(z) as ModifierFactory;
     }
     
 }

@@ -129,7 +129,7 @@ export class Attack extends Activity implements PowerModifier {
         }
 
         if(numberOfModifiers > 0) {
-          this.modifiers = new ModifierFactory().get(numberOfModifiers, this);
+          this.modifiers = new ModifierFactory(this).get(numberOfModifiers);
         } else {
           this.modifiers = [];
         }
