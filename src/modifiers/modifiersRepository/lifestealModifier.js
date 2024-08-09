@@ -16,7 +16,6 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.lifestealModifier = void 0;
-var descriptiveNumberFactory_1 = require("../../components/descriptiveNumberFactory");
 var modifier_1 = require("../modifier");
 var lifestealModifier = /** @class */ (function (_super) {
     __extends(lifestealModifier, _super);
@@ -24,7 +23,6 @@ var lifestealModifier = /** @class */ (function (_super) {
         var _this = _super.call(this) || this;
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         _this.name = 'Lifesteal';
-        _this.numericComponents = descriptiveNumberFactory_1.DescriptiveNumberFactory.get(1);
         _this.namePrefix = 'Leeching';
         _this.description = 'When you hit, heal yourself equal to damage taken by enemy.';
         _this.powerMultiplier = function (x) { return 0.55; }; //TODO this should be bonus equal to damage... however damage is set after modifiers...s

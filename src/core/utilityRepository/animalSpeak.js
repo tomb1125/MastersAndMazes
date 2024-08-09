@@ -28,7 +28,7 @@ var AnimalSpeak = /** @class */ (function (_super) {
         _this.objects.push(abilityObjectFactory_1.AbilityObjectFactory.getAll().filter(function (x) { return x.isCommunication; }).get(1)[0]);
         //this.duration = new DescriptiveNumber(1); //TODO move to new 
         //this.duration.description = '1 minute';
-        _this.duration = descriptiveNumberFactory_1.DescriptiveNumberFactory.getAll().filter(function (x) { return x.type === descriptiveNumber_1.DescriptiveNumber.Type.UtilityDuration; }).get(1)[0];
+        _this.duration = new descriptiveNumberFactory_1.DescriptiveNumberFactory(_this).filter(function (x) { return x.type === descriptiveNumber_1.DescriptiveNumber.Type.UtilityDuration; }).get(1)[0];
         _this.chance = 0.6
             / _this.objects[0].rarity
             / _this.objects[1].rarity

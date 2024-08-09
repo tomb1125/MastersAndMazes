@@ -36,10 +36,10 @@ export class ModifierFactory extends Factory {
             this.items.push(new gainEffectModifier(affector));
             this.items.push(new laylineModifier());
             this.items.push(new lifestealModifier());
-            this.items.push(new momentumModifier());
+            this.items.push(new momentumModifier(affector));
             this.items.push(new multipleModifier()); 
             this.items.push(new nightlyModifier());
-            this.items.push(new selfHealModifier());
+            this.items.push(new selfHealModifier(affector));
             this.items.push(new signatureModifier());
             this.items.push(new vengefulModifier());
             this.items.push(new ultimateModifier());

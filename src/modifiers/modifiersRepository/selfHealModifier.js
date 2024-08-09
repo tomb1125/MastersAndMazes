@@ -23,10 +23,10 @@ var utils_1 = require("../../core/utils");
 var modifier_1 = require("../modifier");
 var selfHealModifier = /** @class */ (function (_super) {
     __extends(selfHealModifier, _super);
-    function selfHealModifier() {
+    function selfHealModifier(affector) {
         var _this = _super.call(this) || this;
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
-        _this.numericComponents = [descriptiveNumberFactory_1.DescriptiveNumberFactory.getAll().filter(function (x) { return x.type === descriptiveNumber_1.DescriptiveNumber.Type.Small; }).get(1)[0]];
+        _this.numericComponents = [new descriptiveNumberFactory_1.DescriptiveNumberFactory(affector).filter(function (x) { return x.type === descriptiveNumber_1.DescriptiveNumber.Type.Small; }).get(1)[0]];
         _this.name = 'Self Heal ' + _this.numericComponents[0].getValue();
         _this.namePrefix = 'Healing';
         _this.description = 'When you hit, heal yourself equal to: ' + _this.numericComponents[0].getDescription() + '.';

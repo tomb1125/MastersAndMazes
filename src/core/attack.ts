@@ -71,7 +71,7 @@ export class Attack extends Activity implements PowerModifier {
     let tempDamage = this.getTempDamage();
       
     if(!this.damage && Utils.random() < Utils.ATTACK_DESCRIPTIVE_NUMBER_CHANCE) {
-      this.damage = new DescriptiveNumberFactory(this).filter((x: DescriptiveNumber) => x.type === DescriptiveNumber.Type.Common).get(1)[0] as DescriptiveNumber;
+      this.damage = new DescriptiveNumberFactory(this).filter((x: DescriptiveNumber) => x.type === DescriptiveNumber.Type.Common).get(1)[0];
     }
 
     //if((this.damage && this.damage?.getValue() < 5) || (!this.damage && tempDamage < 5)) {

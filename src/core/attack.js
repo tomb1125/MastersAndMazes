@@ -72,7 +72,7 @@ var Attack = /** @class */ (function (_super) {
     Attack.prototype.initDamage = function () {
         var tempDamage = this.getTempDamage();
         if (!this.damage && utils_1.Utils.random() < utils_1.Utils.ATTACK_DESCRIPTIVE_NUMBER_CHANCE) {
-            this.damage = descriptiveNumberFactory_1.DescriptiveNumberFactory.getAll().filter(function (x) { return x.type === descriptiveNumber_1.DescriptiveNumber.Type.Common; }).get(1)[0];
+            this.damage = new descriptiveNumberFactory_1.DescriptiveNumberFactory(this).filter(function (x) { return x.type === descriptiveNumber_1.DescriptiveNumber.Type.Common; }).get(1)[0];
         }
         //if((this.damage && this.damage?.getValue() < 5) || (!this.damage && tempDamage < 5)) {
         //  this.modifiers.push(new ModifierFactory().filter(mod => mod.modifierType === Modifier.Type.Constraint && !this.modifiers.map(mod => mod.name).includes(mod.name)).get(1, this)[0]);
@@ -117,7 +117,7 @@ var Attack = /** @class */ (function (_super) {
                     numberOfModifiers = value;
                 }
                 if (numberOfModifiers > 0) {
-                    _this.modifiers = new modifierFactory_1.ModifierFactory().get(numberOfModifiers, _this);
+                    _this.modifiers = new modifierFactory_1.ModifierFactory(_this).get(numberOfModifiers);
                 }
                 else {
                     _this.modifiers = [];

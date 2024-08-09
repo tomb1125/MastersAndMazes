@@ -21,11 +21,11 @@ var effectFactory_1 = require("../effectFactory");
 var modifier_1 = require("../modifier");
 var gainEffectModifier = /** @class */ (function (_super) {
     __extends(gainEffectModifier, _super);
-    function gainEffectModifier() {
+    function gainEffectModifier(aff) {
         var _this = _super.call(this) || this;
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         _this.weight = function () { return 4; };
-        _this.effect = effectFactory_1.EffectFactory.getAll().filter(function (eff) { return eff.subtype === effect_1.Effect.Subtype.Buff; }).get(1)[0];
+        _this.effect = new effectFactory_1.EffectFactory(aff).filter(function (eff) { return eff.subtype === effect_1.Effect.Subtype.Buff; }).get(1)[0];
         _this.description = 'When you hit, gain an effect: ' + _this.effect.description;
         _this.namePrefix = _this.effect.namePrefix;
         _this.name = 'Gain ' + _this.effect.name;

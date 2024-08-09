@@ -50,4 +50,13 @@ exports.Ability = Ability;
         Cooldown[Cooldown["Encounter"] = 0] = "Encounter";
         Cooldown[Cooldown["Daily"] = 1] = "Daily";
     })(Cooldown = Ability.Cooldown || (Ability.Cooldown = {}));
+    var Attribute;
+    (function (Attribute) {
+        Attribute[Attribute["Strength"] = 0] = "Strength";
+        Attribute[Attribute["Dexterity"] = 1] = "Dexterity";
+        Attribute[Attribute["Constitution"] = 2] = "Constitution";
+        Attribute[Attribute["Intelligence"] = 3] = "Intelligence";
+        Attribute[Attribute["Wisdom"] = 4] = "Wisdom";
+        Attribute[Attribute["Charisma"] = 5] = "Charisma";
+    })(Attribute = Ability.Attribute || (Ability.Attribute = {}));
 })(Ability || (exports.Ability = Ability = {}));

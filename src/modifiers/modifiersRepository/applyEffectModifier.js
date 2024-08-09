@@ -22,12 +22,12 @@ var effectFactory_1 = require("../effectFactory");
 var modifier_1 = require("../modifier");
 var applyEffectModifier = /** @class */ (function (_super) {
     __extends(applyEffectModifier, _super);
-    function applyEffectModifier() {
+    function applyEffectModifier(aff) {
         var _this = _super.call(this) || this;
         _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         _this.weight = function () { return 4; };
-        _this.effect = effectFactory_1.EffectFactory.getAll().filter(function (eff) { return eff.subtype === effect_1.Effect.Subtype.Debuff; }).get(1)[0];
+        _this.effect = new effectFactory_1.EffectFactory(aff).filter(function (eff) { return eff.subtype === effect_1.Effect.Subtype.Debuff; }).get(1)[0];
         _this.description = 'When you hit, apply effect: ' + _this.effect.description;
         _this.namePrefix = _this.effect.namePrefix;
         _this.name = 'Apply ' + _this.effect.name;

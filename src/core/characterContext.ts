@@ -32,7 +32,6 @@ export namespace CharacterContext
       Monk,
       Runepriest,
       Shaman,
-      Warlock
-
+      Warlock,
     }
 }

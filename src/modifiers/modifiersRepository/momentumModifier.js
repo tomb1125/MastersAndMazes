@@ -20,10 +20,10 @@ var descriptiveNumberFactory_1 = require("../../components/descriptiveNumberFact
 var modifier_1 = require("../modifier");
 var momentumModifier = /** @class */ (function (_super) {
     __extends(momentumModifier, _super);
-    function momentumModifier() {
+    function momentumModifier(affector) {
         var _this = _super.call(this) || this;
         _this.name = 'Inertia';
-        _this.numericComponents = descriptiveNumberFactory_1.DescriptiveNumberFactory.getAll().filter(function (x) { return x.name === 'D4'; }).get(1);
+        _this.numericComponents = new descriptiveNumberFactory_1.DescriptiveNumberFactory(affector).filter(function (x) { return x.name === 'D4'; }).get(1);
         _this.namePrefix = 'Inertia';
         _this.description = 'Can be only used when you fail chance roll with ' + _this.numericComponents[0].getValue() + ' ' + (_this.numericComponents[0].getValue() === 1 ? 'ability' : 'abilities') + ' in a row. '; //TODO better wording when 1
         _this.longDescription = '';
