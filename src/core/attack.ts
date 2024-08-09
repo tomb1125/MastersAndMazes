@@ -58,7 +58,7 @@ export class Attack extends Activity implements PowerModifier {
   }
 
   private initRange() {
-    if(!this.range) { //weapon should be closers
+    if(!this.range) {
       if(this.type === Ability.Type.Weapon) {
         this.range = 1;
       } else {

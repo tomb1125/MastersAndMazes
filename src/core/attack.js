@@ -60,7 +60,7 @@ var Attack = /** @class */ (function (_super) {
         }
     };
     Attack.prototype.initRange = function () {
-        if (!this.range) { //weapon should be closers
+        if (!this.range) {
             if (this.type === ability_1.Ability.Type.Weapon) {
                 this.range = 1;
             }

@@ -17,6 +17,8 @@ import { applyEffectModifier } from "./modifiersRepository/applyEffectModifier";
 import { gainEffectModifier } from "./modifiersRepository/gainEffectModifier";
 import { lifestealModifier } from "./modifiersRepository/lifestealModifier";
 import { AffectsWeight } from "../core/affectsWeight";
+import { scalingDotEffect } from "./effectRepository/scalingDotEffect";
+import { repeatableModifier } from "./modifiersRepository/repeatableModifier";
 
 
 export class ModifierFactory {
@@ -26,21 +28,23 @@ export class ModifierFactory {
         if(list === undefined) {
             this.modifiers = new WeightedList();
             
-            this.modifiers.push(new nightlyModifier());
-            this.modifiers.push(new bloodiedModifier());
-            this.modifiers.push(new ultimateModifier());
-            this.modifiers.push(new signatureModifier());
-            this.modifiers.push(new laylineModifier());
-            this.modifiers.push(new vengefulModifier());
-            this.modifiers.push(new momentumModifier());
-            this.modifiers.push(new exhaustingModifer());
-            this.modifiers.push(new multipleModifier());
-            this.modifiers.push(new cleaveModifier());
-            this.modifiers.push(new fastModifier());
-            this.modifiers.push(new selfHealModifier());
             this.modifiers.push(new applyEffectModifier());
+            this.modifiers.push(new bloodiedModifier());
+            this.modifiers.push(new cleaveModifier());
+            this.modifiers.push(new exhaustingModifer());
+            this.modifiers.push(new fastModifier());
             this.modifiers.push(new gainEffectModifier());
+            this.modifiers.push(new laylineModifier());
             this.modifiers.push(new lifestealModifier());
+            this.modifiers.push(new momentumModifier());
+            this.modifiers.push(new multipleModifier());
+            this.modifiers.push(new nightlyModifier());
+            this.modifiers.push(new selfHealModifier());
+            this.modifiers.push(new signatureModifier());
+            this.modifiers.push(new vengefulModifier());
+            this.modifiers.push(new ultimateModifier());
+            this.modifiers.push(new repeatableModifier());
+            this.modifiers.push(new scalingDotEffect());
         } else {
             this.modifiers = list;
         }
