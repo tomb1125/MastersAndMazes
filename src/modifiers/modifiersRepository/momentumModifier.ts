@@ -8,7 +8,7 @@ export class momentumModifier extends Modifier {
     constructor() {
         super();
         this.name = 'Inertia' 
-        this.numericComponents = DescriptiveNumberFactory.getAll().filter((x: any) => {return x.name ==='D4'}).get(1) as DescriptiveNumber[];
+        this.numericComponents = new DescriptiveNumberFactory(this)().filter((x: any) => {return x.name ==='D4'}).get(1) as DescriptiveNumber[];
         this.namePrefix = 'Inertia';
         this.description = 'Can be only used when you fail chance roll with '+this.numericComponents[0].getValue()+' '+(this.numericComponents[0].getValue() === 1 ? 'ability' : 'abilities')+' in a row. '; //TODO better wording when 1
         this.longDescription = '';

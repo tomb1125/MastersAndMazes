@@ -11,29 +11,38 @@ import { oneHourDescriptiveNumber } from "./descriptiveNumberRepository/duration
 import { numberOfEnemiesDescriptiveNumber } from "./descriptiveNumberRepository/numberOfEnemiesDescriptiveNumber";
 import { numberOfTurnsDescriptiveNumber } from "./descriptiveNumberRepository/numberOfTurnsDescriptiveNumber";
 import { damageTakenDescriptiveNumber } from "./descriptiveNumberRepository/damageTakenDescriptiveNumber";
+import { Factory } from "../core/factory";
+import { AffectsWeight } from "../core/affectsWeight";
 
-export class DescriptiveNumberFactory {
-    
-    public static get(count: number) : DescriptiveNumber[] {
-        return this.getAll().get(count) as DescriptiveNumber[];
+export class DescriptiveNumberFactory extends Factory {
+
+    constructor(affector: AffectsWeight, list?: WeightedList) {
+        super(affector);
+        if(list === undefined) {
+            this.items = new WeightedList();
+            
+            this.items.push(new adjacentEnemiesDescriptiveNumber());
+            this.items.push(new assassinDescriptiveNumber());
+            this.items.push(new currentHealthDescriptiveNumber());
+            this.items.push(new d4DescriptiveNumber());
+            this.items.push(new d10DescriptiveNumber());
+            this.items.push(new damageTakenDescriptiveNumber());
+            this.items.push(new numberOfEnemiesDescriptiveNumber());
+            this.items.push(new numberOfTurnsDescriptiveNumber());
+
+            this.items.push(new d4MinuteDescriptiveNumber());
+            this.items.push(new oneHourDescriptiveNumber());
+
+        } else {
+            this.items = list;
+        }
     }
 
-    public static getAll(): WeightedList {
+    public get(count: number) {
+        return super.get(count) as DescriptiveNumber[];
+    }
 
-        const nums: WeightedList = new WeightedList();
-
-        nums.push(new adjacentEnemiesDescriptiveNumber());
-        nums.push(new assassinDescriptiveNumber());
-        nums.push(new currentHealthDescriptiveNumber());
-        nums.push(new d4DescriptiveNumber());
-        nums.push(new d10DescriptiveNumber());
-        nums.push(new damageTakenDescriptiveNumber());
-        nums.push(new numberOfEnemiesDescriptiveNumber());
-        nums.push(new numberOfTurnsDescriptiveNumber());
-
-        nums.push(new d4MinuteDescriptiveNumber());
-        nums.push(new oneHourDescriptiveNumber());
-
-        return nums as WeightedList;
+    public filter(z: (x: any) => boolean): DescriptiveNumberFactory {
+        return super.filter(z) as DescriptiveNumberFactory;
     }
 }

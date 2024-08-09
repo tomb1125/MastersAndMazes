@@ -12,7 +12,7 @@ export class AnimalSpeak extends Utility {
         this.objects.push(AbilityObjectFactory.getAll().filter((x: AbilityObject) => x.isCommunication).get(1)[0] as AbilityObject);
         //this.duration = new DescriptiveNumber(1); //TODO move to new 
         //this.duration.description = '1 minute';
-        this.duration = DescriptiveNumberFactory.getAll().filter((x: DescriptiveNumber) => x.type === DescriptiveNumber.Type.UtilityDuration).get(1)[0] as DescriptiveNumber;
+        this.duration = new DescriptiveNumberFactory(this).filter((x: DescriptiveNumber) => x.type === DescriptiveNumber.Type.UtilityDuration).get(1)[0] as DescriptiveNumber;
 
         this.chance = 0.6
             / this.objects[0].rarity 
