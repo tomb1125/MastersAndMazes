@@ -1,29 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var attack_1 = require("./src/core/attack");
-var utilityFactory_1 = require("./src/core/utilityFactory");
+var utils_1 = require("./src/core/utils");
 var characterContext_1 = require("./src/core/characterContext");
+var randomNumberGenerator_1 = require("./src/core/randomNumberGenerator");
 //console.log(new Attack(''))
-var att1 = new attack_1.Attack();
+//let att1 = new Attack();
 //att1.chance = 1;
 //att1.modifiers = ModifierFactory.getAll().filter((x: any) => {return x.name.includes('Apply')}).get(1) as Modifier[];
-att1.range = 1;
+//att1.range = 1;
 //att1.damage = new DescriptiveNumber(15);
-att1.type = attack_1.Attack.Type.Spell;
-att1.generate();
+//att1.type = Attack.Type.Spell;
+//att1.generate();
 //console.dir(att1, { depth: null })
-console.log(att1.getDescription());
-var utl = utilityFactory_1.UtilityFactory.get(1)[0];
+//console.log(att1.getDescription())
+//const utl: Utility = new UtilityFactory(new Ability()).get(1)[0];
 //console.log(utl.getDescription());
-/*
-let att3 = new Attack();
-att3.chance = 1;
-att3.modifiers = [modifiers.get(1)[0] as Modifier];
-att3.range = 1;
-att3.generate();*/
-//console.log(att3);
 global.onSeedChange = function (val) {
-    //TODO seed randomness
+    characterContext_1.CharacterContext.seed = val;
 };
 global.onLevelChange = function (val) {
     characterContext_1.CharacterContext.level = val;
@@ -33,6 +27,15 @@ global.onClassChange = function (val) {
     console.log(characterContext_1.CharacterContext.class);
 };
 global.generateAbilities = function (val) {
+    var currentSeed = '';
+    if (characterContext_1.CharacterContext.seed) {
+        currentSeed = characterContext_1.CharacterContext.seed;
+    }
+    else {
+        currentSeed = '' + Math.random();
+    }
+    currentSeed += characterContext_1.CharacterContext.level + characterContext_1.CharacterContext.class;
+    utils_1.Utils.gen = new randomNumberGenerator_1.RandomNumberGenerator(currentSeed);
     var outputDiv = document.getElementById('output');
     if (outputDiv == null) {
         throw 'null output';

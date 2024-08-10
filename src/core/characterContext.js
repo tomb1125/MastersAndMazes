@@ -10,7 +10,6 @@ var CharacterContext = /** @class */ (function () {
     };
     CharacterContext.level = 1;
     CharacterContext.class = 0;
-    CharacterContext.seed = '' + Math.random();
     return CharacterContext;
 }());
 exports.CharacterContext = CharacterContext;

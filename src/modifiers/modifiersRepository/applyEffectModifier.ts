@@ -1,5 +1,5 @@
 import { AffectsWeight } from "../../core/affectsWeight";
-import { PowerModifier } from "../../core/powerModifier";
+import { CanAffectModifier } from "../../core/canAffectModifier";
 import { Utils } from "../../core/utils";
 import { Effect } from "../effect";
 import { EffectFactory } from "../effectFactory";
@@ -16,7 +16,7 @@ export class applyEffectModifier extends Modifier {
         this.description = 'When you hit, apply effect: '+this.effect.description;
         this.namePrefix = this.effect.namePrefix;
         this.name = 'Apply '+this.effect.name;
-        this.powerBonus = (x: PowerModifier) => {return x.chance != null && x.range != null ?  x.chance / Utils.getRangeCoeficient(x.range) * this.effect.powerBonus(x) : -1000000 };
-        this.powerMultiplier = (x: PowerModifier) => {return this.effect.powerMultiplier(x) }; //TODO test if true
+        this.powerBonus = (x: CanAffectModifier) => {return x.chance != null && x.range != null ?  x.chance / Utils.getRangeCoeficient(x.range) * this.effect.powerBonus(x) : -1000000 };
+        this.powerMultiplier = (x: CanAffectModifier) => {return this.effect.powerMultiplier(x) }; //TODO test if true
     }
 }

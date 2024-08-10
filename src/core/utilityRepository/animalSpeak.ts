@@ -8,10 +8,8 @@ export class AnimalSpeak extends Utility {
 
     constructor() {
         super('Speak');
-        this.objects.push(AbilityObjectFactory.getAll().filter((x: AbilityObject) => x.isAnimal).get(1)[0] as AbilityObject);
-        this.objects.push(AbilityObjectFactory.getAll().filter((x: AbilityObject) => x.isCommunication).get(1)[0] as AbilityObject);
-        //this.duration = new DescriptiveNumber(1); //TODO move to new 
-        //this.duration.description = '1 minute';
+        this.objects.push(new AbilityObjectFactory(this).filter((x: AbilityObject) => x.isAnimal).get(1)[0]);
+        this.objects.push(new AbilityObjectFactory(this).filter((x: AbilityObject) => x.isCommunication).get(1)[0] as AbilityObject);
         this.duration = new DescriptiveNumberFactory(this).filter((x: DescriptiveNumber) => x.type === DescriptiveNumber.Type.UtilityDuration).get(1)[0] as DescriptiveNumber;
 
         this.chance = 0.6

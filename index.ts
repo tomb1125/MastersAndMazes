@@ -7,31 +7,25 @@ import { DescriptiveNumber } from "./src/components/descriptiveNumber";
 import { UtilityFactory } from "./src/core/utilityFactory";
 import { Utility } from "./src/core/utility";
 import { CharacterContext } from "./src/core/characterContext";
+import { Ability } from "./src/core/ability";
+import { RandomNumberGenerator } from "./src/core/randomNumberGenerator";
 //console.log(new Attack(''))
-let att1 = new Attack();
+//let att1 = new Attack();
 //att1.chance = 1;
 //att1.modifiers = ModifierFactory.getAll().filter((x: any) => {return x.name.includes('Apply')}).get(1) as Modifier[];
-att1.range = 1;
+//att1.range = 1;
 //att1.damage = new DescriptiveNumber(15);
-att1.type = Attack.Type.Spell;
-att1.generate();
+//att1.type = Attack.Type.Spell;
+//att1.generate();
 
 //console.dir(att1, { depth: null })
-console.log(att1.getDescription())
+//console.log(att1.getDescription())
 
-const utl: Utility = UtilityFactory.get(1)[0];
+//const utl: Utility = new UtilityFactory(new Ability()).get(1)[0];
 //console.log(utl.getDescription());
 
-/*
-let att3 = new Attack();
-att3.chance = 1;
-att3.modifiers = [modifiers.get(1)[0] as Modifier];
-att3.range = 1;
-att3.generate();*/
-//console.log(att3);
-
 global.onSeedChange = (val): void => {
-    //TODO seed randomness
+  CharacterContext.seed = val;
 };
 
 global.onLevelChange = (val): void => {
@@ -45,6 +39,16 @@ global.onClassChange = (val): void => {
 
 
 global.generateAbilities = (val): void => {
+  let currentSeed = '';
+  if(CharacterContext.seed) {
+    currentSeed = CharacterContext.seed;
+  } else {
+    currentSeed = ''+Math.random();
+  }
+
+  currentSeed += CharacterContext.level + CharacterContext.class;
+  Utils.gen = new RandomNumberGenerator(currentSeed);
+
   var outputDiv = document.getElementById('output');
   if(outputDiv == null) {
     throw 'null output';

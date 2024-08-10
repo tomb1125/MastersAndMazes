@@ -23,8 +23,8 @@ var guidingEffect = /** @class */ (function (_super) {
     __extends(guidingEffect, _super);
     function guidingEffect() {
         var _this = _super.call(this) || this;
-        _this.value = Math.ceil(Math.random() * 2.2);
-        _this.duration = Math.ceil(Math.random() * 2 + 0.5);
+        _this.value = Math.ceil(utils_1.Utils.random() * 2.2);
+        _this.duration = Math.ceil(utils_1.Utils.random() * 2 + 0.5);
         _this.name = 'Guide ' + _this.value + 'x' + _this.duration;
         _this.namePrefix = 'Guiding';
         _this.description = 'Guide - when rolling for an Ability chance gain ' + _this.value + ' Boon. This effect lasts for ' + _this.duration + ' turns. ';

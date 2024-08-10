@@ -1,5 +1,5 @@
 import { Ability } from "../../core/ability";
-import { PowerModifier } from "../../core/powerModifier";
+import { CanAffectModifier } from "../../core/canAffectModifier";
 import { Utils } from "../../core/utils";
 import { Effect } from "../effect";
 
@@ -11,7 +11,7 @@ export class dotEffect extends Effect {
         
         this.value = Math.ceil(Utils.DPS * (Utils.random()));
         this.duration = Math.ceil(Utils.random() * 3 + 1) + 1;
-        this.powerBonus = (x: PowerModifier) => {return - this.value * Utils.getDurationCoeficient(this.duration) };
+        this.powerBonus = (x: CanAffectModifier) => {return - this.value * Utils.getDurationCoeficient(this.duration) };
         this.elements =  [dotInit[0] as Ability.Element];
         this.name = dotInit[1]+' '+this.value+'x'+this.duration as string;  
         this.namePrefix = dotInit[1] as string;  

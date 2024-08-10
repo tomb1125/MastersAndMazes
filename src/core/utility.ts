@@ -6,9 +6,9 @@ import { Ability } from "./ability";
 import { Activity } from "./activity";
 import { AffectsWeight } from "./affectsWeight";
 import { HasWeigth } from "./hasWeigth";
-import { PowerModifier } from "./powerModifier";
+import { CanAffectModifier } from "./canAffectModifier";
 
-export class Utility extends Activity implements PowerModifier, HasWeigth {
+export class Utility extends Activity implements CanAffectModifier, HasWeigth {
     weight = (x?: AffectsWeight) => {return 1};
     objects: AbilityObject[];
     duration: DescriptiveNumber;

@@ -5,7 +5,7 @@ var Utils = /** @class */ (function () {
     function Utils() {
     }
     Utils.random = function () {
-        return Math.random();
+        return this.gen.random(); // Math.random();
     };
     ;
     //since High Accuracy and Low Accuracy attacks are easily exploitable. Thus we provide bonus to Medium Accuracy attacks.

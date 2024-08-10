@@ -1,3 +1,5 @@
+import { AffectsWeight } from "../core/affectsWeight";
+import { Factory } from "../core/factory";
 import { WeightedList } from "../core/weightedList";
 import { AbilityObject } from "./abilityObject";
 import { allAnimalsAbilityObject } from "./abilityObjectRepository/animals/allAnimalsAbilityObject";
@@ -6,22 +8,32 @@ import { gainUnderstandingAbilityObject } from "./abilityObjectRepository/symetr
 import { symetricTelepathyAbilityObject } from "./abilityObjectRepository/symetricCommunications/symetricTelepathyAbilityObject";
 import { DescriptiveNumber } from "./descriptiveNumber";
 
-export class AbilityObjectFactory {
-    public static get(count: number) : AbilityObject[] {
-        return this.getAll().get(count) as AbilityObject[];
+export class AbilityObjectFactory extends Factory {
+    constructor(affector: AffectsWeight, list?: WeightedList) {
+        super(affector);
+        if(list === undefined) {
+            this.items = new WeightedList();
+            
+            //animals
+            this.items.push(new allAnimalsAbilityObject());
+            this.items.push(new catAbilityObject());
+
+            //communications
+            this.items.push(new gainUnderstandingAbilityObject());
+            this.items.push(new symetricTelepathyAbilityObject());
+
+
+        } else {
+            this.items = list;
+        }
     }
 
-    public static getAll(): WeightedList {
-        const objs: WeightedList = new WeightedList();
+    
+    public get(count: number) {
+        return super.get(count) as AbilityObject[];
+    }
 
-        //animals
-        objs.push(new allAnimalsAbilityObject());
-        objs.push(new catAbilityObject());
-
-        //communications
-        objs.push(new gainUnderstandingAbilityObject());
-        objs.push(new symetricTelepathyAbilityObject());
-
-        return objs as WeightedList;
+    public filter(z: (x: any) => boolean): AbilityObjectFactory {
+        return super.filter(z) as AbilityObjectFactory;
     }
 }

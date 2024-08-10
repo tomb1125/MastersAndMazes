@@ -1,14 +1,14 @@
 import { Effect } from "./effect"
 import { Ability } from "../core/ability"
-import { PowerModifier } from "../core/powerModifier"
+import { CanAffectModifier } from "../core/canAffectModifier"
 import { HasWeigth } from "../core/hasWeigth";
 import { DescriptiveNumber } from "../components/descriptiveNumber";
 import { AffectsWeight } from "../core/affectsWeight";
 
 export class Modifier implements HasWeigth {
     name: string;
-    powerBonus: (x: PowerModifier) => number = (x: PowerModifier) => {return 0};
-    powerMultiplier: (x: PowerModifier) => number = (x: PowerModifier) => {return 1};
+    powerBonus: (x: CanAffectModifier) => number = (x: CanAffectModifier) => {return 0};
+    powerMultiplier: (x: CanAffectModifier) => number = (x: CanAffectModifier) => {return 1};
     modifierType: Modifier.Type;
     elements: Ability.Element[];
     weight: (x?: AffectsWeight) => number = (x?: AffectsWeight) => {return 1};

@@ -1,4 +1,4 @@
-import { PowerModifier } from "../../core/powerModifier";
+import { CanAffectModifier } from "../../core/canAffectModifier";
 import { Utils } from "../../core/utils";
 import { Modifier } from "../modifier";
 

@@ -1,3 +1,5 @@
+import { RandomNumberGenerator } from "./randomNumberGenerator";
+
 export class Utils {
     public static DPS: number = 5;
     public static POWER_PER_LEVEL = 0.2;
@@ -9,8 +11,10 @@ export class Utils {
     public static AVG_ENEMIES_PER_PLAYER: number = 1.7;
     public static AVG_TURN: number = 4;
 
+    public static gen: RandomNumberGenerator;
+
     public static random(): number {
-        return Math.random();
+        return this.gen.random();// Math.random();
     };
 
     //since High Accuracy and Low Accuracy attacks are easily exploitable. Thus we provide bonus to Medium Accuracy attacks.

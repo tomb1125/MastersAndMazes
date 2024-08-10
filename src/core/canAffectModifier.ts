@@ -1,7 +1,7 @@
 import { DescriptiveNumber } from "../components/descriptiveNumber";
 import { Ability } from "./ability";
 
-export interface PowerModifier {
+export interface CanAffectModifier {
     range?: number;
     chance?: number;
     damage?: DescriptiveNumber;

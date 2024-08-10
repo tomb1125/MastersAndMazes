@@ -1,14 +1,14 @@
 import { Activity } from "./activity"
 import { Utils } from "./utils"
 import { ModifierFactory } from "./../modifiers/modifierFactory"
-import { PowerModifier } from "./powerModifier"
+import { CanAffectModifier } from "./canAffectModifier"
 import { Ability } from "./ability"
 import { DescriptiveNumber } from "../components/descriptiveNumber"
 import { CharacterContext } from "./characterContext"
 import { DescriptiveNumberFactory } from "../components/descriptiveNumberFactory"
 import { Modifier } from "../modifiers/modifier"
 
-export class Attack extends Activity implements PowerModifier {
+export class Attack extends Activity implements CanAffectModifier {
   static MODIFIER_CHANCE: Map<number, number> = new Map([
     [0.1, 0],
     [0.7, 1],
