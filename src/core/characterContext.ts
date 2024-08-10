@@ -32,4 +32,17 @@ export namespace CharacterContext
       Shaman,
       Warlock,
     }
+
+    export enum Attribute {
+        Strength,
+        Dexterity,
+        Constitution,
+        Intelligence,
+        Wisdom,
+        Charisma
+    }
+
+    export enum Skill {
+        
+    }
 }

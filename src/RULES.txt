@@ -52,14 +52,18 @@ Streetwise (CHA)
 
 (!) During creation, you set 3 skills as trained. Gain 1 Boon when rolling for this skill.
 
-Each Character additionall has following resources:
+(!) Each Character additionall has following resources:
 30 Maximum Health. If reduced to 0, you can die, but usually won't.
 10 Maximum Mana. Can be used to improve combat abilities. Restored to maximum value after each combat.
 6 Movement Speed. How fast you can move during combat.
 0 Scars. Each time you are close to death, add a scar. Someday your luck can run out.
 
 LEVELING UP
-Whenever you gather 10 XP, gain a level.
+Whenever you win a encounter, gain 2 XP
+Certain abilities grant XP.
+At the end of adventure check you current XP, for each 10 XP gain a level.
+Whenever at the end of adventure, after level ups, you have lower level than the highest level player in a party, gain 2 EXP for each level difference between you. You can't gain level from this EXP yet.
+
 Whenever you gain a level:
  - gain 1 ability, chosen from 3 generated abilities
  - gain 1 maximum Health
