@@ -10,6 +10,6 @@ export class vengefulModifier extends Modifier {
         this.namePrefix = 'Vengeful';
         this.description = 'Can be only used against enemy which attacked, damaged or affected you last turn. ';
         this.longDescription = '';
-        this.modifierType =Modifier.Type.Constraint;
+        this.modifierType = Modifier.Type.Constraint;
     }
 }

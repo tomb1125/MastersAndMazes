@@ -18,6 +18,8 @@ export class Attack extends Activity implements CanAffectModifier {
   ]);
 
   damage: DescriptiveNumber;
+  attackTemplate: String;
+  target: DescriptiveNumber;
 
  
   constructor(otherName?: string) {
@@ -26,7 +28,7 @@ export class Attack extends Activity implements CanAffectModifier {
   }
 
   generate() {
-    this.initMana();
+    this.initCommon();
     this.initType();
     this.initModifiers();
     this.initChance();
@@ -36,8 +38,10 @@ export class Attack extends Activity implements CanAffectModifier {
     this.compensate();
   }
 
-  private initMana() {
+  private initCommon() {
     this.manaCost = 0;
+    this.attackTemplate = 'Standard';
+    this.target = new DescriptiveNumber(1);
   }
 
   private initType() {
