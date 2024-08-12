@@ -31,7 +31,7 @@ var Attack = /** @class */ (function (_super) {
         return _this;
     }
     Attack.prototype.generate = function () {
-        this.initMana();
+        this.initCommon();
         this.initType();
         this.initModifiers();
         this.initChance();
@@ -40,8 +40,10 @@ var Attack = /** @class */ (function (_super) {
         this.finalAdjustments();
         this.compensate();
     };
-    Attack.prototype.initMana = function () {
+    Attack.prototype.initCommon = function () {
         this.manaCost = 0;
+        this.attackTemplate = 'Standard';
+        this.target = new descriptiveNumber_1.DescriptiveNumber(1);
     };
     Attack.prototype.initType = function () {
         if (this.type === undefined) {
@@ -142,10 +144,10 @@ var Attack = /** @class */ (function (_super) {
             this.chance = 1;
         }
         var tempMana = Math.ceil(this.getPower() - 0.00001);
-        if (tempMana < 0) {
+        if (this.manaCost + tempMana < 0) {
             this.chance += 0.1;
             if (this.chance > 1) {
-                this.damage = new descriptiveNumber_1.DescriptiveNumber(this.damage.getValue() + 1);
+                this.damage.addBonus(1); ///= new DescriptiveNumber(this.damage.getValue()+1); //TODO allow DescriptiveNumbers to get static bonuses
             }
             this.compensate();
         }

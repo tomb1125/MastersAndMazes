@@ -2,7 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var attack_1 = require("./src/core/attack");
 var utils_1 = require("./src/core/utils");
+var utilityFactory_1 = require("./src/core/utilityFactory");
 var characterContext_1 = require("./src/core/characterContext");
+var ability_1 = require("./src/core/ability");
 var randomNumberGenerator_1 = require("./src/core/randomNumberGenerator");
 //console.log(new Attack(''))
 //let att1 = new Attack();
@@ -46,8 +48,9 @@ global.generateAbilities = function (val) {
     att2.generate();
     var att3 = new attack_1.Attack();
     att3.generate();
+    var utl = new utilityFactory_1.UtilityFactory(new ability_1.Ability()).get(1)[0];
     outputDiv.innerHTML = '<br>' +
         att1.getDescription() + '<br><br>' +
         att2.getDescription() + '<br><br>' +
-        att3.getDescription() + '<br><br>';
+        att3.getDescription() + '<br><br>' + utl.getDescription();
 };

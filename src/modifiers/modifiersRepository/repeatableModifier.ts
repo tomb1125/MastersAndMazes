@@ -24,7 +24,7 @@ export class repeatableModifier extends Modifier {
         this.name = 'Repeat '+this.numericComponents[0].getValue();
         this.namePrefix = 'Repeatable '
         this.description = 'You can use this ability '+this.numericComponents[0].getValue()+' times before it goes on cooldown.';
-        this.modifierType =Modifier.Type.Improvement;
+        this.modifierType = Modifier.Type.Improvement;
     }
 
     setValue(x: number) {

@@ -15,18 +15,18 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.symetricTelepathyAbilityObject = void 0;
+exports.reptileAbilityObject = void 0;
 var abilityObject_1 = require("../../abilityObject");
-var symetricTelepathyAbilityObject = /** @class */ (function (_super) {
-    __extends(symetricTelepathyAbilityObject, _super);
-    function symetricTelepathyAbilityObject() {
-        var _this = _super.call(this, 'Symetric Telepathy') || this;
-        _this.description = 'For the duration you can read each other minds as long as you\'re close to each other. ';
-        _this.rarity = 1.2;
-        _this.prefix = 'Telepatic';
-        _this.isCommunication = true;
+var reptileAbilityObject = /** @class */ (function (_super) {
+    __extends(reptileAbilityObject, _super);
+    function reptileAbilityObject() {
+        var _this = _super.call(this, 'Reptile') || this;
+        _this.description = 'any reptile or amphibian';
+        _this.rarity = 0.4;
+        _this.prefix = 'Reptile';
+        _this.isAnimal = true;
         return _this;
     }
-    return symetricTelepathyAbilityObject;
+    return reptileAbilityObject;
 }(abilityObject_1.AbilityObject));
-exports.symetricTelepathyAbilityObject = symetricTelepathyAbilityObject;
+exports.reptileAbilityObject = reptileAbilityObject;

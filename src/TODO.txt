@@ -7,8 +7,7 @@ improve to text function
 introduce efficiency curve
 introduce 1% chance for attacks to be more crazy
 non-efficiency curve x + x/5 * (x/5 - 2)
-add seed to randomness
 add modfiers as denial of action and modifiers as bonus
-rework factory to expand modifer with new constructor
 range as descriptive number
 add correlaction between fast and duration effects
+remove D10 and D4 from descriptive numbers

@@ -9,17 +9,30 @@ var DescriptiveNumber = /** @class */ (function () {
     }
     ;
     DescriptiveNumber.prototype.getDescription = function () {
-        if (this.description != undefined)
-            return this.description;
-        if (this.value != undefined)
-            return this.value;
+        if (this.description != undefined) {
+            if (this.bonus != undefined) {
+                return this.description + (this.bonus >= 0 ? ' + ' : ' - ') + this.bonus;
+            }
+            else {
+                return this.description;
+            }
+        }
+        if (this.value != undefined) {
+            return this.value + (this.bonus != undefined ? this.bonus : 0);
+        }
         throw 'Undefined Descriptive Number Error';
     };
     DescriptiveNumber.prototype.getValue = function () {
-        return this.value;
+        return this.value + (this.bonus != undefined ? this.bonus : 0);
     };
     DescriptiveNumber.prototype.getLowValue = function () {
-        return this.lowValue == undefined ? this.value : this.lowValue;
+        return (this.lowValue === undefined ? this.value : this.lowValue) + (this.bonus != undefined ? this.bonus : 0);
+    };
+    DescriptiveNumber.prototype.addBonus = function (val) {
+        if (this.bonus === undefined) {
+            this.bonus = 0;
+        }
+        this.bonus += val;
     };
     return DescriptiveNumber;
 }());

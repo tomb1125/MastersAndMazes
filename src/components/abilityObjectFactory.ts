@@ -3,10 +3,15 @@ import { Factory } from "../core/factory";
 import { WeightedList } from "../core/weightedList";
 import { AbilityObject } from "./abilityObject";
 import { allAnimalsAbilityObject } from "./abilityObjectRepository/animals/allAnimalsAbilityObject";
+import { birdAbilityObject } from "./abilityObjectRepository/animals/birdAbilityObject";
+import { reptileAbilityObject } from "./abilityObjectRepository/animals/reptileAbilityObject";
 import { catAbilityObject } from "./abilityObjectRepository/animals/catAbilityObject";
+import { magicalAbilityObject } from "./abilityObjectRepository/animals/magicalAbilityObject";
+import { ratAbilityObject } from "./abilityObjectRepository/animals/ratAbilityObject";
+import { wildAbilityObject } from "./abilityObjectRepository/animals/wildAbilityObject";
 import { gainUnderstandingAbilityObject } from "./abilityObjectRepository/symetricCommunications/gainUnderstandingAbilityObject";
+import { symetricEmpathicAbilityObject } from "./abilityObjectRepository/symetricCommunications/symetricEmpathicAbilityObject";
 import { symetricTelepathyAbilityObject } from "./abilityObjectRepository/symetricCommunications/symetricTelepathyAbilityObject";
-import { DescriptiveNumber } from "./descriptiveNumber";
 
 export class AbilityObjectFactory extends Factory {
     constructor(affector: AffectsWeight, list?: WeightedList) {
@@ -16,11 +21,17 @@ export class AbilityObjectFactory extends Factory {
             
             //animals
             this.items.push(new allAnimalsAbilityObject());
+            this.items.push(new birdAbilityObject());
             this.items.push(new catAbilityObject());
-
+            this.items.push(new magicalAbilityObject());
+            this.items.push(new reptileAbilityObject());
+            this.items.push(new ratAbilityObject());
+            this.items.push(new wildAbilityObject());
+            
             //communications
             this.items.push(new gainUnderstandingAbilityObject());
             this.items.push(new symetricTelepathyAbilityObject());
+            this.items.push(new symetricEmpathicAbilityObject());
 
 
         } else {

@@ -19,8 +19,14 @@ exports.AbilityObjectFactory = void 0;
 var factory_1 = require("../core/factory");
 var weightedList_1 = require("../core/weightedList");
 var allAnimalsAbilityObject_1 = require("./abilityObjectRepository/animals/allAnimalsAbilityObject");
+var birdAbilityObject_1 = require("./abilityObjectRepository/animals/birdAbilityObject");
+var reptileAbilityObject_1 = require("./abilityObjectRepository/animals/reptileAbilityObject");
 var catAbilityObject_1 = require("./abilityObjectRepository/animals/catAbilityObject");
+var magicalAbilityObject_1 = require("./abilityObjectRepository/animals/magicalAbilityObject");
+var ratAbilityObject_1 = require("./abilityObjectRepository/animals/ratAbilityObject");
+var wildAbilityObject_1 = require("./abilityObjectRepository/animals/wildAbilityObject");
 var gainUnderstandingAbilityObject_1 = require("./abilityObjectRepository/symetricCommunications/gainUnderstandingAbilityObject");
+var symetricEmpathicAbilityObject_1 = require("./abilityObjectRepository/symetricCommunications/symetricEmpathicAbilityObject");
 var symetricTelepathyAbilityObject_1 = require("./abilityObjectRepository/symetricCommunications/symetricTelepathyAbilityObject");
 var AbilityObjectFactory = /** @class */ (function (_super) {
     __extends(AbilityObjectFactory, _super);
@@ -30,10 +36,16 @@ var AbilityObjectFactory = /** @class */ (function (_super) {
             _this.items = new weightedList_1.WeightedList();
             //animals
             _this.items.push(new allAnimalsAbilityObject_1.allAnimalsAbilityObject());
+            _this.items.push(new birdAbilityObject_1.birdAbilityObject());
             _this.items.push(new catAbilityObject_1.catAbilityObject());
+            _this.items.push(new magicalAbilityObject_1.magicalAbilityObject());
+            _this.items.push(new reptileAbilityObject_1.reptileAbilityObject());
+            _this.items.push(new ratAbilityObject_1.ratAbilityObject());
+            _this.items.push(new wildAbilityObject_1.wildAbilityObject());
             //communications
             _this.items.push(new gainUnderstandingAbilityObject_1.gainUnderstandingAbilityObject());
             _this.items.push(new symetricTelepathyAbilityObject_1.symetricTelepathyAbilityObject());
+            _this.items.push(new symetricEmpathicAbilityObject_1.symetricEmpathicAbilityObject());
         }
         else {
             _this.items = list;

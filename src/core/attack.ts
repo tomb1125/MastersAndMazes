@@ -164,10 +164,10 @@ export class Attack extends Activity implements CanAffectModifier {
 
       let tempMana: number = Math.ceil(this.getPower() - 0.00001);
 
-      if(tempMana < 0) {
+      if(this.manaCost + tempMana < 0) {
         this.chance += 0.1;
         if(this.chance > 1) {
-          this.damage = new DescriptiveNumber(this.damage.getValue()+1);
+          this.damage.addBonus(1) ///= new DescriptiveNumber(this.damage.getValue()+1); //TODO allow DescriptiveNumbers to get static bonuses
         }
 
         this.compensate();

@@ -24,14 +24,14 @@ var AnimalSpeak = /** @class */ (function (_super) {
     __extends(AnimalSpeak, _super);
     function AnimalSpeak() {
         var _this = _super.call(this, 'Speak') || this;
-        _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isAnimal; }).get(1)[0]);
         _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isCommunication; }).get(1)[0]);
+        _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isAnimal; }).get(1)[0]);
         _this.duration = new descriptiveNumberFactory_1.DescriptiveNumberFactory(_this).filter(function (x) { return x.type === descriptiveNumber_1.DescriptiveNumber.Type.UtilityDuration; }).get(1)[0];
-        _this.chance = 0.6
+        _this.chance = 0.7
             / _this.objects[0].rarity
             / _this.objects[1].rarity
             / _this.duration.getValue();
-        _this.description = 'You can communicate with ' + _this.objects[0].description + ' for ' + _this.duration.getDescription() + '. ' + _this.objects[1].description;
+        _this.description = 'You can communicate with ' + _this.objects[1].description + ' for ' + _this.duration.getDescription() + '. ' + _this.objects[0].description;
         _this.compensate();
         return _this;
     }

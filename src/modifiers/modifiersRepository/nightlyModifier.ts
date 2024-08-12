@@ -9,6 +9,6 @@ export class nightlyModifier extends Modifier {
         this.namePrefix = 'Nightly';
         this.description = 'Can be used only in the night.';
         this.longDescription = 'Can be also used on planes without sun.';
-        this.modifierType =Modifier.Type.Constraint;
+        this.modifierType = Modifier.Type.Constraint;
     }
 }

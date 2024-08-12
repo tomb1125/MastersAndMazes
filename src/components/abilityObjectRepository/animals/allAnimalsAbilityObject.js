@@ -23,6 +23,7 @@ var allAnimalsAbilityObject = /** @class */ (function (_super) {
         var _this = _super.call(this, 'AllAnimals') || this;
         _this.description = 'any animal';
         _this.rarity = 1;
+        _this.weight = function () { return 3; };
         _this.prefix = 'Animal';
         _this.isAnimal = true;
         return _this;

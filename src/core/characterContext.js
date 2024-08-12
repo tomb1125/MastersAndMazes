@@ -33,4 +33,16 @@ exports.CharacterContext = CharacterContext;
         Class[Class["Shaman"] = 14] = "Shaman";
         Class[Class["Warlock"] = 15] = "Warlock";
     })(Class = CharacterContext.Class || (CharacterContext.Class = {}));
+    var Attribute;
+    (function (Attribute) {
+        Attribute[Attribute["Strength"] = 0] = "Strength";
+        Attribute[Attribute["Dexterity"] = 1] = "Dexterity";
+        Attribute[Attribute["Constitution"] = 2] = "Constitution";
+        Attribute[Attribute["Intelligence"] = 3] = "Intelligence";
+        Attribute[Attribute["Wisdom"] = 4] = "Wisdom";
+        Attribute[Attribute["Charisma"] = 5] = "Charisma";
+    })(Attribute = CharacterContext.Attribute || (CharacterContext.Attribute = {}));
+    var Skill;
+    (function (Skill) {
+    })(Skill = CharacterContext.Skill || (CharacterContext.Skill = {}));
 })(CharacterContext || (exports.CharacterContext = CharacterContext = {}));

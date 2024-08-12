@@ -22,7 +22,7 @@ var catAbilityObject = /** @class */ (function (_super) {
     function catAbilityObject() {
         var _this = _super.call(this, 'Cat') || this;
         _this.description = 'any feline';
-        _this.rarity = 0.3;
+        _this.rarity = 0.2;
         _this.prefix = 'Feline';
         _this.isAnimal = true;
         return _this;

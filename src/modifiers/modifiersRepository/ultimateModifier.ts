@@ -9,6 +9,6 @@ export class ultimateModifier extends Modifier {
         this.namePrefix = 'Ultimate'; //numeric component
         this.description = 'Can be used only on turn 8 or later.';
         this.longDescription = '';
-        this.modifierType =Modifier.Type.Constraint;
+        this.modifierType = Modifier.Type.Constraint;
     }
 }

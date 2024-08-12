@@ -32,43 +32,22 @@ var Utility = /** @class */ (function (_super) {
     }
     Utility.prototype.getDescription = function () {
         return '' +
-            'Name: ' + this.generateName() +
-            '\nChance: ' + Math.ceil(this.chance * 100) + '%' +
-            '\nModifiers: ' + this.modifiers.reduce(function (sum, mod) { return sum + ', ' + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
+            '<b>Name: ' + this.generateName() +
+            '<br>Chance</b>: ' + Math.ceil(this.chance * 100) + '%' +
+            '<br><b>Modifiers</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + ', ' + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
             //  '\nType: ' + Ability.Type[this.type] + 
-            '\nDescription: ' + this.description + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
-            '\nCooldown: ' + ability_1.Ability.Cooldown[this.cooldown];
+            '<br><b>Description</b>: ' + this.description + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
+            '<br><b>Cooldown</b>: ' + ability_1.Ability.Cooldown[this.cooldown];
     };
     Utility.prototype.generateName = function () {
         return this.objects.reduce(function (sum, mod) { return sum + ' ' + (mod.prefix === undefined ? mod.name : mod.prefix); }, '') + ' ' + this.name;
     };
     Utility.prototype.compensate = function () {
         var repeat = new repeatableModifier_1.repeatableModifier();
-        if (this.chance > 5) {
-            repeat.setValue(10);
-            this.chance /= 10;
-            this.chance = Math.min(1, this.chance);
-            this.modifiers.push(repeat);
-            console.error('reaching top end of chance conpensation');
-        }
-        else if (this.chance > 4) {
-            repeat.setValue(8);
-            this.chance /= 8;
-            this.modifiers.push(repeat);
-        }
-        else if (this.chance > 3) {
-            repeat.setValue(6);
-            this.chance /= 6;
-            this.modifiers.push(repeat);
-        }
-        else if (this.chance > 2) {
-            repeat.setValue(4);
-            this.chance /= 4;
-            this.modifiers.push(repeat);
-        }
-        else if (this.chance > 1) {
-            repeat.setValue(2);
-            this.chance /= 2;
+        if (this.chance > 1) {
+            var tempRepeat = Math.ceil(this.chance);
+            this.chance /= tempRepeat;
+            repeat.setValue(tempRepeat);
             this.modifiers.push(repeat);
         }
     };

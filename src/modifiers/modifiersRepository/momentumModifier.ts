@@ -14,6 +14,6 @@ export class momentumModifier extends Modifier {
         this.description = 'Can be only used when you fail chance roll with '+this.numericComponents[0].getValue()+' '+(this.numericComponents[0].getValue() === 1 ? 'ability' : 'abilities')+' in a row. '; //TODO better wording when 1
         this.longDescription = '';
         this.powerMultiplier = (x: CanAffectModifier) => Math.pow(1.58, this.numericComponents[0].getValue());
-        this.modifierType =Modifier.Type.Constraint;
+        this.modifierType = Modifier.Type.Constraint;
     }
 }

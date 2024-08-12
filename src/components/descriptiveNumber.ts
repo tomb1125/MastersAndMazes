@@ -4,6 +4,8 @@ import { HasWeigth } from "../core/hasWeigth";
 export class DescriptiveNumber implements HasWeigth{
     value: number;
     lowValue: number;
+
+    bonus: number;
     name: string;
     description: string;
     type: DescriptiveNumber.Type = DescriptiveNumber.Type.Common;
@@ -14,19 +16,35 @@ export class DescriptiveNumber implements HasWeigth{
     }
 
     public getDescription(): string {
-        if(this.description != undefined) return this.description;
-        if(this.value != undefined) return this.value as unknown as string;
+        if(this.description != undefined) {
+            if(this.bonus != undefined) {
+                return this.description + (this.bonus >= 0 ? ' + ' : ' - ') + this.bonus;
+            } else {
+                return this.description;
+            }
+        }
+        if(this.value != undefined) {
+            return this.value + (this.bonus != undefined ? this.bonus : 0) as unknown as string;
+        }
         
         throw 'Undefined Descriptive Number Error';
 
     }
 
     public getValue() : number {
-        return this.value;
+        return this.value + (this.bonus != undefined ? this.bonus : 0);
     }
 
     public getLowValue() : number {
-        return this.lowValue == undefined ? this.value : this.lowValue;
+        return (this.lowValue === undefined ? this.value : this.lowValue) + (this.bonus != undefined ? this.bonus : 0);
+    }
+
+    public addBonus(val: number) : void {
+        if(this.bonus === undefined) {
+            this.bonus = 0;
+        }
+
+        this.bonus += val;
     }
 
 }

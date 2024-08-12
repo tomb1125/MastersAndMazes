@@ -21,7 +21,7 @@ export class WeightedList {
         this.items.push(item);
     }
 
-    get(num: number, affector?: AffectsWeight): HasWeigth[] { //TODO this should not be optional
+    get(num: number, affector?: AffectsWeight, banList?: WeightedList): HasWeigth[] { //TODO this should not be optional
         return WeightedList.getRandomFromList([...this.items], num, affector);
     }
 
