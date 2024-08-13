@@ -21,9 +21,9 @@ var descriptiveNumber_1 = require("../descriptiveNumber");
 var numberOfEnemiesDescriptiveNumber = /** @class */ (function (_super) {
     __extends(numberOfEnemiesDescriptiveNumber, _super);
     function numberOfEnemiesDescriptiveNumber(value) {
-        var _this = _super.call(this, 5 * utils_1.Utils.AVG_ENEMIES_PER_PLAYER) || this;
+        var _this = _super.call(this, utils_1.Utils.AVG_ENEMIES_ADJACENT) || this;
         _this.lowValue = 1;
-        _this.description = '5 times the number of enemies per player in combat (rounded up)';
+        _this.description = 'Number of adjacent enemies.';
         _this.type = descriptiveNumber_1.DescriptiveNumber.Type.Common;
         return _this;
     }

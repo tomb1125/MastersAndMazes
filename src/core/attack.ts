@@ -109,7 +109,7 @@ export class Attack extends Activity implements CanAffectModifier {
 
   public getPower(): number {
     let power = 
-      (this.damage.value *      
+      (this.damage.getValue() *      
       this.chance                
       / Utils.getRangeCoeficient(this.range)
       / Utils.getDPSCoefficient(this.chance)
@@ -143,9 +143,9 @@ export class Attack extends Activity implements CanAffectModifier {
 
   private finalAdjustments() {
     if(this.type === Ability.Type.Spell) { //TODO allow for disabling compensation
-      if(this.damage.description != null) {
-        this.damage.value += Math.ceil(Utils.random()*2.1);
-      }
+      //if(this.damage.description != null) {
+        this.damage.addBonus(1);
+      //}
       
       this.chance = Math.min(1, this.chance + 0.1);
       this.range = (this.range === 1 ? 0 : this.range) + 5;
@@ -154,8 +154,8 @@ export class Attack extends Activity implements CanAffectModifier {
   }
 
   private compensate() {
-      if(this.damage.value < 3.5 && this.damage.description == undefined) {
-        this.damage.value = 3.5;
+      if(this.damage.getValue() < 3.5 && this.damage.description == undefined) {
+        this.damage = new DescriptiveNumber(3.5);
       }
       
       if(this.chance > 1) {
@@ -171,9 +171,11 @@ export class Attack extends Activity implements CanAffectModifier {
         }
 
         this.compensate();
+
+      } else {
+        this.manaCost += tempMana;
       }
 
-      this.manaCost += tempMana;
   }
 
 
@@ -202,11 +204,10 @@ export class Attack extends Activity implements CanAffectModifier {
   }
 
   public getDescription(): string { //TODO rework, incorporate descriptive numbers
-    
     return '' +
       '<b>Name: ' + this.generateName() +
       '</b><br><b>Chance</b>: ' + Math.ceil(this.chance * 100) + '%' +
-      '<br><b>Damage</b>: ' + (this.damage.description ? this.damage.getDescription() : Utils.valueToDiceRoll(this.damage.value)) +
+      '<br><b>Damage</b>: ' + (this.damage.description ? this.damage.getDescription() : Utils.valueToDiceRoll(this.damage.getValue())) +
       '<br><b>Mana Cost</b>: ' + this.manaCost +
       '<br><b>Range</b>: ' + this.range +
       '<br><b>Modifiers</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + ', ' + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
@@ -218,19 +219,11 @@ export class Attack extends Activity implements CanAffectModifier {
 
   private generateName(): string { 
     const attackPortion: string = this.type === Activity.Type.Weapon ? [
-      'Slam',
-      'Stab',
-      'Strike',
-      'Slash',
-      'Pummel'
+      'Basic Attack'
     ].sort(() => 0.5 - Utils.random())[0] : '';
 
     const spellPortion: string = this.type === Activity.Type.Spell ? [
-      'Blast',
-      'Ray',
-      'Missile',
-      'Dart',
-      'Beam'
+      'Basic Bolt'
     ].sort(() => 0.5 - Utils.random())[0] : '';
 
     const randomPortion: string = [

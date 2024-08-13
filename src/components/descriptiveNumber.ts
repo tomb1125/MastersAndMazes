@@ -2,7 +2,7 @@ import { AffectsWeight } from "../core/affectsWeight";
 import { HasWeigth } from "../core/hasWeigth";
 
 export class DescriptiveNumber implements HasWeigth{
-    value: number;
+    protected value: number;
     lowValue: number;
 
     bonus: number;

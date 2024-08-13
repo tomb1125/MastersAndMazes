@@ -4,9 +4,9 @@ import { DescriptiveNumber } from "../descriptiveNumber";
 export class numberOfEnemiesDescriptiveNumber extends DescriptiveNumber {
     
     constructor(value?: number) {
-        super(5 * Utils.AVG_ENEMIES_PER_PLAYER);   
+        super(Utils.AVG_ENEMIES_ADJACENT);   
         this.lowValue = 1;     
-        this.description = '5 times the number of enemies per player in combat (rounded up)';
+        this.description = 'Number of adjacent enemies.';
         this.type = DescriptiveNumber.Type.Common;
     }
 }

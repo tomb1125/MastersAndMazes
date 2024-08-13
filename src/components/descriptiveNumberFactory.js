@@ -20,8 +20,6 @@ var weightedList_1 = require("../core/weightedList");
 var AdjacentEnemiesDescriptiveNumber_1 = require("./descriptiveNumberRepository/AdjacentEnemiesDescriptiveNumber");
 var assassinDescriptiveNumber_1 = require("./descriptiveNumberRepository/assassinDescriptiveNumber");
 var currentHealthDescriptiveNumber_1 = require("./descriptiveNumberRepository/currentHealthDescriptiveNumber");
-var d10DescriptiveNumber_1 = require("./descriptiveNumberRepository/d10DescriptiveNumber");
-var d4DescriptiveNumber_1 = require("./descriptiveNumberRepository/d4DescriptiveNumber");
 var d4MinuteDescriptiveNumber_1 = require("./descriptiveNumberRepository/duration/d4MinuteDescriptiveNumber");
 var aneHourDescriptiveNumber_1 = require("./descriptiveNumberRepository/duration/aneHourDescriptiveNumber");
 var numberOfEnemiesDescriptiveNumber_1 = require("./descriptiveNumberRepository/numberOfEnemiesDescriptiveNumber");
@@ -37,8 +35,6 @@ var DescriptiveNumberFactory = /** @class */ (function (_super) {
             _this.items.push(new AdjacentEnemiesDescriptiveNumber_1.adjacentEnemiesDescriptiveNumber());
             _this.items.push(new assassinDescriptiveNumber_1.assassinDescriptiveNumber());
             _this.items.push(new currentHealthDescriptiveNumber_1.currentHealthDescriptiveNumber());
-            _this.items.push(new d4DescriptiveNumber_1.d4DescriptiveNumber());
-            _this.items.push(new d10DescriptiveNumber_1.d10DescriptiveNumber());
             _this.items.push(new damageTakenDescriptiveNumber_1.damageTakenDescriptiveNumber());
             _this.items.push(new numberOfEnemiesDescriptiveNumber_1.numberOfEnemiesDescriptiveNumber());
             _this.items.push(new numberOfTurnsDescriptiveNumber_1.numberOfTurnsDescriptiveNumber());

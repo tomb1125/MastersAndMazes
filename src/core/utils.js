@@ -76,10 +76,11 @@ var Utils = /** @class */ (function () {
     Utils.POWER_PER_LEVEL = 0.2;
     Utils.BASIC_ATTACK_DPS = 2.5;
     Utils.ATTACK_DESCRIPTIVE_NUMBER_CHANCE = 0.15;
-    Utils.BoonValue = Utils.DPS * 5;
-    Utils.avgHealth = 25;
+    Utils.AVG_ENEMIES_ADJACENT = 1.9;
     Utils.AVG_ENEMIES_PER_PLAYER = 1.7;
     Utils.AVG_TURN = 4;
+    Utils.BoonValue = Utils.DPS * 5;
+    Utils.avgHealth = 25;
     return Utils;
 }());
 exports.Utils = Utils;

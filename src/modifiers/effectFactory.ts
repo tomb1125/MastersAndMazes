@@ -1,6 +1,5 @@
 import { WeightedList } from "../core/weightedList";
 import { Modifier } from "./modifier"
-import { dotEffect } from "./effectRepository/dotEffect";
 import { stunEffect } from "./effectRepository/stunEffect";
 import { instakillEffect } from "./effectRepository/instakillEffect";
 import { guidingEffect } from "./effectRepository/guidingEffect";
@@ -18,7 +17,6 @@ export class EffectFactory extends Factory {
             
             this.items.push(new stunEffect());
             this.items.push(new instakillEffect());
-            this.items.push(new dotEffect());
             this.items.push(new guidingEffect());
             this.items.push(new damageBonusEffect());
         } else {

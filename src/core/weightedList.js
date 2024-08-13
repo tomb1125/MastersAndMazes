@@ -24,7 +24,7 @@ var WeightedList = /** @class */ (function () {
     WeightedList.prototype.push = function (item) {
         this.items.push(item);
     };
-    WeightedList.prototype.get = function (num, affector) {
+    WeightedList.prototype.get = function (num, affector, banList) {
         return WeightedList.getRandomFromList(__spreadArray([], this.items, true), num, affector);
     };
     WeightedList.getRandomFromList = function (array, num, affector) {

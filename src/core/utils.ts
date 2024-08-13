@@ -5,11 +5,12 @@ export class Utils {
     public static POWER_PER_LEVEL = 0.2;
     public static BASIC_ATTACK_DPS: number = 2.5
     public static ATTACK_DESCRIPTIVE_NUMBER_CHANCE: number = 0.15;
+    public static AVG_ENEMIES_ADJACENT: number = 1.9;
+    public static AVG_ENEMIES_PER_PLAYER: number = 1.7;
+    public static AVG_TURN: number = 4;
     
     public static BoonValue: number = Utils.DPS * 5;
     public static avgHealth: number = 25;
-    public static AVG_ENEMIES_PER_PLAYER: number = 1.7;
-    public static AVG_TURN: number = 4;
 
     public static gen: RandomNumberGenerator;
 

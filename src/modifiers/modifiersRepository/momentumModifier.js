@@ -16,14 +16,15 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.momentumModifier = void 0;
-var descriptiveNumberFactory_1 = require("../../components/descriptiveNumberFactory");
+var descriptiveNumber_1 = require("../../components/descriptiveNumber");
+var utils_1 = require("../../core/utils");
 var modifier_1 = require("../modifier");
 var momentumModifier = /** @class */ (function (_super) {
     __extends(momentumModifier, _super);
     function momentumModifier(affector) {
         var _this = _super.call(this) || this;
-        _this.name = 'Inertia';
-        _this.numericComponents = new descriptiveNumberFactory_1.DescriptiveNumberFactory(affector).filter(function (x) { return x.name === 'D4'; }).get(1);
+        _this.numericComponents = [new descriptiveNumber_1.DescriptiveNumber(Math.ceil(utils_1.Utils.random() * 4))];
+        _this.name = 'Inertia ' + _this.numericComponents[0].getValue();
         _this.namePrefix = 'Inertia';
         _this.description = 'Can be only used when you fail chance roll with ' + _this.numericComponents[0].getValue() + ' ' + (_this.numericComponents[0].getValue() === 1 ? 'ability' : 'abilities') + ' in a row. '; //TODO better wording when 1
         _this.longDescription = '';

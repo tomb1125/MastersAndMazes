@@ -99,7 +99,7 @@ var Attack = /** @class */ (function (_super) {
             / this.chance;
     };
     Attack.prototype.getPower = function () {
-        var power = (this.damage.value *
+        var power = (this.damage.getValue() *
             this.chance
             / utils_1.Utils.getRangeCoeficient(this.range)
             / utils_1.Utils.getDPSCoefficient(this.chance)
@@ -129,16 +129,16 @@ var Attack = /** @class */ (function (_super) {
     };
     Attack.prototype.finalAdjustments = function () {
         if (this.type === ability_1.Ability.Type.Spell) { //TODO allow for disabling compensation
-            if (this.damage.description != null) {
-                this.damage.value += Math.ceil(utils_1.Utils.random() * 2.1);
-            }
+            //if(this.damage.description != null) {
+            this.damage.addBonus(1);
+            //}
             this.chance = Math.min(1, this.chance + 0.1);
             this.range = (this.range === 1 ? 0 : this.range) + 5;
         }
     };
     Attack.prototype.compensate = function () {
-        if (this.damage.value < 3.5 && this.damage.description == undefined) {
-            this.damage.value = 3.5;
+        if (this.damage.getValue() < 3.5 && this.damage.description == undefined) {
+            this.damage = new descriptiveNumber_1.DescriptiveNumber(3.5);
         }
         if (this.chance > 1) {
             this.chance = 1;
@@ -149,9 +149,15 @@ var Attack = /** @class */ (function (_super) {
             if (this.chance > 1) {
                 this.damage.addBonus(1); ///= new DescriptiveNumber(this.damage.getValue()+1); //TODO allow DescriptiveNumbers to get static bonuses
             }
+            console.log('compensate temp' + tempMana);
+            console.log('compensate mana' + this.manaCost);
             this.compensate();
         }
-        this.manaCost += tempMana;
+        else {
+            console.log('final compensate temp' + tempMana);
+            console.log('final compensate mana' + this.manaCost);
+            this.manaCost += tempMana;
+        }
     };
     Attack.prototype.getDPSBonus = function () {
         var _this = this;
@@ -177,7 +183,7 @@ var Attack = /** @class */ (function (_super) {
         return '' +
             '<b>Name: ' + this.generateName() +
             '</b><br><b>Chance</b>: ' + Math.ceil(this.chance * 100) + '%' +
-            '<br><b>Damage</b>: ' + (this.damage.description ? this.damage.getDescription() : utils_1.Utils.valueToDiceRoll(this.damage.value)) +
+            '<br><b>Damage</b>: ' + (this.damage.description ? this.damage.getDescription() : utils_1.Utils.valueToDiceRoll(this.damage.getValue())) +
             '<br><b>Mana Cost</b>: ' + this.manaCost +
             '<br><b>Range</b>: ' + this.range +
             '<br><b>Modifiers</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + ', ' + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
@@ -187,18 +193,10 @@ var Attack = /** @class */ (function (_super) {
     };
     Attack.prototype.generateName = function () {
         var attackPortion = this.type === activity_1.Activity.Type.Weapon ? [
-            'Slam',
-            'Stab',
-            'Strike',
-            'Slash',
-            'Pummel'
+            'Basic Attack'
         ].sort(function () { return 0.5 - utils_1.Utils.random(); })[0] : '';
         var spellPortion = this.type === activity_1.Activity.Type.Spell ? [
-            'Blast',
-            'Ray',
-            'Missile',
-            'Dart',
-            'Beam'
+            'Basic Bolt'
         ].sort(function () { return 0.5 - utils_1.Utils.random(); })[0] : '';
         var randomPortion = [
             this.chance > 0.75 ? 'Precise ' : '',

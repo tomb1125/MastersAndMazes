@@ -17,7 +17,6 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EffectFactory = void 0;
 var weightedList_1 = require("../core/weightedList");
-var dotEffect_1 = require("./effectRepository/dotEffect");
 var stunEffect_1 = require("./effectRepository/stunEffect");
 var instakillEffect_1 = require("./effectRepository/instakillEffect");
 var guidingEffect_1 = require("./effectRepository/guidingEffect");
@@ -31,7 +30,6 @@ var EffectFactory = /** @class */ (function (_super) {
             _this.items = new weightedList_1.WeightedList();
             _this.items.push(new stunEffect_1.stunEffect());
             _this.items.push(new instakillEffect_1.instakillEffect());
-            _this.items.push(new dotEffect_1.dotEffect());
             _this.items.push(new guidingEffect_1.guidingEffect());
             _this.items.push(new damageBonusEffect_1.damageBonusEffect());
         }

@@ -4,8 +4,6 @@ import { DescriptiveNumber } from "./descriptiveNumber";
 import { adjacentEnemiesDescriptiveNumber } from "./descriptiveNumberRepository/AdjacentEnemiesDescriptiveNumber";
 import { assassinDescriptiveNumber } from "./descriptiveNumberRepository/assassinDescriptiveNumber";
 import { currentHealthDescriptiveNumber } from "./descriptiveNumberRepository/currentHealthDescriptiveNumber";
-import { d10DescriptiveNumber } from "./descriptiveNumberRepository/d10DescriptiveNumber";
-import { d4DescriptiveNumber } from "./descriptiveNumberRepository/d4DescriptiveNumber";
 import { d4MinuteDescriptiveNumber } from "./descriptiveNumberRepository/duration/d4MinuteDescriptiveNumber";
 import { oneHourDescriptiveNumber } from "./descriptiveNumberRepository/duration/aneHourDescriptiveNumber";
 import { numberOfEnemiesDescriptiveNumber } from "./descriptiveNumberRepository/numberOfEnemiesDescriptiveNumber";
@@ -24,8 +22,6 @@ export class DescriptiveNumberFactory extends Factory {
             this.items.push(new adjacentEnemiesDescriptiveNumber());
             this.items.push(new assassinDescriptiveNumber());
             this.items.push(new currentHealthDescriptiveNumber());
-            this.items.push(new d4DescriptiveNumber());
-            this.items.push(new d10DescriptiveNumber());
             this.items.push(new damageTakenDescriptiveNumber());
             this.items.push(new numberOfEnemiesDescriptiveNumber());
             this.items.push(new numberOfTurnsDescriptiveNumber());

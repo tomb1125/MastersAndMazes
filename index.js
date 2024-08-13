@@ -44,13 +44,13 @@ global.generateAbilities = function (val) {
     }
     var att1 = new attack_1.Attack();
     att1.generate();
-    var att2 = new attack_1.Attack();
-    att2.generate();
-    var att3 = new attack_1.Attack();
-    att3.generate();
+    //let att2 = new Attack();
+    //att2.generate()
+    //let att3 = new Attack();
+    //att3.generate()
     var utl = new utilityFactory_1.UtilityFactory(new ability_1.Ability()).get(1)[0];
     outputDiv.innerHTML = '<br>' +
-        att1.getDescription() + '<br><br>' +
-        att2.getDescription() + '<br><br>' +
-        att3.getDescription() + '<br><br>' + utl.getDescription();
+        att1.getDescription() + '<br><br>' + '';
+    //att2.getDescription() +'<br><br>'+
+    //att3.getDescription() +'<br><br>'+utl.getDescription()
 };
