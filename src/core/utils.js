@@ -72,6 +72,17 @@ var Utils = /** @class */ (function () {
     Utils.isOneDie = function (num) {
         return Math.round(num * 2) % 2 === 1;
     };
+    Utils.getNumberFromValueMap = function (orderedValueMap, factory) {
+        var roll = Utils.random();
+        var items = [];
+        orderedValueMap.forEach(function (value, key) {
+            if (roll <= key) {
+                return;
+            }
+            items = factory.get(value);
+        });
+        return items;
+    };
     Utils.DPS = 5;
     Utils.POWER_PER_LEVEL = 0.2;
     Utils.BASIC_ATTACK_DPS = 2.5;

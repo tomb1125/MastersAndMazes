@@ -16,12 +16,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.bloodiedModifier = void 0;
+var ability_1 = require("../../core/ability");
 var modifier_1 = require("../modifier");
 var bloodiedModifier = /** @class */ (function (_super) {
     __extends(bloodiedModifier, _super);
     function bloodiedModifier() {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 1.5; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
         //this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Weapon ? 1000 : 1}
         _this.weight = function () { return 1; };
         _this.name = 'Bloody';

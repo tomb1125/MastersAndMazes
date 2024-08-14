@@ -7,17 +7,26 @@ import { Activity } from "./activity";
 import { AffectsWeight } from "./affectsWeight";
 import { HasWeigth } from "./hasWeigth";
 import { CanAffectModifier } from "./canAffectModifier";
+import { ModifierFactory } from "../modifiers/modifierFactory";
+import { Utils } from "./utils";
 
 export class Utility extends Activity implements CanAffectModifier, HasWeigth {
     weight = (x?: AffectsWeight) => {return 1};
     objects: AbilityObject[];
     duration: DescriptiveNumber;
 
+    static MODIFIER_CHANCE: Map<number, number> = new Map([
+      [0.1, 0],
+      [0.7, 1],
+      [1, 2],
+    ]);
+  
     constructor(otherName?: string) {
         super(otherName);
         this.cooldown = Ability.Cooldown.Daily;
         this.objects = [] as AbilityObject[];
-        this.modifiers = [] as Modifier[];
+        //this.modifiers = [] as Modifier[];
+        this.modifiers = Utils.getNumberFromValueMap(Utility.MODIFIER_CHANCE, new ModifierFactory(this)) as Modifier[];
         this.type = Ability.Type.Utility;
     }
 

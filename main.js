@@ -46,15 +46,16 @@ global.generateAbilities = function (val) {
     }
     var att1 = new attack_1.Attack();
     att1.generate();
-    //let att2 = new Attack();
-    //att2.generate()
-    //let att3 = new Attack();
-    //att3.generate()
+    var att2 = new attack_1.Attack();
+    att2.generate();
+    var att3 = new attack_1.Attack();
+    att3.generate();
     var utl = new utilityFactory_1.UtilityFactory(new ability_1.Ability()).get(1)[0];
     outputDiv.innerHTML = '<br>' +
-        att1.getDescription() + '<br><br>' + '';
-    //att2.getDescription() +'<br><br>'+
-    //att3.getDescription() +'<br><br>'+utl.getDescription()
+        att1.getDescription() + '<br><br>' +
+        att2.getDescription() + '<br><br>' +
+        att3.getDescription() + '<br><br>' +
+        utl.getDescription();
 };
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
@@ -469,10 +470,10 @@ var abilityObject_1 = require("../../abilityObject");
 var symetricTelepathyAbilityObject = /** @class */ (function (_super) {
     __extends(symetricTelepathyAbilityObject, _super);
     function symetricTelepathyAbilityObject() {
-        var _this = _super.call(this, 'Symetric Telepathy') || this;
+        var _this = _super.call(this, 'Symetric Empathy') || this;
         _this.description = 'For the duration you can read each other minds as long as you\'re close to each other. ';
         _this.rarity = 1.2;
-        _this.prefix = 'Telepatic';
+        _this.prefix = 'Emphatic';
         _this.isCommunication = true;
         return _this;
     }
@@ -878,11 +879,10 @@ exports.Ability = Ability;
 (function (Ability) {
     var Type;
     (function (Type) {
-        Type[Type["Weapon"] = 0] = "Weapon";
-        Type[Type["Spell"] = 1] = "Spell";
-        Type[Type["Technique"] = 2] = "Technique";
-        Type[Type["Passive"] = 3] = "Passive";
-        Type[Type["Utility"] = 4] = "Utility";
+        Type[Type["Attack"] = 0] = "Attack";
+        Type[Type["Technique"] = 1] = "Technique";
+        Type[Type["Passive"] = 2] = "Passive";
+        Type[Type["Utility"] = 3] = "Utility";
     })(Type = Ability.Type || (Ability.Type = {}));
     var Source;
     (function (Source) {
@@ -1007,10 +1007,10 @@ var Attack = /** @class */ (function (_super) {
         if (this.type === undefined) {
             var roll = utils_1.Utils.random();
             if (roll > 0.5) {
-                this.type = activity_1.Activity.Type.Weapon;
+                this.subtype = Attack.Subtype.Weapon;
             }
             else {
-                this.type = activity_1.Activity.Type.Spell;
+                this.subtype = Attack.Subtype.Spell;
             }
         }
     };
@@ -1021,7 +1021,7 @@ var Attack = /** @class */ (function (_super) {
     };
     Attack.prototype.initRange = function () {
         if (!this.range) {
-            if (this.type === ability_1.Ability.Type.Weapon) {
+            if (this.subtype === Attack.Subtype.Weapon) {
                 this.range = 1;
             }
             else {
@@ -1086,7 +1086,7 @@ var Attack = /** @class */ (function (_super) {
         }
     };
     Attack.prototype.finalAdjustments = function () {
-        if (this.type === ability_1.Ability.Type.Spell) { //TODO allow for disabling compensation
+        if (this.subtype === Attack.Subtype.Spell) { //TODO allow for disabling compensation
             //if(this.damage.description != null) {
             this.damage.addBonus(1);
             //}
@@ -1107,13 +1107,9 @@ var Attack = /** @class */ (function (_super) {
             if (this.chance > 1) {
                 this.damage.addBonus(1); ///= new DescriptiveNumber(this.damage.getValue()+1); //TODO allow DescriptiveNumbers to get static bonuses
             }
-            console.log('compensate temp' + tempMana);
-            console.log('compensate mana' + this.manaCost);
             this.compensate();
         }
         else {
-            console.log('final compensate temp' + tempMana);
-            console.log('final compensate mana' + this.manaCost);
             this.manaCost += tempMana;
         }
     };
@@ -1145,15 +1141,15 @@ var Attack = /** @class */ (function (_super) {
             '<br><b>Mana Cost</b>: ' + this.manaCost +
             '<br><b>Range</b>: ' + this.range +
             '<br><b>Modifiers</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + ', ' + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
-            '<br><b>Type</b>: ' + ability_1.Ability.Type[this.type] +
             '<br><b>Description</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
+            '<br><b>Type</b>: ' + Attack.Subtype[this.subtype] +
             '<br><b>Cooldown</b>: ' + ability_1.Ability.Cooldown[this.cooldown];
     };
     Attack.prototype.generateName = function () {
-        var attackPortion = this.type === activity_1.Activity.Type.Weapon ? [
+        var attackPortion = this.subtype === Attack.Subtype.Weapon ? [
             'Basic Attack'
         ].sort(function () { return 0.5 - utils_1.Utils.random(); })[0] : '';
-        var spellPortion = this.type === activity_1.Activity.Type.Spell ? [
+        var spellPortion = this.subtype === Attack.Subtype.Spell ? [
             'Basic Bolt'
         ].sort(function () { return 0.5 - utils_1.Utils.random(); })[0] : '';
         var randomPortion = [
@@ -1191,6 +1187,13 @@ var Attack = /** @class */ (function (_super) {
     return Attack;
 }(activity_1.Activity));
 exports.Attack = Attack;
+(function (Attack) {
+    var Subtype;
+    (function (Subtype) {
+        Subtype[Subtype["Weapon"] = 0] = "Weapon";
+        Subtype[Subtype["Spell"] = 1] = "Spell";
+    })(Subtype = Attack.Subtype || (Attack.Subtype = {}));
+})(Attack || (exports.Attack = Attack = {}));
 
 },{"../components/descriptiveNumber":14,"../components/descriptiveNumberFactory":15,"./../modifiers/modifierFactory":43,"./ability":24,"./activity":25,"./characterContext":27,"./utils":33}],27:[function(require,module,exports){
 "use strict";
@@ -1309,6 +1312,8 @@ exports.Utility = void 0;
 var repeatableModifier_1 = require("../modifiers/modifiersRepository/repeatableModifier");
 var ability_1 = require("./ability");
 var activity_1 = require("./activity");
+var modifierFactory_1 = require("../modifiers/modifierFactory");
+var utils_1 = require("./utils");
 var Utility = /** @class */ (function (_super) {
     __extends(Utility, _super);
     function Utility(otherName) {
@@ -1316,7 +1321,8 @@ var Utility = /** @class */ (function (_super) {
         _this.weight = function (x) { return 1; };
         _this.cooldown = ability_1.Ability.Cooldown.Daily;
         _this.objects = [];
-        _this.modifiers = [];
+        //this.modifiers = [] as Modifier[];
+        _this.modifiers = utils_1.Utils.getNumberFromValueMap(Utility.MODIFIER_CHANCE, new modifierFactory_1.ModifierFactory(_this));
         _this.type = ability_1.Ability.Type.Utility;
         return _this;
     }
@@ -1341,11 +1347,16 @@ var Utility = /** @class */ (function (_super) {
             this.modifiers.push(repeat);
         }
     };
+    Utility.MODIFIER_CHANCE = new Map([
+        [0.1, 0],
+        [0.7, 1],
+        [1, 2],
+    ]);
     return Utility;
 }(activity_1.Activity));
 exports.Utility = Utility;
 
-},{"../modifiers/modifiersRepository/repeatableModifier":55,"./ability":24,"./activity":25}],31:[function(require,module,exports){
+},{"../modifiers/modifierFactory":43,"../modifiers/modifiersRepository/repeatableModifier":55,"./ability":24,"./activity":25,"./utils":33}],31:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1507,6 +1518,17 @@ var Utils = /** @class */ (function () {
     };
     Utils.isOneDie = function (num) {
         return Math.round(num * 2) % 2 === 1;
+    };
+    Utils.getNumberFromValueMap = function (orderedValueMap, factory) {
+        var roll = Utils.random();
+        var items = [];
+        orderedValueMap.forEach(function (value, key) {
+            if (roll <= key) {
+                return;
+            }
+            items = factory.get(value);
+        });
+        return items;
     };
     Utils.DPS = 5;
     Utils.POWER_PER_LEVEL = 0.2;
@@ -1851,14 +1873,13 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.stunEffect = void 0;
 var ability_1 = require("../../core/ability");
-var characterContext_1 = require("../../core/characterContext");
 var utils_1 = require("../../core/utils");
 var effect_1 = require("../effect");
 var stunEffect = /** @class */ (function (_super) {
     __extends(stunEffect, _super);
     function stunEffect() {
         var _this = _super.call(this) || this;
-        _this.powerBonus = function () { return -1.5 * characterContext_1.CharacterContext.getDPS(); };
+        _this.powerBonus = function () { return -1.5 * utils_1.Utils.getDPS(1); };
         _this.name = 'Stun';
         _this.namePrefix = 'Stunning';
         _this.description = 'Stunned - character cannot take actions. Stunned ends at the end of a turn.';
@@ -1870,7 +1891,7 @@ var stunEffect = /** @class */ (function (_super) {
 }(effect_1.Effect));
 exports.stunEffect = stunEffect;
 
-},{"../../core/ability":24,"../../core/characterContext":27,"../../core/utils":33,"../effect":35}],42:[function(require,module,exports){
+},{"../../core/ability":24,"../../core/utils":33,"../effect":35}],42:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Modifier = void 0;
@@ -1992,6 +2013,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.applyEffectModifier = void 0;
+var ability_1 = require("../../core/ability");
 var utils_1 = require("../../core/utils");
 var effect_1 = require("../effect");
 var effectFactory_1 = require("../effectFactory");
@@ -2002,7 +2024,8 @@ var applyEffectModifier = /** @class */ (function (_super) {
         var _this = _super.call(this) || this;
         _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
-        _this.weight = function () { return 4; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 4 : 0; };
+        //this.weight = () => {return 4};
         _this.effect = new effectFactory_1.EffectFactory(aff).filter(function (eff) { return eff.subtype === effect_1.Effect.Subtype.Debuff; }).get(1)[0];
         _this.description = 'When you hit, apply effect: ' + _this.effect.description;
         _this.namePrefix = _this.effect.namePrefix;
@@ -2015,7 +2038,7 @@ var applyEffectModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.applyEffectModifier = applyEffectModifier;
 
-},{"../../core/utils":33,"../effect":35,"../effectFactory":36,"../modifier":42}],45:[function(require,module,exports){
+},{"../../core/ability":24,"../../core/utils":33,"../effect":35,"../effectFactory":36,"../modifier":42}],45:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2034,12 +2057,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.bloodiedModifier = void 0;
+var ability_1 = require("../../core/ability");
 var modifier_1 = require("../modifier");
 var bloodiedModifier = /** @class */ (function (_super) {
     __extends(bloodiedModifier, _super);
     function bloodiedModifier() {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 1.5; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
         //this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Weapon ? 1000 : 1}
         _this.weight = function () { return 1; };
         _this.name = 'Bloody';
@@ -2053,7 +2078,7 @@ var bloodiedModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.bloodiedModifier = bloodiedModifier;
 
-},{"../modifier":42}],46:[function(require,module,exports){
+},{"../../core/ability":24,"../modifier":42}],46:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2072,12 +2097,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.cleaveModifier = void 0;
+var ability_1 = require("../../core/ability");
 var modifier_1 = require("../modifier");
 var cleaveModifier = /** @class */ (function (_super) {
     __extends(cleaveModifier, _super);
     function cleaveModifier() {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 0.5; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
         _this.name = 'Cleave';
         _this.namePrefix = 'Cleaving'; //TODO cleave could scale
         _this.description = 'After this action, repeat this action 1 time, without paying mana cost. With this repeated attack you must target an enemy adjacent to you or last target.';
@@ -2089,7 +2116,7 @@ var cleaveModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.cleaveModifier = cleaveModifier;
 
-},{"../modifier":42}],47:[function(require,module,exports){
+},{"../../core/ability":24,"../modifier":42}],47:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2108,12 +2135,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.exhaustingModifer = void 0;
+var ability_1 = require("../../core/ability");
 var modifier_1 = require("../modifier");
 var exhaustingModifer = /** @class */ (function (_super) {
     __extends(exhaustingModifer, _super);
     function exhaustingModifer() {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 2.5; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Utility ? 0.5 : 1; };
         _this.name = 'Exhausting';
         _this.namePrefix = 'Exhausting';
         _this.description = 'When you hit or miss with this action, reduce your health to 1.';
@@ -2124,7 +2153,7 @@ var exhaustingModifer = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.exhaustingModifer = exhaustingModifer;
 
-},{"../modifier":42}],48:[function(require,module,exports){
+},{"../../core/ability":24,"../modifier":42}],48:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2143,6 +2172,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fastModifier = void 0;
+var ability_1 = require("../../core/ability");
 var utils_1 = require("../../core/utils");
 var modifier_1 = require("../modifier");
 var fastModifier = /** @class */ (function (_super) {
@@ -2150,6 +2180,7 @@ var fastModifier = /** @class */ (function (_super) {
     function fastModifier() {
         var _this = _super.call(this) || this;
         _this.powerBonus = function () { return -utils_1.Utils.DPS; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
         _this.name = 'Fast';
         _this.namePrefix = 'Fast';
         _this.description = 'You can use Swift Action to use this ability.';
@@ -2161,7 +2192,7 @@ var fastModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.fastModifier = fastModifier;
 
-},{"../../core/utils":33,"../modifier":42}],49:[function(require,module,exports){
+},{"../../core/ability":24,"../../core/utils":33,"../modifier":42}],49:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2180,6 +2211,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.gainEffectModifier = void 0;
+var ability_1 = require("../../core/ability");
 var effect_1 = require("../effect");
 var effectFactory_1 = require("../effectFactory");
 var modifier_1 = require("../modifier");
@@ -2188,7 +2220,7 @@ var gainEffectModifier = /** @class */ (function (_super) {
     function gainEffectModifier(aff) {
         var _this = _super.call(this) || this;
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
-        _this.weight = function () { return 4; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 4 : 0; };
         _this.effect = new effectFactory_1.EffectFactory(aff).filter(function (eff) { return eff.subtype === effect_1.Effect.Subtype.Buff; }).get(1)[0];
         _this.description = 'When you hit, gain an effect: ' + _this.effect.description;
         _this.namePrefix = _this.effect.namePrefix;
@@ -2201,7 +2233,7 @@ var gainEffectModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.gainEffectModifier = gainEffectModifier;
 
-},{"../effect":35,"../effectFactory":36,"../modifier":42}],50:[function(require,module,exports){
+},{"../../core/ability":24,"../effect":35,"../effectFactory":36,"../modifier":42}],50:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2220,6 +2252,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.laylineModifier = void 0;
+var ability_1 = require("../../core/ability");
 var modifier_1 = require("../modifier");
 var laylineModifier = /** @class */ (function (_super) {
     __extends(laylineModifier, _super);
@@ -2227,9 +2260,10 @@ var laylineModifier = /** @class */ (function (_super) {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function (x) { return x.range ? Math.max(1.1, 2.4 - x.range / 10) : 1; };
         1.7;
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
         _this.name = 'Layline';
         _this.namePrefix = 'Layline';
-        _this.description = 'Can be used only while adjacent to place of power.';
+        _this.description = 'Can be used only while adjacent to place of power (usually you can detect 2-3 places of power each combat).';
         _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
@@ -2238,7 +2272,7 @@ var laylineModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.laylineModifier = laylineModifier;
 
-},{"../modifier":42}],51:[function(require,module,exports){
+},{"../../core/ability":24,"../modifier":42}],51:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2257,12 +2291,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.lifestealModifier = void 0;
+var ability_1 = require("../../core/ability");
 var modifier_1 = require("../modifier");
 var lifestealModifier = /** @class */ (function (_super) {
     __extends(lifestealModifier, _super);
     function lifestealModifier() {
         var _this = _super.call(this) || this;
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
         _this.name = 'Lifesteal';
         _this.namePrefix = 'Leeching';
         _this.description = 'When you hit, heal yourself equal to damage taken by enemy.';
@@ -2274,7 +2310,7 @@ var lifestealModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.lifestealModifier = lifestealModifier;
 
-},{"../modifier":42}],52:[function(require,module,exports){
+},{"../../core/ability":24,"../modifier":42}],52:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2294,6 +2330,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.momentumModifier = void 0;
 var descriptiveNumber_1 = require("../../components/descriptiveNumber");
+var ability_1 = require("../../core/ability");
 var utils_1 = require("../../core/utils");
 var modifier_1 = require("../modifier");
 var momentumModifier = /** @class */ (function (_super) {
@@ -2301,6 +2338,7 @@ var momentumModifier = /** @class */ (function (_super) {
     function momentumModifier(affector) {
         var _this = _super.call(this) || this;
         _this.numericComponents = [new descriptiveNumber_1.DescriptiveNumber(Math.ceil(utils_1.Utils.random() * 4))];
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
         _this.name = 'Inertia ' + _this.numericComponents[0].getValue();
         _this.namePrefix = 'Inertia';
         _this.description = 'Can be only used when you fail chance roll with ' + _this.numericComponents[0].getValue() + ' ' + (_this.numericComponents[0].getValue() === 1 ? 'ability' : 'abilities') + ' in a row. '; //TODO better wording when 1
@@ -2313,7 +2351,7 @@ var momentumModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.momentumModifier = momentumModifier;
 
-},{"../../components/descriptiveNumber":14,"../../core/utils":33,"../modifier":42}],53:[function(require,module,exports){
+},{"../../components/descriptiveNumber":14,"../../core/ability":24,"../../core/utils":33,"../modifier":42}],53:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2333,6 +2371,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.multipleModifier = void 0;
 var descriptiveNumber_1 = require("../../components/descriptiveNumber");
+var ability_1 = require("../../core/ability");
 var weightedList_1 = require("../../core/weightedList");
 var modifier_1 = require("../modifier");
 var multipleModifier = /** @class */ (function (_super) {
@@ -2354,6 +2393,7 @@ var multipleModifier = /** @class */ (function (_super) {
         five.name = 'Quintiple';
         multiDistribution.items = [two, three, four, five];
         _this.numericComponents = multiDistribution.get(1);
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
         _this.powerMultiplier = function () { return 0.8 / _this.numericComponents[0].getValue(); };
         _this.name = 'Multi ' + _this.numericComponents[0].getValue();
         _this.namePrefix = _this.numericComponents[0].name;
@@ -2365,7 +2405,7 @@ var multipleModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.multipleModifier = multipleModifier;
 
-},{"../../components/descriptiveNumber":14,"../../core/weightedList":34,"../modifier":42}],54:[function(require,module,exports){
+},{"../../components/descriptiveNumber":14,"../../core/ability":24,"../../core/weightedList":34,"../modifier":42}],54:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2486,6 +2526,7 @@ var selfHealModifier = /** @class */ (function (_super) {
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         _this.numericComponents = [new descriptiveNumberFactory_1.DescriptiveNumberFactory(affector).filter(function (x) { return x.type === descriptiveNumber_1.DescriptiveNumber.Type.Small; }).get(1)[0]];
         _this.name = 'Self Heal ' + _this.numericComponents[0].getValue();
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
         _this.namePrefix = 'Healing';
         _this.description = 'When you hit, heal yourself equal to: ' + _this.numericComponents[0].getDescription() + '.';
         _this.powerBonus = function () { return -_this.numericComponents[0].getValue(); };
@@ -2516,12 +2557,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.signatureModifier = void 0;
+var ability_1 = require("../../core/ability");
 var modifier_1 = require("../modifier");
 var signatureModifier = /** @class */ (function (_super) {
     __extends(signatureModifier, _super);
     function signatureModifier() {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 1.2; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
         _this.name = 'Signature';
         _this.namePrefix = 'Signature';
         _this.description = 'This is a Signature Ability - First Signature Ability you use each combat gains 1 Boon for its chance and +2 damage, before rolling.';
@@ -2533,7 +2576,7 @@ var signatureModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.signatureModifier = signatureModifier;
 
-},{"../modifier":42}],58:[function(require,module,exports){
+},{"../../core/ability":24,"../modifier":42}],58:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2552,12 +2595,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ultimateModifier = void 0;
+var ability_1 = require("../../core/ability");
 var modifier_1 = require("../modifier");
 var ultimateModifier = /** @class */ (function (_super) {
     __extends(ultimateModifier, _super);
     function ultimateModifier() {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 2.5; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
         _this.name = 'Ultimate';
         _this.namePrefix = 'Ultimate'; //numeric component
         _this.description = 'Can be used only on turn 8 or later.';
@@ -2569,7 +2614,7 @@ var ultimateModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.ultimateModifier = ultimateModifier;
 
-},{"../modifier":42}],59:[function(require,module,exports){
+},{"../../core/ability":24,"../modifier":42}],59:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2588,12 +2633,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.vengefulModifier = void 0;
+var ability_1 = require("../../core/ability");
 var modifier_1 = require("../modifier");
 var vengefulModifier = /** @class */ (function (_super) {
     __extends(vengefulModifier, _super);
     function vengefulModifier() {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function (x) { return 1.3; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
         _this.name = 'Vengeance';
         _this.namePrefix = 'Vengeful';
         _this.description = 'Can be only used against enemy which attacked, damaged or affected you last turn. ';
@@ -2605,4 +2652,4 @@ var vengefulModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.vengefulModifier = vengefulModifier;
 
-},{"../modifier":42}]},{},[1]);
+},{"../../core/ability":24,"../modifier":42}]},{},[1]);

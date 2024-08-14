@@ -1,3 +1,4 @@
+import { Ability } from "../../core/ability";
 import { AffectsWeight } from "../../core/affectsWeight";
 import { CanAffectModifier } from "../../core/canAffectModifier";
 import { Effect } from "../effect";
@@ -9,7 +10,7 @@ export class gainEffectModifier extends Modifier {
     constructor(aff: AffectsWeight) {
         super();
         this.modifierType =Modifier.Type.Improvement;
-        this.weight =() => {return 4};
+        this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Attack ? 4 : 0}
         this.effect = new EffectFactory(aff).filter((eff: Effect) => eff.subtype === Effect.Subtype.Buff).get(1)[0] as Effect;
         this.description = 'When you hit, gain an effect: '+this.effect.description;
         this.namePrefix = this.effect.namePrefix;

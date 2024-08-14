@@ -16,12 +16,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ultimateModifier = void 0;
+var ability_1 = require("../../core/ability");
 var modifier_1 = require("../modifier");
 var ultimateModifier = /** @class */ (function (_super) {
     __extends(ultimateModifier, _super);
     function ultimateModifier() {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 2.5; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
         _this.name = 'Ultimate';
         _this.namePrefix = 'Ultimate'; //numeric component
         _this.description = 'Can be used only on turn 8 or later.';

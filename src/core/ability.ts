@@ -22,8 +22,7 @@ export class Ability implements AffectsWeight {
   {
       export enum Type
       {
-        Weapon,
-        Spell,
+        Attack,
         Technique, //?
         Passive, //?
         Utility

@@ -20,6 +20,7 @@ export class Attack extends Activity implements CanAffectModifier {
   damage: DescriptiveNumber;
   attackTemplate: String;
   target: DescriptiveNumber;
+  subtype: Attack.Subtype;
 
  
   constructor(otherName?: string) {
@@ -48,9 +49,9 @@ export class Attack extends Activity implements CanAffectModifier {
     if(this.type === undefined) {
       const roll = Utils.random();
       if(roll > 0.5) {      
-        this.type = Activity.Type.Weapon;
+        this.subtype = Attack.Subtype.Weapon;
       } else {
-        this.type = Activity.Type.Spell;
+        this.subtype = Attack.Subtype.Spell;
       }
     }
   }
@@ -63,7 +64,7 @@ export class Attack extends Activity implements CanAffectModifier {
 
   private initRange() {
     if(!this.range) {
-      if(this.type === Ability.Type.Weapon) {
+      if(this.subtype === Attack.Subtype.Weapon) {
         this.range = 1;
       } else {
         this.range = (Math.ceil(Utils.random() * 3) * 5)
@@ -142,7 +143,7 @@ export class Attack extends Activity implements CanAffectModifier {
   }
 
   private finalAdjustments() {
-    if(this.type === Ability.Type.Spell) { //TODO allow for disabling compensation
+    if(this.subtype === Attack.Subtype.Spell) { //TODO allow for disabling compensation
       //if(this.damage.description != null) {
         this.damage.addBonus(1);
       //}
@@ -211,18 +212,18 @@ export class Attack extends Activity implements CanAffectModifier {
       '<br><b>Mana Cost</b>: ' + this.manaCost +
       '<br><b>Range</b>: ' + this.range +
       '<br><b>Modifiers</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + ', ' + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
-      '<br><b>Type</b>: ' + Ability.Type[this.type] + 
       '<br><b>Description</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
+      '<br><b>Type</b>: ' + Attack.Subtype[this.subtype] + 
       '<br><b>Cooldown</b>: ' + Ability.Cooldown[this.cooldown];
 
   }
 
   private generateName(): string { 
-    const attackPortion: string = this.type === Activity.Type.Weapon ? [
+    const attackPortion: string = this.subtype === Attack.Subtype.Weapon ? [
       'Basic Attack'
     ].sort(() => 0.5 - Utils.random())[0] : '';
 
-    const spellPortion: string = this.type === Activity.Type.Spell ? [
+    const spellPortion: string = this.subtype === Attack.Subtype.Spell ? [
       'Basic Bolt'
     ].sort(() => 0.5 - Utils.random())[0] : '';
 
@@ -252,5 +253,14 @@ export class Attack extends Activity implements CanAffectModifier {
      attackPortion +
      spellPortion;
 
+  }
+
+}
+
+
+export namespace Attack {
+  export enum Subtype {
+    Weapon,
+    Spell
   }
 }

@@ -16,12 +16,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.vengefulModifier = void 0;
+var ability_1 = require("../../core/ability");
 var modifier_1 = require("../modifier");
 var vengefulModifier = /** @class */ (function (_super) {
     __extends(vengefulModifier, _super);
     function vengefulModifier() {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function (x) { return 1.3; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
         _this.name = 'Vengeance';
         _this.namePrefix = 'Vengeful';
         _this.description = 'Can be only used against enemy which attacked, damaged or affected you last turn. ';

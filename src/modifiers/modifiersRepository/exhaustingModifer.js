@@ -16,12 +16,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.exhaustingModifer = void 0;
+var ability_1 = require("../../core/ability");
 var modifier_1 = require("../modifier");
 var exhaustingModifer = /** @class */ (function (_super) {
     __extends(exhaustingModifer, _super);
     function exhaustingModifer() {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 2.5; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Utility ? 0.5 : 1; };
         _this.name = 'Exhausting';
         _this.namePrefix = 'Exhausting';
         _this.description = 'When you hit or miss with this action, reduce your health to 1.';

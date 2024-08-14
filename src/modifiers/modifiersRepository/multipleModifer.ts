@@ -1,4 +1,6 @@
 import { DescriptiveNumber } from "../../components/descriptiveNumber";
+import { Ability } from "../../core/ability";
+import { AffectsWeight } from "../../core/affectsWeight";
 import { WeightedList } from "../../core/weightedList";
 import { Modifier } from "../modifier";
 
@@ -23,6 +25,7 @@ export class multipleModifier extends Modifier {
         multiDistribution.items = [two, three, four, five];
 
         this.numericComponents = multiDistribution.get(1) as DescriptiveNumber[];
+        this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Attack ? 1 : 0}
         this.powerMultiplier = () => {return 0.8 / this.numericComponents[0].getValue()};
         this.name = 'Multi '+this.numericComponents[0].getValue();
         this.namePrefix = this.numericComponents[0].name;

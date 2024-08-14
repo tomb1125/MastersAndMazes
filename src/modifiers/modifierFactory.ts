@@ -17,7 +17,6 @@ import { applyEffectModifier } from "./modifiersRepository/applyEffectModifier";
 import { gainEffectModifier } from "./modifiersRepository/gainEffectModifier";
 import { lifestealModifier } from "./modifiersRepository/lifestealModifier";
 import { AffectsWeight } from "../core/affectsWeight";
-import { scalingDotEffect } from "./effectRepository/scalingDotEffect";
 import { Factory } from "../core/factory";
 
 
@@ -44,7 +43,6 @@ export class ModifierFactory extends Factory {
             this.items.push(new vengefulModifier());
             this.items.push(new ultimateModifier());
             //this.items.push(new repeatableModifier()); //this modifier is excluded for now purposfully. It behaves differently for utilities and for attacks.
-            this.items.push(new scalingDotEffect());
         } else {
             this.items = list;
         }

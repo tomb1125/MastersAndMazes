@@ -16,12 +16,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.signatureModifier = void 0;
+var ability_1 = require("../../core/ability");
 var modifier_1 = require("../modifier");
 var signatureModifier = /** @class */ (function (_super) {
     __extends(signatureModifier, _super);
     function signatureModifier() {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 1.2; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
         _this.name = 'Signature';
         _this.namePrefix = 'Signature';
         _this.description = 'This is a Signature Ability - First Signature Ability you use each combat gains 1 Boon for its chance and +2 damage, before rolling.';

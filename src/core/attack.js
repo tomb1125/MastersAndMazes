@@ -49,10 +49,10 @@ var Attack = /** @class */ (function (_super) {
         if (this.type === undefined) {
             var roll = utils_1.Utils.random();
             if (roll > 0.5) {
-                this.type = activity_1.Activity.Type.Weapon;
+                this.subtype = Attack.Subtype.Weapon;
             }
             else {
-                this.type = activity_1.Activity.Type.Spell;
+                this.subtype = Attack.Subtype.Spell;
             }
         }
     };
@@ -63,7 +63,7 @@ var Attack = /** @class */ (function (_super) {
     };
     Attack.prototype.initRange = function () {
         if (!this.range) {
-            if (this.type === ability_1.Ability.Type.Weapon) {
+            if (this.subtype === Attack.Subtype.Weapon) {
                 this.range = 1;
             }
             else {
@@ -128,7 +128,7 @@ var Attack = /** @class */ (function (_super) {
         }
     };
     Attack.prototype.finalAdjustments = function () {
-        if (this.type === ability_1.Ability.Type.Spell) { //TODO allow for disabling compensation
+        if (this.subtype === Attack.Subtype.Spell) { //TODO allow for disabling compensation
             //if(this.damage.description != null) {
             this.damage.addBonus(1);
             //}
@@ -149,13 +149,9 @@ var Attack = /** @class */ (function (_super) {
             if (this.chance > 1) {
                 this.damage.addBonus(1); ///= new DescriptiveNumber(this.damage.getValue()+1); //TODO allow DescriptiveNumbers to get static bonuses
             }
-            console.log('compensate temp' + tempMana);
-            console.log('compensate mana' + this.manaCost);
             this.compensate();
         }
         else {
-            console.log('final compensate temp' + tempMana);
-            console.log('final compensate mana' + this.manaCost);
             this.manaCost += tempMana;
         }
     };
@@ -187,15 +183,15 @@ var Attack = /** @class */ (function (_super) {
             '<br><b>Mana Cost</b>: ' + this.manaCost +
             '<br><b>Range</b>: ' + this.range +
             '<br><b>Modifiers</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + ', ' + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
-            '<br><b>Type</b>: ' + ability_1.Ability.Type[this.type] +
             '<br><b>Description</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
+            '<br><b>Type</b>: ' + Attack.Subtype[this.subtype] +
             '<br><b>Cooldown</b>: ' + ability_1.Ability.Cooldown[this.cooldown];
     };
     Attack.prototype.generateName = function () {
-        var attackPortion = this.type === activity_1.Activity.Type.Weapon ? [
+        var attackPortion = this.subtype === Attack.Subtype.Weapon ? [
             'Basic Attack'
         ].sort(function () { return 0.5 - utils_1.Utils.random(); })[0] : '';
-        var spellPortion = this.type === activity_1.Activity.Type.Spell ? [
+        var spellPortion = this.subtype === Attack.Subtype.Spell ? [
             'Basic Bolt'
         ].sort(function () { return 0.5 - utils_1.Utils.random(); })[0] : '';
         var randomPortion = [
@@ -233,3 +229,10 @@ var Attack = /** @class */ (function (_super) {
     return Attack;
 }(activity_1.Activity));
 exports.Attack = Attack;
+(function (Attack) {
+    var Subtype;
+    (function (Subtype) {
+        Subtype[Subtype["Weapon"] = 0] = "Weapon";
+        Subtype[Subtype["Spell"] = 1] = "Spell";
+    })(Subtype = Attack.Subtype || (Attack.Subtype = {}));
+})(Attack || (exports.Attack = Attack = {}));

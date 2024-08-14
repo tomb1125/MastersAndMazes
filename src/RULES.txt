@@ -69,3 +69,25 @@ Whenever you gain a level:
  - gain 1 maximum Health
  - gain 1 maximum Mana
 
+EQUIPMENT
+1H Weapons
+Mace - if you roll 10 or less on any attack roll, stun the enemy.
+Sword - whenever you miss an attack with a sword, your next attack with a sword gains 1 Boon.
+Axe - whenever you miss with an attack with an axe, your next attack with an axe deals +2 damage.
+Dagger - 
+
+1H Implements
+Tome -
+Orb - 
+Wand -
+Trophy -
+
+2H Weapons
+
+Shields
+ - Small Shield - 
+ - Medium Shield -
+ - Heavy Shield -  
+Armor (requires proficiency)
+
+Consumables (used as a swift action)

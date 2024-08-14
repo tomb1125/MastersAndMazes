@@ -15,11 +15,10 @@ exports.Ability = Ability;
 (function (Ability) {
     var Type;
     (function (Type) {
-        Type[Type["Weapon"] = 0] = "Weapon";
-        Type[Type["Spell"] = 1] = "Spell";
-        Type[Type["Technique"] = 2] = "Technique";
-        Type[Type["Passive"] = 3] = "Passive";
-        Type[Type["Utility"] = 4] = "Utility";
+        Type[Type["Attack"] = 0] = "Attack";
+        Type[Type["Technique"] = 1] = "Technique";
+        Type[Type["Passive"] = 2] = "Passive";
+        Type[Type["Utility"] = 3] = "Utility";
     })(Type = Ability.Type || (Ability.Type = {}));
     var Source;
     (function (Source) {

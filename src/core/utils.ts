@@ -1,3 +1,6 @@
+import { ModifierFactory } from "../modifiers/modifierFactory";
+import { Factory } from "./factory";
+import { HasWeigth } from "./hasWeigth";
 import { RandomNumberGenerator } from "./randomNumberGenerator";
 
 export class Utils {
@@ -78,5 +81,20 @@ export class Utils {
 
     public static isOneDie(num: number) {
         return Math.round(num * 2) % 2 === 1
+    }
+
+    public static getNumberFromValueMap(orderedValueMap: Map<number,number>, factory: Factory): HasWeigth[] {
+        const roll = Utils.random();
+        let items: HasWeigth[] = [];
+
+        orderedValueMap.forEach((value: number, key: number) => { //TODO allow init of one of many modifiers.
+            if(roll <= key) {
+                return
+            }
+    
+            items = factory.get(value);
+          });
+
+        return items;
     }
 }

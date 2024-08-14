@@ -17,14 +17,13 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.stunEffect = void 0;
 var ability_1 = require("../../core/ability");
-var characterContext_1 = require("../../core/characterContext");
 var utils_1 = require("../../core/utils");
 var effect_1 = require("../effect");
 var stunEffect = /** @class */ (function (_super) {
     __extends(stunEffect, _super);
     function stunEffect() {
         var _this = _super.call(this) || this;
-        _this.powerBonus = function () { return -1.5 * characterContext_1.CharacterContext.getDPS(); };
+        _this.powerBonus = function () { return -1.5 * utils_1.Utils.getDPS(1); };
         _this.name = 'Stun';
         _this.namePrefix = 'Stunning';
         _this.description = 'Stunned - character cannot take actions. Stunned ends at the end of a turn.';

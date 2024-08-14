@@ -56,17 +56,18 @@ global.generateAbilities = (val): void => {
 
   let att1 = new Attack();
   att1.generate()
-  //let att2 = new Attack();
-  //att2.generate()
-  //let att3 = new Attack();
-  //att3.generate()
+  let att2 = new Attack();
+  att2.generate()
+  let att3 = new Attack();
+  att3.generate()
   
   const utl: Utility = new UtilityFactory(new Ability()).get(1)[0];
 
   outputDiv.innerHTML = '<br>'+ 
-    att1.getDescription() +'<br><br>'+''
-    //att2.getDescription() +'<br><br>'+
-    //att3.getDescription() +'<br><br>'+utl.getDescription()
+    att1.getDescription() +'<br><br>'+
+    att2.getDescription() +'<br><br>'+
+    att3.getDescription() +'<br><br>'+
+    utl.getDescription()
 };
 
 

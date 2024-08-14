@@ -16,6 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.gainEffectModifier = void 0;
+var ability_1 = require("../../core/ability");
 var effect_1 = require("../effect");
 var effectFactory_1 = require("../effectFactory");
 var modifier_1 = require("../modifier");
@@ -24,7 +25,7 @@ var gainEffectModifier = /** @class */ (function (_super) {
     function gainEffectModifier(aff) {
         var _this = _super.call(this) || this;
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
-        _this.weight = function () { return 4; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 4 : 0; };
         _this.effect = new effectFactory_1.EffectFactory(aff).filter(function (eff) { return eff.subtype === effect_1.Effect.Subtype.Buff; }).get(1)[0];
         _this.description = 'When you hit, gain an effect: ' + _this.effect.description;
         _this.namePrefix = _this.effect.namePrefix;

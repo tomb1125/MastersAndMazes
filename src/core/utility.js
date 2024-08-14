@@ -19,6 +19,8 @@ exports.Utility = void 0;
 var repeatableModifier_1 = require("../modifiers/modifiersRepository/repeatableModifier");
 var ability_1 = require("./ability");
 var activity_1 = require("./activity");
+var modifierFactory_1 = require("../modifiers/modifierFactory");
+var utils_1 = require("./utils");
 var Utility = /** @class */ (function (_super) {
     __extends(Utility, _super);
     function Utility(otherName) {
@@ -26,7 +28,8 @@ var Utility = /** @class */ (function (_super) {
         _this.weight = function (x) { return 1; };
         _this.cooldown = ability_1.Ability.Cooldown.Daily;
         _this.objects = [];
-        _this.modifiers = [];
+        //this.modifiers = [] as Modifier[];
+        _this.modifiers = utils_1.Utils.getNumberFromValueMap(Utility.MODIFIER_CHANCE, new modifierFactory_1.ModifierFactory(_this));
         _this.type = ability_1.Ability.Type.Utility;
         return _this;
     }
@@ -51,6 +54,11 @@ var Utility = /** @class */ (function (_super) {
             this.modifiers.push(repeat);
         }
     };
+    Utility.MODIFIER_CHANCE = new Map([
+        [0.1, 0],
+        [0.7, 1],
+        [1, 2],
+    ]);
     return Utility;
 }(activity_1.Activity));
 exports.Utility = Utility;

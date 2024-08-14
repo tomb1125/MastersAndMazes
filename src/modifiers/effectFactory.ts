@@ -6,6 +6,8 @@ import { guidingEffect } from "./effectRepository/guidingEffect";
 import { damageBonusEffect } from "./effectRepository/damageBonusEffect";
 import { Factory } from "../core/factory";
 import { AffectsWeight } from "../core/affectsWeight";
+import { scalingDotEffect } from "./effectRepository/scalingDotEffect";
+
 
 
 export class EffectFactory extends Factory {
@@ -19,6 +21,8 @@ export class EffectFactory extends Factory {
             this.items.push(new instakillEffect());
             this.items.push(new guidingEffect());
             this.items.push(new damageBonusEffect());
+            this.items.push(new scalingDotEffect());
+
         } else {
             this.items = list;
         }

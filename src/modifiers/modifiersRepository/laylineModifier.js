@@ -16,6 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.laylineModifier = void 0;
+var ability_1 = require("../../core/ability");
 var modifier_1 = require("../modifier");
 var laylineModifier = /** @class */ (function (_super) {
     __extends(laylineModifier, _super);
@@ -23,9 +24,10 @@ var laylineModifier = /** @class */ (function (_super) {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function (x) { return x.range ? Math.max(1.1, 2.4 - x.range / 10) : 1; };
         1.7;
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
         _this.name = 'Layline';
         _this.namePrefix = 'Layline';
-        _this.description = 'Can be used only while adjacent to place of power.';
+        _this.description = 'Can be used only while adjacent to place of power (usually you can detect 2-3 places of power each combat).';
         _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
