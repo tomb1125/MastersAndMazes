@@ -15,18 +15,18 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.oneHourDescriptiveNumber = void 0;
-var descriptiveNumber_1 = require("../../descriptiveNumber");
-var oneHourDescriptiveNumber = /** @class */ (function (_super) {
-    __extends(oneHourDescriptiveNumber, _super);
-    function oneHourDescriptiveNumber(value) {
-        var _this = _super.call(this, value) || this;
-        _this.value = 2;
-        _this.description = 'one hour';
-        _this.type = descriptiveNumber_1.DescriptiveNumber.Type.UtilityDuration;
-        _this.name = 'One Hour';
+exports.yesNoAbilityObject = void 0;
+var abilityObject_1 = require("../../abilityObject");
+var yesNoAbilityObject = /** @class */ (function (_super) {
+    __extends(yesNoAbilityObject, _super);
+    function yesNoAbilityObject() {
+        var _this = _super.call(this, 'Yes/No') || this;
+        _this.description = 'Questions must be a Yes or No question, but will be answered truthfully. ';
+        _this.rarity = 1.2;
+        _this.prefix = 'Yes/No';
+        _this.isQuestion = true;
         return _this;
     }
-    return oneHourDescriptiveNumber;
-}(descriptiveNumber_1.DescriptiveNumber));
-exports.oneHourDescriptiveNumber = oneHourDescriptiveNumber;
+    return yesNoAbilityObject;
+}(abilityObject_1.AbilityObject));
+exports.yesNoAbilityObject = yesNoAbilityObject;

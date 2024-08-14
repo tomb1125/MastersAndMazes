@@ -6,6 +6,7 @@ var AbilityObject = /** @class */ (function () {
         this.weight = function (x) { return 1; };
         this.isAnimal = false;
         this.isCommunication = false;
+        this.isQuestion = false;
         this.name = name;
     }
     return AbilityObject;

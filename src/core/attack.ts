@@ -26,6 +26,7 @@ export class Attack extends Activity implements CanAffectModifier {
   constructor(otherName?: string) {
     super(otherName);
     this.cooldown = Ability.Cooldown.Encounter;
+    this.type = Ability.Type.Attack;
   }
 
   generate() {
@@ -46,7 +47,7 @@ export class Attack extends Activity implements CanAffectModifier {
   }
 
   private initType() {
-    if(this.type === undefined) {
+    if(this.subtype === undefined) {
       const roll = Utils.random();
       if(roll > 0.5) {      
         this.subtype = Attack.Subtype.Weapon;
@@ -100,8 +101,8 @@ export class Attack extends Activity implements CanAffectModifier {
       (
         this.manaCost +
         CharacterContext.getDPS()
-      ) * this.getDPSMultiplier()
-      + this.getDPSBonus()
+      ) * ModifierFactory.getDPSMultiplier(this.modifiers, this)
+      + ModifierFactory.getDPSBonus(this.modifiers, this)
     )
     * Utils.getRangeCoeficient(this.range)
     * Utils.getDPSCoefficient(this.chance)
@@ -114,8 +115,8 @@ export class Attack extends Activity implements CanAffectModifier {
       this.chance                
       / Utils.getRangeCoeficient(this.range)
       / Utils.getDPSCoefficient(this.chance)
-      - this.getDPSBonus()
-      ) / this.getDPSMultiplier()
+      - ModifierFactory.getDPSBonus(this.modifiers, this)
+      ) / ModifierFactory.getDPSMultiplier(this.modifiers, this)
       - CharacterContext.getDPS() 
       - this.manaCost;
 
@@ -177,31 +178,6 @@ export class Attack extends Activity implements CanAffectModifier {
         this.manaCost += tempMana;
       }
 
-  }
-
-
-  private getDPSBonus(): number {
-    let dps: number = 0;
-
-    this.modifiers.forEach(m => {
-      if(m.powerBonus) {
-        dps += m.powerBonus(this);
-      }
-    });
-
-    return dps;
-  }
-  
-  private getDPSMultiplier(): number {
-    let dps: number = 1
-
-    this.modifiers.forEach(m => {
-      if(m.powerMultiplier) {
-        dps *= m.powerMultiplier(this); 
-      }
-    })
-
-    return dps;
   }
 
   public getDescription(): string { //TODO rework, incorporate descriptive numbers

@@ -15,18 +15,20 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.oneHourDescriptiveNumber = void 0;
-var descriptiveNumber_1 = require("../../descriptiveNumber");
-var oneHourDescriptiveNumber = /** @class */ (function (_super) {
-    __extends(oneHourDescriptiveNumber, _super);
-    function oneHourDescriptiveNumber(value) {
-        var _this = _super.call(this, value) || this;
-        _this.value = 2;
-        _this.description = 'one hour';
-        _this.type = descriptiveNumber_1.DescriptiveNumber.Type.UtilityDuration;
-        _this.name = 'One Hour';
+exports.restedModifer = void 0;
+var modifier_1 = require("../modifier");
+var restedModifer = /** @class */ (function (_super) {
+    __extends(restedModifer, _super);
+    function restedModifer() {
+        var _this = _super.call(this) || this;
+        _this.powerMultiplier = function () { return 1.3; };
+        _this.name = 'Rested';
+        _this.namePrefix = 'Rested';
+        _this.description = 'Can only be used if you managed to rest well during last night.';
+        _this.longDescription = 'Camping in front of dungeon or having to keeping watch makes you not well reseted.';
+        _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
-    return oneHourDescriptiveNumber;
-}(descriptiveNumber_1.DescriptiveNumber));
-exports.oneHourDescriptiveNumber = oneHourDescriptiveNumber;
+    return restedModifer;
+}(modifier_1.Modifier));
+exports.restedModifer = restedModifer;

@@ -20,10 +20,10 @@ var abilityObject_1 = require("../../abilityObject");
 var symetricTelepathyAbilityObject = /** @class */ (function (_super) {
     __extends(symetricTelepathyAbilityObject, _super);
     function symetricTelepathyAbilityObject() {
-        var _this = _super.call(this, 'Symetric Empathy') || this;
+        var _this = _super.call(this, 'Symetric Telepathy') || this;
         _this.description = 'For the duration you can read each other minds as long as you\'re close to each other. ';
         _this.rarity = 1.2;
-        _this.prefix = 'Emphatic';
+        _this.prefix = 'Telepathic';
         _this.isCommunication = true;
         return _this;
     }

@@ -97,4 +97,8 @@ export class Utils {
 
         return items;
     }
+
+    public static D(value: number): number {
+        return Math.ceil(Utils.random() * value) 
+    }
 }

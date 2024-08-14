@@ -33,8 +33,8 @@ global.onLevelChange = (val): void => {
 };
 
 global.onClassChange = (val): void => {
-  CharacterContext.class = Object.keys(CharacterContext.Class).find(cls => CharacterContext.Class[cls] === val) as any as number;
-  console.log(CharacterContext.class);
+  CharacterContext.classes = [Object.keys(CharacterContext.Class).find(cls => CharacterContext.Class[cls] === val) as any as number];
+  console.log(CharacterContext.classes);
 };
 
 
@@ -46,7 +46,7 @@ global.generateAbilities = (val): void => {
     currentSeed = ''+Math.random();
   }
 
-  currentSeed += CharacterContext.level + CharacterContext.class;
+  currentSeed += CharacterContext.level + CharacterContext.classes.join('');
   Utils.gen = new RandomNumberGenerator(currentSeed);
 
   var outputDiv = document.getElementById('output');

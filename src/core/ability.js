@@ -48,6 +48,7 @@ exports.Ability = Ability;
     (function (Cooldown) {
         Cooldown[Cooldown["Encounter"] = 0] = "Encounter";
         Cooldown[Cooldown["Daily"] = 1] = "Daily";
+        Cooldown[Cooldown["Adventure"] = 2] = "Adventure";
     })(Cooldown = Ability.Cooldown || (Ability.Cooldown = {}));
     var Attribute;
     (function (Attribute) {

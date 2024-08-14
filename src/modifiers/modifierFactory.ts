@@ -18,6 +18,10 @@ import { gainEffectModifier } from "./modifiersRepository/gainEffectModifier";
 import { lifestealModifier } from "./modifiersRepository/lifestealModifier";
 import { AffectsWeight } from "../core/affectsWeight";
 import { Factory } from "../core/factory";
+import { templeModifier } from "./modifiersRepository/clericModifiers/templeModifier";
+import { pristineModifier } from "./modifiersRepository/clericModifiers/pristineModifier";
+import { undeadBaneModifier } from "./modifiersRepository/clericModifiers/undeadBaneModifier";
+import { restedModifer } from "./modifiersRepository/restedModifer";
 
 
 export class ModifierFactory extends Factory {
@@ -38,10 +42,16 @@ export class ModifierFactory extends Factory {
             this.items.push(new momentumModifier(affector));
             this.items.push(new multipleModifier()); 
             this.items.push(new nightlyModifier());
+            this.items.push(new restedModifer());
             this.items.push(new selfHealModifier(affector));
             this.items.push(new signatureModifier());
             this.items.push(new vengefulModifier());
             this.items.push(new ultimateModifier());
+
+            this.items.push(new templeModifier());
+            this.items.push(new undeadBaneModifier(affector));
+            this.items.push(new pristineModifier());
+            
             //this.items.push(new repeatableModifier()); //this modifier is excluded for now purposfully. It behaves differently for utilities and for attacks.
         } else {
             this.items = list;
@@ -55,5 +65,30 @@ export class ModifierFactory extends Factory {
     public filter(z: (x: any) => boolean): ModifierFactory {
         return super.filter(z) as ModifierFactory;
     }
+
+    
+  public static getDPSBonus(modifiers : Modifier[], affector : AffectsWeight): number {
+    let dps: number = 0;
+
+    modifiers.forEach(m => {
+      if(m.powerBonus) {
+        dps += m.powerBonus(affector);
+      }
+    });
+
+    return dps;
+  }
+  
+  public static getDPSMultiplier(modifiers : Modifier[], affector : AffectsWeight): number {
+    let dps: number = 1
+
+    modifiers.forEach(m => {
+      if(m.powerMultiplier) {
+        dps *= m.powerMultiplier(affector); 
+      }
+    })
+
+    return dps;
+  }
     
 }

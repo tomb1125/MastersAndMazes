@@ -23,7 +23,7 @@ var symetricEmpathicAbilityObject = /** @class */ (function (_super) {
         var _this = _super.call(this, 'Symetric Empathy') || this;
         _this.description = 'For the duration you can sense and send emotions to each other as long as you\' re close to each other. ';
         _this.rarity = 0.8;
-        _this.prefix = 'Telepatic';
+        _this.prefix = 'Empathic';
         _this.isCommunication = true;
         return _this;
     }

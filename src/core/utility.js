@@ -43,7 +43,8 @@ var Utility = /** @class */ (function (_super) {
             '<br><b>Cooldown</b>: ' + ability_1.Ability.Cooldown[this.cooldown];
     };
     Utility.prototype.generateName = function () {
-        return this.objects.reduce(function (sum, mod) { return sum + ' ' + (mod.prefix === undefined ? mod.name : mod.prefix); }, '') + ' ' + this.name;
+        return this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.namePrefix; }, '').slice(1) + (this.modifiers.length > 0 ? ' ' : '') +
+            this.objects.reduce(function (sum, mod) { return sum + ' ' + (mod.prefix === undefined ? mod.name : mod.prefix); }, '') + ' ' + this.name;
     };
     Utility.prototype.compensate = function () {
         var repeat = new repeatableModifier_1.repeatableModifier();
@@ -55,8 +56,8 @@ var Utility = /** @class */ (function (_super) {
         }
     };
     Utility.MODIFIER_CHANCE = new Map([
-        [0.1, 0],
-        [0.7, 1],
+        [0.3, 0],
+        [0.8, 1],
         [1, 2],
     ]);
     return Utility;

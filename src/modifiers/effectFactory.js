@@ -22,6 +22,7 @@ var instakillEffect_1 = require("./effectRepository/instakillEffect");
 var guidingEffect_1 = require("./effectRepository/guidingEffect");
 var damageBonusEffect_1 = require("./effectRepository/damageBonusEffect");
 var factory_1 = require("../core/factory");
+var scalingDotEffect_1 = require("./effectRepository/scalingDotEffect");
 var EffectFactory = /** @class */ (function (_super) {
     __extends(EffectFactory, _super);
     function EffectFactory(affector, list) {
@@ -32,6 +33,7 @@ var EffectFactory = /** @class */ (function (_super) {
             _this.items.push(new instakillEffect_1.instakillEffect());
             _this.items.push(new guidingEffect_1.guidingEffect());
             _this.items.push(new damageBonusEffect_1.damageBonusEffect());
+            _this.items.push(new scalingDotEffect_1.scalingDotEffect());
         }
         else {
             _this.items = list;

@@ -10,6 +10,7 @@ export class AbilityObject implements HasWeigth {
     
     isAnimal : boolean = false;
     isCommunication : boolean = false;
+    isQuestion: boolean = false;
 
     constructor(name: string) {
         this.name = name;

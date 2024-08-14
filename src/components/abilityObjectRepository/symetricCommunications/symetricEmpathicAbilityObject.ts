@@ -6,7 +6,7 @@ export class symetricEmpathicAbilityObject extends AbilityObject {
         super('Symetric Empathy');        
         this.description = 'For the duration you can sense and send emotions to each other as long as you\' re close to each other. ';
         this.rarity = 0.8;
-        this.prefix = 'Telepatic'
+        this.prefix = 'Empathic'
 
         this.isCommunication = true;
     }

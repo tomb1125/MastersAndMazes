@@ -57,7 +57,8 @@ export class Ability implements AffectsWeight {
       export enum Cooldown
       {
         Encounter,
-        Daily
+        Daily,
+        Adventure
       }
 
       export enum Attribute

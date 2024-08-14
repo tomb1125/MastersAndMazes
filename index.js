@@ -25,8 +25,8 @@ global.onLevelChange = function (val) {
     characterContext_1.CharacterContext.level = val;
 };
 global.onClassChange = function (val) {
-    characterContext_1.CharacterContext.class = Object.keys(characterContext_1.CharacterContext.Class).find(function (cls) { return characterContext_1.CharacterContext.Class[cls] === val; });
-    console.log(characterContext_1.CharacterContext.class);
+    characterContext_1.CharacterContext.classes = [Object.keys(characterContext_1.CharacterContext.Class).find(function (cls) { return characterContext_1.CharacterContext.Class[cls] === val; })];
+    console.log(characterContext_1.CharacterContext.classes);
 };
 global.generateAbilities = function (val) {
     var currentSeed = '';
@@ -36,7 +36,7 @@ global.generateAbilities = function (val) {
     else {
         currentSeed = '' + Math.random();
     }
-    currentSeed += characterContext_1.CharacterContext.level + characterContext_1.CharacterContext.class;
+    currentSeed += characterContext_1.CharacterContext.level + characterContext_1.CharacterContext.classes.join('');
     utils_1.Utils.gen = new randomNumberGenerator_1.RandomNumberGenerator(currentSeed);
     var outputDiv = document.getElementById('output');
     if (outputDiv == null) {

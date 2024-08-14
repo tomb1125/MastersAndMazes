@@ -9,7 +9,8 @@ var CharacterContext = /** @class */ (function () {
         return utils_1.Utils.getDPS(CharacterContext.level);
     };
     CharacterContext.level = 1;
-    CharacterContext.class = 0;
+    CharacterContext.classes = [0];
+    CharacterContext.OUT_OF_CLASS_WEIGHT = 0.01;
     return CharacterContext;
 }());
 exports.CharacterContext = CharacterContext;
@@ -44,5 +45,17 @@ exports.CharacterContext = CharacterContext;
     })(Attribute = CharacterContext.Attribute || (CharacterContext.Attribute = {}));
     var Skill;
     (function (Skill) {
+        Skill[Skill["Athletics"] = 0] = "Athletics";
+        Skill[Skill["Intimidation"] = 1] = "Intimidation";
+        Skill[Skill["SleightOfHand"] = 2] = "SleightOfHand";
+        Skill[Skill["Stealth"] = 3] = "Stealth";
+        Skill[Skill["Endurance"] = 4] = "Endurance";
+        Skill[Skill["Survival"] = 5] = "Survival";
+        Skill[Skill["Knowledge"] = 6] = "Knowledge";
+        Skill[Skill["Crafting"] = 7] = "Crafting";
+        Skill[Skill["Dungeoneering"] = 8] = "Dungeoneering";
+        Skill[Skill["Perception"] = 9] = "Perception";
+        Skill[Skill["Persuasion"] = 10] = "Persuasion";
+        Skill[Skill["Streetwise"] = 11] = "Streetwise";
     })(Skill = CharacterContext.Skill || (CharacterContext.Skill = {}));
 })(CharacterContext || (exports.CharacterContext = CharacterContext = {}));

@@ -16,8 +16,8 @@ export class Utility extends Activity implements CanAffectModifier, HasWeigth {
     duration: DescriptiveNumber;
 
     static MODIFIER_CHANCE: Map<number, number> = new Map([
-      [0.1, 0],
-      [0.7, 1],
+      [0.3, 0],
+      [0.8, 1],
       [1, 2],
     ]);
   
@@ -42,7 +42,8 @@ export class Utility extends Activity implements CanAffectModifier, HasWeigth {
     }
 
     public generateName(): string {
-      return this.objects.reduce(function (sum, mod) { return sum + ' ' + (mod.prefix === undefined ? mod.name : mod.prefix); }, '') + ' ' + this.name;
+      return this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.namePrefix; }, '').slice(1) + (this.modifiers.length > 0 ? ' ' : '') +
+             this.objects.reduce(function (sum, mod) { return sum + ' ' + (mod.prefix === undefined ? mod.name : mod.prefix); }, '') + ' ' + this.name;
     }
 
     protected compensate(): void {

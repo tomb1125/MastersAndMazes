@@ -28,6 +28,8 @@ var wildAbilityObject_1 = require("./abilityObjectRepository/animals/wildAbility
 var gainUnderstandingAbilityObject_1 = require("./abilityObjectRepository/symetricCommunications/gainUnderstandingAbilityObject");
 var symetricEmpathicAbilityObject_1 = require("./abilityObjectRepository/symetricCommunications/symetricEmpathicAbilityObject");
 var symetricTelepathyAbilityObject_1 = require("./abilityObjectRepository/symetricCommunications/symetricTelepathyAbilityObject");
+var detailedAbilityObject_1 = require("./abilityObjectRepository/questions/detailedAbilityObject");
+var yesNoAbilityObject_1 = require("./abilityObjectRepository/questions/yesNoAbilityObject");
 var AbilityObjectFactory = /** @class */ (function (_super) {
     __extends(AbilityObjectFactory, _super);
     function AbilityObjectFactory(affector, list) {
@@ -46,6 +48,9 @@ var AbilityObjectFactory = /** @class */ (function (_super) {
             _this.items.push(new gainUnderstandingAbilityObject_1.gainUnderstandingAbilityObject());
             _this.items.push(new symetricTelepathyAbilityObject_1.symetricTelepathyAbilityObject());
             _this.items.push(new symetricEmpathicAbilityObject_1.symetricEmpathicAbilityObject());
+            //questions
+            _this.items.push(new detailedAbilityObject_1.detailedAbilityObject());
+            _this.items.push(new yesNoAbilityObject_1.yesNoAbilityObject());
         }
         else {
             _this.items = list;

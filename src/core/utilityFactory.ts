@@ -1,7 +1,8 @@
 import { AffectsWeight } from "./affectsWeight";
 import { Factory } from "./factory";
 import { Utility } from "./utility";
-import { AnimalSpeak } from "./utilityRepository/animalSpeak";
+import { AnimalSpeak } from "./utilityRepository/druidUtilities/animalSpeak";
+import { Augury } from "./utilityRepository/clericUtilities/auguryUtility";
 import { WeightedList } from "./weightedList";
 
 export class UtilityFactory extends Factory {
@@ -12,6 +13,7 @@ export class UtilityFactory extends Factory {
             
             //animals
             this.items.push(new AnimalSpeak());
+            this.items.push(new Augury());
 
 
         } else {

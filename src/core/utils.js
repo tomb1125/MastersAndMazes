@@ -83,6 +83,9 @@ var Utils = /** @class */ (function () {
         });
         return items;
     };
+    Utils.D = function (value) {
+        return Math.ceil(Utils.random() * value);
+    };
     Utils.DPS = 5;
     Utils.POWER_PER_LEVEL = 0.2;
     Utils.BASIC_ATTACK_DPS = 2.5;

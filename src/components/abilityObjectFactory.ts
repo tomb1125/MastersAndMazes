@@ -12,6 +12,8 @@ import { wildAbilityObject } from "./abilityObjectRepository/animals/wildAbility
 import { gainUnderstandingAbilityObject } from "./abilityObjectRepository/symetricCommunications/gainUnderstandingAbilityObject";
 import { symetricEmpathicAbilityObject } from "./abilityObjectRepository/symetricCommunications/symetricEmpathicAbilityObject";
 import { symetricTelepathyAbilityObject } from "./abilityObjectRepository/symetricCommunications/symetricTelepathyAbilityObject";
+import { detailedAbilityObject } from "./abilityObjectRepository/questions/detailedAbilityObject";
+import { yesNoAbilityObject } from "./abilityObjectRepository/questions/yesNoAbilityObject";
 
 export class AbilityObjectFactory extends Factory {
     constructor(affector: AffectsWeight, list?: WeightedList) {
@@ -33,7 +35,10 @@ export class AbilityObjectFactory extends Factory {
             this.items.push(new symetricTelepathyAbilityObject());
             this.items.push(new symetricEmpathicAbilityObject());
 
-
+            //questions
+            this.items.push(new detailedAbilityObject())
+            this.items.push(new yesNoAbilityObject())
+            
         } else {
             this.items = list;
         }

@@ -22,8 +22,8 @@ var d4MinuteDescriptiveNumber = /** @class */ (function (_super) {
     __extends(d4MinuteDescriptiveNumber, _super);
     function d4MinuteDescriptiveNumber(value) {
         var _this = _super.call(this, value) || this;
-        var initValue = [1, 5].sort(function () { return 0.5 - utils_1.Utils.random(); })[0];
-        _this.value = (initValue + 5) / 10;
+        var initValue = [1, 5, 10].sort(function () { return 0.5 - utils_1.Utils.random(); })[0];
+        _this.value = (initValue + 5) / 15;
         _this.type = descriptiveNumber_1.DescriptiveNumber.Type.UtilityDuration;
         _this.name = 'D4 Minutes';
         _this.description = initValue + (initValue === 1 ? ' minute' : ' minutes');

@@ -28,6 +28,7 @@ var Attack = /** @class */ (function (_super) {
     function Attack(otherName) {
         var _this = _super.call(this, otherName) || this;
         _this.cooldown = ability_1.Ability.Cooldown.Encounter;
+        _this.type = ability_1.Ability.Type.Attack;
         return _this;
     }
     Attack.prototype.generate = function () {
@@ -46,7 +47,7 @@ var Attack = /** @class */ (function (_super) {
         this.target = new descriptiveNumber_1.DescriptiveNumber(1);
     };
     Attack.prototype.initType = function () {
-        if (this.type === undefined) {
+        if (this.subtype === undefined) {
             var roll = utils_1.Utils.random();
             if (roll > 0.5) {
                 this.subtype = Attack.Subtype.Weapon;
@@ -92,8 +93,8 @@ var Attack = /** @class */ (function (_super) {
     };
     Attack.prototype.getTempDamage = function () {
         return ((this.manaCost +
-            characterContext_1.CharacterContext.getDPS()) * this.getDPSMultiplier()
-            + this.getDPSBonus())
+            characterContext_1.CharacterContext.getDPS()) * modifierFactory_1.ModifierFactory.getDPSMultiplier(this.modifiers, this)
+            + modifierFactory_1.ModifierFactory.getDPSBonus(this.modifiers, this))
             * utils_1.Utils.getRangeCoeficient(this.range)
             * utils_1.Utils.getDPSCoefficient(this.chance)
             / this.chance;
@@ -103,7 +104,7 @@ var Attack = /** @class */ (function (_super) {
             this.chance
             / utils_1.Utils.getRangeCoeficient(this.range)
             / utils_1.Utils.getDPSCoefficient(this.chance)
-            - this.getDPSBonus()) / this.getDPSMultiplier()
+            - modifierFactory_1.ModifierFactory.getDPSBonus(this.modifiers, this)) / modifierFactory_1.ModifierFactory.getDPSMultiplier(this.modifiers, this)
             - characterContext_1.CharacterContext.getDPS()
             - this.manaCost;
         return power;
@@ -154,26 +155,6 @@ var Attack = /** @class */ (function (_super) {
         else {
             this.manaCost += tempMana;
         }
-    };
-    Attack.prototype.getDPSBonus = function () {
-        var _this = this;
-        var dps = 0;
-        this.modifiers.forEach(function (m) {
-            if (m.powerBonus) {
-                dps += m.powerBonus(_this);
-            }
-        });
-        return dps;
-    };
-    Attack.prototype.getDPSMultiplier = function () {
-        var _this = this;
-        var dps = 1;
-        this.modifiers.forEach(function (m) {
-            if (m.powerMultiplier) {
-                dps *= m.powerMultiplier(_this);
-            }
-        });
-        return dps;
     };
     Attack.prototype.getDescription = function () {
         return '' +

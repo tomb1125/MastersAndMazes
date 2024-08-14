@@ -17,7 +17,8 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UtilityFactory = void 0;
 var factory_1 = require("./factory");
-var animalSpeak_1 = require("./utilityRepository/animalSpeak");
+var animalSpeak_1 = require("./utilityRepository/druidUtilities/animalSpeak");
+var auguryUtility_1 = require("./utilityRepository/clericUtilities/auguryUtility");
 var weightedList_1 = require("./weightedList");
 var UtilityFactory = /** @class */ (function (_super) {
     __extends(UtilityFactory, _super);
@@ -27,6 +28,7 @@ var UtilityFactory = /** @class */ (function (_super) {
             _this.items = new weightedList_1.WeightedList();
             //animals
             _this.items.push(new animalSpeak_1.AnimalSpeak());
+            _this.items.push(new auguryUtility_1.Augury());
         }
         else {
             _this.items = list;
