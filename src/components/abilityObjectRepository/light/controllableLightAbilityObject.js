@@ -22,7 +22,7 @@ var controllableLightAbilityObject = /** @class */ (function (_super) {
     function controllableLightAbilityObject() {
         var _this = _super.call(this, 'Controllable') || this;
         _this.description = 'The light can be moved by 10 meters, disabled or enabled, by a swift action. ';
-        _this.rarity = 1.2;
+        _this.rarity = 1.1;
         _this.prefix = 'Controllable';
         _this.isLight = true;
         return _this;

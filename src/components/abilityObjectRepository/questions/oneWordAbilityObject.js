@@ -15,18 +15,18 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.colorfulLightAbilityObject = void 0;
+exports.oneWordAbilityObject = void 0;
 var abilityObject_1 = require("../../abilityObject");
-var colorfulLightAbilityObject = /** @class */ (function (_super) {
-    __extends(colorfulLightAbilityObject, _super);
-    function colorfulLightAbilityObject() {
-        var _this = _super.call(this, 'Colorful') || this;
-        _this.description = 'The light can have any color you want and you can change its color by swift action. ';
-        _this.rarity = 1;
-        _this.prefix = 'Colorful';
-        _this.isLight = true;
+var oneWordAbilityObject = /** @class */ (function (_super) {
+    __extends(oneWordAbilityObject, _super);
+    function oneWordAbilityObject() {
+        var _this = _super.call(this, 'One Word') || this;
+        _this.description = 'Your question cannot be a yes/no question and will be answered truthfully with one word. ';
+        _this.rarity = 0.7;
+        _this.prefix = 'One Word';
+        _this.isQuestion = true;
         return _this;
     }
-    return colorfulLightAbilityObject;
+    return oneWordAbilityObject;
 }(abilityObject_1.AbilityObject));
-exports.colorfulLightAbilityObject = colorfulLightAbilityObject;
+exports.oneWordAbilityObject = oneWordAbilityObject;

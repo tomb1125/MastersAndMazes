@@ -37,7 +37,7 @@ var Light = /** @class */ (function (_super) {
             * utils_1.Utils.getRangeCoeficient(radius.getValue())
             * modifierFactory_1.ModifierFactory.getDPSMultiplier(_this.modifiers, _this); //TODO move to compensate
         _this.cooldown = ability_1.Ability.Cooldown.Encounter;
-        _this.description = 'Using a Swift Action shine a light in an area centered on a point within ' + range.getValue() + ' with ' + radius.getValue() + ' radius, until end of the encounter. ' +
+        _this.description = 'Using a Swift Action shine a light in an area centered on a point within ' + range.getValue() + 'm, with a ' + radius.getValue() + 'm radius, until end of the encounter. ' +
             _this.objects[0].description;
         //TODO add light as an object
         _this.compensate();

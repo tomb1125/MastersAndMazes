@@ -32,6 +32,7 @@ var detailedAbilityObject_1 = require("./abilityObjectRepository/questions/detai
 var yesNoAbilityObject_1 = require("./abilityObjectRepository/questions/yesNoAbilityObject");
 var colorofulLightAbilityObject_1 = require("./abilityObjectRepository/light/colorofulLightAbilityObject");
 var controllableLightAbilityObject_1 = require("./abilityObjectRepository/light/controllableLightAbilityObject");
+var oneWordAbilityObject_1 = require("./abilityObjectRepository/questions/oneWordAbilityObject");
 var AbilityObjectFactory = /** @class */ (function (_super) {
     __extends(AbilityObjectFactory, _super);
     function AbilityObjectFactory(affector, list) {
@@ -53,6 +54,7 @@ var AbilityObjectFactory = /** @class */ (function (_super) {
             //questions
             _this.items.push(new detailedAbilityObject_1.detailedAbilityObject());
             _this.items.push(new yesNoAbilityObject_1.yesNoAbilityObject());
+            _this.items.push(new oneWordAbilityObject_1.oneWordAbilityObject());
             //light
             _this.items.push(new colorofulLightAbilityObject_1.colorfulLightAbilityObject());
             _this.items.push(new controllableLightAbilityObject_1.controllableLightAbilityObject());
