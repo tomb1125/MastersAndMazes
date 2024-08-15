@@ -85,7 +85,7 @@ var Attack = /** @class */ (function (_super) {
         }
         else {
             if (tempDamage > 0) {
-                this.chance = this.chance * tempDamage / this.damage.getValue(); //TODO this calculation is wrong when descriptive number is applied and we have modifier
+                this.chance = this.chance * tempDamage / this.damage.getValue();
             }
             else {
             }

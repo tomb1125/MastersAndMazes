@@ -16,8 +16,10 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Light = void 0;
+var abilityObjectFactory_1 = require("../../../components/abilityObjectFactory");
 var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
 var modifierFactory_1 = require("../../../modifiers/modifierFactory");
+var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
 var utils_1 = require("../../utils");
@@ -25,17 +27,19 @@ var Light = /** @class */ (function (_super) {
     __extends(Light, _super);
     function Light() {
         var _this = this;
-        var range = new descriptiveNumber_1.DescriptiveNumber(5); //Utils.D(3) * 5);
-        var radius = new descriptiveNumber_1.DescriptiveNumber(5); //Utils.D(3) * 5);
+        var range = new descriptiveNumber_1.DescriptiveNumber(utils_1.Utils.D(3) * 5);
+        var radius = new descriptiveNumber_1.DescriptiveNumber(utils_1.Utils.D(3) * 5);
         _this = _super.call(this, 'Light') || this;
-        //this.objects.push(new AbilityObjectFactory(this).filter((x: AbilityObject) => x.isArea).get(1)[0]);
+        _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isLight; }).get(1)[0]);
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? 1 : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.chance = 1.5
             * utils_1.Utils.getRangeCoeficient(range.getValue())
             * utils_1.Utils.getRangeCoeficient(radius.getValue())
             * modifierFactory_1.ModifierFactory.getDPSMultiplier(_this.modifiers, _this); //TODO move to compensate
-        _this.description = 'Shine a light in an area centered on a point within ' + range.getValue() + ' with ' + radius.getValue() + ' radius, for one hour. ';
-        //TODO add area as an object
+        _this.cooldown = ability_1.Ability.Cooldown.Encounter;
+        _this.description = 'Using a Swift Action shine a light in an area centered on a point within ' + range.getValue() + ' with ' + radius.getValue() + ' radius, until end of the encounter. ' +
+            _this.objects[0].description;
+        //TODO add light as an object
         _this.compensate();
         return _this;
     }

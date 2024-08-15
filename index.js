@@ -6,18 +6,6 @@ var utilityFactory_1 = require("./src/core/utilityFactory");
 var characterContext_1 = require("./src/core/characterContext");
 var ability_1 = require("./src/core/ability");
 var randomNumberGenerator_1 = require("./src/core/randomNumberGenerator");
-//console.log(new Attack(''))
-//let att1 = new Attack();
-//att1.chance = 1;
-//att1.modifiers = ModifierFactory.getAll().filter((x: any) => {return x.name.includes('Apply')}).get(1) as Modifier[];
-//att1.range = 1;
-//att1.damage = new DescriptiveNumber(15);
-//att1.type = Attack.Type.Spell;
-//att1.generate();
-//console.dir(att1, { depth: null })
-//console.log(att1.getDescription())
-//const utl: Utility = new UtilityFactory(new Ability()).get(1)[0];
-//console.log(utl.getDescription());
 global.onSeedChange = function (val) {
     characterContext_1.CharacterContext.seed = val;
 };

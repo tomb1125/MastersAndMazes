@@ -14,6 +14,8 @@ import { symetricEmpathicAbilityObject } from "./abilityObjectRepository/symetri
 import { symetricTelepathyAbilityObject } from "./abilityObjectRepository/symetricCommunications/symetricTelepathyAbilityObject";
 import { detailedAbilityObject } from "./abilityObjectRepository/questions/detailedAbilityObject";
 import { yesNoAbilityObject } from "./abilityObjectRepository/questions/yesNoAbilityObject";
+import { colorfulLightAbilityObject } from "./abilityObjectRepository/light/colorofulLightAbilityObject";
+import { controllableLightAbilityObject } from "./abilityObjectRepository/light/controllableLightAbilityObject";
 
 export class AbilityObjectFactory extends Factory {
     constructor(affector: AffectsWeight, list?: WeightedList) {
@@ -38,6 +40,11 @@ export class AbilityObjectFactory extends Factory {
             //questions
             this.items.push(new detailedAbilityObject())
             this.items.push(new yesNoAbilityObject())
+
+            //light
+            this.items.push(new colorfulLightAbilityObject())
+            this.items.push(new controllableLightAbilityObject())
+
             
         } else {
             this.items = list;

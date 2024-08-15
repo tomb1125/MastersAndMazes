@@ -31,7 +31,7 @@ var gainEffectModifier = /** @class */ (function (_super) {
         _this.namePrefix = _this.effect.namePrefix;
         _this.name = 'Gain ' + _this.effect.name;
         _this.powerBonus = function (x) { return x.chance != null ? x.chance * _this.effect.powerBonus(x) : -100000; };
-        _this.powerMultiplier = function (x) { return _this.effect.powerMultiplier(x); }; //TODO test if true
+        _this.powerMultiplier = function (x) { return _this.effect.powerMultiplier(x); };
         return _this;
     }
     return gainEffectModifier;

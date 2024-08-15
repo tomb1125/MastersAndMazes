@@ -24,7 +24,8 @@ export class Light extends Utility {
         this.cooldown = Ability.Cooldown.Encounter
          
         
-        this.description = 'Using a Swift Action shine a light in an area centered on a point within '+range.getValue()+' with '+radius.getValue()+' radius, until end of the encounter. ';
+        this.description = 'Using a Swift Action shine a light in an area centered on a point within '+range.getValue()+' with '+radius.getValue()+' radius, until end of the encounter. ' +  
+        this.objects[0].description;
         //TODO add light as an object
         this.compensate();
     }

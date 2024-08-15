@@ -30,6 +30,8 @@ var symetricEmpathicAbilityObject_1 = require("./abilityObjectRepository/symetri
 var symetricTelepathyAbilityObject_1 = require("./abilityObjectRepository/symetricCommunications/symetricTelepathyAbilityObject");
 var detailedAbilityObject_1 = require("./abilityObjectRepository/questions/detailedAbilityObject");
 var yesNoAbilityObject_1 = require("./abilityObjectRepository/questions/yesNoAbilityObject");
+var colorofulLightAbilityObject_1 = require("./abilityObjectRepository/light/colorofulLightAbilityObject");
+var controllableLightAbilityObject_1 = require("./abilityObjectRepository/light/controllableLightAbilityObject");
 var AbilityObjectFactory = /** @class */ (function (_super) {
     __extends(AbilityObjectFactory, _super);
     function AbilityObjectFactory(affector, list) {
@@ -51,6 +53,9 @@ var AbilityObjectFactory = /** @class */ (function (_super) {
             //questions
             _this.items.push(new detailedAbilityObject_1.detailedAbilityObject());
             _this.items.push(new yesNoAbilityObject_1.yesNoAbilityObject());
+            //light
+            _this.items.push(new colorofulLightAbilityObject_1.colorfulLightAbilityObject());
+            _this.items.push(new controllableLightAbilityObject_1.controllableLightAbilityObject());
         }
         else {
             _this.items = list;

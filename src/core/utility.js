@@ -29,8 +29,8 @@ var Utility = /** @class */ (function (_super) {
         _this.cooldown = ability_1.Ability.Cooldown.Daily;
         _this.objects = [];
         //this.modifiers = [] as Modifier[];
-        _this.modifiers = utils_1.Utils.getNumberFromValueMap(Utility.MODIFIER_CHANCE, new modifierFactory_1.ModifierFactory(_this));
         _this.type = ability_1.Ability.Type.Utility;
+        _this.modifiers = utils_1.Utils.getNumberFromValueMap(Utility.MODIFIER_CHANCE, new modifierFactory_1.ModifierFactory(_this));
         return _this;
     }
     Utility.prototype.getDescription = function () {

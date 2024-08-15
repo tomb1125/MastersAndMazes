@@ -4,10 +4,10 @@ export class colorfulLightAbilityObject extends AbilityObject {
     
     constructor() {
         super('Colorful');        
-        this.description = 'The light can have any color you want and you can change its color by swift action.';
-        this.rarity = 1.1;
-        this.prefix = 'Controllable'
+        this.description = 'The light can have any color you want and you can change its color by swift action. ';
+        this.rarity = 1;
+        this.prefix = 'Colorful'
 
-        this.isQuestion = true;
+        this.isLight = true;
     }
 }

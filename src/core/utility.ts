@@ -26,8 +26,8 @@ export class Utility extends Activity implements CanAffectModifier, HasWeigth {
         this.cooldown = Ability.Cooldown.Daily;
         this.objects = [] as AbilityObject[];
         //this.modifiers = [] as Modifier[];
-        this.modifiers = Utils.getNumberFromValueMap(Utility.MODIFIER_CHANCE, new ModifierFactory(this)) as Modifier[];
         this.type = Ability.Type.Utility;
+        this.modifiers = Utils.getNumberFromValueMap(Utility.MODIFIER_CHANCE, new ModifierFactory(this)) as Modifier[];
     }
 
     public getDescription(): string {
