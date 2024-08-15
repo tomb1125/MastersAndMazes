@@ -15,17 +15,17 @@ export class Light extends Utility {
         let radius: DescriptiveNumber = new DescriptiveNumber(Utils.D(3) * 5);
 
         super('Light');
-        //this.objects.push(new AbilityObjectFactory(this).filter((x: AbilityObject) => x.isArea).get(1)[0]);
-        this.cooldown = Ability.Cooldown.Encounter;
+        this.objects.push(new AbilityObjectFactory(this).filter((x: AbilityObject) => x.isLight).get(1)[0]);
         this.weight = () => {return CharacterContext.classes.includes(CharacterContext.Class.Cleric) ? 1 : CharacterContext.OUT_OF_CLASS_WEIGHT}
-        this.chance = 6
-         / range.getValue()
-         / radius.getValue()
-         / radius.getValue()
-         / 125
+        this.chance = 1.5
+         * Utils.getRangeCoeficient(range.getValue())
+         * Utils.getRangeCoeficient(radius.getValue())
+        * ModifierFactory.getDPSMultiplier(this.modifiers, this); //TODO move to compensate
+        this.cooldown = Ability.Cooldown.Encounter
+         
         
-        this.description = 'Shine a light in an area centered on a point within '+range.getValue()+'m with '+radius.getValue()+'m radius, for one hour.';
-        //TODO add area as an object
+        this.description = 'Using a Swift Action shine a light in an area centered on a point within '+range.getValue()+' with '+radius.getValue()+' radius, until end of the encounter. ';
+        //TODO add light as an object
         this.compensate();
     }
 }

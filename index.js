@@ -42,16 +42,28 @@ global.generateAbilities = function (val) {
     if (outputDiv == null) {
         throw 'null output';
     }
-    var att1 = new attack_1.Attack();
-    att1.generate();
-    var att2 = new attack_1.Attack();
-    att2.generate();
-    var att3 = new attack_1.Attack();
-    att3.generate();
-    var utl = new utilityFactory_1.UtilityFactory(new ability_1.Ability()).get(1)[0];
-    outputDiv.innerHTML = '<br>' +
-        att1.getDescription() + '<br><br>' +
-        att2.getDescription() + '<br><br>' +
-        att3.getDescription() + '<br><br>' +
-        utl.getDescription();
+    var levelMode = characterContext_1.CharacterContext.level % 3;
+    var description = '';
+    if (levelMode === 1) {
+        var att1 = new attack_1.Attack();
+        att1.generate();
+        var att2 = new attack_1.Attack();
+        att2.generate();
+        var att3 = new attack_1.Attack();
+        att3.generate();
+        description = '<br>' +
+            att1.getDescription() + '<br><br>' +
+            att2.getDescription() + '<br><br>' +
+            att3.getDescription() + '<br><br>';
+    }
+    else if (levelMode === 2) {
+        var utl = new utilityFactory_1.UtilityFactory(new ability_1.Ability()).get(3);
+        description = '<br>' +
+            utl[0].getDescription() + '<br><br>' +
+            utl[1].getDescription() + '<br><br>' +
+            utl[2].getDescription() + '<br><br>';
+    }
+    else {
+    }
+    outputDiv.innerHTML = description;
 };

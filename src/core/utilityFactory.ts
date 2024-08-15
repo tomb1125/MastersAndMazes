@@ -4,6 +4,7 @@ import { Utility } from "./utility";
 import { AnimalSpeak } from "./utilityRepository/druidUtilities/animalSpeak";
 import { Augury } from "./utilityRepository/clericUtilities/auguryUtility";
 import { WeightedList } from "./weightedList";
+import { Light } from "./utilityRepository/clericUtilities/lightUtility";
 
 export class UtilityFactory extends Factory {
     constructor(affector: AffectsWeight, list?: WeightedList) {
@@ -14,6 +15,7 @@ export class UtilityFactory extends Factory {
             //animals
             this.items.push(new AnimalSpeak());
             this.items.push(new Augury());
+            this.items.push(new Light());
 
 
         } else {

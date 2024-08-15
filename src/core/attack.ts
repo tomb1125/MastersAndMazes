@@ -88,7 +88,7 @@ export class Attack extends Activity implements CanAffectModifier {
       this.damage = new DescriptiveNumber(tempDamage);
     } else {
       if(tempDamage > 0) {
-        this.chance = this.chance * tempDamage / this.damage.getValue(); //TODO this calculation is wrong when descriptive number is applied and we have modifier
+        this.chance = this.chance * tempDamage / this.damage.getValue();
       } else {
 
       }
@@ -129,7 +129,7 @@ export class Attack extends Activity implements CanAffectModifier {
     const roll = Utils.random();
     let numberOfModifiers: number = -1;
     if(!this.modifiers) {
-      Attack.MODIFIER_CHANCE.forEach((value: number, key: number) => { //TODO allow init of one of many modifiers.
+      Attack.MODIFIER_CHANCE.forEach((value: number, key: number) => {
         if(roll <= key && numberOfModifiers === -1) {
           numberOfModifiers = value;
         }

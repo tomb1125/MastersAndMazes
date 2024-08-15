@@ -16,6 +16,6 @@ export class gainEffectModifier extends Modifier {
         this.namePrefix = this.effect.namePrefix;
         this.name = 'Gain '+this.effect.name;
         this.powerBonus = (x: CanAffectModifier) => {return x.chance != null ?  x.chance * this.effect.powerBonus(x) : -100000 };
-        this.powerMultiplier = (x: CanAffectModifier) => {return this.effect.powerMultiplier(x) }; //TODO test if true
+        this.powerMultiplier = (x: CanAffectModifier) => {return this.effect.powerMultiplier(x) };
        }
 }

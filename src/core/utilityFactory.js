@@ -20,6 +20,7 @@ var factory_1 = require("./factory");
 var animalSpeak_1 = require("./utilityRepository/druidUtilities/animalSpeak");
 var auguryUtility_1 = require("./utilityRepository/clericUtilities/auguryUtility");
 var weightedList_1 = require("./weightedList");
+var lightUtility_1 = require("./utilityRepository/clericUtilities/lightUtility");
 var UtilityFactory = /** @class */ (function (_super) {
     __extends(UtilityFactory, _super);
     function UtilityFactory(affector, list) {
@@ -29,6 +30,7 @@ var UtilityFactory = /** @class */ (function (_super) {
             //animals
             _this.items.push(new animalSpeak_1.AnimalSpeak());
             _this.items.push(new auguryUtility_1.Augury());
+            _this.items.push(new lightUtility_1.Light());
         }
         else {
             _this.items = list;
