@@ -5,6 +5,8 @@ import { AnimalSpeak } from "./utilityRepository/druidUtilities/animalSpeak";
 import { Augury } from "./utilityRepository/clericUtilities/auguryUtility";
 import { WeightedList } from "./weightedList";
 import { Light } from "./utilityRepository/clericUtilities/lightUtility";
+import { restorationUtility } from "./utilityRepository/clericUtilities/restorationUtility";
+import { SkillBonusUtility } from "./utilityRepository/skillBonusUtility";
 
 export class UtilityFactory extends Factory {
     constructor(affector: AffectsWeight, list?: WeightedList) {
@@ -12,12 +14,15 @@ export class UtilityFactory extends Factory {
         if(list === undefined) {
             this.items = new WeightedList();
             
-            //animals
             this.items.push(new AnimalSpeak());
+
+            //cleric
             this.items.push(new Augury());
             this.items.push(new Light());
+            this.items.push(new restorationUtility());
 
-
+            //common
+            this.items.push(new SkillBonusUtility())
         } else {
             this.items = list;
         }

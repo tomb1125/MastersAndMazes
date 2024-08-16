@@ -22,8 +22,8 @@ var templeModifier = /** @class */ (function (_super) {
     __extends(templeModifier, _super);
     function templeModifier() {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 1.5; };
-        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? 1 : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
+        _this.powerMultiplier = function () { return 1.6; };
+        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? 2 : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.name = 'Temple';
         _this.namePrefix = 'Temple';
         _this.description = 'Can be only used within 10 km of a temple or a relic of your faith.';

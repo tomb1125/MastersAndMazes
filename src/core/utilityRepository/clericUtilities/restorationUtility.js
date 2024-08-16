@@ -15,32 +15,21 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Light = void 0;
-var abilityObjectFactory_1 = require("../../../components/abilityObjectFactory");
-var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
+exports.restorationUtility = void 0;
 var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var utils_1 = require("../../utils");
-var Light = /** @class */ (function (_super) {
-    __extends(Light, _super);
-    function Light() {
-        var _this = this;
-        var range = new descriptiveNumber_1.DescriptiveNumber(utils_1.Utils.D(3) * 5);
-        var radius = new descriptiveNumber_1.DescriptiveNumber(utils_1.Utils.D(3) * 5);
-        _this = _super.call(this, 'Light') || this;
-        _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isLight; }).get(1)[0]);
+var restorationUtility = /** @class */ (function (_super) {
+    __extends(restorationUtility, _super);
+    function restorationUtility() {
+        var _this = _super.call(this, 'Restoration') || this;
+        _this.cooldown = ability_1.Ability.Cooldown.Adventure;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? 1 : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
-        _this.chance = 1.5
-            * utils_1.Utils.getRangeCoeficient(range.getValue())
-            * utils_1.Utils.getRangeCoeficient(radius.getValue());
-        _this.cooldown = ability_1.Ability.Cooldown.Encounter;
-        _this.description = 'Using a Swift Action shine a light in an area centered on a point within ' + range.getValue() + 'm, with a ' + radius.getValue() + 'm radius, until end of the encounter. ' +
-            _this.objects[0].description;
-        //TODO add light as an object
+        _this.chance = 0.6;
+        _this.description = 'After an hour of ritual, you can cause wound effects like limb loss, blindness or statistics loss to be removed from one character. Additionally the target loses 1 Scar. You can use this ability in a moderate size city to alternatively gain 150G on success. ';
         _this.compensate();
         return _this;
     }
-    return Light;
+    return restorationUtility;
 }(utility_1.Utility));
-exports.Light = Light;
+exports.restorationUtility = restorationUtility;

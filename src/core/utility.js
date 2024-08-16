@@ -47,6 +47,7 @@ var Utility = /** @class */ (function (_super) {
             this.objects.reduce(function (sum, mod) { return sum + ' ' + (mod.prefix === undefined ? mod.name : mod.prefix); }, '') + ' ' + this.name;
     };
     Utility.prototype.compensate = function () {
+        this.chance = this.chance * modifierFactory_1.ModifierFactory.getDPSMultiplier(this.modifiers, this);
         var repeat = new repeatableModifier_1.repeatableModifier();
         if (this.chance > 1) {
             var tempRepeat = Math.ceil(this.chance);

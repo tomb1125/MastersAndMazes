@@ -1,11 +1,11 @@
 import { Utils } from "./utils";
-
 export class CharacterContext {
     public static level: number = 1;
     public static classes: CharacterContext.Class[] = [0];
     public static seed: string;
     
     public static OUT_OF_CLASS_WEIGHT = 0.01;
+
 
     public static getDPS() {
         return Utils.getDPS(CharacterContext.level);
@@ -58,4 +58,6 @@ export namespace CharacterContext
         Persuasion,
         Streetwise
     }
+
 }
+

@@ -18,7 +18,6 @@ export class Augury extends Utility {
         this.weight = () => {return CharacterContext.classes.includes(CharacterContext.Class.Cleric) ? 1 : CharacterContext.OUT_OF_CLASS_WEIGHT}
         let tempChance: number = 1.5
             / this.objects[0].rarity 
-            * ModifierFactory.getDPSMultiplier(this.modifiers, this);
 
         if(tempChance > 2) {
             numberOfQuestions = new DescriptiveNumber(3);

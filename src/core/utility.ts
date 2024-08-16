@@ -47,6 +47,8 @@ export class Utility extends Activity implements CanAffectModifier, HasWeigth {
     }
 
     protected compensate(): void {
+      this.chance = this.chance * ModifierFactory.getDPSMultiplier(this.modifiers, this)
+
       const repeat: repeatableModifier = new repeatableModifier();
       if(this.chance > 1) {
         let tempRepeat = Math.ceil(this.chance);

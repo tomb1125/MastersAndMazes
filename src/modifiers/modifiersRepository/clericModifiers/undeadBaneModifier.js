@@ -28,12 +28,12 @@ var undeadBaneModifier = /** @class */ (function (_super) {
             return affector != undefined && affector.type === ability_1.Ability.Type.Attack
                 ? characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ||
                     characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Paladin)
-                    ? 1
+                    ? 2
                     : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT
                 : 0;
         };
-        _this.name = "Undead Bane";
-        _this.namePrefix = "Baning Undead";
+        _this.name = "Evil Bane";
+        _this.namePrefix = "Baning Evil";
         _this.description =
             "If this targets an undead, demon or devil repeat the attack once.";
         _this.longDescription = "";

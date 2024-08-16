@@ -1,4 +1,20 @@
 "use strict";
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
 var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
         if (ar || !(i in from)) {
@@ -25,7 +41,7 @@ var WeightedList = /** @class */ (function () {
         this.items.push(item);
     };
     WeightedList.prototype.get = function (num, affector, banList) {
-        return WeightedList.getRandomFromList(__spreadArray([], this.items, true), num, affector);
+        return WeightedList.getRandomFromList(__spreadArray([], __read(this.items), false), num, affector);
     };
     WeightedList.getRandomFromList = function (array, num, affector) {
         if (array.length < num) {
@@ -48,7 +64,7 @@ var WeightedList = /** @class */ (function () {
                 return [randomElement];
             }
             else {
-                return __spreadArray([randomElement], WeightedList.getRandomFromList(newArray, num - 1), true);
+                return __spreadArray([randomElement], __read(WeightedList.getRandomFromList(newArray, num - 1)), false);
             }
         }
         throw 'bad randomness';

@@ -18,7 +18,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Augury = void 0;
 var abilityObjectFactory_1 = require("../../../components/abilityObjectFactory");
 var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
-var modifierFactory_1 = require("../../../modifiers/modifierFactory");
 var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
@@ -31,8 +30,7 @@ var Augury = /** @class */ (function (_super) {
         _this.cooldown = ability_1.Ability.Cooldown.Adventure;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? 1 : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         var tempChance = 1.5
-            / _this.objects[0].rarity
-            * modifierFactory_1.ModifierFactory.getDPSMultiplier(_this.modifiers, _this);
+            / _this.objects[0].rarity;
         if (tempChance > 2) {
             numberOfQuestions = new descriptiveNumber_1.DescriptiveNumber(3);
         }

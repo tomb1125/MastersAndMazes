@@ -5,8 +5,8 @@ export class templeModifier extends Modifier {
     
     constructor() {
         super();
-        this.powerMultiplier = () => 1.5; 
-        this.weight = () => {return CharacterContext.classes.includes(CharacterContext.Class.Cleric) ? 1 : CharacterContext.OUT_OF_CLASS_WEIGHT}
+        this.powerMultiplier = () => 1.6; 
+        this.weight = () => {return CharacterContext.classes.includes(CharacterContext.Class.Cleric) ? 2 : CharacterContext.OUT_OF_CLASS_WEIGHT}
         this.name = 'Temple';
         this.namePrefix = 'Temple';
         this.description = 'Can be only used within 10 km of a temple or a relic of your faith.';

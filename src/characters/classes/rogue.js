@@ -15,22 +15,18 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.pristineModifier = void 0;
-var characterContext_1 = require("../../../core/characterContext");
-var modifier_1 = require("../../modifier");
-var pristineModifier = /** @class */ (function (_super) {
-    __extends(pristineModifier, _super);
-    function pristineModifier() {
+exports.RogueClass = void 0;
+var characterContext_1 = require("../../core/characterContext");
+var classDetails_1 = require("../classDetails");
+var RogueClass = /** @class */ (function (_super) {
+    __extends(RogueClass, _super);
+    function RogueClass() {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 1.4; };
-        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? 2 : 0.3; };
-        _this.name = 'Pristine';
-        _this.namePrefix = 'Pristine';
-        _this.description = 'Can be only used when you are undamaged.';
-        _this.longDescription = '';
-        _this.modifierType = modifier_1.Modifier.Type.Constraint;
+        _this.type = characterContext_1.CharacterContext.Class.Rogue;
+        _this.primaryAttribute = characterContext_1.CharacterContext.Attribute.Dexterity;
+        _this.secondaryAttribute = characterContext_1.CharacterContext.Attribute.Wisdom;
         return _this;
     }
-    return pristineModifier;
-}(modifier_1.Modifier));
-exports.pristineModifier = pristineModifier;
+    return RogueClass;
+}(classDetails_1.ClassDetails));
+exports.RogueClass = RogueClass;

@@ -18,7 +18,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AnimalSpeak = void 0;
 var abilityObjectFactory_1 = require("../../../components/abilityObjectFactory");
 var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
-var modifierFactory_1 = require("../../../modifiers/modifierFactory");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
 var AnimalSpeak = /** @class */ (function (_super) {
@@ -33,8 +32,7 @@ var AnimalSpeak = /** @class */ (function (_super) {
         _this.chance = 0.5
             / _this.objects[0].rarity
             / _this.objects[1].rarity
-            / _this.duration.getValue()
-            * modifierFactory_1.ModifierFactory.getDPSMultiplier(_this.modifiers, _this);
+            / _this.duration.getValue();
         _this.description = 'You can communicate with ' + _this.objects[1].description + ' for ' + _this.duration.getDescription() + '. ' + _this.objects[0].description;
         _this.compensate();
         return _this;

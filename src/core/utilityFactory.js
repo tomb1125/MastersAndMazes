@@ -21,16 +21,21 @@ var animalSpeak_1 = require("./utilityRepository/druidUtilities/animalSpeak");
 var auguryUtility_1 = require("./utilityRepository/clericUtilities/auguryUtility");
 var weightedList_1 = require("./weightedList");
 var lightUtility_1 = require("./utilityRepository/clericUtilities/lightUtility");
+var restorationUtility_1 = require("./utilityRepository/clericUtilities/restorationUtility");
+var skillBonusUtility_1 = require("./utilityRepository/skillBonusUtility");
 var UtilityFactory = /** @class */ (function (_super) {
     __extends(UtilityFactory, _super);
     function UtilityFactory(affector, list) {
         var _this = _super.call(this, affector) || this;
         if (list === undefined) {
             _this.items = new weightedList_1.WeightedList();
-            //animals
             _this.items.push(new animalSpeak_1.AnimalSpeak());
+            //cleric
             _this.items.push(new auguryUtility_1.Augury());
             _this.items.push(new lightUtility_1.Light());
+            _this.items.push(new restorationUtility_1.restorationUtility());
+            //common
+            _this.items.push(new skillBonusUtility_1.SkillBonusUtility());
         }
         else {
             _this.items = list;

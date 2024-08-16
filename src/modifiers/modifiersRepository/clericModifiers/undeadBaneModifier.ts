@@ -11,12 +11,12 @@ export class undeadBaneModifier extends Modifier {
       return affector != undefined && affector.type === Ability.Type.Attack
         ? CharacterContext.classes.includes(CharacterContext.Class.Cleric) ||
           CharacterContext.classes.includes(CharacterContext.Class.Paladin)
-          ? 1
+          ? 2
           : CharacterContext.OUT_OF_CLASS_WEIGHT
         : 0;
     };
-    this.name = "Undead Bane";
-    this.namePrefix = "Baning Undead";
+    this.name = "Evil Bane";
+    this.namePrefix = "Baning Evil";
     this.description =
       "If this targets an undead, demon or devil repeat the attack once.";
     this.longDescription = "";

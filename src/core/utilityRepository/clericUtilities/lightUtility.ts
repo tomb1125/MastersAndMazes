@@ -20,7 +20,6 @@ export class Light extends Utility {
         this.chance = 1.5
          * Utils.getRangeCoeficient(range.getValue())
          * Utils.getRangeCoeficient(radius.getValue())
-        * ModifierFactory.getDPSMultiplier(this.modifiers, this); //TODO move to compensate
         this.cooldown = Ability.Cooldown.Encounter
          
         

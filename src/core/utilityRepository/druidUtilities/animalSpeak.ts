@@ -20,7 +20,6 @@ export class AnimalSpeak extends Utility {
             / this.objects[0].rarity 
             / this.objects[1].rarity
             / this.duration.getValue() 
-            * ModifierFactory.getDPSMultiplier(this.modifiers, this);
         this.description = 'You can communicate with ' + this.objects[1].description + ' for '+this.duration.getDescription() + '. ' + this.objects[0].description;
         this.compensate();
     }
