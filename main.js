@@ -59,7 +59,7 @@ global.generateAbilities = function (val) {
 };
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./src/core/ability":34,"./src/core/attack":36,"./src/core/characterContext":37,"./src/core/randomNumberGenerator":39,"./src/core/utilityFactory":41,"./src/core/utils":47}],2:[function(require,module,exports){
+},{"./src/core/ability":35,"./src/core/attack":37,"./src/core/characterContext":38,"./src/core/randomNumberGenerator":40,"./src/core/utilityFactory":42,"./src/core/utils":48}],2:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ClassDetails = void 0;
@@ -128,7 +128,7 @@ var ClericClass = /** @class */ (function (_super) {
 }(classDetails_1.ClassDetails));
 exports.ClericClass = ClericClass;
 
-},{"../../core/characterContext":37,"../classDetails":2}],5:[function(require,module,exports){
+},{"../../core/characterContext":38,"../classDetails":2}],5:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -162,7 +162,7 @@ var RogueClass = /** @class */ (function (_super) {
 }(classDetails_1.ClassDetails));
 exports.RogueClass = RogueClass;
 
-},{"../../core/characterContext":37,"../classDetails":2}],6:[function(require,module,exports){
+},{"../../core/characterContext":38,"../classDetails":2}],6:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AbilityObject = void 0;
@@ -216,6 +216,7 @@ var colorofulLightAbilityObject_1 = require("./abilityObjectRepository/light/col
 var controllableLightAbilityObject_1 = require("./abilityObjectRepository/light/controllableLightAbilityObject");
 var oneWordAbilityObject_1 = require("./abilityObjectRepository/questions/oneWordAbilityObject");
 var revealingLightAbilityObject_1 = require("./abilityObjectRepository/light/revealingLightAbilityObject");
+var noeDetailedAbilityObject_1 = require("./abilityObjectRepository/questions/noeDetailedAbilityObject");
 var AbilityObjectFactory = /** @class */ (function (_super) {
     __extends(AbilityObjectFactory, _super);
     function AbilityObjectFactory(affector, list) {
@@ -238,6 +239,7 @@ var AbilityObjectFactory = /** @class */ (function (_super) {
             _this.items.push(new detailedAbilityObject_1.detailedAbilityObject());
             _this.items.push(new yesNoAbilityObject_1.yesNoAbilityObject());
             _this.items.push(new oneWordAbilityObject_1.oneWordAbilityObject());
+            _this.items.push(new noeDetailedAbilityObject_1.noeDetailedAbilityObject());
             //light
             _this.items.push(new colorofulLightAbilityObject_1.colorfulLightAbilityObject());
             _this.items.push(new controllableLightAbilityObject_1.controllableLightAbilityObject());
@@ -258,7 +260,7 @@ var AbilityObjectFactory = /** @class */ (function (_super) {
 }(factory_1.Factory));
 exports.AbilityObjectFactory = AbilityObjectFactory;
 
-},{"../core/factory":38,"../core/weightedList":48,"./abilityObjectRepository/animals/allAnimalsAbilityObject":8,"./abilityObjectRepository/animals/birdAbilityObject":9,"./abilityObjectRepository/animals/catAbilityObject":10,"./abilityObjectRepository/animals/magicalAbilityObject":11,"./abilityObjectRepository/animals/ratAbilityObject":12,"./abilityObjectRepository/animals/reptileAbilityObject":13,"./abilityObjectRepository/animals/wildAbilityObject":14,"./abilityObjectRepository/light/colorofulLightAbilityObject":15,"./abilityObjectRepository/light/controllableLightAbilityObject":16,"./abilityObjectRepository/light/revealingLightAbilityObject":17,"./abilityObjectRepository/questions/detailedAbilityObject":18,"./abilityObjectRepository/questions/oneWordAbilityObject":19,"./abilityObjectRepository/questions/yesNoAbilityObject":20,"./abilityObjectRepository/symetricCommunications/gainUnderstandingAbilityObject":21,"./abilityObjectRepository/symetricCommunications/symetricEmpathicAbilityObject":22,"./abilityObjectRepository/symetricCommunications/symetricTelepathyAbilityObject":23}],8:[function(require,module,exports){
+},{"../core/factory":39,"../core/weightedList":49,"./abilityObjectRepository/animals/allAnimalsAbilityObject":8,"./abilityObjectRepository/animals/birdAbilityObject":9,"./abilityObjectRepository/animals/catAbilityObject":10,"./abilityObjectRepository/animals/magicalAbilityObject":11,"./abilityObjectRepository/animals/ratAbilityObject":12,"./abilityObjectRepository/animals/reptileAbilityObject":13,"./abilityObjectRepository/animals/wildAbilityObject":14,"./abilityObjectRepository/light/colorofulLightAbilityObject":15,"./abilityObjectRepository/light/controllableLightAbilityObject":16,"./abilityObjectRepository/light/revealingLightAbilityObject":17,"./abilityObjectRepository/questions/detailedAbilityObject":18,"./abilityObjectRepository/questions/noeDetailedAbilityObject":19,"./abilityObjectRepository/questions/oneWordAbilityObject":20,"./abilityObjectRepository/questions/yesNoAbilityObject":21,"./abilityObjectRepository/symetricCommunications/gainUnderstandingAbilityObject":22,"./abilityObjectRepository/symetricCommunications/symetricEmpathicAbilityObject":23,"./abilityObjectRepository/symetricCommunications/symetricTelepathyAbilityObject":24}],8:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -652,6 +654,40 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.noeDetailedAbilityObject = void 0;
+var abilityObject_1 = require("../../abilityObject");
+var noeDetailedAbilityObject = /** @class */ (function (_super) {
+    __extends(noeDetailedAbilityObject, _super);
+    function noeDetailedAbilityObject() {
+        var _this = _super.call(this, 'Noe') || this;
+        _this.description = 'Questions are answered truthfully in one sentence, but only if question does not contain letter "e". ';
+        _this.rarity = 0.7;
+        _this.prefix = 'Noe';
+        _this.isQuestion = true;
+        return _this;
+    }
+    return noeDetailedAbilityObject;
+}(abilityObject_1.AbilityObject));
+exports.noeDetailedAbilityObject = noeDetailedAbilityObject;
+
+},{"../../abilityObject":6}],20:[function(require,module,exports){
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.oneWordAbilityObject = void 0;
 var abilityObject_1 = require("../../abilityObject");
 var oneWordAbilityObject = /** @class */ (function (_super) {
@@ -659,7 +695,7 @@ var oneWordAbilityObject = /** @class */ (function (_super) {
     function oneWordAbilityObject() {
         var _this = _super.call(this, 'One Word') || this;
         _this.description = 'Your question cannot be a yes/no question and will be answered truthfully with one word. ';
-        _this.rarity = 0.7;
+        _this.rarity = 0.9;
         _this.prefix = 'One Word';
         _this.isQuestion = true;
         return _this;
@@ -668,7 +704,7 @@ var oneWordAbilityObject = /** @class */ (function (_super) {
 }(abilityObject_1.AbilityObject));
 exports.oneWordAbilityObject = oneWordAbilityObject;
 
-},{"../../abilityObject":6}],20:[function(require,module,exports){
+},{"../../abilityObject":6}],21:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -702,7 +738,7 @@ var yesNoAbilityObject = /** @class */ (function (_super) {
 }(abilityObject_1.AbilityObject));
 exports.yesNoAbilityObject = yesNoAbilityObject;
 
-},{"../../abilityObject":6}],21:[function(require,module,exports){
+},{"../../abilityObject":6}],22:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -736,7 +772,7 @@ var gainUnderstandingAbilityObject = /** @class */ (function (_super) {
 }(abilityObject_1.AbilityObject));
 exports.gainUnderstandingAbilityObject = gainUnderstandingAbilityObject;
 
-},{"../../abilityObject":6}],22:[function(require,module,exports){
+},{"../../abilityObject":6}],23:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -770,7 +806,7 @@ var symetricEmpathicAbilityObject = /** @class */ (function (_super) {
 }(abilityObject_1.AbilityObject));
 exports.symetricEmpathicAbilityObject = symetricEmpathicAbilityObject;
 
-},{"../../abilityObject":6}],23:[function(require,module,exports){
+},{"../../abilityObject":6}],24:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -804,7 +840,7 @@ var symetricTelepathyAbilityObject = /** @class */ (function (_super) {
 }(abilityObject_1.AbilityObject));
 exports.symetricTelepathyAbilityObject = symetricTelepathyAbilityObject;
 
-},{"../../abilityObject":6}],24:[function(require,module,exports){
+},{"../../abilityObject":6}],25:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DescriptiveNumber = void 0;
@@ -854,7 +890,7 @@ exports.DescriptiveNumber = DescriptiveNumber;
     })(Type = DescriptiveNumber.Type || (DescriptiveNumber.Type = {}));
 })(DescriptiveNumber || (exports.DescriptiveNumber = DescriptiveNumber = {}));
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -913,7 +949,7 @@ var DescriptiveNumberFactory = /** @class */ (function (_super) {
 }(factory_1.Factory));
 exports.DescriptiveNumberFactory = DescriptiveNumberFactory;
 
-},{"../core/factory":38,"../core/weightedList":48,"./descriptiveNumberRepository/AdjacentEnemiesDescriptiveNumber":26,"./descriptiveNumberRepository/assassinDescriptiveNumber":27,"./descriptiveNumberRepository/currentHealthDescriptiveNumber":28,"./descriptiveNumberRepository/damageTakenDescriptiveNumber":29,"./descriptiveNumberRepository/duration/aneHourDescriptiveNumber":30,"./descriptiveNumberRepository/duration/d4MinuteDescriptiveNumber":31,"./descriptiveNumberRepository/numberOfEnemiesDescriptiveNumber":32,"./descriptiveNumberRepository/numberOfTurnsDescriptiveNumber":33}],26:[function(require,module,exports){
+},{"../core/factory":39,"../core/weightedList":49,"./descriptiveNumberRepository/AdjacentEnemiesDescriptiveNumber":27,"./descriptiveNumberRepository/assassinDescriptiveNumber":28,"./descriptiveNumberRepository/currentHealthDescriptiveNumber":29,"./descriptiveNumberRepository/damageTakenDescriptiveNumber":30,"./descriptiveNumberRepository/duration/aneHourDescriptiveNumber":31,"./descriptiveNumberRepository/duration/d4MinuteDescriptiveNumber":32,"./descriptiveNumberRepository/numberOfEnemiesDescriptiveNumber":33,"./descriptiveNumberRepository/numberOfTurnsDescriptiveNumber":34}],27:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -946,7 +982,7 @@ var adjacentEnemiesDescriptiveNumber = /** @class */ (function (_super) {
 }(descriptiveNumber_1.DescriptiveNumber));
 exports.adjacentEnemiesDescriptiveNumber = adjacentEnemiesDescriptiveNumber;
 
-},{"../descriptiveNumber":24}],27:[function(require,module,exports){
+},{"../descriptiveNumber":25}],28:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -980,7 +1016,7 @@ var assassinDescriptiveNumber = /** @class */ (function (_super) {
 }(descriptiveNumber_1.DescriptiveNumber));
 exports.assassinDescriptiveNumber = assassinDescriptiveNumber;
 
-},{"../../core/utils":47,"../descriptiveNumber":24}],28:[function(require,module,exports){
+},{"../../core/utils":48,"../descriptiveNumber":25}],29:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1013,7 +1049,7 @@ var currentHealthDescriptiveNumber = /** @class */ (function (_super) {
 }(descriptiveNumber_1.DescriptiveNumber));
 exports.currentHealthDescriptiveNumber = currentHealthDescriptiveNumber;
 
-},{"../../core/utils":47,"../descriptiveNumber":24}],29:[function(require,module,exports){
+},{"../../core/utils":48,"../descriptiveNumber":25}],30:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1046,7 +1082,7 @@ var damageTakenDescriptiveNumber = /** @class */ (function (_super) {
 }(descriptiveNumber_1.DescriptiveNumber));
 exports.damageTakenDescriptiveNumber = damageTakenDescriptiveNumber;
 
-},{"../../core/utils":47,"../descriptiveNumber":24}],30:[function(require,module,exports){
+},{"../../core/utils":48,"../descriptiveNumber":25}],31:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1080,7 +1116,7 @@ var oneHourDescriptiveNumber = /** @class */ (function (_super) {
 }(descriptiveNumber_1.DescriptiveNumber));
 exports.oneHourDescriptiveNumber = oneHourDescriptiveNumber;
 
-},{"../../descriptiveNumber":24}],31:[function(require,module,exports){
+},{"../../descriptiveNumber":25}],32:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1116,7 +1152,7 @@ var d4MinuteDescriptiveNumber = /** @class */ (function (_super) {
 }(descriptiveNumber_1.DescriptiveNumber));
 exports.d4MinuteDescriptiveNumber = d4MinuteDescriptiveNumber;
 
-},{"../../../core/utils":47,"../../descriptiveNumber":24}],32:[function(require,module,exports){
+},{"../../../core/utils":48,"../../descriptiveNumber":25}],33:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1150,7 +1186,7 @@ var numberOfEnemiesDescriptiveNumber = /** @class */ (function (_super) {
 }(descriptiveNumber_1.DescriptiveNumber));
 exports.numberOfEnemiesDescriptiveNumber = numberOfEnemiesDescriptiveNumber;
 
-},{"../../core/utils":47,"../descriptiveNumber":24}],33:[function(require,module,exports){
+},{"../../core/utils":48,"../descriptiveNumber":25}],34:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1184,7 +1220,7 @@ var numberOfTurnsDescriptiveNumber = /** @class */ (function (_super) {
 }(descriptiveNumber_1.DescriptiveNumber));
 exports.numberOfTurnsDescriptiveNumber = numberOfTurnsDescriptiveNumber;
 
-},{"../../core/utils":47,"../descriptiveNumber":24}],34:[function(require,module,exports){
+},{"../../core/utils":48,"../descriptiveNumber":25}],35:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Ability = void 0;
@@ -1248,7 +1284,7 @@ exports.Ability = Ability;
     })(Attribute = Ability.Attribute || (Ability.Attribute = {}));
 })(Ability || (exports.Ability = Ability = {}));
 
-},{}],35:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1279,7 +1315,7 @@ var Activity = /** @class */ (function (_super) {
 }(ability_1.Ability));
 exports.Activity = Activity;
 
-},{"./ability":34}],36:[function(require,module,exports){
+},{"./ability":35}],37:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1500,7 +1536,7 @@ exports.Attack = Attack;
     })(Subtype = Attack.Subtype || (Attack.Subtype = {}));
 })(Attack || (exports.Attack = Attack = {}));
 
-},{"../components/descriptiveNumber":24,"../components/descriptiveNumberFactory":25,"./../modifiers/modifierFactory":57,"./ability":34,"./activity":35,"./characterContext":37,"./utils":47}],37:[function(require,module,exports){
+},{"../components/descriptiveNumber":25,"../components/descriptiveNumberFactory":26,"./../modifiers/modifierFactory":58,"./ability":35,"./activity":36,"./characterContext":38,"./utils":48}],38:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CharacterContext = void 0;
@@ -1563,7 +1599,7 @@ exports.CharacterContext = CharacterContext;
     })(Skill = CharacterContext.Skill || (CharacterContext.Skill = {}));
 })(CharacterContext || (exports.CharacterContext = CharacterContext = {}));
 
-},{"./utils":47}],38:[function(require,module,exports){
+},{"./utils":48}],39:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Factory = void 0;
@@ -1585,7 +1621,7 @@ var Factory = /** @class */ (function () {
 }());
 exports.Factory = Factory;
 
-},{}],39:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 "use strict";
 var __values = (this && this.__values) || function(o) {
     var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
@@ -1629,7 +1665,7 @@ var RandomNumberGenerator = /** @class */ (function () {
 }());
 exports.RandomNumberGenerator = RandomNumberGenerator;
 
-},{}],40:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1697,7 +1733,7 @@ var Utility = /** @class */ (function (_super) {
 }(activity_1.Activity));
 exports.Utility = Utility;
 
-},{"../modifiers/modifierFactory":57,"../modifiers/modifiersRepository/repeatableModifier":72,"./ability":34,"./activity":35,"./utils":47}],41:[function(require,module,exports){
+},{"../modifiers/modifierFactory":58,"../modifiers/modifiersRepository/repeatableModifier":73,"./ability":35,"./activity":36,"./utils":48}],42:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1752,7 +1788,7 @@ var UtilityFactory = /** @class */ (function (_super) {
 }(factory_1.Factory));
 exports.UtilityFactory = UtilityFactory;
 
-},{"./factory":38,"./utilityRepository/clericUtilities/auguryUtility":42,"./utilityRepository/clericUtilities/lightUtility":43,"./utilityRepository/clericUtilities/restorationUtility":44,"./utilityRepository/druidUtilities/animalSpeak":45,"./utilityRepository/skillBonusUtility":46,"./weightedList":48}],42:[function(require,module,exports){
+},{"./factory":39,"./utilityRepository/clericUtilities/auguryUtility":43,"./utilityRepository/clericUtilities/lightUtility":44,"./utilityRepository/clericUtilities/restorationUtility":45,"./utilityRepository/druidUtilities/animalSpeak":46,"./utilityRepository/skillBonusUtility":47,"./weightedList":49}],43:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1807,7 +1843,7 @@ var Augury = /** @class */ (function (_super) {
 }(utility_1.Utility));
 exports.Augury = Augury;
 
-},{"../../../components/abilityObjectFactory":7,"../../../components/descriptiveNumber":24,"../../ability":34,"../../characterContext":37,"../../utility":40}],43:[function(require,module,exports){
+},{"../../../components/abilityObjectFactory":7,"../../../components/descriptiveNumber":25,"../../ability":35,"../../characterContext":38,"../../utility":41}],44:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1836,16 +1872,16 @@ var Light = /** @class */ (function (_super) {
     __extends(Light, _super);
     function Light() {
         var _this = this;
-        var range = new descriptiveNumber_1.DescriptiveNumber(utils_1.Utils.D(3) * 5);
         var radius = new descriptiveNumber_1.DescriptiveNumber(utils_1.Utils.D(3) * 5);
         _this = _super.call(this, 'Light') || this;
+        _this.range = utils_1.Utils.D(3) * 5;
         _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isLight; }).get(1)[0]);
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? 1 : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.chance = 1.5
-            * utils_1.Utils.getRangeCoeficient(range.getValue())
+            * utils_1.Utils.getRangeCoeficient(_this.range)
             * utils_1.Utils.getRangeCoeficient(radius.getValue());
         _this.cooldown = ability_1.Ability.Cooldown.Encounter;
-        _this.description = 'Using a Swift Action shine a light in an area centered on a point within ' + range.getValue() + 'm, with a ' + radius.getValue() + 'm radius, until end of the encounter. ' +
+        _this.description = 'Using a Swift Action shine a light in an area centered on a point within ' + _this.range + 'm, with a ' + radius.getValue() + 'm radius, until end of the encounter. ' +
             _this.objects[0].description;
         //TODO add light as an object
         _this.compensate();
@@ -1855,7 +1891,7 @@ var Light = /** @class */ (function (_super) {
 }(utility_1.Utility));
 exports.Light = Light;
 
-},{"../../../components/abilityObjectFactory":7,"../../../components/descriptiveNumber":24,"../../ability":34,"../../characterContext":37,"../../utility":40,"../../utils":47}],44:[function(require,module,exports){
+},{"../../../components/abilityObjectFactory":7,"../../../components/descriptiveNumber":25,"../../ability":35,"../../characterContext":38,"../../utility":41,"../../utils":48}],45:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1884,7 +1920,7 @@ var restorationUtility = /** @class */ (function (_super) {
         _this.cooldown = ability_1.Ability.Cooldown.Adventure;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? 1 : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.chance = 0.6;
-        _this.description = 'After an hour of ritual, you can cause wound effects like limb loss, blindness or statistics loss to be removed from one character. Additionally the target loses 1 Scar. You can use this ability in a moderate size city to alternatively gain 150G on success. ';
+        _this.description = 'After an hour of ritual, you can cause one wound effect like limb loss, blindness or statistics loss to be removed from one character. Additionally the target loses 1 Scar. You can use this ability in a moderate size city to alternatively gain 150G on success. ';
         _this.compensate();
         return _this;
     }
@@ -1892,7 +1928,7 @@ var restorationUtility = /** @class */ (function (_super) {
 }(utility_1.Utility));
 exports.restorationUtility = restorationUtility;
 
-},{"../../ability":34,"../../characterContext":37,"../../utility":40}],45:[function(require,module,exports){
+},{"../../ability":35,"../../characterContext":38,"../../utility":41}],46:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1936,7 +1972,7 @@ var AnimalSpeak = /** @class */ (function (_super) {
 }(utility_1.Utility));
 exports.AnimalSpeak = AnimalSpeak;
 
-},{"../../../components/abilityObjectFactory":7,"../../../components/descriptiveNumber":24,"../../characterContext":37,"../../utility":40}],46:[function(require,module,exports){
+},{"../../../components/abilityObjectFactory":7,"../../../components/descriptiveNumber":25,"../../characterContext":38,"../../utility":41}],47:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1988,26 +2024,28 @@ var utils_1 = require("../utils");
 var SkillBonusUtility = /** @class */ (function (_super) {
     __extends(SkillBonusUtility, _super);
     function SkillBonusUtility() {
-        var _this = _super.call(this, 'Skill Bonus') || this;
-        _this.weight = function () { return 1; };
-        var boonNumbers = new descriptiveNumber_1.DescriptiveNumber(utils_1.Utils.D(3));
-        _this.chance = 2 * Math.pow(5 / 6, boonNumbers.getValue());
+        var _this = this;
         var skill;
         var roll = utils_1.Utils.random();
-        if (roll < 0.5) {
+        var roll2 = utils_1.Utils.D(characterContext_1.CharacterContext.classes.length) - 1;
+        if (roll < 0.0055) {
             skill = __spreadArray([], __read(utils_1.Utils.SKILL_TO_ATTRIBUTE.keys()), false).filter(function (key) {
-                utils_1.Utils.SKILL_TO_ATTRIBUTE[key] === classUtils_1.ClassUtils.getClass(characterContext_1.CharacterContext.Class[characterContext_1.CharacterContext.classes[utils_1.Utils.D(characterContext_1.CharacterContext.classes.length) - 1]]).primaryAttribute;
+                return utils_1.Utils.SKILL_TO_ATTRIBUTE.get(key) === classUtils_1.ClassUtils.getClass(characterContext_1.CharacterContext.Class[characterContext_1.CharacterContext.classes[roll2]]).primaryAttribute;
             }).sort(function () { return 0.5 - utils_1.Utils.random(); })[0];
         }
         else if (roll < 0.8) {
             skill = __spreadArray([], __read(utils_1.Utils.SKILL_TO_ATTRIBUTE.keys()), false).filter(function (key) {
-                utils_1.Utils.SKILL_TO_ATTRIBUTE[key] === classUtils_1.ClassUtils.getClass(characterContext_1.CharacterContext.Class[characterContext_1.CharacterContext.classes[utils_1.Utils.D(characterContext_1.CharacterContext.classes.length) - 1]]).secondaryAttribute;
+                return utils_1.Utils.SKILL_TO_ATTRIBUTE.get(key) === classUtils_1.ClassUtils.getClass(characterContext_1.CharacterContext.Class[characterContext_1.CharacterContext.classes[roll2]]).secondaryAttribute;
             }).sort(function () { return 0.5 - utils_1.Utils.random(); })[0];
         }
         else {
             skill = __spreadArray([], __read(utils_1.Utils.SKILL_TO_ATTRIBUTE.keys()), false).sort(function () { return 0.5 - utils_1.Utils.random(); })[0];
         }
-        _this.description = 'For duration of an Encounter, gain ' + boonNumbers.getDescription() + ' Boons when rolling for ' + skill;
+        _this = _super.call(this, characterContext_1.CharacterContext.Skill[skill] + ' Bonus') || this;
+        _this.weight = function () { return 1; };
+        var boonNumbers = new descriptiveNumber_1.DescriptiveNumber(utils_1.Utils.D(3));
+        _this.chance = 2 * Math.pow(5 / 6, boonNumbers.getValue());
+        _this.description = 'For duration of an Encounter, gain ' + boonNumbers.getDescription() + ' Boons when rolling for ' + characterContext_1.CharacterContext.Skill[skill] + '. ';
         _this.compensate();
         return _this;
     }
@@ -2015,7 +2053,7 @@ var SkillBonusUtility = /** @class */ (function (_super) {
 }(utility_1.Utility));
 exports.SkillBonusUtility = SkillBonusUtility;
 
-},{"../../characters/classUtils":3,"../../components/descriptiveNumber":24,"../characterContext":37,"../utility":40,"../utils":47}],47:[function(require,module,exports){
+},{"../../characters/classUtils":3,"../../components/descriptiveNumber":25,"../characterContext":38,"../utility":41,"../utils":48}],48:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Utils = void 0;
@@ -2132,7 +2170,7 @@ var Utils = /** @class */ (function () {
 }());
 exports.Utils = Utils;
 
-},{"./characterContext":37}],48:[function(require,module,exports){
+},{"./characterContext":38}],49:[function(require,module,exports){
 "use strict";
 var __read = (this && this.__read) || function (o, n) {
     var m = typeof Symbol === "function" && o[Symbol.iterator];
@@ -2208,7 +2246,7 @@ var WeightedList = /** @class */ (function () {
 }());
 exports.WeightedList = WeightedList;
 
-},{"./utils":47}],49:[function(require,module,exports){
+},{"./utils":48}],50:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2247,7 +2285,7 @@ exports.Effect = Effect;
     })(Subtype = Effect.Subtype || (Effect.Subtype = {}));
 })(Effect || (exports.Effect = Effect = {}));
 
-},{"./modifier":56}],50:[function(require,module,exports){
+},{"./modifier":57}],51:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2300,7 +2338,7 @@ var EffectFactory = /** @class */ (function (_super) {
 }(factory_1.Factory));
 exports.EffectFactory = EffectFactory;
 
-},{"../core/factory":38,"../core/weightedList":48,"./effectRepository/damageBonusEffect":51,"./effectRepository/guidingEffect":52,"./effectRepository/instakillEffect":53,"./effectRepository/scalingDotEffect":54,"./effectRepository/stunEffect":55}],51:[function(require,module,exports){
+},{"../core/factory":39,"../core/weightedList":49,"./effectRepository/damageBonusEffect":52,"./effectRepository/guidingEffect":53,"./effectRepository/instakillEffect":54,"./effectRepository/scalingDotEffect":55,"./effectRepository/stunEffect":56}],52:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2340,7 +2378,7 @@ var damageBonusEffect = /** @class */ (function (_super) {
 }(effect_1.Effect));
 exports.damageBonusEffect = damageBonusEffect;
 
-},{"../../core/ability":34,"../../core/utils":47,"../effect":49}],52:[function(require,module,exports){
+},{"../../core/ability":35,"../../core/utils":48,"../effect":50}],53:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2380,7 +2418,7 @@ var guidingEffect = /** @class */ (function (_super) {
 }(effect_1.Effect));
 exports.guidingEffect = guidingEffect;
 
-},{"../../core/ability":34,"../../core/utils":47,"../effect":49}],53:[function(require,module,exports){
+},{"../../core/ability":35,"../../core/utils":48,"../effect":50}],54:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2419,7 +2457,7 @@ var instakillEffect = /** @class */ (function (_super) {
 }(effect_1.Effect));
 exports.instakillEffect = instakillEffect;
 
-},{"../../core/ability":34,"../../core/utils":47,"../effect":49}],54:[function(require,module,exports){
+},{"../../core/ability":35,"../../core/utils":48,"../effect":50}],55:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2460,7 +2498,7 @@ var scalingDotEffect = /** @class */ (function (_super) {
 }(effect_1.Effect));
 exports.scalingDotEffect = scalingDotEffect;
 
-},{"../../core/ability":34,"../../core/utils":47,"../effect":49}],55:[function(require,module,exports){
+},{"../../core/ability":35,"../../core/utils":48,"../effect":50}],56:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2498,7 +2536,7 @@ var stunEffect = /** @class */ (function (_super) {
 }(effect_1.Effect));
 exports.stunEffect = stunEffect;
 
-},{"../../core/ability":34,"../../core/utils":47,"../effect":49}],56:[function(require,module,exports){
+},{"../../core/ability":35,"../../core/utils":48,"../effect":50}],57:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Modifier = void 0;
@@ -2525,7 +2563,7 @@ exports.Modifier = Modifier;
     })(Type = Modifier.Type || (Modifier.Type = {}));
 })(Modifier || (exports.Modifier = Modifier = {}));
 
-},{}],57:[function(require,module,exports){
+},{}],58:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2625,7 +2663,7 @@ var ModifierFactory = /** @class */ (function (_super) {
 }(factory_1.Factory));
 exports.ModifierFactory = ModifierFactory;
 
-},{"../core/factory":38,"../core/weightedList":48,"./modifiersRepository/applyEffectModifier":58,"./modifiersRepository/bloodiedModifier":59,"./modifiersRepository/cleaveModifier":60,"./modifiersRepository/clericModifiers/pristineModifier":61,"./modifiersRepository/clericModifiers/templeModifier":62,"./modifiersRepository/clericModifiers/undeadBaneModifier":63,"./modifiersRepository/exhaustingModifer":64,"./modifiersRepository/fastModifier":65,"./modifiersRepository/gainEffectModifier":66,"./modifiersRepository/laylineModifier":67,"./modifiersRepository/lifestealModifier":68,"./modifiersRepository/momentumModifier":69,"./modifiersRepository/multipleModifer":70,"./modifiersRepository/nightlyModifier":71,"./modifiersRepository/restedModifer":73,"./modifiersRepository/selfHealModifier":74,"./modifiersRepository/signatureModifier":75,"./modifiersRepository/ultimateModifier":76,"./modifiersRepository/vengefulModifier":77}],58:[function(require,module,exports){
+},{"../core/factory":39,"../core/weightedList":49,"./modifiersRepository/applyEffectModifier":59,"./modifiersRepository/bloodiedModifier":60,"./modifiersRepository/cleaveModifier":61,"./modifiersRepository/clericModifiers/pristineModifier":62,"./modifiersRepository/clericModifiers/templeModifier":63,"./modifiersRepository/clericModifiers/undeadBaneModifier":64,"./modifiersRepository/exhaustingModifer":65,"./modifiersRepository/fastModifier":66,"./modifiersRepository/gainEffectModifier":67,"./modifiersRepository/laylineModifier":68,"./modifiersRepository/lifestealModifier":69,"./modifiersRepository/momentumModifier":70,"./modifiersRepository/multipleModifer":71,"./modifiersRepository/nightlyModifier":72,"./modifiersRepository/restedModifer":74,"./modifiersRepository/selfHealModifier":75,"./modifiersRepository/signatureModifier":76,"./modifiersRepository/ultimateModifier":77,"./modifiersRepository/vengefulModifier":78}],59:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2669,7 +2707,7 @@ var applyEffectModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.applyEffectModifier = applyEffectModifier;
 
-},{"../../core/ability":34,"../../core/utils":47,"../effect":49,"../effectFactory":50,"../modifier":56}],59:[function(require,module,exports){
+},{"../../core/ability":35,"../../core/utils":48,"../effect":50,"../effectFactory":51,"../modifier":57}],60:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2709,7 +2747,7 @@ var bloodiedModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.bloodiedModifier = bloodiedModifier;
 
-},{"../../core/ability":34,"../modifier":56}],60:[function(require,module,exports){
+},{"../../core/ability":35,"../modifier":57}],61:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2747,7 +2785,7 @@ var cleaveModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.cleaveModifier = cleaveModifier;
 
-},{"../../core/ability":34,"../modifier":56}],61:[function(require,module,exports){
+},{"../../core/ability":35,"../modifier":57}],62:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2785,7 +2823,7 @@ var pristineModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.pristineModifier = pristineModifier;
 
-},{"../../../core/characterContext":37,"../../modifier":56}],62:[function(require,module,exports){
+},{"../../../core/characterContext":38,"../../modifier":57}],63:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2823,7 +2861,7 @@ var templeModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.templeModifier = templeModifier;
 
-},{"../../../core/characterContext":37,"../../modifier":56}],63:[function(require,module,exports){
+},{"../../../core/characterContext":38,"../../modifier":57}],64:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2870,7 +2908,7 @@ var undeadBaneModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.undeadBaneModifier = undeadBaneModifier;
 
-},{"../../../core/ability":34,"../../../core/characterContext":37,"../../modifier":56}],64:[function(require,module,exports){
+},{"../../../core/ability":35,"../../../core/characterContext":38,"../../modifier":57}],65:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2907,7 +2945,7 @@ var exhaustingModifer = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.exhaustingModifer = exhaustingModifer;
 
-},{"../../core/ability":34,"../modifier":56}],65:[function(require,module,exports){
+},{"../../core/ability":35,"../modifier":57}],66:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2946,7 +2984,7 @@ var fastModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.fastModifier = fastModifier;
 
-},{"../../core/ability":34,"../../core/utils":47,"../modifier":56}],66:[function(require,module,exports){
+},{"../../core/ability":35,"../../core/utils":48,"../modifier":57}],67:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2987,7 +3025,7 @@ var gainEffectModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.gainEffectModifier = gainEffectModifier;
 
-},{"../../core/ability":34,"../effect":49,"../effectFactory":50,"../modifier":56}],67:[function(require,module,exports){
+},{"../../core/ability":35,"../effect":50,"../effectFactory":51,"../modifier":57}],68:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3026,7 +3064,7 @@ var laylineModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.laylineModifier = laylineModifier;
 
-},{"../../core/ability":34,"../modifier":56}],68:[function(require,module,exports){
+},{"../../core/ability":35,"../modifier":57}],69:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3064,7 +3102,7 @@ var lifestealModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.lifestealModifier = lifestealModifier;
 
-},{"../../core/ability":34,"../modifier":56}],69:[function(require,module,exports){
+},{"../../core/ability":35,"../modifier":57}],70:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3105,7 +3143,7 @@ var momentumModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.momentumModifier = momentumModifier;
 
-},{"../../components/descriptiveNumber":24,"../../core/ability":34,"../../core/utils":47,"../modifier":56}],70:[function(require,module,exports){
+},{"../../components/descriptiveNumber":25,"../../core/ability":35,"../../core/utils":48,"../modifier":57}],71:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3159,7 +3197,7 @@ var multipleModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.multipleModifier = multipleModifier;
 
-},{"../../components/descriptiveNumber":24,"../../core/ability":34,"../../core/weightedList":48,"../modifier":56}],71:[function(require,module,exports){
+},{"../../components/descriptiveNumber":25,"../../core/ability":35,"../../core/weightedList":49,"../modifier":57}],72:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3195,7 +3233,7 @@ var nightlyModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.nightlyModifier = nightlyModifier;
 
-},{"../modifier":56}],72:[function(require,module,exports){
+},{"../modifier":57}],73:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3249,7 +3287,7 @@ var repeatableModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.repeatableModifier = repeatableModifier;
 
-},{"../../components/descriptiveNumber":24,"../../core/weightedList":48,"../modifier":56}],73:[function(require,module,exports){
+},{"../../components/descriptiveNumber":25,"../../core/weightedList":49,"../modifier":57}],74:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3285,7 +3323,7 @@ var restedModifer = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.restedModifer = restedModifer;
 
-},{"../modifier":56}],74:[function(require,module,exports){
+},{"../modifier":57}],75:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3328,7 +3366,7 @@ var selfHealModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.selfHealModifier = selfHealModifier;
 
-},{"../../components/descriptiveNumber":24,"../../components/descriptiveNumberFactory":25,"../../core/ability":34,"../../core/utils":47,"../modifier":56}],75:[function(require,module,exports){
+},{"../../components/descriptiveNumber":25,"../../components/descriptiveNumberFactory":26,"../../core/ability":35,"../../core/utils":48,"../modifier":57}],76:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3366,7 +3404,7 @@ var signatureModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.signatureModifier = signatureModifier;
 
-},{"../../core/ability":34,"../modifier":56}],76:[function(require,module,exports){
+},{"../../core/ability":35,"../modifier":57}],77:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3404,7 +3442,7 @@ var ultimateModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.ultimateModifier = ultimateModifier;
 
-},{"../../core/ability":34,"../modifier":56}],77:[function(require,module,exports){
+},{"../../core/ability":35,"../modifier":57}],78:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3442,4 +3480,4 @@ var vengefulModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.vengefulModifier = vengefulModifier;
 
-},{"../../core/ability":34,"../modifier":56}]},{},[1]);
+},{"../../core/ability":35,"../modifier":57}]},{},[1]);

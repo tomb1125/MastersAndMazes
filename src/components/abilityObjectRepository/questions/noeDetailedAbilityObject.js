@@ -15,18 +15,18 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.oneWordAbilityObject = void 0;
+exports.noeDetailedAbilityObject = void 0;
 var abilityObject_1 = require("../../abilityObject");
-var oneWordAbilityObject = /** @class */ (function (_super) {
-    __extends(oneWordAbilityObject, _super);
-    function oneWordAbilityObject() {
-        var _this = _super.call(this, 'One Word') || this;
-        _this.description = 'Your question cannot be a yes/no question and will be answered truthfully with one word. ';
-        _this.rarity = 0.9;
-        _this.prefix = 'One Word';
+var noeDetailedAbilityObject = /** @class */ (function (_super) {
+    __extends(noeDetailedAbilityObject, _super);
+    function noeDetailedAbilityObject() {
+        var _this = _super.call(this, 'Noe') || this;
+        _this.description = 'Questions are answered truthfully in one sentence, but only if question does not contain letter "e". ';
+        _this.rarity = 0.7;
+        _this.prefix = 'Noe';
         _this.isQuestion = true;
         return _this;
     }
-    return oneWordAbilityObject;
+    return noeDetailedAbilityObject;
 }(abilityObject_1.AbilityObject));
-exports.oneWordAbilityObject = oneWordAbilityObject;
+exports.noeDetailedAbilityObject = noeDetailedAbilityObject;

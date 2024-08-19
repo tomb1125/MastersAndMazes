@@ -49,26 +49,28 @@ var utils_1 = require("../utils");
 var SkillBonusUtility = /** @class */ (function (_super) {
     __extends(SkillBonusUtility, _super);
     function SkillBonusUtility() {
-        var _this = _super.call(this, 'Skill Bonus') || this;
-        _this.weight = function () { return 1; };
-        var boonNumbers = new descriptiveNumber_1.DescriptiveNumber(utils_1.Utils.D(3));
-        _this.chance = 2 * Math.pow(5 / 6, boonNumbers.getValue());
+        var _this = this;
         var skill;
         var roll = utils_1.Utils.random();
-        if (roll < 0.5) {
+        var roll2 = utils_1.Utils.D(characterContext_1.CharacterContext.classes.length) - 1;
+        if (roll < 0.0055) {
             skill = __spreadArray([], __read(utils_1.Utils.SKILL_TO_ATTRIBUTE.keys()), false).filter(function (key) {
-                utils_1.Utils.SKILL_TO_ATTRIBUTE[key] === classUtils_1.ClassUtils.getClass(characterContext_1.CharacterContext.Class[characterContext_1.CharacterContext.classes[utils_1.Utils.D(characterContext_1.CharacterContext.classes.length) - 1]]).primaryAttribute;
+                return utils_1.Utils.SKILL_TO_ATTRIBUTE.get(key) === classUtils_1.ClassUtils.getClass(characterContext_1.CharacterContext.Class[characterContext_1.CharacterContext.classes[roll2]]).primaryAttribute;
             }).sort(function () { return 0.5 - utils_1.Utils.random(); })[0];
         }
         else if (roll < 0.8) {
             skill = __spreadArray([], __read(utils_1.Utils.SKILL_TO_ATTRIBUTE.keys()), false).filter(function (key) {
-                utils_1.Utils.SKILL_TO_ATTRIBUTE[key] === classUtils_1.ClassUtils.getClass(characterContext_1.CharacterContext.Class[characterContext_1.CharacterContext.classes[utils_1.Utils.D(characterContext_1.CharacterContext.classes.length) - 1]]).secondaryAttribute;
+                return utils_1.Utils.SKILL_TO_ATTRIBUTE.get(key) === classUtils_1.ClassUtils.getClass(characterContext_1.CharacterContext.Class[characterContext_1.CharacterContext.classes[roll2]]).secondaryAttribute;
             }).sort(function () { return 0.5 - utils_1.Utils.random(); })[0];
         }
         else {
             skill = __spreadArray([], __read(utils_1.Utils.SKILL_TO_ATTRIBUTE.keys()), false).sort(function () { return 0.5 - utils_1.Utils.random(); })[0];
         }
-        _this.description = 'For duration of an Encounter, gain ' + boonNumbers.getDescription() + ' Boons when rolling for ' + skill;
+        _this = _super.call(this, characterContext_1.CharacterContext.Skill[skill] + ' Bonus') || this;
+        _this.weight = function () { return 1; };
+        var boonNumbers = new descriptiveNumber_1.DescriptiveNumber(utils_1.Utils.D(3));
+        _this.chance = 2 * Math.pow(5 / 6, boonNumbers.getValue());
+        _this.description = 'For duration of an Encounter, gain ' + boonNumbers.getDescription() + ' Boons when rolling for ' + characterContext_1.CharacterContext.Skill[skill] + '. ';
         _this.compensate();
         return _this;
     }

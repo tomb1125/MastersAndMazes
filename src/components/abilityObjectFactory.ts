@@ -18,6 +18,7 @@ import { colorfulLightAbilityObject } from "./abilityObjectRepository/light/colo
 import { controllableLightAbilityObject } from "./abilityObjectRepository/light/controllableLightAbilityObject";
 import { oneWordAbilityObject } from "./abilityObjectRepository/questions/oneWordAbilityObject";
 import { revealingLightAbilityObject } from "./abilityObjectRepository/light/revealingLightAbilityObject";
+import { noeDetailedAbilityObject } from "./abilityObjectRepository/questions/noeDetailedAbilityObject";
 
 export class AbilityObjectFactory extends Factory {
     constructor(affector: AffectsWeight, list?: WeightedList) {
@@ -43,6 +44,7 @@ export class AbilityObjectFactory extends Factory {
             this.items.push(new detailedAbilityObject())
             this.items.push(new yesNoAbilityObject())
             this.items.push(new oneWordAbilityObject())
+            this.items.push(new noeDetailedAbilityObject())
 
             //light
             this.items.push(new colorfulLightAbilityObject())
