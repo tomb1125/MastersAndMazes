@@ -52,19 +52,19 @@ var SkillBonusUtility = /** @class */ (function (_super) {
         var _this = this;
         var skill;
         var roll = utils_1.Utils.random();
-        var roll2 = utils_1.Utils.D(characterContext_1.CharacterContext.classes.length) - 1;
-        if (roll < 0.0055) {
-            skill = __spreadArray([], __read(utils_1.Utils.SKILL_TO_ATTRIBUTE.keys()), false).filter(function (key) {
-                return utils_1.Utils.SKILL_TO_ATTRIBUTE.get(key) === classUtils_1.ClassUtils.getClass(characterContext_1.CharacterContext.Class[characterContext_1.CharacterContext.classes[roll2]]).primaryAttribute;
+        var classRoll = utils_1.Utils.D(characterContext_1.CharacterContext.classes.length) - 1;
+        if (roll < 0.55) {
+            skill = __spreadArray([], __read(classUtils_1.ClassUtils.SKILL_TO_ATTRIBUTE.keys()), false).filter(function (key) {
+                return classUtils_1.ClassUtils.SKILL_TO_ATTRIBUTE.get(key) === classUtils_1.ClassUtils.getClass(characterContext_1.CharacterContext.Class[characterContext_1.CharacterContext.classes[classRoll]]).primaryAttribute;
             }).sort(function () { return 0.5 - utils_1.Utils.random(); })[0];
         }
         else if (roll < 0.8) {
-            skill = __spreadArray([], __read(utils_1.Utils.SKILL_TO_ATTRIBUTE.keys()), false).filter(function (key) {
-                return utils_1.Utils.SKILL_TO_ATTRIBUTE.get(key) === classUtils_1.ClassUtils.getClass(characterContext_1.CharacterContext.Class[characterContext_1.CharacterContext.classes[roll2]]).secondaryAttribute;
+            skill = __spreadArray([], __read(classUtils_1.ClassUtils.SKILL_TO_ATTRIBUTE.keys()), false).filter(function (key) {
+                return classUtils_1.ClassUtils.SKILL_TO_ATTRIBUTE.get(key) === classUtils_1.ClassUtils.getClass(characterContext_1.CharacterContext.Class[characterContext_1.CharacterContext.classes[classRoll]]).secondaryAttribute;
             }).sort(function () { return 0.5 - utils_1.Utils.random(); })[0];
         }
         else {
-            skill = __spreadArray([], __read(utils_1.Utils.SKILL_TO_ATTRIBUTE.keys()), false).sort(function () { return 0.5 - utils_1.Utils.random(); })[0];
+            skill = __spreadArray([], __read(classUtils_1.ClassUtils.SKILL_TO_ATTRIBUTE.keys()), false).sort(function () { return 0.5 - utils_1.Utils.random(); })[0];
         }
         _this = _super.call(this, characterContext_1.CharacterContext.Skill[skill] + ' Bonus') || this;
         _this.weight = function () { return 1; };

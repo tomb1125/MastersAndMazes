@@ -20,8 +20,10 @@ import { AffectsWeight } from "../core/affectsWeight";
 import { Factory } from "../core/factory";
 import { templeModifier } from "./modifiersRepository/clericModifiers/templeModifier";
 import { pristineModifier } from "./modifiersRepository/clericModifiers/pristineModifier";
-import { undeadBaneModifier } from "./modifiersRepository/clericModifiers/undeadBaneModifier";
+import { undeadBaneModifier } from "./modifiersRepository/multiclassModifiers/undeadBaneModifier";
 import { restedModifer } from "./modifiersRepository/restedModifer";
+import { candleModifier } from "./modifiersRepository/clericModifiers/candleModifier";
+import { pacifistModifier } from "./modifiersRepository/clericModifiers/pacifistModifier";
 
 
 export class ModifierFactory extends Factory {
@@ -48,9 +50,12 @@ export class ModifierFactory extends Factory {
             this.items.push(new vengefulModifier());
             this.items.push(new ultimateModifier());
 
+            //cleric
+            this.items.push(new candleModifier());
+            this.items.push(new pacifistModifier());
+            this.items.push(new pristineModifier());
             this.items.push(new templeModifier());
             this.items.push(new undeadBaneModifier(affector));
-            this.items.push(new pristineModifier());
             
             //this.items.push(new repeatableModifier()); //this modifier is excluded for now purposfully. It behaves differently for utilities and for attacks.
         } else {

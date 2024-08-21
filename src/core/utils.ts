@@ -18,22 +18,6 @@ export class Utils {
 
     public static gen: RandomNumberGenerator;
 
-
-    static SKILL_TO_ATTRIBUTE: Map<number, number> = new Map([ //TODO move this to better place in characer context
-        [CharacterContext.Skill.Athletics, CharacterContext.Attribute.Strength],
-        [CharacterContext.Skill.Intimidation, CharacterContext.Attribute.Strength],
-        [CharacterContext.Skill.SleightOfHand, CharacterContext.Attribute.Dexterity],
-        [CharacterContext.Skill.Stealth, CharacterContext.Attribute.Dexterity],
-        [CharacterContext.Skill.Endurance, CharacterContext.Attribute.Constitution],
-        [CharacterContext.Skill.Survival, CharacterContext.Attribute.Constitution],
-        [CharacterContext.Skill.Knowledge, CharacterContext.Attribute.Intelligence],
-        [CharacterContext.Skill.Crafting, CharacterContext.Attribute.Intelligence],
-        [CharacterContext.Skill.Dungeoneering, CharacterContext.Attribute.Wisdom],
-        [CharacterContext.Skill.Perception, CharacterContext.Attribute.Wisdom],
-        [CharacterContext.Skill.Persuasion, CharacterContext.Attribute.Charisma],
-        [CharacterContext.Skill.Streetwise, CharacterContext.Attribute.Charisma]
-      ]);
-
     public static random(): number {
         return this.gen.random();// Math.random();
     };

@@ -28,7 +28,7 @@ var undeadBaneModifier = /** @class */ (function (_super) {
             return affector != undefined && affector.type === ability_1.Ability.Type.Attack
                 ? characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ||
                     characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Paladin)
-                    ? 2
+                    ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER
                     : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT
                 : 0;
         };

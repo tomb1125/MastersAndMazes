@@ -60,11 +60,11 @@ var WeightedList = /** @class */ (function () {
             }
         }
         if (randomElement && newArray) {
-            if (num <= 1) {
+            if (num === 1) {
                 return [randomElement];
             }
             else {
-                return __spreadArray([randomElement], __read(WeightedList.getRandomFromList(newArray, num - 1)), false);
+                return __spreadArray([randomElement], __read(WeightedList.getRandomFromList(newArray, num - 1, affector)), false);
             }
         }
         throw 'bad randomness';

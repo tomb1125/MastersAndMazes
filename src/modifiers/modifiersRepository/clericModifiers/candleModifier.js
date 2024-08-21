@@ -15,22 +15,22 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.pristineModifier = void 0;
+exports.candleModifier = void 0;
 var characterContext_1 = require("../../../core/characterContext");
 var modifier_1 = require("../../modifier");
-var pristineModifier = /** @class */ (function (_super) {
-    __extends(pristineModifier, _super);
-    function pristineModifier() {
+var candleModifier = /** @class */ (function (_super) {
+    __extends(candleModifier, _super);
+    function candleModifier() {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 1.4; };
-        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : 0.3; };
-        _this.name = 'Pristine';
-        _this.namePrefix = 'Pristine';
-        _this.description = 'Can be only used when you are undamaged.';
-        _this.longDescription = '';
+        _this.powerMultiplier = function () { return 1.3; };
+        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
+        _this.name = 'Candle';
+        _this.namePrefix = 'Candle';
+        _this.description = 'Can be only used in a circle of lit candles.';
+        _this.longDescription = 'Circle doesn\t have to be perfect at all. 1 Gold of candles is enough to draw 1 meter of a "candle line". You can carry 50 Gold worth of candles in your backpack. Enemies can use an Action to damage 1 meter of a "candle line" or destry damaged line.';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
-    return pristineModifier;
+    return candleModifier;
 }(modifier_1.Modifier));
-exports.pristineModifier = pristineModifier;
+exports.candleModifier = candleModifier;

@@ -44,10 +44,10 @@ export class WeightedList {
         }
 
         if(randomElement! && newArray!) { 
-            if(num <= 1) {
+            if(num === 1) {
                 return [randomElement];
             } else {
-                return [randomElement, ...WeightedList.getRandomFromList(newArray, num - 1)]
+                return [randomElement, ...WeightedList.getRandomFromList(newArray, num - 1, affector)]
             }
         }
 

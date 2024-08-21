@@ -1,13 +1,10 @@
 
 gives spells elemental effects and add to playerTex
 linking buffs (eg. bonus to all cold damage)
-non-attack abilities
 tricks
 improve to text function
-introduce efficiency curve
 introduce 1% chance for attacks to be more crazy
 non-efficiency curve x + x/5 * (x/5 - 2)
 add modfiers as denial of action and modifiers as bonus
 range as descriptive number
 add correlaction between fast and duration effects
-remove D10 and D4 from descriptive numbers

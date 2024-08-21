@@ -5,6 +5,7 @@ export class CharacterContext {
     public static seed: string;
     
     public static OUT_OF_CLASS_WEIGHT = 0.01;
+    public static IN_CLASS_MODIFIER = 1.7
 
 
     public static getDPS() {

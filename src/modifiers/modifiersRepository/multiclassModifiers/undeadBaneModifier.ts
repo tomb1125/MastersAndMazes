@@ -11,7 +11,7 @@ export class undeadBaneModifier extends Modifier {
       return affector != undefined && affector.type === Ability.Type.Attack
         ? CharacterContext.classes.includes(CharacterContext.Class.Cleric) ||
           CharacterContext.classes.includes(CharacterContext.Class.Paladin)
-          ? 2
+          ? CharacterContext.IN_CLASS_MODIFIER
           : CharacterContext.OUT_OF_CLASS_WEIGHT
         : 0;
     };

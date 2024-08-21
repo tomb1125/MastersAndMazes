@@ -74,6 +74,7 @@ exports.ClassDetails = ClassDetails;
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ClassUtils = void 0;
+var characterContext_1 = require("../core/characterContext");
 var cleric_1 = require("./classes/cleric");
 var rogue_1 = require("./classes/rogue");
 var ClassUtils = /** @class */ (function () {
@@ -90,11 +91,25 @@ var ClassUtils = /** @class */ (function () {
             throw 'unsupported class ' + className;
         }
     };
+    ClassUtils.SKILL_TO_ATTRIBUTE = new Map([
+        [characterContext_1.CharacterContext.Skill.Athletics, characterContext_1.CharacterContext.Attribute.Strength],
+        [characterContext_1.CharacterContext.Skill.Intimidation, characterContext_1.CharacterContext.Attribute.Strength],
+        [characterContext_1.CharacterContext.Skill.SleightOfHand, characterContext_1.CharacterContext.Attribute.Dexterity],
+        [characterContext_1.CharacterContext.Skill.Stealth, characterContext_1.CharacterContext.Attribute.Dexterity],
+        [characterContext_1.CharacterContext.Skill.Endurance, characterContext_1.CharacterContext.Attribute.Constitution],
+        [characterContext_1.CharacterContext.Skill.Survival, characterContext_1.CharacterContext.Attribute.Constitution],
+        [characterContext_1.CharacterContext.Skill.Knowledge, characterContext_1.CharacterContext.Attribute.Intelligence],
+        [characterContext_1.CharacterContext.Skill.Crafting, characterContext_1.CharacterContext.Attribute.Intelligence],
+        [characterContext_1.CharacterContext.Skill.Dungeoneering, characterContext_1.CharacterContext.Attribute.Wisdom],
+        [characterContext_1.CharacterContext.Skill.Perception, characterContext_1.CharacterContext.Attribute.Wisdom],
+        [characterContext_1.CharacterContext.Skill.Persuasion, characterContext_1.CharacterContext.Attribute.Charisma],
+        [characterContext_1.CharacterContext.Skill.Streetwise, characterContext_1.CharacterContext.Attribute.Charisma]
+    ]);
     return ClassUtils;
 }());
 exports.ClassUtils = ClassUtils;
 
-},{"./classes/cleric":4,"./classes/rogue":5}],4:[function(require,module,exports){
+},{"../core/characterContext":38,"./classes/cleric":4,"./classes/rogue":5}],4:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1550,6 +1565,7 @@ var CharacterContext = /** @class */ (function () {
     CharacterContext.level = 1;
     CharacterContext.classes = [0];
     CharacterContext.OUT_OF_CLASS_WEIGHT = 0.01;
+    CharacterContext.IN_CLASS_MODIFIER = 1.7;
     return CharacterContext;
 }());
 exports.CharacterContext = CharacterContext;
@@ -1733,7 +1749,7 @@ var Utility = /** @class */ (function (_super) {
 }(activity_1.Activity));
 exports.Utility = Utility;
 
-},{"../modifiers/modifierFactory":58,"../modifiers/modifiersRepository/repeatableModifier":73,"./ability":35,"./activity":36,"./utils":48}],42:[function(require,module,exports){
+},{"../modifiers/modifierFactory":58,"../modifiers/modifiersRepository/repeatableModifier":74,"./ability":35,"./activity":36,"./utils":48}],42:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2027,19 +2043,19 @@ var SkillBonusUtility = /** @class */ (function (_super) {
         var _this = this;
         var skill;
         var roll = utils_1.Utils.random();
-        var roll2 = utils_1.Utils.D(characterContext_1.CharacterContext.classes.length) - 1;
-        if (roll < 0.0055) {
-            skill = __spreadArray([], __read(utils_1.Utils.SKILL_TO_ATTRIBUTE.keys()), false).filter(function (key) {
-                return utils_1.Utils.SKILL_TO_ATTRIBUTE.get(key) === classUtils_1.ClassUtils.getClass(characterContext_1.CharacterContext.Class[characterContext_1.CharacterContext.classes[roll2]]).primaryAttribute;
+        var classRoll = utils_1.Utils.D(characterContext_1.CharacterContext.classes.length) - 1;
+        if (roll < 0.55) {
+            skill = __spreadArray([], __read(classUtils_1.ClassUtils.SKILL_TO_ATTRIBUTE.keys()), false).filter(function (key) {
+                return classUtils_1.ClassUtils.SKILL_TO_ATTRIBUTE.get(key) === classUtils_1.ClassUtils.getClass(characterContext_1.CharacterContext.Class[characterContext_1.CharacterContext.classes[classRoll]]).primaryAttribute;
             }).sort(function () { return 0.5 - utils_1.Utils.random(); })[0];
         }
         else if (roll < 0.8) {
-            skill = __spreadArray([], __read(utils_1.Utils.SKILL_TO_ATTRIBUTE.keys()), false).filter(function (key) {
-                return utils_1.Utils.SKILL_TO_ATTRIBUTE.get(key) === classUtils_1.ClassUtils.getClass(characterContext_1.CharacterContext.Class[characterContext_1.CharacterContext.classes[roll2]]).secondaryAttribute;
+            skill = __spreadArray([], __read(classUtils_1.ClassUtils.SKILL_TO_ATTRIBUTE.keys()), false).filter(function (key) {
+                return classUtils_1.ClassUtils.SKILL_TO_ATTRIBUTE.get(key) === classUtils_1.ClassUtils.getClass(characterContext_1.CharacterContext.Class[characterContext_1.CharacterContext.classes[classRoll]]).secondaryAttribute;
             }).sort(function () { return 0.5 - utils_1.Utils.random(); })[0];
         }
         else {
-            skill = __spreadArray([], __read(utils_1.Utils.SKILL_TO_ATTRIBUTE.keys()), false).sort(function () { return 0.5 - utils_1.Utils.random(); })[0];
+            skill = __spreadArray([], __read(classUtils_1.ClassUtils.SKILL_TO_ATTRIBUTE.keys()), false).sort(function () { return 0.5 - utils_1.Utils.random(); })[0];
         }
         _this = _super.call(this, characterContext_1.CharacterContext.Skill[skill] + ' Bonus') || this;
         _this.weight = function () { return 1; };
@@ -2057,7 +2073,6 @@ exports.SkillBonusUtility = SkillBonusUtility;
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Utils = void 0;
-var characterContext_1 = require("./characterContext");
 var Utils = /** @class */ (function () {
     function Utils() {
     }
@@ -2152,25 +2167,11 @@ var Utils = /** @class */ (function () {
     Utils.AVG_TURN = 4;
     Utils.BoonValue = Utils.DPS * 5;
     Utils.avgHealth = 25;
-    Utils.SKILL_TO_ATTRIBUTE = new Map([
-        [characterContext_1.CharacterContext.Skill.Athletics, characterContext_1.CharacterContext.Attribute.Strength],
-        [characterContext_1.CharacterContext.Skill.Intimidation, characterContext_1.CharacterContext.Attribute.Strength],
-        [characterContext_1.CharacterContext.Skill.SleightOfHand, characterContext_1.CharacterContext.Attribute.Dexterity],
-        [characterContext_1.CharacterContext.Skill.Stealth, characterContext_1.CharacterContext.Attribute.Dexterity],
-        [characterContext_1.CharacterContext.Skill.Endurance, characterContext_1.CharacterContext.Attribute.Constitution],
-        [characterContext_1.CharacterContext.Skill.Survival, characterContext_1.CharacterContext.Attribute.Constitution],
-        [characterContext_1.CharacterContext.Skill.Knowledge, characterContext_1.CharacterContext.Attribute.Intelligence],
-        [characterContext_1.CharacterContext.Skill.Crafting, characterContext_1.CharacterContext.Attribute.Intelligence],
-        [characterContext_1.CharacterContext.Skill.Dungeoneering, characterContext_1.CharacterContext.Attribute.Wisdom],
-        [characterContext_1.CharacterContext.Skill.Perception, characterContext_1.CharacterContext.Attribute.Wisdom],
-        [characterContext_1.CharacterContext.Skill.Persuasion, characterContext_1.CharacterContext.Attribute.Charisma],
-        [characterContext_1.CharacterContext.Skill.Streetwise, characterContext_1.CharacterContext.Attribute.Charisma]
-    ]);
     return Utils;
 }());
 exports.Utils = Utils;
 
-},{"./characterContext":38}],49:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 "use strict";
 var __read = (this && this.__read) || function (o, n) {
     var m = typeof Symbol === "function" && o[Symbol.iterator];
@@ -2233,11 +2234,11 @@ var WeightedList = /** @class */ (function () {
             }
         }
         if (randomElement && newArray) {
-            if (num <= 1) {
+            if (num === 1) {
                 return [randomElement];
             }
             else {
-                return __spreadArray([randomElement], __read(WeightedList.getRandomFromList(newArray, num - 1)), false);
+                return __spreadArray([randomElement], __read(WeightedList.getRandomFromList(newArray, num - 1, affector)), false);
             }
         }
         throw 'bad randomness';
@@ -2601,8 +2602,9 @@ var lifestealModifier_1 = require("./modifiersRepository/lifestealModifier");
 var factory_1 = require("../core/factory");
 var templeModifier_1 = require("./modifiersRepository/clericModifiers/templeModifier");
 var pristineModifier_1 = require("./modifiersRepository/clericModifiers/pristineModifier");
-var undeadBaneModifier_1 = require("./modifiersRepository/clericModifiers/undeadBaneModifier");
+var undeadBaneModifier_1 = require("./modifiersRepository/multiclassModifiers/undeadBaneModifier");
 var restedModifer_1 = require("./modifiersRepository/restedModifer");
+var candleModifier_1 = require("./modifiersRepository/clericModifiers/candleModifier");
 var ModifierFactory = /** @class */ (function (_super) {
     __extends(ModifierFactory, _super);
     function ModifierFactory(affector, list) {
@@ -2625,9 +2627,11 @@ var ModifierFactory = /** @class */ (function (_super) {
             _this.items.push(new signatureModifier_1.signatureModifier());
             _this.items.push(new vengefulModifier_1.vengefulModifier());
             _this.items.push(new ultimateModifier_1.ultimateModifier());
+            //cleric
             _this.items.push(new templeModifier_1.templeModifier());
             _this.items.push(new undeadBaneModifier_1.undeadBaneModifier(affector));
             _this.items.push(new pristineModifier_1.pristineModifier());
+            _this.items.push(new candleModifier_1.candleModifier());
             //this.items.push(new repeatableModifier()); //this modifier is excluded for now purposfully. It behaves differently for utilities and for attacks.
         }
         else {
@@ -2663,7 +2667,7 @@ var ModifierFactory = /** @class */ (function (_super) {
 }(factory_1.Factory));
 exports.ModifierFactory = ModifierFactory;
 
-},{"../core/factory":39,"../core/weightedList":49,"./modifiersRepository/applyEffectModifier":59,"./modifiersRepository/bloodiedModifier":60,"./modifiersRepository/cleaveModifier":61,"./modifiersRepository/clericModifiers/pristineModifier":62,"./modifiersRepository/clericModifiers/templeModifier":63,"./modifiersRepository/clericModifiers/undeadBaneModifier":64,"./modifiersRepository/exhaustingModifer":65,"./modifiersRepository/fastModifier":66,"./modifiersRepository/gainEffectModifier":67,"./modifiersRepository/laylineModifier":68,"./modifiersRepository/lifestealModifier":69,"./modifiersRepository/momentumModifier":70,"./modifiersRepository/multipleModifer":71,"./modifiersRepository/nightlyModifier":72,"./modifiersRepository/restedModifer":74,"./modifiersRepository/selfHealModifier":75,"./modifiersRepository/signatureModifier":76,"./modifiersRepository/ultimateModifier":77,"./modifiersRepository/vengefulModifier":78}],59:[function(require,module,exports){
+},{"../core/factory":39,"../core/weightedList":49,"./modifiersRepository/applyEffectModifier":59,"./modifiersRepository/bloodiedModifier":60,"./modifiersRepository/cleaveModifier":61,"./modifiersRepository/clericModifiers/candleModifier":62,"./modifiersRepository/clericModifiers/pristineModifier":63,"./modifiersRepository/clericModifiers/templeModifier":64,"./modifiersRepository/exhaustingModifer":65,"./modifiersRepository/fastModifier":66,"./modifiersRepository/gainEffectModifier":67,"./modifiersRepository/laylineModifier":68,"./modifiersRepository/lifestealModifier":69,"./modifiersRepository/momentumModifier":70,"./modifiersRepository/multiclassModifiers/undeadBaneModifier":71,"./modifiersRepository/multipleModifer":72,"./modifiersRepository/nightlyModifier":73,"./modifiersRepository/restedModifer":75,"./modifiersRepository/selfHealModifier":76,"./modifiersRepository/signatureModifier":77,"./modifiersRepository/ultimateModifier":78,"./modifiersRepository/vengefulModifier":79}],59:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2803,6 +2807,44 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.candleModifier = void 0;
+var characterContext_1 = require("../../../core/characterContext");
+var modifier_1 = require("../../modifier");
+var candleModifier = /** @class */ (function (_super) {
+    __extends(candleModifier, _super);
+    function candleModifier() {
+        var _this = _super.call(this) || this;
+        _this.powerMultiplier = function () { return 1.3; };
+        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
+        _this.name = 'Candle';
+        _this.namePrefix = 'Candle';
+        _this.description = 'Can be only used in a circle of lit candles.';
+        _this.longDescription = 'Circle doesn\t have to be perfect at all. 1 Gold of candles is enough to draw 1 meter of a "candle line". You can carry 50 Gold worth of candles in your backpack. Enemies can use an Action to damage 1 meter of a "candle line" or destry damaged line.';
+        _this.modifierType = modifier_1.Modifier.Type.Constraint;
+        return _this;
+    }
+    return candleModifier;
+}(modifier_1.Modifier));
+exports.candleModifier = candleModifier;
+
+},{"../../../core/characterContext":38,"../../modifier":57}],63:[function(require,module,exports){
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.pristineModifier = void 0;
 var characterContext_1 = require("../../../core/characterContext");
 var modifier_1 = require("../../modifier");
@@ -2811,7 +2853,7 @@ var pristineModifier = /** @class */ (function (_super) {
     function pristineModifier() {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 1.4; };
-        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? 2 : 0.3; };
+        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : 0.3; };
         _this.name = 'Pristine';
         _this.namePrefix = 'Pristine';
         _this.description = 'Can be only used when you are undamaged.';
@@ -2823,7 +2865,7 @@ var pristineModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.pristineModifier = pristineModifier;
 
-},{"../../../core/characterContext":38,"../../modifier":57}],63:[function(require,module,exports){
+},{"../../../core/characterContext":38,"../../modifier":57}],64:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2849,7 +2891,7 @@ var templeModifier = /** @class */ (function (_super) {
     function templeModifier() {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 1.6; };
-        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? 2 : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
+        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.name = 'Temple';
         _this.namePrefix = 'Temple';
         _this.description = 'Can be only used within 10 km of a temple or a relic of your faith.';
@@ -2861,54 +2903,7 @@ var templeModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.templeModifier = templeModifier;
 
-},{"../../../core/characterContext":38,"../../modifier":57}],64:[function(require,module,exports){
-"use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.undeadBaneModifier = void 0;
-var ability_1 = require("../../../core/ability");
-var characterContext_1 = require("../../../core/characterContext");
-var modifier_1 = require("../../modifier");
-var undeadBaneModifier = /** @class */ (function (_super) {
-    __extends(undeadBaneModifier, _super);
-    function undeadBaneModifier(affector) {
-        var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 0.95; };
-        _this.weight = function (affector) {
-            return affector != undefined && affector.type === ability_1.Ability.Type.Attack
-                ? characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ||
-                    characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Paladin)
-                    ? 2
-                    : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT
-                : 0;
-        };
-        _this.name = "Evil Bane";
-        _this.namePrefix = "Baning Evil";
-        _this.description =
-            "If this targets an undead, demon or devil repeat the attack once.";
-        _this.longDescription = "";
-        _this.modifierType = modifier_1.Modifier.Type.Improvement;
-        return _this;
-    }
-    return undeadBaneModifier;
-}(modifier_1.Modifier));
-exports.undeadBaneModifier = undeadBaneModifier;
-
-},{"../../../core/ability":35,"../../../core/characterContext":38,"../../modifier":57}],65:[function(require,module,exports){
+},{"../../../core/characterContext":38,"../../modifier":57}],65:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3161,6 +3156,53 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.undeadBaneModifier = void 0;
+var ability_1 = require("../../../core/ability");
+var characterContext_1 = require("../../../core/characterContext");
+var modifier_1 = require("../../modifier");
+var undeadBaneModifier = /** @class */ (function (_super) {
+    __extends(undeadBaneModifier, _super);
+    function undeadBaneModifier(affector) {
+        var _this = _super.call(this) || this;
+        _this.powerMultiplier = function () { return 0.95; };
+        _this.weight = function (affector) {
+            return affector != undefined && affector.type === ability_1.Ability.Type.Attack
+                ? characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ||
+                    characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Paladin)
+                    ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER
+                    : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT
+                : 0;
+        };
+        _this.name = "Evil Bane";
+        _this.namePrefix = "Baning Evil";
+        _this.description =
+            "If this targets an undead, demon or devil repeat the attack once.";
+        _this.longDescription = "";
+        _this.modifierType = modifier_1.Modifier.Type.Improvement;
+        return _this;
+    }
+    return undeadBaneModifier;
+}(modifier_1.Modifier));
+exports.undeadBaneModifier = undeadBaneModifier;
+
+},{"../../../core/ability":35,"../../../core/characterContext":38,"../../modifier":57}],72:[function(require,module,exports){
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.multipleModifier = void 0;
 var descriptiveNumber_1 = require("../../components/descriptiveNumber");
 var ability_1 = require("../../core/ability");
@@ -3197,7 +3239,7 @@ var multipleModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.multipleModifier = multipleModifier;
 
-},{"../../components/descriptiveNumber":25,"../../core/ability":35,"../../core/weightedList":49,"../modifier":57}],72:[function(require,module,exports){
+},{"../../components/descriptiveNumber":25,"../../core/ability":35,"../../core/weightedList":49,"../modifier":57}],73:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3233,7 +3275,7 @@ var nightlyModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.nightlyModifier = nightlyModifier;
 
-},{"../modifier":57}],73:[function(require,module,exports){
+},{"../modifier":57}],74:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3287,7 +3329,7 @@ var repeatableModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.repeatableModifier = repeatableModifier;
 
-},{"../../components/descriptiveNumber":25,"../../core/weightedList":49,"../modifier":57}],74:[function(require,module,exports){
+},{"../../components/descriptiveNumber":25,"../../core/weightedList":49,"../modifier":57}],75:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3323,7 +3365,7 @@ var restedModifer = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.restedModifer = restedModifer;
 
-},{"../modifier":57}],75:[function(require,module,exports){
+},{"../modifier":57}],76:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3366,7 +3408,7 @@ var selfHealModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.selfHealModifier = selfHealModifier;
 
-},{"../../components/descriptiveNumber":25,"../../components/descriptiveNumberFactory":26,"../../core/ability":35,"../../core/utils":48,"../modifier":57}],76:[function(require,module,exports){
+},{"../../components/descriptiveNumber":25,"../../components/descriptiveNumberFactory":26,"../../core/ability":35,"../../core/utils":48,"../modifier":57}],77:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3404,7 +3446,7 @@ var signatureModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.signatureModifier = signatureModifier;
 
-},{"../../core/ability":35,"../modifier":57}],77:[function(require,module,exports){
+},{"../../core/ability":35,"../modifier":57}],78:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3442,7 +3484,7 @@ var ultimateModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.ultimateModifier = ultimateModifier;
 
-},{"../../core/ability":35,"../modifier":57}],78:[function(require,module,exports){
+},{"../../core/ability":35,"../modifier":57}],79:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {

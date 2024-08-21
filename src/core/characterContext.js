@@ -11,6 +11,7 @@ var CharacterContext = /** @class */ (function () {
     CharacterContext.level = 1;
     CharacterContext.classes = [0];
     CharacterContext.OUT_OF_CLASS_WEIGHT = 0.01;
+    CharacterContext.IN_CLASS_MODIFIER = 1.7;
     return CharacterContext;
 }());
 exports.CharacterContext = CharacterContext;
