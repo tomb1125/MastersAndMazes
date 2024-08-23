@@ -25,7 +25,7 @@ var restedModifer = /** @class */ (function (_super) {
         _this.name = 'Rested';
         _this.namePrefix = 'Rested';
         _this.description = 'Can only be used if you managed to rest well during last night.';
-        _this.longDescription = 'Camping in front of dungeon or having to keeping watch makes you not well reseted.';
+        _this.longDescription = 'Camping in front of dungeon or having to keeping watch makes you not well reseted. Being well rested is usually only achieved by spending last night in room in a city.';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }

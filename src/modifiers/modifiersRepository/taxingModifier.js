@@ -15,24 +15,19 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.bloodiedModifier = void 0;
-var ability_1 = require("../../core/ability");
+exports.taxingModifier = void 0;
 var modifier_1 = require("../modifier");
-var bloodiedModifier = /** @class */ (function (_super) {
-    __extends(bloodiedModifier, _super);
-    function bloodiedModifier() {
+var taxingModifier = /** @class */ (function (_super) {
+    __extends(taxingModifier, _super);
+    function taxingModifier() {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 1.5; };
-        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0.1; };
-        //this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Weapon ? 1000 : 1}
-        _this.weight = function () { return 1; };
-        _this.name = 'Bloody';
-        _this.namePrefix = 'Bloody';
-        _this.description = 'Can be used only when you have half or less Health.';
-        _this.longDescription = '';
+        _this.powerMultiplier = function () { return 1.2; };
+        _this.name = 'Taxing';
+        _this.namePrefix = 'Taxing';
+        _this.description = 'When you add this ability to your character gain 2 Scars (each Scar brings character slightly closer to death, see rules for more).';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
-    return bloodiedModifier;
+    return taxingModifier;
 }(modifier_1.Modifier));
-exports.bloodiedModifier = bloodiedModifier;
+exports.taxingModifier = taxingModifier;

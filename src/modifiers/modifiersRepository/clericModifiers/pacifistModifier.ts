@@ -5,7 +5,7 @@ export class pacifistModifier extends Modifier {
     
     constructor() {
         super();
-        this.powerMultiplier = () => 1.5; 
+        this.powerMultiplier = () => 2; 
         this.weight = () => {return CharacterContext.classes.includes(CharacterContext.Class.Cleric) ? CharacterContext.IN_CLASS_MODIFIER : CharacterContext.OUT_OF_CLASS_WEIGHT}
         this.name = 'Pacifists';
         this.namePrefix = 'Pacifist';

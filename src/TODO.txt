@@ -8,3 +8,5 @@ non-efficiency curve x + x/5 * (x/5 - 2)
 add modfiers as denial of action and modifiers as bonus
 range as descriptive number
 add correlaction between fast and duration effects
+shadow
+lokacje + woda

@@ -8,8 +8,6 @@ import { Factory } from "../core/factory";
 import { AffectsWeight } from "../core/affectsWeight";
 import { scalingDotEffect } from "./effectRepository/scalingDotEffect";
 
-
-
 export class EffectFactory extends Factory {
 
     constructor(affector: AffectsWeight, list?: WeightedList) {

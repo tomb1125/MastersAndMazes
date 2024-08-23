@@ -24,6 +24,7 @@ import { undeadBaneModifier } from "./modifiersRepository/multiclassModifiers/un
 import { restedModifer } from "./modifiersRepository/restedModifer";
 import { candleModifier } from "./modifiersRepository/clericModifiers/candleModifier";
 import { pacifistModifier } from "./modifiersRepository/clericModifiers/pacifistModifier";
+import { taxingModifier } from "./modifiersRepository/taxingModifier";
 
 
 export class ModifierFactory extends Factory {
@@ -47,6 +48,7 @@ export class ModifierFactory extends Factory {
             this.items.push(new restedModifer());
             this.items.push(new selfHealModifier(affector));
             this.items.push(new signatureModifier());
+            this.items.push(new taxingModifier());
             this.items.push(new vengefulModifier());
             this.items.push(new ultimateModifier());
 

@@ -30,13 +30,24 @@ export class WeightedList {
             throw 'cannot find '+num+' items in array with '+array.length+' elements';
         }
 
-        const allWeight = array.reduce((sum: number, item: HasWeigth) => {return sum + item.weight(affector)}, 0);
+
+        const allWeight = array.reduce((sum: number, item: HasWeigth) => {
+            console.log('reduce',item.weight(affector),item)
+            return sum + item.weight(affector)
+        }, 0);
         let roll: number = Utils.random() * allWeight;
         let randomElement: HasWeigth;
         let newArray: HasWeigth[];
+        
+        console.log('all',allWeight);
+        
+        console.log('start '+num);
         for(let i = 0; i < array.length; i++) {
+            console.log(roll);
             roll -= array[i].weight(affector);
+            console.log(JSON.stringify(array[i]))
             if(roll < 0) {
+                console.log('end');
                 randomElement = array[i];
                 newArray = array.filter( n => n != randomElement)
                 break;
@@ -44,7 +55,7 @@ export class WeightedList {
         }
 
         if(randomElement! && newArray!) { 
-            if(num === 1) {
+            if(num <= 1) {
                 return [randomElement];
             } else {
                 return [randomElement, ...WeightedList.getRandomFromList(newArray, num - 1, affector)]
