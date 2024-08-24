@@ -39,7 +39,9 @@ export class WeightedList {
         let randomElement: HasWeigth;
         let newArray: HasWeigth[];
         
-        console.log('all',allWeight);
+        if(allWeight <= 0) {
+            throw 'not enought weight to choose element: '+allWeight;
+        }
         
         console.log('start '+num);
         for(let i = 0; i < array.length; i++) {

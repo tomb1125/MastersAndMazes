@@ -1722,8 +1722,8 @@ var Utility = /** @class */ (function (_super) {
             '<b>Name: ' + this.generateName() +
             '<br>Chance</b>: ' + Math.ceil(this.chance * 100) + '%' +
             '<br><b>Modifiers</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + ', ' + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
-            '<br><b>Description</b>: ' + this.description + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
             '<br><b>Components</b>: ' + this.objects.reduce(function (sum, mod) { return sum + ', ' + mod.name; }, '').slice(2) +
+            '<br><b>Description</b>: ' + this.description + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
             '<br><b>Cooldown</b>: ' + ability_1.Ability.Cooldown[this.cooldown];
     };
     Utility.prototype.generateName = function () {
@@ -2230,7 +2230,9 @@ var WeightedList = /** @class */ (function () {
         var roll = utils_1.Utils.random() * allWeight;
         var randomElement;
         var newArray;
-        console.log('all', allWeight);
+        if (allWeight <= 0) {
+            throw 'not enought weight to choose element: ' + allWeight;
+        }
         console.log('start ' + num);
         for (var i = 0; i < array.length; i++) {
             console.log(roll);
@@ -2794,7 +2796,6 @@ var applyEffectModifier = /** @class */ (function (_super) {
         _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? debuffFactory.items.items.length * utils_1.Utils.EFFECT_WEIGHT_MOD : 0; };
-        //this.weight = () => {return 4};
         _this.effect = debuffFactory.get(1)[0];
         _this.description = 'When you hit, apply effect: ' + _this.effect.description;
         _this.namePrefix = _this.effect.namePrefix;
@@ -2997,7 +2998,7 @@ var preachingModifier = /** @class */ (function (_super) {
         };
         _this.name = 'Sermon';
         _this.namePrefix = 'Preaching';
-        _this.description = 'This ability can be only used as you complete a sermon in front of 10 people.';
+        _this.description = 'This ability can be only used as you complete a sermon in front of at least 10 people.';
         _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
@@ -3178,6 +3179,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.gainEffectModifier = void 0;
 var ability_1 = require("../../core/ability");
+var utils_1 = require("../../core/utils");
 var effect_1 = require("../effect");
 var effectFactory_1 = require("../effectFactory");
 var modifier_1 = require("../modifier");
@@ -3185,9 +3187,11 @@ var gainEffectModifier = /** @class */ (function (_super) {
     __extends(gainEffectModifier, _super);
     function gainEffectModifier(aff) {
         var _this = _super.call(this) || this;
+        var buffFactory = new effectFactory_1.EffectFactory(aff).filter(function (eff) { return eff.subtype === effect_1.Effect.Subtype.Buff; });
+        console.log('buff factory', buffFactory.items.items.length);
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
-        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 4 : 0; };
-        _this.effect = new effectFactory_1.EffectFactory(aff).filter(function (eff) { return eff.subtype === effect_1.Effect.Subtype.Buff; }).get(1)[0];
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? buffFactory.items.items.length * utils_1.Utils.EFFECT_WEIGHT_MOD : 0; };
+        _this.effect = buffFactory.get(1)[0];
         _this.description = 'When you hit, gain an effect: ' + _this.effect.description;
         _this.namePrefix = _this.effect.namePrefix;
         _this.name = 'Gain ' + _this.effect.name;
@@ -3199,7 +3203,7 @@ var gainEffectModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.gainEffectModifier = gainEffectModifier;
 
-},{"../../core/ability":35,"../effect":50,"../effectFactory":51,"../modifier":59}],72:[function(require,module,exports){
+},{"../../core/ability":35,"../../core/utils":48,"../effect":50,"../effectFactory":51,"../modifier":59}],72:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {

@@ -16,7 +16,7 @@ export class preachingModifier extends Modifier {
               : 0;
           };        this.name = 'Sermon';
         this.namePrefix = 'Preaching';
-        this.description = 'This ability can be only used as you complete a sermon in front of 10 people.';
+        this.description = 'This ability can be only used as you complete a sermon in front of at least 10 people.';
         this.longDescription = '';
         this.modifierType = Modifier.Type.Constraint;
     }

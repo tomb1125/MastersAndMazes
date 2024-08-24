@@ -33,7 +33,7 @@ var preachingModifier = /** @class */ (function (_super) {
         };
         _this.name = 'Sermon';
         _this.namePrefix = 'Preaching';
-        _this.description = 'This ability can be only used as you complete a sermon in front of 10 people.';
+        _this.description = 'This ability can be only used as you complete a sermon in front of at least 10 people.';
         _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;

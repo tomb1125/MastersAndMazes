@@ -54,7 +54,9 @@ var WeightedList = /** @class */ (function () {
         var roll = utils_1.Utils.random() * allWeight;
         var randomElement;
         var newArray;
-        console.log('all', allWeight);
+        if (allWeight <= 0) {
+            throw 'not enought weight to choose element: ' + allWeight;
+        }
         console.log('start ' + num);
         for (var i = 0; i < array.length; i++) {
             console.log(roll);
