@@ -25,6 +25,7 @@ import { restedModifer } from "./modifiersRepository/restedModifer";
 import { candleModifier } from "./modifiersRepository/clericModifiers/candleModifier";
 import { pacifistModifier } from "./modifiersRepository/clericModifiers/pacifistModifier";
 import { taxingModifier } from "./modifiersRepository/taxingModifier";
+import { preachingModifier } from "./modifiersRepository/clericModifiers/preachingModifier";
 
 
 export class ModifierFactory extends Factory {
@@ -55,6 +56,7 @@ export class ModifierFactory extends Factory {
             //cleric
             this.items.push(new candleModifier());
             this.items.push(new pacifistModifier());
+            this.items.push(new preachingModifier());
             this.items.push(new pristineModifier());
             this.items.push(new templeModifier());
             this.items.push(new undeadBaneModifier(affector));

@@ -40,6 +40,7 @@ var restedModifer_1 = require("./modifiersRepository/restedModifer");
 var candleModifier_1 = require("./modifiersRepository/clericModifiers/candleModifier");
 var pacifistModifier_1 = require("./modifiersRepository/clericModifiers/pacifistModifier");
 var taxingModifier_1 = require("./modifiersRepository/taxingModifier");
+var preachingModifier_1 = require("./modifiersRepository/clericModifiers/preachingModifier");
 var ModifierFactory = /** @class */ (function (_super) {
     __extends(ModifierFactory, _super);
     function ModifierFactory(affector, list) {
@@ -66,6 +67,7 @@ var ModifierFactory = /** @class */ (function (_super) {
             //cleric
             _this.items.push(new candleModifier_1.candleModifier());
             _this.items.push(new pacifistModifier_1.pacifistModifier());
+            _this.items.push(new preachingModifier_1.preachingModifier());
             _this.items.push(new pristineModifier_1.pristineModifier());
             _this.items.push(new templeModifier_1.templeModifier());
             _this.items.push(new undeadBaneModifier_1.undeadBaneModifier(affector));
