@@ -26,9 +26,9 @@ var Light = /** @class */ (function (_super) {
     __extends(Light, _super);
     function Light() {
         var _this = this;
-        var radius = new descriptiveNumber_1.DescriptiveNumber(utils_1.Utils.D(3) * 5);
+        var radius = new descriptiveNumber_1.DescriptiveNumber(5);
         _this = _super.call(this, 'Light') || this;
-        _this.range = utils_1.Utils.D(3) * 5;
+        _this.range = 15;
         _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isLight; }).get(1)[0]);
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? 1 : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.chance = 1.5

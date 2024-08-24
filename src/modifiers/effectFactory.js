@@ -23,17 +23,21 @@ var guidingEffect_1 = require("./effectRepository/guidingEffect");
 var damageBonusEffect_1 = require("./effectRepository/damageBonusEffect");
 var factory_1 = require("../core/factory");
 var scalingDotEffect_1 = require("./effectRepository/scalingDotEffect");
+var exposeEffect_1 = require("./effectRepository/exposeEffect");
+var vulnerableEffect_1 = require("./effectRepository/vulnerableEffect");
 var EffectFactory = /** @class */ (function (_super) {
     __extends(EffectFactory, _super);
     function EffectFactory(affector, list) {
         var _this = _super.call(this, affector) || this;
         if (list === undefined) {
             _this.items = new weightedList_1.WeightedList();
-            _this.items.push(new stunEffect_1.stunEffect());
-            _this.items.push(new instakillEffect_1.instakillEffect());
-            _this.items.push(new guidingEffect_1.guidingEffect());
             _this.items.push(new damageBonusEffect_1.damageBonusEffect());
+            _this.items.push(new exposeEffect_1.exposeEffect());
+            _this.items.push(new guidingEffect_1.guidingEffect());
+            _this.items.push(new instakillEffect_1.instakillEffect());
             _this.items.push(new scalingDotEffect_1.scalingDotEffect());
+            _this.items.push(new stunEffect_1.stunEffect());
+            _this.items.push(new vulnerableEffect_1.vulnerableEffect());
         }
         else {
             _this.items = list;

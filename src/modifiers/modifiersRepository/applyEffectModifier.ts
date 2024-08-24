@@ -9,12 +9,14 @@ import { Modifier } from "../modifier";
 export class applyEffectModifier extends Modifier {
     
     constructor(aff: AffectsWeight) {
+        let debuffFactory: EffectFactory = new EffectFactory(aff).filter((eff: Effect) => eff.subtype === Effect.Subtype.Debuff);
+
         super();
         this.longDescription = '';
         this.modifierType =Modifier.Type.Improvement;
-        this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Attack ? 4 : 0}
+        this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Attack ? debuffFactory.items.items.length * Utils.EFFECT_WEIGHT_MOD  : 0}
         //this.weight = () => {return 4};
-        this.effect = new EffectFactory(aff).filter((eff: Effect) => eff.subtype === Effect.Subtype.Debuff).get(1)[0] as Effect;
+        this.effect = debuffFactory.get(1)[0] as Effect;
         this.description = 'When you hit, apply effect: '+this.effect.description;
         this.namePrefix = this.effect.namePrefix;
         this.name = 'Apply '+this.effect.name;

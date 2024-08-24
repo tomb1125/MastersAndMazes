@@ -24,12 +24,14 @@ var modifier_1 = require("../modifier");
 var applyEffectModifier = /** @class */ (function (_super) {
     __extends(applyEffectModifier, _super);
     function applyEffectModifier(aff) {
-        var _this = _super.call(this) || this;
+        var _this = this;
+        var debuffFactory = new effectFactory_1.EffectFactory(aff).filter(function (eff) { return eff.subtype === effect_1.Effect.Subtype.Debuff; });
+        _this = _super.call(this) || this;
         _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
-        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 4 : 0; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? debuffFactory.items.items.length * utils_1.Utils.EFFECT_WEIGHT_MOD : 0; };
         //this.weight = () => {return 4};
-        _this.effect = new effectFactory_1.EffectFactory(aff).filter(function (eff) { return eff.subtype === effect_1.Effect.Subtype.Debuff; }).get(1)[0];
+        _this.effect = debuffFactory.get(1)[0];
         _this.description = 'When you hit, apply effect: ' + _this.effect.description;
         _this.namePrefix = _this.effect.namePrefix;
         _this.name = 'Apply ' + _this.effect.name;

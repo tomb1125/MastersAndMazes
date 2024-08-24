@@ -91,8 +91,10 @@ var Utils = /** @class */ (function () {
     Utils.BASIC_ATTACK_DPS = 2.5;
     Utils.ATTACK_DESCRIPTIVE_NUMBER_CHANCE = 0.15;
     Utils.AVG_ENEMIES_ADJACENT = 1.9;
-    Utils.AVG_ENEMIES_PER_PLAYER = 1.7;
+    Utils.AVG_PLAYERS = 3;
+    Utils.AVG_ENEMIES_PER_PLAYER = 5 / Utils.AVG_PLAYERS;
     Utils.AVG_TURN = 4;
+    Utils.EFFECT_WEIGHT_MOD = 0.9;
     Utils.BoonValue = Utils.DPS * 5;
     Utils.avgHealth = 25;
     return Utils;
