@@ -20,6 +20,7 @@ export class Utility extends Activity implements CanAffectModifier, HasWeigth {
       [0.8, 1],
       [1, 2],
     ]);
+    static EFFECT_WEIGHT_MOD: number;
   
     constructor(otherName?: string) {
         super(otherName);
