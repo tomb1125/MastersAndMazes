@@ -11,7 +11,6 @@ export class gainEffectModifier extends Modifier {
     constructor(aff: AffectsWeight) {
         super();
         let buffFactory: EffectFactory = new EffectFactory(aff).filter((eff: Effect) => eff.subtype === Effect.Subtype.Buff);
-        console.log('buff factory',buffFactory.items.items.length,);
         this.modifierType =Modifier.Type.Improvement;
         this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Attack ? buffFactory.items.items.length * Utils.EFFECT_WEIGHT_MOD : 0}
         this.effect = buffFactory.get(1)[0] as Effect;

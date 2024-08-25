@@ -9,6 +9,7 @@ import { AffectsWeight } from "../core/affectsWeight";
 import { scalingDotEffect } from "./effectRepository/scalingDotEffect";
 import { exposeEffect } from "./effectRepository/exposeEffect";
 import { vulnerableEffect } from "./effectRepository/vulnerableEffect";
+import { EffectsSingleton } from "./effectsSingleton";
 
 export class EffectFactory extends Factory {
 
@@ -16,7 +17,9 @@ export class EffectFactory extends Factory {
         super(affector);
         if(list === undefined) {
             this.items = new WeightedList();
-            
+            EffectsSingleton.effects.forEach(eff => {
+                this.items.push(new (<any>window)[eff]());
+            })
             this.items.push(new damageBonusEffect());
             this.items.push(new exposeEffect());
             this.items.push(new guidingEffect());

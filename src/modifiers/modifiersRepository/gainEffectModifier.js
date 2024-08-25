@@ -26,7 +26,6 @@ var gainEffectModifier = /** @class */ (function (_super) {
     function gainEffectModifier(aff) {
         var _this = _super.call(this) || this;
         var buffFactory = new effectFactory_1.EffectFactory(aff).filter(function (eff) { return eff.subtype === effect_1.Effect.Subtype.Buff; });
-        console.log('buff factory', buffFactory.items.items.length);
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? buffFactory.items.items.length * utils_1.Utils.EFFECT_WEIGHT_MOD : 0; };
         _this.effect = buffFactory.get(1)[0];

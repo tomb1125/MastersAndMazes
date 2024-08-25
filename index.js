@@ -14,7 +14,6 @@ global.onLevelChange = function (val) {
 };
 global.onClassChange = function (val) {
     characterContext_1.CharacterContext.classes = [Object.keys(characterContext_1.CharacterContext.Class).find(function (cls) { return characterContext_1.CharacterContext.Class[cls] === val; })];
-    console.log(characterContext_1.CharacterContext.classes);
 };
 global.generateAbilities = function (val) {
     var currentSeed = '';

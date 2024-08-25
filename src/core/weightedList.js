@@ -48,7 +48,6 @@ var WeightedList = /** @class */ (function () {
             throw 'cannot find ' + num + ' items in array with ' + array.length + ' elements';
         }
         var allWeight = array.reduce(function (sum, item) {
-            console.log('reduce', item.weight(affector), item);
             return sum + item.weight(affector);
         }, 0);
         var roll = utils_1.Utils.random() * allWeight;
@@ -57,13 +56,9 @@ var WeightedList = /** @class */ (function () {
         if (allWeight <= 0) {
             throw 'not enought weight to choose element: ' + allWeight;
         }
-        console.log('start ' + num);
         for (var i = 0; i < array.length; i++) {
-            console.log(roll);
             roll -= array[i].weight(affector);
-            console.log(JSON.stringify(array[i]));
             if (roll < 0) {
-                console.log('end');
                 randomElement = array[i];
                 newArray = array.filter(function (n) { return n != randomElement; });
                 break;

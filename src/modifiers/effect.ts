@@ -1,6 +1,7 @@
+import { EffectsSingleton } from "./effectsSingleton";
 import { Modifier } from "./modifier"
 
-export class Effect extends Modifier {
+export abstract class Effect extends Modifier {
     subtype: Effect.Subtype;
     duration: number;
     value: number;

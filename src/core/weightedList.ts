@@ -32,7 +32,6 @@ export class WeightedList {
 
 
         const allWeight = array.reduce((sum: number, item: HasWeigth) => {
-            console.log('reduce',item.weight(affector),item)
             return sum + item.weight(affector)
         }, 0);
         let roll: number = Utils.random() * allWeight;
@@ -43,13 +42,9 @@ export class WeightedList {
             throw 'not enought weight to choose element: '+allWeight;
         }
         
-        console.log('start '+num);
         for(let i = 0; i < array.length; i++) {
-            console.log(roll);
             roll -= array[i].weight(affector);
-            console.log(JSON.stringify(array[i]))
             if(roll < 0) {
-                console.log('end');
                 randomElement = array[i];
                 newArray = array.filter( n => n != randomElement)
                 break;

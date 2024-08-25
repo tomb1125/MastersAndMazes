@@ -25,12 +25,16 @@ var factory_1 = require("../core/factory");
 var scalingDotEffect_1 = require("./effectRepository/scalingDotEffect");
 var exposeEffect_1 = require("./effectRepository/exposeEffect");
 var vulnerableEffect_1 = require("./effectRepository/vulnerableEffect");
+var effectsSingleton_1 = require("./effectsSingleton");
 var EffectFactory = /** @class */ (function (_super) {
     __extends(EffectFactory, _super);
     function EffectFactory(affector, list) {
         var _this = _super.call(this, affector) || this;
         if (list === undefined) {
             _this.items = new weightedList_1.WeightedList();
+            effectsSingleton_1.EffectsSingleton.effects.forEach(function (eff) {
+                _this.items.push(new window[eff]());
+            });
             _this.items.push(new damageBonusEffect_1.damageBonusEffect());
             _this.items.push(new exposeEffect_1.exposeEffect());
             _this.items.push(new guidingEffect_1.guidingEffect());
