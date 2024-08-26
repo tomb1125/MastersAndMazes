@@ -6,7 +6,7 @@ export class ClassDetails {
     type: CharacterContext.Class;
     primaryAttribute: CharacterContext.Attribute;
     secondaryAttribute: CharacterContext.Attribute;
-    //TODO armorProficiency
+    armorProficiency: CharacterContext.ArmorProficiency
     innateAbilities: string[];
 
 

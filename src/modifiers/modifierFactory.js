@@ -39,8 +39,8 @@ var undeadBaneModifier_1 = require("./modifiersRepository/multiclassModifiers/un
 var restedModifer_1 = require("./modifiersRepository/restedModifer");
 var candleModifier_1 = require("./modifiersRepository/clericModifiers/candleModifier");
 var pacifistModifier_1 = require("./modifiersRepository/clericModifiers/pacifistModifier");
-var taxingModifier_1 = require("./modifiersRepository/taxingModifier");
 var preachingModifier_1 = require("./modifiersRepository/clericModifiers/preachingModifier");
+var grazedModifier_1 = require("./modifiersRepository/grazedModifier");
 var ModifierFactory = /** @class */ (function (_super) {
     __extends(ModifierFactory, _super);
     function ModifierFactory(affector, list) {
@@ -61,7 +61,7 @@ var ModifierFactory = /** @class */ (function (_super) {
             _this.items.push(new restedModifer_1.restedModifer());
             _this.items.push(new selfHealModifier_1.selfHealModifier(affector));
             _this.items.push(new signatureModifier_1.signatureModifier());
-            _this.items.push(new taxingModifier_1.taxingModifier());
+            _this.items.push(new grazedModifier_1.grazedModifier());
             _this.items.push(new vengefulModifier_1.vengefulModifier());
             _this.items.push(new ultimateModifier_1.ultimateModifier());
             //cleric
@@ -70,6 +70,7 @@ var ModifierFactory = /** @class */ (function (_super) {
             _this.items.push(new preachingModifier_1.preachingModifier());
             _this.items.push(new pristineModifier_1.pristineModifier());
             _this.items.push(new templeModifier_1.templeModifier());
+            //multiclass
             _this.items.push(new undeadBaneModifier_1.undeadBaneModifier(affector));
             //this.items.push(new repeatableModifier()); //this modifier is excluded for now purposfully. It behaves differently for utilities and for attacks.
         }

@@ -15,19 +15,18 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.taxingModifier = void 0;
-var modifier_1 = require("../modifier");
-var taxingModifier = /** @class */ (function (_super) {
-    __extends(taxingModifier, _super);
-    function taxingModifier() {
-        var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 1.2; };
-        _this.name = 'Taxing';
-        _this.namePrefix = 'Taxing';
-        _this.description = 'When you add this ability to your character gain 2 Scars (each Scar brings character slightly closer to death, see rules for more).';
-        _this.modifierType = modifier_1.Modifier.Type.Constraint;
+exports.dreamConnectingAbilityObject = void 0;
+var abilityObject_1 = require("../../abilityObject");
+var dreamConnectingAbilityObject = /** @class */ (function (_super) {
+    __extends(dreamConnectingAbilityObject, _super);
+    function dreamConnectingAbilityObject() {
+        var _this = _super.call(this, 'Dream Connection') || this;
+        _this.description = 'Upon casting the spell seemingly has no effect, but you will see the target in your dream tonight, and then you will be able to talk. ';
+        _this.rarity = 0.6;
+        _this.prefix = 'Dream Connecting';
+        _this.isCommunication = true;
         return _this;
     }
-    return taxingModifier;
-}(modifier_1.Modifier));
-exports.taxingModifier = taxingModifier;
+    return dreamConnectingAbilityObject;
+}(abilityObject_1.AbilityObject));
+exports.dreamConnectingAbilityObject = dreamConnectingAbilityObject;

@@ -23,6 +23,7 @@ var weightedList_1 = require("./weightedList");
 var lightUtility_1 = require("./utilityRepository/clericUtilities/lightUtility");
 var restorationUtility_1 = require("./utilityRepository/clericUtilities/restorationUtility");
 var skillBonusUtility_1 = require("./utilityRepository/skillBonusUtility");
+var seanceUtility_1 = require("./utilityRepository/clericUtilities/seanceUtility");
 var UtilityFactory = /** @class */ (function (_super) {
     __extends(UtilityFactory, _super);
     function UtilityFactory(affector, list) {
@@ -34,6 +35,7 @@ var UtilityFactory = /** @class */ (function (_super) {
             _this.items.push(new auguryUtility_1.Augury());
             _this.items.push(new lightUtility_1.Light());
             _this.items.push(new restorationUtility_1.restorationUtility());
+            _this.items.push(new seanceUtility_1.SeanceUtility());
             //common
             _this.items.push(new skillBonusUtility_1.SkillBonusUtility());
         }

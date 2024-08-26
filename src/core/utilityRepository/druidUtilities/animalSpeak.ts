@@ -10,7 +10,7 @@ export class AnimalSpeak extends Utility {
 
     constructor() {
         super('Speak');        
-        this.weight = () => {return CharacterContext.classes.includes(CharacterContext.Class.Druid) ? 1 : CharacterContext.OUT_OF_CLASS_WEIGHT}
+        this.weight = () => {return CharacterContext.classes.includes(CharacterContext.Class.Druid) ? CharacterContext.IN_CLASS_MODIFIER : CharacterContext.OUT_OF_CLASS_WEIGHT}
         this.objects.push(new AbilityObjectFactory(this).filter((x: AbilityObject) => x.isCommunication).get(1)[0]);
         this.objects.push(new AbilityObjectFactory(this).filter((x: AbilityObject) => x.isAnimal).get(1)[0]);
         this.duration = new DescriptiveNumber(1);

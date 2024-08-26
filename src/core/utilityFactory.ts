@@ -7,6 +7,7 @@ import { WeightedList } from "./weightedList";
 import { Light } from "./utilityRepository/clericUtilities/lightUtility";
 import { restorationUtility } from "./utilityRepository/clericUtilities/restorationUtility";
 import { SkillBonusUtility } from "./utilityRepository/skillBonusUtility";
+import { SeanceUtility } from "./utilityRepository/clericUtilities/seanceUtility";
 
 export class UtilityFactory extends Factory {
     constructor(affector: AffectsWeight, list?: WeightedList) {
@@ -20,6 +21,7 @@ export class UtilityFactory extends Factory {
             this.items.push(new Augury());
             this.items.push(new Light());
             this.items.push(new restorationUtility());
+            this.items.push(new SeanceUtility());
 
             //common
             this.items.push(new SkillBonusUtility())

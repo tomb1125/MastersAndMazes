@@ -24,7 +24,7 @@ var AnimalSpeak = /** @class */ (function (_super) {
     __extends(AnimalSpeak, _super);
     function AnimalSpeak() {
         var _this = _super.call(this, 'Speak') || this;
-        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Druid) ? 1 : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
+        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Druid) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isCommunication; }).get(1)[0]);
         _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isAnimal; }).get(1)[0]);
         _this.duration = new descriptiveNumber_1.DescriptiveNumber(1);

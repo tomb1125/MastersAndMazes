@@ -24,7 +24,7 @@ var restorationUtility = /** @class */ (function (_super) {
     function restorationUtility() {
         var _this = _super.call(this, 'Restoration') || this;
         _this.cooldown = ability_1.Ability.Cooldown.Adventure;
-        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? 1 : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
+        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.chance = 0.6;
         _this.description = 'After an hour of ritual, you can cause one wound effect like limb loss, blindness or statistics loss to be removed from one character. Additionally the target loses 1 Scar. You can use this ability in a moderate size city to alternatively gain 150G on success. ';
         _this.compensate();

@@ -19,6 +19,11 @@ import { controllableLightAbilityObject } from "./abilityObjectRepository/light/
 import { oneWordAbilityObject } from "./abilityObjectRepository/questions/oneWordAbilityObject";
 import { revealingLightAbilityObject } from "./abilityObjectRepository/light/revealingLightAbilityObject";
 import { noeDetailedAbilityObject } from "./abilityObjectRepository/questions/noeDetailedAbilityObject";
+import { dreamConnectingAbilityObject } from "./abilityObjectRepository/symetricCommunications/dreamConnectionAbilityObject";
+import { humanoidCorpseAbilityObject } from "./abilityObjectRepository/corpses/humanoidCorpseAbilityObject";
+import { skeletonAbilityObject } from "./abilityObjectRepository/corpses/skeletonAbilityObject";
+import { warriorCorpseAbilityObject } from "./abilityObjectRepository/corpses/warriorAbilityObject";
+import { unfinishedBusinessAbilityObject } from "./abilityObjectRepository/corpses/unfinishedBusinessAbilityObject";
 
 export class AbilityObjectFactory extends Factory {
     constructor(affector: AffectsWeight, list?: WeightedList) {
@@ -39,6 +44,13 @@ export class AbilityObjectFactory extends Factory {
             this.items.push(new gainUnderstandingAbilityObject());
             this.items.push(new symetricTelepathyAbilityObject());
             this.items.push(new symetricEmpathicAbilityObject());
+            this.items.push(new dreamConnectingAbilityObject());
+
+            //corpse
+            this.items.push(new humanoidCorpseAbilityObject());
+            this.items.push(new skeletonAbilityObject());
+            this.items.push(new warriorCorpseAbilityObject());
+            this.items.push(new unfinishedBusinessAbilityObject());
 
             //questions
             this.items.push(new detailedAbilityObject())

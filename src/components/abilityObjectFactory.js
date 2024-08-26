@@ -35,6 +35,11 @@ var controllableLightAbilityObject_1 = require("./abilityObjectRepository/light/
 var oneWordAbilityObject_1 = require("./abilityObjectRepository/questions/oneWordAbilityObject");
 var revealingLightAbilityObject_1 = require("./abilityObjectRepository/light/revealingLightAbilityObject");
 var noeDetailedAbilityObject_1 = require("./abilityObjectRepository/questions/noeDetailedAbilityObject");
+var dreamConnectionAbilityObject_1 = require("./abilityObjectRepository/symetricCommunications/dreamConnectionAbilityObject");
+var humanoidCorpseAbilityObject_1 = require("./abilityObjectRepository/corpses/humanoidCorpseAbilityObject");
+var skeletonAbilityObject_1 = require("./abilityObjectRepository/corpses/skeletonAbilityObject");
+var warriorAbilityObject_1 = require("./abilityObjectRepository/corpses/warriorAbilityObject");
+var unfinishedBusinessAbilityObject_1 = require("./abilityObjectRepository/corpses/unfinishedBusinessAbilityObject");
 var AbilityObjectFactory = /** @class */ (function (_super) {
     __extends(AbilityObjectFactory, _super);
     function AbilityObjectFactory(affector, list) {
@@ -53,6 +58,12 @@ var AbilityObjectFactory = /** @class */ (function (_super) {
             _this.items.push(new gainUnderstandingAbilityObject_1.gainUnderstandingAbilityObject());
             _this.items.push(new symetricTelepathyAbilityObject_1.symetricTelepathyAbilityObject());
             _this.items.push(new symetricEmpathicAbilityObject_1.symetricEmpathicAbilityObject());
+            _this.items.push(new dreamConnectionAbilityObject_1.dreamConnectingAbilityObject());
+            //corpse
+            _this.items.push(new humanoidCorpseAbilityObject_1.humanoidCorpseAbilityObject());
+            _this.items.push(new skeletonAbilityObject_1.skeletonAbilityObject());
+            _this.items.push(new warriorAbilityObject_1.warriorCorpseAbilityObject());
+            _this.items.push(new unfinishedBusinessAbilityObject_1.unfinishedBusinessAbilityObject());
             //questions
             _this.items.push(new detailedAbilityObject_1.detailedAbilityObject());
             _this.items.push(new yesNoAbilityObject_1.yesNoAbilityObject());

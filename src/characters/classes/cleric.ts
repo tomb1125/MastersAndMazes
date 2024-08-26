@@ -7,5 +7,6 @@ export class ClericClass extends ClassDetails {
         this.type = CharacterContext.Class.Cleric;
         this.primaryAttribute = CharacterContext.Attribute.Wisdom;
         this.secondaryAttribute = CharacterContext.Attribute.Charisma;
+        this.armorProficiency = CharacterContext.ArmorProficiency.Heavy;
     }
 }

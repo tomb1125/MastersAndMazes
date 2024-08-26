@@ -16,7 +16,7 @@ export class Light extends Utility {
         super('Light');
         this.range = 15;
         this.objects.push(new AbilityObjectFactory(this).filter((x: AbilityObject) => x.isLight).get(1)[0]);
-        this.weight = () => {return CharacterContext.classes.includes(CharacterContext.Class.Cleric) ? 1 : CharacterContext.OUT_OF_CLASS_WEIGHT}
+        this.weight = () => {return CharacterContext.classes.includes(CharacterContext.Class.Cleric) ? CharacterContext.IN_CLASS_MODIFIER : CharacterContext.OUT_OF_CLASS_WEIGHT}
         this.chance = 1.5
          * Utils.getRangeCoeficient(this.range)
          * Utils.getRangeCoeficient(radius.getValue())

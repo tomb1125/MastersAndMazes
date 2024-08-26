@@ -60,5 +60,11 @@ export namespace CharacterContext
         Streetwise
     }
 
+    export enum ArmorProficiency {
+        Heavy,
+        Medium,
+        Light
+    }
+
 }
 

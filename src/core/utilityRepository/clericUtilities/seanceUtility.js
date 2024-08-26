@@ -15,32 +15,28 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Light = void 0;
+exports.SeanceUtility = void 0;
 var abilityObjectFactory_1 = require("../../../components/abilityObjectFactory");
 var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
-var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var utils_1 = require("../../utils");
-var Light = /** @class */ (function (_super) {
-    __extends(Light, _super);
-    function Light() {
-        var _this = this;
-        var radius = new descriptiveNumber_1.DescriptiveNumber(5);
-        _this = _super.call(this, 'Light') || this;
-        _this.range = 15;
-        _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isLight; }).get(1)[0]);
+var SeanceUtility = /** @class */ (function (_super) {
+    __extends(SeanceUtility, _super);
+    function SeanceUtility() {
+        var _this = _super.call(this, 'Seance') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
-        _this.chance = 1.5
-            * utils_1.Utils.getRangeCoeficient(_this.range)
-            * utils_1.Utils.getRangeCoeficient(radius.getValue());
-        _this.cooldown = ability_1.Ability.Cooldown.Encounter;
-        _this.description = 'Using a Swift Action shine a light in an area centered on a point within ' + _this.range + 'm, with a ' + radius.getValue() + 'm radius, until end of the encounter. ' +
-            _this.objects[0].description;
-        //TODO add light as an object
+        _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isCommunication; }).get(1)[0]);
+        _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isCorpse; }).get(1)[0]);
+        _this.duration = new descriptiveNumber_1.DescriptiveNumber(1);
+        _this.duration.description = 'ten minutes';
+        _this.chance = 0.85
+            / _this.objects[0].rarity
+            / _this.objects[1].rarity
+            / _this.duration.getValue();
+        _this.description = 'You can communicate with a nearby, target ' + _this.objects[1].description + ' for ' + _this.duration.getDescription() + '. ' + _this.objects[0].description;
         _this.compensate();
         return _this;
     }
-    return Light;
+    return SeanceUtility;
 }(utility_1.Utility));
-exports.Light = Light;
+exports.SeanceUtility = SeanceUtility;

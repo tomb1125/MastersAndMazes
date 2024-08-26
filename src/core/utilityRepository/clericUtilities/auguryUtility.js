@@ -28,7 +28,7 @@ var Augury = /** @class */ (function (_super) {
         var _this = _super.call(this, 'Augury') || this;
         _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isQuestion; }).get(1)[0]);
         _this.cooldown = ability_1.Ability.Cooldown.Adventure;
-        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? 1 : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
+        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         var tempChance = 1.5
             / _this.objects[0].rarity;
         if (tempChance > 2) {

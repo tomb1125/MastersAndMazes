@@ -24,8 +24,9 @@ import { undeadBaneModifier } from "./modifiersRepository/multiclassModifiers/un
 import { restedModifer } from "./modifiersRepository/restedModifer";
 import { candleModifier } from "./modifiersRepository/clericModifiers/candleModifier";
 import { pacifistModifier } from "./modifiersRepository/clericModifiers/pacifistModifier";
-import { taxingModifier } from "./modifiersRepository/taxingModifier";
+import { scarringModifier } from "./modifiersRepository/scarringModifier";
 import { preachingModifier } from "./modifiersRepository/clericModifiers/preachingModifier";
+import { grazedModifier } from "./modifiersRepository/grazedModifier";
 
 
 export class ModifierFactory extends Factory {
@@ -49,7 +50,7 @@ export class ModifierFactory extends Factory {
             this.items.push(new restedModifer());
             this.items.push(new selfHealModifier(affector));
             this.items.push(new signatureModifier());
-            this.items.push(new taxingModifier());
+            this.items.push(new grazedModifier());
             this.items.push(new vengefulModifier());
             this.items.push(new ultimateModifier());
 
@@ -59,6 +60,8 @@ export class ModifierFactory extends Factory {
             this.items.push(new preachingModifier());
             this.items.push(new pristineModifier());
             this.items.push(new templeModifier());
+
+            //multiclass
             this.items.push(new undeadBaneModifier(affector));
             
             //this.items.push(new repeatableModifier()); //this modifier is excluded for now purposfully. It behaves differently for utilities and for attacks.
