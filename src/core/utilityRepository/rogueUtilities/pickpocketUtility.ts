@@ -14,9 +14,6 @@ export class PickpocketingUtility extends Utility {
         super('Pickpocketing');
         this.objects.push(new AbilityObjectFactory(this).filter((x: AbilityObject) => x.isPerson).get(1)[0]);
         this.weight = () => {return CharacterContext.classes.includes(CharacterContext.Class.Rogue) ? CharacterContext.IN_CLASS_MODIFIER : CharacterContext.OUT_OF_CLASS_WEIGHT}
-        console.log(CharacterContext.classes);
-        console.log(CharacterContext.Class.Rogue);
-        console.log(CharacterContext.classes.includes(CharacterContext.Class.Rogue));
         this.chance = 0.9;
         this.description = 'You can quickly steal one object from target ' + this.objects[0].description + '. If this is the last charge of this ability and you fail, the target might suspect someone trying to steal from them. ';
 
