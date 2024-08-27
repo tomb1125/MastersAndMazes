@@ -22,7 +22,7 @@ which effectivly means you deal +10 damage for 3 turns.
 
 HEALTH AND DYING:
 After each combat regain all Mana.
-After rest regain 10 Health
+After rest (8 hours with sleep) regain 10 Health
 
 When you are reduced to 0 HP, gain 1 Experience Point and roll for dying: Roll D10 and add number of your Scars:
 1-9 - You become unconcious until end of combat. After combat regain 1 HP and gain 1 Scar.
@@ -90,6 +90,11 @@ Tome - Gain 1 Mana at the end of each turn.
 Orb - Your Spells and Attacks costs 1 less Mana.
 Wand - Your Spells have +10 range.
 Trophy - Whenever you use ability with an encounter cooldown, roll D6. On 6 it does not go on cooldown.
+
+1H Off-Hands
+Light Shield - +1 armor
+Medium Shield - +2 armor (needs Medium Armor proficiency)
+Heavy Shiield - +3 armor (needs Heavy Armor proficiency)
 
 2H Weapons
 2H Hammer - If you roll 1-25 on any Weapon attack roll and hit, stun the target.
