@@ -37,10 +37,10 @@ export namespace CharacterContext
     }
 
     export enum Attribute {
-        Strength,
-        Dexterity,
-        Constitution,
-        Intelligence,
+        Strength, 
+        Dexterity, //initiative?
+        Constitution, //max hp?
+        Intelligence, //max mana?
         Wisdom,
         Charisma
     }
@@ -48,14 +48,19 @@ export namespace CharacterContext
     export enum Skill {
         Athletics,
         Intimidation,
-        SleightOfHand,
+
+        Acrobatics,
         Stealth,
+
         Endurance,
         Survival,
-        Knowledge,
+
+        Knowledge, 
         Crafting,
+
         Dungeoneering,
         Perception,
+
         Persuasion,
         Streetwise
     }

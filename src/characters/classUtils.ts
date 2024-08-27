@@ -8,7 +8,7 @@ export class ClassUtils {
   static SKILL_TO_ATTRIBUTE: Map<number, number> = new Map([ //TODO move this to better place in characer context
     [CharacterContext.Skill.Athletics, CharacterContext.Attribute.Strength],
     [CharacterContext.Skill.Intimidation, CharacterContext.Attribute.Strength],
-    [CharacterContext.Skill.SleightOfHand, CharacterContext.Attribute.Dexterity],
+    [CharacterContext.Skill.Acrobatics, CharacterContext.Attribute.Dexterity],
     [CharacterContext.Skill.Stealth, CharacterContext.Attribute.Dexterity],
     [CharacterContext.Skill.Endurance, CharacterContext.Attribute.Constitution],
     [CharacterContext.Skill.Survival, CharacterContext.Attribute.Constitution],
