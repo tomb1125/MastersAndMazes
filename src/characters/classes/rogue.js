@@ -24,7 +24,8 @@ var RogueClass = /** @class */ (function (_super) {
         var _this = _super.call(this) || this;
         _this.type = characterContext_1.CharacterContext.Class.Rogue;
         _this.primaryAttribute = characterContext_1.CharacterContext.Attribute.Dexterity;
-        _this.secondaryAttribute = characterContext_1.CharacterContext.Attribute.Wisdom;
+        _this.secondaryAttribute = characterContext_1.CharacterContext.Attribute.Intelligence;
+        _this.armorProficiency = characterContext_1.CharacterContext.ArmorProficiency.Medium;
         return _this;
     }
     return RogueClass;

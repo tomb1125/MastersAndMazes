@@ -21,13 +21,13 @@ var ClassUtils = /** @class */ (function () {
     ClassUtils.SKILL_TO_ATTRIBUTE = new Map([
         [characterContext_1.CharacterContext.Skill.Athletics, characterContext_1.CharacterContext.Attribute.Strength],
         [characterContext_1.CharacterContext.Skill.Intimidation, characterContext_1.CharacterContext.Attribute.Strength],
-        [characterContext_1.CharacterContext.Skill.SleightOfHand, characterContext_1.CharacterContext.Attribute.Dexterity],
+        [characterContext_1.CharacterContext.Skill.Acrobatics, characterContext_1.CharacterContext.Attribute.Dexterity],
         [characterContext_1.CharacterContext.Skill.Stealth, characterContext_1.CharacterContext.Attribute.Dexterity],
         [characterContext_1.CharacterContext.Skill.Endurance, characterContext_1.CharacterContext.Attribute.Constitution],
         [characterContext_1.CharacterContext.Skill.Survival, characterContext_1.CharacterContext.Attribute.Constitution],
         [characterContext_1.CharacterContext.Skill.Knowledge, characterContext_1.CharacterContext.Attribute.Intelligence],
         [characterContext_1.CharacterContext.Skill.Crafting, characterContext_1.CharacterContext.Attribute.Intelligence],
-        [characterContext_1.CharacterContext.Skill.Dungeoneering, characterContext_1.CharacterContext.Attribute.Wisdom],
+        [characterContext_1.CharacterContext.Skill.Medicine, characterContext_1.CharacterContext.Attribute.Wisdom],
         [characterContext_1.CharacterContext.Skill.Perception, characterContext_1.CharacterContext.Attribute.Wisdom],
         [characterContext_1.CharacterContext.Skill.Persuasion, characterContext_1.CharacterContext.Attribute.Charisma],
         [characterContext_1.CharacterContext.Skill.Streetwise, characterContext_1.CharacterContext.Attribute.Charisma]

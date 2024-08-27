@@ -15,19 +15,18 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ClericClass = void 0;
-var characterContext_1 = require("../../core/characterContext");
-var classDetails_1 = require("../classDetails");
-var ClericClass = /** @class */ (function (_super) {
-    __extends(ClericClass, _super);
-    function ClericClass() {
-        var _this = _super.call(this) || this;
-        _this.type = characterContext_1.CharacterContext.Class.Cleric;
-        _this.primaryAttribute = characterContext_1.CharacterContext.Attribute.Wisdom;
-        _this.secondaryAttribute = characterContext_1.CharacterContext.Attribute.Charisma;
-        _this.armorProficiency = characterContext_1.CharacterContext.ArmorProficiency.Heavy;
+exports.freshCorpseAbilityObject = void 0;
+var abilityObject_1 = require("../../abilityObject");
+var freshCorpseAbilityObject = /** @class */ (function (_super) {
+    __extends(freshCorpseAbilityObject, _super);
+    function freshCorpseAbilityObject() {
+        var _this = _super.call(this, 'Fresh Corpse') || this;
+        _this.description = 'any fresh humanoid corpse (3 days or less)';
+        _this.rarity = 1.1;
+        _this.prefix = 'Fresh';
+        _this.isCorpse = true;
         return _this;
     }
-    return ClericClass;
-}(classDetails_1.ClassDetails));
-exports.ClericClass = ClericClass;
+    return freshCorpseAbilityObject;
+}(abilityObject_1.AbilityObject));
+exports.freshCorpseAbilityObject = freshCorpseAbilityObject;

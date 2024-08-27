@@ -19,7 +19,9 @@ global.onLevelChange = (val): void => {
 };
 
 global.onClassChange = (val): void => {
-  CharacterContext.classes = [Object.keys(CharacterContext.Class).find(cls => CharacterContext.Class[cls] === val) as any as number];
+  CharacterContext.classes = [
+    Number(Object.keys(CharacterContext.Class).find(cls => CharacterContext.Class[cls] === val) as any as string)
+  ];
 };
 
 

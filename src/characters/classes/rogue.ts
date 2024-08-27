@@ -6,7 +6,7 @@ export class RogueClass extends ClassDetails {
         super();
         this.type = CharacterContext.Class.Rogue;
         this.primaryAttribute = CharacterContext.Attribute.Dexterity;
-        this.secondaryAttribute = CharacterContext.Attribute.Wisdom;
+        this.secondaryAttribute = CharacterContext.Attribute.Intelligence;
         this.armorProficiency = CharacterContext.ArmorProficiency.Medium;
     }
     

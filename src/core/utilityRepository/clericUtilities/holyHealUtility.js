@@ -15,21 +15,21 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RestorationUtility = void 0;
+exports.HolyHealUtility = void 0;
 var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var RestorationUtility = /** @class */ (function (_super) {
-    __extends(RestorationUtility, _super);
-    function RestorationUtility() {
-        var _this = _super.call(this, 'Restoration') || this;
-        _this.cooldown = ability_1.Ability.Cooldown.Adventure;
+var HolyHealUtility = /** @class */ (function (_super) {
+    __extends(HolyHealUtility, _super);
+    function HolyHealUtility() {
+        var _this = _super.call(this, 'Holy Heal') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
-        _this.chance = 0.6;
-        _this.description = 'After an hour of ritual, you can cause one wound effect like limb loss, blindness or statistics loss to be removed from one character. Additionally the target loses 1 Scar. You can use this ability in a moderate size city to alternatively gain 150G on success. ';
+        _this.cooldown = ability_1.Ability.Cooldown.Encounter;
+        _this.chance = 0.9;
+        _this.description = 'Using Standard Action, restore 10 health to yourself and one ally within 5 squares.';
         _this.compensate();
         return _this;
     }
-    return RestorationUtility;
+    return HolyHealUtility;
 }(utility_1.Utility));
-exports.RestorationUtility = RestorationUtility;
+exports.HolyHealUtility = HolyHealUtility;

@@ -15,19 +15,19 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ClericClass = void 0;
-var characterContext_1 = require("../../core/characterContext");
-var classDetails_1 = require("../classDetails");
-var ClericClass = /** @class */ (function (_super) {
-    __extends(ClericClass, _super);
-    function ClericClass() {
-        var _this = _super.call(this) || this;
-        _this.type = characterContext_1.CharacterContext.Class.Cleric;
-        _this.primaryAttribute = characterContext_1.CharacterContext.Attribute.Wisdom;
-        _this.secondaryAttribute = characterContext_1.CharacterContext.Attribute.Charisma;
-        _this.armorProficiency = characterContext_1.CharacterContext.ArmorProficiency.Heavy;
+exports.humanoidAbilityObject = void 0;
+var abilityObject_1 = require("../../abilityObject");
+var humanoidAbilityObject = /** @class */ (function (_super) {
+    __extends(humanoidAbilityObject, _super);
+    function humanoidAbilityObject() {
+        var _this = _super.call(this, 'Humanoid') || this;
+        _this.description = 'any humanoid';
+        _this.rarity = 1.6;
+        _this.weight = function () { return 1.5; };
+        _this.prefix = 'Common';
+        _this.isPerson = true;
         return _this;
     }
-    return ClericClass;
-}(classDetails_1.ClassDetails));
-exports.ClericClass = ClericClass;
+    return humanoidAbilityObject;
+}(abilityObject_1.AbilityObject));
+exports.humanoidAbilityObject = humanoidAbilityObject;

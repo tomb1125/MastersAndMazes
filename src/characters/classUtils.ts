@@ -14,7 +14,7 @@ export class ClassUtils {
     [CharacterContext.Skill.Survival, CharacterContext.Attribute.Constitution],
     [CharacterContext.Skill.Knowledge, CharacterContext.Attribute.Intelligence],
     [CharacterContext.Skill.Crafting, CharacterContext.Attribute.Intelligence],
-    [CharacterContext.Skill.Dungeoneering, CharacterContext.Attribute.Wisdom],
+    [CharacterContext.Skill.Medicine, CharacterContext.Attribute.Wisdom],
     [CharacterContext.Skill.Perception, CharacterContext.Attribute.Wisdom],
     [CharacterContext.Skill.Persuasion, CharacterContext.Attribute.Charisma],
     [CharacterContext.Skill.Streetwise, CharacterContext.Attribute.Charisma]

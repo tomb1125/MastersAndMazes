@@ -10,7 +10,7 @@ var CharacterContext = /** @class */ (function () {
     };
     CharacterContext.level = 1;
     CharacterContext.classes = [0];
-    CharacterContext.OUT_OF_CLASS_WEIGHT = 0.01;
+    CharacterContext.OUT_OF_CLASS_WEIGHT = 0.0001; //TODO should be 0.01 after go-live
     CharacterContext.IN_CLASS_MODIFIER = 1.7;
     return CharacterContext;
 }());
@@ -48,15 +48,21 @@ exports.CharacterContext = CharacterContext;
     (function (Skill) {
         Skill[Skill["Athletics"] = 0] = "Athletics";
         Skill[Skill["Intimidation"] = 1] = "Intimidation";
-        Skill[Skill["SleightOfHand"] = 2] = "SleightOfHand";
+        Skill[Skill["Acrobatics"] = 2] = "Acrobatics";
         Skill[Skill["Stealth"] = 3] = "Stealth";
         Skill[Skill["Endurance"] = 4] = "Endurance";
         Skill[Skill["Survival"] = 5] = "Survival";
         Skill[Skill["Knowledge"] = 6] = "Knowledge";
         Skill[Skill["Crafting"] = 7] = "Crafting";
-        Skill[Skill["Dungeoneering"] = 8] = "Dungeoneering";
+        Skill[Skill["Medicine"] = 8] = "Medicine";
         Skill[Skill["Perception"] = 9] = "Perception";
         Skill[Skill["Persuasion"] = 10] = "Persuasion";
         Skill[Skill["Streetwise"] = 11] = "Streetwise";
     })(Skill = CharacterContext.Skill || (CharacterContext.Skill = {}));
+    var ArmorProficiency;
+    (function (ArmorProficiency) {
+        ArmorProficiency[ArmorProficiency["Heavy"] = 0] = "Heavy";
+        ArmorProficiency[ArmorProficiency["Medium"] = 1] = "Medium";
+        ArmorProficiency[ArmorProficiency["Light"] = 2] = "Light";
+    })(ArmorProficiency = CharacterContext.ArmorProficiency || (CharacterContext.ArmorProficiency = {}));
 })(CharacterContext || (exports.CharacterContext = CharacterContext = {}));

@@ -4,7 +4,7 @@ export class CharacterContext {
     public static classes: CharacterContext.Class[] = [0];
     public static seed: string;
     
-    public static OUT_OF_CLASS_WEIGHT = 0.01;
+    public static OUT_OF_CLASS_WEIGHT = 0.0001; //TODO should be 0.01 after go-live
     public static IN_CLASS_MODIFIER = 1.7
 
 
@@ -58,7 +58,7 @@ export namespace CharacterContext
         Knowledge, 
         Crafting,
 
-        Dungeoneering,
+        Medicine,
         Perception,
 
         Persuasion,

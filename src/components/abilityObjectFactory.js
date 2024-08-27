@@ -40,6 +40,10 @@ var humanoidCorpseAbilityObject_1 = require("./abilityObjectRepository/corpses/h
 var skeletonAbilityObject_1 = require("./abilityObjectRepository/corpses/skeletonAbilityObject");
 var warriorAbilityObject_1 = require("./abilityObjectRepository/corpses/warriorAbilityObject");
 var unfinishedBusinessAbilityObject_1 = require("./abilityObjectRepository/corpses/unfinishedBusinessAbilityObject");
+var freshCorpseAbilityObject_1 = require("./abilityObjectRepository/corpses/freshCorpseAbilityObject");
+var humanoidAbilityObject_1 = require("./abilityObjectRepository/persons/humanoidAbilityObject");
+var distractedHumanoidAbilityObject_1 = require("./abilityObjectRepository/persons/distractedHumanoidAbilityObject");
+var mageHumanoidAbilityObject_1 = require("./abilityObjectRepository/persons/mageHumanoidAbilityObject");
 var AbilityObjectFactory = /** @class */ (function (_super) {
     __extends(AbilityObjectFactory, _super);
     function AbilityObjectFactory(affector, list) {
@@ -61,6 +65,7 @@ var AbilityObjectFactory = /** @class */ (function (_super) {
             _this.items.push(new dreamConnectionAbilityObject_1.dreamConnectingAbilityObject());
             //corpse
             _this.items.push(new humanoidCorpseAbilityObject_1.humanoidCorpseAbilityObject());
+            _this.items.push(new freshCorpseAbilityObject_1.freshCorpseAbilityObject());
             _this.items.push(new skeletonAbilityObject_1.skeletonAbilityObject());
             _this.items.push(new warriorAbilityObject_1.warriorCorpseAbilityObject());
             _this.items.push(new unfinishedBusinessAbilityObject_1.unfinishedBusinessAbilityObject());
@@ -73,6 +78,10 @@ var AbilityObjectFactory = /** @class */ (function (_super) {
             _this.items.push(new colorofulLightAbilityObject_1.colorfulLightAbilityObject());
             _this.items.push(new controllableLightAbilityObject_1.controllableLightAbilityObject());
             _this.items.push(new revealingLightAbilityObject_1.revealingLightAbilityObject());
+            //persons
+            _this.items.push(new humanoidAbilityObject_1.humanoidAbilityObject());
+            _this.items.push(new distractedHumanoidAbilityObject_1.distractedHumanoidAbilityObject());
+            _this.items.push(new mageHumanoidAbilityObject_1.mageHumanoidAbilityObject());
         }
         else {
             _this.items = list;

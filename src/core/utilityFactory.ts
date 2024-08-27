@@ -5,9 +5,11 @@ import { AnimalSpeak } from "./utilityRepository/druidUtilities/animalSpeak";
 import { Augury } from "./utilityRepository/clericUtilities/auguryUtility";
 import { WeightedList } from "./weightedList";
 import { Light } from "./utilityRepository/clericUtilities/lightUtility";
-import { restorationUtility } from "./utilityRepository/clericUtilities/restorationUtility";
+import { RestorationUtility } from "./utilityRepository/clericUtilities/restorationUtility";
 import { SkillBonusUtility } from "./utilityRepository/skillBonusUtility";
 import { SeanceUtility } from "./utilityRepository/clericUtilities/seanceUtility";
+import { HolyHealUtility } from "./utilityRepository/clericUtilities/holyHealUtility";
+import { PickpocketingUtility } from "./utilityRepository/rogueUtilities/pickpocketUtility";
 
 export class UtilityFactory extends Factory {
     constructor(affector: AffectsWeight, list?: WeightedList) {
@@ -20,8 +22,12 @@ export class UtilityFactory extends Factory {
             //cleric
             this.items.push(new Augury());
             this.items.push(new Light());
-            this.items.push(new restorationUtility());
+            this.items.push(new RestorationUtility());
             this.items.push(new SeanceUtility());
+            this.items.push(new HolyHealUtility());
+
+            //rogue
+            this.items.push(new PickpocketingUtility());
 
             //common
             this.items.push(new SkillBonusUtility())

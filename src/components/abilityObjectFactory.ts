@@ -24,6 +24,10 @@ import { humanoidCorpseAbilityObject } from "./abilityObjectRepository/corpses/h
 import { skeletonAbilityObject } from "./abilityObjectRepository/corpses/skeletonAbilityObject";
 import { warriorCorpseAbilityObject } from "./abilityObjectRepository/corpses/warriorAbilityObject";
 import { unfinishedBusinessAbilityObject } from "./abilityObjectRepository/corpses/unfinishedBusinessAbilityObject";
+import { freshCorpseAbilityObject } from "./abilityObjectRepository/corpses/freshCorpseAbilityObject";
+import { humanoidAbilityObject } from "./abilityObjectRepository/persons/humanoidAbilityObject";
+import { distractedHumanoidAbilityObject } from "./abilityObjectRepository/persons/distractedHumanoidAbilityObject";
+import { mageHumanoidAbilityObject } from "./abilityObjectRepository/persons/mageHumanoidAbilityObject";
 
 export class AbilityObjectFactory extends Factory {
     constructor(affector: AffectsWeight, list?: WeightedList) {
@@ -48,6 +52,7 @@ export class AbilityObjectFactory extends Factory {
 
             //corpse
             this.items.push(new humanoidCorpseAbilityObject());
+            this.items.push(new freshCorpseAbilityObject());
             this.items.push(new skeletonAbilityObject());
             this.items.push(new warriorCorpseAbilityObject());
             this.items.push(new unfinishedBusinessAbilityObject());
@@ -62,6 +67,12 @@ export class AbilityObjectFactory extends Factory {
             this.items.push(new colorfulLightAbilityObject())
             this.items.push(new controllableLightAbilityObject())
             this.items.push(new revealingLightAbilityObject())
+
+            //persons
+            this.items.push(new humanoidAbilityObject())
+            this.items.push(new distractedHumanoidAbilityObject())
+            this.items.push(new mageHumanoidAbilityObject())
+            
             
 
             
