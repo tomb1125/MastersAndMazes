@@ -16,14 +16,15 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.adjacentEnemiesDescriptiveNumber = void 0;
-var descriptiveNumber_1 = require("../descriptiveNumber");
+var utils_1 = require("../../../core/utils");
+var descriptiveNumber_1 = require("../../descriptiveNumber");
 var adjacentEnemiesDescriptiveNumber = /** @class */ (function (_super) {
     __extends(adjacentEnemiesDescriptiveNumber, _super);
     function adjacentEnemiesDescriptiveNumber(value) {
         var _this = _super.call(this, value) || this;
-        _this.value = 3;
+        _this.value = utils_1.Utils.AVG_ENEMIES_ADJACENT;
         _this.type = descriptiveNumber_1.DescriptiveNumber.Type.Small;
-        _this.name = 'the number of enemies adjacent to you.';
+        _this.name = 'the number of enemies adjacent to you';
         return _this;
     }
     return adjacentEnemiesDescriptiveNumber;

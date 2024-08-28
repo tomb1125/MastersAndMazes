@@ -25,11 +25,8 @@ var PickpocketingUtility = /** @class */ (function (_super) {
         var _this = _super.call(this, 'Pickpocketing') || this;
         _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isPerson; }).get(1)[0]);
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
-        console.log(characterContext_1.CharacterContext.classes);
-        console.log(characterContext_1.CharacterContext.Class.Rogue);
-        console.log(characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue));
         _this.chance = 0.9;
-        _this.description = 'You can quickly steal one object from target ' + _this.objects[0].description + '. If this is the last charge of this ability and you fail, the target might suspect someone trying to steal from them. ';
+        _this.description = 'You can quickly steal one object from target ' + _this.objects[0].description + '. If this ability goes on cooldown and you fail, the target might suspect someone trying to steal from them. ';
         _this.compensate();
         return _this;
     }

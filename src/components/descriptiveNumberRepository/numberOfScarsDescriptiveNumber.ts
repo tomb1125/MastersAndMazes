@@ -1,12 +1,12 @@
 import { Utils } from "../../core/utils";
 import { DescriptiveNumber } from "../descriptiveNumber";
 
-export class numberOfTurnsDescriptiveNumber extends DescriptiveNumber {
+export class numberOfScarsDescriptiveNumber extends DescriptiveNumber {
     
     constructor(value?: number) {
-        super(Utils.AVG_TURN);    
-        this.lowValue = 1;    
-        this.description = 'the number of rounds in combat';
+        super(Utils.AVG_SCARS);    
+        this.lowValue = 0;    
+        this.description = 'the number of your Scars';
         this.type = DescriptiveNumber.Type.Common;
     }
 }

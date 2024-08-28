@@ -15,19 +15,18 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.scarringModifier = void 0;
-var modifier_1 = require("../modifier");
-var scarringModifier = /** @class */ (function (_super) {
-    __extends(scarringModifier, _super);
-    function scarringModifier() {
-        var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 1.2; };
-        _this.name = 'Scarring';
-        _this.namePrefix = 'Scarring';
-        _this.description = 'When you add this ability to your character gain 2 Scars (each Scar brings character slightly closer to death, see rules for more).';
-        _this.modifierType = modifier_1.Modifier.Type.Constraint;
+exports.numberOfScarsDescriptiveNumber = void 0;
+var utils_1 = require("../../core/utils");
+var descriptiveNumber_1 = require("../descriptiveNumber");
+var numberOfScarsDescriptiveNumber = /** @class */ (function (_super) {
+    __extends(numberOfScarsDescriptiveNumber, _super);
+    function numberOfScarsDescriptiveNumber(value) {
+        var _this = _super.call(this, utils_1.Utils.AVG_SCARS) || this;
+        _this.lowValue = 0;
+        _this.description = 'the number of your Scars';
+        _this.type = descriptiveNumber_1.DescriptiveNumber.Type.Common;
         return _this;
     }
-    return scarringModifier;
-}(modifier_1.Modifier));
-exports.scarringModifier = scarringModifier;
+    return numberOfScarsDescriptiveNumber;
+}(descriptiveNumber_1.DescriptiveNumber));
+exports.numberOfScarsDescriptiveNumber = numberOfScarsDescriptiveNumber;

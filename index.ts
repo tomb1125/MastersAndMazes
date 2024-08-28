@@ -1,9 +1,5 @@
 import { Attack } from "./src/core/attack";
-import { Modifier } from "./src/modifiers/modifier";
 import { Utils } from "./src/core/utils";
-import { ModifierFactory } from "./src/modifiers/modifierFactory";
-import { HasWeigth } from "./src/core/hasWeigth";
-import { DescriptiveNumber } from "./src/components/descriptiveNumber";
 import { UtilityFactory } from "./src/core/utilityFactory";
 import { Utility } from "./src/core/utility";
 import { CharacterContext } from "./src/core/characterContext";

@@ -6,13 +6,16 @@ import { RandomNumberGenerator } from "./randomNumberGenerator";
 
 export class Utils {
     public static DPS: number = 5;
-    public static POWER_PER_LEVEL = 0.2;
+    public static ENEMY_DPS: number = 10;
+
+    public static POWER_PER_LEVEL: number = 0.2;
     public static BASIC_ATTACK_DPS: number = 2.5
-    public static ATTACK_DESCRIPTIVE_NUMBER_CHANCE: number = 0.15;
+    public static ATTACK_DESCRIPTIVE_NUMBER_CHANCE: number = 0.2;
     public static AVG_ENEMIES_ADJACENT: number = 1.9;
     public static AVG_PLAYERS: number = 3;
     public static AVG_ENEMIES_PER_PLAYER: number = 5 / Utils.AVG_PLAYERS;
     public static AVG_TURN: number = 4;
+    public static AVG_SCARS: number = 2.5;
     public static EFFECT_WEIGHT_MOD: number = 0.9;
 
     public static BoonValue: number = Utils.DPS * 5;

@@ -24,7 +24,6 @@ import { undeadBaneModifier } from "./modifiersRepository/multiclassModifiers/un
 import { restedModifer } from "./modifiersRepository/restedModifer";
 import { candleModifier } from "./modifiersRepository/clericModifiers/candleModifier";
 import { pacifistModifier } from "./modifiersRepository/clericModifiers/pacifistModifier";
-import { scarringModifier } from "./modifiersRepository/scarringModifier";
 import { preachingModifier } from "./modifiersRepository/clericModifiers/preachingModifier";
 import { grazedModifier } from "./modifiersRepository/grazedModifier";
 

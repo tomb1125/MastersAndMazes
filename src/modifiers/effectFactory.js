@@ -26,6 +26,7 @@ var scalingDotEffect_1 = require("./effectRepository/scalingDotEffect");
 var exposeEffect_1 = require("./effectRepository/exposeEffect");
 var vulnerableEffect_1 = require("./effectRepository/vulnerableEffect");
 var effectsSingleton_1 = require("./effectsSingleton");
+var protectedEffect_1 = require("./effectRepository/protectedEffect");
 var EffectFactory = /** @class */ (function (_super) {
     __extends(EffectFactory, _super);
     function EffectFactory(affector, list) {
@@ -39,6 +40,7 @@ var EffectFactory = /** @class */ (function (_super) {
             _this.items.push(new exposeEffect_1.exposeEffect());
             _this.items.push(new guidingEffect_1.guidingEffect());
             _this.items.push(new instakillEffect_1.instakillEffect());
+            _this.items.push(new protectedEffect_1.protectedEffect());
             _this.items.push(new scalingDotEffect_1.scalingDotEffect());
             _this.items.push(new stunEffect_1.stunEffect());
             _this.items.push(new vulnerableEffect_1.vulnerableEffect());

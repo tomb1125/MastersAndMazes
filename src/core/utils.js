@@ -87,13 +87,15 @@ var Utils = /** @class */ (function () {
         return Math.ceil(Utils.random() * value);
     };
     Utils.DPS = 5;
+    Utils.ENEMY_DPS = 10;
     Utils.POWER_PER_LEVEL = 0.2;
     Utils.BASIC_ATTACK_DPS = 2.5;
-    Utils.ATTACK_DESCRIPTIVE_NUMBER_CHANCE = 0.15;
+    Utils.ATTACK_DESCRIPTIVE_NUMBER_CHANCE = 0.2;
     Utils.AVG_ENEMIES_ADJACENT = 1.9;
     Utils.AVG_PLAYERS = 3;
     Utils.AVG_ENEMIES_PER_PLAYER = 5 / Utils.AVG_PLAYERS;
     Utils.AVG_TURN = 4;
+    Utils.AVG_SCARS = 2.5;
     Utils.EFFECT_WEIGHT_MOD = 0.9;
     Utils.BoonValue = Utils.DPS * 5;
     Utils.avgHealth = 25;

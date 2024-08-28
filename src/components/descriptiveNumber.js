@@ -7,32 +7,49 @@ var DescriptiveNumber = /** @class */ (function () {
         this.weight = function (x) { return 1; };
         this.value = value == undefined ? 0 : value;
     }
-    ;
     DescriptiveNumber.prototype.getDescription = function () {
-        if (this.description != undefined) {
-            if (this.bonus != undefined) {
-                return this.description + (this.bonus >= 0 ? ' + ' : ' - ') + this.bonus;
+        if (this.description) {
+            if (this.bonus) {
+                return (this.multiplier ? this.multiplier + 'x ' : '') + this.description + (this.bonus >= 0 ? ' + ' : ' - ') + this.bonus;
             }
             else {
-                return this.description;
+                return (this.multiplier ? this.multiplier + 'x ' : '') + this.description;
             }
         }
-        if (this.value != undefined) {
-            return this.value + (this.bonus != undefined ? this.bonus : 0);
+        if (this.value) {
+            return (this.multiplier ? this.multiplier : 1) * this.value + (this.bonus ? this.bonus : 0);
         }
         throw 'Undefined Descriptive Number Error';
     };
     DescriptiveNumber.prototype.getValue = function () {
-        return this.value + (this.bonus != undefined ? this.bonus : 0);
+        var bonus = this.bonus ? this.bonus : 0;
+        var multiplier = this.multiplier ? this.multiplier : 1;
+        return multiplier * this.value + bonus;
     };
     DescriptiveNumber.prototype.getLowValue = function () {
-        return (this.lowValue === undefined ? this.value : this.lowValue) + (this.bonus != undefined ? this.bonus : 0);
+        var lowValue = this.lowValue ? this.lowValue : this.value;
+        var multiplier = this.multiplier ? this.multiplier : 1;
+        var bonus = this.bonus ? this.bonus : 0;
+        return multiplier * lowValue + bonus;
     };
     DescriptiveNumber.prototype.addBonus = function (val) {
         if (this.bonus === undefined) {
             this.bonus = 0;
         }
         this.bonus += val;
+    };
+    DescriptiveNumber.prototype.addMultiplier = function (val) {
+        if (this.multiplier === undefined) {
+            this.multiplier = 1;
+        }
+        this.multiplier += val;
+    };
+    DescriptiveNumber.prototype.compensate = function () {
+        if (this.bonus > this.value && this.value > 0) {
+            this.bonus -= Math.ceil(this.value);
+            this.addMultiplier(1);
+            this.compensate();
+        }
     };
     return DescriptiveNumber;
 }());

@@ -148,7 +148,8 @@ var Attack = /** @class */ (function (_super) {
         if (this.manaCost + tempMana < 0) {
             this.chance += 0.1;
             if (this.chance > 1) {
-                this.damage.addBonus(1); ///= new DescriptiveNumber(this.damage.getValue()+1); //TODO allow DescriptiveNumbers to get static bonuses
+                this.damage.addBonus(1);
+                this.damage.compensate(); ///= new DescriptiveNumber(this.damage.getValue()+1); //TODO allow DescriptiveNumbers to get static bonuses
             }
             this.compensate();
         }
