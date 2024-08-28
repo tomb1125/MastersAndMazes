@@ -7,11 +7,11 @@ export class laylineModifier extends Modifier {
     
     constructor() {
         super();
-        this.powerMultiplier = (x: CanAffectModifier) => {return x.range ? Math.max(1.1, 2.4 - x.range/10) : 1}; 1.7; 
+        this.powerMultiplier = (x: CanAffectModifier) => {return x.range ? Math.max(1.2, 2.1 - x.range/20) : 1}; 1.7; 
         this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Attack ? 1 : 0}
         this.name = 'Layline';
         this.namePrefix = 'Layline';
-        this.description = 'Can be used only while adjacent to place of power (usually you can detect 2-3 places of power each combat).';
+        this.description = 'Can be used only while adjacent to place of power (usually you can detect 2-3 places of power each encounter).';
         this.longDescription = '';
         this.modifierType =Modifier.Type.Constraint;
     }

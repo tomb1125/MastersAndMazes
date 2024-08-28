@@ -22,11 +22,11 @@ var pacifistModifier = /** @class */ (function (_super) {
     __extends(pacifistModifier, _super);
     function pacifistModifier() {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 2; };
+        _this.powerMultiplier = function () { return 1.5; };
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.name = 'Pacifist';
         _this.namePrefix = 'Pacifists';
-        _this.description = 'Can be only used if you did not reduce any creature to 0 HP this day.';
+        _this.description = 'This ability has a Bane for each creature you reduced to 0 HP today.';
         _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;

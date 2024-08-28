@@ -7,9 +7,10 @@ var AbilityObject = /** @class */ (function () {
         this.isAnimal = false;
         this.isCommunication = false;
         this.isCorpse = false;
-        this.isQuestion = false;
         this.isLight = false;
         this.isPerson = false;
+        this.isQuestion = false;
+        this.isStealth = false;
         this.name = name;
     }
     return AbilityObject;

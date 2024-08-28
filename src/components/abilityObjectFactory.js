@@ -44,6 +44,9 @@ var freshCorpseAbilityObject_1 = require("./abilityObjectRepository/corpses/fres
 var humanoidAbilityObject_1 = require("./abilityObjectRepository/persons/humanoidAbilityObject");
 var distractedHumanoidAbilityObject_1 = require("./abilityObjectRepository/persons/distractedHumanoidAbilityObject");
 var mageHumanoidAbilityObject_1 = require("./abilityObjectRepository/persons/mageHumanoidAbilityObject");
+var shadowStealthAbilityObject_1 = require("./abilityObjectRepository/stealth/shadowStealthAbilityObject");
+var unarmoredStealthAbilityObject_1 = require("./abilityObjectRepository/stealth/unarmoredStealthAbilityObject");
+var potionStealthAbilityObject_1 = require("./abilityObjectRepository/stealth/potionStealthAbilityObject");
 var AbilityObjectFactory = /** @class */ (function (_super) {
     __extends(AbilityObjectFactory, _super);
     function AbilityObjectFactory(affector, list) {
@@ -82,6 +85,10 @@ var AbilityObjectFactory = /** @class */ (function (_super) {
             _this.items.push(new humanoidAbilityObject_1.humanoidAbilityObject());
             _this.items.push(new distractedHumanoidAbilityObject_1.distractedHumanoidAbilityObject());
             _this.items.push(new mageHumanoidAbilityObject_1.mageHumanoidAbilityObject());
+            //stealth
+            _this.items.push(new shadowStealthAbilityObject_1.shadowStealthAbilityObject());
+            _this.items.push(new unarmoredStealthAbilityObject_1.unarmoredStealthAbilityObject());
+            _this.items.push(new potionStealthAbilityObject_1.potionStealthAbilityObject());
         }
         else {
             _this.items = list;

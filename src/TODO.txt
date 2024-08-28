@@ -3,10 +3,9 @@ gives spells elemental effects and add to playerTex
 linking buffs (eg. bonus to all cold damage)
 tricks
 improve to text function
-introduce 1% chance for attacks to be more crazy
 non-efficiency curve x + x/5 * (x/5 - 2)
 add modfiers as denial of action and modifiers as bonus
-range as descriptive number
-add correlaction between fast and duration effects
+add correlation between fast and duration effects
+add correlation between pristine and exnhausting
 shadow
 lokacje + woda

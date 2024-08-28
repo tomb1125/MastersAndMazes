@@ -28,6 +28,9 @@ import { freshCorpseAbilityObject } from "./abilityObjectRepository/corpses/fres
 import { humanoidAbilityObject } from "./abilityObjectRepository/persons/humanoidAbilityObject";
 import { distractedHumanoidAbilityObject } from "./abilityObjectRepository/persons/distractedHumanoidAbilityObject";
 import { mageHumanoidAbilityObject } from "./abilityObjectRepository/persons/mageHumanoidAbilityObject";
+import { shadowStealthAbilityObject } from "./abilityObjectRepository/stealth/shadowStealthAbilityObject";
+import { unarmoredStealthAbilityObject } from "./abilityObjectRepository/stealth/unarmoredStealthAbilityObject";
+import { potionStealthAbilityObject } from "./abilityObjectRepository/stealth/potionStealthAbilityObject";
 
 export class AbilityObjectFactory extends Factory {
     constructor(affector: AffectsWeight, list?: WeightedList) {
@@ -72,6 +75,11 @@ export class AbilityObjectFactory extends Factory {
             this.items.push(new humanoidAbilityObject())
             this.items.push(new distractedHumanoidAbilityObject())
             this.items.push(new mageHumanoidAbilityObject())
+
+            //stealth
+            this.items.push(new shadowStealthAbilityObject());
+            this.items.push(new unarmoredStealthAbilityObject());
+            this.items.push(new potionStealthAbilityObject());
             
             
 

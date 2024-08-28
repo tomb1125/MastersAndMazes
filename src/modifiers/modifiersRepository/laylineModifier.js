@@ -22,12 +22,12 @@ var laylineModifier = /** @class */ (function (_super) {
     __extends(laylineModifier, _super);
     function laylineModifier() {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function (x) { return x.range ? Math.max(1.1, 2.4 - x.range / 10) : 1; };
+        _this.powerMultiplier = function (x) { return x.range ? Math.max(1.2, 2.1 - x.range / 20) : 1; };
         1.7;
         _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
         _this.name = 'Layline';
         _this.namePrefix = 'Layline';
-        _this.description = 'Can be used only while adjacent to place of power (usually you can detect 2-3 places of power each combat).';
+        _this.description = 'Can be used only while adjacent to place of power (usually you can detect 2-3 places of power each encounter).';
         _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
