@@ -1,4 +1,3 @@
-import { EffectsSingleton } from "./effectsSingleton";
 import { Modifier } from "./modifier"
 
 export abstract class Effect extends Modifier {

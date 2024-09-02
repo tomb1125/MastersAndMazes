@@ -17,33 +17,30 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EffectFactory = void 0;
 var weightedList_1 = require("../core/weightedList");
+var factory_1 = require("../core/factory");
+//factory imports
+var vulnerableEffect_1 = require("./effectRepository/vulnerableEffect");
 var stunEffect_1 = require("./effectRepository/stunEffect");
+var scalingDotEffect_1 = require("./effectRepository/scalingDotEffect");
+var protectedEffect_1 = require("./effectRepository/protectedEffect");
 var instakillEffect_1 = require("./effectRepository/instakillEffect");
 var guidingEffect_1 = require("./effectRepository/guidingEffect");
-var damageBonusEffect_1 = require("./effectRepository/damageBonusEffect");
-var factory_1 = require("../core/factory");
-var scalingDotEffect_1 = require("./effectRepository/scalingDotEffect");
 var exposeEffect_1 = require("./effectRepository/exposeEffect");
-var vulnerableEffect_1 = require("./effectRepository/vulnerableEffect");
-var effectsSingleton_1 = require("./effectsSingleton");
-var protectedEffect_1 = require("./effectRepository/protectedEffect");
+var damageBonusEffect_1 = require("./effectRepository/damageBonusEffect");
 var EffectFactory = /** @class */ (function (_super) {
     __extends(EffectFactory, _super);
     function EffectFactory(affector, list) {
         var _this = _super.call(this, affector) || this;
         if (list === undefined) {
             _this.items = new weightedList_1.WeightedList();
-            effectsSingleton_1.EffectsSingleton.effects.forEach(function (eff) {
-                _this.items.push(new window[eff]());
-            });
-            _this.items.push(new damageBonusEffect_1.damageBonusEffect());
-            _this.items.push(new exposeEffect_1.exposeEffect());
-            _this.items.push(new guidingEffect_1.guidingEffect());
-            _this.items.push(new instakillEffect_1.instakillEffect());
-            _this.items.push(new protectedEffect_1.protectedEffect());
-            _this.items.push(new scalingDotEffect_1.scalingDotEffect());
-            _this.items.push(new stunEffect_1.stunEffect());
             _this.items.push(new vulnerableEffect_1.vulnerableEffect());
+            _this.items.push(new stunEffect_1.stunEffect());
+            _this.items.push(new scalingDotEffect_1.scalingDotEffect());
+            _this.items.push(new protectedEffect_1.protectedEffect());
+            _this.items.push(new instakillEffect_1.instakillEffect());
+            _this.items.push(new guidingEffect_1.guidingEffect());
+            _this.items.push(new exposeEffect_1.exposeEffect());
+            _this.items.push(new damageBonusEffect_1.damageBonusEffect());
         }
         else {
             _this.items = list;

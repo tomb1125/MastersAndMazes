@@ -11,6 +11,8 @@ import { SeanceUtility } from "./utilityRepository/clericUtilities/seanceUtility
 import { HolyHealUtility } from "./utilityRepository/clericUtilities/holyHealUtility";
 import { PickpocketingUtility } from "./utilityRepository/rogueUtilities/pickpocketUtility";
 import { ShadowStrideUtility } from "./utilityRepository/rogueUtilities/shadowStrideUtility";
+import { TumbleUtility } from "./utilityRepository/rogueUtilities/tumbleUtility";
+import { LockpickingUtility } from "./utilityRepository/rogueUtilities/lockpickingUtility";
 
 export class UtilityFactory extends Factory {
     constructor(affector: AffectsWeight, list?: WeightedList) {
@@ -30,6 +32,9 @@ export class UtilityFactory extends Factory {
             //rogue
             this.items.push(new PickpocketingUtility());
             this.items.push(new ShadowStrideUtility());
+            this.items.push(new TumbleUtility());
+            this.items.push(new LockpickingUtility());
+
 
             //common
             this.items.push(new SkillBonusUtility())

@@ -27,6 +27,8 @@ var seanceUtility_1 = require("./utilityRepository/clericUtilities/seanceUtility
 var holyHealUtility_1 = require("./utilityRepository/clericUtilities/holyHealUtility");
 var pickpocketUtility_1 = require("./utilityRepository/rogueUtilities/pickpocketUtility");
 var shadowStrideUtility_1 = require("./utilityRepository/rogueUtilities/shadowStrideUtility");
+var tumbleUtility_1 = require("./utilityRepository/rogueUtilities/tumbleUtility");
+var lockpickingUtility_1 = require("./utilityRepository/rogueUtilities/lockpickingUtility");
 var UtilityFactory = /** @class */ (function (_super) {
     __extends(UtilityFactory, _super);
     function UtilityFactory(affector, list) {
@@ -43,6 +45,8 @@ var UtilityFactory = /** @class */ (function (_super) {
             //rogue
             _this.items.push(new pickpocketUtility_1.PickpocketingUtility());
             _this.items.push(new shadowStrideUtility_1.ShadowStrideUtility());
+            _this.items.push(new tumbleUtility_1.TumbleUtility());
+            _this.items.push(new lockpickingUtility_1.LockpickingUtility());
             //common
             _this.items.push(new skillBonusUtility_1.SkillBonusUtility());
         }
