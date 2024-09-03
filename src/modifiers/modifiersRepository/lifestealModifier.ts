@@ -6,7 +6,7 @@ import { Modifier } from "../modifier";
 
 export class lifestealModifier extends Modifier {
     
-    constructor() {
+    constructor(affector: AffectsWeight) {
         super();
         this.modifierType =Modifier.Type.Improvement;
         this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Attack ? 1 : 0}

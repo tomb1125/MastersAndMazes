@@ -20,7 +20,7 @@ var ability_1 = require("../../core/ability");
 var modifier_1 = require("../modifier");
 var lifestealModifier = /** @class */ (function (_super) {
     __extends(lifestealModifier, _super);
-    function lifestealModifier() {
+    function lifestealModifier(affector) {
         var _this = _super.call(this) || this;
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };

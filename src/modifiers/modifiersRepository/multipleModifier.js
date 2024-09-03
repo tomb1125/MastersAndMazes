@@ -22,7 +22,7 @@ var weightedList_1 = require("../../core/weightedList");
 var modifier_1 = require("../modifier");
 var multipleModifier = /** @class */ (function (_super) {
     __extends(multipleModifier, _super);
-    function multipleModifier() {
+    function multipleModifier(affector) {
         var _this = _super.call(this) || this;
         var multiDistribution = new weightedList_1.WeightedList();
         var two = new descriptiveNumber_1.DescriptiveNumber(2);

@@ -1,10 +1,11 @@
 import { Ability } from "../../../core/ability";
+import { AffectsWeight } from "../../../core/affectsWeight";
 import { CharacterContext } from "../../../core/characterContext";
 import { Modifier } from "../../modifier";
 
 export class preachingModifier extends Modifier {
     
-    constructor() {
+    constructor(affector: AffectsWeight) {
         super();
         this.powerMultiplier = () => 1.5; 
 

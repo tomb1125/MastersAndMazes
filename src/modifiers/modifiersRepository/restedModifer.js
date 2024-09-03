@@ -19,7 +19,7 @@ exports.restedModifer = void 0;
 var modifier_1 = require("../modifier");
 var restedModifer = /** @class */ (function (_super) {
     __extends(restedModifer, _super);
-    function restedModifer() {
+    function restedModifer(affector) {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 1.3; };
         _this.name = 'Rested';

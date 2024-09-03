@@ -21,7 +21,7 @@ var utils_1 = require("../../core/utils");
 var modifier_1 = require("../modifier");
 var fastModifier = /** @class */ (function (_super) {
     __extends(fastModifier, _super);
-    function fastModifier() {
+    function fastModifier(affector) {
         var _this = _super.call(this) || this;
         _this.powerBonus = function () { return -utils_1.Utils.DPS; };
         _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };

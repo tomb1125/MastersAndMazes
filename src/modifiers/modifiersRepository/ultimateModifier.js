@@ -20,7 +20,7 @@ var ability_1 = require("../../core/ability");
 var modifier_1 = require("../modifier");
 var ultimateModifier = /** @class */ (function (_super) {
     __extends(ultimateModifier, _super);
-    function ultimateModifier() {
+    function ultimateModifier(affector) {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 2.5; };
         _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };

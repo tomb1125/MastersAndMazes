@@ -20,7 +20,7 @@ var ability_1 = require("../../core/ability");
 var modifier_1 = require("../modifier");
 var laylineModifier = /** @class */ (function (_super) {
     __extends(laylineModifier, _super);
-    function laylineModifier() {
+    function laylineModifier(affector) {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function (x) { return x.range ? Math.max(1.2, 2.1 - x.range / 20) : 1; };
         1.7;

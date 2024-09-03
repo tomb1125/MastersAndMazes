@@ -21,7 +21,7 @@ var weightedList_1 = require("../../core/weightedList");
 var modifier_1 = require("../modifier");
 var repeatableModifier = /** @class */ (function (_super) {
     __extends(repeatableModifier, _super);
-    function repeatableModifier() {
+    function repeatableModifier(affector) {
         var _this = _super.call(this) || this;
         var multiDistribution = new weightedList_1.WeightedList();
         var two = new descriptiveNumber_1.DescriptiveNumber(2);
@@ -34,6 +34,7 @@ var repeatableModifier = /** @class */ (function (_super) {
         five.weight = function () { return 0.333; };
         multiDistribution.items = [two, three, four, five];
         _this.numericComponents = multiDistribution.get(1);
+        _this.weight = function (x) { return 0; }; //this modifier is excluded for now purposfully. It behaves differently for utilities and for attacks.
         _this.powerMultiplier = function () { return 1 / _this.numericComponents[0].getValue(); };
         _this.name = 'Repeat ' + _this.numericComponents[0].getValue();
         _this.namePrefix = '';

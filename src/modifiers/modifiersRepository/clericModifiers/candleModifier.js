@@ -20,7 +20,7 @@ var characterContext_1 = require("../../../core/characterContext");
 var modifier_1 = require("../../modifier");
 var candleModifier = /** @class */ (function (_super) {
     __extends(candleModifier, _super);
-    function candleModifier() {
+    function candleModifier(affector) {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 1.3; };
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };

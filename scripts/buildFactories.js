@@ -1,12 +1,22 @@
 var fs = require('fs');
 const TAG = '\/\/factory imports'
 const factories = {
-    'src\\modifiers\\effectFactory.ts' : 
-    [{'dir' : 'src\\modifiers\\effectRepository',
-      'relatedDir' : './effectRepository/',
-      'hasAffector' : false
-    }]
+    'src\\modifiers\\effectFactory.ts' : [
+        {
+            'dir' : 'src\\modifiers\\effectRepository',
+            'relatedDir' : './effectRepository/',
+            'hasAffector' : false
+        }
+    ],
+    'src\\modifiers\\modifierFactory.ts' : [
+        {
+            'dir' : 'src\\modifiers\\modifiersRepository',
+            'relatedDir' : './modifiersRepository/',
+            'hasAffector' : true
+        }
+    ]
 }
+
 Object.keys(factories).forEach(key => {
     
     let factoryData = fs.readFileSync(key,
@@ -24,6 +34,17 @@ Object.keys(factories).forEach(key => {
                 factoryData = factoryData.replace(TAG, TAG+'\nimport { '+className+' } from "'+repoDir.relatedDir+className+'";')
                 factoryData = factoryData.replace("new WeightedList\(\);", 'new WeightedList();\n            this.items.push(new '+className+'('+affector+'));')
 
+            } else if(!file.endsWith('.js') && !file.endsWith('.ts')) {
+                const subfolderDir = repoDir.dir + '\\' + file
+                fs.readdirSync(subfolderDir).forEach(subfolderFile => {
+                    if(subfolderFile.includes('.ts')) {
+                        const className = subfolderFile.replace('.ts','');
+                        const affector = repoDir.hasAffector ? 'affector' : '';
+                        factoryData = factoryData.replace(TAG, TAG+'\nimport { '+className+' } from "'+repoDir.relatedDir+file+'/'+className+'";')
+                        factoryData = factoryData.replace("new WeightedList\(\);", 'new WeightedList();\n            this.items.push(new '+className+'('+affector+'));')
+        
+                    } 
+                })                
             }
         });
     });

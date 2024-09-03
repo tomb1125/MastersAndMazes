@@ -20,7 +20,7 @@ var characterContext_1 = require("../../../core/characterContext");
 var modifier_1 = require("../../modifier");
 var pristineModifier = /** @class */ (function (_super) {
     __extends(pristineModifier, _super);
-    function pristineModifier() {
+    function pristineModifier(affector) {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 1.4; };
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : 0.3; };

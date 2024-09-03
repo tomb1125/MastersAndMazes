@@ -6,7 +6,7 @@ import { Modifier } from "../modifier";
 
 export class multipleModifier extends Modifier {
     
-    constructor() {
+    constructor(affector: AffectsWeight) {
         super();
 
         let multiDistribution: WeightedList = new WeightedList();

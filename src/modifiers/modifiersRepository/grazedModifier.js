@@ -19,7 +19,7 @@ exports.grazedModifier = void 0;
 var modifier_1 = require("../modifier");
 var grazedModifier = /** @class */ (function (_super) {
     __extends(grazedModifier, _super);
-    function grazedModifier() {
+    function grazedModifier(affector) {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 1.2; };
         _this.name = 'Grazed';

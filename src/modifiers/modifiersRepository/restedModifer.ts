@@ -4,7 +4,7 @@ import { Modifier } from "../modifier";
 
 export class restedModifer extends Modifier {
     
-    constructor() {
+    constructor(affector: AffectsWeight) {
         super();
         this.powerMultiplier = () => {return 1.3};
         this.name = 'Rested';

@@ -21,7 +21,7 @@ var characterContext_1 = require("../../../core/characterContext");
 var modifier_1 = require("../../modifier");
 var preachingModifier = /** @class */ (function (_super) {
     __extends(preachingModifier, _super);
-    function preachingModifier() {
+    function preachingModifier(affector) {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 1.5; };
         _this.weight = function (affector) {

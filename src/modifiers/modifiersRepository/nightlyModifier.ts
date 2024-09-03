@@ -1,8 +1,9 @@
+import { AffectsWeight } from "../../core/affectsWeight";
 import { Modifier } from "../modifier";
 
 export class nightlyModifier extends Modifier {
     
-    constructor() {
+    constructor(affector: AffectsWeight) {
         super();
         this.powerMultiplier = () => {return 1.35};
         this.name = 'Nightly';

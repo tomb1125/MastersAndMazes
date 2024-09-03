@@ -4,7 +4,7 @@ import { Modifier } from "../modifier";
 
 export class ultimateModifier extends Modifier {
     
-    constructor() {
+    constructor(affector: AffectsWeight) {
         super();
         this.powerMultiplier = () => {return 2.5};
         this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Attack ? 1 : 0}

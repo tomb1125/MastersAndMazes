@@ -5,7 +5,7 @@ import { Modifier } from "../modifier";
 
 export class laylineModifier extends Modifier {
     
-    constructor() {
+    constructor(affector: AffectsWeight) {
         super();
         this.powerMultiplier = (x: CanAffectModifier) => {return x.range ? Math.max(1.2, 2.1 - x.range/20) : 1}; 1.7; 
         this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Attack ? 1 : 0}

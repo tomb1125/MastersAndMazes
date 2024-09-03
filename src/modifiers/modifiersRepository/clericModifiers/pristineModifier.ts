@@ -1,9 +1,10 @@
+import { AffectsWeight } from "../../../core/affectsWeight";
 import { CharacterContext } from "../../../core/characterContext";
 import { Modifier } from "../../modifier";
 
 export class pristineModifier extends Modifier {
     
-    constructor() {
+    constructor(affector: AffectsWeight) {
         super();
         this.powerMultiplier = () => 1.4; 
         this.weight = () => {return CharacterContext.classes.includes(CharacterContext.Class.Cleric) ? CharacterContext.IN_CLASS_MODIFIER : 0.3}

@@ -17,62 +17,64 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ModifierFactory = void 0;
 var weightedList_1 = require("../core/weightedList");
-var nightlyModifier_1 = require("./modifiersRepository/nightlyModifier");
-var laylineModifier_1 = require("./modifiersRepository/laylineModifier");
-var bloodiedModifier_1 = require("./modifiersRepository/bloodiedModifier");
+var factory_1 = require("../core/factory");
+//factory imports
+var vengefulModifier_1 = require("./modifiersRepository/vengefulModifier");
 var ultimateModifier_1 = require("./modifiersRepository/ultimateModifier");
 var signatureModifier_1 = require("./modifiersRepository/signatureModifier");
-var vengefulModifier_1 = require("./modifiersRepository/vengefulModifier");
-var momentumModifier_1 = require("./modifiersRepository/momentumModifier");
-var exhaustingModifer_1 = require("./modifiersRepository/exhaustingModifer");
-var multipleModifer_1 = require("./modifiersRepository/multipleModifer");
-var cleaveModifier_1 = require("./modifiersRepository/cleaveModifier");
-var fastModifier_1 = require("./modifiersRepository/fastModifier");
 var selfHealModifier_1 = require("./modifiersRepository/selfHealModifier");
-var applyEffectModifier_1 = require("./modifiersRepository/applyEffectModifier");
-var gainEffectModifier_1 = require("./modifiersRepository/gainEffectModifier");
+var restedModifer_1 = require("./modifiersRepository/restedModifer");
+var repeatableModifier_1 = require("./modifiersRepository/repeatableModifier");
+var opportunistModifier_1 = require("./modifiersRepository/opportunistModifier");
+var nightlyModifier_1 = require("./modifiersRepository/nightlyModifier");
+var multipleModifier_1 = require("./modifiersRepository/multipleModifier");
+var undeadBaneModifier_1 = require("./modifiersRepository/multiclassModifiers/undeadBaneModifier");
+var momentumModifier_1 = require("./modifiersRepository/momentumModifier");
 var lifestealModifier_1 = require("./modifiersRepository/lifestealModifier");
-var factory_1 = require("../core/factory");
+var laylineModifier_1 = require("./modifiersRepository/laylineModifier");
+var grazedModifier_1 = require("./modifiersRepository/grazedModifier");
+var gainEffectModifier_1 = require("./modifiersRepository/gainEffectModifier");
+var fastModifier_1 = require("./modifiersRepository/fastModifier");
+var exhaustingModifer_1 = require("./modifiersRepository/exhaustingModifer");
 var templeModifier_1 = require("./modifiersRepository/clericModifiers/templeModifier");
 var pristineModifier_1 = require("./modifiersRepository/clericModifiers/pristineModifier");
-var undeadBaneModifier_1 = require("./modifiersRepository/multiclassModifiers/undeadBaneModifier");
-var restedModifer_1 = require("./modifiersRepository/restedModifer");
-var candleModifier_1 = require("./modifiersRepository/clericModifiers/candleModifier");
-var pacifistModifier_1 = require("./modifiersRepository/clericModifiers/pacifistModifier");
 var preachingModifier_1 = require("./modifiersRepository/clericModifiers/preachingModifier");
-var grazedModifier_1 = require("./modifiersRepository/grazedModifier");
+var pacifistModifier_1 = require("./modifiersRepository/clericModifiers/pacifistModifier");
+var candleModifier_1 = require("./modifiersRepository/clericModifiers/candleModifier");
+var cleaveModifier_1 = require("./modifiersRepository/cleaveModifier");
+var bloodiedModifier_1 = require("./modifiersRepository/bloodiedModifier");
+var applyEffectModifier_1 = require("./modifiersRepository/applyEffectModifier");
 var ModifierFactory = /** @class */ (function (_super) {
     __extends(ModifierFactory, _super);
     function ModifierFactory(affector, list) {
         var _this = _super.call(this, affector) || this;
         if (list === undefined) {
             _this.items = new weightedList_1.WeightedList();
-            _this.items.push(new applyEffectModifier_1.applyEffectModifier(affector));
-            _this.items.push(new bloodiedModifier_1.bloodiedModifier());
-            _this.items.push(new cleaveModifier_1.cleaveModifier());
-            _this.items.push(new exhaustingModifer_1.exhaustingModifer());
-            _this.items.push(new fastModifier_1.fastModifier());
-            _this.items.push(new gainEffectModifier_1.gainEffectModifier(affector));
-            _this.items.push(new laylineModifier_1.laylineModifier());
-            _this.items.push(new lifestealModifier_1.lifestealModifier());
-            _this.items.push(new momentumModifier_1.momentumModifier(affector));
-            _this.items.push(new multipleModifer_1.multipleModifier());
-            _this.items.push(new nightlyModifier_1.nightlyModifier());
-            _this.items.push(new restedModifer_1.restedModifer());
+            _this.items.push(new vengefulModifier_1.vengefulModifier(affector));
+            _this.items.push(new ultimateModifier_1.ultimateModifier(affector));
+            _this.items.push(new signatureModifier_1.signatureModifier(affector));
             _this.items.push(new selfHealModifier_1.selfHealModifier(affector));
-            _this.items.push(new signatureModifier_1.signatureModifier());
-            _this.items.push(new grazedModifier_1.grazedModifier());
-            _this.items.push(new vengefulModifier_1.vengefulModifier());
-            _this.items.push(new ultimateModifier_1.ultimateModifier());
-            //cleric
-            _this.items.push(new candleModifier_1.candleModifier());
-            _this.items.push(new pacifistModifier_1.pacifistModifier());
-            _this.items.push(new preachingModifier_1.preachingModifier());
-            _this.items.push(new pristineModifier_1.pristineModifier());
-            _this.items.push(new templeModifier_1.templeModifier());
-            //multiclass
+            _this.items.push(new restedModifer_1.restedModifer(affector));
+            _this.items.push(new repeatableModifier_1.repeatableModifier(affector));
+            _this.items.push(new opportunistModifier_1.opportunistModifier(affector));
+            _this.items.push(new nightlyModifier_1.nightlyModifier(affector));
+            _this.items.push(new multipleModifier_1.multipleModifier(affector));
             _this.items.push(new undeadBaneModifier_1.undeadBaneModifier(affector));
-            //this.items.push(new repeatableModifier()); //this modifier is excluded for now purposfully. It behaves differently for utilities and for attacks.
+            _this.items.push(new momentumModifier_1.momentumModifier(affector));
+            _this.items.push(new lifestealModifier_1.lifestealModifier(affector));
+            _this.items.push(new laylineModifier_1.laylineModifier(affector));
+            _this.items.push(new grazedModifier_1.grazedModifier(affector));
+            _this.items.push(new gainEffectModifier_1.gainEffectModifier(affector));
+            _this.items.push(new fastModifier_1.fastModifier(affector));
+            _this.items.push(new exhaustingModifer_1.exhaustingModifer(affector));
+            _this.items.push(new templeModifier_1.templeModifier(affector));
+            _this.items.push(new pristineModifier_1.pristineModifier(affector));
+            _this.items.push(new preachingModifier_1.preachingModifier(affector));
+            _this.items.push(new pacifistModifier_1.pacifistModifier(affector));
+            _this.items.push(new candleModifier_1.candleModifier(affector));
+            _this.items.push(new cleaveModifier_1.cleaveModifier(affector));
+            _this.items.push(new bloodiedModifier_1.bloodiedModifier(affector));
+            _this.items.push(new applyEffectModifier_1.applyEffectModifier(affector));
         }
         else {
             _this.items = list;

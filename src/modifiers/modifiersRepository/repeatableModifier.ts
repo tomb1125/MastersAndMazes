@@ -5,7 +5,7 @@ import { Modifier } from "../modifier";
 
 export class repeatableModifier extends Modifier {
     
-    constructor() {
+    constructor(affector?: AffectsWeight) {
         super();
 
         let multiDistribution: WeightedList = new WeightedList();
@@ -20,6 +20,7 @@ export class repeatableModifier extends Modifier {
         
         multiDistribution.items = [two, three, four, five];
         this.numericComponents = multiDistribution.get(1) as DescriptiveNumber[];
+        this.weight = (x?: AffectsWeight) => {return 0} //this modifier is excluded for now purposfully. It behaves differently for utilities and for attacks.
         this.powerMultiplier = () => {return 1 / this.numericComponents[0].getValue()};
         this.name = 'Repeat '+this.numericComponents[0].getValue();
         this.namePrefix = ''

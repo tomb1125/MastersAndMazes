@@ -19,7 +19,7 @@ exports.nightlyModifier = void 0;
 var modifier_1 = require("../modifier");
 var nightlyModifier = /** @class */ (function (_super) {
     __extends(nightlyModifier, _super);
-    function nightlyModifier() {
+    function nightlyModifier(affector) {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 1.35; };
         _this.name = 'Nightly';
