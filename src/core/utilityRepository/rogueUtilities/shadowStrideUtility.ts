@@ -5,7 +5,7 @@ import { CharacterContext } from "../../characterContext";
 import { Utility } from "../../utility";
 
 
-export class ShadowStrideUtility extends Utility {
+export class shadowStrideUtility extends Utility {
 
     constructor() {
         super('Shadow Stride');        

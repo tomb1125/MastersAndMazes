@@ -5,7 +5,7 @@ import { CharacterContext } from "../../characterContext";
 import { Utility } from "../../utility";
 
 
-export class TumbleUtility extends Utility {
+export class tumbleUtility extends Utility {
 
     constructor() {
         super('Tumble');        

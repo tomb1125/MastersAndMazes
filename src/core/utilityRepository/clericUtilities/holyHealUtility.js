@@ -15,13 +15,13 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.HolyHealUtility = void 0;
+exports.holyHealUtility = void 0;
 var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var HolyHealUtility = /** @class */ (function (_super) {
-    __extends(HolyHealUtility, _super);
-    function HolyHealUtility() {
+var holyHealUtility = /** @class */ (function (_super) {
+    __extends(holyHealUtility, _super);
+    function holyHealUtility() {
         var _this = _super.call(this, 'Holy Heal') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.cooldown = ability_1.Ability.Cooldown.Encounter;
@@ -30,6 +30,6 @@ var HolyHealUtility = /** @class */ (function (_super) {
         _this.compensate();
         return _this;
     }
-    return HolyHealUtility;
+    return holyHealUtility;
 }(utility_1.Utility));
-exports.HolyHealUtility = HolyHealUtility;
+exports.holyHealUtility = holyHealUtility;

@@ -15,15 +15,15 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Augury = void 0;
+exports.auguryUtility = void 0;
 var abilityObjectFactory_1 = require("../../../components/abilityObjectFactory");
 var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
 var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var Augury = /** @class */ (function (_super) {
-    __extends(Augury, _super);
-    function Augury() {
+var auguryUtility = /** @class */ (function (_super) {
+    __extends(auguryUtility, _super);
+    function auguryUtility() {
         var numberOfQuestions;
         var _this = _super.call(this, 'Augury') || this;
         _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isQuestion; }).get(1)[0]);
@@ -48,6 +48,6 @@ var Augury = /** @class */ (function (_super) {
         _this.compensate();
         return _this;
     }
-    return Augury;
+    return auguryUtility;
 }(utility_1.Utility));
-exports.Augury = Augury;
+exports.auguryUtility = auguryUtility;

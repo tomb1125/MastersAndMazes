@@ -7,7 +7,7 @@ import { CharacterContext } from "../../characterContext";
 import { Utility } from "../../utility";
 
 
-export class Augury extends Utility {
+export class auguryUtility extends Utility {
 
     constructor() {
         let numberOfQuestions;

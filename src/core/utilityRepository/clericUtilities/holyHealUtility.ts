@@ -3,7 +3,7 @@ import { CharacterContext } from "../../characterContext";
 import { Utility } from "../../utility";
 
 
-export class HolyHealUtility extends Utility {
+export class holyHealUtility extends Utility {
 
     constructor() {
         super('Holy Heal');        

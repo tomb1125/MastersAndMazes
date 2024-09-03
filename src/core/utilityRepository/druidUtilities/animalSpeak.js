@@ -15,14 +15,14 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AnimalSpeak = void 0;
+exports.animalSpeak = void 0;
 var abilityObjectFactory_1 = require("../../../components/abilityObjectFactory");
 var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var AnimalSpeak = /** @class */ (function (_super) {
-    __extends(AnimalSpeak, _super);
-    function AnimalSpeak() {
+var animalSpeak = /** @class */ (function (_super) {
+    __extends(animalSpeak, _super);
+    function animalSpeak() {
         var _this = _super.call(this, 'Speak') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Druid) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isCommunication; }).get(1)[0]);
@@ -37,6 +37,6 @@ var AnimalSpeak = /** @class */ (function (_super) {
         _this.compensate();
         return _this;
     }
-    return AnimalSpeak;
+    return animalSpeak;
 }(utility_1.Utility));
-exports.AnimalSpeak = AnimalSpeak;
+exports.animalSpeak = animalSpeak;

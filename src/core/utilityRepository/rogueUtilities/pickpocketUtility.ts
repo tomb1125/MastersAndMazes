@@ -4,7 +4,7 @@ import { CharacterContext } from "../../characterContext";
 import { Utility } from "../../utility";
 
 
-export class PickpocketingUtility extends Utility {
+export class pickpocketUtility extends Utility {
 
     constructor() {
 

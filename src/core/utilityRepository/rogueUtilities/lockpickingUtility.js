@@ -15,13 +15,13 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LockpickingUtility = void 0;
+exports.lockpickingUtility = void 0;
 var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var LockpickingUtility = /** @class */ (function (_super) {
-    __extends(LockpickingUtility, _super);
-    function LockpickingUtility() {
+var lockpickingUtility = /** @class */ (function (_super) {
+    __extends(lockpickingUtility, _super);
+    function lockpickingUtility() {
         var _this = _super.call(this, 'Lockpicking') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.cooldown = ability_1.Ability.Cooldown.Daily;
@@ -30,6 +30,6 @@ var LockpickingUtility = /** @class */ (function (_super) {
         _this.compensate();
         return _this;
     }
-    return LockpickingUtility;
+    return lockpickingUtility;
 }(utility_1.Utility));
-exports.LockpickingUtility = LockpickingUtility;
+exports.lockpickingUtility = lockpickingUtility;

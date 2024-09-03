@@ -40,15 +40,15 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SkillBonusUtility = void 0;
+exports.skillBonusUtility = void 0;
 var classUtils_1 = require("../../characters/classUtils");
 var descriptiveNumber_1 = require("../../components/descriptiveNumber");
 var characterContext_1 = require("../characterContext");
 var utility_1 = require("../utility");
 var utils_1 = require("../utils");
-var SkillBonusUtility = /** @class */ (function (_super) {
-    __extends(SkillBonusUtility, _super);
-    function SkillBonusUtility() {
+var skillBonusUtility = /** @class */ (function (_super) {
+    __extends(skillBonusUtility, _super);
+    function skillBonusUtility() {
         var _this = this;
         var skill;
         var roll = utils_1.Utils.random();
@@ -74,6 +74,6 @@ var SkillBonusUtility = /** @class */ (function (_super) {
         _this.compensate();
         return _this;
     }
-    return SkillBonusUtility;
+    return skillBonusUtility;
 }(utility_1.Utility));
-exports.SkillBonusUtility = SkillBonusUtility;
+exports.skillBonusUtility = skillBonusUtility;

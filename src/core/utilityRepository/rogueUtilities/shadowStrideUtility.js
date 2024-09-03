@@ -15,14 +15,14 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ShadowStrideUtility = void 0;
+exports.shadowStrideUtility = void 0;
 var abilityObjectFactory_1 = require("../../../components/abilityObjectFactory");
 var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var ShadowStrideUtility = /** @class */ (function (_super) {
-    __extends(ShadowStrideUtility, _super);
-    function ShadowStrideUtility() {
+var shadowStrideUtility = /** @class */ (function (_super) {
+    __extends(shadowStrideUtility, _super);
+    function shadowStrideUtility() {
         var _this = _super.call(this, 'Shadow Stride') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isStealth; }).get(1)[0]);
@@ -33,6 +33,6 @@ var ShadowStrideUtility = /** @class */ (function (_super) {
         _this.compensate();
         return _this;
     }
-    return ShadowStrideUtility;
+    return shadowStrideUtility;
 }(utility_1.Utility));
-exports.ShadowStrideUtility = ShadowStrideUtility;
+exports.shadowStrideUtility = shadowStrideUtility;

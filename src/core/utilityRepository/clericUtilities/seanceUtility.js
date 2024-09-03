@@ -15,14 +15,14 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SeanceUtility = void 0;
+exports.seanceUtility = void 0;
 var abilityObjectFactory_1 = require("../../../components/abilityObjectFactory");
 var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var SeanceUtility = /** @class */ (function (_super) {
-    __extends(SeanceUtility, _super);
-    function SeanceUtility() {
+var seanceUtility = /** @class */ (function (_super) {
+    __extends(seanceUtility, _super);
+    function seanceUtility() {
         var _this = _super.call(this, 'Seance') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isCommunication; }).get(1)[0]);
@@ -37,6 +37,6 @@ var SeanceUtility = /** @class */ (function (_super) {
         _this.compensate();
         return _this;
     }
-    return SeanceUtility;
+    return seanceUtility;
 }(utility_1.Utility));
-exports.SeanceUtility = SeanceUtility;
+exports.seanceUtility = seanceUtility;

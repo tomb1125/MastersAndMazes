@@ -15,13 +15,13 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PickpocketingUtility = void 0;
+exports.pickpocketUtility = void 0;
 var abilityObjectFactory_1 = require("../../../components/abilityObjectFactory");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var PickpocketingUtility = /** @class */ (function (_super) {
-    __extends(PickpocketingUtility, _super);
-    function PickpocketingUtility() {
+var pickpocketUtility = /** @class */ (function (_super) {
+    __extends(pickpocketUtility, _super);
+    function pickpocketUtility() {
         var _this = _super.call(this, 'Pickpocketing') || this;
         _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isPerson; }).get(1)[0]);
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
@@ -30,6 +30,6 @@ var PickpocketingUtility = /** @class */ (function (_super) {
         _this.compensate();
         return _this;
     }
-    return PickpocketingUtility;
+    return pickpocketUtility;
 }(utility_1.Utility));
-exports.PickpocketingUtility = PickpocketingUtility;
+exports.pickpocketUtility = pickpocketUtility;

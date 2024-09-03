@@ -5,7 +5,7 @@ import { CharacterContext } from "../../characterContext";
 import { Utility } from "../../utility";
 
 
-export class LockpickingUtility extends Utility {
+export class lockpickingUtility extends Utility {
 
     constructor() {
         super('Lockpicking');        

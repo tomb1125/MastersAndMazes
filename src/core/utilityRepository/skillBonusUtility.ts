@@ -5,7 +5,7 @@ import { Utility } from "../utility";
 import { Utils } from "../utils";
 
 
-export class SkillBonusUtility extends Utility {
+export class skillBonusUtility extends Utility {
 
     constructor() {
         let skill: CharacterContext.Skill;

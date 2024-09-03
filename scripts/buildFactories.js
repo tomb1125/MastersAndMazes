@@ -14,7 +14,14 @@ const factories = {
             'relatedDir' : './modifiersRepository/',
             'hasAffector' : true
         }
-    ]
+    ],
+    'src\\core\\utilityFactory.ts'  : [
+        {
+            'dir' : 'src\\core\\utilityRepository',
+            'relatedDir' : './utilityRepository/',
+            'hasAffector' : false
+        }
+    ],
 }
 
 Object.keys(factories).forEach(key => {

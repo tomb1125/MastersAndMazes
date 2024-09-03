@@ -8,7 +8,7 @@ import { Utility } from "../../utility";
 import { Utils } from "../../utils";
 
 
-export class Light extends Utility {
+export class lightUtility extends Utility {
 
     constructor() {
         let radius: DescriptiveNumber = new DescriptiveNumber(5);

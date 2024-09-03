@@ -2240,38 +2240,36 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UtilityFactory = void 0;
 var factory_1 = require("./factory");
-var animalSpeak_1 = require("./utilityRepository/druidUtilities/animalSpeak");
-var auguryUtility_1 = require("./utilityRepository/clericUtilities/auguryUtility");
 var weightedList_1 = require("./weightedList");
-var lightUtility_1 = require("./utilityRepository/clericUtilities/lightUtility");
-var restorationUtility_1 = require("./utilityRepository/clericUtilities/restorationUtility");
+//factory imports
 var skillBonusUtility_1 = require("./utilityRepository/skillBonusUtility");
-var seanceUtility_1 = require("./utilityRepository/clericUtilities/seanceUtility");
-var holyHealUtility_1 = require("./utilityRepository/clericUtilities/holyHealUtility");
-var pickpocketUtility_1 = require("./utilityRepository/rogueUtilities/pickpocketUtility");
-var shadowStrideUtility_1 = require("./utilityRepository/rogueUtilities/shadowStrideUtility");
 var tumbleUtility_1 = require("./utilityRepository/rogueUtilities/tumbleUtility");
+var shadowStrideUtility_1 = require("./utilityRepository/rogueUtilities/shadowStrideUtility");
+var pickpocketUtility_1 = require("./utilityRepository/rogueUtilities/pickpocketUtility");
 var lockpickingUtility_1 = require("./utilityRepository/rogueUtilities/lockpickingUtility");
+var animalSpeak_1 = require("./utilityRepository/druidUtilities/animalSpeak");
+var seanceUtility_1 = require("./utilityRepository/clericUtilities/seanceUtility");
+var restorationUtility_1 = require("./utilityRepository/clericUtilities/restorationUtility");
+var lightUtility_1 = require("./utilityRepository/clericUtilities/lightUtility");
+var holyHealUtility_1 = require("./utilityRepository/clericUtilities/holyHealUtility");
+var auguryUtility_1 = require("./utilityRepository/clericUtilities/auguryUtility");
 var UtilityFactory = /** @class */ (function (_super) {
     __extends(UtilityFactory, _super);
     function UtilityFactory(affector, list) {
         var _this = _super.call(this, affector) || this;
         if (list === undefined) {
             _this.items = new weightedList_1.WeightedList();
-            _this.items.push(new animalSpeak_1.AnimalSpeak());
-            //cleric
-            _this.items.push(new auguryUtility_1.Augury());
-            _this.items.push(new lightUtility_1.Light());
-            _this.items.push(new restorationUtility_1.RestorationUtility());
-            _this.items.push(new seanceUtility_1.SeanceUtility());
-            _this.items.push(new holyHealUtility_1.HolyHealUtility());
-            //rogue
-            _this.items.push(new pickpocketUtility_1.PickpocketingUtility());
-            _this.items.push(new shadowStrideUtility_1.ShadowStrideUtility());
-            _this.items.push(new tumbleUtility_1.TumbleUtility());
-            _this.items.push(new lockpickingUtility_1.LockpickingUtility());
-            //common
-            _this.items.push(new skillBonusUtility_1.SkillBonusUtility());
+            _this.items.push(new skillBonusUtility_1.skillBonusUtility());
+            _this.items.push(new tumbleUtility_1.tumbleUtility());
+            _this.items.push(new shadowStrideUtility_1.shadowStrideUtility());
+            _this.items.push(new pickpocketUtility_1.pickpocketUtility());
+            _this.items.push(new lockpickingUtility_1.lockpickingUtility());
+            _this.items.push(new animalSpeak_1.animalSpeak());
+            _this.items.push(new seanceUtility_1.seanceUtility());
+            _this.items.push(new restorationUtility_1.restorationUtility());
+            _this.items.push(new lightUtility_1.lightUtility());
+            _this.items.push(new holyHealUtility_1.holyHealUtility());
+            _this.items.push(new auguryUtility_1.auguryUtility());
         }
         else {
             _this.items = list;
@@ -2306,15 +2304,15 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Augury = void 0;
+exports.auguryUtility = void 0;
 var abilityObjectFactory_1 = require("../../../components/abilityObjectFactory");
 var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
 var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var Augury = /** @class */ (function (_super) {
-    __extends(Augury, _super);
-    function Augury() {
+var auguryUtility = /** @class */ (function (_super) {
+    __extends(auguryUtility, _super);
+    function auguryUtility() {
         var numberOfQuestions;
         var _this = _super.call(this, 'Augury') || this;
         _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isQuestion; }).get(1)[0]);
@@ -2339,9 +2337,9 @@ var Augury = /** @class */ (function (_super) {
         _this.compensate();
         return _this;
     }
-    return Augury;
+    return auguryUtility;
 }(utility_1.Utility));
-exports.Augury = Augury;
+exports.auguryUtility = auguryUtility;
 
 },{"../../../components/abilityObjectFactory":7,"../../../components/descriptiveNumber":37,"../../ability":47,"../../characterContext":50,"../../utility":53}],56:[function(require,module,exports){
 "use strict";
@@ -2361,13 +2359,13 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.HolyHealUtility = void 0;
+exports.holyHealUtility = void 0;
 var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var HolyHealUtility = /** @class */ (function (_super) {
-    __extends(HolyHealUtility, _super);
-    function HolyHealUtility() {
+var holyHealUtility = /** @class */ (function (_super) {
+    __extends(holyHealUtility, _super);
+    function holyHealUtility() {
         var _this = _super.call(this, 'Holy Heal') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.cooldown = ability_1.Ability.Cooldown.Encounter;
@@ -2376,9 +2374,9 @@ var HolyHealUtility = /** @class */ (function (_super) {
         _this.compensate();
         return _this;
     }
-    return HolyHealUtility;
+    return holyHealUtility;
 }(utility_1.Utility));
-exports.HolyHealUtility = HolyHealUtility;
+exports.holyHealUtility = holyHealUtility;
 
 },{"../../ability":47,"../../characterContext":50,"../../utility":53}],57:[function(require,module,exports){
 "use strict";
@@ -2398,16 +2396,16 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Light = void 0;
+exports.lightUtility = void 0;
 var abilityObjectFactory_1 = require("../../../components/abilityObjectFactory");
 var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
 var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
 var utils_1 = require("../../utils");
-var Light = /** @class */ (function (_super) {
-    __extends(Light, _super);
-    function Light() {
+var lightUtility = /** @class */ (function (_super) {
+    __extends(lightUtility, _super);
+    function lightUtility() {
         var _this = this;
         var radius = new descriptiveNumber_1.DescriptiveNumber(5);
         _this = _super.call(this, 'Light') || this;
@@ -2424,9 +2422,9 @@ var Light = /** @class */ (function (_super) {
         _this.compensate();
         return _this;
     }
-    return Light;
+    return lightUtility;
 }(utility_1.Utility));
-exports.Light = Light;
+exports.lightUtility = lightUtility;
 
 },{"../../../components/abilityObjectFactory":7,"../../../components/descriptiveNumber":37,"../../ability":47,"../../characterContext":50,"../../utility":53,"../../utils":66}],58:[function(require,module,exports){
 "use strict";
@@ -2446,13 +2444,13 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RestorationUtility = void 0;
+exports.restorationUtility = void 0;
 var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var RestorationUtility = /** @class */ (function (_super) {
-    __extends(RestorationUtility, _super);
-    function RestorationUtility() {
+var restorationUtility = /** @class */ (function (_super) {
+    __extends(restorationUtility, _super);
+    function restorationUtility() {
         var _this = _super.call(this, 'Restoration') || this;
         _this.cooldown = ability_1.Ability.Cooldown.Adventure;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
@@ -2461,9 +2459,9 @@ var RestorationUtility = /** @class */ (function (_super) {
         _this.compensate();
         return _this;
     }
-    return RestorationUtility;
+    return restorationUtility;
 }(utility_1.Utility));
-exports.RestorationUtility = RestorationUtility;
+exports.restorationUtility = restorationUtility;
 
 },{"../../ability":47,"../../characterContext":50,"../../utility":53}],59:[function(require,module,exports){
 "use strict";
@@ -2483,14 +2481,14 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SeanceUtility = void 0;
+exports.seanceUtility = void 0;
 var abilityObjectFactory_1 = require("../../../components/abilityObjectFactory");
 var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var SeanceUtility = /** @class */ (function (_super) {
-    __extends(SeanceUtility, _super);
-    function SeanceUtility() {
+var seanceUtility = /** @class */ (function (_super) {
+    __extends(seanceUtility, _super);
+    function seanceUtility() {
         var _this = _super.call(this, 'Seance') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isCommunication; }).get(1)[0]);
@@ -2505,9 +2503,9 @@ var SeanceUtility = /** @class */ (function (_super) {
         _this.compensate();
         return _this;
     }
-    return SeanceUtility;
+    return seanceUtility;
 }(utility_1.Utility));
-exports.SeanceUtility = SeanceUtility;
+exports.seanceUtility = seanceUtility;
 
 },{"../../../components/abilityObjectFactory":7,"../../../components/descriptiveNumber":37,"../../characterContext":50,"../../utility":53}],60:[function(require,module,exports){
 "use strict";
@@ -2527,14 +2525,14 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AnimalSpeak = void 0;
+exports.animalSpeak = void 0;
 var abilityObjectFactory_1 = require("../../../components/abilityObjectFactory");
 var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var AnimalSpeak = /** @class */ (function (_super) {
-    __extends(AnimalSpeak, _super);
-    function AnimalSpeak() {
+var animalSpeak = /** @class */ (function (_super) {
+    __extends(animalSpeak, _super);
+    function animalSpeak() {
         var _this = _super.call(this, 'Speak') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Druid) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isCommunication; }).get(1)[0]);
@@ -2549,9 +2547,9 @@ var AnimalSpeak = /** @class */ (function (_super) {
         _this.compensate();
         return _this;
     }
-    return AnimalSpeak;
+    return animalSpeak;
 }(utility_1.Utility));
-exports.AnimalSpeak = AnimalSpeak;
+exports.animalSpeak = animalSpeak;
 
 },{"../../../components/abilityObjectFactory":7,"../../../components/descriptiveNumber":37,"../../characterContext":50,"../../utility":53}],61:[function(require,module,exports){
 "use strict";
@@ -2571,13 +2569,13 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LockpickingUtility = void 0;
+exports.lockpickingUtility = void 0;
 var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var LockpickingUtility = /** @class */ (function (_super) {
-    __extends(LockpickingUtility, _super);
-    function LockpickingUtility() {
+var lockpickingUtility = /** @class */ (function (_super) {
+    __extends(lockpickingUtility, _super);
+    function lockpickingUtility() {
         var _this = _super.call(this, 'Lockpicking') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.cooldown = ability_1.Ability.Cooldown.Daily;
@@ -2586,9 +2584,9 @@ var LockpickingUtility = /** @class */ (function (_super) {
         _this.compensate();
         return _this;
     }
-    return LockpickingUtility;
+    return lockpickingUtility;
 }(utility_1.Utility));
-exports.LockpickingUtility = LockpickingUtility;
+exports.lockpickingUtility = lockpickingUtility;
 
 },{"../../ability":47,"../../characterContext":50,"../../utility":53}],62:[function(require,module,exports){
 "use strict";
@@ -2608,13 +2606,13 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PickpocketingUtility = void 0;
+exports.pickpocketUtility = void 0;
 var abilityObjectFactory_1 = require("../../../components/abilityObjectFactory");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var PickpocketingUtility = /** @class */ (function (_super) {
-    __extends(PickpocketingUtility, _super);
-    function PickpocketingUtility() {
+var pickpocketUtility = /** @class */ (function (_super) {
+    __extends(pickpocketUtility, _super);
+    function pickpocketUtility() {
         var _this = _super.call(this, 'Pickpocketing') || this;
         _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isPerson; }).get(1)[0]);
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
@@ -2623,9 +2621,9 @@ var PickpocketingUtility = /** @class */ (function (_super) {
         _this.compensate();
         return _this;
     }
-    return PickpocketingUtility;
+    return pickpocketUtility;
 }(utility_1.Utility));
-exports.PickpocketingUtility = PickpocketingUtility;
+exports.pickpocketUtility = pickpocketUtility;
 
 },{"../../../components/abilityObjectFactory":7,"../../characterContext":50,"../../utility":53}],63:[function(require,module,exports){
 "use strict";
@@ -2645,14 +2643,14 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ShadowStrideUtility = void 0;
+exports.shadowStrideUtility = void 0;
 var abilityObjectFactory_1 = require("../../../components/abilityObjectFactory");
 var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var ShadowStrideUtility = /** @class */ (function (_super) {
-    __extends(ShadowStrideUtility, _super);
-    function ShadowStrideUtility() {
+var shadowStrideUtility = /** @class */ (function (_super) {
+    __extends(shadowStrideUtility, _super);
+    function shadowStrideUtility() {
         var _this = _super.call(this, 'Shadow Stride') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isStealth; }).get(1)[0]);
@@ -2663,9 +2661,9 @@ var ShadowStrideUtility = /** @class */ (function (_super) {
         _this.compensate();
         return _this;
     }
-    return ShadowStrideUtility;
+    return shadowStrideUtility;
 }(utility_1.Utility));
-exports.ShadowStrideUtility = ShadowStrideUtility;
+exports.shadowStrideUtility = shadowStrideUtility;
 
 },{"../../../components/abilityObjectFactory":7,"../../ability":47,"../../characterContext":50,"../../utility":53}],64:[function(require,module,exports){
 "use strict";
@@ -2685,13 +2683,13 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TumbleUtility = void 0;
+exports.tumbleUtility = void 0;
 var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var TumbleUtility = /** @class */ (function (_super) {
-    __extends(TumbleUtility, _super);
-    function TumbleUtility() {
+var tumbleUtility = /** @class */ (function (_super) {
+    __extends(tumbleUtility, _super);
+    function tumbleUtility() {
         var _this = _super.call(this, 'Tumble') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.cooldown = ability_1.Ability.Cooldown.Encounter;
@@ -2700,9 +2698,9 @@ var TumbleUtility = /** @class */ (function (_super) {
         _this.compensate();
         return _this;
     }
-    return TumbleUtility;
+    return tumbleUtility;
 }(utility_1.Utility));
-exports.TumbleUtility = TumbleUtility;
+exports.tumbleUtility = tumbleUtility;
 
 },{"../../ability":47,"../../characterContext":50,"../../utility":53}],65:[function(require,module,exports){
 "use strict";
@@ -2747,15 +2745,15 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SkillBonusUtility = void 0;
+exports.skillBonusUtility = void 0;
 var classUtils_1 = require("../../characters/classUtils");
 var descriptiveNumber_1 = require("../../components/descriptiveNumber");
 var characterContext_1 = require("../characterContext");
 var utility_1 = require("../utility");
 var utils_1 = require("../utils");
-var SkillBonusUtility = /** @class */ (function (_super) {
-    __extends(SkillBonusUtility, _super);
-    function SkillBonusUtility() {
+var skillBonusUtility = /** @class */ (function (_super) {
+    __extends(skillBonusUtility, _super);
+    function skillBonusUtility() {
         var _this = this;
         var skill;
         var roll = utils_1.Utils.random();
@@ -2781,9 +2779,9 @@ var SkillBonusUtility = /** @class */ (function (_super) {
         _this.compensate();
         return _this;
     }
-    return SkillBonusUtility;
+    return skillBonusUtility;
 }(utility_1.Utility));
-exports.SkillBonusUtility = SkillBonusUtility;
+exports.skillBonusUtility = skillBonusUtility;
 
 },{"../../characters/classUtils":3,"../../components/descriptiveNumber":37,"../characterContext":50,"../utility":53,"../utils":66}],66:[function(require,module,exports){
 "use strict";

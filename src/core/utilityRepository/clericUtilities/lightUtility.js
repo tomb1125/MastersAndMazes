@@ -15,16 +15,16 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Light = void 0;
+exports.lightUtility = void 0;
 var abilityObjectFactory_1 = require("../../../components/abilityObjectFactory");
 var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
 var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
 var utils_1 = require("../../utils");
-var Light = /** @class */ (function (_super) {
-    __extends(Light, _super);
-    function Light() {
+var lightUtility = /** @class */ (function (_super) {
+    __extends(lightUtility, _super);
+    function lightUtility() {
         var _this = this;
         var radius = new descriptiveNumber_1.DescriptiveNumber(5);
         _this = _super.call(this, 'Light') || this;
@@ -41,6 +41,6 @@ var Light = /** @class */ (function (_super) {
         _this.compensate();
         return _this;
     }
-    return Light;
+    return lightUtility;
 }(utility_1.Utility));
-exports.Light = Light;
+exports.lightUtility = lightUtility;

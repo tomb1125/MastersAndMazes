@@ -7,7 +7,7 @@ import { CharacterContext } from "../../characterContext";
 import { Utility } from "../../utility";
 
 
-export class RestorationUtility extends Utility {
+export class restorationUtility extends Utility {
 
     constructor() {
         super('Restoration');

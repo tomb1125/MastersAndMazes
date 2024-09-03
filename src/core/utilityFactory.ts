@@ -1,43 +1,36 @@
 import { AffectsWeight } from "./affectsWeight";
 import { Factory } from "./factory";
 import { Utility } from "./utility";
-import { AnimalSpeak } from "./utilityRepository/druidUtilities/animalSpeak";
-import { Augury } from "./utilityRepository/clericUtilities/auguryUtility";
 import { WeightedList } from "./weightedList";
-import { Light } from "./utilityRepository/clericUtilities/lightUtility";
-import { RestorationUtility } from "./utilityRepository/clericUtilities/restorationUtility";
-import { SkillBonusUtility } from "./utilityRepository/skillBonusUtility";
-import { SeanceUtility } from "./utilityRepository/clericUtilities/seanceUtility";
-import { HolyHealUtility } from "./utilityRepository/clericUtilities/holyHealUtility";
-import { PickpocketingUtility } from "./utilityRepository/rogueUtilities/pickpocketUtility";
-import { ShadowStrideUtility } from "./utilityRepository/rogueUtilities/shadowStrideUtility";
-import { TumbleUtility } from "./utilityRepository/rogueUtilities/tumbleUtility";
-import { LockpickingUtility } from "./utilityRepository/rogueUtilities/lockpickingUtility";
 
+//factory imports
+import { skillBonusUtility } from "./utilityRepository/skillBonusUtility";
+import { tumbleUtility } from "./utilityRepository/rogueUtilities/tumbleUtility";
+import { shadowStrideUtility } from "./utilityRepository/rogueUtilities/shadowStrideUtility";
+import { pickpocketUtility } from "./utilityRepository/rogueUtilities/pickpocketUtility";
+import { lockpickingUtility } from "./utilityRepository/rogueUtilities/lockpickingUtility";
+import { animalSpeak } from "./utilityRepository/druidUtilities/animalSpeak";
+import { seanceUtility } from "./utilityRepository/clericUtilities/seanceUtility";
+import { restorationUtility } from "./utilityRepository/clericUtilities/restorationUtility";
+import { lightUtility } from "./utilityRepository/clericUtilities/lightUtility";
+import { holyHealUtility } from "./utilityRepository/clericUtilities/holyHealUtility";
+import { auguryUtility } from "./utilityRepository/clericUtilities/auguryUtility";
 export class UtilityFactory extends Factory {
     constructor(affector: AffectsWeight, list?: WeightedList) {
         super(affector);
         if(list === undefined) {
             this.items = new WeightedList();
-            
-            this.items.push(new AnimalSpeak());
-
-            //cleric
-            this.items.push(new Augury());
-            this.items.push(new Light());
-            this.items.push(new RestorationUtility());
-            this.items.push(new SeanceUtility());
-            this.items.push(new HolyHealUtility());
-
-            //rogue
-            this.items.push(new PickpocketingUtility());
-            this.items.push(new ShadowStrideUtility());
-            this.items.push(new TumbleUtility());
-            this.items.push(new LockpickingUtility());
-
-
-            //common
-            this.items.push(new SkillBonusUtility())
+            this.items.push(new skillBonusUtility());
+            this.items.push(new tumbleUtility());
+            this.items.push(new shadowStrideUtility());
+            this.items.push(new pickpocketUtility());
+            this.items.push(new lockpickingUtility());
+            this.items.push(new animalSpeak());
+            this.items.push(new seanceUtility());
+            this.items.push(new restorationUtility());
+            this.items.push(new lightUtility());
+            this.items.push(new holyHealUtility());
+            this.items.push(new auguryUtility());
         } else {
             this.items = list;
         }

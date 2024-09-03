@@ -17,38 +17,36 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UtilityFactory = void 0;
 var factory_1 = require("./factory");
-var animalSpeak_1 = require("./utilityRepository/druidUtilities/animalSpeak");
-var auguryUtility_1 = require("./utilityRepository/clericUtilities/auguryUtility");
 var weightedList_1 = require("./weightedList");
-var lightUtility_1 = require("./utilityRepository/clericUtilities/lightUtility");
-var restorationUtility_1 = require("./utilityRepository/clericUtilities/restorationUtility");
+//factory imports
 var skillBonusUtility_1 = require("./utilityRepository/skillBonusUtility");
-var seanceUtility_1 = require("./utilityRepository/clericUtilities/seanceUtility");
-var holyHealUtility_1 = require("./utilityRepository/clericUtilities/holyHealUtility");
-var pickpocketUtility_1 = require("./utilityRepository/rogueUtilities/pickpocketUtility");
-var shadowStrideUtility_1 = require("./utilityRepository/rogueUtilities/shadowStrideUtility");
 var tumbleUtility_1 = require("./utilityRepository/rogueUtilities/tumbleUtility");
+var shadowStrideUtility_1 = require("./utilityRepository/rogueUtilities/shadowStrideUtility");
+var pickpocketUtility_1 = require("./utilityRepository/rogueUtilities/pickpocketUtility");
 var lockpickingUtility_1 = require("./utilityRepository/rogueUtilities/lockpickingUtility");
+var animalSpeak_1 = require("./utilityRepository/druidUtilities/animalSpeak");
+var seanceUtility_1 = require("./utilityRepository/clericUtilities/seanceUtility");
+var restorationUtility_1 = require("./utilityRepository/clericUtilities/restorationUtility");
+var lightUtility_1 = require("./utilityRepository/clericUtilities/lightUtility");
+var holyHealUtility_1 = require("./utilityRepository/clericUtilities/holyHealUtility");
+var auguryUtility_1 = require("./utilityRepository/clericUtilities/auguryUtility");
 var UtilityFactory = /** @class */ (function (_super) {
     __extends(UtilityFactory, _super);
     function UtilityFactory(affector, list) {
         var _this = _super.call(this, affector) || this;
         if (list === undefined) {
             _this.items = new weightedList_1.WeightedList();
-            _this.items.push(new animalSpeak_1.AnimalSpeak());
-            //cleric
-            _this.items.push(new auguryUtility_1.Augury());
-            _this.items.push(new lightUtility_1.Light());
-            _this.items.push(new restorationUtility_1.RestorationUtility());
-            _this.items.push(new seanceUtility_1.SeanceUtility());
-            _this.items.push(new holyHealUtility_1.HolyHealUtility());
-            //rogue
-            _this.items.push(new pickpocketUtility_1.PickpocketingUtility());
-            _this.items.push(new shadowStrideUtility_1.ShadowStrideUtility());
-            _this.items.push(new tumbleUtility_1.TumbleUtility());
-            _this.items.push(new lockpickingUtility_1.LockpickingUtility());
-            //common
-            _this.items.push(new skillBonusUtility_1.SkillBonusUtility());
+            _this.items.push(new skillBonusUtility_1.skillBonusUtility());
+            _this.items.push(new tumbleUtility_1.tumbleUtility());
+            _this.items.push(new shadowStrideUtility_1.shadowStrideUtility());
+            _this.items.push(new pickpocketUtility_1.pickpocketUtility());
+            _this.items.push(new lockpickingUtility_1.lockpickingUtility());
+            _this.items.push(new animalSpeak_1.animalSpeak());
+            _this.items.push(new seanceUtility_1.seanceUtility());
+            _this.items.push(new restorationUtility_1.restorationUtility());
+            _this.items.push(new lightUtility_1.lightUtility());
+            _this.items.push(new holyHealUtility_1.holyHealUtility());
+            _this.items.push(new auguryUtility_1.auguryUtility());
         }
         else {
             _this.items = list;

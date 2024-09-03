@@ -6,7 +6,7 @@ import { ModifierFactory } from "../../../modifiers/modifierFactory";
 import { CharacterContext } from "../../characterContext";
 import { Utility } from "../../utility";
 
-export class AnimalSpeak extends Utility {
+export class animalSpeak extends Utility {
 
     constructor() {
         super('Speak');        
