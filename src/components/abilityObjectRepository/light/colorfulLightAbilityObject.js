@@ -15,18 +15,18 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.dreamConnectionAbilityObject = void 0;
+exports.colorfulLightAbilityObject = void 0;
 var abilityObject_1 = require("../../abilityObject");
-var dreamConnectionAbilityObject = /** @class */ (function (_super) {
-    __extends(dreamConnectionAbilityObject, _super);
-    function dreamConnectionAbilityObject() {
-        var _this = _super.call(this, 'Dream Connection') || this;
-        _this.description = 'Upon casting the spell seemingly has no effect, but you will see the target in your dream tonight, and then you will be able to talk. ';
-        _this.rarity = 0.6;
-        _this.prefix = 'Dream Connecting';
-        _this.isCommunication = true;
+var colorfulLightAbilityObject = /** @class */ (function (_super) {
+    __extends(colorfulLightAbilityObject, _super);
+    function colorfulLightAbilityObject() {
+        var _this = _super.call(this, 'Colorful') || this;
+        _this.description = 'The light can have any color you want and you can change its color by swift action. ';
+        _this.rarity = 1;
+        _this.prefix = 'Colorful';
+        _this.isLight = true;
         return _this;
     }
-    return dreamConnectionAbilityObject;
+    return colorfulLightAbilityObject;
 }(abilityObject_1.AbilityObject));
-exports.dreamConnectionAbilityObject = dreamConnectionAbilityObject;
+exports.colorfulLightAbilityObject = colorfulLightAbilityObject;

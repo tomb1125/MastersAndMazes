@@ -1,6 +1,6 @@
 import { AbilityObject } from "../../abilityObject";
 
-export class dreamConnectingAbilityObject extends AbilityObject {
+export class dreamConnectionAbilityObject extends AbilityObject {
     
     constructor() {
         super('Dream Connection');        

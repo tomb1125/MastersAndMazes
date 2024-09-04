@@ -221,77 +221,71 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AbilityObjectFactory = void 0;
 var factory_1 = require("../core/factory");
 var weightedList_1 = require("../core/weightedList");
-var allAnimalsAbilityObject_1 = require("./abilityObjectRepository/animals/allAnimalsAbilityObject");
-var birdAbilityObject_1 = require("./abilityObjectRepository/animals/birdAbilityObject");
-var reptileAbilityObject_1 = require("./abilityObjectRepository/animals/reptileAbilityObject");
-var catAbilityObject_1 = require("./abilityObjectRepository/animals/catAbilityObject");
-var magicalAbilityObject_1 = require("./abilityObjectRepository/animals/magicalAbilityObject");
-var ratAbilityObject_1 = require("./abilityObjectRepository/animals/ratAbilityObject");
-var wildAbilityObject_1 = require("./abilityObjectRepository/animals/wildAbilityObject");
-var gainUnderstandingAbilityObject_1 = require("./abilityObjectRepository/symetricCommunications/gainUnderstandingAbilityObject");
-var symetricEmpathicAbilityObject_1 = require("./abilityObjectRepository/symetricCommunications/symetricEmpathicAbilityObject");
+//factory imports
 var symetricTelepathyAbilityObject_1 = require("./abilityObjectRepository/symetricCommunications/symetricTelepathyAbilityObject");
-var detailedAbilityObject_1 = require("./abilityObjectRepository/questions/detailedAbilityObject");
-var yesNoAbilityObject_1 = require("./abilityObjectRepository/questions/yesNoAbilityObject");
-var colorofulLightAbilityObject_1 = require("./abilityObjectRepository/light/colorofulLightAbilityObject");
-var controllableLightAbilityObject_1 = require("./abilityObjectRepository/light/controllableLightAbilityObject");
-var oneWordAbilityObject_1 = require("./abilityObjectRepository/questions/oneWordAbilityObject");
-var revealingLightAbilityObject_1 = require("./abilityObjectRepository/light/revealingLightAbilityObject");
-var noeDetailedAbilityObject_1 = require("./abilityObjectRepository/questions/noeDetailedAbilityObject");
+var symetricEmpathicAbilityObject_1 = require("./abilityObjectRepository/symetricCommunications/symetricEmpathicAbilityObject");
+var gainUnderstandingAbilityObject_1 = require("./abilityObjectRepository/symetricCommunications/gainUnderstandingAbilityObject");
 var dreamConnectionAbilityObject_1 = require("./abilityObjectRepository/symetricCommunications/dreamConnectionAbilityObject");
-var humanoidCorpseAbilityObject_1 = require("./abilityObjectRepository/corpses/humanoidCorpseAbilityObject");
-var skeletonAbilityObject_1 = require("./abilityObjectRepository/corpses/skeletonAbilityObject");
-var warriorAbilityObject_1 = require("./abilityObjectRepository/corpses/warriorAbilityObject");
-var unfinishedBusinessAbilityObject_1 = require("./abilityObjectRepository/corpses/unfinishedBusinessAbilityObject");
-var freshCorpseAbilityObject_1 = require("./abilityObjectRepository/corpses/freshCorpseAbilityObject");
+var unarmoredStealthAbilityObject_1 = require("./abilityObjectRepository/stealth/unarmoredStealthAbilityObject");
+var shadowStealthAbilityObject_1 = require("./abilityObjectRepository/stealth/shadowStealthAbilityObject");
+var potionStealthAbilityObject_1 = require("./abilityObjectRepository/stealth/potionStealthAbilityObject");
+var yesNoAbilityObject_1 = require("./abilityObjectRepository/questions/yesNoAbilityObject");
+var oneWordAbilityObject_1 = require("./abilityObjectRepository/questions/oneWordAbilityObject");
+var noeDetailedAbilityObject_1 = require("./abilityObjectRepository/questions/noeDetailedAbilityObject");
+var detailedAbilityObject_1 = require("./abilityObjectRepository/questions/detailedAbilityObject");
+var mageHumanoidAbilityObject_1 = require("./abilityObjectRepository/persons/mageHumanoidAbilityObject");
 var humanoidAbilityObject_1 = require("./abilityObjectRepository/persons/humanoidAbilityObject");
 var distractedHumanoidAbilityObject_1 = require("./abilityObjectRepository/persons/distractedHumanoidAbilityObject");
-var mageHumanoidAbilityObject_1 = require("./abilityObjectRepository/persons/mageHumanoidAbilityObject");
-var shadowStealthAbilityObject_1 = require("./abilityObjectRepository/stealth/shadowStealthAbilityObject");
-var unarmoredStealthAbilityObject_1 = require("./abilityObjectRepository/stealth/unarmoredStealthAbilityObject");
-var potionStealthAbilityObject_1 = require("./abilityObjectRepository/stealth/potionStealthAbilityObject");
+var revealingLightAbilityObject_1 = require("./abilityObjectRepository/light/revealingLightAbilityObject");
+var controllableLightAbilityObject_1 = require("./abilityObjectRepository/light/controllableLightAbilityObject");
+var colorfulLightAbilityObject_1 = require("./abilityObjectRepository/light/colorfulLightAbilityObject");
+var warriorCorpseAbilityObject_1 = require("./abilityObjectRepository/corpses/warriorCorpseAbilityObject");
+var unfinishedBusinessAbilityObject_1 = require("./abilityObjectRepository/corpses/unfinishedBusinessAbilityObject");
+var skeletonAbilityObject_1 = require("./abilityObjectRepository/corpses/skeletonAbilityObject");
+var humanoidCorpseAbilityObject_1 = require("./abilityObjectRepository/corpses/humanoidCorpseAbilityObject");
+var freshCorpseAbilityObject_1 = require("./abilityObjectRepository/corpses/freshCorpseAbilityObject");
+var wildAbilityObject_1 = require("./abilityObjectRepository/animals/wildAbilityObject");
+var reptileAbilityObject_1 = require("./abilityObjectRepository/animals/reptileAbilityObject");
+var ratAbilityObject_1 = require("./abilityObjectRepository/animals/ratAbilityObject");
+var magicalAbilityObject_1 = require("./abilityObjectRepository/animals/magicalAbilityObject");
+var catAbilityObject_1 = require("./abilityObjectRepository/animals/catAbilityObject");
+var birdAbilityObject_1 = require("./abilityObjectRepository/animals/birdAbilityObject");
+var allAnimalsAbilityObject_1 = require("./abilityObjectRepository/animals/allAnimalsAbilityObject");
 var AbilityObjectFactory = /** @class */ (function (_super) {
     __extends(AbilityObjectFactory, _super);
     function AbilityObjectFactory(affector, list) {
         var _this = _super.call(this, affector) || this;
         if (list === undefined) {
             _this.items = new weightedList_1.WeightedList();
-            //animals
-            _this.items.push(new allAnimalsAbilityObject_1.allAnimalsAbilityObject());
-            _this.items.push(new birdAbilityObject_1.birdAbilityObject());
-            _this.items.push(new catAbilityObject_1.catAbilityObject());
-            _this.items.push(new magicalAbilityObject_1.magicalAbilityObject());
-            _this.items.push(new reptileAbilityObject_1.reptileAbilityObject());
-            _this.items.push(new ratAbilityObject_1.ratAbilityObject());
-            _this.items.push(new wildAbilityObject_1.wildAbilityObject());
-            //communications
-            _this.items.push(new gainUnderstandingAbilityObject_1.gainUnderstandingAbilityObject());
             _this.items.push(new symetricTelepathyAbilityObject_1.symetricTelepathyAbilityObject());
             _this.items.push(new symetricEmpathicAbilityObject_1.symetricEmpathicAbilityObject());
-            _this.items.push(new dreamConnectionAbilityObject_1.dreamConnectingAbilityObject());
-            //corpse
-            _this.items.push(new humanoidCorpseAbilityObject_1.humanoidCorpseAbilityObject());
-            _this.items.push(new freshCorpseAbilityObject_1.freshCorpseAbilityObject());
-            _this.items.push(new skeletonAbilityObject_1.skeletonAbilityObject());
-            _this.items.push(new warriorAbilityObject_1.warriorCorpseAbilityObject());
-            _this.items.push(new unfinishedBusinessAbilityObject_1.unfinishedBusinessAbilityObject());
-            //questions
-            _this.items.push(new detailedAbilityObject_1.detailedAbilityObject());
+            _this.items.push(new gainUnderstandingAbilityObject_1.gainUnderstandingAbilityObject());
+            _this.items.push(new dreamConnectionAbilityObject_1.dreamConnectionAbilityObject());
+            _this.items.push(new unarmoredStealthAbilityObject_1.unarmoredStealthAbilityObject());
+            _this.items.push(new shadowStealthAbilityObject_1.shadowStealthAbilityObject());
+            _this.items.push(new potionStealthAbilityObject_1.potionStealthAbilityObject());
             _this.items.push(new yesNoAbilityObject_1.yesNoAbilityObject());
             _this.items.push(new oneWordAbilityObject_1.oneWordAbilityObject());
             _this.items.push(new noeDetailedAbilityObject_1.noeDetailedAbilityObject());
-            //light
-            _this.items.push(new colorofulLightAbilityObject_1.colorfulLightAbilityObject());
-            _this.items.push(new controllableLightAbilityObject_1.controllableLightAbilityObject());
-            _this.items.push(new revealingLightAbilityObject_1.revealingLightAbilityObject());
-            //persons
+            _this.items.push(new detailedAbilityObject_1.detailedAbilityObject());
+            _this.items.push(new mageHumanoidAbilityObject_1.mageHumanoidAbilityObject());
             _this.items.push(new humanoidAbilityObject_1.humanoidAbilityObject());
             _this.items.push(new distractedHumanoidAbilityObject_1.distractedHumanoidAbilityObject());
-            _this.items.push(new mageHumanoidAbilityObject_1.mageHumanoidAbilityObject());
-            //stealth
-            _this.items.push(new shadowStealthAbilityObject_1.shadowStealthAbilityObject());
-            _this.items.push(new unarmoredStealthAbilityObject_1.unarmoredStealthAbilityObject());
-            _this.items.push(new potionStealthAbilityObject_1.potionStealthAbilityObject());
+            _this.items.push(new revealingLightAbilityObject_1.revealingLightAbilityObject());
+            _this.items.push(new controllableLightAbilityObject_1.controllableLightAbilityObject());
+            _this.items.push(new colorfulLightAbilityObject_1.colorfulLightAbilityObject());
+            _this.items.push(new warriorCorpseAbilityObject_1.warriorCorpseAbilityObject());
+            _this.items.push(new unfinishedBusinessAbilityObject_1.unfinishedBusinessAbilityObject());
+            _this.items.push(new skeletonAbilityObject_1.skeletonAbilityObject());
+            _this.items.push(new humanoidCorpseAbilityObject_1.humanoidCorpseAbilityObject());
+            _this.items.push(new freshCorpseAbilityObject_1.freshCorpseAbilityObject());
+            _this.items.push(new wildAbilityObject_1.wildAbilityObject());
+            _this.items.push(new reptileAbilityObject_1.reptileAbilityObject());
+            _this.items.push(new ratAbilityObject_1.ratAbilityObject());
+            _this.items.push(new magicalAbilityObject_1.magicalAbilityObject());
+            _this.items.push(new catAbilityObject_1.catAbilityObject());
+            _this.items.push(new birdAbilityObject_1.birdAbilityObject());
+            _this.items.push(new allAnimalsAbilityObject_1.allAnimalsAbilityObject());
         }
         else {
             _this.items = list;
@@ -308,7 +302,7 @@ var AbilityObjectFactory = /** @class */ (function (_super) {
 }(factory_1.Factory));
 exports.AbilityObjectFactory = AbilityObjectFactory;
 
-},{"../core/factory":51,"../core/weightedList":67,"./abilityObjectRepository/animals/allAnimalsAbilityObject":8,"./abilityObjectRepository/animals/birdAbilityObject":9,"./abilityObjectRepository/animals/catAbilityObject":10,"./abilityObjectRepository/animals/magicalAbilityObject":11,"./abilityObjectRepository/animals/ratAbilityObject":12,"./abilityObjectRepository/animals/reptileAbilityObject":13,"./abilityObjectRepository/animals/wildAbilityObject":14,"./abilityObjectRepository/corpses/freshCorpseAbilityObject":15,"./abilityObjectRepository/corpses/humanoidCorpseAbilityObject":16,"./abilityObjectRepository/corpses/skeletonAbilityObject":17,"./abilityObjectRepository/corpses/unfinishedBusinessAbilityObject":18,"./abilityObjectRepository/corpses/warriorAbilityObject":19,"./abilityObjectRepository/light/colorofulLightAbilityObject":20,"./abilityObjectRepository/light/controllableLightAbilityObject":21,"./abilityObjectRepository/light/revealingLightAbilityObject":22,"./abilityObjectRepository/persons/distractedHumanoidAbilityObject":23,"./abilityObjectRepository/persons/humanoidAbilityObject":24,"./abilityObjectRepository/persons/mageHumanoidAbilityObject":25,"./abilityObjectRepository/questions/detailedAbilityObject":26,"./abilityObjectRepository/questions/noeDetailedAbilityObject":27,"./abilityObjectRepository/questions/oneWordAbilityObject":28,"./abilityObjectRepository/questions/yesNoAbilityObject":29,"./abilityObjectRepository/stealth/potionStealthAbilityObject":30,"./abilityObjectRepository/stealth/shadowStealthAbilityObject":31,"./abilityObjectRepository/stealth/unarmoredStealthAbilityObject":32,"./abilityObjectRepository/symetricCommunications/dreamConnectionAbilityObject":33,"./abilityObjectRepository/symetricCommunications/gainUnderstandingAbilityObject":34,"./abilityObjectRepository/symetricCommunications/symetricEmpathicAbilityObject":35,"./abilityObjectRepository/symetricCommunications/symetricTelepathyAbilityObject":36}],8:[function(require,module,exports){
+},{"../core/factory":51,"../core/weightedList":67,"./abilityObjectRepository/animals/allAnimalsAbilityObject":8,"./abilityObjectRepository/animals/birdAbilityObject":9,"./abilityObjectRepository/animals/catAbilityObject":10,"./abilityObjectRepository/animals/magicalAbilityObject":11,"./abilityObjectRepository/animals/ratAbilityObject":12,"./abilityObjectRepository/animals/reptileAbilityObject":13,"./abilityObjectRepository/animals/wildAbilityObject":14,"./abilityObjectRepository/corpses/freshCorpseAbilityObject":15,"./abilityObjectRepository/corpses/humanoidCorpseAbilityObject":16,"./abilityObjectRepository/corpses/skeletonAbilityObject":17,"./abilityObjectRepository/corpses/unfinishedBusinessAbilityObject":18,"./abilityObjectRepository/corpses/warriorCorpseAbilityObject":19,"./abilityObjectRepository/light/colorfulLightAbilityObject":20,"./abilityObjectRepository/light/controllableLightAbilityObject":21,"./abilityObjectRepository/light/revealingLightAbilityObject":22,"./abilityObjectRepository/persons/distractedHumanoidAbilityObject":23,"./abilityObjectRepository/persons/humanoidAbilityObject":24,"./abilityObjectRepository/persons/mageHumanoidAbilityObject":25,"./abilityObjectRepository/questions/detailedAbilityObject":26,"./abilityObjectRepository/questions/noeDetailedAbilityObject":27,"./abilityObjectRepository/questions/oneWordAbilityObject":28,"./abilityObjectRepository/questions/yesNoAbilityObject":29,"./abilityObjectRepository/stealth/potionStealthAbilityObject":30,"./abilityObjectRepository/stealth/shadowStealthAbilityObject":31,"./abilityObjectRepository/stealth/unarmoredStealthAbilityObject":32,"./abilityObjectRepository/symetricCommunications/dreamConnectionAbilityObject":33,"./abilityObjectRepository/symetricCommunications/gainUnderstandingAbilityObject":34,"./abilityObjectRepository/symetricCommunications/symetricEmpathicAbilityObject":35,"./abilityObjectRepository/symetricCommunications/symetricTelepathyAbilityObject":36}],8:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1180,11 +1174,11 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.dreamConnectingAbilityObject = void 0;
+exports.dreamConnectionAbilityObject = void 0;
 var abilityObject_1 = require("../../abilityObject");
-var dreamConnectingAbilityObject = /** @class */ (function (_super) {
-    __extends(dreamConnectingAbilityObject, _super);
-    function dreamConnectingAbilityObject() {
+var dreamConnectionAbilityObject = /** @class */ (function (_super) {
+    __extends(dreamConnectionAbilityObject, _super);
+    function dreamConnectionAbilityObject() {
         var _this = _super.call(this, 'Dream Connection') || this;
         _this.description = 'Upon casting the spell seemingly has no effect, but you will see the target in your dream tonight, and then you will be able to talk. ';
         _this.rarity = 0.6;
@@ -1192,9 +1186,9 @@ var dreamConnectingAbilityObject = /** @class */ (function (_super) {
         _this.isCommunication = true;
         return _this;
     }
-    return dreamConnectingAbilityObject;
+    return dreamConnectionAbilityObject;
 }(abilityObject_1.AbilityObject));
-exports.dreamConnectingAbilityObject = dreamConnectingAbilityObject;
+exports.dreamConnectionAbilityObject = dreamConnectionAbilityObject;
 
 },{"../../abilityObject":6}],34:[function(require,module,exports){
 "use strict";
@@ -1385,32 +1379,30 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DescriptiveNumberFactory = void 0;
 var weightedList_1 = require("../core/weightedList");
-var adjacentEnemiesDescriptiveNumber_1 = require("./descriptiveNumberRepository/small/adjacentEnemiesDescriptiveNumber");
-var assassinDescriptiveNumber_1 = require("./descriptiveNumberRepository/assassinDescriptiveNumber");
-var currentHealthDescriptiveNumber_1 = require("./descriptiveNumberRepository/currentHealthDescriptiveNumber");
-var d4MinuteDescriptiveNumber_1 = require("./descriptiveNumberRepository/duration/d4MinuteDescriptiveNumber");
-var aneHourDescriptiveNumber_1 = require("./descriptiveNumberRepository/duration/aneHourDescriptiveNumber");
-var numberOfTurnsDescriptiveNumber_1 = require("./descriptiveNumberRepository/numberOfTurnsDescriptiveNumber");
-var damageTakenDescriptiveNumber_1 = require("./descriptiveNumberRepository/damageTakenDescriptiveNumber");
 var factory_1 = require("../core/factory");
+//factory imports
+var adjacentEnemiesDescriptiveNumber_1 = require("./descriptiveNumberRepository/small/adjacentEnemiesDescriptiveNumber");
+var numberOfTurnsDescriptiveNumber_1 = require("./descriptiveNumberRepository/numberOfTurnsDescriptiveNumber");
 var numberOfScarsDescriptiveNumber_1 = require("./descriptiveNumberRepository/numberOfScarsDescriptiveNumber");
+var oneHourDescriptiveNumber_1 = require("./descriptiveNumberRepository/duration/oneHourDescriptiveNumber");
+var d4MinuteDescriptiveNumber_1 = require("./descriptiveNumberRepository/duration/d4MinuteDescriptiveNumber");
+var damageTakenDescriptiveNumber_1 = require("./descriptiveNumberRepository/damageTakenDescriptiveNumber");
+var currentHealthDescriptiveNumber_1 = require("./descriptiveNumberRepository/currentHealthDescriptiveNumber");
+var assassinDescriptiveNumber_1 = require("./descriptiveNumberRepository/assassinDescriptiveNumber");
 var DescriptiveNumberFactory = /** @class */ (function (_super) {
     __extends(DescriptiveNumberFactory, _super);
     function DescriptiveNumberFactory(affector, list) {
         var _this = _super.call(this, affector) || this;
         if (list === undefined) {
             _this.items = new weightedList_1.WeightedList();
-            //small
             _this.items.push(new adjacentEnemiesDescriptiveNumber_1.adjacentEnemiesDescriptiveNumber());
-            //common
-            _this.items.push(new assassinDescriptiveNumber_1.assassinDescriptiveNumber());
-            _this.items.push(new currentHealthDescriptiveNumber_1.currentHealthDescriptiveNumber());
-            _this.items.push(new damageTakenDescriptiveNumber_1.damageTakenDescriptiveNumber());
-            _this.items.push(new numberOfScarsDescriptiveNumber_1.numberOfScarsDescriptiveNumber());
             _this.items.push(new numberOfTurnsDescriptiveNumber_1.numberOfTurnsDescriptiveNumber());
-            //duration
+            _this.items.push(new numberOfScarsDescriptiveNumber_1.numberOfScarsDescriptiveNumber());
+            _this.items.push(new oneHourDescriptiveNumber_1.oneHourDescriptiveNumber());
             _this.items.push(new d4MinuteDescriptiveNumber_1.d4MinuteDescriptiveNumber());
-            _this.items.push(new aneHourDescriptiveNumber_1.oneHourDescriptiveNumber());
+            _this.items.push(new damageTakenDescriptiveNumber_1.damageTakenDescriptiveNumber());
+            _this.items.push(new currentHealthDescriptiveNumber_1.currentHealthDescriptiveNumber());
+            _this.items.push(new assassinDescriptiveNumber_1.assassinDescriptiveNumber());
         }
         else {
             _this.items = list;
@@ -1427,7 +1419,7 @@ var DescriptiveNumberFactory = /** @class */ (function (_super) {
 }(factory_1.Factory));
 exports.DescriptiveNumberFactory = DescriptiveNumberFactory;
 
-},{"../core/factory":51,"../core/weightedList":67,"./descriptiveNumberRepository/assassinDescriptiveNumber":39,"./descriptiveNumberRepository/currentHealthDescriptiveNumber":40,"./descriptiveNumberRepository/damageTakenDescriptiveNumber":41,"./descriptiveNumberRepository/duration/aneHourDescriptiveNumber":42,"./descriptiveNumberRepository/duration/d4MinuteDescriptiveNumber":43,"./descriptiveNumberRepository/numberOfScarsDescriptiveNumber":44,"./descriptiveNumberRepository/numberOfTurnsDescriptiveNumber":45,"./descriptiveNumberRepository/small/adjacentEnemiesDescriptiveNumber":46}],39:[function(require,module,exports){
+},{"../core/factory":51,"../core/weightedList":67,"./descriptiveNumberRepository/assassinDescriptiveNumber":39,"./descriptiveNumberRepository/currentHealthDescriptiveNumber":40,"./descriptiveNumberRepository/damageTakenDescriptiveNumber":41,"./descriptiveNumberRepository/duration/d4MinuteDescriptiveNumber":42,"./descriptiveNumberRepository/duration/oneHourDescriptiveNumber":43,"./descriptiveNumberRepository/numberOfScarsDescriptiveNumber":44,"./descriptiveNumberRepository/numberOfTurnsDescriptiveNumber":45,"./descriptiveNumberRepository/small/adjacentEnemiesDescriptiveNumber":46}],39:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1545,40 +1537,6 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.oneHourDescriptiveNumber = void 0;
-var descriptiveNumber_1 = require("../../descriptiveNumber");
-var oneHourDescriptiveNumber = /** @class */ (function (_super) {
-    __extends(oneHourDescriptiveNumber, _super);
-    function oneHourDescriptiveNumber(value) {
-        var _this = _super.call(this, value) || this;
-        _this.value = 2;
-        _this.description = 'one hour';
-        _this.type = descriptiveNumber_1.DescriptiveNumber.Type.UtilityDuration;
-        _this.name = 'One Hour';
-        return _this;
-    }
-    return oneHourDescriptiveNumber;
-}(descriptiveNumber_1.DescriptiveNumber));
-exports.oneHourDescriptiveNumber = oneHourDescriptiveNumber;
-
-},{"../../descriptiveNumber":37}],43:[function(require,module,exports){
-"use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.d4MinuteDescriptiveNumber = void 0;
 var utils_1 = require("../../../core/utils");
 var descriptiveNumber_1 = require("../../descriptiveNumber");
@@ -1597,7 +1555,41 @@ var d4MinuteDescriptiveNumber = /** @class */ (function (_super) {
 }(descriptiveNumber_1.DescriptiveNumber));
 exports.d4MinuteDescriptiveNumber = d4MinuteDescriptiveNumber;
 
-},{"../../../core/utils":66,"../../descriptiveNumber":37}],44:[function(require,module,exports){
+},{"../../../core/utils":66,"../../descriptiveNumber":37}],43:[function(require,module,exports){
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.oneHourDescriptiveNumber = void 0;
+var descriptiveNumber_1 = require("../../descriptiveNumber");
+var oneHourDescriptiveNumber = /** @class */ (function (_super) {
+    __extends(oneHourDescriptiveNumber, _super);
+    function oneHourDescriptiveNumber(value) {
+        var _this = _super.call(this, value) || this;
+        _this.value = 2;
+        _this.description = 'one hour';
+        _this.type = descriptiveNumber_1.DescriptiveNumber.Type.UtilityDuration;
+        _this.name = 'One Hour';
+        return _this;
+    }
+    return oneHourDescriptiveNumber;
+}(descriptiveNumber_1.DescriptiveNumber));
+exports.oneHourDescriptiveNumber = oneHourDescriptiveNumber;
+
+},{"../../descriptiveNumber":37}],44:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {

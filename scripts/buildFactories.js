@@ -22,6 +22,20 @@ const factories = {
             'hasAffector' : false
         }
     ],
+    'src\\components\\abilityObjectFactory.ts'  : [
+        {
+            'dir' : 'src\\components\\abilityObjectRepository',
+            'relatedDir' : './abilityObjectRepository/',
+            'hasAffector' : false
+        }
+    ],
+    'src\\components\\descriptiveNumberFactory.ts'  : [
+        {
+            'dir' : 'src\\components\\descriptiveNumberRepository',
+            'relatedDir' : './descriptiveNumberRepository/',
+            'hasAffector' : false
+        }
+    ]
 }
 
 Object.keys(factories).forEach(key => {
