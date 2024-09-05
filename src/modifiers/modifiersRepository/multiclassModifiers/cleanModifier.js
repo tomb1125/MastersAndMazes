@@ -15,23 +15,27 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.bloodiedModifier = void 0;
-var ability_1 = require("../../core/ability");
-var modifier_1 = require("../modifier");
-var bloodiedModifier = /** @class */ (function (_super) {
-    __extends(bloodiedModifier, _super);
-    function bloodiedModifier(affector) {
+exports.cleanModifier = void 0;
+var characterContext_1 = require("../../../core/characterContext");
+var modifier_1 = require("../../modifier");
+var cleanModifier = /** @class */ (function (_super) {
+    __extends(cleanModifier, _super);
+    function cleanModifier(affector) {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 1.5; };
-        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0.1; };
-        _this.weight = function () { return 1; };
-        _this.name = 'Bloody';
-        _this.namePrefix = 'Bloody';
-        _this.description = 'Can be used only when you have half or less Health.';
+        _this.powerMultiplier = function () { return 1.3; };
+        _this.weight = function (affector) {
+            return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ||
+                characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Wizard)
+                ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER
+                : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT;
+        };
+        _this.name = 'Clean';
+        _this.namePrefix = 'Clean';
+        _this.description = 'Can be only used if your clothes are clean and you are not wet.';
         _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
-    return bloodiedModifier;
+    return cleanModifier;
 }(modifier_1.Modifier));
-exports.bloodiedModifier = bloodiedModifier;
+exports.cleanModifier = cleanModifier;

@@ -1,7 +1,7 @@
 {
   "name": "mastersandgods",
   "version": "1.0.0",
-  "description": "cool rpg about beating monster to death with a stick",
+  "description": "cool rpg about beating monsters to death with a stick",
   "main": "main.js",
   "scripts": {
     "build": "tsc --lib \"es6\",\"dom\" --downlevelIteration .\\index.ts",

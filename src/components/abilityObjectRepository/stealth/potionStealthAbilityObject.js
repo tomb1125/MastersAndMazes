@@ -21,7 +21,7 @@ var potionStealthAbilityObject = /** @class */ (function (_super) {
     __extends(potionStealthAbilityObject, _super);
     function potionStealthAbilityObject() {
         var _this = _super.call(this, 'Potion Stealth') || this;
-        _this.description = 'You must drink special Invisibility Potion before using this ability. Each costs 20G and is a rare consumable. When you add this ability to your character gain 5 such potions. ';
+        _this.description = 'You must drink special Invisibility Potion before using this ability. Each costs 10G and is a rare consumable. When you add this ability to your character gain 5 such potions. ';
         _this.rarity = 1;
         _this.prefix = 'Potion';
         _this.isStealth = true;

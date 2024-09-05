@@ -22,6 +22,7 @@ var currentHealthDescriptiveNumber = /** @class */ (function (_super) {
     __extends(currentHealthDescriptiveNumber, _super);
     function currentHealthDescriptiveNumber(value) {
         var _this = _super.call(this, utils_1.Utils.avgHealth) || this;
+        _this.lowValue = 1;
         _this.description = 'your current health';
         _this.type = descriptiveNumber_1.DescriptiveNumber.Type.Common;
         return _this;

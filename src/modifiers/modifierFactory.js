@@ -29,9 +29,11 @@ var opportunistModifier_1 = require("./modifiersRepository/opportunistModifier")
 var nightlyModifier_1 = require("./modifiersRepository/nightlyModifier");
 var multipleModifier_1 = require("./modifiersRepository/multipleModifier");
 var undeadBaneModifier_1 = require("./modifiersRepository/multiclassModifiers/undeadBaneModifier");
+var cleanModifier_1 = require("./modifiersRepository/multiclassModifiers/cleanModifier");
 var momentumModifier_1 = require("./modifiersRepository/momentumModifier");
 var lifestealModifier_1 = require("./modifiersRepository/lifestealModifier");
 var laylineModifier_1 = require("./modifiersRepository/laylineModifier");
+var instinctiveModifier_1 = require("./modifiersRepository/instinctiveModifier");
 var grazedModifier_1 = require("./modifiersRepository/grazedModifier");
 var gainEffectModifier_1 = require("./modifiersRepository/gainEffectModifier");
 var fastModifier_1 = require("./modifiersRepository/fastModifier");
@@ -60,9 +62,11 @@ var ModifierFactory = /** @class */ (function (_super) {
             _this.items.push(new nightlyModifier_1.nightlyModifier(affector));
             _this.items.push(new multipleModifier_1.multipleModifier(affector));
             _this.items.push(new undeadBaneModifier_1.undeadBaneModifier(affector));
+            _this.items.push(new cleanModifier_1.cleanModifier(affector));
             _this.items.push(new momentumModifier_1.momentumModifier(affector));
             _this.items.push(new lifestealModifier_1.lifestealModifier(affector));
             _this.items.push(new laylineModifier_1.laylineModifier(affector));
+            _this.items.push(new instinctiveModifier_1.instinctiveModifier(affector));
             _this.items.push(new grazedModifier_1.grazedModifier(affector));
             _this.items.push(new gainEffectModifier_1.gainEffectModifier(affector));
             _this.items.push(new fastModifier_1.fastModifier(affector));

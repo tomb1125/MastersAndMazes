@@ -15,23 +15,22 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.bloodiedModifier = void 0;
+exports.instinctiveModifier = void 0;
 var ability_1 = require("../../core/ability");
 var modifier_1 = require("../modifier");
-var bloodiedModifier = /** @class */ (function (_super) {
-    __extends(bloodiedModifier, _super);
-    function bloodiedModifier(affector) {
+var instinctiveModifier = /** @class */ (function (_super) {
+    __extends(instinctiveModifier, _super);
+    function instinctiveModifier(affector) {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 1.5; };
-        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0.1; };
-        _this.weight = function () { return 1; };
-        _this.name = 'Bloody';
-        _this.namePrefix = 'Bloody';
-        _this.description = 'Can be used only when you have half or less Health.';
+        _this.powerMultiplier = function (x) { return 0.9; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
+        _this.name = 'Instinct';
+        _this.namePrefix = 'Instinctive';
+        _this.description = 'If you are stunned, you can use this ability as a swift action. You can ignore Banes when rolling for this ability. ';
         _this.longDescription = '';
-        _this.modifierType = modifier_1.Modifier.Type.Constraint;
+        _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;
     }
-    return bloodiedModifier;
+    return instinctiveModifier;
 }(modifier_1.Modifier));
-exports.bloodiedModifier = bloodiedModifier;
+exports.instinctiveModifier = instinctiveModifier;
