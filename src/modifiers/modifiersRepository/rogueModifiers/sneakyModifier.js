@@ -15,21 +15,21 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.vulnerableEffect = void 0;
-var utils_1 = require("../../core/utils");
-var effect_1 = require("../effect");
-var vulnerableEffect = /** @class */ (function (_super) {
-    __extends(vulnerableEffect, _super);
-    function vulnerableEffect() {
+exports.sneakyModifier = void 0;
+var characterContext_1 = require("../../../core/characterContext");
+var modifier_1 = require("../../modifier");
+var sneakyModifier = /** @class */ (function (_super) {
+    __extends(sneakyModifier, _super);
+    function sneakyModifier(affector) {
         var _this = _super.call(this) || this;
-        _this.value = Math.ceil(utils_1.Utils.random() * 4) + 1;
-        _this.name = 'Vulnerable ' + _this.value;
-        _this.namePrefix = 'Debilitating';
-        _this.description = 'Vulnerable ' + _this.value + ' - when taking damage from an Ability take +' + _this.value + ' bonus damage. This effect lasts for 1 turns. ';
-        _this.subtype = effect_1.Effect.Subtype.Debuff;
-        _this.powerBonus = function (x) { return -0.5 * _this.value * utils_1.Utils.AVG_PLAYERS * 0.8; };
+        _this.powerMultiplier = function () { return 2.5; };
+        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : 0.2; };
+        _this.name = 'Sneaky';
+        _this.namePrefix = 'Sneaky';
+        _this.description = 'Can be only used when you ended last turn hidden.';
+        _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
-    return vulnerableEffect;
-}(effect_1.Effect));
-exports.vulnerableEffect = vulnerableEffect;
+    return sneakyModifier;
+}(modifier_1.Modifier));
+exports.sneakyModifier = sneakyModifier;

@@ -15,21 +15,21 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.lockpickingUtility = void 0;
-var ability_1 = require("../../ability");
+exports.shiftBlameUtility = void 0;
+var abilityObjectFactory_1 = require("../../../components/abilityObjectFactory");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var lockpickingUtility = /** @class */ (function (_super) {
-    __extends(lockpickingUtility, _super);
-    function lockpickingUtility() {
-        var _this = _super.call(this, 'Lockpicking') || this;
+var shiftBlameUtility = /** @class */ (function (_super) {
+    __extends(shiftBlameUtility, _super);
+    function shiftBlameUtility() {
+        var _this = _super.call(this, 'Shift Blame') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
-        _this.cooldown = ability_1.Ability.Cooldown.Daily;
-        _this.chance = 1.5;
-        _this.description = 'You can spend some time to open an lock silently and without leaving a trace. ';
+        _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isPerson; }).get(1)[0]);
+        _this.chance = 0.7;
+        _this.description = 'When you are accussed of something immiedietly shift blame to someone else. For about 15 meters ' + _this.objects[0].description + ' will believe this lie, before starting to investigate it more thoroughly. ';
         _this.compensate();
         return _this;
     }
-    return lockpickingUtility;
+    return shiftBlameUtility;
 }(utility_1.Utility));
-exports.lockpickingUtility = lockpickingUtility;
+exports.shiftBlameUtility = shiftBlameUtility;

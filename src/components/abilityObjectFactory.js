@@ -30,6 +30,7 @@ var yesNoAbilityObject_1 = require("./abilityObjectRepository/questions/yesNoAbi
 var oneWordAbilityObject_1 = require("./abilityObjectRepository/questions/oneWordAbilityObject");
 var noeDetailedAbilityObject_1 = require("./abilityObjectRepository/questions/noeDetailedAbilityObject");
 var detailedAbilityObject_1 = require("./abilityObjectRepository/questions/detailedAbilityObject");
+var warriorHumanoidAbilityObject_1 = require("./abilityObjectRepository/persons/warriorHumanoidAbilityObject");
 var mageHumanoidAbilityObject_1 = require("./abilityObjectRepository/persons/mageHumanoidAbilityObject");
 var humanoidAbilityObject_1 = require("./abilityObjectRepository/persons/humanoidAbilityObject");
 var distractedHumanoidAbilityObject_1 = require("./abilityObjectRepository/persons/distractedHumanoidAbilityObject");
@@ -65,6 +66,7 @@ var AbilityObjectFactory = /** @class */ (function (_super) {
             _this.items.push(new oneWordAbilityObject_1.oneWordAbilityObject());
             _this.items.push(new noeDetailedAbilityObject_1.noeDetailedAbilityObject());
             _this.items.push(new detailedAbilityObject_1.detailedAbilityObject());
+            _this.items.push(new warriorHumanoidAbilityObject_1.warriorHumanoidAbilityObject());
             _this.items.push(new mageHumanoidAbilityObject_1.mageHumanoidAbilityObject());
             _this.items.push(new humanoidAbilityObject_1.humanoidAbilityObject());
             _this.items.push(new distractedHumanoidAbilityObject_1.distractedHumanoidAbilityObject());

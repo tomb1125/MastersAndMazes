@@ -176,28 +176,8 @@ var Attack = /** @class */ (function (_super) {
         var spellPortion = this.subtype === Attack.Subtype.Spell ? [
             'Basic Bolt'
         ].sort(function () { return 0.5 - utils_1.Utils.random(); })[0] : '';
-        var randomPortion = [
-            this.chance > 0.75 ? 'Precise ' : '',
-            this.chance > 0.75 ? 'Accurate ' : '',
-            this.chance < 0.3 ? 'Heavy ' : '',
-            this.chance < 0.3 ? 'Slow ' : '',
-            this.modifiers.length === 0 ? 'Boring ' : '',
-            this.modifiers.length === 0 ? 'Basic ' : '',
-            this.modifiers.length === 0 ? 'Nothing-To-Write-Home-About ' : '',
-            this.manaCost > 8 ? 'Costly ' : '',
-            this.manaCost > 8 ? 'Exhausting ' : '',
-            '',
-            '',
-            'Gruesome ',
-            'Deadly ',
-            'Awesome ',
-            'Flashy ',
-            'Outstanding ',
-            'Ruthless '
-        ].sort(function () { return 0.5 - utils_1.Utils.random(); })[0];
         return this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.namePrefix; }, '').slice(1) +
             (this.modifiers.length > 0 ? ' ' : '') +
-            randomPortion +
             attackPortion +
             spellPortion;
     };

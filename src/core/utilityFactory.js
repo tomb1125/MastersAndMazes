@@ -21,6 +21,7 @@ var weightedList_1 = require("./weightedList");
 //factory imports
 var skillBonusUtility_1 = require("./utilityRepository/skillBonusUtility");
 var tumbleUtility_1 = require("./utilityRepository/rogueUtilities/tumbleUtility");
+var shiftBlameUtility_1 = require("./utilityRepository/rogueUtilities/shiftBlameUtility");
 var shadowStrideUtility_1 = require("./utilityRepository/rogueUtilities/shadowStrideUtility");
 var pickpocketUtility_1 = require("./utilityRepository/rogueUtilities/pickpocketUtility");
 var lockpickingUtility_1 = require("./utilityRepository/rogueUtilities/lockpickingUtility");
@@ -38,6 +39,7 @@ var UtilityFactory = /** @class */ (function (_super) {
             _this.items = new weightedList_1.WeightedList();
             _this.items.push(new skillBonusUtility_1.skillBonusUtility());
             _this.items.push(new tumbleUtility_1.tumbleUtility());
+            _this.items.push(new shiftBlameUtility_1.shiftBlameUtility());
             _this.items.push(new shadowStrideUtility_1.shadowStrideUtility());
             _this.items.push(new pickpocketUtility_1.pickpocketUtility());
             _this.items.push(new lockpickingUtility_1.lockpickingUtility());

@@ -6,6 +6,7 @@ import { WeightedList } from "./weightedList";
 //factory imports
 import { skillBonusUtility } from "./utilityRepository/skillBonusUtility";
 import { tumbleUtility } from "./utilityRepository/rogueUtilities/tumbleUtility";
+import { shiftBlameUtility } from "./utilityRepository/rogueUtilities/shiftBlameUtility";
 import { shadowStrideUtility } from "./utilityRepository/rogueUtilities/shadowStrideUtility";
 import { pickpocketUtility } from "./utilityRepository/rogueUtilities/pickpocketUtility";
 import { lockpickingUtility } from "./utilityRepository/rogueUtilities/lockpickingUtility";
@@ -22,6 +23,7 @@ export class UtilityFactory extends Factory {
             this.items = new WeightedList();
             this.items.push(new skillBonusUtility());
             this.items.push(new tumbleUtility());
+            this.items.push(new shiftBlameUtility());
             this.items.push(new shadowStrideUtility());
             this.items.push(new pickpocketUtility());
             this.items.push(new lockpickingUtility());

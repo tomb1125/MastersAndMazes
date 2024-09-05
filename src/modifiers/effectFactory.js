@@ -23,6 +23,7 @@ var vulnerableEffect_1 = require("./effectRepository/vulnerableEffect");
 var stunEffect_1 = require("./effectRepository/stunEffect");
 var scalingDotEffect_1 = require("./effectRepository/scalingDotEffect");
 var protectedEffect_1 = require("./effectRepository/protectedEffect");
+var invisibilityEffect_1 = require("./effectRepository/multiclassEffects/invisibilityEffect");
 var instakillEffect_1 = require("./effectRepository/instakillEffect");
 var guidingEffect_1 = require("./effectRepository/guidingEffect");
 var exposeEffect_1 = require("./effectRepository/exposeEffect");
@@ -37,6 +38,7 @@ var EffectFactory = /** @class */ (function (_super) {
             _this.items.push(new stunEffect_1.stunEffect());
             _this.items.push(new scalingDotEffect_1.scalingDotEffect());
             _this.items.push(new protectedEffect_1.protectedEffect());
+            _this.items.push(new invisibilityEffect_1.invisibilityEffect());
             _this.items.push(new instakillEffect_1.instakillEffect());
             _this.items.push(new guidingEffect_1.guidingEffect());
             _this.items.push(new exposeEffect_1.exposeEffect());

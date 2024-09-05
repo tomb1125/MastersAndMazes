@@ -204,29 +204,9 @@ export class Attack extends Activity implements CanAffectModifier {
       'Basic Bolt'
     ].sort(() => 0.5 - Utils.random())[0] : '';
 
-    const randomPortion: string = [
-      this.chance > 0.75 ? 'Precise ' : '',
-      this.chance > 0.75 ? 'Accurate ' : '',
-      this.chance < 0.3 ? 'Heavy ' : '',
-      this.chance < 0.3 ? 'Slow ' : '',
-      this.modifiers.length === 0 ? 'Boring ' : '',
-      this.modifiers.length === 0 ? 'Basic ' : '',
-      this.modifiers.length === 0 ? 'Nothing-To-Write-Home-About ' : '',
-      this.manaCost > 8 ? 'Costly ' : '',
-      this.manaCost > 8 ? 'Exhausting ' : '',
-      '',
-      '',
-      'Gruesome ',
-      'Deadly ',
-      'Awesome ',
-      'Flashy ',
-      'Outstanding ',
-      'Ruthless '
-    ].sort(() => 0.5 - Utils.random())[0]
 
     return this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.namePrefix; }, '').slice(1) +
      (this.modifiers.length > 0 ? ' ' : '') +
-     randomPortion +
      attackPortion +
      spellPortion;
 

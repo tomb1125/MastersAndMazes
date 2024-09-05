@@ -11,13 +11,15 @@ global.onSeedChange = function (val) {
 };
 global.onLevelChange = function (val) {
     characterContext_1.CharacterContext.level = val;
+    global.generateAbilities();
 };
 global.onClassChange = function (val) {
     characterContext_1.CharacterContext.classes = [
         Number(Object.keys(characterContext_1.CharacterContext.Class).find(function (cls) { return characterContext_1.CharacterContext.Class[cls] === val; }))
     ];
+    global.generateAbilities();
 };
-global.generateAbilities = function (val) {
+global.generateAbilities = function () {
     var currentSeed = '';
     if (characterContext_1.CharacterContext.seed) {
         currentSeed = characterContext_1.CharacterContext.seed;
@@ -31,7 +33,7 @@ global.generateAbilities = function (val) {
     if (outputDiv == null) {
         throw 'null output';
     }
-    var levelMode = characterContext_1.CharacterContext.level % 3;
+    var levelMode = characterContext_1.CharacterContext.level % 2;
     var description = '';
     if (levelMode === 1) {
         var att1 = new attack_1.Attack();
@@ -40,17 +42,21 @@ global.generateAbilities = function (val) {
         att2.generate();
         var att3 = new attack_1.Attack();
         att3.generate();
+        var att4 = new attack_1.Attack();
+        att4.generate();
         description = '<br>' +
             att1.getDescription() + '<br><br>' +
             att2.getDescription() + '<br><br>' +
-            att3.getDescription() + '<br><br>';
+            att3.getDescription() + '<br><br>' +
+            att4.getDescription() + '<br><br>';
     }
-    else if (levelMode === 2) {
-        var utl = new utilityFactory_1.UtilityFactory(new ability_1.Ability()).get(3);
+    else if (levelMode === 0) {
+        var utl = new utilityFactory_1.UtilityFactory(new ability_1.Ability()).get(4);
         description = '<br>' +
             utl[0].getDescription() + '<br><br>' +
             utl[1].getDescription() + '<br><br>' +
-            utl[2].getDescription() + '<br><br>';
+            utl[2].getDescription() + '<br><br>' +
+            utl[3].getDescription() + '<br><br>';
     }
     else {
     }

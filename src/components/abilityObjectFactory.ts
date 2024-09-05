@@ -15,6 +15,7 @@ import { yesNoAbilityObject } from "./abilityObjectRepository/questions/yesNoAbi
 import { oneWordAbilityObject } from "./abilityObjectRepository/questions/oneWordAbilityObject";
 import { noeDetailedAbilityObject } from "./abilityObjectRepository/questions/noeDetailedAbilityObject";
 import { detailedAbilityObject } from "./abilityObjectRepository/questions/detailedAbilityObject";
+import { warriorHumanoidAbilityObject } from "./abilityObjectRepository/persons/warriorHumanoidAbilityObject";
 import { mageHumanoidAbilityObject } from "./abilityObjectRepository/persons/mageHumanoidAbilityObject";
 import { humanoidAbilityObject } from "./abilityObjectRepository/persons/humanoidAbilityObject";
 import { distractedHumanoidAbilityObject } from "./abilityObjectRepository/persons/distractedHumanoidAbilityObject";
@@ -49,6 +50,7 @@ export class AbilityObjectFactory extends Factory {
             this.items.push(new oneWordAbilityObject());
             this.items.push(new noeDetailedAbilityObject());
             this.items.push(new detailedAbilityObject());
+            this.items.push(new warriorHumanoidAbilityObject());
             this.items.push(new mageHumanoidAbilityObject());
             this.items.push(new humanoidAbilityObject());
             this.items.push(new distractedHumanoidAbilityObject());

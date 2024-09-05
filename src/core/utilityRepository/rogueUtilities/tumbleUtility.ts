@@ -1,5 +1,3 @@
-import { AbilityObject } from "../../../components/abilityObject";
-import { AbilityObjectFactory } from "../../../components/abilityObjectFactory";
 import { Ability } from "../../ability";
 import { CharacterContext } from "../../characterContext";
 import { Utility } from "../../utility";

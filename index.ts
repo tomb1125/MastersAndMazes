@@ -12,16 +12,18 @@ global.onSeedChange = (val): void => {
 
 global.onLevelChange = (val): void => {
   CharacterContext.level = val as number;
+  global.generateAbilities();
 };
 
 global.onClassChange = (val): void => {
   CharacterContext.classes = [
     Number(Object.keys(CharacterContext.Class).find(cls => CharacterContext.Class[cls] === val) as any as string)
   ];
+  global.generateAbilities();
 };
 
 
-global.generateAbilities = (val): void => {
+global.generateAbilities = (): void => {
   let currentSeed = '';
   if(CharacterContext.seed) {
     currentSeed = CharacterContext.seed;
@@ -37,7 +39,7 @@ global.generateAbilities = (val): void => {
     throw 'null output';
   }
 
-  let levelMode: number = CharacterContext.level % 3;
+  let levelMode: number = CharacterContext.level % 2;
   let description: string = '';
 
   if(levelMode === 1) {
@@ -47,19 +49,23 @@ global.generateAbilities = (val): void => {
     att2.generate()
     let att3 = new Attack();
     att3.generate()
+    let att4 = new Attack();
+    att4.generate()
 
     description = '<br>'+ 
       att1.getDescription() +'<br><br>'+
       att2.getDescription() +'<br><br>'+
-      att3.getDescription() +'<br><br>'
-  } else if(levelMode === 2) {
+      att3.getDescription() +'<br><br>'+
+      att4.getDescription() +'<br><br>'
+  } else if(levelMode === 0) {
   
-    const utl: Utility[] = new UtilityFactory(new Ability()).get(3);
+    const utl: Utility[] = new UtilityFactory(new Ability()).get(4);
 
     description = '<br>'+ 
       utl[0].getDescription() +'<br><br>'+
       utl[1].getDescription() +'<br><br>'+
-      utl[2].getDescription() +'<br><br>'
+      utl[2].getDescription() +'<br><br>'+
+      utl[3].getDescription() +'<br><br>'
 
   } else {
 
