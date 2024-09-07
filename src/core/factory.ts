@@ -6,8 +6,12 @@ export class Factory {
     items: WeightedList;
     affector: AffectsWeight;
 
+    private static EVEN_LIST_SIZE: number = 5;
+    private static evenItems: HasWeigth[];
+
     constructor(affector: AffectsWeight) {
         this.affector = affector;
+        Factory.evenItems = [];
     }
     public getAll(): WeightedList {
         return this.items;
@@ -15,6 +19,26 @@ export class Factory {
 
     public get(count: number): HasWeigth[] {
         return this.items.get(count, this.affector);
+    }
+
+    public getEvenly(count: number): HasWeigth[] {
+        if(!Factory.evenItems.length) {
+            Factory.evenItems = this.get(Factory.EVEN_LIST_SIZE);
+        }
+
+        const index = 0;
+        const newItem: HasWeigth = Factory.evenItems[index]
+        Factory.evenItems.splice(index, 1);
+
+        if(count == 0) {
+            return [];
+        }
+
+        if(count == 1) {
+            return [newItem];
+        }
+
+        return [newItem, ...this.getEvenly(count - 1)];
     }
 
     public filter(z: (x: any) => boolean): Factory {

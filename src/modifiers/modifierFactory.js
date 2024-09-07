@@ -25,6 +25,7 @@ var signatureModifier_1 = require("./modifiersRepository/signatureModifier");
 var selfHealModifier_1 = require("./modifiersRepository/selfHealModifier");
 var sneakyModifier_1 = require("./modifiersRepository/rogueModifiers/sneakyModifier");
 var greedyModifier_1 = require("./modifiersRepository/rogueModifiers/greedyModifier");
+var daggerModifier_1 = require("./modifiersRepository/rogueModifiers/daggerModifier");
 var cityModifier_1 = require("./modifiersRepository/rogueModifiers/cityModifier");
 var restedModifer_1 = require("./modifiersRepository/restedModifer");
 var repeatableModifier_1 = require("./modifiersRepository/repeatableModifier");
@@ -62,6 +63,7 @@ var ModifierFactory = /** @class */ (function (_super) {
             _this.items.push(new selfHealModifier_1.selfHealModifier(affector));
             _this.items.push(new sneakyModifier_1.sneakyModifier(affector));
             _this.items.push(new greedyModifier_1.greedyModifier(affector));
+            _this.items.push(new daggerModifier_1.daggerModifier(affector));
             _this.items.push(new cityModifier_1.cityModifier(affector));
             _this.items.push(new restedModifer_1.restedModifer(affector));
             _this.items.push(new repeatableModifier_1.repeatableModifier(affector));
@@ -95,6 +97,9 @@ var ModifierFactory = /** @class */ (function (_super) {
     }
     ModifierFactory.prototype.get = function (count) {
         return _super.prototype.get.call(this, count);
+    };
+    ModifierFactory.prototype.getEvenly = function (count) {
+        return _super.prototype.getEvenly.call(this, count);
     };
     ModifierFactory.prototype.filter = function (z) {
         return _super.prototype.filter.call(this, z);

@@ -98,7 +98,7 @@ export class Utils {
                 return
             }
     
-            items = factory.get(value);
+            items = factory.getEvenly(value);
           });
 
         return items;

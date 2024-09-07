@@ -43,6 +43,10 @@ export class UtilityFactory extends Factory {
         return super.get(count) as Utility[];
     }
 
+    public getEvenly(count: number) {
+        return super.getEvenly(count) as Utility[];
+    }
+
     public filter(z: (x: any) => boolean): UtilityFactory {
         return super.filter(z) as UtilityFactory;
     }

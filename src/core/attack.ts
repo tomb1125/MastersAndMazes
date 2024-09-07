@@ -6,7 +6,6 @@ import { Ability } from "./ability"
 import { DescriptiveNumber } from "../components/descriptiveNumber"
 import { CharacterContext } from "./characterContext"
 import { DescriptiveNumberFactory } from "../components/descriptiveNumberFactory"
-import { Modifier } from "../modifiers/modifier"
 
 export class Attack extends Activity implements CanAffectModifier {
   static MODIFIER_CHANCE: Map<number, number> = new Map([
@@ -79,10 +78,6 @@ export class Attack extends Activity implements CanAffectModifier {
     if(!this.damage && Utils.random() < Utils.ATTACK_DESCRIPTIVE_NUMBER_CHANCE) {
       this.damage = new DescriptiveNumberFactory(this).filter((x: DescriptiveNumber) => x.type === DescriptiveNumber.Type.Common).get(1)[0];
     }
-
-    //if((this.damage && this.damage?.getValue() < 5) || (!this.damage && tempDamage < 5)) {
-    //  this.modifiers.push(new ModifierFactory().filter(mod => mod.modifierType === Modifier.Type.Constraint && !this.modifiers.map(mod => mod.name).includes(mod.name)).get(1, this)[0]);
-    //}
 
     if(!this.damage) { 
       this.damage = new DescriptiveNumber(tempDamage);

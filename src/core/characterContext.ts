@@ -42,7 +42,7 @@ export namespace CharacterContext
         Constitution, //max hp?
         Intelligence, //max mana?
         Wisdom,
-        Charisma
+        Charisma //rare items
     }
 
     export enum Skill {

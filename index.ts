@@ -59,7 +59,7 @@ global.generateAbilities = (): void => {
       att4.getDescription() +'<br><br>'
   } else if(levelMode === 0) {
   
-    const utl: Utility[] = new UtilityFactory(new Ability()).get(4);
+    const utl: Utility[] = new UtilityFactory(new Ability()).getEvenly(4);
 
     description = '<br>'+ 
       utl[0].getDescription() +'<br><br>'+

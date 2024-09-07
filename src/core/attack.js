@@ -77,9 +77,6 @@ var Attack = /** @class */ (function (_super) {
         if (!this.damage && utils_1.Utils.random() < utils_1.Utils.ATTACK_DESCRIPTIVE_NUMBER_CHANCE) {
             this.damage = new descriptiveNumberFactory_1.DescriptiveNumberFactory(this).filter(function (x) { return x.type === descriptiveNumber_1.DescriptiveNumber.Type.Common; }).get(1)[0];
         }
-        //if((this.damage && this.damage?.getValue() < 5) || (!this.damage && tempDamage < 5)) {
-        //  this.modifiers.push(new ModifierFactory().filter(mod => mod.modifierType === Modifier.Type.Constraint && !this.modifiers.map(mod => mod.name).includes(mod.name)).get(1, this)[0]);
-        //}
         if (!this.damage) {
             this.damage = new descriptiveNumber_1.DescriptiveNumber(tempDamage);
         }

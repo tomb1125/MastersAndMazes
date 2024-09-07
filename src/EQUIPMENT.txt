@@ -1,11 +1,12 @@
 EQUIPMENT
-Some equipment is rare. Each player can buy only one rare item per adventure.
+Some equipment is rare. Each player can buy only one rare item per adventure per 30 charisma they have. 
+Depending on size of city charisma treshold may be modified by GM from 20 to 40.
 
 1H Weapons
 Mace - If you roll 1-15 on first attack roll this turn and hit, stun the target.
 Sword - Gain 1 Boon with Weapon attacks.
 Axe - Deal +2 damage with Weapon attacks.
-Dagger - deal +3 damage to Bloodied enemies with Weapon attacks.
+Dagger - When you roll 01-10 with Weapon attack it deals +10 damage.
 Hand Crossbow - your weapon attacks gains +10 range. Can be used only every other turn, due to reloading.
 
 1H Implements

@@ -42,7 +42,7 @@ exports.CharacterContext = CharacterContext;
         Attribute[Attribute["Constitution"] = 2] = "Constitution";
         Attribute[Attribute["Intelligence"] = 3] = "Intelligence";
         Attribute[Attribute["Wisdom"] = 4] = "Wisdom";
-        Attribute[Attribute["Charisma"] = 5] = "Charisma";
+        Attribute[Attribute["Charisma"] = 5] = "Charisma"; //rare items
     })(Attribute = CharacterContext.Attribute || (CharacterContext.Attribute = {}));
     var Skill;
     (function (Skill) {

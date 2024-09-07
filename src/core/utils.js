@@ -79,7 +79,7 @@ var Utils = /** @class */ (function () {
             if (roll <= key) {
                 return;
             }
-            items = factory.get(value);
+            items = factory.getEvenly(value);
         });
         return items;
     };

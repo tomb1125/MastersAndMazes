@@ -9,6 +9,7 @@ import { signatureModifier } from "./modifiersRepository/signatureModifier";
 import { selfHealModifier } from "./modifiersRepository/selfHealModifier";
 import { sneakyModifier } from "./modifiersRepository/rogueModifiers/sneakyModifier";
 import { greedyModifier } from "./modifiersRepository/rogueModifiers/greedyModifier";
+import { daggerModifier } from "./modifiersRepository/rogueModifiers/daggerModifier";
 import { cityModifier } from "./modifiersRepository/rogueModifiers/cityModifier";
 import { restedModifer } from "./modifiersRepository/restedModifer";
 import { repeatableModifier } from "./modifiersRepository/repeatableModifier";
@@ -46,6 +47,7 @@ export class ModifierFactory extends Factory {
             this.items.push(new selfHealModifier(affector));
             this.items.push(new sneakyModifier(affector));
             this.items.push(new greedyModifier(affector));
+            this.items.push(new daggerModifier(affector));
             this.items.push(new cityModifier(affector));
             this.items.push(new restedModifer(affector));
             this.items.push(new repeatableModifier(affector));
@@ -79,6 +81,11 @@ export class ModifierFactory extends Factory {
     public get(count: number) {
         return super.get(count) as Modifier[];
     }
+    
+
+    public getEvenly(count: number) {
+      return super.getEvenly(count) as Modifier[];
+  }
 
     public filter(z: (x: any) => boolean): ModifierFactory {
         return super.filter(z) as ModifierFactory;

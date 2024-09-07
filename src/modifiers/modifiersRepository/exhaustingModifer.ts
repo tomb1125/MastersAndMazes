@@ -10,7 +10,7 @@ export class exhaustingModifer extends Modifier {
         this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Utility ? 0.5 : 1}
         this.name = 'Exhausting';
         this.namePrefix = 'Exhausting';
-        this.description = 'When you hit or miss with this action, reduce your health to 1.';
+        this.description = 'After you use this ability, reduce your health to 1.';
         this.modifierType =Modifier.Type.Constraint;
     }
 }

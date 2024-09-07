@@ -26,7 +26,7 @@ var exhaustingModifer = /** @class */ (function (_super) {
         _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Utility ? 0.5 : 1; };
         _this.name = 'Exhausting';
         _this.namePrefix = 'Exhausting';
-        _this.description = 'When you hit or miss with this action, reduce your health to 1.';
+        _this.description = 'After you use this ability, reduce your health to 1.';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
