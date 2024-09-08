@@ -15,22 +15,22 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.breachingModifier = void 0;
-var characterContext_1 = require("../../../core/characterContext");
-var modifier_1 = require("../../modifier");
-var breachingModifier = /** @class */ (function (_super) {
-    __extends(breachingModifier, _super);
-    function breachingModifier(affector) {
+exports.managainModifier = void 0;
+var ability_1 = require("../../core/ability");
+var modifier_1 = require("../modifier");
+var managainModifier = /** @class */ (function (_super) {
+    __extends(managainModifier, _super);
+    function managainModifier(affector) {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 2; };
-        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
-        _this.name = 'Breaching';
-        _this.namePrefix = 'Breaching';
-        _this.description = 'Can only be used in a room you\'ve kicked the door down to enter.';
+        _this.modifierType = modifier_1.Modifier.Type.Improvement;
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
+        _this.name = 'Mana Gain';
+        _this.namePrefix = 'Mana Leeching';
+        _this.description = 'When you hit, gain mana equal to damage taken by enemy.';
+        _this.powerMultiplier = function (x) { return 0.75; };
         _this.longDescription = '';
-        _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
-    return breachingModifier;
+    return managainModifier;
 }(modifier_1.Modifier));
-exports.breachingModifier = breachingModifier;
+exports.managainModifier = managainModifier;

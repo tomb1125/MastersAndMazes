@@ -8,7 +8,7 @@ COMBAT AND ACTIONS:
 Combat is divided into players round and enemy round.
 During players turn, players take actions in any order.
 During enemy turn, enemies take actions in any order.
-Players round is first, however players roll for initiative. If they lose, they do not gain Standard Action turn 1.
+Players round is first, however players roll for initiative (this is Dexterity check). If they lose, they do not gain Standard Action turn 1.
 Players during their turn can perform once each of following actions: Move Action, Standard Action and Swift Action.
 
 Move Action is used to move your character by their speed, usually by 6 meters.
@@ -16,9 +16,10 @@ Standard Action is used mostly to attack and perform other key actions
 Swift Action is used to perform actions of lesser importance: drinking potion, changing weapon.
 
 EFFECTS:
-Unless specified otherwise all effects stacks. Each instance of effect have to be tracked separetly. 
+Unless specified otherwise all effects stacks. Each instance of effect have to be tracked separately. 
 Eg. you hit twice with an effect that grants you +5 damage for 3 turns. Yoy have two instances of +5 damage effect,
-which effectivly means you deal +10 damage for 3 turns.
+which effectively means you deal +10 damage for 3 turns.
+Whenever ability can repeat, note that repeats cannot loop.
 
 HEALTH AND DYING:
 After each combat regain all Mana.
@@ -28,12 +29,11 @@ When you are reduced to 0 HP, gain 1 Experience Point and roll for dying: Roll D
 1-9 - You become unconscious  until end of combat. After combat regain 1 HP and gain 1 Scar.
 10 - You rally! Set your HP to 1 and until start of your turn you have 30% chance to ignore any damage.
 11-20 - roll D10 again: 1-3 you die, 4-10 you rally as above.
-21+ - You become unconscious  until end of combat. After combat regain 1 HP and remove 1 Scar. You permanently  reduce
- one random attribute by 10 (note that it is almost impossible to get this result).
+21+ - roll D10 again: 1-7 you die, 8-10 you rally as above. (note that this is almost impossible to reach this level)
 
 CHARACTER STATS AND CREATION:
 Players have 6 attributes:
-Strenght
+Strength
 Dexterity
 Constitution
 Intelligence
@@ -47,22 +47,22 @@ Note that attributes can influence your combat skills, but do not have to.
 Players have 12 skills:
 Athletics (STR)
 Intimidation (STR)
-Sleight of Hand (DEX)
+Acrobatics (DEX)
 Stealth (DEX)
 Endurance (CON)
 Survival (CON)
 Knowledge (INT)
 Crafting (INT)
-Dungeoneering (WIS) ???
+Medicine (WIS)
 Perception (WIS)
 Persuasion (CHA)
 Streetwise (CHA)
 
 (!) During creation, you set 3 skills as trained. Gain 1 Boon when rolling for this skill.
 
-(!) Each Character additionall has following resources:
-30 Maximum Health. If reduced to 0, you can die, but usually won't.
-10 Maximum Mana. Can be used to improve combat abilities. Restored to maximum value after each combat.
+(!) Each Character additional has following resources:
+30 Maximum Health + 1 per Strength and Constitution bonus. If reduced to 0, you can die, but usually won't.
+10 Maximum Mana +1 per Intelligence and Wisdom bonus. Can be used to improve combat abilities. Restored to maximum value after each combat.
 6 Movement Speed. How fast you can move during combat.
 0 Scars. Each time you are close to death, add a scar. Someday your luck can run out.
 
@@ -77,3 +77,4 @@ Whenever you gain a level:
  - gain 1 ability, chosen from some number of generated abilities
  - gain 1 maximum Health
  - gain 1 maximum Mana
+

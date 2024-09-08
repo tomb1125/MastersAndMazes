@@ -79,7 +79,7 @@ var Utils = /** @class */ (function () {
             if (roll <= key) {
                 return;
             }
-            items = factory.getEvenly(value);
+            items = factory.get(value);
         });
         return items;
     };
@@ -93,10 +93,11 @@ var Utils = /** @class */ (function () {
     Utils.ATTACK_DESCRIPTIVE_NUMBER_CHANCE = 0.2;
     Utils.AVG_ENEMIES_ADJACENT = 1.9;
     Utils.AVG_PLAYERS = 3;
-    Utils.AVG_ENEMIES_PER_PLAYER = 5 / Utils.AVG_PLAYERS;
+    Utils.AVG_ENEMIES_PER_PLAYER = 2;
     Utils.AVG_TURN = 4;
     Utils.AVG_SCARS = 2.5;
-    Utils.EFFECT_WEIGHT_MOD = 0.9;
+    Utils.EFFECT_WEIGHT_MOD = 1.1;
+    Utils.RARE_MODIFIER = 0.1;
     Utils.BoonValue = Utils.DPS * 5;
     Utils.avgHealth = 25;
     return Utils;

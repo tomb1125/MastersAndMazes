@@ -15,22 +15,23 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.breachingModifier = void 0;
+exports.episcopalModifier = void 0;
 var characterContext_1 = require("../../../core/characterContext");
+var utils_1 = require("../../../core/utils");
 var modifier_1 = require("../../modifier");
-var breachingModifier = /** @class */ (function (_super) {
-    __extends(breachingModifier, _super);
-    function breachingModifier(affector) {
+var episcopalModifier = /** @class */ (function (_super) {
+    __extends(episcopalModifier, _super);
+    function episcopalModifier(affector) {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 2; };
-        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
-        _this.name = 'Breaching';
-        _this.namePrefix = 'Breaching';
-        _this.description = 'Can only be used in a room you\'ve kicked the door down to enter.';
+        _this.powerMultiplier = function () { return 2.5; };
+        _this.weight = function () { return utils_1.Utils.RARE_MODIFIER * (characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT); };
+        _this.name = 'Episcopal';
+        _this.namePrefix = 'Episcopal';
+        _this.description = 'Can be only used if you are a Bishop or you were personally blessed by a pope.';
         _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
-    return breachingModifier;
+    return episcopalModifier;
 }(modifier_1.Modifier));
-exports.breachingModifier = breachingModifier;
+exports.episcopalModifier = episcopalModifier;

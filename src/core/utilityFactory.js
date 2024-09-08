@@ -58,9 +58,6 @@ var UtilityFactory = /** @class */ (function (_super) {
     UtilityFactory.prototype.get = function (count) {
         return _super.prototype.get.call(this, count);
     };
-    UtilityFactory.prototype.getEvenly = function (count) {
-        return _super.prototype.getEvenly.call(this, count);
-    };
     UtilityFactory.prototype.filter = function (z) {
         return _super.prototype.filter.call(this, z);
     };

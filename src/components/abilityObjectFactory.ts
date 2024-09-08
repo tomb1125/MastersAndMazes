@@ -24,6 +24,7 @@ import { controllableLightAbilityObject } from "./abilityObjectRepository/light/
 import { colorfulLightAbilityObject } from "./abilityObjectRepository/light/colorfulLightAbilityObject";
 import { warriorCorpseAbilityObject } from "./abilityObjectRepository/corpses/warriorCorpseAbilityObject";
 import { unfinishedBusinessAbilityObject } from "./abilityObjectRepository/corpses/unfinishedBusinessAbilityObject";
+import { soulStealingAbilityObject } from "./abilityObjectRepository/corpses/soulStealingAbilityObject";
 import { skeletonAbilityObject } from "./abilityObjectRepository/corpses/skeletonAbilityObject";
 import { humanoidCorpseAbilityObject } from "./abilityObjectRepository/corpses/humanoidCorpseAbilityObject";
 import { freshCorpseAbilityObject } from "./abilityObjectRepository/corpses/freshCorpseAbilityObject";
@@ -59,6 +60,7 @@ export class AbilityObjectFactory extends Factory {
             this.items.push(new colorfulLightAbilityObject());
             this.items.push(new warriorCorpseAbilityObject());
             this.items.push(new unfinishedBusinessAbilityObject());
+            this.items.push(new soulStealingAbilityObject());
             this.items.push(new skeletonAbilityObject());
             this.items.push(new humanoidCorpseAbilityObject());
             this.items.push(new freshCorpseAbilityObject());

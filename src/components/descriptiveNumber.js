@@ -10,7 +10,7 @@ var DescriptiveNumber = /** @class */ (function () {
     DescriptiveNumber.prototype.getDescription = function () {
         if (this.description) {
             if (this.bonus) {
-                return (this.multiplier ? this.multiplier + 'x ' : '') + this.description + (this.bonus >= 0 ? ' + ' : ' - ') + this.bonus;
+                return (this.multiplier ? this.multiplier + 'x ' : '') + this.description + (this.bonus >= 0 ? ' + ' : ' ') + this.bonus;
             }
             else {
                 return (this.multiplier ? this.multiplier + 'x ' : '') + this.description;
@@ -36,7 +36,13 @@ var DescriptiveNumber = /** @class */ (function () {
         if (this.bonus === undefined) {
             this.bonus = 0;
         }
+        if (Math.ceil(this.bonus) != Math.floor(this.bonus)) {
+            throw 'cannot add non integer bonus of ' + this.bonus + ' to ' + JSON.stringify(this);
+        }
+        console.log(this.bonus);
+        console.log(val);
         this.bonus += val;
+        console.log(this.bonus);
     };
     DescriptiveNumber.prototype.addMultiplier = function (val) {
         if (this.multiplier === undefined) {
@@ -45,6 +51,9 @@ var DescriptiveNumber = /** @class */ (function () {
         this.multiplier += val;
     };
     DescriptiveNumber.prototype.compensate = function () {
+        if (!this.bonus) {
+            return;
+        }
         if (this.bonus > this.value && this.value > 0) {
             this.bonus -= Math.ceil(this.value);
             this.addMultiplier(1);

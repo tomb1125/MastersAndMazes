@@ -4,8 +4,9 @@ linking buffs (eg. bonus to all cold damage)
 tricks
 improve to text function
 non-efficiency curve x + x/5 * (x/5 - 2)
-add modfiers as denial of action and modifiers as bonus
+add numeric value to description
 add correlation between fast and duration effects
 add correlation between pristine and exnhausting
-shadow
-lokacje + woda
+
+
+utility: change to use value;

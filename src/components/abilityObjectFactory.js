@@ -39,6 +39,7 @@ var controllableLightAbilityObject_1 = require("./abilityObjectRepository/light/
 var colorfulLightAbilityObject_1 = require("./abilityObjectRepository/light/colorfulLightAbilityObject");
 var warriorCorpseAbilityObject_1 = require("./abilityObjectRepository/corpses/warriorCorpseAbilityObject");
 var unfinishedBusinessAbilityObject_1 = require("./abilityObjectRepository/corpses/unfinishedBusinessAbilityObject");
+var soulStealingAbilityObject_1 = require("./abilityObjectRepository/corpses/soulStealingAbilityObject");
 var skeletonAbilityObject_1 = require("./abilityObjectRepository/corpses/skeletonAbilityObject");
 var humanoidCorpseAbilityObject_1 = require("./abilityObjectRepository/corpses/humanoidCorpseAbilityObject");
 var freshCorpseAbilityObject_1 = require("./abilityObjectRepository/corpses/freshCorpseAbilityObject");
@@ -75,6 +76,7 @@ var AbilityObjectFactory = /** @class */ (function (_super) {
             _this.items.push(new colorfulLightAbilityObject_1.colorfulLightAbilityObject());
             _this.items.push(new warriorCorpseAbilityObject_1.warriorCorpseAbilityObject());
             _this.items.push(new unfinishedBusinessAbilityObject_1.unfinishedBusinessAbilityObject());
+            _this.items.push(new soulStealingAbilityObject_1.soulStealingAbilityObject());
             _this.items.push(new skeletonAbilityObject_1.skeletonAbilityObject());
             _this.items.push(new humanoidCorpseAbilityObject_1.humanoidCorpseAbilityObject());
             _this.items.push(new freshCorpseAbilityObject_1.freshCorpseAbilityObject());

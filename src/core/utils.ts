@@ -13,10 +13,11 @@ export class Utils {
     public static ATTACK_DESCRIPTIVE_NUMBER_CHANCE: number = 0.2;
     public static AVG_ENEMIES_ADJACENT: number = 1.9;
     public static AVG_PLAYERS: number = 3;
-    public static AVG_ENEMIES_PER_PLAYER: number = 5 / Utils.AVG_PLAYERS;
+    public static AVG_ENEMIES_PER_PLAYER: number = 2;
     public static AVG_TURN: number = 4;
     public static AVG_SCARS: number = 2.5;
-    public static EFFECT_WEIGHT_MOD: number = 0.9;
+    public static EFFECT_WEIGHT_MOD: number = 1.1;
+    public static RARE_MODIFIER: number = 0.1;
 
     public static BoonValue: number = Utils.DPS * 5;
     public static avgHealth: number = 25;
@@ -98,7 +99,7 @@ export class Utils {
                 return
             }
     
-            items = factory.getEvenly(value);
+            items = factory.get(value);
           });
 
         return items;

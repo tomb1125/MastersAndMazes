@@ -19,6 +19,7 @@ import { multipleModifier } from "./modifiersRepository/multipleModifier";
 import { undeadBaneModifier } from "./modifiersRepository/multiclassModifiers/undeadBaneModifier";
 import { cleanModifier } from "./modifiersRepository/multiclassModifiers/cleanModifier";
 import { momentumModifier } from "./modifiersRepository/momentumModifier";
+import { managainModifier } from "./modifiersRepository/managainModifier";
 import { lifestealModifier } from "./modifiersRepository/lifestealModifier";
 import { laylineModifier } from "./modifiersRepository/laylineModifier";
 import { instinctiveModifier } from "./modifiersRepository/instinctiveModifier";
@@ -31,6 +32,7 @@ import { templeModifier } from "./modifiersRepository/clericModifiers/templeModi
 import { pristineModifier } from "./modifiersRepository/clericModifiers/pristineModifier";
 import { preachingModifier } from "./modifiersRepository/clericModifiers/preachingModifier";
 import { pacifistModifier } from "./modifiersRepository/clericModifiers/pacifistModifier";
+import { episcopalModifier } from "./modifiersRepository/clericModifiers/episcopalModifier";
 import { candleModifier } from "./modifiersRepository/clericModifiers/candleModifier";
 import { cleaveModifier } from "./modifiersRepository/cleaveModifier";
 import { bloodiedModifier } from "./modifiersRepository/bloodiedModifier";
@@ -57,6 +59,7 @@ export class ModifierFactory extends Factory {
             this.items.push(new undeadBaneModifier(affector));
             this.items.push(new cleanModifier(affector));
             this.items.push(new momentumModifier(affector));
+            this.items.push(new managainModifier(affector));
             this.items.push(new lifestealModifier(affector));
             this.items.push(new laylineModifier(affector));
             this.items.push(new instinctiveModifier(affector));
@@ -69,6 +72,7 @@ export class ModifierFactory extends Factory {
             this.items.push(new pristineModifier(affector));
             this.items.push(new preachingModifier(affector));
             this.items.push(new pacifistModifier(affector));
+            this.items.push(new episcopalModifier(affector));
             this.items.push(new candleModifier(affector));
             this.items.push(new cleaveModifier(affector));
             this.items.push(new bloodiedModifier(affector));
@@ -81,11 +85,6 @@ export class ModifierFactory extends Factory {
     public get(count: number) {
         return super.get(count) as Modifier[];
     }
-    
-
-    public getEvenly(count: number) {
-      return super.getEvenly(count) as Modifier[];
-  }
 
     public filter(z: (x: any) => boolean): ModifierFactory {
         return super.filter(z) as ModifierFactory;

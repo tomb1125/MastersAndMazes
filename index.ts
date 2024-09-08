@@ -59,7 +59,7 @@ global.generateAbilities = (): void => {
       att4.getDescription() +'<br><br>'
   } else if(levelMode === 0) {
   
-    const utl: Utility[] = new UtilityFactory(new Ability()).getEvenly(4);
+    const utl: Utility[] = new UtilityFactory(new Ability()).get(4);
 
     description = '<br>'+ 
       utl[0].getDescription() +'<br><br>'+
@@ -67,6 +67,12 @@ global.generateAbilities = (): void => {
       utl[2].getDescription() +'<br><br>'+
       utl[3].getDescription() +'<br><br>'
 
+    const debugName = 'Holy Heal';
+    description = '<br>'+ 
+      new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription() +'<br><br>'+
+      new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription() +'<br><br>'+
+      new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription() +'<br><br>'+
+      new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription() +'<br><br>'
   } else {
 
   }

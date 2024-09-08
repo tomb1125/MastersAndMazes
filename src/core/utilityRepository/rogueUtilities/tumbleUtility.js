@@ -24,10 +24,10 @@ var tumbleUtility = /** @class */ (function (_super) {
     function tumbleUtility() {
         var _this = _super.call(this, 'Tumble') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
-        _this.cooldown = ability_1.Ability.Cooldown.Encounter;
+        _this.cooldown = ability_1.Ability.Cooldown.Encounter; //TODO add value
         _this.chance = 0.35;
-        _this.description = 'As a reaction, when you are attacked, you can move away 5 meters in straight line. If you can complete this movement, you fully dodge the attack. ';
         _this.compensate();
+        _this.description = 'As a reaction, when you are attacked, you can move away 5 meters in straight line. If you can complete this movement, you fully dodge the attack. ';
         return _this;
     }
     return tumbleUtility;

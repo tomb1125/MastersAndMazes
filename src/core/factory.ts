@@ -21,10 +21,11 @@ export class Factory {
         return this.items.get(count, this.affector);
     }
 
-    public getEvenly(count: number): HasWeigth[] {
-        if(!Factory.evenItems.length) {
+    public getEvenly(count: number): HasWeigth[] { //TODO fix or rework
+        if(Factory.evenItems.length == 0) {
             Factory.evenItems = this.get(Factory.EVEN_LIST_SIZE);
         }
+        console.log(Factory.evenItems.length);
 
         const index = 0;
         const newItem: HasWeigth = Factory.evenItems[index]

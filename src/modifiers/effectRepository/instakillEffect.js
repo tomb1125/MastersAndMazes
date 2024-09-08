@@ -24,7 +24,7 @@ var instakillEffect = /** @class */ (function (_super) {
     function instakillEffect() {
         var _this = _super.call(this) || this;
         _this.powerBonus = function () { return -1000; };
-        _this.weight = function () { return 0.1; };
+        _this.weight = function () { return utils_1.Utils.RARE_MODIFIER; };
         _this.name = 'Instakill';
         _this.namePrefix = 'Instakill';
         _this.description = 'Instakill - if applied successfully, target dies.';

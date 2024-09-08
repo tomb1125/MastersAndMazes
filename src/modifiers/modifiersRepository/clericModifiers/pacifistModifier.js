@@ -22,7 +22,7 @@ var pacifistModifier = /** @class */ (function (_super) {
     __extends(pacifistModifier, _super);
     function pacifistModifier(affector) {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 1.5; };
+        _this.powerMultiplier = function () { return 1.7; };
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.name = 'Pacifist';
         _this.namePrefix = 'Pacifists';

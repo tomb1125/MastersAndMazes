@@ -14,11 +14,12 @@ export class Utility extends Activity implements CanAffectModifier, HasWeigth {
     weight = (x?: AffectsWeight) => {return 1};
     objects: AbilityObject[];
     duration: DescriptiveNumber;
+    value: DescriptiveNumber;
 
     static MODIFIER_CHANCE: Map<number, number> = new Map([
       [0.3, 0],
       [0.8, 1],
-      [1, 2],
+      [1, 2], //TODO restore this
     ]);
     
     static EFFECT_WEIGHT_MOD: number;
@@ -51,13 +52,30 @@ export class Utility extends Activity implements CanAffectModifier, HasWeigth {
     protected compensate(): void {
       this.chance = this.chance * ModifierFactory.getDPSMultiplier(this.modifiers, this)
 
+      if(ModifierFactory.getDPSBonus(this.modifiers, this) > 0) {
+        throw 'dps bonus does not work for utils '+JSON.stringify(this.modifiers)
+      }
+
+
       const repeat: repeatableModifier = new repeatableModifier();
       if(this.chance > 1) {
-        let tempRepeat = Math.ceil(this.chance);
-        this.chance/=tempRepeat;
+        if(this.cooldown === Ability.Cooldown.Encounter) {
+          if(!this.value) {
+            throw 'cooldown ability with no value to compensate '+JSON.stringify(this);
+          }
 
-        repeat.setValue(tempRepeat);
-        this.modifiers.push(repeat);        
+          const newChanceNumeric: number = 0.9;
+          this.value.addBonus(Math.ceil(this.value.getValue() * (this.chance - newChanceNumeric) / newChanceNumeric));
+          this.value.compensate();
+          this.chance = newChanceNumeric;
+
+        } else {
+          let tempRepeat = Math.ceil(this.chance);
+          this.chance/=tempRepeat;
+
+          repeat.setValue(tempRepeat);
+          this.modifiers.push(repeat);
+        }        
       }
     }
 }

@@ -48,18 +48,32 @@ var Utility = /** @class */ (function (_super) {
     };
     Utility.prototype.compensate = function () {
         this.chance = this.chance * modifierFactory_1.ModifierFactory.getDPSMultiplier(this.modifiers, this);
+        if (modifierFactory_1.ModifierFactory.getDPSBonus(this.modifiers, this) > 0) {
+            throw 'dps bonus does not work for utils ' + JSON.stringify(this.modifiers);
+        }
         var repeat = new repeatableModifier_1.repeatableModifier();
         if (this.chance > 1) {
-            var tempRepeat = Math.ceil(this.chance);
-            this.chance /= tempRepeat;
-            repeat.setValue(tempRepeat);
-            this.modifiers.push(repeat);
+            if (this.cooldown === ability_1.Ability.Cooldown.Encounter) {
+                if (!this.value) {
+                    throw 'cooldown ability with no value to compensate ' + JSON.stringify(this);
+                }
+                var newChanceNumeric = 0.9;
+                this.value.addBonus(Math.ceil(this.value.getValue() * (this.chance - newChanceNumeric) / newChanceNumeric));
+                this.value.compensate();
+                this.chance = newChanceNumeric;
+            }
+            else {
+                var tempRepeat = Math.ceil(this.chance);
+                this.chance /= tempRepeat;
+                repeat.setValue(tempRepeat);
+                this.modifiers.push(repeat);
+            }
         }
     };
     Utility.MODIFIER_CHANCE = new Map([
         [0.3, 0],
         [0.8, 1],
-        [1, 2],
+        [1, 2], //TODO restore this
     ]);
     return Utility;
 }(activity_1.Activity));

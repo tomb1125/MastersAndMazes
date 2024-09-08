@@ -35,6 +35,7 @@ var multipleModifier_1 = require("./modifiersRepository/multipleModifier");
 var undeadBaneModifier_1 = require("./modifiersRepository/multiclassModifiers/undeadBaneModifier");
 var cleanModifier_1 = require("./modifiersRepository/multiclassModifiers/cleanModifier");
 var momentumModifier_1 = require("./modifiersRepository/momentumModifier");
+var managainModifier_1 = require("./modifiersRepository/managainModifier");
 var lifestealModifier_1 = require("./modifiersRepository/lifestealModifier");
 var laylineModifier_1 = require("./modifiersRepository/laylineModifier");
 var instinctiveModifier_1 = require("./modifiersRepository/instinctiveModifier");
@@ -47,6 +48,7 @@ var templeModifier_1 = require("./modifiersRepository/clericModifiers/templeModi
 var pristineModifier_1 = require("./modifiersRepository/clericModifiers/pristineModifier");
 var preachingModifier_1 = require("./modifiersRepository/clericModifiers/preachingModifier");
 var pacifistModifier_1 = require("./modifiersRepository/clericModifiers/pacifistModifier");
+var episcopalModifier_1 = require("./modifiersRepository/clericModifiers/episcopalModifier");
 var candleModifier_1 = require("./modifiersRepository/clericModifiers/candleModifier");
 var cleaveModifier_1 = require("./modifiersRepository/cleaveModifier");
 var bloodiedModifier_1 = require("./modifiersRepository/bloodiedModifier");
@@ -73,6 +75,7 @@ var ModifierFactory = /** @class */ (function (_super) {
             _this.items.push(new undeadBaneModifier_1.undeadBaneModifier(affector));
             _this.items.push(new cleanModifier_1.cleanModifier(affector));
             _this.items.push(new momentumModifier_1.momentumModifier(affector));
+            _this.items.push(new managainModifier_1.managainModifier(affector));
             _this.items.push(new lifestealModifier_1.lifestealModifier(affector));
             _this.items.push(new laylineModifier_1.laylineModifier(affector));
             _this.items.push(new instinctiveModifier_1.instinctiveModifier(affector));
@@ -85,6 +88,7 @@ var ModifierFactory = /** @class */ (function (_super) {
             _this.items.push(new pristineModifier_1.pristineModifier(affector));
             _this.items.push(new preachingModifier_1.preachingModifier(affector));
             _this.items.push(new pacifistModifier_1.pacifistModifier(affector));
+            _this.items.push(new episcopalModifier_1.episcopalModifier(affector));
             _this.items.push(new candleModifier_1.candleModifier(affector));
             _this.items.push(new cleaveModifier_1.cleaveModifier(affector));
             _this.items.push(new bloodiedModifier_1.bloodiedModifier(affector));
@@ -97,9 +101,6 @@ var ModifierFactory = /** @class */ (function (_super) {
     }
     ModifierFactory.prototype.get = function (count) {
         return _super.prototype.get.call(this, count);
-    };
-    ModifierFactory.prototype.getEvenly = function (count) {
-        return _super.prototype.getEvenly.call(this, count);
     };
     ModifierFactory.prototype.filter = function (z) {
         return _super.prototype.filter.call(this, z);

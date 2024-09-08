@@ -20,7 +20,7 @@ export class DescriptiveNumber implements HasWeigth{
     public getDescription(): string {
         if(this.description) {
             if(this.bonus) {
-                return (this.multiplier ? this.multiplier + 'x ' : '') + this.description + (this.bonus >= 0 ? ' + ' : ' - ') + this.bonus;
+                return (this.multiplier ? this.multiplier + 'x ' : '') + this.description + (this.bonus >= 0 ? ' + ' : ' ') + this.bonus;
             } else {
                 return (this.multiplier ? this.multiplier + 'x ' : '') + this.description;
             }
@@ -52,7 +52,13 @@ export class DescriptiveNumber implements HasWeigth{
             this.bonus = 0;
         }
 
+        if(Math.ceil(this.bonus) != Math.floor(this.bonus)) {
+            throw 'cannot add non integer bonus of '+this.bonus+' to '+JSON.stringify(this);
+        }
+        console.log(this.bonus)
+        console.log(val)
         this.bonus += val;
+        console.log(this.bonus)
     }
 
     public addMultiplier(val: number) : void {
@@ -64,6 +70,10 @@ export class DescriptiveNumber implements HasWeigth{
     }
 
     public compensate() {
+        if(!this.bonus) {
+            return;
+        }
+
         if(this.bonus > this.value && this.value > 0) {
             this.bonus -= Math.ceil(this.value);
             this.addMultiplier(1);
