@@ -23,10 +23,10 @@ var cleaveModifier = /** @class */ (function (_super) {
     function cleaveModifier(affector) {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 0.5; };
-        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.cooldown) === ability_1.Ability.Cooldown.Encounter ? 1 : 0; };
         _this.name = 'Cleave';
         _this.namePrefix = 'Cleaving'; //TODO cleave could scale
-        _this.description = 'After this action, repeat this action 1 time, without paying mana cost. With this repeated attack you must target an enemy adjacent to you or last target.';
+        _this.description = 'After this action, repeat this action 1 time, without paying mana cost. With this repeated action you must target creature adjacent to you or last target.';
         _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;

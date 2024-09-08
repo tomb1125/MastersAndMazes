@@ -17,7 +17,20 @@ var Utils = /** @class */ (function () {
         return Utils.DPS + Utils.POWER_PER_LEVEL * (level - 1);
     };
     Utils.getRangeCoeficient = function (range) {
-        return (21 + range) / (20 + 2 * range);
+        if (range <= 1)
+            return 1;
+        if (range <= 5)
+            return 0.95;
+        if (range <= 10)
+            return 0.90;
+        if (range <= 15)
+            return 0.85;
+        if (range <= 20)
+            return 0.80;
+        if (range <= 25)
+            return 0.75;
+        throw 'unsupported range ' + range;
+        //return (21 + range )/(20 + 2 * range)
     };
     Utils.getDurationCoeficient = function (dur) {
         var coef = 0;
@@ -96,6 +109,9 @@ var Utils = /** @class */ (function () {
     Utils.AVG_ENEMIES_PER_PLAYER = 2;
     Utils.AVG_TURN = 4;
     Utils.AVG_SCARS = 2.5;
+    Utils.AVG_RALLIES = 1;
+    Utils.AVG_POTIONS = 2.5;
+    Utils.AVG_CLOSTEST_DISTANCE = 10;
     Utils.EFFECT_WEIGHT_MOD = 1.1;
     Utils.RARE_MODIFIER = 0.1;
     Utils.BoonValue = Utils.DPS * 5;

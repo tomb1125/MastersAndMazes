@@ -20,8 +20,11 @@ var weightedList_1 = require("../core/weightedList");
 var factory_1 = require("../core/factory");
 //factory imports
 var adjacentEnemiesDescriptiveNumber_1 = require("./descriptiveNumberRepository/small/adjacentEnemiesDescriptiveNumber");
+var potionsDrankDescriptiveNumber_1 = require("./descriptiveNumberRepository/potionsDrankDescriptiveNumber");
 var numberOfTurnsDescriptiveNumber_1 = require("./descriptiveNumberRepository/numberOfTurnsDescriptiveNumber");
 var numberOfScarsDescriptiveNumber_1 = require("./descriptiveNumberRepository/numberOfScarsDescriptiveNumber");
+var numberOfRalliesDescriptiveNumber_1 = require("./descriptiveNumberRepository/numberOfRalliesDescriptiveNumber");
+var minimumDistanceDescriptiveNumber_1 = require("./descriptiveNumberRepository/minimumDistanceDescriptiveNumber");
 var oneHourDescriptiveNumber_1 = require("./descriptiveNumberRepository/duration/oneHourDescriptiveNumber");
 var d4MinuteDescriptiveNumber_1 = require("./descriptiveNumberRepository/duration/d4MinuteDescriptiveNumber");
 var damageTakenDescriptiveNumber_1 = require("./descriptiveNumberRepository/damageTakenDescriptiveNumber");
@@ -34,8 +37,11 @@ var DescriptiveNumberFactory = /** @class */ (function (_super) {
         if (list === undefined) {
             _this.items = new weightedList_1.WeightedList();
             _this.items.push(new adjacentEnemiesDescriptiveNumber_1.adjacentEnemiesDescriptiveNumber());
+            _this.items.push(new potionsDrankDescriptiveNumber_1.potionsDrankDescriptiveNumber());
             _this.items.push(new numberOfTurnsDescriptiveNumber_1.numberOfTurnsDescriptiveNumber());
             _this.items.push(new numberOfScarsDescriptiveNumber_1.numberOfScarsDescriptiveNumber());
+            _this.items.push(new numberOfRalliesDescriptiveNumber_1.numberOfRalliesDescriptiveNumber());
+            _this.items.push(new minimumDistanceDescriptiveNumber_1.minimumDistanceDescriptiveNumber());
             _this.items.push(new oneHourDescriptiveNumber_1.oneHourDescriptiveNumber());
             _this.items.push(new d4MinuteDescriptiveNumber_1.d4MinuteDescriptiveNumber());
             _this.items.push(new damageTakenDescriptiveNumber_1.damageTakenDescriptiveNumber());

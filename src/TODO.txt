@@ -6,7 +6,7 @@ improve to text function
 non-efficiency curve x + x/5 * (x/5 - 2)
 add numeric value to description
 add correlation between fast and duration effects
-add correlation between pristine and exnhausting
+add correlation between pristine and exhausting 
 
 
 utility: change to use value;

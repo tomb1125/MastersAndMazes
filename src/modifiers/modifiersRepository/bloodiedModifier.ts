@@ -8,7 +8,7 @@ export class bloodiedModifier extends Modifier {
     constructor(affector: AffectsWeight) {
         super();
         this.powerMultiplier = () => {return 1.5};
-        this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Attack ? 1 : Utils.RARE_MODIFIER}
+        this.weight = (x?: AffectsWeight) => {return x?.cooldown === Ability.Cooldown.Encounter ? 1 : Utils.RARE_MODIFIER}
         this.weight = () => {return 1}
         this.name = 'Bloody';
         this.namePrefix = 'Bloody';

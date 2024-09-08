@@ -11,10 +11,10 @@ export class gainEffectModifier extends Modifier {
     constructor(aff: AffectsWeight) {
         super();
         let buffFactory: EffectFactory = new EffectFactory(aff).filter((eff: Effect) => eff.subtype === Effect.Subtype.Buff);
-        this.modifierType =Modifier.Type.Improvement;
-        this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Attack ? buffFactory.items.items.length * Utils.EFFECT_WEIGHT_MOD : 0}
+        this.modifierType = Modifier.Type.Improvement;
+        this.weight = (x?: AffectsWeight) => {return x?.cooldown === Ability.Cooldown.Encounter ? buffFactory.items.items.length * Utils.EFFECT_WEIGHT_MOD : 0}
         this.effect = buffFactory.get(1)[0] as Effect;
-        this.description = 'When you hit, gain an effect: '+this.effect.description;
+        this.description = 'When you succeed roll, also gain an effect: '+this.effect.description;
         this.namePrefix = this.effect.namePrefix;
         this.name = 'Gain '+this.effect.name;
         this.powerBonus = (x: CanAffectModifier) => {return x.chance != null ?  x.chance * this.effect.powerBonus(x) : -100000 };

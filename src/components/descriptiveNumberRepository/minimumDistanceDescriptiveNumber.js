@@ -15,18 +15,18 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.soulStealingAbilityObject = void 0;
-var abilityObject_1 = require("../../abilityObject");
-var soulStealingAbilityObject = /** @class */ (function (_super) {
-    __extends(soulStealingAbilityObject, _super);
-    function soulStealingAbilityObject() {
-        var _this = _super.call(this, 'Soul Steal') || this;
-        _this.description = 'any person you killed or assisted in killing';
-        _this.rarity = 0.5;
-        _this.prefix = 'Soul Stealing';
-        _this.isCorpse = true;
+exports.minimumDistanceDescriptiveNumber = void 0;
+var utils_1 = require("../../core/utils");
+var descriptiveNumber_1 = require("../descriptiveNumber");
+var minimumDistanceDescriptiveNumber = /** @class */ (function (_super) {
+    __extends(minimumDistanceDescriptiveNumber, _super);
+    function minimumDistanceDescriptiveNumber(value) {
+        var _this = _super.call(this, utils_1.Utils.AVG_CLOSTEST_DISTANCE) || this;
+        _this.lowValue = 1;
+        _this.description = 'the distance to the closest ally in combat';
+        _this.type = descriptiveNumber_1.DescriptiveNumber.Type.Common;
         return _this;
     }
-    return soulStealingAbilityObject;
-}(abilityObject_1.AbilityObject));
-exports.soulStealingAbilityObject = soulStealingAbilityObject;
+    return minimumDistanceDescriptiveNumber;
+}(descriptiveNumber_1.DescriptiveNumber));
+exports.minimumDistanceDescriptiveNumber = minimumDistanceDescriptiveNumber;

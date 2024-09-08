@@ -16,6 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.tumbleUtility = void 0;
+var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
 var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
@@ -26,8 +27,9 @@ var tumbleUtility = /** @class */ (function (_super) {
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.cooldown = ability_1.Ability.Cooldown.Encounter; //TODO add value
         _this.chance = 0.35;
+        _this.value = new descriptiveNumber_1.DescriptiveNumber(5);
         _this.compensate();
-        _this.description = 'As a reaction, when you are attacked, you can move away 5 meters in straight line. If you can complete this movement, you fully dodge the attack. ';
+        _this.description = 'As a reaction, when you are attacked, you can move away ' + _this.value.getDescription() + ' meters in straight line. If you can move outside attack range, you dodge the attack. ';
         return _this;
     }
     return tumbleUtility;

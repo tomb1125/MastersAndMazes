@@ -4,8 +4,11 @@ import { Factory } from "../core/factory";
 import { AffectsWeight } from "../core/affectsWeight";
 //factory imports
 import { adjacentEnemiesDescriptiveNumber } from "./descriptiveNumberRepository/small/adjacentEnemiesDescriptiveNumber";
+import { potionsDrankDescriptiveNumber } from "./descriptiveNumberRepository/potionsDrankDescriptiveNumber";
 import { numberOfTurnsDescriptiveNumber } from "./descriptiveNumberRepository/numberOfTurnsDescriptiveNumber";
 import { numberOfScarsDescriptiveNumber } from "./descriptiveNumberRepository/numberOfScarsDescriptiveNumber";
+import { numberOfRalliesDescriptiveNumber } from "./descriptiveNumberRepository/numberOfRalliesDescriptiveNumber";
+import { minimumDistanceDescriptiveNumber } from "./descriptiveNumberRepository/minimumDistanceDescriptiveNumber";
 import { oneHourDescriptiveNumber } from "./descriptiveNumberRepository/duration/oneHourDescriptiveNumber";
 import { d4MinuteDescriptiveNumber } from "./descriptiveNumberRepository/duration/d4MinuteDescriptiveNumber";
 import { damageTakenDescriptiveNumber } from "./descriptiveNumberRepository/damageTakenDescriptiveNumber";
@@ -18,8 +21,11 @@ export class DescriptiveNumberFactory extends Factory {
         if(list === undefined) {
             this.items = new WeightedList();
             this.items.push(new adjacentEnemiesDescriptiveNumber());
+            this.items.push(new potionsDrankDescriptiveNumber());
             this.items.push(new numberOfTurnsDescriptiveNumber());
             this.items.push(new numberOfScarsDescriptiveNumber());
+            this.items.push(new numberOfRalliesDescriptiveNumber());
+            this.items.push(new minimumDistanceDescriptiveNumber());
             this.items.push(new oneHourDescriptiveNumber());
             this.items.push(new d4MinuteDescriptiveNumber());
             this.items.push(new damageTakenDescriptiveNumber());

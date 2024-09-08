@@ -155,15 +155,17 @@ export class Attack extends Activity implements CanAffectModifier {
         this.damage = new DescriptiveNumber(3.5);
       }
       
-      if(this.chance > 1) {
-        this.chance = 1;
+      const maxChance = 0.9;
+
+      if(this.chance > maxChance) {
+        this.chance = maxChance;
       }
 
       let tempMana: number = Math.ceil(this.getPower() - 0.00001);
 
       if(this.manaCost + tempMana < 0) {
         this.chance += 0.1;
-        if(this.chance > 1) {
+        if(this.chance > maxChance) {
           this.damage.addBonus(1);
           this.damage.compensate(); ///= new DescriptiveNumber(this.damage.getValue()+1); //TODO allow DescriptiveNumbers to get static bonuses
         }

@@ -16,6 +16,10 @@ export class Utils {
     public static AVG_ENEMIES_PER_PLAYER: number = 2;
     public static AVG_TURN: number = 4;
     public static AVG_SCARS: number = 2.5;
+    public static AVG_RALLIES: number = 1;
+    public static AVG_POTIONS: number = 2.5;
+    public static AVG_CLOSTEST_DISTANCE: number = 10;
+
     public static EFFECT_WEIGHT_MOD: number = 1.1;
     public static RARE_MODIFIER: number = 0.1;
 
@@ -39,7 +43,16 @@ export class Utils {
     }
     
     public static getRangeCoeficient(range: number): number {
-        return (21 + range )/(20 + 2 * range)
+        if(range <= 1) return 1;
+        if(range <= 5) return 0.95;
+        if(range <= 10) return 0.90;
+        if(range <= 15) return 0.85;
+        if(range <= 20) return 0.80;
+        if(range <= 25) return 0.75;
+
+        throw 'unsupported range '+range;
+
+        //return (21 + range )/(20 + 2 * range)
     }
 
     public static getDurationCoeficient(dur: number): number {

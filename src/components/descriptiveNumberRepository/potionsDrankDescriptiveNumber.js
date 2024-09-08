@@ -15,18 +15,18 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.soulStealingAbilityObject = void 0;
-var abilityObject_1 = require("../../abilityObject");
-var soulStealingAbilityObject = /** @class */ (function (_super) {
-    __extends(soulStealingAbilityObject, _super);
-    function soulStealingAbilityObject() {
-        var _this = _super.call(this, 'Soul Steal') || this;
-        _this.description = 'any person you killed or assisted in killing';
-        _this.rarity = 0.5;
-        _this.prefix = 'Soul Stealing';
-        _this.isCorpse = true;
+exports.potionsDrankDescriptiveNumber = void 0;
+var utils_1 = require("../../core/utils");
+var descriptiveNumber_1 = require("../descriptiveNumber");
+var potionsDrankDescriptiveNumber = /** @class */ (function (_super) {
+    __extends(potionsDrankDescriptiveNumber, _super);
+    function potionsDrankDescriptiveNumber(value) {
+        var _this = _super.call(this, utils_1.Utils.AVG_POTIONS) || this;
+        _this.lowValue = 0;
+        _this.description = 'the number of potions you drank today';
+        _this.type = descriptiveNumber_1.DescriptiveNumber.Type.Common;
         return _this;
     }
-    return soulStealingAbilityObject;
-}(abilityObject_1.AbilityObject));
-exports.soulStealingAbilityObject = soulStealingAbilityObject;
+    return potionsDrankDescriptiveNumber;
+}(descriptiveNumber_1.DescriptiveNumber));
+exports.potionsDrankDescriptiveNumber = potionsDrankDescriptiveNumber;

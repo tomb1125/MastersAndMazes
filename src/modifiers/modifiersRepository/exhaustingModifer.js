@@ -23,7 +23,7 @@ var exhaustingModifer = /** @class */ (function (_super) {
     function exhaustingModifer(affector) {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 2.5; };
-        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Utility ? 0.5 : 1; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.cooldown) != ability_1.Ability.Cooldown.Encounter ? 0.5 : 1; };
         _this.name = 'Exhausting';
         _this.namePrefix = 'Exhausting';
         _this.description = 'After you use this ability, reduce your health to 1.';

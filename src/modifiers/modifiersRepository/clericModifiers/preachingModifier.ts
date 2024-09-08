@@ -10,7 +10,7 @@ export class preachingModifier extends Modifier {
         this.powerMultiplier = () => 1.5; 
 
         this.weight = (affector) => {
-            return affector != undefined && affector.type === Ability.Type.Utility
+            return affector != undefined && affector?.cooldown != Ability.Cooldown.Encounter
               ? CharacterContext.classes.includes(CharacterContext.Class.Cleric)
                 ? CharacterContext.IN_CLASS_MODIFIER
                 : CharacterContext.OUT_OF_CLASS_WEIGHT

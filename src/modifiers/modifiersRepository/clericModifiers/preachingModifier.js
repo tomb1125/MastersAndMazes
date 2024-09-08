@@ -25,7 +25,7 @@ var preachingModifier = /** @class */ (function (_super) {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 1.5; };
         _this.weight = function (affector) {
-            return affector != undefined && affector.type === ability_1.Ability.Type.Utility
+            return affector != undefined && (affector === null || affector === void 0 ? void 0 : affector.cooldown) != ability_1.Ability.Cooldown.Encounter
                 ? characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric)
                     ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER
                     : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT

@@ -74,8 +74,8 @@ export class DescriptiveNumber implements HasWeigth{
             return;
         }
 
-        if(this.bonus > this.value && this.value > 0) {
-            this.bonus -= Math.ceil(this.value);
+        if(this.bonus >= this.value && this.value > 0) {
+            this.bonus -= Math.ceil(this.value); //TODO make this correct when value is not an integer
             this.addMultiplier(1);
 
             this.compensate();

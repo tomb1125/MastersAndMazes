@@ -68,7 +68,7 @@ global.generateAbilities = (): void => {
       utl[3].getDescription() +'<br><br>'
 
     const debugName = 'Holy Heal';
-    description = '<br>'+ 
+    //description = '<br>'+ 
       new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription() +'<br><br>'+
       new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription() +'<br><br>'+
       new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription() +'<br><br>'+
