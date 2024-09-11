@@ -22,7 +22,7 @@ var cleanModifier = /** @class */ (function (_super) {
     __extends(cleanModifier, _super);
     function cleanModifier(affector) {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 1.3; };
+        _this.powerMultiplier = function () { return 1.2; };
         _this.weight = function (affector) {
             return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ||
                 characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Wizard)

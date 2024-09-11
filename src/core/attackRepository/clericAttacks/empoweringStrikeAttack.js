@@ -15,26 +15,26 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.backstabAttack = void 0;
+exports.empoweringStrikeAttack = void 0;
 var compensationModifier_1 = require("../../../modifiers/modifiersRepository/compensationModifier");
 var attack_1 = require("../../attack");
 var characterContext_1 = require("../../characterContext");
-var backstabAttack = /** @class */ (function (_super) {
-    __extends(backstabAttack, _super);
-    function backstabAttack(affector) {
-        var _this = _super.call(this, 'Backstab') || this;
-        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
-        _this.chance = 0.9;
-        _this.manaCost = 0;
-        _this.range = 1;
-        _this.coreDescription = 'When you hit, deal damage. Double this damage if an enemy is not aware of you, is Stunned, is affected by Rogue\'s Poison or both is adjacent to your ally and did not attack you last turn';
+var empoweringStrikeAttack = /** @class */ (function (_super) {
+    __extends(empoweringStrikeAttack, _super);
+    function empoweringStrikeAttack(affector) {
+        var _this = _super.call(this, 'Empowering Strike') || this;
+        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
+        _this.chance = 0.3;
+        _this.manaCost = 1;
+        _this.range = 10;
+        _this.coreDescription = 'When you hit, deal damage and gain 5 Righteus Lights until end of the encounter. You and each ally within 10 squares can use one of the lights with a Swift Action to either heal 5 Health or gain 1 Boon on nearest chance roll. ';
         _this.subtype = attack_1.Attack.Subtype.Spell;
         _this.initModifiers();
-        _this.modifiers.push(new compensationModifier_1.compensationModifier(_this, 'Backstab', 0.75, 0));
+        _this.modifiers.push(new compensationModifier_1.compensationModifier(_this, 'Righteus Lights', 0, -15));
         _this.initDamage();
         _this.compensate();
         return _this;
     }
-    return backstabAttack;
+    return empoweringStrikeAttack;
 }(attack_1.Attack));
-exports.backstabAttack = backstabAttack;
+exports.empoweringStrikeAttack = empoweringStrikeAttack;

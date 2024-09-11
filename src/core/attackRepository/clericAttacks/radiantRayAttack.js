@@ -30,7 +30,7 @@ var radiantRayAttack = /** @class */ (function (_super) {
         _this.coreDescription = 'When you hit, deal damage and apply effect: Holy Flame - enemy sheds light in 5 squares radius, cannot become invisible and has 1 Bane on all attacks (this Bane does not stack). This effect lasts until end of encounter. ';
         _this.subtype = attack_1.Attack.Subtype.Spell;
         _this.initModifiers();
-        _this.modifiers.push(new compensationModifier_1.compensationModifier('Radiant Flame', 0.8, 0));
+        _this.modifiers.push(new compensationModifier_1.compensationModifier(_this, 'Radiant Flame', 0.8, 0));
         _this.initDamage();
         _this.compensate();
         return _this;

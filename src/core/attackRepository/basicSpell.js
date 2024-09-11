@@ -15,30 +15,30 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.basicAttack = void 0;
+exports.basicSpell = void 0;
 var classUtils_1 = require("../../characters/classUtils");
 var attack_1 = require("../attack");
 var characterContext_1 = require("../characterContext");
 var utils_1 = require("../utils");
-var basicAttack = /** @class */ (function (_super) {
-    __extends(basicAttack, _super);
-    function basicAttack(affector) {
-        var _this = _super.call(this, 'Basic Attack') || this;
-        _this.subtype = attack_1.Attack.Subtype.Weapon;
-        _this.coreDescription = 'When you hit, deal damage. ';
+var basicSpell = /** @class */ (function (_super) {
+    __extends(basicSpell, _super);
+    function basicSpell(affector) {
+        var _this = _super.call(this, 'Basic Spell') || this;
         _this.weight = function (x) {
             var classRoll = utils_1.Utils.D(characterContext_1.CharacterContext.classes.length) - 1;
             var primaryStat = classUtils_1.ClassUtils.getClass(characterContext_1.CharacterContext.Class[characterContext_1.CharacterContext.classes[classRoll]]).primaryAttribute;
-            if ([characterContext_1.CharacterContext.Attribute.Strength, characterContext_1.CharacterContext.Attribute.Dexterity, characterContext_1.CharacterContext.Attribute.Constitution].includes(primaryStat)) {
+            if ([characterContext_1.CharacterContext.Attribute.Intelligence, characterContext_1.CharacterContext.Attribute.Wisdom, characterContext_1.CharacterContext.Attribute.Charisma].includes(primaryStat)) {
                 return 1;
             }
             else {
                 return 0.2;
             }
         };
+        _this.subtype = attack_1.Attack.Subtype.Spell;
+        _this.coreDescription = 'When you hit, deal damage. ';
         _this.generate();
         return _this;
     }
-    return basicAttack;
+    return basicSpell;
 }(attack_1.Attack));
-exports.basicAttack = basicAttack;
+exports.basicSpell = basicSpell;

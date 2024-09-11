@@ -1,3 +1,6 @@
+import { AffectsWeight } from "../../core/affectsWeight";
+import { CanAffectModifier } from "../../core/canAffectModifier";
+import { Utils } from "../../core/utils";
 import { Modifier } from "../modifier";
 
 export class compensationModifier extends Modifier {
@@ -6,12 +9,14 @@ export class compensationModifier extends Modifier {
     description = '';
     weight = () => {return 0} //this is purposfully excluded by design
 
-    constructor(name: any, mult?: number, bonus?: number) {
+    constructor(affector: AffectsWeight, name?: any, mult?: number, bonus?: number) {
         super();
         this.name = name ? name : '';
-        if(mult && bonus) {
+        if(mult) {
             this.powerMultiplier = () => mult;
-            this.powerMultiplier = () => bonus;
+        }
+        if(bonus) {
+            this.powerBonus = (x: CanAffectModifier) => {return x.chance != null && x.range != null ?  x.chance / Utils.getRangeCoeficient(x.range) * bonus : -1000000 };
         }
     }
 }

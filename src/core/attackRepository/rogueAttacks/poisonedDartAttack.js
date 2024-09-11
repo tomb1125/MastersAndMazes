@@ -15,26 +15,26 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.backstabAttack = void 0;
+exports.poisonedDartAttack = void 0;
 var compensationModifier_1 = require("../../../modifiers/modifiersRepository/compensationModifier");
 var attack_1 = require("../../attack");
 var characterContext_1 = require("../../characterContext");
-var backstabAttack = /** @class */ (function (_super) {
-    __extends(backstabAttack, _super);
-    function backstabAttack(affector) {
-        var _this = _super.call(this, 'Backstab') || this;
+var poisonedDartAttack = /** @class */ (function (_super) {
+    __extends(poisonedDartAttack, _super);
+    function poisonedDartAttack(affector) {
+        var _this = _super.call(this, 'Poisoned Dart') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
-        _this.chance = 0.9;
+        _this.chance = 0.4;
         _this.manaCost = 0;
-        _this.range = 1;
-        _this.coreDescription = 'When you hit, deal damage. Double this damage if an enemy is not aware of you, is Stunned, is affected by Rogue\'s Poison or both is adjacent to your ally and did not attack you last turn';
+        _this.range = 10;
+        _this.coreDescription = 'When you hit, deal damage and apply effect - Rogue\'s Poison which lasts 3 turns. When it expires from duration, target takes 50 damage.';
         _this.subtype = attack_1.Attack.Subtype.Spell;
         _this.initModifiers();
-        _this.modifiers.push(new compensationModifier_1.compensationModifier(_this, 'Backstab', 0.75, 0));
+        _this.modifiers.push(new compensationModifier_1.compensationModifier(_this, 'Poisoned Dart', 0, -20));
         _this.initDamage();
         _this.compensate();
         return _this;
     }
-    return backstabAttack;
+    return poisonedDartAttack;
 }(attack_1.Attack));
-exports.backstabAttack = backstabAttack;
+exports.poisonedDartAttack = poisonedDartAttack;

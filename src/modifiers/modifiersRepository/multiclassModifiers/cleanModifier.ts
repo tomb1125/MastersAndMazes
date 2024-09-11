@@ -7,7 +7,7 @@ export class cleanModifier extends Modifier {
     
     constructor(affector: AffectsWeight) {
         super();
-        this.powerMultiplier = () => 1.3; 
+        this.powerMultiplier = () => 1.2; 
         this.weight = (affector) => {
           return CharacterContext.classes.includes(CharacterContext.Class.Cleric) ||
                  CharacterContext.classes.includes(CharacterContext.Class.Wizard)
