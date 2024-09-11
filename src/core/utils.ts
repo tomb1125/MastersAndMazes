@@ -10,15 +10,16 @@ export class Utils {
 
     public static POWER_PER_LEVEL: number = 0.2;
     public static BASIC_ATTACK_DPS: number = 2.5
-    public static ATTACK_DESCRIPTIVE_NUMBER_CHANCE: number = 0.2;
+    public static ATTACK_DESCRIPTIVE_NUMBER_CHANCE: number = 0.25;
     public static AVG_ENEMIES_ADJACENT: number = 1.9;
     public static AVG_PLAYERS: number = 3;
     public static AVG_ENEMIES_PER_PLAYER: number = 2;
     public static AVG_TURN: number = 4;
     public static AVG_SCARS: number = 2.5;
-    public static AVG_RALLIES: number = 1;
+    public static AVG_RALLIES: number = 0.8;
     public static AVG_POTIONS: number = 2.5;
     public static AVG_CLOSTEST_DISTANCE: number = 10;
+    public static AVG_LONGEST_DISTANCE: number = 20;
 
     public static EFFECT_WEIGHT_MOD: number = 1.1;
     public static RARE_MODIFIER: number = 0.1;

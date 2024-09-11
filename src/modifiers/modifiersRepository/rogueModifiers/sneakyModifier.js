@@ -22,11 +22,11 @@ var sneakyModifier = /** @class */ (function (_super) {
     __extends(sneakyModifier, _super);
     function sneakyModifier(affector) {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 2.5; };
-        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : 0.2; };
+        _this.powerMultiplier = function () { return 2.1; };
+        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.name = 'Sneaky';
         _this.namePrefix = 'Sneaky';
-        _this.description = 'Can be only used when you ended last turn hidden.';
+        _this.description = 'Can be only used when you started last turn hidden.';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }

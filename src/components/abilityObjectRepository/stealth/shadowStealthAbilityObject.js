@@ -21,9 +21,9 @@ var shadowStealthAbilityObject = /** @class */ (function (_super) {
     __extends(shadowStealthAbilityObject, _super);
     function shadowStealthAbilityObject() {
         var _this = _super.call(this, 'Shadow Stealth') || this;
-        _this.description = 'You cannot cross any well lit path or this ability fails (one torch is not enough to well lit area though). ';
-        _this.rarity = 2;
-        _this.prefix = 'Shadow';
+        _this.description = 'Any bright light immiedietly reveals you (one torch is not enough to well lit area though). ';
+        _this.rarity = 1.7;
+        _this.prefix = 'Dark';
         _this.isStealth = true;
         return _this;
     }

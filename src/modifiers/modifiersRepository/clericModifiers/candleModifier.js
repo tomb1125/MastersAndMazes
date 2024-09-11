@@ -22,12 +22,11 @@ var candleModifier = /** @class */ (function (_super) {
     __extends(candleModifier, _super);
     function candleModifier(affector) {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 1.3; };
+        _this.powerMultiplier = function () { return 1.4; };
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
-        _this.name = 'Candle';
-        _this.namePrefix = 'Candle';
-        _this.description = 'Can be only used in a circle of lit candles.';
-        _this.longDescription = 'Circle doesn\t have to be perfect at all. 1 Gold of candles is enough to draw 1 meter of a "candle line". You can carry 50 Gold worth of candles in your backpack. Enemies can use an Action to damage 1 meter of a "candle line" or destry damaged line.';
+        _this.name = 'Ritual';
+        _this.namePrefix = 'Ritual';
+        _this.description = 'Can be only used in a ritual circle made by you with chalk (it has radius of 5).';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }

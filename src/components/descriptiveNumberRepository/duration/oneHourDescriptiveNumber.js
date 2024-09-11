@@ -21,6 +21,7 @@ var oneHourDescriptiveNumber = /** @class */ (function (_super) {
     __extends(oneHourDescriptiveNumber, _super);
     function oneHourDescriptiveNumber(value) {
         var _this = _super.call(this, value) || this;
+        _this.prefix = 'Hourly';
         _this.value = 2;
         _this.description = 'one hour';
         _this.type = descriptiveNumber_1.DescriptiveNumber.Type.UtilityDuration;

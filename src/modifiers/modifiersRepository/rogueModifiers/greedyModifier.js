@@ -22,11 +22,11 @@ var greedyModifier = /** @class */ (function (_super) {
     __extends(greedyModifier, _super);
     function greedyModifier(affector) {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 1.5; };
-        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : 0.2; };
+        _this.powerMultiplier = function () { return 1.2; };
+        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.name = 'Greedy';
         _this.namePrefix = 'Greedy';
-        _this.description = 'Can be only used when you obtained 20 or more gold today (or equivalent in goods).';
+        _this.description = 'Can be only used when this action is going to grant you more wealth (going on quest for a reward counts as well).';
         _this.longDescription = 'If you took price as a party, count only your share.';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;

@@ -22,6 +22,7 @@ var damageTakenDescriptiveNumber = /** @class */ (function (_super) {
     __extends(damageTakenDescriptiveNumber, _super);
     function damageTakenDescriptiveNumber(value) {
         var _this = _super.call(this, utils_1.Utils.avgHealth - 1) || this;
+        _this.prefix = 'Enraged';
         _this.lowValue = 0;
         _this.description = 'your current damage taken';
         _this.type = descriptiveNumber_1.DescriptiveNumber.Type.Common;

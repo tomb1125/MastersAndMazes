@@ -8,6 +8,7 @@ var AbilityObject = /** @class */ (function () {
         this.isCommunication = false;
         this.isCorpse = false;
         this.isLight = false;
+        this.isMovement = false;
         this.isPerson = false;
         this.isQuestion = false;
         this.isStealth = false;

@@ -25,6 +25,7 @@ var numberOfTurnsDescriptiveNumber_1 = require("./descriptiveNumberRepository/nu
 var numberOfScarsDescriptiveNumber_1 = require("./descriptiveNumberRepository/numberOfScarsDescriptiveNumber");
 var numberOfRalliesDescriptiveNumber_1 = require("./descriptiveNumberRepository/numberOfRalliesDescriptiveNumber");
 var minimumDistanceDescriptiveNumber_1 = require("./descriptiveNumberRepository/minimumDistanceDescriptiveNumber");
+var maximumDistanceDescriptiveNumber_1 = require("./descriptiveNumberRepository/maximumDistanceDescriptiveNumber");
 var oneHourDescriptiveNumber_1 = require("./descriptiveNumberRepository/duration/oneHourDescriptiveNumber");
 var d4MinuteDescriptiveNumber_1 = require("./descriptiveNumberRepository/duration/d4MinuteDescriptiveNumber");
 var damageTakenDescriptiveNumber_1 = require("./descriptiveNumberRepository/damageTakenDescriptiveNumber");
@@ -42,6 +43,7 @@ var DescriptiveNumberFactory = /** @class */ (function (_super) {
             _this.items.push(new numberOfScarsDescriptiveNumber_1.numberOfScarsDescriptiveNumber());
             _this.items.push(new numberOfRalliesDescriptiveNumber_1.numberOfRalliesDescriptiveNumber());
             _this.items.push(new minimumDistanceDescriptiveNumber_1.minimumDistanceDescriptiveNumber());
+            _this.items.push(new maximumDistanceDescriptiveNumber_1.maximumDistanceDescriptiveNumber());
             _this.items.push(new oneHourDescriptiveNumber_1.oneHourDescriptiveNumber());
             _this.items.push(new d4MinuteDescriptiveNumber_1.d4MinuteDescriptiveNumber());
             _this.items.push(new damageTakenDescriptiveNumber_1.damageTakenDescriptiveNumber());

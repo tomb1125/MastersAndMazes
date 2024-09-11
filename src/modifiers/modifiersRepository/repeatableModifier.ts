@@ -24,7 +24,7 @@ export class repeatableModifier extends Modifier {
         this.powerMultiplier = () => {return 1 / this.numericComponents[0].getValue()};
         this.name = 'Repeat '+this.numericComponents[0].getValue();
         this.namePrefix = ''
-        this.description = 'You can use this ability '+this.numericComponents[0].getValue()+' times before it goes on cooldown. If you fail chance roll and this ability is not on cooldown yet, you can immiedietly use another charge before facing consequences of failure.';
+        this.description = 'You can use this ability '+this.numericComponents[0].getValue()+' times before it goes on cooldown. If you fail a chance roll for this ability and this ability is not on cooldown yet, you can immiedietly use another charge to try to roll again before facing consequences of failure.';
         this.modifierType = Modifier.Type.Improvement;
     }
 

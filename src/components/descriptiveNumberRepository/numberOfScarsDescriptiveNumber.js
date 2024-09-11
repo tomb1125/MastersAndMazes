@@ -22,6 +22,7 @@ var numberOfScarsDescriptiveNumber = /** @class */ (function (_super) {
     __extends(numberOfScarsDescriptiveNumber, _super);
     function numberOfScarsDescriptiveNumber(value) {
         var _this = _super.call(this, utils_1.Utils.AVG_SCARS) || this;
+        _this.prefix = 'Veterans';
         _this.lowValue = 0;
         _this.description = 'the number of your Scars';
         _this.type = descriptiveNumber_1.DescriptiveNumber.Type.Common;

@@ -16,6 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.tumbleUtility = void 0;
+var abilityObjectFactory_1 = require("../../../components/abilityObjectFactory");
 var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
 var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
@@ -25,11 +26,12 @@ var tumbleUtility = /** @class */ (function (_super) {
     function tumbleUtility() {
         var _this = _super.call(this, 'Tumble') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
-        _this.cooldown = ability_1.Ability.Cooldown.Encounter; //TODO add value
+        _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isMovement; }).get(1)[0]);
+        _this.cooldown = ability_1.Ability.Cooldown.Encounter;
         _this.chance = 0.35;
         _this.value = new descriptiveNumber_1.DescriptiveNumber(5);
         _this.compensate();
-        _this.description = 'As a reaction, when you are attacked, you can move away ' + _this.value.getDescription() + ' meters in straight line. If you can move outside attack range, you dodge the attack. ';
+        _this.description = 'As a reaction, when you are attacked, you can move away ' + _this.value.getDescription() + ' meters in straight line. ' + _this.objects[0].description + ' If you can move outside attack range, you dodge the attack. ';
         return _this;
     }
     return tumbleUtility;

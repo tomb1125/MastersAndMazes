@@ -29,7 +29,7 @@ var shadowStrideUtility = /** @class */ (function (_super) {
         _this.cooldown = ability_1.Ability.Cooldown.Daily;
         _this.chance = 1.4
             / _this.objects[0].rarity;
-        _this.description = 'You slowly move about 50 meters being almost undetectable. ' + _this.objects[0].description;
+        _this.description = 'You move about 50 meters in half a minute, being almost undetectable. ' + _this.objects[0].description;
         _this.compensate();
         return _this;
     }

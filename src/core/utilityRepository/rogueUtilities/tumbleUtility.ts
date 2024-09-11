@@ -1,3 +1,5 @@
+import { AbilityObject } from "../../../components/abilityObject";
+import { AbilityObjectFactory } from "../../../components/abilityObjectFactory";
 import { DescriptiveNumber } from "../../../components/descriptiveNumber";
 import { Ability } from "../../ability";
 import { CharacterContext } from "../../characterContext";
@@ -9,12 +11,13 @@ export class tumbleUtility extends Utility {
     constructor() {
         super('Tumble');        
         this.weight = () => {return CharacterContext.classes.includes(CharacterContext.Class.Rogue) ? CharacterContext.IN_CLASS_MODIFIER : CharacterContext.OUT_OF_CLASS_WEIGHT}
+        this.objects.push(new AbilityObjectFactory(this).filter((x: AbilityObject) => x.isMovement).get(1)[0]);
 
-        this.cooldown = Ability.Cooldown.Encounter; //TODO add value
+        this.cooldown = Ability.Cooldown.Encounter; 
         this.chance = 0.35      
         this.value =  new DescriptiveNumber(5);
         this.compensate();
-        this.description = 'As a reaction, when you are attacked, you can move away '+this.value.getDescription()+' meters in straight line. If you can move outside attack range, you dodge the attack. ';
+        this.description = 'As a reaction, when you are attacked, you can move away '+this.value.getDescription()+' meters in straight line. '+this.objects[0].description+' If you can move outside attack range, you dodge the attack. ';
 
     }
 }

@@ -26,7 +26,7 @@ var opportunistModifier = /** @class */ (function (_super) {
         _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
         _this.name = 'Opportunist';
         _this.namePrefix = 'Opportunists';
-        _this.description = 'Can only be used against enemies that rolled 90-00 on D100 during last turn. ';
+        _this.description = 'Can only be used against enemies that rolled 90-00 on D100 during their last turn. ';
         _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;

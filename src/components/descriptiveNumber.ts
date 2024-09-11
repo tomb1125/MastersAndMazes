@@ -9,6 +9,7 @@ export class DescriptiveNumber implements HasWeigth{
     multiplier: number;
 
     name: string;
+    prefix: string;
     description: string;
     type: DescriptiveNumber.Type = DescriptiveNumber.Type.Common;
     weight = (x?: AffectsWeight) => {return 1};
@@ -20,14 +21,14 @@ export class DescriptiveNumber implements HasWeigth{
     public getDescription(): string {
         if(this.description) {
             if(this.bonus) {
-                return (this.multiplier ? this.multiplier + 'x ' : '') + this.description + (this.bonus >= 0 ? ' + ' : ' ') + this.bonus;
+                return (this.multiplier ? this.multiplier + 'x ' : '') + this.description + (this.bonus >= 0 ? ' + ' : ' ') + Math.ceil(this.bonus);
             } else {
                 return (this.multiplier ? this.multiplier + 'x ' : '') + this.description;
             }
         }
 
         if(this.value) {
-            return  (this.multiplier ? this.multiplier : 1) * this.value + (this.bonus ? this.bonus : 0) as unknown as string;
+            return  (this.multiplier ? this.multiplier : 1) * this.value + (this.bonus ? Math.ceil(this.bonus) : 0) as unknown as string;
         }
         
         throw 'Undefined Descriptive Number Error';
@@ -55,10 +56,8 @@ export class DescriptiveNumber implements HasWeigth{
         if(Math.ceil(this.bonus) != Math.floor(this.bonus)) {
             throw 'cannot add non integer bonus of '+this.bonus+' to '+JSON.stringify(this);
         }
-        console.log(this.bonus)
-        console.log(val)
+
         this.bonus += val;
-        console.log(this.bonus)
     }
 
     public addMultiplier(val: number) : void {
@@ -75,7 +74,7 @@ export class DescriptiveNumber implements HasWeigth{
         }
 
         if(this.bonus >= this.value && this.value > 0) {
-            this.bonus -= Math.ceil(this.value); //TODO make this correct when value is not an integer
+            this.bonus -= this.value;
             this.addMultiplier(1);
 
             this.compensate();

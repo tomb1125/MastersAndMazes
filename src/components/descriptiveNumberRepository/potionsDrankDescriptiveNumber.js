@@ -22,6 +22,7 @@ var potionsDrankDescriptiveNumber = /** @class */ (function (_super) {
     __extends(potionsDrankDescriptiveNumber, _super);
     function potionsDrankDescriptiveNumber(value) {
         var _this = _super.call(this, utils_1.Utils.AVG_POTIONS) || this;
+        _this.prefix = 'Thirsty';
         _this.lowValue = 0;
         _this.description = 'the number of potions you drank today';
         _this.type = descriptiveNumber_1.DescriptiveNumber.Type.Common;

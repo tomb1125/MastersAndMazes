@@ -15,7 +15,7 @@ export class shadowStrideUtility extends Utility {
         this.cooldown = Ability.Cooldown.Daily;
         this.chance = 1.4 
             / this.objects[0].rarity 
-        this.description = 'You slowly move about 50 meters being almost undetectable. '+this.objects[0].description;
+        this.description = 'You move about 50 meters in half a minute, being almost undetectable. '+this.objects[0].description;
         this.compensate();
     }
 }

@@ -193,6 +193,9 @@ export class Attack extends Activity implements CanAffectModifier {
   }
 
   private generateName(): string { 
+
+    const damagePortion = this.damage.prefix ? this.damage.prefix + ' ' : '';
+
     const attackPortion: string = this.subtype === Attack.Subtype.Weapon ? [
       'Basic Attack'
     ].sort(() => 0.5 - Utils.random())[0] : '';
@@ -202,7 +205,8 @@ export class Attack extends Activity implements CanAffectModifier {
     ].sort(() => 0.5 - Utils.random())[0] : '';
 
 
-    return this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.namePrefix; }, '').slice(1) +
+    return damagePortion +
+     this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.namePrefix; }, '').slice(1) +
      (this.modifiers.length > 0 ? ' ' : '') +
      attackPortion +
      spellPortion;

@@ -2,11 +2,10 @@
 gives spells elemental effects and add to playerTex
 linking buffs (eg. bonus to all cold damage)
 tricks
-improve to text function
 non-efficiency curve x + x/5 * (x/5 - 2)
-add numeric value to description
 add correlation between fast and duration effects
 add correlation between pristine and exhausting 
-
+add attack factory x pleyers
 
 utility: change to use value;
+like a prayer

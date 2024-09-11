@@ -11,9 +11,20 @@ During enemy turn, enemies take actions in any order.
 Players round is first, however players roll for initiative (this is Dexterity check). If they lose, they do not gain Standard Action turn 1.
 Players during their turn can perform once each of following actions: Move Action, Standard Action and Swift Action.
 
-Move Action is used to move your character by their speed, usually by 6 meters.
-Standard Action is used mostly to attack and perform other key actions
-Swift Action is used to perform actions of lesser importance: drinking potion, changing weapon.
+Standard Actions:
+ - Attack - use any attack ability your character gained during level ups.
+ - Basic Attack - roll for Strength or Dexterity to deal D10 damage to an adjacent enemy.
+ - Run - Move number of squares equal to your speed.
+ - Gain Mana - Gain 5 mana and place mana drain marker on your location until end of combat. 
+   You cannot make this action while within 5 squares of mana drain marker.
+Move Actions:
+ - Move number of squares equal to your speed
+ - Push adjacent enemy no larger than you 3 squares but not on dangerous terrain.
+Swift Actions:
+ - Change weapons
+ - Drink potion
+No Action:
+ - Spend 5 mana to reroll any chance roll of ability with encounter cooldown.
 
 EFFECTS:
 Unless specified otherwise all effects stacks. Each instance of effect have to be tracked separately. 
@@ -29,7 +40,9 @@ When you are reduced to 0 HP, gain 1 Experience Point and roll for dying: Roll D
 1-9 - You become unconscious  until end of combat. After combat regain 1 HP and gain 1 Scar.
 10 - You rally! Set your HP to 1 and until start of your turn you have 30% chance to ignore any damage.
 11-20 - roll D10 again: 1-3 you die, 4-10 you rally as above.
-21+ - roll D10 again: 1-7 you die, 8-10 you rally as above. (note that this is almost impossible to reach this level)
+21+ - you die (note that this is almost impossible to reach this level)
+//TODO lower XP individual should get something as well.
+//TODO highest XP should get something as well
 
 CHARACTER STATS AND CREATION:
 Players have 6 attributes:
@@ -70,7 +83,7 @@ LEVELING UP
 Whenever you win a combat encounter, gain 2 XP
 At the end of an adventure GM grants extra XP.
 Certain abilities grant XP.
-At the end of adventure check your XP, for each 10 XP gain a level.
+At the end of adventure check your XP, your character has a level for each 10 XP.
 Whenever at the end of adventure, after level ups, you have lower level than the highest level player in a party, gain 1 EXP for each level difference between you. You can't gain level from this EXP this adventure yet.
 
 Whenever you gain a level:

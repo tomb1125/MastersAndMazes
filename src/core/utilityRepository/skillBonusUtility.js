@@ -68,9 +68,9 @@ var skillBonusUtility = /** @class */ (function (_super) {
         }
         _this = _super.call(this, characterContext_1.CharacterContext.Skill[skill] + ' Bonus') || this;
         _this.weight = function () { return 1; };
-        var boonNumbers = new descriptiveNumber_1.DescriptiveNumber(utils_1.Utils.D(3));
+        var boonNumbers = new descriptiveNumber_1.DescriptiveNumber(2);
         _this.chance = 2 * Math.pow(5 / 6, boonNumbers.getValue());
-        _this.description = 'For duration of an Encounter, gain ' + boonNumbers.getDescription() + ' Boons when rolling for ' + characterContext_1.CharacterContext.Skill[skill] + '. ';
+        _this.description = 'For duration of an Encounter, gain ' + boonNumbers.getDescription() + ' Boons when rolling for ' + characterContext_1.CharacterContext.Skill[skill] + '. This bonus does not stack. ';
         _this.compensate();
         return _this;
     }

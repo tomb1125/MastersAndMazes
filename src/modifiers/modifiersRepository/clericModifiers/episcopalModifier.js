@@ -23,7 +23,7 @@ var episcopalModifier = /** @class */ (function (_super) {
     __extends(episcopalModifier, _super);
     function episcopalModifier(affector) {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 2.5; };
+        _this.powerMultiplier = function () { return 2.7; };
         _this.weight = function () { return utils_1.Utils.RARE_MODIFIER * (characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT); };
         _this.name = 'Episcopal';
         _this.namePrefix = 'Episcopal';

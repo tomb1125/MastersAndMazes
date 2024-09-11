@@ -38,7 +38,7 @@ var repeatableModifier = /** @class */ (function (_super) {
         _this.powerMultiplier = function () { return 1 / _this.numericComponents[0].getValue(); };
         _this.name = 'Repeat ' + _this.numericComponents[0].getValue();
         _this.namePrefix = '';
-        _this.description = 'You can use this ability ' + _this.numericComponents[0].getValue() + ' times before it goes on cooldown. If you fail chance roll and this ability is not on cooldown yet, you can immiedietly use another charge before facing consequences of failure.';
+        _this.description = 'You can use this ability ' + _this.numericComponents[0].getValue() + ' times before it goes on cooldown. If you fail a chance roll for this ability and this ability is not on cooldown yet, you can immiedietly use another charge to try to roll again before facing consequences of failure.';
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;
     }

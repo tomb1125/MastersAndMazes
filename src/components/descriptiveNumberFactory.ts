@@ -9,6 +9,7 @@ import { numberOfTurnsDescriptiveNumber } from "./descriptiveNumberRepository/nu
 import { numberOfScarsDescriptiveNumber } from "./descriptiveNumberRepository/numberOfScarsDescriptiveNumber";
 import { numberOfRalliesDescriptiveNumber } from "./descriptiveNumberRepository/numberOfRalliesDescriptiveNumber";
 import { minimumDistanceDescriptiveNumber } from "./descriptiveNumberRepository/minimumDistanceDescriptiveNumber";
+import { maximumDistanceDescriptiveNumber } from "./descriptiveNumberRepository/maximumDistanceDescriptiveNumber";
 import { oneHourDescriptiveNumber } from "./descriptiveNumberRepository/duration/oneHourDescriptiveNumber";
 import { d4MinuteDescriptiveNumber } from "./descriptiveNumberRepository/duration/d4MinuteDescriptiveNumber";
 import { damageTakenDescriptiveNumber } from "./descriptiveNumberRepository/damageTakenDescriptiveNumber";
@@ -26,6 +27,7 @@ export class DescriptiveNumberFactory extends Factory {
             this.items.push(new numberOfScarsDescriptiveNumber());
             this.items.push(new numberOfRalliesDescriptiveNumber());
             this.items.push(new minimumDistanceDescriptiveNumber());
+            this.items.push(new maximumDistanceDescriptiveNumber());
             this.items.push(new oneHourDescriptiveNumber());
             this.items.push(new d4MinuteDescriptiveNumber());
             this.items.push(new damageTakenDescriptiveNumber());

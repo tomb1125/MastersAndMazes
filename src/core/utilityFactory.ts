@@ -8,6 +8,7 @@ import { skillBonusUtility } from "./utilityRepository/skillBonusUtility";
 import { tumbleUtility } from "./utilityRepository/rogueUtilities/tumbleUtility";
 import { shiftBlameUtility } from "./utilityRepository/rogueUtilities/shiftBlameUtility";
 import { shadowStrideUtility } from "./utilityRepository/rogueUtilities/shadowStrideUtility";
+import { shadowMeldUtility } from "./utilityRepository/rogueUtilities/shadowMeldUtility";
 import { pickpocketUtility } from "./utilityRepository/rogueUtilities/pickpocketUtility";
 import { lockpickingUtility } from "./utilityRepository/rogueUtilities/lockpickingUtility";
 import { animalSpeak } from "./utilityRepository/druidUtilities/animalSpeak";
@@ -25,6 +26,7 @@ export class UtilityFactory extends Factory {
             this.items.push(new tumbleUtility());
             this.items.push(new shiftBlameUtility());
             this.items.push(new shadowStrideUtility());
+            this.items.push(new shadowMeldUtility());
             this.items.push(new pickpocketUtility());
             this.items.push(new lockpickingUtility());
             this.items.push(new animalSpeak());

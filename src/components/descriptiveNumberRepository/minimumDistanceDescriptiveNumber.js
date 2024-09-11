@@ -22,6 +22,7 @@ var minimumDistanceDescriptiveNumber = /** @class */ (function (_super) {
     __extends(minimumDistanceDescriptiveNumber, _super);
     function minimumDistanceDescriptiveNumber(value) {
         var _this = _super.call(this, utils_1.Utils.AVG_CLOSTEST_DISTANCE) || this;
+        _this.prefix = 'Loners';
         _this.lowValue = 1;
         _this.description = 'the distance to the closest ally in combat';
         _this.type = descriptiveNumber_1.DescriptiveNumber.Type.Common;

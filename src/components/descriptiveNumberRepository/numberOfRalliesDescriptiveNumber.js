@@ -22,6 +22,7 @@ var numberOfRalliesDescriptiveNumber = /** @class */ (function (_super) {
     __extends(numberOfRalliesDescriptiveNumber, _super);
     function numberOfRalliesDescriptiveNumber(value) {
         var _this = _super.call(this, utils_1.Utils.AVG_RALLIES) || this;
+        _this.prefix = 'Stalwart';
         _this.lowValue = 0;
         _this.description = 'the number of times you rallied today (see rules)';
         _this.type = descriptiveNumber_1.DescriptiveNumber.Type.Common;

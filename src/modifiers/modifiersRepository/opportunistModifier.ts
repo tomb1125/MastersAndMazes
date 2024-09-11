@@ -10,7 +10,7 @@ export class opportunistModifier extends Modifier {
         this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Attack ? 1 : 0} 
         this.name = 'Opportunist'
         this.namePrefix = 'Opportunists';
-        this.description = 'Can only be used against enemies that rolled 90-00 on D100 during last turn. ';
+        this.description = 'Can only be used against enemies that rolled 90-00 on D100 during their last turn. ';
         this.longDescription = '';
         this.modifierType =Modifier.Type.Constraint;
     }

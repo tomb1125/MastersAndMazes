@@ -22,6 +22,7 @@ var assassinDescriptiveNumber = /** @class */ (function (_super) {
     __extends(assassinDescriptiveNumber, _super);
     function assassinDescriptiveNumber(value) {
         var _this = _super.call(this, utils_1.Utils.AVG_ENEMIES_PER_PLAYER * 1.5) || this;
+        _this.prefix = 'Killers';
         _this.lowValue = 0;
         _this.description = 'the number of enemies you defeated today';
         _this.type = descriptiveNumber_1.DescriptiveNumber.Type.Common;

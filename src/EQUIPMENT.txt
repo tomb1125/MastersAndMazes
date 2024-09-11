@@ -3,25 +3,26 @@ Some equipment is rare. Each player can buy only one rare item per adventure per
 Depending on size of city charisma treshold may be modified by GM from 20 to 40.
 
 1H Weapons
-Mace - If you roll 1-15 on first attack roll this turn and hit, stun the target.
+Mace - 
 Sword - Gain 1 Boon with Weapon attacks.
 Axe - Deal +2 damage with Weapon attacks.
 Dagger - When you roll 01-10 with Weapon attack it deals +10 damage.
 Hand Crossbow - your weapon attacks gains +10 range. Can be used only every other turn, due to reloading.
+Free Hand - if you wield weapon in your main hand, all bonuses from your weapon applies to spells as well.
 
 1H Implements
-Tome - Gain 1 Mana at the end of each turn.
-Orb - Your Spells and Attacks costs 1 less Mana.
+Orb - If you wielded Orb from start of combat, regain all mana at the start of turn 8.
+Tome - All abilities cost 1 less mana.
 Wand - Your Spells have +10 range.
 Trophy - Whenever you use ability with an encounter cooldown, roll D6. On 6 it does not go on cooldown.
 
 1H Off-Hands
-Light Shield - +1 Armor
-Medium Shield - +2 Armor (needs Medium Armor proficiency)
-Heavy Shield - +3 Armor (needs Heavy Armor proficiency)
+Light Shield - 10 Armor Points
+Medium Shield - 15 Armor Points
+Heavy Shield - 20 Armor Points
 
 2H Weapons
-2H Hammer - If you roll 1-25 on any Weapon attack roll and hit, stun the target.
+2H Hammer - 
 2H Sword - Gain boons for your Weapon Attacks, equal to number of missed attacks with 2H sword this combat this combat.
 2H Axe - Gain bonus damage with Weapon Attack, equal to number of turn you started with 2H Axe in hand.
 Scythe - Deal +6 damage to undamaged enemies with Weapon Attacks.
@@ -38,8 +39,13 @@ Heavy Armor - +4 Armor
 
 Consumables:
 Minog Serum (500G - rare) - Remove one Scar from yourself.
+Octopus Ramen (400G - rare) - Roll D6 for each Scar you have. Remove 1 Scar for each 6 result.
+
 Healing Potion (10G) - restore 10 HP
 Mana Potion (10G) - restore 10 Mana
+
+Seeing in Dark Potion (20G) - until end of encounter see in darkness. Your next attack have 2 Boons to attack.
+Water Breathing Potion (20G) - you can breath under water until end of the next encounter. Your next attack deals extra 5 damage.
 
 Services
 Training (100G - rare) - gain 1 Experience Point.

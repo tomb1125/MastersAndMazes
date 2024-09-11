@@ -168,13 +168,15 @@ var Attack = /** @class */ (function (_super) {
             '<br><b>Cooldown</b>: ' + ability_1.Ability.Cooldown[this.cooldown];
     };
     Attack.prototype.generateName = function () {
+        var damagePortion = this.damage.prefix ? this.damage.prefix + ' ' : '';
         var attackPortion = this.subtype === Attack.Subtype.Weapon ? [
             'Basic Attack'
         ].sort(function () { return 0.5 - utils_1.Utils.random(); })[0] : '';
         var spellPortion = this.subtype === Attack.Subtype.Spell ? [
             'Basic Bolt'
         ].sort(function () { return 0.5 - utils_1.Utils.random(); })[0] : '';
-        return this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.namePrefix; }, '').slice(1) +
+        return damagePortion +
+            this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.namePrefix; }, '').slice(1) +
             (this.modifiers.length > 0 ? ' ' : '') +
             attackPortion +
             spellPortion;

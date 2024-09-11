@@ -26,10 +26,10 @@ export class skillBonusUtility extends Utility {
 
         super(CharacterContext.Skill[skill]+' Bonus');
         this.weight = () => {return 1}        
-        let boonNumbers = new DescriptiveNumber(Utils.D(3));
+        let boonNumbers = new DescriptiveNumber(2);
         this.chance = 2 * Math.pow(5/6, boonNumbers.getValue());
         
-        this.description = 'For duration of an Encounter, gain ' + boonNumbers.getDescription()+ ' Boons when rolling for '+CharacterContext.Skill[skill]+'. '
+        this.description = 'For duration of an Encounter, gain ' + boonNumbers.getDescription()+ ' Boons when rolling for '+CharacterContext.Skill[skill]+'. This bonus does not stack. '
         this.compensate();
     }
 }
