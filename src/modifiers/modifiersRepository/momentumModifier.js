@@ -28,7 +28,7 @@ var momentumModifier = /** @class */ (function (_super) {
         _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.cooldown) === ability_1.Ability.Cooldown.Encounter ? 1 : 0; };
         _this.name = 'Inertia ' + _this.numericComponents[0].getValue();
         _this.namePrefix = 'Inertia';
-        _this.description = 'Can be only used when you fail chance roll with ' + _this.numericComponents[0].getValue() + ' ' + (_this.numericComponents[0].getValue() === 1 ? 'ability' : 'abilities') + ' in a row. ';
+        _this.description = 'Can be only used when you fail ability chance roll with ' + _this.numericComponents[0].getValue() + ' ' + (_this.numericComponents[0].getValue() === 1 ? 'ability' : 'abilities') + ' in a row. ';
         _this.longDescription = '';
         _this.powerMultiplier = function (x) { return Math.pow(1.5, _this.numericComponents[0].getValue()); }; //used to be 1.58
         _this.modifierType = modifier_1.Modifier.Type.Constraint;

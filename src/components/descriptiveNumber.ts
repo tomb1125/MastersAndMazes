@@ -53,10 +53,6 @@ export class DescriptiveNumber implements HasWeigth{
             this.bonus = 0;
         }
 
-        if(Math.ceil(this.bonus) != Math.floor(this.bonus)) {
-            throw 'cannot add non integer bonus of '+this.bonus+' to '+JSON.stringify(this);
-        }
-
         this.bonus += val;
     }
 

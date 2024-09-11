@@ -17,7 +17,7 @@ export class tumbleUtility extends Utility {
         this.chance = 0.35      
         this.value =  new DescriptiveNumber(5);
         this.compensate();
-        this.description = 'As a reaction, when you are attacked, you can move away '+this.value.getDescription()+' meters in straight line. '+this.objects[0].description+' If you can move outside attack range, you dodge the attack. ';
+        this.description = 'As a reaction, when you are attacked, you can move away '+this.value.getDescription()+' meters in straight line. '+this.objects[0].description+' If you can move outside attack range or behind cover, you dodge the attack. ';
 
     }
 }

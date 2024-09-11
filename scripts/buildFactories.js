@@ -35,6 +35,13 @@ const factories = {
             'relatedDir' : './descriptiveNumberRepository/',
             'hasAffector' : false
         }
+    ],
+    'src\\core\\attackFactory.ts'  : [
+        {
+            'dir' : 'src\\core\\attackRepository',
+            'relatedDir' : './attackRepository/',
+            'hasAffector' : true
+        }
     ]
 }
 

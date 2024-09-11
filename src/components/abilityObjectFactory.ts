@@ -8,9 +8,10 @@ import { symetricTelepathyAbilityObject } from "./abilityObjectRepository/symetr
 import { symetricEmpathicAbilityObject } from "./abilityObjectRepository/symetricCommunications/symetricEmpathicAbilityObject";
 import { gainUnderstandingAbilityObject } from "./abilityObjectRepository/symetricCommunications/gainUnderstandingAbilityObject";
 import { dreamConnectionAbilityObject } from "./abilityObjectRepository/symetricCommunications/dreamConnectionAbilityObject";
-import { unarmoredStealthAbilityObject } from "./abilityObjectRepository/stealth/unarmoredStealthAbilityObject";
 import { shadowStealthAbilityObject } from "./abilityObjectRepository/stealth/shadowStealthAbilityObject";
+import { prowlingStealthAbilityObject } from "./abilityObjectRepository/stealth/prowlingStealthAbilityObject";
 import { potionStealthAbilityObject } from "./abilityObjectRepository/stealth/potionStealthAbilityObject";
+import { harmlessStealthAbilityObject } from "./abilityObjectRepository/stealth/harmlessStealthAbilityObject";
 import { yesNoAbilityObject } from "./abilityObjectRepository/questions/yesNoAbilityObject";
 import { oneWordAbilityObject } from "./abilityObjectRepository/questions/oneWordAbilityObject";
 import { noeDetailedAbilityObject } from "./abilityObjectRepository/questions/noeDetailedAbilityObject";
@@ -28,6 +29,7 @@ import { agileMovementAbilityObject } from "./abilityObjectRepository/movements/
 import { revealingLightAbilityObject } from "./abilityObjectRepository/light/revealingLightAbilityObject";
 import { controllableLightAbilityObject } from "./abilityObjectRepository/light/controllableLightAbilityObject";
 import { colorfulLightAbilityObject } from "./abilityObjectRepository/light/colorfulLightAbilityObject";
+import { blindingLightAbilityObject } from "./abilityObjectRepository/light/blindingLightAbilityObject";
 import { warriorCorpseAbilityObject } from "./abilityObjectRepository/corpses/warriorCorpseAbilityObject";
 import { unfinishedBusinessAbilityObject } from "./abilityObjectRepository/corpses/unfinishedBusinessAbilityObject";
 import { soulStealingAbilityObject } from "./abilityObjectRepository/corpses/soulStealingAbilityObject";
@@ -50,9 +52,10 @@ export class AbilityObjectFactory extends Factory {
             this.items.push(new symetricEmpathicAbilityObject());
             this.items.push(new gainUnderstandingAbilityObject());
             this.items.push(new dreamConnectionAbilityObject());
-            this.items.push(new unarmoredStealthAbilityObject());
             this.items.push(new shadowStealthAbilityObject());
+            this.items.push(new prowlingStealthAbilityObject());
             this.items.push(new potionStealthAbilityObject());
+            this.items.push(new harmlessStealthAbilityObject());
             this.items.push(new yesNoAbilityObject());
             this.items.push(new oneWordAbilityObject());
             this.items.push(new noeDetailedAbilityObject());
@@ -70,6 +73,7 @@ export class AbilityObjectFactory extends Factory {
             this.items.push(new revealingLightAbilityObject());
             this.items.push(new controllableLightAbilityObject());
             this.items.push(new colorfulLightAbilityObject());
+            this.items.push(new blindingLightAbilityObject());
             this.items.push(new warriorCorpseAbilityObject());
             this.items.push(new unfinishedBusinessAbilityObject());
             this.items.push(new soulStealingAbilityObject());

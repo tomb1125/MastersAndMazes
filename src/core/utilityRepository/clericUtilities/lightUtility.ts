@@ -22,7 +22,7 @@ export class lightUtility extends Utility {
          * Utils.getRangeCoeficient(this.range)
          * Utils.getRangeCoeficient(this.value.getValue())
         this.cooldown = Ability.Cooldown.Encounter
-         
+
         const repeat: repeatableModifier = new repeatableModifier();
         repeat.setValue(2);
         this.modifiers.push(repeat);

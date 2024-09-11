@@ -15,18 +15,18 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.shadowStealthAbilityObject = void 0;
+exports.blindingLightAbilityObject = void 0;
 var abilityObject_1 = require("../../abilityObject");
-var shadowStealthAbilityObject = /** @class */ (function (_super) {
-    __extends(shadowStealthAbilityObject, _super);
-    function shadowStealthAbilityObject() {
-        var _this = _super.call(this, 'Shadow Stealth') || this;
-        _this.description = 'Any bright light immiedietly reveals you (one torch is not enough to well lit area though). ';
-        _this.rarity = 1.4;
-        _this.prefix = 'Dark';
-        _this.isStealth = true;
+var blindingLightAbilityObject = /** @class */ (function (_super) {
+    __extends(blindingLightAbilityObject, _super);
+    function blindingLightAbilityObject() {
+        var _this = _super.call(this, 'Blinding') || this;
+        _this.description = 'All enemies have 1 Bane for attack rolls in this area, this effect does not stack with any other Banes. ';
+        _this.rarity = 4;
+        _this.prefix = 'Blinding';
+        _this.isLight = true;
         return _this;
     }
-    return shadowStealthAbilityObject;
+    return blindingLightAbilityObject;
 }(abilityObject_1.AbilityObject));
-exports.shadowStealthAbilityObject = shadowStealthAbilityObject;
+exports.blindingLightAbilityObject = blindingLightAbilityObject;

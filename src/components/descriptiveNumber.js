@@ -36,9 +36,6 @@ var DescriptiveNumber = /** @class */ (function () {
         if (this.bonus === undefined) {
             this.bonus = 0;
         }
-        if (Math.ceil(this.bonus) != Math.floor(this.bonus)) {
-            throw 'cannot add non integer bonus of ' + this.bonus + ' to ' + JSON.stringify(this);
-        }
         this.bonus += val;
     };
     DescriptiveNumber.prototype.addMultiplier = function (val) {

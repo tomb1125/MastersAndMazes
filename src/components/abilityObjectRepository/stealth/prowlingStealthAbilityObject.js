@@ -15,18 +15,18 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.shadowStealthAbilityObject = void 0;
+exports.prowlingStealthAbilityObject = void 0;
 var abilityObject_1 = require("../../abilityObject");
-var shadowStealthAbilityObject = /** @class */ (function (_super) {
-    __extends(shadowStealthAbilityObject, _super);
-    function shadowStealthAbilityObject() {
-        var _this = _super.call(this, 'Shadow Stealth') || this;
-        _this.description = 'Any bright light immiedietly reveals you (one torch is not enough to well lit area though). ';
-        _this.rarity = 1.4;
-        _this.prefix = 'Dark';
+var prowlingStealthAbilityObject = /** @class */ (function (_super) {
+    __extends(prowlingStealthAbilityObject, _super);
+    function prowlingStealthAbilityObject() {
+        var _this = _super.call(this, 'Prowling Stealth') || this;
+        _this.description = 'First attack you make within 10 minutes of using this ability deals +10 bonus damage. ';
+        _this.rarity = 1.6;
+        _this.prefix = 'Prowling';
         _this.isStealth = true;
         return _this;
     }
-    return shadowStealthAbilityObject;
+    return prowlingStealthAbilityObject;
 }(abilityObject_1.AbilityObject));
-exports.shadowStealthAbilityObject = shadowStealthAbilityObject;
+exports.prowlingStealthAbilityObject = prowlingStealthAbilityObject;

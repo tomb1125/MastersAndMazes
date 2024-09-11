@@ -13,7 +13,7 @@ export class selfHealModifier extends Modifier {
         this.name = 'Self Heal '+this.numericComponents[0].getValue(); 
         this.weight = (x?: AffectsWeight) => {return x?.cooldown === Ability.Cooldown.Encounter ? 1 : 0}
         this.namePrefix = 'Healing'; 
-        this.description = 'When you hit, heal yourself equal to: '+this.numericComponents[0].getDescription()+'.';
+        this.description = 'When you hit, heal yourself '+this.numericComponents[0].getDescription()+'.';
         this.powerBonus = () => {return - this.numericComponents[0].getValue()};
         this.elements =  [[Ability.Element.Radiant, Ability.Element.Dark, Ability.Element.Emotion].sort(() => 0.5 - Utils.random())[1]];
     }

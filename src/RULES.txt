@@ -37,12 +37,11 @@ After each combat regain all Mana.
 After rest (8 hours with sleep) regain 10 Health
 
 When you are reduced to 0 HP, gain 1 Experience Point and roll for dying: Roll D10 and add number of your Scars:
-1-9 - You become unconscious  until end of combat. After combat regain 1 HP and gain 1 Scar.
+1-9 - You become unconscious until end of combat. After combat regain 1 HP and gain 1 Scar.
 10 - You rally! Set your HP to 1 and until start of your turn you have 30% chance to ignore any damage.
 11-20 - roll D10 again: 1-3 you die, 4-10 you rally as above.
-21+ - you die (note that this is almost impossible to reach this level)
-//TODO lower XP individual should get something as well.
-//TODO highest XP should get something as well
+21+ - you die (note that this is almost impossible to reach this level as not all results grant you Scars)
+
 
 CHARACTER STATS AND CREATION:
 Players have 6 attributes:
@@ -75,9 +74,9 @@ Streetwise (CHA)
 
 (!) Each Character additional has following resources:
 30 Maximum Health + 1 per Strength and Constitution bonus. If reduced to 0, you can die, but usually won't.
-10 Maximum Mana +1 per Intelligence and Wisdom bonus. Can be used to improve combat abilities. Restored to maximum value after each combat.
+10 Maximum Mana +1 per Intelligence and Wisdom bonus. Can be used to improve combat abilities or reroll chance rolls during combat. Restored to maximum value after each combat.
 6 Movement Speed. How fast you can move during combat.
-0 Scars. Each time you are close to death, add a scar. Someday your luck can run out.
+0 Scars. Each time you are close to death, add a Scar. The more Scars you have the more likely you are to die or perform heroic deeds. If you have more than 10 Scars things start to become really dangereus.
 
 LEVELING UP
 Whenever you win a combat encounter, gain 2 XP
@@ -91,3 +90,21 @@ Whenever you gain a level:
  - gain 1 maximum Health
  - gain 1 maximum Mana
 
+NICHE RULES
+Corruption.
+Corruption points are permaments. Corruption points cannot be removed by abilities unless they are directly mentioned. When you reach 100 or more Corruption, reduce your corruption by 100 and roll in below table. 
+1 - Gain 5 Scars then roll for dying.
+2 - Permamently lose 5 maximum Health. This effect cannot be removed by abilities.
+3 - Lose 10 Strength, lose 10 Dexterity, lose 10 Constitution (3 separete effects).
+4 - All rolls have 1 Bane penalty until the end of the next adventure. This effect cannot be removed by abilities.
+5 - Gain 5 Experience points. 
+6 - Permamently gain 5 maximum Mana.
+
+Blessing.
+Blessing points are permament. Whenever you reach 100 or more Blessing, reduce your Blessing by 100 and roll in below table:
+1 - Remove all Scars you have.
+2 - All rolls have 1 Boon until the end of the next adventure.
+3 - Gain 5 Experience points.
+2 - Permamently gain 5 maximium Health.
+3 - Raise your two lowest Attributes by 10.
+4 - Next time you see "you die" effect (eg. dying roll or corruption roll) you can ignore it.

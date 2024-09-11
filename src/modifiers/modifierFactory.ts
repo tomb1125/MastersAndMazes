@@ -4,6 +4,7 @@ import { AffectsWeight } from "../core/affectsWeight";
 import { Factory } from "../core/factory";
 //factory imports
 import { vengefulModifier } from "./modifiersRepository/vengefulModifier";
+import { unlockedModifier } from "./modifiersRepository/unlockedModifier";
 import { ultimateModifier } from "./modifiersRepository/ultimateModifier";
 import { signatureModifier } from "./modifiersRepository/signatureModifier";
 import { selfHealModifier } from "./modifiersRepository/selfHealModifier";
@@ -14,6 +15,7 @@ import { daggerModifier } from "./modifiersRepository/rogueModifiers/daggerModif
 import { cityModifier } from "./modifiersRepository/rogueModifiers/cityModifier";
 import { restedModifer } from "./modifiersRepository/restedModifer";
 import { repeatableModifier } from "./modifiersRepository/repeatableModifier";
+import { piercingModifier } from "./modifiersRepository/piercingModifier";
 import { opportunistModifier } from "./modifiersRepository/opportunistModifier";
 import { nightlyModifier } from "./modifiersRepository/nightlyModifier";
 import { multipleModifier } from "./modifiersRepository/multipleModifier";
@@ -26,6 +28,7 @@ import { laylineModifier } from "./modifiersRepository/laylineModifier";
 import { instinctiveModifier } from "./modifiersRepository/instinctiveModifier";
 import { grazedModifier } from "./modifiersRepository/grazedModifier";
 import { gainEffectModifier } from "./modifiersRepository/gainEffectModifier";
+import { forcefulModifier } from "./modifiersRepository/forcefulModifier";
 import { legendaryWeaponModifier } from "./modifiersRepository/fighterModifiers/legendaryWeaponModifier";
 import { breachingModifier } from "./modifiersRepository/fighterModifiers/breachingModifier";
 import { fastModifier } from "./modifiersRepository/fastModifier";
@@ -46,6 +49,7 @@ export class ModifierFactory extends Factory {
         if(list === undefined) {
             this.items = new WeightedList();
             this.items.push(new vengefulModifier(affector));
+            this.items.push(new unlockedModifier(affector));
             this.items.push(new ultimateModifier(affector));
             this.items.push(new signatureModifier(affector));
             this.items.push(new selfHealModifier(affector));
@@ -56,6 +60,7 @@ export class ModifierFactory extends Factory {
             this.items.push(new cityModifier(affector));
             this.items.push(new restedModifer(affector));
             this.items.push(new repeatableModifier(affector));
+            this.items.push(new piercingModifier(affector));
             this.items.push(new opportunistModifier(affector));
             this.items.push(new nightlyModifier(affector));
             this.items.push(new multipleModifier(affector));
@@ -68,6 +73,7 @@ export class ModifierFactory extends Factory {
             this.items.push(new instinctiveModifier(affector));
             this.items.push(new grazedModifier(affector));
             this.items.push(new gainEffectModifier(affector));
+            this.items.push(new forcefulModifier(affector));
             this.items.push(new legendaryWeaponModifier(affector));
             this.items.push(new breachingModifier(affector));
             this.items.push(new fastModifier(affector));

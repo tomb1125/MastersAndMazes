@@ -29,6 +29,7 @@ var lockpickingUtility_1 = require("./utilityRepository/rogueUtilities/lockpicki
 var animalSpeak_1 = require("./utilityRepository/druidUtilities/animalSpeak");
 var seanceUtility_1 = require("./utilityRepository/clericUtilities/seanceUtility");
 var restorationUtility_1 = require("./utilityRepository/clericUtilities/restorationUtility");
+var piousPrayerUtility_1 = require("./utilityRepository/clericUtilities/piousPrayerUtility");
 var lightUtility_1 = require("./utilityRepository/clericUtilities/lightUtility");
 var holyHealUtility_1 = require("./utilityRepository/clericUtilities/holyHealUtility");
 var auguryUtility_1 = require("./utilityRepository/clericUtilities/auguryUtility");
@@ -48,6 +49,7 @@ var UtilityFactory = /** @class */ (function (_super) {
             _this.items.push(new animalSpeak_1.animalSpeak());
             _this.items.push(new seanceUtility_1.seanceUtility());
             _this.items.push(new restorationUtility_1.restorationUtility());
+            _this.items.push(new piousPrayerUtility_1.piousPrayerUtility());
             _this.items.push(new lightUtility_1.lightUtility());
             _this.items.push(new holyHealUtility_1.holyHealUtility());
             _this.items.push(new auguryUtility_1.auguryUtility());

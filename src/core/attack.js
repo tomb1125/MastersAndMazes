@@ -27,6 +27,7 @@ var Attack = /** @class */ (function (_super) {
     __extends(Attack, _super);
     function Attack(otherName) {
         var _this = _super.call(this, otherName) || this;
+        _this.weight = function () { return 1; };
         _this.cooldown = ability_1.Ability.Cooldown.Encounter;
         _this.type = ability_1.Ability.Type.Attack;
         return _this;
@@ -169,17 +170,10 @@ var Attack = /** @class */ (function (_super) {
     };
     Attack.prototype.generateName = function () {
         var damagePortion = this.damage.prefix ? this.damage.prefix + ' ' : '';
-        var attackPortion = this.subtype === Attack.Subtype.Weapon ? [
-            'Basic Attack'
-        ].sort(function () { return 0.5 - utils_1.Utils.random(); })[0] : '';
-        var spellPortion = this.subtype === Attack.Subtype.Spell ? [
-            'Basic Bolt'
-        ].sort(function () { return 0.5 - utils_1.Utils.random(); })[0] : '';
         return damagePortion +
             this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.namePrefix; }, '').slice(1) +
             (this.modifiers.length > 0 ? ' ' : '') +
-            attackPortion +
-            spellPortion;
+            this.name;
     };
     Attack.MODIFIER_CHANCE = new Map([
         [0.1, 0],

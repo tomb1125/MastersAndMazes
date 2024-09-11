@@ -25,7 +25,7 @@ var utils_1 = require("../../utils");
 var holyHealUtility = /** @class */ (function (_super) {
     __extends(holyHealUtility, _super);
     function holyHealUtility() {
-        var _this = _super.call(this, 'Holy Heal') || this;
+        var _this = _super.call(this, 'Heal') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.cooldown = ability_1.Ability.Cooldown.Encounter;
         _this.chance = 0.7;
@@ -33,21 +33,13 @@ var holyHealUtility = /** @class */ (function (_super) {
         if (!_this.value && utils_1.Utils.random() < utils_1.Utils.ATTACK_DESCRIPTIVE_NUMBER_CHANCE) {
             _this.value = new descriptiveNumberFactory_1.DescriptiveNumberFactory(_this).filter(function (x) { return x.type === descriptiveNumber_1.DescriptiveNumber.Type.Common; }).get(1)[0];
             _this.value.addBonus(Math.ceil(normalValue - _this.value.getValue()));
-            console.log(_this.value.getDescription());
             _this.value.compensate();
-            console.log(_this.value.getDescription());
-            console.log(_this.value.getValue());
         }
         else {
             _this.value = new descriptiveNumber_1.DescriptiveNumber(normalValue);
-            console.log('norm' + _this.value.getDescription());
         }
-        console.log('val pre' + _this.value.getValue());
         _this.compensate();
-        console.log('val post' + _this.value.getValue());
-        console.log(_this.value.getDescription());
         _this.description = 'Using Standard Action, restore ' + _this.value.getDescription() + ' health to yourself and one ally within 5 squares. ';
-        console.log('========');
         return _this;
     }
     return holyHealUtility;

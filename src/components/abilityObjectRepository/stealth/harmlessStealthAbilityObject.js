@@ -15,18 +15,18 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.shadowStealthAbilityObject = void 0;
+exports.harmlessStealthAbilityObject = void 0;
 var abilityObject_1 = require("../../abilityObject");
-var shadowStealthAbilityObject = /** @class */ (function (_super) {
-    __extends(shadowStealthAbilityObject, _super);
-    function shadowStealthAbilityObject() {
-        var _this = _super.call(this, 'Shadow Stealth') || this;
-        _this.description = 'Any bright light immiedietly reveals you (one torch is not enough to well lit area though). ';
-        _this.rarity = 1.4;
-        _this.prefix = 'Dark';
+var harmlessStealthAbilityObject = /** @class */ (function (_super) {
+    __extends(harmlessStealthAbilityObject, _super);
+    function harmlessStealthAbilityObject() {
+        var _this = _super.call(this, 'Harmless Stealth') || this;
+        _this.description = 'First attack you make within 10 minutes of using this ability has 3 Banes. ';
+        _this.rarity = 0.7;
+        _this.prefix = 'Harmless';
         _this.isStealth = true;
         return _this;
     }
-    return shadowStealthAbilityObject;
+    return harmlessStealthAbilityObject;
 }(abilityObject_1.AbilityObject));
-exports.shadowStealthAbilityObject = shadowStealthAbilityObject;
+exports.harmlessStealthAbilityObject = harmlessStealthAbilityObject;

@@ -15,28 +15,24 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.seanceUtility = void 0;
-var abilityObjectFactory_1 = require("../../../components/abilityObjectFactory");
+exports.piousPrayerUtility = void 0;
 var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
+var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var seanceUtility = /** @class */ (function (_super) {
-    __extends(seanceUtility, _super);
-    function seanceUtility() {
-        var _this = _super.call(this, 'Seance') || this;
+var piousPrayerUtility = /** @class */ (function (_super) {
+    __extends(piousPrayerUtility, _super);
+    function piousPrayerUtility() {
+        var _this = _super.call(this, 'Prayer') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
-        _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isCommunication; }).get(1)[0]);
-        _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isCorpse; }).get(1)[0]);
-        _this.duration = new descriptiveNumber_1.DescriptiveNumber(1);
-        _this.duration.description = 'ten minutes';
-        _this.chance = 0.85
-            / _this.objects[0].rarity
-            / _this.objects[1].rarity
-            / _this.duration.getValue();
-        _this.description = 'You can communicate with ' + _this.objects[1].description + ' for ' + _this.duration.getDescription() + '. ' + _this.objects[0].description;
+        _this.cooldown = ability_1.Ability.Cooldown.Encounter;
+        _this.chance = 0.7;
+        var normalValue = 7;
+        _this.value = new descriptiveNumber_1.DescriptiveNumber(normalValue);
         _this.compensate();
+        _this.description = 'If you are in combat, gain ' + _this.value.getDescription() + ' Blessing Points (see rules) or double this value if you are fighting Undead, Devils or Demons. Additionally your next ability chance roll has 1 Boon. This action can be only made as first Standard Action you make this combat. ';
         return _this;
     }
-    return seanceUtility;
+    return piousPrayerUtility;
 }(utility_1.Utility));
-exports.seanceUtility = seanceUtility;
+exports.piousPrayerUtility = piousPrayerUtility;

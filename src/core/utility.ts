@@ -28,9 +28,8 @@ export class Utility extends Activity implements CanAffectModifier, HasWeigth {
         super(otherName);
         this.cooldown = Ability.Cooldown.Daily;
         this.objects = [] as AbilityObject[];
-        //this.modifiers = [] as Modifier[];
+        this.modifiers = [] as Modifier[];
         this.type = Ability.Type.Utility;
-        this.modifiers = Utils.getNumberFromValueMap(Utility.MODIFIER_CHANCE, new ModifierFactory(this)) as Modifier[];
     }
 
     public getDescription(): string {
@@ -50,6 +49,12 @@ export class Utility extends Activity implements CanAffectModifier, HasWeigth {
     }
 
     protected compensate(): void {
+      console.log(this);
+      const extraMods: Modifier[] = Utils.getNumberFromValueMap(Utility.MODIFIER_CHANCE, new ModifierFactory(this)) as Modifier[];
+      extraMods.forEach(mod => {
+        this.modifiers.push(mod);
+      })
+      console.log('====');
       this.chance = this.chance * ModifierFactory.getDPSMultiplier(this.modifiers, this)
 
       if(ModifierFactory.getDPSBonus(this.modifiers, this) > 0) {

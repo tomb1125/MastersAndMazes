@@ -19,7 +19,7 @@ export class seanceUtility extends Utility {
             / this.objects[0].rarity 
             / this.objects[1].rarity 
             / this.duration.getValue() 
-        this.description = 'You can communicate with a nearby, target '+this.objects[1].description+' for '+this.duration.getDescription() + '. ' + this.objects[0].description;
+        this.description = 'You can communicate with '+this.objects[1].description+' for '+this.duration.getDescription() + '. ' + this.objects[0].description;
         this.compensate();
     }
 }

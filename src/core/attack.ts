@@ -6,8 +6,10 @@ import { Ability } from "./ability"
 import { DescriptiveNumber } from "../components/descriptiveNumber"
 import { CharacterContext } from "./characterContext"
 import { DescriptiveNumberFactory } from "../components/descriptiveNumberFactory"
+import { HasWeigth } from "./hasWeigth"
+import { AffectsWeight } from "./affectsWeight"
 
-export class Attack extends Activity implements CanAffectModifier {
+export class Attack extends Activity implements CanAffectModifier, HasWeigth {
   static MODIFIER_CHANCE: Map<number, number> = new Map([
     [0.1, 0],
     [0.7, 1],
@@ -20,6 +22,7 @@ export class Attack extends Activity implements CanAffectModifier {
   attackTemplate: String;
   target: DescriptiveNumber;
   subtype: Attack.Subtype;
+  weight: (x?: AffectsWeight) => number = () => {return 1};
 
  
   constructor(otherName?: string) {
@@ -196,20 +199,10 @@ export class Attack extends Activity implements CanAffectModifier {
 
     const damagePortion = this.damage.prefix ? this.damage.prefix + ' ' : '';
 
-    const attackPortion: string = this.subtype === Attack.Subtype.Weapon ? [
-      'Basic Attack'
-    ].sort(() => 0.5 - Utils.random())[0] : '';
-
-    const spellPortion: string = this.subtype === Attack.Subtype.Spell ? [
-      'Basic Bolt'
-    ].sort(() => 0.5 - Utils.random())[0] : '';
-
-
     return damagePortion +
      this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.namePrefix; }, '').slice(1) +
      (this.modifiers.length > 0 ? ' ' : '') +
-     attackPortion +
-     spellPortion;
+     this.name;
 
   }
 

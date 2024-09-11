@@ -23,9 +23,10 @@ var symetricTelepathyAbilityObject_1 = require("./abilityObjectRepository/symetr
 var symetricEmpathicAbilityObject_1 = require("./abilityObjectRepository/symetricCommunications/symetricEmpathicAbilityObject");
 var gainUnderstandingAbilityObject_1 = require("./abilityObjectRepository/symetricCommunications/gainUnderstandingAbilityObject");
 var dreamConnectionAbilityObject_1 = require("./abilityObjectRepository/symetricCommunications/dreamConnectionAbilityObject");
-var unarmoredStealthAbilityObject_1 = require("./abilityObjectRepository/stealth/unarmoredStealthAbilityObject");
 var shadowStealthAbilityObject_1 = require("./abilityObjectRepository/stealth/shadowStealthAbilityObject");
+var prowlingStealthAbilityObject_1 = require("./abilityObjectRepository/stealth/prowlingStealthAbilityObject");
 var potionStealthAbilityObject_1 = require("./abilityObjectRepository/stealth/potionStealthAbilityObject");
+var harmlessStealthAbilityObject_1 = require("./abilityObjectRepository/stealth/harmlessStealthAbilityObject");
 var yesNoAbilityObject_1 = require("./abilityObjectRepository/questions/yesNoAbilityObject");
 var oneWordAbilityObject_1 = require("./abilityObjectRepository/questions/oneWordAbilityObject");
 var noeDetailedAbilityObject_1 = require("./abilityObjectRepository/questions/noeDetailedAbilityObject");
@@ -43,6 +44,7 @@ var agileMovementAbilityObject_1 = require("./abilityObjectRepository/movements/
 var revealingLightAbilityObject_1 = require("./abilityObjectRepository/light/revealingLightAbilityObject");
 var controllableLightAbilityObject_1 = require("./abilityObjectRepository/light/controllableLightAbilityObject");
 var colorfulLightAbilityObject_1 = require("./abilityObjectRepository/light/colorfulLightAbilityObject");
+var blindingLightAbilityObject_1 = require("./abilityObjectRepository/light/blindingLightAbilityObject");
 var warriorCorpseAbilityObject_1 = require("./abilityObjectRepository/corpses/warriorCorpseAbilityObject");
 var unfinishedBusinessAbilityObject_1 = require("./abilityObjectRepository/corpses/unfinishedBusinessAbilityObject");
 var soulStealingAbilityObject_1 = require("./abilityObjectRepository/corpses/soulStealingAbilityObject");
@@ -66,9 +68,10 @@ var AbilityObjectFactory = /** @class */ (function (_super) {
             _this.items.push(new symetricEmpathicAbilityObject_1.symetricEmpathicAbilityObject());
             _this.items.push(new gainUnderstandingAbilityObject_1.gainUnderstandingAbilityObject());
             _this.items.push(new dreamConnectionAbilityObject_1.dreamConnectionAbilityObject());
-            _this.items.push(new unarmoredStealthAbilityObject_1.unarmoredStealthAbilityObject());
             _this.items.push(new shadowStealthAbilityObject_1.shadowStealthAbilityObject());
+            _this.items.push(new prowlingStealthAbilityObject_1.prowlingStealthAbilityObject());
             _this.items.push(new potionStealthAbilityObject_1.potionStealthAbilityObject());
+            _this.items.push(new harmlessStealthAbilityObject_1.harmlessStealthAbilityObject());
             _this.items.push(new yesNoAbilityObject_1.yesNoAbilityObject());
             _this.items.push(new oneWordAbilityObject_1.oneWordAbilityObject());
             _this.items.push(new noeDetailedAbilityObject_1.noeDetailedAbilityObject());
@@ -86,6 +89,7 @@ var AbilityObjectFactory = /** @class */ (function (_super) {
             _this.items.push(new revealingLightAbilityObject_1.revealingLightAbilityObject());
             _this.items.push(new controllableLightAbilityObject_1.controllableLightAbilityObject());
             _this.items.push(new colorfulLightAbilityObject_1.colorfulLightAbilityObject());
+            _this.items.push(new blindingLightAbilityObject_1.blindingLightAbilityObject());
             _this.items.push(new warriorCorpseAbilityObject_1.warriorCorpseAbilityObject());
             _this.items.push(new unfinishedBusinessAbilityObject_1.unfinishedBusinessAbilityObject());
             _this.items.push(new soulStealingAbilityObject_1.soulStealingAbilityObject());

@@ -21,7 +21,7 @@ var soulStealingAbilityObject = /** @class */ (function (_super) {
     __extends(soulStealingAbilityObject, _super);
     function soulStealingAbilityObject() {
         var _this = _super.call(this, 'Soul Steal') || this;
-        _this.description = 'any person you killed or assisted in killing';
+        _this.description = 'any person you killed or assisted in killing (they are intimidiated by you and will cooperate)';
         _this.rarity = 0.5;
         _this.prefix = 'Soul Stealing';
         _this.isCorpse = true;

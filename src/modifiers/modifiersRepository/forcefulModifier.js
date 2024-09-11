@@ -15,23 +15,22 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.laylineModifier = void 0;
+exports.forcefulModifier = void 0;
 var ability_1 = require("../../core/ability");
 var modifier_1 = require("../modifier");
-var laylineModifier = /** @class */ (function (_super) {
-    __extends(laylineModifier, _super);
-    function laylineModifier(affector) {
+var forcefulModifier = /** @class */ (function (_super) {
+    __extends(forcefulModifier, _super);
+    function forcefulModifier(affector) {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function (x) { return x.range ? Math.max(1.2, 2.1 - x.range / 20) : 1; };
-        1.7;
-        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.cooldown) === ability_1.Ability.Cooldown.Encounter ? 1 : 0; };
-        _this.name = 'Layline';
-        _this.namePrefix = 'Layline';
-        _this.description = 'Can be used only while adjacent to place of power (usually you can detect 2-4 places of power each encounter).';
+        _this.powerBonus = function (x) { return -2; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
+        _this.name = 'Forceful';
+        _this.namePrefix = 'Forceful';
+        _this.description = 'When you hit, push target 5 squares. You can push into dangereous terrain, pushing into solid obstacles deals extra damage equal to unresolved squares of push. ';
         _this.longDescription = '';
-        _this.modifierType = modifier_1.Modifier.Type.Constraint;
+        _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;
     }
-    return laylineModifier;
+    return forcefulModifier;
 }(modifier_1.Modifier));
-exports.laylineModifier = laylineModifier;
+exports.forcefulModifier = forcefulModifier;

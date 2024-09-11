@@ -5,6 +5,7 @@ import { Utility } from "./src/core/utility";
 import { CharacterContext } from "./src/core/characterContext";
 import { Ability } from "./src/core/ability";
 import { RandomNumberGenerator } from "./src/core/randomNumberGenerator";
+import { AttackFactory } from "./src/core/attackFactory";
 
 global.onSeedChange = (val): void => {
   CharacterContext.seed = val;
@@ -43,14 +44,12 @@ global.generateAbilities = (): void => {
   let description: string = '';
 
   if(levelMode === 1) {
-    let att1 = new Attack();
-    att1.generate()
-    let att2 = new Attack();
-    att2.generate()
-    let att3 = new Attack();
-    att3.generate()
-    let att4 = new Attack();
-    att4.generate()
+    let factory1 = new AttackFactory(new Ability()).get(2);
+    let factory2 = new AttackFactory(new Ability()).get(2);
+    let att1 = factory1[0];
+    let att2 = factory1[1];
+    let att3 = factory2[0];
+    let att4 = factory2[1];
 
     description = '<br>'+ 
       att1.getDescription() +'<br><br>'+
@@ -67,15 +66,15 @@ global.generateAbilities = (): void => {
       utl[2].getDescription() +'<br><br>'+
       utl[3].getDescription() +'<br><br>'
 
-    const debugName = 'Holy Heal';
-    //description = '<br>'+ 
+    
+    /*const debugName = 'Light';
+    description = '<br>'+ 
       new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription() +'<br><br>'+
       new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription() +'<br><br>'+
       new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription() +'<br><br>'+
       new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription() +'<br><br>'
-  } else {
-
-  }
+      */
+  } 
 
   outputDiv.innerHTML = description;
 };

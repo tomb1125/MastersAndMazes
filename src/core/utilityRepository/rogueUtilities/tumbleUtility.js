@@ -31,7 +31,7 @@ var tumbleUtility = /** @class */ (function (_super) {
         _this.chance = 0.35;
         _this.value = new descriptiveNumber_1.DescriptiveNumber(5);
         _this.compensate();
-        _this.description = 'As a reaction, when you are attacked, you can move away ' + _this.value.getDescription() + ' meters in straight line. ' + _this.objects[0].description + ' If you can move outside attack range, you dodge the attack. ';
+        _this.description = 'As a reaction, when you are attacked, you can move away ' + _this.value.getDescription() + ' meters in straight line. ' + _this.objects[0].description + ' If you can move outside attack range or behind cover, you dodge the attack. ';
         return _this;
     }
     return tumbleUtility;

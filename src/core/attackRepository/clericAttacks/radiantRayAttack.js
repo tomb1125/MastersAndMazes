@@ -15,18 +15,17 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.shadowStealthAbilityObject = void 0;
-var abilityObject_1 = require("../../abilityObject");
-var shadowStealthAbilityObject = /** @class */ (function (_super) {
-    __extends(shadowStealthAbilityObject, _super);
-    function shadowStealthAbilityObject() {
-        var _this = _super.call(this, 'Shadow Stealth') || this;
-        _this.description = 'Any bright light immiedietly reveals you (one torch is not enough to well lit area though). ';
-        _this.rarity = 1.4;
-        _this.prefix = 'Dark';
-        _this.isStealth = true;
+exports.radiantRayAttack = void 0;
+var attack_1 = require("../../attack");
+var characterContext_1 = require("../../characterContext");
+var radiantRayAttack = /** @class */ (function (_super) {
+    __extends(radiantRayAttack, _super);
+    function radiantRayAttack(affector) {
+        var _this = _super.call(this, 'Radiant Flame') || this;
+        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
+        _this.generate();
         return _this;
     }
-    return shadowStealthAbilityObject;
-}(abilityObject_1.AbilityObject));
-exports.shadowStealthAbilityObject = shadowStealthAbilityObject;
+    return radiantRayAttack;
+}(attack_1.Attack));
+exports.radiantRayAttack = radiantRayAttack;

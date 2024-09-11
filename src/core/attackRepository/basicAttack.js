@@ -15,18 +15,15 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.unarmoredStealthAbilityObject = void 0;
-var abilityObject_1 = require("../../abilityObject");
-var unarmoredStealthAbilityObject = /** @class */ (function (_super) {
-    __extends(unarmoredStealthAbilityObject, _super);
-    function unarmoredStealthAbilityObject() {
-        var _this = _super.call(this, 'Unarmored Stealth') || this;
-        _this.description = 'You cannot wear armor when you use this ability. ';
-        _this.rarity = 0.7;
-        _this.prefix = 'Unarmored';
-        _this.isStealth = true;
+exports.basicAttack = void 0;
+var attack_1 = require("../attack");
+var basicAttack = /** @class */ (function (_super) {
+    __extends(basicAttack, _super);
+    function basicAttack(affector) {
+        var _this = _super.call(this, 'Basic Attack') || this;
+        _this.generate();
         return _this;
     }
-    return unarmoredStealthAbilityObject;
-}(abilityObject_1.AbilityObject));
-exports.unarmoredStealthAbilityObject = unarmoredStealthAbilityObject;
+    return basicAttack;
+}(attack_1.Attack));
+exports.basicAttack = basicAttack;

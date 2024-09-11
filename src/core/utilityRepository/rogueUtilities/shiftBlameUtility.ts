@@ -13,7 +13,7 @@ export class shiftBlameUtility extends Utility {
         this.objects.push(new AbilityObjectFactory(this).filter((x: AbilityObject) => x.isPerson).get(1)[0]);
 
         this.chance = 0.7
-        this.description = 'When you are accussed of something immiedietly shift blame to someone else. For about 15 meters '+this.objects[0].description+' will believe this lie, before starting to investigate it more thoroughly. ';
+        this.description = 'When you are accussed of something immiedietly shift blame to someone else. For about 15 minutes '+this.objects[0].description+' will believe this lie, before starting to investigate it more thoroughly. ';
         this.compensate();
     }
 }

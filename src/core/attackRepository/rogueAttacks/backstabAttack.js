@@ -15,18 +15,17 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.shadowStealthAbilityObject = void 0;
-var abilityObject_1 = require("../../abilityObject");
-var shadowStealthAbilityObject = /** @class */ (function (_super) {
-    __extends(shadowStealthAbilityObject, _super);
-    function shadowStealthAbilityObject() {
-        var _this = _super.call(this, 'Shadow Stealth') || this;
-        _this.description = 'Any bright light immiedietly reveals you (one torch is not enough to well lit area though). ';
-        _this.rarity = 1.4;
-        _this.prefix = 'Dark';
-        _this.isStealth = true;
+exports.backstabAttack = void 0;
+var attack_1 = require("../../attack");
+var characterContext_1 = require("../../characterContext");
+var backstabAttack = /** @class */ (function (_super) {
+    __extends(backstabAttack, _super);
+    function backstabAttack(affector) {
+        var _this = _super.call(this, 'Backstab') || this;
+        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
+        _this.generate();
         return _this;
     }
-    return shadowStealthAbilityObject;
-}(abilityObject_1.AbilityObject));
-exports.shadowStealthAbilityObject = shadowStealthAbilityObject;
+    return backstabAttack;
+}(attack_1.Attack));
+exports.backstabAttack = backstabAttack;

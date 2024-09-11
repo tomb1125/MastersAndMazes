@@ -20,6 +20,7 @@ var weightedList_1 = require("../core/weightedList");
 var factory_1 = require("../core/factory");
 //factory imports
 var vengefulModifier_1 = require("./modifiersRepository/vengefulModifier");
+var unlockedModifier_1 = require("./modifiersRepository/unlockedModifier");
 var ultimateModifier_1 = require("./modifiersRepository/ultimateModifier");
 var signatureModifier_1 = require("./modifiersRepository/signatureModifier");
 var selfHealModifier_1 = require("./modifiersRepository/selfHealModifier");
@@ -30,6 +31,7 @@ var daggerModifier_1 = require("./modifiersRepository/rogueModifiers/daggerModif
 var cityModifier_1 = require("./modifiersRepository/rogueModifiers/cityModifier");
 var restedModifer_1 = require("./modifiersRepository/restedModifer");
 var repeatableModifier_1 = require("./modifiersRepository/repeatableModifier");
+var piercingModifier_1 = require("./modifiersRepository/piercingModifier");
 var opportunistModifier_1 = require("./modifiersRepository/opportunistModifier");
 var nightlyModifier_1 = require("./modifiersRepository/nightlyModifier");
 var multipleModifier_1 = require("./modifiersRepository/multipleModifier");
@@ -42,6 +44,7 @@ var laylineModifier_1 = require("./modifiersRepository/laylineModifier");
 var instinctiveModifier_1 = require("./modifiersRepository/instinctiveModifier");
 var grazedModifier_1 = require("./modifiersRepository/grazedModifier");
 var gainEffectModifier_1 = require("./modifiersRepository/gainEffectModifier");
+var forcefulModifier_1 = require("./modifiersRepository/forcefulModifier");
 var legendaryWeaponModifier_1 = require("./modifiersRepository/fighterModifiers/legendaryWeaponModifier");
 var breachingModifier_1 = require("./modifiersRepository/fighterModifiers/breachingModifier");
 var fastModifier_1 = require("./modifiersRepository/fastModifier");
@@ -62,6 +65,7 @@ var ModifierFactory = /** @class */ (function (_super) {
         if (list === undefined) {
             _this.items = new weightedList_1.WeightedList();
             _this.items.push(new vengefulModifier_1.vengefulModifier(affector));
+            _this.items.push(new unlockedModifier_1.unlockedModifier(affector));
             _this.items.push(new ultimateModifier_1.ultimateModifier(affector));
             _this.items.push(new signatureModifier_1.signatureModifier(affector));
             _this.items.push(new selfHealModifier_1.selfHealModifier(affector));
@@ -72,6 +76,7 @@ var ModifierFactory = /** @class */ (function (_super) {
             _this.items.push(new cityModifier_1.cityModifier(affector));
             _this.items.push(new restedModifer_1.restedModifer(affector));
             _this.items.push(new repeatableModifier_1.repeatableModifier(affector));
+            _this.items.push(new piercingModifier_1.piercingModifier(affector));
             _this.items.push(new opportunistModifier_1.opportunistModifier(affector));
             _this.items.push(new nightlyModifier_1.nightlyModifier(affector));
             _this.items.push(new multipleModifier_1.multipleModifier(affector));
@@ -84,6 +89,7 @@ var ModifierFactory = /** @class */ (function (_super) {
             _this.items.push(new instinctiveModifier_1.instinctiveModifier(affector));
             _this.items.push(new grazedModifier_1.grazedModifier(affector));
             _this.items.push(new gainEffectModifier_1.gainEffectModifier(affector));
+            _this.items.push(new forcefulModifier_1.forcefulModifier(affector));
             _this.items.push(new legendaryWeaponModifier_1.legendaryWeaponModifier(affector));
             _this.items.push(new breachingModifier_1.breachingModifier(affector));
             _this.items.push(new fastModifier_1.fastModifier(affector));

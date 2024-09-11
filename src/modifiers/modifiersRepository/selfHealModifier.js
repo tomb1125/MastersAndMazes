@@ -29,7 +29,7 @@ var selfHealModifier = /** @class */ (function (_super) {
         _this.name = 'Self Heal ' + _this.numericComponents[0].getValue();
         _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.cooldown) === ability_1.Ability.Cooldown.Encounter ? 1 : 0; };
         _this.namePrefix = 'Healing';
-        _this.description = 'When you hit, heal yourself equal to: ' + _this.numericComponents[0].getDescription() + '.';
+        _this.description = 'When you hit, heal yourself ' + _this.numericComponents[0].getDescription() + '.';
         _this.powerBonus = function () { return -_this.numericComponents[0].getValue(); };
         _this.elements = [[ability_1.Ability.Element.Radiant, ability_1.Ability.Element.Dark, ability_1.Ability.Element.Emotion].sort(function () { return 0.5 - utils_1.Utils.random(); })[1]];
         return _this;

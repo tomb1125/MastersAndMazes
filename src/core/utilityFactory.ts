@@ -14,6 +14,7 @@ import { lockpickingUtility } from "./utilityRepository/rogueUtilities/lockpicki
 import { animalSpeak } from "./utilityRepository/druidUtilities/animalSpeak";
 import { seanceUtility } from "./utilityRepository/clericUtilities/seanceUtility";
 import { restorationUtility } from "./utilityRepository/clericUtilities/restorationUtility";
+import { piousPrayerUtility } from "./utilityRepository/clericUtilities/piousPrayerUtility";
 import { lightUtility } from "./utilityRepository/clericUtilities/lightUtility";
 import { holyHealUtility } from "./utilityRepository/clericUtilities/holyHealUtility";
 import { auguryUtility } from "./utilityRepository/clericUtilities/auguryUtility";
@@ -32,6 +33,7 @@ export class UtilityFactory extends Factory {
             this.items.push(new animalSpeak());
             this.items.push(new seanceUtility());
             this.items.push(new restorationUtility());
+            this.items.push(new piousPrayerUtility());
             this.items.push(new lightUtility());
             this.items.push(new holyHealUtility());
             this.items.push(new auguryUtility());

@@ -17,9 +17,8 @@ Wand - Your Spells have +10 range.
 Trophy - Whenever you use ability with an encounter cooldown, roll D6. On 6 it does not go on cooldown.
 
 1H Off-Hands
-Light Shield - 10 Armor Points
-Medium Shield - 15 Armor Points
-Heavy Shield - 20 Armor Points
+Medium Shield - 5 Armor Points (requires medium armor proficiency)
+Heavy Shield - 10 Armor Points (requires heavy armor proficiency)
 
 2H Weapons
 2H Hammer - 
@@ -27,15 +26,16 @@ Heavy Shield - 20 Armor Points
 2H Axe - Gain bonus damage with Weapon Attack, equal to number of turn you started with 2H Axe in hand.
 Scythe - Deal +6 damage to undamaged enemies with Weapon Attacks.
 Bow - Your weapon attacks have +10 range. You can make this bonus to +20, but you suffer 2 Banes on attack.
+Crossbow - Your weapon attacks have +20 range. You must use swift action to reload crossbow.
 
 2H Implements
 Staff - Every 3rd spell you cast each combat needs only 1/5 of its mana cost (rounded down). If you switch weapons, counting resets.
 Banner - At the end of each turn gain 4 Mana.
 
 Armor
-Light Armor - +2 Armor
-Medium Armor - +3 Armor
-Heavy Armor - +4 Armor
+Light Armor - 10 Armor Points
+Medium Armor - 15 Armor Points
+Heavy Armor - 20 Armor Points
 
 Consumables:
 Minog Serum (500G - rare) - Remove one Scar from yourself.
@@ -43,9 +43,6 @@ Octopus Ramen (400G - rare) - Roll D6 for each Scar you have. Remove 1 Scar for 
 
 Healing Potion (10G) - restore 10 HP
 Mana Potion (10G) - restore 10 Mana
-
-Seeing in Dark Potion (20G) - until end of encounter see in darkness. Your next attack have 2 Boons to attack.
-Water Breathing Potion (20G) - you can breath under water until end of the next encounter. Your next attack deals extra 5 damage.
 
 Services
 Training (100G - rare) - gain 1 Experience Point.

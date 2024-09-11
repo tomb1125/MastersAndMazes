@@ -26,7 +26,7 @@ var shiftBlameUtility = /** @class */ (function (_super) {
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isPerson; }).get(1)[0]);
         _this.chance = 0.7;
-        _this.description = 'When you are accussed of something immiedietly shift blame to someone else. For about 15 meters ' + _this.objects[0].description + ' will believe this lie, before starting to investigate it more thoroughly. ';
+        _this.description = 'When you are accussed of something immiedietly shift blame to someone else. For about 15 minutes ' + _this.objects[0].description + ' will believe this lie, before starting to investigate it more thoroughly. ';
         _this.compensate();
         return _this;
     }
