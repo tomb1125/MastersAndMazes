@@ -2,6 +2,7 @@ import { CharacterContext } from "../core/characterContext";
 import { ClassDetails } from "./classDetails";
 import { ClericClass } from "./classes/cleric";
 import { RogueClass } from "./classes/rogue";
+import { FighterClass } from "./classes/fighter";
 
 export class ClassUtils {
   
@@ -25,6 +26,8 @@ export class ClassUtils {
         return new ClericClass();
       } else if(className === 'Rogue') {
         return new RogueClass();
+      } else if(className === 'Fighter') {
+        return new FighterClass();
       } else {
         throw 'unsupported class '+className;
       }

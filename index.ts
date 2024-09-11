@@ -67,13 +67,13 @@ global.generateAbilities = (): void => {
       utl[3].getDescription() +'<br><br>'
 
     
-    /*const debugName = 'Light';
+    const debugName = 'Entice Respect';
     description = '<br>'+ 
       new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription() +'<br><br>'+
       new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription() +'<br><br>'+
       new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription() +'<br><br>'+
       new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription() +'<br><br>'
-      */
+      
   } 
 
   outputDiv.innerHTML = description;

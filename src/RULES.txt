@@ -101,10 +101,10 @@ Corruption points are permaments. Corruption points cannot be removed by abiliti
 6 - Permamently gain 5 maximum Mana.
 
 Blessing.
-Blessing points are permament. Whenever you reach 100 or more Blessing, reduce your Blessing by 100 and roll in below table:
+Blessing Points are permanent. Whenever you reach 100 or more Blessing, reduce your Blessing by 100 and roll in below table:
 1 - Remove all Scars you have.
 2 - All rolls have 1 Boon until the end of the next adventure.
 3 - Gain 5 Experience points.
-2 - Permamently gain 5 maximium Health.
-3 - Raise your two lowest Attributes by 10.
+2 - Permanently gain 5 maximum Health.
+3 - Raise any of your attributes by 10, but not above 50.
 4 - Next time you see "you die" effect (eg. dying roll or corruption roll) you can ignore it.

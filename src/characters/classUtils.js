@@ -4,6 +4,7 @@ exports.ClassUtils = void 0;
 var characterContext_1 = require("../core/characterContext");
 var cleric_1 = require("./classes/cleric");
 var rogue_1 = require("./classes/rogue");
+var fighter_1 = require("./classes/fighter");
 var ClassUtils = /** @class */ (function () {
     function ClassUtils() {
     }
@@ -13,6 +14,9 @@ var ClassUtils = /** @class */ (function () {
         }
         else if (className === 'Rogue') {
             return new rogue_1.RogueClass();
+        }
+        else if (className === 'Fighter') {
+            return new fighter_1.FighterClass();
         }
         else {
             throw 'unsupported class ' + className;

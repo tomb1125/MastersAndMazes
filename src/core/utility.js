@@ -21,6 +21,7 @@ var ability_1 = require("./ability");
 var activity_1 = require("./activity");
 var modifierFactory_1 = require("../modifiers/modifierFactory");
 var utils_1 = require("./utils");
+var characterContext_1 = require("./characterContext");
 var Utility = /** @class */ (function (_super) {
     __extends(Utility, _super);
     function Utility(otherName) {
@@ -47,15 +48,19 @@ var Utility = /** @class */ (function (_super) {
     };
     Utility.prototype.compensate = function () {
         var _this = this;
-        console.log(this);
         var extraMods = utils_1.Utils.getNumberFromValueMap(Utility.MODIFIER_CHANCE, new modifierFactory_1.ModifierFactory(this));
         extraMods.forEach(function (mod) {
             _this.modifiers.push(mod);
         });
-        console.log('====');
         this.chance = this.chance * modifierFactory_1.ModifierFactory.getDPSMultiplier(this.modifiers, this);
-        if (modifierFactory_1.ModifierFactory.getDPSBonus(this.modifiers, this) > 0) {
-            throw 'dps bonus does not work for utils ' + JSON.stringify(this.modifiers);
+        var bonus = modifierFactory_1.ModifierFactory.getDPSBonus(this.modifiers, this);
+        if (bonus != 0) {
+            if (this.value) {
+                this.value.addBonus(bonus * this.value.getValue() / utils_1.Utils.getDPS(1));
+            }
+            else {
+                this.chance += bonus / utils_1.Utils.getDPS(characterContext_1.CharacterContext.level);
+            }
         }
         var repeat = new repeatableModifier_1.repeatableModifier();
         if (this.chance > 1) {

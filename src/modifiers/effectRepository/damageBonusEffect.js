@@ -23,6 +23,7 @@ var damageBonusEffect = /** @class */ (function (_super) {
     __extends(damageBonusEffect, _super);
     function damageBonusEffect() {
         var _this = _super.call(this) || this;
+        _this.weight = function () { return 1000; };
         _this.value = Math.ceil(utils_1.Utils.random() * 4) + 1;
         _this.duration = Math.ceil(utils_1.Utils.random() * 2 + 0.5);
         _this.name = 'Empower ' + _this.value + 'x' + _this.duration;

@@ -26,6 +26,9 @@ var shadowStrideUtility_1 = require("./utilityRepository/rogueUtilities/shadowSt
 var shadowMeldUtility_1 = require("./utilityRepository/rogueUtilities/shadowMeldUtility");
 var pickpocketUtility_1 = require("./utilityRepository/rogueUtilities/pickpocketUtility");
 var lockpickingUtility_1 = require("./utilityRepository/rogueUtilities/lockpickingUtility");
+var equipmentMaintenanceUtility_1 = require("./utilityRepository/fighterUtilities/equipmentMaintenanceUtility");
+var enticeRespectUtility_1 = require("./utilityRepository/fighterUtilities/enticeRespectUtility");
+var blockUtility_1 = require("./utilityRepository/fighterUtilities/blockUtility");
 var animalSpeak_1 = require("./utilityRepository/druidUtilities/animalSpeak");
 var seanceUtility_1 = require("./utilityRepository/clericUtilities/seanceUtility");
 var restorationUtility_1 = require("./utilityRepository/clericUtilities/restorationUtility");
@@ -46,6 +49,9 @@ var UtilityFactory = /** @class */ (function (_super) {
             _this.items.push(new shadowMeldUtility_1.shadowMeldUtility());
             _this.items.push(new pickpocketUtility_1.pickpocketUtility());
             _this.items.push(new lockpickingUtility_1.lockpickingUtility());
+            _this.items.push(new equipmentMaintenanceUtility_1.equipmentMaintenanceUtility());
+            _this.items.push(new enticeRespectUtility_1.enticeRespectUtility());
+            _this.items.push(new blockUtility_1.blockUtility());
             _this.items.push(new animalSpeak_1.animalSpeak());
             _this.items.push(new seanceUtility_1.seanceUtility());
             _this.items.push(new restorationUtility_1.restorationUtility());

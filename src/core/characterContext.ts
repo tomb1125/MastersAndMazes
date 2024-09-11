@@ -19,20 +19,20 @@ export namespace CharacterContext
     {
       Cleric,
       Fighter,
-      Leader,
       Paladin,
       Ranger,
       Rogue,
       Sorcerer,
+      Druid,
       Wizard, 
 
       Assassin, 
       Barbarian,
       Bard,
-      Druid,
       Monk,
       Runepriest,
       Shaman,
+      Swordmage,
       Warlock,
     }
 

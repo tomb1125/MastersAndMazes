@@ -15,25 +15,23 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.tumbleUtility = void 0;
-var abilityObjectFactory_1 = require("../../../components/abilityObjectFactory");
+exports.blockUtility = void 0;
 var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
 var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var tumbleUtility = /** @class */ (function (_super) {
-    __extends(tumbleUtility, _super);
-    function tumbleUtility() {
-        var _this = _super.call(this, 'Tumble') || this;
-        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
-        _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isMovement; }).get(1)[0]);
+var blockUtility = /** @class */ (function (_super) {
+    __extends(blockUtility, _super);
+    function blockUtility() {
+        var _this = _super.call(this, 'Block') || this;
+        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.cooldown = ability_1.Ability.Cooldown.Encounter;
-        _this.chance = 0.35;
-        _this.value = new descriptiveNumber_1.DescriptiveNumber(5);
+        _this.chance = 0.45;
+        _this.value = new descriptiveNumber_1.DescriptiveNumber(15);
         _this.compensate();
-        _this.description = 'Use as reaction when being attacked. If you succeed you can move away ' + _this.value.getDescription() + ' meters. ' + _this.objects[0].description + ' If you can move outside attack range or behind cover, you dodge the attack. ';
+        _this.description = 'Use as reaction when being attacked. If you succeed you reduce damage by ' + _this.value.getDescription() + '. You gain 2 Boons for chance roll if you use a shield. ';
         return _this;
     }
-    return tumbleUtility;
+    return blockUtility;
 }(utility_1.Utility));
-exports.tumbleUtility = tumbleUtility;
+exports.blockUtility = blockUtility;

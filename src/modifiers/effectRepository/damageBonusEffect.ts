@@ -8,7 +8,7 @@ export class damageBonusEffect extends Effect {
     
     constructor() {
         super();
-        
+        this.weight = () => 1000;
         this.value = Math.ceil(Utils.random() * 4) + 1;
         this.duration = Math.ceil(Utils.random() * 2 + 0.5);
         this.name = 'Empower ' + this.value +'x' +this.duration; 

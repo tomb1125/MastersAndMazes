@@ -15,24 +15,23 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.piousPrayerUtility = void 0;
+exports.equipmentMaintenanceUtility = void 0;
 var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
 var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var piousPrayerUtility = /** @class */ (function (_super) {
-    __extends(piousPrayerUtility, _super);
-    function piousPrayerUtility() {
-        var _this = _super.call(this, 'Prayer') || this;
-        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
-        _this.cooldown = ability_1.Ability.Cooldown.Encounter;
-        _this.chance = 0.7;
-        var normalValue = 7;
-        _this.value = new descriptiveNumber_1.DescriptiveNumber(normalValue);
+var equipmentMaintenanceUtility = /** @class */ (function (_super) {
+    __extends(equipmentMaintenanceUtility, _super);
+    function equipmentMaintenanceUtility() {
+        var _this = _super.call(this, 'Equipment Maintenance') || this;
+        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
+        _this.cooldown = ability_1.Ability.Cooldown.Daily;
+        _this.chance = 0.9;
+        _this.value = new descriptiveNumber_1.DescriptiveNumber(10);
         _this.compensate();
-        _this.description = 'If you are in combat, gain ' + _this.value.getDescription() + ' Blessing Points (see rules) or double this value if you are fighting Undead, Devils or Demons. Additionally your next ability chance roll has 1 Boon. This action can be only made as the first Standard Action you make each combat. ';
+        _this.description = 'If you succeed repair and maintain equipment. You can repair weapons and armor after being damaged by acid and similar effects. Additionally until end of the day maintained armor grants extra ' + _this.value.getDescription() + ' Armor Points.';
         return _this;
     }
-    return piousPrayerUtility;
+    return equipmentMaintenanceUtility;
 }(utility_1.Utility));
-exports.piousPrayerUtility = piousPrayerUtility;
+exports.equipmentMaintenanceUtility = equipmentMaintenanceUtility;

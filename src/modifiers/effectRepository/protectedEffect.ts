@@ -9,8 +9,8 @@ export class protectedEffect extends Effect {
         
         this.value = Math.ceil(Utils.DPS * (Utils.random()));
         this.duration = Math.ceil(Utils.random() * 3) + 1;
-        this.weight = () => {return 1000};
-        this.powerBonus = (x: CanAffectModifier) => {return - Utils.ENEMY_DPS * 3/10 * Utils.getDurationCoeficient(this.duration)}; 
+        this.weight = () => {return 1};
+        this.powerBonus = (x: CanAffectModifier) => {return - Utils.ENEMY_DPS * 5/10 * Utils.getDurationCoeficient(this.duration)}; 
         this.name = 'Protection '+this.duration;  
         this.namePrefix = 'Protecting';  
         this.description = this.namePrefix + ' - whenever you take damage and/or are affected by an enemy, roll D10, on 8-0 you ignore this damage/effect. This lasts for '+this.duration+' turns.';

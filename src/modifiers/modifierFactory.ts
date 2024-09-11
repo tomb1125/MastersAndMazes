@@ -105,10 +105,10 @@ export class ModifierFactory extends Factory {
     
   public static getDPSBonus(modifiers : Modifier[], affector : AffectsWeight): number {
     let dps: number = 0;
-
     
     modifiers.forEach(m => {
       if(m.powerBonus) {
+        console.log('aff: ' + JSON.stringify(affector) + ' m:' + JSON.stringify(m) + ' power:' + m.powerBonus(affector))
         dps += m.powerBonus(affector);
       }
     });

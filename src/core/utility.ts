@@ -9,6 +9,7 @@ import { HasWeigth } from "./hasWeigth";
 import { CanAffectModifier } from "./canAffectModifier";
 import { ModifierFactory } from "../modifiers/modifierFactory";
 import { Utils } from "./utils";
+import { CharacterContext } from "./characterContext";
 
 export class Utility extends Activity implements CanAffectModifier, HasWeigth {
     weight = (x?: AffectsWeight) => {return 1};
@@ -49,18 +50,21 @@ export class Utility extends Activity implements CanAffectModifier, HasWeigth {
     }
 
     protected compensate(): void {
-      console.log(this);
       const extraMods: Modifier[] = Utils.getNumberFromValueMap(Utility.MODIFIER_CHANCE, new ModifierFactory(this)) as Modifier[];
       extraMods.forEach(mod => {
         this.modifiers.push(mod);
       })
-      console.log('====');
+
       this.chance = this.chance * ModifierFactory.getDPSMultiplier(this.modifiers, this)
-
-      if(ModifierFactory.getDPSBonus(this.modifiers, this) > 0) {
-        throw 'dps bonus does not work for utils '+JSON.stringify(this.modifiers)
+      
+      const bonus = ModifierFactory.getDPSBonus(this.modifiers, this);
+      if(bonus != 0) {
+        if(this.value) {
+          this.value.addBonus(bonus * this.value.getValue() / Utils.getDPS(1))
+        } else {
+          this.chance += bonus / Utils.getDPS(CharacterContext.level);
+        }
       }
-
 
       const repeat: repeatableModifier = new repeatableModifier();
       if(this.chance > 1) {

@@ -18,6 +18,6 @@ export class piousPrayerUtility extends Utility {
         this.value = new DescriptiveNumber(normalValue);
 
         this.compensate();
-        this.description = 'If you are in combat, gain '+this.value.getDescription()+' Blessing Points (see rules) or double this value if you are fighting Undead, Devils or Demons. Additionally your next ability chance roll has 1 Boon. This action can be only made as first Standard Action you make this combat. ';
+        this.description = 'If you are in combat, gain '+this.value.getDescription()+' Blessing Points (see rules) or double this value if you are fighting Undead, Devils or Demons. Additionally your next ability chance roll has 1 Boon. This action can be only made as the first Standard Action you make each combat. ';
     }
 }
