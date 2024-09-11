@@ -22,6 +22,7 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
   attackTemplate: String;
   target: DescriptiveNumber;
   subtype: Attack.Subtype;
+  coreDescription: String;
   weight: (x?: AffectsWeight) => number = () => {return 1};
 
  
@@ -189,7 +190,7 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
       '<br><b>Mana Cost</b>: ' + this.manaCost +
       '<br><b>Range</b>: ' + this.range +
       '<br><b>Modifiers</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + ', ' + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
-      '<br><b>Description</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
+      '<br><b>Description</b>: ' + this.coreDescription + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
       '<br><b>Type</b>: ' + Attack.Subtype[this.subtype] + 
       '<br><b>Cooldown</b>: ' + Ability.Cooldown[this.cooldown];
 

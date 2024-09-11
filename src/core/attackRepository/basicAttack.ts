@@ -5,6 +5,7 @@ export class basicAttack extends Attack {
 
     constructor(affector?: AffectsWeight) {
         super('Basic Attack');
+        this.coreDescription = 'When you hit deal damage. '
         this.generate();
     }
 }

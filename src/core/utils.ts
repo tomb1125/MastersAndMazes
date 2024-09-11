@@ -40,7 +40,7 @@ export class Utils {
     }
 
     public static getDPS(level: number) {
-        return Utils.DPS + Utils.POWER_PER_LEVEL * (level - 1)
+        return Utils.DPS; //+ Utils.POWER_PER_LEVEL * (level - 1)
     }
     
     public static getRangeCoeficient(range: number): number {
