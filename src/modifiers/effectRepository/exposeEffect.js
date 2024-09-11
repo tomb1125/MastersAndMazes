@@ -25,7 +25,7 @@ var exposeEffect = /** @class */ (function (_super) {
         _this.value = Math.ceil(utils_1.Utils.random() * 2.2);
         _this.name = 'Expose ' + _this.value;
         _this.namePrefix = 'Exposing';
-        _this.description = 'Exposed - when rolling for an ability targeting this creature, any attacker gains ' + _this.value + ' Boon. This effect lasts until end of your next turn. ';
+        _this.description = 'Exposed - when rolling for an ability targeting this creature, any attacker gains ' + _this.value + ' Boons. This effect lasts until end of your next turn. ';
         _this.subtype = effect_1.Effect.Subtype.Debuff;
         _this.powerBonus = function (x) { return -utils_1.Utils.BoonValue * (1 - Math.pow(5 / 6, _this.value)) * utils_1.Utils.AVG_PLAYERS * 0.8; };
         return _this;

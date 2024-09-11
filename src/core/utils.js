@@ -14,7 +14,7 @@ var Utils = /** @class */ (function () {
         return 1; //TODO restore
     };
     Utils.getDPS = function (level) {
-        return Utils.DPS + Utils.POWER_PER_LEVEL * (level - 1);
+        return Utils.DPS; //+ Utils.POWER_PER_LEVEL * (level - 1)
     };
     Utils.getRangeCoeficient = function (range) {
         if (range <= 1)

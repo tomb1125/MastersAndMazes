@@ -15,16 +15,23 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.basicAttack = void 0;
-var attack_1 = require("../attack");
-var basicAttack = /** @class */ (function (_super) {
-    __extends(basicAttack, _super);
-    function basicAttack(affector) {
-        var _this = _super.call(this, 'Basic Attack') || this;
-        _this.coreDescription = 'When you hit, deal damage. ';
-        _this.generate();
+exports.compensationModifier = void 0;
+var modifier_1 = require("../modifier");
+var compensationModifier = /** @class */ (function (_super) {
+    __extends(compensationModifier, _super);
+    function compensationModifier(name, mult, bonus) {
+        var _this = _super.call(this) || this;
+        _this.name = 'Radiant Flame';
+        _this.namePrefix = '';
+        _this.description = '';
+        _this.weight = function () { return 0; }; //this is purposfully excluded by design
+        _this.name = name ? name : '';
+        if (mult && bonus) {
+            _this.powerMultiplier = function () { return mult; };
+            _this.powerMultiplier = function () { return bonus; };
+        }
         return _this;
     }
-    return basicAttack;
-}(attack_1.Attack));
-exports.basicAttack = basicAttack;
+    return compensationModifier;
+}(modifier_1.Modifier));
+exports.compensationModifier = compensationModifier;

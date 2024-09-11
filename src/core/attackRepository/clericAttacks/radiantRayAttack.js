@@ -16,6 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.radiantRayAttack = void 0;
+var compensationModifier_1 = require("../../../modifiers/modifiersRepository/compensationModifier");
 var attack_1 = require("../../attack");
 var characterContext_1 = require("../../characterContext");
 var radiantRayAttack = /** @class */ (function (_super) {
@@ -23,7 +24,15 @@ var radiantRayAttack = /** @class */ (function (_super) {
     function radiantRayAttack(affector) {
         var _this = _super.call(this, 'Radiant Flame') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
-        _this.generate();
+        _this.chance = 0.8;
+        _this.manaCost = 1;
+        _this.range = 10;
+        _this.coreDescription = 'When you hit, deal damage and apply effect: Holy Flame - enemy sheds light in 5 squares radius, cannot become invisible and has 1 Bane on all attacks (this Bane does not stack). This effect lasts until end of encounter. ';
+        _this.subtype = attack_1.Attack.Subtype.Spell;
+        _this.initModifiers();
+        _this.modifiers.push(new compensationModifier_1.compensationModifier('Radiant Flame', 0.8, 0));
+        _this.initDamage();
+        _this.compensate();
         return _this;
     }
     return radiantRayAttack;

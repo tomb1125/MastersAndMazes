@@ -49,6 +49,7 @@ var legendaryWeaponModifier_1 = require("./modifiersRepository/fighterModifiers/
 var breachingModifier_1 = require("./modifiersRepository/fighterModifiers/breachingModifier");
 var fastModifier_1 = require("./modifiersRepository/fastModifier");
 var exhaustingModifer_1 = require("./modifiersRepository/exhaustingModifer");
+var compensationModifier_1 = require("./modifiersRepository/compensationModifier");
 var templeModifier_1 = require("./modifiersRepository/clericModifiers/templeModifier");
 var pristineModifier_1 = require("./modifiersRepository/clericModifiers/pristineModifier");
 var preachingModifier_1 = require("./modifiersRepository/clericModifiers/preachingModifier");
@@ -94,6 +95,7 @@ var ModifierFactory = /** @class */ (function (_super) {
             _this.items.push(new breachingModifier_1.breachingModifier(affector));
             _this.items.push(new fastModifier_1.fastModifier(affector));
             _this.items.push(new exhaustingModifer_1.exhaustingModifer(affector));
+            _this.items.push(new compensationModifier_1.compensationModifier(affector));
             _this.items.push(new templeModifier_1.templeModifier(affector));
             _this.items.push(new pristineModifier_1.pristineModifier(affector));
             _this.items.push(new preachingModifier_1.preachingModifier(affector));

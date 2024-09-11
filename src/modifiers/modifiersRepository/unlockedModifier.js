@@ -26,7 +26,7 @@ var unlockedModifier = /** @class */ (function (_super) {
         _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.cooldown) === ability_1.Ability.Cooldown.Encounter ? 1 : 0; };
         _this.name = 'Unlock';
         _this.namePrefix = 'Unlocked';
-        _this.description = 'Can only be used when you roll 01-20 on your first D100 roll last turn. ';
+        _this.description = 'Can only be used when you rolled 01-20 on your first D100 roll last turn. ';
         _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;

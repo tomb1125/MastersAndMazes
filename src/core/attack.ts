@@ -19,7 +19,6 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
   ]);
 
   damage: DescriptiveNumber;
-  attackTemplate: String;
   target: DescriptiveNumber;
   subtype: Attack.Subtype;
   coreDescription: String;
@@ -45,7 +44,6 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
 
   private initCommon() {
     this.manaCost = 0;
-    this.attackTemplate = 'Standard';
     this.target = new DescriptiveNumber(1);
   }
 
@@ -75,13 +73,27 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
       }
     }
   }
-  
-  private initDamage() {
-    let tempDamage = this.getTempDamage();
-      
+
+  public setDamage(num: number) {
+    this.rollForDescriptiveDamage();
+    if(!this.damage) {
+      this.damage = new DescriptiveNumber(num);
+    }
+  }
+
+  private rollForDescriptiveDamage() {
     if(!this.damage && Utils.random() < Utils.ATTACK_DESCRIPTIVE_NUMBER_CHANCE) {
       this.damage = new DescriptiveNumberFactory(this).filter((x: DescriptiveNumber) => x.type === DescriptiveNumber.Type.Common).get(1)[0];
     }
+  }
+  
+  public initDamage() {
+    let tempDamage = this.getTempDamage();
+    if(tempDamage > 30 && this.chance < 0.3) {
+        this.chance += 0.1;
+    }
+
+    this.rollForDescriptiveDamage();
 
     if(!this.damage) { 
       this.damage = new DescriptiveNumber(tempDamage);
@@ -89,7 +101,7 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
       if(tempDamage > 0) {
         this.chance = this.chance * tempDamage / this.damage.getValue();
       } else {
-
+        //I can't shake suspition something should be here
       }
 
     }
@@ -124,7 +136,7 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
   }
 
   //TODO split modifiers and improvements
-  private initModifiers() {
+  public initModifiers() {
     const roll = Utils.random();
     let numberOfModifiers: number = -1;
     if(!this.modifiers) {
@@ -154,7 +166,7 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
     
   }
 
-  private compensate() {
+  public compensate() {
       if(this.damage.getValue() < 3.5 && this.damage.description == undefined) {
         this.damage = new DescriptiveNumber(3.5);
       }
@@ -176,6 +188,9 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
 
         this.compensate();
 
+      } else if(this.manaCost + tempMana > 10 && this.chance > 0.4) {
+        this.chance -= 0.1;
+        this.compensate();
       } else {
         this.manaCost += tempMana;
       }
@@ -206,9 +221,7 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
      this.name;
 
   }
-
 }
-
 
 export namespace Attack {
   export enum Subtype {

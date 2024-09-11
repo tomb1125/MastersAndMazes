@@ -10,7 +10,7 @@ export class unlockedModifier extends Modifier {
         this.weight = (x?: AffectsWeight) => {return x?.cooldown === Ability.Cooldown.Encounter ? 1 : 0} 
         this.name = 'Unlock'
         this.namePrefix = 'Unlocked';
-        this.description = 'Can only be used when you roll 01-20 on your first D100 roll last turn. ';
+        this.description = 'Can only be used when you rolled 01-20 on your first D100 roll last turn. ';
         this.longDescription = '';
         this.modifierType = Modifier.Type.Constraint;
     }

@@ -44,7 +44,6 @@ var Attack = /** @class */ (function (_super) {
     };
     Attack.prototype.initCommon = function () {
         this.manaCost = 0;
-        this.attackTemplate = 'Standard';
         this.target = new descriptiveNumber_1.DescriptiveNumber(1);
     };
     Attack.prototype.initType = function () {
@@ -73,11 +72,23 @@ var Attack = /** @class */ (function (_super) {
             }
         }
     };
-    Attack.prototype.initDamage = function () {
-        var tempDamage = this.getTempDamage();
+    Attack.prototype.setDamage = function (num) {
+        this.rollForDescriptiveDamage();
+        if (!this.damage) {
+            this.damage = new descriptiveNumber_1.DescriptiveNumber(num);
+        }
+    };
+    Attack.prototype.rollForDescriptiveDamage = function () {
         if (!this.damage && utils_1.Utils.random() < utils_1.Utils.ATTACK_DESCRIPTIVE_NUMBER_CHANCE) {
             this.damage = new descriptiveNumberFactory_1.DescriptiveNumberFactory(this).filter(function (x) { return x.type === descriptiveNumber_1.DescriptiveNumber.Type.Common; }).get(1)[0];
         }
+    };
+    Attack.prototype.initDamage = function () {
+        var tempDamage = this.getTempDamage();
+        if (tempDamage > 30 && this.chance < 0.3) {
+            this.chance += 0.1;
+        }
+        this.rollForDescriptiveDamage();
         if (!this.damage) {
             this.damage = new descriptiveNumber_1.DescriptiveNumber(tempDamage);
         }
@@ -86,6 +97,7 @@ var Attack = /** @class */ (function (_super) {
                 this.chance = this.chance * tempDamage / this.damage.getValue();
             }
             else {
+                //I can't shake suspition something should be here
             }
         }
     };
@@ -152,6 +164,10 @@ var Attack = /** @class */ (function (_super) {
             }
             this.compensate();
         }
+        else if (this.manaCost + tempMana > 10 && this.chance > 0.4) {
+            this.chance -= 0.1;
+            this.compensate();
+        }
         else {
             this.manaCost += tempMana;
         }
@@ -164,7 +180,7 @@ var Attack = /** @class */ (function (_super) {
             '<br><b>Mana Cost</b>: ' + this.manaCost +
             '<br><b>Range</b>: ' + this.range +
             '<br><b>Modifiers</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + ', ' + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
-            '<br><b>Description</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
+            '<br><b>Description</b>: ' + this.coreDescription + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
             '<br><b>Type</b>: ' + Attack.Subtype[this.subtype] +
             '<br><b>Cooldown</b>: ' + ability_1.Ability.Cooldown[this.cooldown];
     };

@@ -33,6 +33,7 @@ import { legendaryWeaponModifier } from "./modifiersRepository/fighterModifiers/
 import { breachingModifier } from "./modifiersRepository/fighterModifiers/breachingModifier";
 import { fastModifier } from "./modifiersRepository/fastModifier";
 import { exhaustingModifer } from "./modifiersRepository/exhaustingModifer";
+import { compensationModifier } from "./modifiersRepository/compensationModifier";
 import { templeModifier } from "./modifiersRepository/clericModifiers/templeModifier";
 import { pristineModifier } from "./modifiersRepository/clericModifiers/pristineModifier";
 import { preachingModifier } from "./modifiersRepository/clericModifiers/preachingModifier";
@@ -78,6 +79,7 @@ export class ModifierFactory extends Factory {
             this.items.push(new breachingModifier(affector));
             this.items.push(new fastModifier(affector));
             this.items.push(new exhaustingModifer(affector));
+            this.items.push(new compensationModifier(affector));
             this.items.push(new templeModifier(affector));
             this.items.push(new pristineModifier(affector));
             this.items.push(new preachingModifier(affector));
@@ -104,6 +106,7 @@ export class ModifierFactory extends Factory {
   public static getDPSBonus(modifiers : Modifier[], affector : AffectsWeight): number {
     let dps: number = 0;
 
+    
     modifiers.forEach(m => {
       if(m.powerBonus) {
         dps += m.powerBonus(affector);
