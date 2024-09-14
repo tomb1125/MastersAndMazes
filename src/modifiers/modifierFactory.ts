@@ -31,6 +31,7 @@ import { gainEffectModifier } from "./modifiersRepository/gainEffectModifier";
 import { forcefulModifier } from "./modifiersRepository/forcefulModifier";
 import { legendaryWeaponModifier } from "./modifiersRepository/fighterModifiers/legendaryWeaponModifier";
 import { breachingModifier } from "./modifiersRepository/fighterModifiers/breachingModifier";
+import { battleModifier } from "./modifiersRepository/fighterModifiers/battleModifier";
 import { fastModifier } from "./modifiersRepository/fastModifier";
 import { exhaustingModifer } from "./modifiersRepository/exhaustingModifer";
 import { compensationModifier } from "./modifiersRepository/compensationModifier";
@@ -77,6 +78,7 @@ export class ModifierFactory extends Factory {
             this.items.push(new forcefulModifier(affector));
             this.items.push(new legendaryWeaponModifier(affector));
             this.items.push(new breachingModifier(affector));
+            this.items.push(new battleModifier(affector));
             this.items.push(new fastModifier(affector));
             this.items.push(new exhaustingModifer(affector));
             this.items.push(new compensationModifier(affector));

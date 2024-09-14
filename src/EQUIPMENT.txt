@@ -3,7 +3,7 @@ Some equipment is rare. Each player can buy only one rare item per adventure per
 Depending on size of city charisma treshold may be modified by GM from 20 to 40.
 
 1H Weapons
-Mace - 
+Mace - When you hit, repair 5 Armor Points.
 Sword - Gain 1 Boon with Weapon attacks.
 Axe - Deal +2 damage with Weapon attacks.
 Dagger - When you roll 01-10 with Weapon attack it deals +10 damage.
@@ -17,11 +17,11 @@ Wand - Your Spells have +10 range.
 Trophy - Whenever you use ability with an encounter cooldown, roll D6. On 6 it does not go on cooldown.
 
 1H Off-Hands
-Medium Shield - 5 Armor Points (requires medium armor proficiency)
-Heavy Shield - 10 Armor Points (requires heavy armor proficiency)
+Shield - 5 + level Armor Points (requires Medium or Heavy armor proficiency). Drawing or sheathing shield takes Standard Action.
+Dagger - When you roll 01-20 with Weapon attack it deals +5 damage.
 
 2H Weapons
-2H Hammer - 
+2H Hammer - When you miss, repair all your Armor Points
 2H Sword - Gain boons for your Weapon Attacks, equal to number of missed attacks with 2H sword this combat this combat.
 2H Axe - Gain bonus damage with Weapon Attack, equal to number of turn you started with 2H Axe in hand.
 Scythe - Deal +6 damage to undamaged enemies with Weapon Attacks.

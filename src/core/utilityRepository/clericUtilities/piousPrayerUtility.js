@@ -30,7 +30,7 @@ var piousPrayerUtility = /** @class */ (function (_super) {
         var normalValue = 7;
         _this.value = new descriptiveNumber_1.DescriptiveNumber(normalValue);
         _this.compensate();
-        _this.description = 'If you are in combat, gain ' + _this.value.getDescription() + ' Blessing Points (see rules) or double this value if you are fighting Undead, Devils or Demons. Additionally your next ability chance roll has 1 Boon. This action can be only made as the first Standard Action you make each combat. ';
+        _this.description = 'If you are in combat, gain ' + _this.value.getDescription() + ' Blessing Points (see rules) and your next ability chance roll will gain 1 Boon. Double both values if you are fighting Undead, Devils or Demons. This ability can be only used in first two rounds of combat. ';
         return _this;
     }
     return piousPrayerUtility;

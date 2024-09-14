@@ -47,6 +47,7 @@ var gainEffectModifier_1 = require("./modifiersRepository/gainEffectModifier");
 var forcefulModifier_1 = require("./modifiersRepository/forcefulModifier");
 var legendaryWeaponModifier_1 = require("./modifiersRepository/fighterModifiers/legendaryWeaponModifier");
 var breachingModifier_1 = require("./modifiersRepository/fighterModifiers/breachingModifier");
+var battleModifier_1 = require("./modifiersRepository/fighterModifiers/battleModifier");
 var fastModifier_1 = require("./modifiersRepository/fastModifier");
 var exhaustingModifer_1 = require("./modifiersRepository/exhaustingModifer");
 var compensationModifier_1 = require("./modifiersRepository/compensationModifier");
@@ -93,6 +94,7 @@ var ModifierFactory = /** @class */ (function (_super) {
             _this.items.push(new forcefulModifier_1.forcefulModifier(affector));
             _this.items.push(new legendaryWeaponModifier_1.legendaryWeaponModifier(affector));
             _this.items.push(new breachingModifier_1.breachingModifier(affector));
+            _this.items.push(new battleModifier_1.battleModifier(affector));
             _this.items.push(new fastModifier_1.fastModifier(affector));
             _this.items.push(new exhaustingModifer_1.exhaustingModifer(affector));
             _this.items.push(new compensationModifier_1.compensationModifier(affector));
