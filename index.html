@@ -8,15 +8,16 @@
     <h1>Monsters and Mazes</h1>
     <p></p>
     <div>
-        <input type="text" name="CharacterName" value="" placeholder="Seed" autocomplete="off" onchange="onSeedChange(this.value)">
-        <input type="number" name="Level" value="1" placeholder="Level" autocomplete="off" onchange="onLevelChange(this.value)">
-        <select id="cars" autocomplete="off" onchange="onClassChange(this.value)">
+        <br>Seed <input type="text" name="CharacterName" value="" placeholder="Seed" autocomplete="off" onchange="onSeedChange(this.value)">
+        <br>Level <input type="number" name="Level" value="1" placeholder="Level" autocomplete="off" onchange="onLevelChange(this.value)">
+        <br>Class <select id="cars" autocomplete="off" onchange="onClassChange(this.value)">
             <option value="Cleric">Cleric</option>
             <option value="Rogue">Rogue</option>       
             <option value="Fighter">Fighter</option>          
-        </select>
-        <button onclick="generateAbilities()">Generate Abilities</button>
-        <div id="output"></div>
+        </select>        
+        <br>Show Rulings <input type="checkbox" name="Show All Rulings" value="false" placeholder="false" autocomplete="off" onchange="onRulingChange(this.value)">
+        <br><button onclick="generateAbilities()">Generate Abilities</button>
+        <br><div id="output"></div>
     
     
     </div>

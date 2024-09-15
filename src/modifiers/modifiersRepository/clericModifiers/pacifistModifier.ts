@@ -11,7 +11,6 @@ export class pacifistModifier extends Modifier {
         this.name = 'Pacifist';
         this.namePrefix = 'Pacifists';
         this.description = 'This ability has a Bane for each creature you reduced to 0 HP today.';
-        this.longDescription = '';
         this.modifierType = Modifier.Type.Constraint;
     }
 }

@@ -28,7 +28,6 @@ var episcopalModifier = /** @class */ (function (_super) {
         _this.name = 'Episcopal';
         _this.namePrefix = 'Episcopal';
         _this.description = 'Can be only used if you are a Bishop or you were personally blessed by a pope.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }

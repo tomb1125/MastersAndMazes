@@ -23,6 +23,12 @@ global.onClassChange = (val): void => {
   global.generateAbilities();
 };
 
+let showRulings = false;
+global.onRulingChange = (val): void => {
+  showRulings = val;
+  global.generateAbilities();
+};
+
 
 global.generateAbilities = (): void => {
   let currentSeed = '';

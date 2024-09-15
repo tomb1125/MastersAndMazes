@@ -28,7 +28,6 @@ var managainModifier = /** @class */ (function (_super) {
         _this.namePrefix = 'Mana Leeching';
         _this.description = 'When you hit, gain mana equal to damage taken by enemy.';
         _this.powerMultiplier = function (x) { return 0.75; };
-        _this.longDescription = '';
         return _this;
     }
     return managainModifier;

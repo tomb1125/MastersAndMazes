@@ -17,7 +17,6 @@ export class cleanModifier extends Modifier {
         this.name = 'Clean';
         this.namePrefix = 'Clean';
         this.description = 'Can be only used if your clothes are clean and you are not wet.';
-        this.longDescription = '';
         this.modifierType = Modifier.Type.Constraint;
     }
 }

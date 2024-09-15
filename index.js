@@ -19,6 +19,11 @@ global.onClassChange = function (val) {
     ];
     global.generateAbilities();
 };
+var showRulings = false;
+global.onRulingChange = function (val) {
+    showRulings = val;
+    global.generateAbilities();
+};
 global.generateAbilities = function () {
     var currentSeed = '';
     if (characterContext_1.CharacterContext.seed) {

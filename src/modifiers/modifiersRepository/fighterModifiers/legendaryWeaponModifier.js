@@ -35,7 +35,6 @@ var legendaryWeaponModifier = /** @class */ (function (_super) {
         _this.name = 'Legendary';
         _this.namePrefix = 'Legendary';
         _this.description = 'This attack can be only made with a legendary weapon.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }

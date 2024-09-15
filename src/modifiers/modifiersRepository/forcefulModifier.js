@@ -26,8 +26,7 @@ var forcefulModifier = /** @class */ (function (_super) {
         _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
         _this.name = 'Forceful';
         _this.namePrefix = 'Forceful';
-        _this.description = 'When you hit, push target 5 squares. You can push into dangereous terrain, pushing into solid obstacles deals extra damage equal to unresolved squares of push. ';
-        _this.longDescription = '';
+        _this.description = 'When you hit, push target forcefully 5 squares. ';
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;
     }

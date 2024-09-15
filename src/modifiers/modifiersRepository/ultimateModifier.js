@@ -27,7 +27,6 @@ var ultimateModifier = /** @class */ (function (_super) {
         _this.name = 'Ultimate';
         _this.namePrefix = 'Ultimate'; //numeric component
         _this.description = 'Can be used only on turn 8 or later.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }

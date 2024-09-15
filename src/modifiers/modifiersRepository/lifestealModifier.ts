@@ -14,6 +14,5 @@ export class lifestealModifier extends Modifier {
         this.namePrefix = 'Leeching'; 
         this.description = 'When you hit, heal yourself equal to damage taken by enemy.';
         this.powerMultiplier = (x: CanAffectModifier) => {return 0.55}; //TODO this should be bonus equal to damage... however damage is set after modifiers...s
-        this.longDescription = '';
     }
 }

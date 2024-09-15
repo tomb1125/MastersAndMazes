@@ -27,7 +27,6 @@ var cityModifier = /** @class */ (function (_super) {
         _this.name = 'City';
         _this.namePrefix = 'City';
         _this.description = 'Can be only used within walls of a city.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }

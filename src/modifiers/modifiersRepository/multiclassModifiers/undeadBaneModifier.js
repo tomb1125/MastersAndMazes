@@ -34,9 +34,7 @@ var undeadBaneModifier = /** @class */ (function (_super) {
         };
         _this.name = "Evil Bane";
         _this.namePrefix = "Baning Evil";
-        _this.description =
-            "If this targets an undead, demon or devil repeat the attack once.";
-        _this.longDescription = "";
+        _this.description = "If this targets an undead, demon or devil repeat the attack once.";
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;
     }

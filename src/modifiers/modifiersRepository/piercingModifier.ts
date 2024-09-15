@@ -12,7 +12,6 @@ export class piercingModifier extends Modifier {
         this.name = 'Piercing';
         this.namePrefix = 'Piercing';
         this.description = 'When you hit deal damage to Health directly, additionally reduce enemy Armor by the same value. ';
-        this.longDescription = '';
         this.modifierType = Modifier.Type.Improvement;
     }
 }

@@ -12,7 +12,6 @@ export class episcopalModifier extends Modifier {
         this.name = 'Episcopal';
         this.namePrefix = 'Episcopal';
         this.description = 'Can be only used if you are a Bishop or you were personally blessed by a pope.';
-        this.longDescription = '';
         this.modifierType = Modifier.Type.Constraint;
     }
 }

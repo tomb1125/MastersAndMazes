@@ -28,7 +28,6 @@ var laylineModifier = /** @class */ (function (_super) {
         _this.name = 'Layline';
         _this.namePrefix = 'Layline';
         _this.description = 'Can be used only while adjacent to place of power (usually you can detect 2-4 places of power each encounter).';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }

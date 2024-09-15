@@ -11,7 +11,6 @@ export class pristineModifier extends Modifier {
         this.name = 'Pristine';
         this.namePrefix = 'Pristine';
         this.description = 'Can be only used when you are undamaged.';
-        this.longDescription = '';
         this.modifierType = Modifier.Type.Constraint;
     }
 }

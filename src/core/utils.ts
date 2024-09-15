@@ -62,8 +62,10 @@ export class Utils {
         if(dur >= 2) coef += 0.6;
         if(dur >= 3) coef += 0.5;
         if(dur >= 4) coef += 0.4;
-        if(dur >= 5) {
-            coef += (dur - 4) * 0.3
+        if(dur >= 5) coef += 0.3;
+        if(dur >= 6) coef += 0.2;
+        if(dur >= 7) {
+            coef += (dur - 6) * 0.1
         }
         
         return coef;

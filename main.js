@@ -21,6 +21,11 @@ global.onClassChange = function (val) {
     ];
     global.generateAbilities();
 };
+var showRulings = false;
+global.onRulingChange = function (val) {
+    showRulings = val;
+    global.generateAbilities();
+};
 global.generateAbilities = function () {
     var currentSeed = '';
     if (characterContext_1.CharacterContext.seed) {
@@ -3160,7 +3165,7 @@ var Utility = /** @class */ (function (_super) {
 }(activity_1.Activity));
 exports.Utility = Utility;
 
-},{"../modifiers/modifierFactory":109,"../modifiers/modifiersRepository/repeatableModifier":139,"./ability":62,"./activity":63,"./characterContext":72,"./utils":94}],76:[function(require,module,exports){
+},{"../modifiers/modifierFactory":109,"../modifiers/modifiersRepository/repeatableModifier":141,"./ability":62,"./activity":63,"./characterContext":72,"./utils":94}],76:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3393,7 +3398,7 @@ var lightUtility = /** @class */ (function (_super) {
 }(utility_1.Utility));
 exports.lightUtility = lightUtility;
 
-},{"../../../components/abilityObjectFactory":8,"../../../components/descriptiveNumber":48,"../../../modifiers/modifiersRepository/repeatableModifier":139,"../../ability":62,"../../characterContext":72,"../../utility":75,"../../utils":94}],80:[function(require,module,exports){
+},{"../../../components/abilityObjectFactory":8,"../../../components/descriptiveNumber":48,"../../../modifiers/modifiersRepository/repeatableModifier":141,"../../ability":62,"../../characterContext":72,"../../utility":75,"../../utils":94}],80:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -4031,8 +4036,12 @@ var Utils = /** @class */ (function () {
             coef += 0.5;
         if (dur >= 4)
             coef += 0.4;
-        if (dur >= 5) {
-            coef += (dur - 4) * 0.3;
+        if (dur >= 5)
+            coef += 0.3;
+        if (dur >= 6)
+            coef += 0.2;
+        if (dur >= 7) {
+            coef += (dur - 6) * 0.1;
         }
         return coef;
     };
@@ -4770,8 +4779,10 @@ var grazedModifier_1 = require("./modifiersRepository/grazedModifier");
 var gainEffectModifier_1 = require("./modifiersRepository/gainEffectModifier");
 var forcefulModifier_1 = require("./modifiersRepository/forcefulModifier");
 var legendaryWeaponModifier_1 = require("./modifiersRepository/fighterModifiers/legendaryWeaponModifier");
+var followupModifier_1 = require("./modifiersRepository/fighterModifiers/followupModifier");
 var breachingModifier_1 = require("./modifiersRepository/fighterModifiers/breachingModifier");
 var battleModifier_1 = require("./modifiersRepository/fighterModifiers/battleModifier");
+var armoredModifier_1 = require("./modifiersRepository/fighterModifiers/armoredModifier");
 var fastModifier_1 = require("./modifiersRepository/fastModifier");
 var exhaustingModifer_1 = require("./modifiersRepository/exhaustingModifer");
 var compensationModifier_1 = require("./modifiersRepository/compensationModifier");
@@ -4817,8 +4828,10 @@ var ModifierFactory = /** @class */ (function (_super) {
             _this.items.push(new gainEffectModifier_1.gainEffectModifier(affector));
             _this.items.push(new forcefulModifier_1.forcefulModifier(affector));
             _this.items.push(new legendaryWeaponModifier_1.legendaryWeaponModifier(affector));
+            _this.items.push(new followupModifier_1.followupModifier(affector));
             _this.items.push(new breachingModifier_1.breachingModifier(affector));
             _this.items.push(new battleModifier_1.battleModifier(affector));
+            _this.items.push(new armoredModifier_1.armoredModifier(affector));
             _this.items.push(new fastModifier_1.fastModifier(affector));
             _this.items.push(new exhaustingModifer_1.exhaustingModifer(affector));
             _this.items.push(new compensationModifier_1.compensationModifier(affector));
@@ -4866,7 +4879,7 @@ var ModifierFactory = /** @class */ (function (_super) {
 }(factory_1.Factory));
 exports.ModifierFactory = ModifierFactory;
 
-},{"../core/factory":73,"../core/weightedList":95,"./modifiersRepository/applyEffectModifier":110,"./modifiersRepository/bloodiedModifier":111,"./modifiersRepository/cleaveModifier":112,"./modifiersRepository/clericModifiers/candleModifier":113,"./modifiersRepository/clericModifiers/episcopalModifier":114,"./modifiersRepository/clericModifiers/pacifistModifier":115,"./modifiersRepository/clericModifiers/preachingModifier":116,"./modifiersRepository/clericModifiers/pristineModifier":117,"./modifiersRepository/clericModifiers/templeModifier":118,"./modifiersRepository/compensationModifier":119,"./modifiersRepository/exhaustingModifer":120,"./modifiersRepository/fastModifier":121,"./modifiersRepository/fighterModifiers/battleModifier":122,"./modifiersRepository/fighterModifiers/breachingModifier":123,"./modifiersRepository/fighterModifiers/legendaryWeaponModifier":124,"./modifiersRepository/forcefulModifier":125,"./modifiersRepository/gainEffectModifier":126,"./modifiersRepository/grazedModifier":127,"./modifiersRepository/instinctiveModifier":128,"./modifiersRepository/laylineModifier":129,"./modifiersRepository/lifestealModifier":130,"./modifiersRepository/managainModifier":131,"./modifiersRepository/momentumModifier":132,"./modifiersRepository/multiclassModifiers/cleanModifier":133,"./modifiersRepository/multiclassModifiers/undeadBaneModifier":134,"./modifiersRepository/multipleModifier":135,"./modifiersRepository/nightlyModifier":136,"./modifiersRepository/opportunistModifier":137,"./modifiersRepository/piercingModifier":138,"./modifiersRepository/repeatableModifier":139,"./modifiersRepository/restedModifer":140,"./modifiersRepository/rogueModifiers/cityModifier":141,"./modifiersRepository/rogueModifiers/daggerModifier":142,"./modifiersRepository/rogueModifiers/greedyModifier":143,"./modifiersRepository/rogueModifiers/luckyModifier":144,"./modifiersRepository/rogueModifiers/sneakyModifier":145,"./modifiersRepository/selfHealModifier":146,"./modifiersRepository/signatureModifier":147,"./modifiersRepository/ultimateModifier":148,"./modifiersRepository/unlockedModifier":149,"./modifiersRepository/vengefulModifier":150}],110:[function(require,module,exports){
+},{"../core/factory":73,"../core/weightedList":95,"./modifiersRepository/applyEffectModifier":110,"./modifiersRepository/bloodiedModifier":111,"./modifiersRepository/cleaveModifier":112,"./modifiersRepository/clericModifiers/candleModifier":113,"./modifiersRepository/clericModifiers/episcopalModifier":114,"./modifiersRepository/clericModifiers/pacifistModifier":115,"./modifiersRepository/clericModifiers/preachingModifier":116,"./modifiersRepository/clericModifiers/pristineModifier":117,"./modifiersRepository/clericModifiers/templeModifier":118,"./modifiersRepository/compensationModifier":119,"./modifiersRepository/exhaustingModifer":120,"./modifiersRepository/fastModifier":121,"./modifiersRepository/fighterModifiers/armoredModifier":122,"./modifiersRepository/fighterModifiers/battleModifier":123,"./modifiersRepository/fighterModifiers/breachingModifier":124,"./modifiersRepository/fighterModifiers/followupModifier":125,"./modifiersRepository/fighterModifiers/legendaryWeaponModifier":126,"./modifiersRepository/forcefulModifier":127,"./modifiersRepository/gainEffectModifier":128,"./modifiersRepository/grazedModifier":129,"./modifiersRepository/instinctiveModifier":130,"./modifiersRepository/laylineModifier":131,"./modifiersRepository/lifestealModifier":132,"./modifiersRepository/managainModifier":133,"./modifiersRepository/momentumModifier":134,"./modifiersRepository/multiclassModifiers/cleanModifier":135,"./modifiersRepository/multiclassModifiers/undeadBaneModifier":136,"./modifiersRepository/multipleModifier":137,"./modifiersRepository/nightlyModifier":138,"./modifiersRepository/opportunistModifier":139,"./modifiersRepository/piercingModifier":140,"./modifiersRepository/repeatableModifier":141,"./modifiersRepository/restedModifer":142,"./modifiersRepository/rogueModifiers/cityModifier":143,"./modifiersRepository/rogueModifiers/daggerModifier":144,"./modifiersRepository/rogueModifiers/greedyModifier":145,"./modifiersRepository/rogueModifiers/luckyModifier":146,"./modifiersRepository/rogueModifiers/sneakyModifier":147,"./modifiersRepository/selfHealModifier":148,"./modifiersRepository/signatureModifier":149,"./modifiersRepository/ultimateModifier":150,"./modifiersRepository/unlockedModifier":151,"./modifiersRepository/vengefulModifier":152}],110:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -4896,7 +4909,6 @@ var applyEffectModifier = /** @class */ (function (_super) {
         var _this = this;
         var debuffFactory = new effectFactory_1.EffectFactory(aff).filter(function (eff) { return eff.subtype === effect_1.Effect.Subtype.Debuff; });
         _this = _super.call(this) || this;
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? debuffFactory.items.items.length * utils_1.Utils.EFFECT_WEIGHT_MOD : 0; };
         _this.effect = debuffFactory.get(1)[0];
@@ -4943,7 +4955,6 @@ var bloodiedModifier = /** @class */ (function (_super) {
         _this.name = 'Bloody';
         _this.namePrefix = 'Bloody';
         _this.description = 'Can be used only when you have half or less Health.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
@@ -4981,7 +4992,6 @@ var cleaveModifier = /** @class */ (function (_super) {
         _this.name = 'Cleave';
         _this.namePrefix = 'Cleaving'; //TODO cleave could scale
         _this.description = 'After this action, repeat this action 1 time, without paying mana cost. With this repeated action you must target creature adjacent to you or last target.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;
     }
@@ -5057,7 +5067,6 @@ var episcopalModifier = /** @class */ (function (_super) {
         _this.name = 'Episcopal';
         _this.namePrefix = 'Episcopal';
         _this.description = 'Can be only used if you are a Bishop or you were personally blessed by a pope.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
@@ -5095,7 +5104,6 @@ var pacifistModifier = /** @class */ (function (_super) {
         _this.name = 'Pacifist';
         _this.namePrefix = 'Pacifists';
         _this.description = 'This ability has a Bane for each creature you reduced to 0 HP today.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
@@ -5140,7 +5148,6 @@ var preachingModifier = /** @class */ (function (_super) {
         _this.name = 'Sermon';
         _this.namePrefix = 'Preaching';
         _this.description = 'This ability can be only used as you complete a sermon in front of at least 10 people.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
@@ -5178,7 +5185,6 @@ var pristineModifier = /** @class */ (function (_super) {
         _this.name = 'Pristine';
         _this.namePrefix = 'Pristine';
         _this.description = 'Can be only used when you are undamaged.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
@@ -5216,7 +5222,6 @@ var templeModifier = /** @class */ (function (_super) {
         _this.name = 'Temple';
         _this.namePrefix = 'Temple';
         _this.description = 'Can be only used within 10 km of a temple or a relic of your faith.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
@@ -5334,7 +5339,6 @@ var fastModifier = /** @class */ (function (_super) {
         _this.name = 'Fast';
         _this.namePrefix = 'Fast';
         _this.description = 'You can use Swift Action to use this ability.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;
     }
@@ -5360,19 +5364,63 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.battleModifier = void 0;
+exports.armoredModifier = void 0;
 var characterContext_1 = require("../../../core/characterContext");
+var modifier_1 = require("../../modifier");
+var armoredModifier = /** @class */ (function (_super) {
+    __extends(armoredModifier, _super);
+    function armoredModifier(affector) {
+        var _this = _super.call(this) || this;
+        _this.powerMultiplier = function () { return 1.25; };
+        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
+        _this.name = 'Armored';
+        _this.namePrefix = 'Armored';
+        _this.description = 'Can only used while you have Armor Points.';
+        _this.modifierType = modifier_1.Modifier.Type.Constraint;
+        return _this;
+    }
+    return armoredModifier;
+}(modifier_1.Modifier));
+exports.armoredModifier = armoredModifier;
+
+},{"../../../core/characterContext":72,"../../modifier":108}],123:[function(require,module,exports){
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.battleModifier = void 0;
+var ability_1 = require("../../../core/ability");
+var characterContext_1 = require("../../../core/characterContext");
+var utils_1 = require("../../../core/utils");
 var modifier_1 = require("../../modifier");
 var battleModifier = /** @class */ (function (_super) {
     __extends(battleModifier, _super);
     function battleModifier(affector) {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 1.5; };
-        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
+        _this.weight = function (affector) {
+            return affector != undefined && affector.type === ability_1.Ability.Type.Attack
+                ? characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter)
+                    ? utils_1.Utils.RARE_MODIFIER * characterContext_1.CharacterContext.IN_CLASS_MODIFIER
+                    : utils_1.Utils.RARE_MODIFIER * characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT
+                : 0;
+        };
         _this.name = 'Battle';
         _this.namePrefix = 'Battle';
         _this.description = 'Can only be used when you are adjacent to two enemies.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
@@ -5380,7 +5428,7 @@ var battleModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.battleModifier = battleModifier;
 
-},{"../../../core/characterContext":72,"../../modifier":108}],123:[function(require,module,exports){
+},{"../../../core/ability":62,"../../../core/characterContext":72,"../../../core/utils":94,"../../modifier":108}],124:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5410,7 +5458,6 @@ var breachingModifier = /** @class */ (function (_super) {
         _this.name = 'Breaching';
         _this.namePrefix = 'Breaching';
         _this.description = 'Can only be used in a room you\'ve kicked the door down to enter.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
@@ -5418,7 +5465,52 @@ var breachingModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.breachingModifier = breachingModifier;
 
-},{"../../../core/characterContext":72,"../../modifier":108}],124:[function(require,module,exports){
+},{"../../../core/characterContext":72,"../../modifier":108}],125:[function(require,module,exports){
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.followupModifier = void 0;
+var ability_1 = require("../../../core/ability");
+var characterContext_1 = require("../../../core/characterContext");
+var utils_1 = require("../../../core/utils");
+var modifier_1 = require("../../modifier");
+var followupModifier = /** @class */ (function (_super) {
+    __extends(followupModifier, _super);
+    function followupModifier(affector) {
+        var _this = _super.call(this) || this;
+        _this.powerMultiplier = function () { return 0.75; };
+        _this.weight = function (affector) {
+            return affector != undefined && affector.type === ability_1.Ability.Type.Attack
+                ? characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter)
+                    ? utils_1.Utils.RARE_MODIFIER * characterContext_1.CharacterContext.IN_CLASS_MODIFIER
+                    : utils_1.Utils.RARE_MODIFIER * characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT
+                : 0;
+        };
+        _this.name = 'Followup';
+        _this.namePrefix = 'Followup';
+        _this.description = 'If the target wasn\'t bloodied as you made this attack and became bloodied after hit, you can repeat this attack against this target.';
+        _this.modifierType = modifier_1.Modifier.Type.Constraint;
+        return _this;
+    }
+    return followupModifier;
+}(modifier_1.Modifier));
+exports.followupModifier = followupModifier;
+
+},{"../../../core/ability":62,"../../../core/characterContext":72,"../../../core/utils":94,"../../modifier":108}],126:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5456,7 +5548,6 @@ var legendaryWeaponModifier = /** @class */ (function (_super) {
         _this.name = 'Legendary';
         _this.namePrefix = 'Legendary';
         _this.description = 'This attack can be only made with a legendary weapon.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
@@ -5464,7 +5555,7 @@ var legendaryWeaponModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.legendaryWeaponModifier = legendaryWeaponModifier;
 
-},{"../../../core/ability":62,"../../../core/characterContext":72,"../../../core/utils":94,"../../modifier":108}],125:[function(require,module,exports){
+},{"../../../core/ability":62,"../../../core/characterContext":72,"../../../core/utils":94,"../../modifier":108}],127:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5493,8 +5584,7 @@ var forcefulModifier = /** @class */ (function (_super) {
         _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
         _this.name = 'Forceful';
         _this.namePrefix = 'Forceful';
-        _this.description = 'When you hit, push target 5 squares. You can push into dangereous terrain, pushing into solid obstacles deals extra damage equal to unresolved squares of push. ';
-        _this.longDescription = '';
+        _this.description = 'When you hit, push target forcefully 5 squares. ';
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;
     }
@@ -5502,7 +5592,7 @@ var forcefulModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.forcefulModifier = forcefulModifier;
 
-},{"../../core/ability":62,"../modifier":108}],126:[function(require,module,exports){
+},{"../../core/ability":62,"../modifier":108}],128:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5545,7 +5635,7 @@ var gainEffectModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.gainEffectModifier = gainEffectModifier;
 
-},{"../../core/ability":62,"../../core/utils":94,"../effect":96,"../effectFactory":97,"../modifier":108}],127:[function(require,module,exports){
+},{"../../core/ability":62,"../../core/utils":94,"../effect":96,"../effectFactory":97,"../modifier":108}],129:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5580,7 +5670,7 @@ var grazedModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.grazedModifier = grazedModifier;
 
-},{"../modifier":108}],128:[function(require,module,exports){
+},{"../modifier":108}],130:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5610,7 +5700,6 @@ var instinctiveModifier = /** @class */ (function (_super) {
         _this.name = 'Instinct';
         _this.namePrefix = 'Instinctive';
         _this.description = 'If you are stunned, you can use this ability as a swift action. You can ignore Banes when rolling for this ability. ';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;
     }
@@ -5618,7 +5707,7 @@ var instinctiveModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.instinctiveModifier = instinctiveModifier;
 
-},{"../../core/ability":62,"../modifier":108}],129:[function(require,module,exports){
+},{"../../core/ability":62,"../modifier":108}],131:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5649,7 +5738,6 @@ var laylineModifier = /** @class */ (function (_super) {
         _this.name = 'Layline';
         _this.namePrefix = 'Layline';
         _this.description = 'Can be used only while adjacent to place of power (usually you can detect 2-4 places of power each encounter).';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
@@ -5657,7 +5745,7 @@ var laylineModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.laylineModifier = laylineModifier;
 
-},{"../../core/ability":62,"../modifier":108}],130:[function(require,module,exports){
+},{"../../core/ability":62,"../modifier":108}],132:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5688,14 +5776,13 @@ var lifestealModifier = /** @class */ (function (_super) {
         _this.namePrefix = 'Leeching';
         _this.description = 'When you hit, heal yourself equal to damage taken by enemy.';
         _this.powerMultiplier = function (x) { return 0.55; }; //TODO this should be bonus equal to damage... however damage is set after modifiers...s
-        _this.longDescription = '';
         return _this;
     }
     return lifestealModifier;
 }(modifier_1.Modifier));
 exports.lifestealModifier = lifestealModifier;
 
-},{"../../core/ability":62,"../modifier":108}],131:[function(require,module,exports){
+},{"../../core/ability":62,"../modifier":108}],133:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5726,14 +5813,13 @@ var managainModifier = /** @class */ (function (_super) {
         _this.namePrefix = 'Mana Leeching';
         _this.description = 'When you hit, gain mana equal to damage taken by enemy.';
         _this.powerMultiplier = function (x) { return 0.75; };
-        _this.longDescription = '';
         return _this;
     }
     return managainModifier;
 }(modifier_1.Modifier));
 exports.managainModifier = managainModifier;
 
-},{"../../core/ability":62,"../modifier":108}],132:[function(require,module,exports){
+},{"../../core/ability":62,"../modifier":108}],134:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5765,7 +5851,6 @@ var momentumModifier = /** @class */ (function (_super) {
         _this.name = 'Inertia ' + _this.numericComponents[0].getValue();
         _this.namePrefix = 'Inertia';
         _this.description = 'Can be only used when you fail ability chance roll with ' + _this.numericComponents[0].getValue() + ' ' + (_this.numericComponents[0].getValue() === 1 ? 'ability' : 'abilities') + ' in a row. ';
-        _this.longDescription = '';
         _this.powerMultiplier = function (x) { return Math.pow(1.5, _this.numericComponents[0].getValue()); }; //used to be 1.58
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
@@ -5774,7 +5859,7 @@ var momentumModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.momentumModifier = momentumModifier;
 
-},{"../../components/descriptiveNumber":48,"../../core/ability":62,"../../core/utils":94,"../modifier":108}],133:[function(require,module,exports){
+},{"../../components/descriptiveNumber":48,"../../core/ability":62,"../../core/utils":94,"../modifier":108}],135:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5809,7 +5894,6 @@ var cleanModifier = /** @class */ (function (_super) {
         _this.name = 'Clean';
         _this.namePrefix = 'Clean';
         _this.description = 'Can be only used if your clothes are clean and you are not wet.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
@@ -5817,7 +5901,7 @@ var cleanModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.cleanModifier = cleanModifier;
 
-},{"../../../core/characterContext":72,"../../modifier":108}],134:[function(require,module,exports){
+},{"../../../core/characterContext":72,"../../modifier":108}],136:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5854,9 +5938,7 @@ var undeadBaneModifier = /** @class */ (function (_super) {
         };
         _this.name = "Evil Bane";
         _this.namePrefix = "Baning Evil";
-        _this.description =
-            "If this targets an undead, demon or devil repeat the attack once.";
-        _this.longDescription = "";
+        _this.description = "If this targets an undead, demon or devil repeat the attack once.";
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;
     }
@@ -5864,7 +5946,7 @@ var undeadBaneModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.undeadBaneModifier = undeadBaneModifier;
 
-},{"../../../core/ability":62,"../../../core/characterContext":72,"../../modifier":108}],135:[function(require,module,exports){
+},{"../../../core/ability":62,"../../../core/characterContext":72,"../../modifier":108}],137:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5918,7 +6000,7 @@ var multipleModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.multipleModifier = multipleModifier;
 
-},{"../../components/descriptiveNumber":48,"../../core/ability":62,"../../core/weightedList":95,"../modifier":108}],136:[function(require,module,exports){
+},{"../../components/descriptiveNumber":48,"../../core/ability":62,"../../core/weightedList":95,"../modifier":108}],138:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5954,7 +6036,7 @@ var nightlyModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.nightlyModifier = nightlyModifier;
 
-},{"../modifier":108}],137:[function(require,module,exports){
+},{"../modifier":108}],139:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5984,7 +6066,6 @@ var opportunistModifier = /** @class */ (function (_super) {
         _this.name = 'Opportunist';
         _this.namePrefix = 'Opportunists';
         _this.description = 'Can only be used against enemies that rolled 90-00 on D100 during their last turn. ';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
@@ -5992,7 +6073,7 @@ var opportunistModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.opportunistModifier = opportunistModifier;
 
-},{"../../core/ability":62,"../modifier":108}],138:[function(require,module,exports){
+},{"../../core/ability":62,"../modifier":108}],140:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6022,7 +6103,6 @@ var piercingModifier = /** @class */ (function (_super) {
         _this.name = 'Piercing';
         _this.namePrefix = 'Piercing';
         _this.description = 'When you hit deal damage to Health directly, additionally reduce enemy Armor by the same value. ';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;
     }
@@ -6030,7 +6110,7 @@ var piercingModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.piercingModifier = piercingModifier;
 
-},{"../../core/ability":62,"../modifier":108}],139:[function(require,module,exports){
+},{"../../core/ability":62,"../modifier":108}],141:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6085,7 +6165,7 @@ var repeatableModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.repeatableModifier = repeatableModifier;
 
-},{"../../components/descriptiveNumber":48,"../../core/weightedList":95,"../modifier":108}],140:[function(require,module,exports){
+},{"../../components/descriptiveNumber":48,"../../core/weightedList":95,"../modifier":108}],142:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6121,7 +6201,7 @@ var restedModifer = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.restedModifer = restedModifer;
 
-},{"../modifier":108}],141:[function(require,module,exports){
+},{"../modifier":108}],143:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6151,7 +6231,6 @@ var cityModifier = /** @class */ (function (_super) {
         _this.name = 'City';
         _this.namePrefix = 'City';
         _this.description = 'Can be only used within walls of a city.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
@@ -6159,7 +6238,7 @@ var cityModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.cityModifier = cityModifier;
 
-},{"../../../core/characterContext":72,"../../modifier":108}],142:[function(require,module,exports){
+},{"../../../core/characterContext":72,"../../modifier":108}],144:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6196,7 +6275,6 @@ var daggerModifier = /** @class */ (function (_super) {
         _this.name = 'Dagger';
         _this.namePrefix = 'Stabbing';
         _this.description = 'This ability can be only used when you are wielding a dagger.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
@@ -6204,7 +6282,7 @@ var daggerModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.daggerModifier = daggerModifier;
 
-},{"../../../core/ability":62,"../../../core/characterContext":72,"../../modifier":108}],143:[function(require,module,exports){
+},{"../../../core/ability":62,"../../../core/characterContext":72,"../../modifier":108}],145:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6242,7 +6320,7 @@ var greedyModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.greedyModifier = greedyModifier;
 
-},{"../../../core/characterContext":72,"../../modifier":108}],144:[function(require,module,exports){
+},{"../../../core/characterContext":72,"../../modifier":108}],146:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6279,7 +6357,7 @@ var luckyModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.luckyModifier = luckyModifier;
 
-},{"../../../core/characterContext":72,"../../modifier":108}],145:[function(require,module,exports){
+},{"../../../core/characterContext":72,"../../modifier":108}],147:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6316,7 +6394,7 @@ var sneakyModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.sneakyModifier = sneakyModifier;
 
-},{"../../../core/characterContext":72,"../../modifier":108}],146:[function(require,module,exports){
+},{"../../../core/characterContext":72,"../../modifier":108}],148:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6357,7 +6435,7 @@ var selfHealModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.selfHealModifier = selfHealModifier;
 
-},{"../../components/descriptiveNumber":48,"../../core/ability":62,"../../core/utils":94,"../modifier":108}],147:[function(require,module,exports){
+},{"../../components/descriptiveNumber":48,"../../core/ability":62,"../../core/utils":94,"../modifier":108}],149:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6387,7 +6465,6 @@ var signatureModifier = /** @class */ (function (_super) {
         _this.name = 'Signature';
         _this.namePrefix = 'Signature';
         _this.description = 'This is a Signature Ability - First Signature Ability you use each combat gains 1 Boon for its chance and +2 damage, before rolling.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
@@ -6395,7 +6472,7 @@ var signatureModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.signatureModifier = signatureModifier;
 
-},{"../../core/ability":62,"../modifier":108}],148:[function(require,module,exports){
+},{"../../core/ability":62,"../modifier":108}],150:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6425,7 +6502,6 @@ var ultimateModifier = /** @class */ (function (_super) {
         _this.name = 'Ultimate';
         _this.namePrefix = 'Ultimate'; //numeric component
         _this.description = 'Can be used only on turn 8 or later.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
@@ -6433,7 +6509,7 @@ var ultimateModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.ultimateModifier = ultimateModifier;
 
-},{"../../core/ability":62,"../modifier":108}],149:[function(require,module,exports){
+},{"../../core/ability":62,"../modifier":108}],151:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6463,7 +6539,6 @@ var unlockedModifier = /** @class */ (function (_super) {
         _this.name = 'Unlock';
         _this.namePrefix = 'Unlocked';
         _this.description = 'Can only be used when you rolled 01-20 on your first D100 roll last turn. ';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
@@ -6471,7 +6546,7 @@ var unlockedModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.unlockedModifier = unlockedModifier;
 
-},{"../../core/ability":62,"../modifier":108}],150:[function(require,module,exports){
+},{"../../core/ability":62,"../modifier":108}],152:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6501,7 +6576,6 @@ var vengefulModifier = /** @class */ (function (_super) {
         _this.name = 'Vengeance';
         _this.namePrefix = 'Vengeful';
         _this.description = 'Can be only used against enemy which attacked, damaged or affected you last turn. ';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }

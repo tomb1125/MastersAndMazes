@@ -27,7 +27,6 @@ var instinctiveModifier = /** @class */ (function (_super) {
         _this.name = 'Instinct';
         _this.namePrefix = 'Instinctive';
         _this.description = 'If you are stunned, you can use this ability as a swift action. You can ignore Banes when rolling for this ability. ';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;
     }

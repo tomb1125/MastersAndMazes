@@ -27,7 +27,6 @@ var piercingModifier = /** @class */ (function (_super) {
         _this.name = 'Piercing';
         _this.namePrefix = 'Piercing';
         _this.description = 'When you hit deal damage to Health directly, additionally reduce enemy Armor by the same value. ';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;
     }

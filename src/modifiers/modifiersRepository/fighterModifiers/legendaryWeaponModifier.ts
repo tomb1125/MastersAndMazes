@@ -20,7 +20,6 @@ constructor(affector: AffectsWeight) {
         this.name = 'Legendary';
         this.namePrefix = 'Legendary';
         this.description = 'This attack can be only made with a legendary weapon.';
-        this.longDescription = '';
         this.modifierType = Modifier.Type.Constraint;
     }
 }

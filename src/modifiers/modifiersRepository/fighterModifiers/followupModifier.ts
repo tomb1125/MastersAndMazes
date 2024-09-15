@@ -4,11 +4,11 @@ import { CharacterContext } from "../../../core/characterContext";
 import { Utils } from "../../../core/utils";
 import { Modifier } from "../../modifier";
 
-export class battleModifier extends Modifier {
+export class followupModifier extends Modifier {
     
 constructor(affector: AffectsWeight) {
         super();
-        this.powerMultiplier = () => 1.5; 
+        this.powerMultiplier = () => 0.75; 
 
         this.weight = (affector) => {
             return affector != undefined && affector.type === Ability.Type.Attack
@@ -17,9 +17,9 @@ constructor(affector: AffectsWeight) {
                 : Utils.RARE_MODIFIER * CharacterContext.OUT_OF_CLASS_WEIGHT
               : 0;
           };      
-        this.name = 'Battle';
-        this.namePrefix = 'Battle';
-        this.description = 'Can only be used when you are adjacent to two enemies.';
+        this.name = 'Followup';
+        this.namePrefix = 'Followup';
+        this.description = 'If the target wasn\'t bloodied as you made this attack and became bloodied after hit, you can repeat this attack against this target.';
         this.modifierType = Modifier.Type.Constraint;
     }
 }

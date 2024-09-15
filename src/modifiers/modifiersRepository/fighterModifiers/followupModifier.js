@@ -15,28 +15,29 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.preachingModifier = void 0;
+exports.followupModifier = void 0;
 var ability_1 = require("../../../core/ability");
 var characterContext_1 = require("../../../core/characterContext");
+var utils_1 = require("../../../core/utils");
 var modifier_1 = require("../../modifier");
-var preachingModifier = /** @class */ (function (_super) {
-    __extends(preachingModifier, _super);
-    function preachingModifier(affector) {
+var followupModifier = /** @class */ (function (_super) {
+    __extends(followupModifier, _super);
+    function followupModifier(affector) {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 1.5; };
+        _this.powerMultiplier = function () { return 0.75; };
         _this.weight = function (affector) {
-            return affector != undefined && (affector === null || affector === void 0 ? void 0 : affector.cooldown) != ability_1.Ability.Cooldown.Encounter
-                ? characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric)
-                    ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER
-                    : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT
+            return affector != undefined && affector.type === ability_1.Ability.Type.Attack
+                ? characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter)
+                    ? utils_1.Utils.RARE_MODIFIER * characterContext_1.CharacterContext.IN_CLASS_MODIFIER
+                    : utils_1.Utils.RARE_MODIFIER * characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT
                 : 0;
         };
-        _this.name = 'Sermon';
-        _this.namePrefix = 'Preaching';
-        _this.description = 'This ability can be only used as you complete a sermon in front of at least 10 people.';
+        _this.name = 'Followup';
+        _this.namePrefix = 'Followup';
+        _this.description = 'If the target wasn\'t bloodied as you made this attack and became bloodied after hit, you can repeat this attack against this target.';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
-    return preachingModifier;
+    return followupModifier;
 }(modifier_1.Modifier));
-exports.preachingModifier = preachingModifier;
+exports.followupModifier = followupModifier;

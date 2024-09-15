@@ -11,7 +11,6 @@ export class templeModifier extends Modifier {
         this.name = 'Temple';
         this.namePrefix = 'Temple';
         this.description = 'Can be only used within 10 km of a temple or a relic of your faith.';
-        this.longDescription = '';
         this.modifierType = Modifier.Type.Constraint;
     }
 }

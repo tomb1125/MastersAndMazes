@@ -15,7 +15,6 @@ export class momentumModifier extends Modifier {
         this.name = 'Inertia '+this.numericComponents[0].getValue(); 
         this.namePrefix = 'Inertia';
         this.description = 'Can be only used when you fail ability chance roll with '+this.numericComponents[0].getValue()+' '+(this.numericComponents[0].getValue() === 1 ? 'ability' : 'abilities')+' in a row. ';
-        this.longDescription = '';
         this.powerMultiplier = (x: CanAffectModifier) => Math.pow(1.5, this.numericComponents[0].getValue()); //used to be 1.58
         this.modifierType = Modifier.Type.Constraint;
     }

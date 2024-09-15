@@ -19,7 +19,6 @@ export class daggerModifier extends Modifier {
         this.name = 'Dagger';
         this.namePrefix = 'Stabbing';
         this.description = 'This ability can be only used when you are wielding a dagger.';
-        this.longDescription = '';
         this.modifierType = Modifier.Type.Constraint;
     }
 }

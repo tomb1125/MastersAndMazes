@@ -14,6 +14,5 @@ export class managainModifier extends Modifier {
         this.namePrefix = 'Mana Leeching'; 
         this.description = 'When you hit, gain mana equal to damage taken by enemy.';
         this.powerMultiplier = (x: CanAffectModifier) => {return 0.75};
-        this.longDescription = '';
     }
 }

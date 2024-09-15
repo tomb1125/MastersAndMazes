@@ -12,7 +12,6 @@ export class instinctiveModifier extends Modifier {
         this.name = 'Instinct';
         this.namePrefix = 'Instinctive';
         this.description = 'If you are stunned, you can use this ability as a swift action. You can ignore Banes when rolling for this ability. ';
-        this.longDescription = '';
         this.modifierType = Modifier.Type.Improvement;
     }
 }

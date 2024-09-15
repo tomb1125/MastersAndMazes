@@ -27,7 +27,6 @@ var pristineModifier = /** @class */ (function (_super) {
         _this.name = 'Pristine';
         _this.namePrefix = 'Pristine';
         _this.description = 'Can be only used when you are undamaged.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }

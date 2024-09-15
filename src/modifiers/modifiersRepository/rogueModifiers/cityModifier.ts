@@ -11,7 +11,6 @@ export class cityModifier extends Modifier {
         this.name = 'City';
         this.namePrefix = 'City';
         this.description = 'Can be only used within walls of a city.';
-        this.longDescription = '';
         this.modifierType = Modifier.Type.Constraint;
     }
 }

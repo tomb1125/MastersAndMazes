@@ -11,7 +11,6 @@ export class cleaveModifier extends Modifier {
         this.name = 'Cleave'
         this.namePrefix = 'Cleaving'; //TODO cleave could scale
         this.description = 'After this action, repeat this action 1 time, without paying mana cost. With this repeated action you must target creature adjacent to you or last target.';
-        this.longDescription = '';
         this.modifierType =Modifier.Type.Improvement;
 
     }

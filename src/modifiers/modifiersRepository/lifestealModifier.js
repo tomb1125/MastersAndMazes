@@ -28,7 +28,6 @@ var lifestealModifier = /** @class */ (function (_super) {
         _this.namePrefix = 'Leeching';
         _this.description = 'When you hit, heal yourself equal to damage taken by enemy.';
         _this.powerMultiplier = function (x) { return 0.55; }; //TODO this should be bonus equal to damage... however damage is set after modifiers...s
-        _this.longDescription = '';
         return _this;
     }
     return lifestealModifier;

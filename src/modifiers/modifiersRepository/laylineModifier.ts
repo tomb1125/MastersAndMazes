@@ -12,7 +12,6 @@ export class laylineModifier extends Modifier {
         this.name = 'Layline';
         this.namePrefix = 'Layline';
         this.description = 'Can be used only while adjacent to place of power (usually you can detect 2-4 places of power each encounter).';
-        this.longDescription = '';
         this.modifierType =Modifier.Type.Constraint;
     }
 }

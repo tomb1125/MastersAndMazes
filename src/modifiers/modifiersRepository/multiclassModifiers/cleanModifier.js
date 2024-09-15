@@ -32,7 +32,6 @@ var cleanModifier = /** @class */ (function (_super) {
         _this.name = 'Clean';
         _this.namePrefix = 'Clean';
         _this.description = 'Can be only used if your clothes are clean and you are not wet.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }

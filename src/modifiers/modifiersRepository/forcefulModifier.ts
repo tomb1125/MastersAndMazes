@@ -11,8 +11,7 @@ export class forcefulModifier extends Modifier {
         this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Attack ? 1 : 0}
         this.name = 'Forceful';
         this.namePrefix = 'Forceful';
-        this.description = 'When you hit, push target 5 squares. You can push into dangereous terrain, pushing into solid obstacles deals extra damage equal to unresolved squares of push. ';
-        this.longDescription = '';
+        this.description = 'When you hit, push target forcefully 5 squares. ';
         this.modifierType = Modifier.Type.Improvement;
     }
 }

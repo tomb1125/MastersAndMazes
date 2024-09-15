@@ -27,7 +27,6 @@ var vengefulModifier = /** @class */ (function (_super) {
         _this.name = 'Vengeance';
         _this.namePrefix = 'Vengeful';
         _this.description = 'Can be only used against enemy which attacked, damaged or affected you last turn. ';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }

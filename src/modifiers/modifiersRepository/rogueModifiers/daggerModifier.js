@@ -34,7 +34,6 @@ var daggerModifier = /** @class */ (function (_super) {
         _this.name = 'Dagger';
         _this.namePrefix = 'Stabbing';
         _this.description = 'This ability can be only used when you are wielding a dagger.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }

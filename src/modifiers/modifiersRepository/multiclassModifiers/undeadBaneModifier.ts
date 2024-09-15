@@ -17,9 +17,7 @@ export class undeadBaneModifier extends Modifier {
     };
     this.name = "Evil Bane";
     this.namePrefix = "Baning Evil";
-    this.description =
-      "If this targets an undead, demon or devil repeat the attack once.";
-    this.longDescription = "";
+    this.description = "If this targets an undead, demon or devil repeat the attack once.";
     this.modifierType = Modifier.Type.Improvement;
   }
 }

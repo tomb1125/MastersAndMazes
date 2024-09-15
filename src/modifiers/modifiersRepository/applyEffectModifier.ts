@@ -12,7 +12,6 @@ export class applyEffectModifier extends Modifier {
         let debuffFactory: EffectFactory = new EffectFactory(aff).filter((eff: Effect) => eff.subtype === Effect.Subtype.Debuff);
 
         super();
-        this.longDescription = '';
         this.modifierType =Modifier.Type.Improvement;
         this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Attack ? debuffFactory.items.items.length * Utils.EFFECT_WEIGHT_MOD  : 0}
         this.effect = debuffFactory.get(1)[0] as Effect;

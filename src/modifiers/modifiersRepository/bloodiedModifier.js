@@ -29,7 +29,6 @@ var bloodiedModifier = /** @class */ (function (_super) {
         _this.name = 'Bloody';
         _this.namePrefix = 'Bloody';
         _this.description = 'Can be used only when you have half or less Health.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }

@@ -28,7 +28,6 @@ var fastModifier = /** @class */ (function (_super) {
         _this.name = 'Fast';
         _this.namePrefix = 'Fast';
         _this.description = 'You can use Swift Action to use this ability.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;
     }

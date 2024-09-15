@@ -27,7 +27,6 @@ var cleaveModifier = /** @class */ (function (_super) {
         _this.name = 'Cleave';
         _this.namePrefix = 'Cleaving'; //TODO cleave could scale
         _this.description = 'After this action, repeat this action 1 time, without paying mana cost. With this repeated action you must target creature adjacent to you or last target.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;
     }

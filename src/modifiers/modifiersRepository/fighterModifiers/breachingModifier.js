@@ -27,7 +27,6 @@ var breachingModifier = /** @class */ (function (_super) {
         _this.name = 'Breaching';
         _this.namePrefix = 'Breaching';
         _this.description = 'Can only be used in a room you\'ve kicked the door down to enter.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }

@@ -27,7 +27,6 @@ var signatureModifier = /** @class */ (function (_super) {
         _this.name = 'Signature';
         _this.namePrefix = 'Signature';
         _this.description = 'This is a Signature Ability - First Signature Ability you use each combat gains 1 Boon for its chance and +2 damage, before rolling.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }

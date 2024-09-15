@@ -27,7 +27,6 @@ var pacifistModifier = /** @class */ (function (_super) {
         _this.name = 'Pacifist';
         _this.namePrefix = 'Pacifists';
         _this.description = 'This ability has a Bane for each creature you reduced to 0 HP today.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }

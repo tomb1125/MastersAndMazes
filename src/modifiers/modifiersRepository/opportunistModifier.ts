@@ -11,7 +11,6 @@ export class opportunistModifier extends Modifier {
         this.name = 'Opportunist'
         this.namePrefix = 'Opportunists';
         this.description = 'Can only be used against enemies that rolled 90-00 on D100 during their last turn. ';
-        this.longDescription = '';
         this.modifierType =Modifier.Type.Constraint;
     }
 }

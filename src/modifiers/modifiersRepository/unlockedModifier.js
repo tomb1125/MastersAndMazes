@@ -27,7 +27,6 @@ var unlockedModifier = /** @class */ (function (_super) {
         _this.name = 'Unlock';
         _this.namePrefix = 'Unlocked';
         _this.description = 'Can only be used when you rolled 01-20 on your first D100 roll last turn. ';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }

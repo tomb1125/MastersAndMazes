@@ -27,7 +27,6 @@ var templeModifier = /** @class */ (function (_super) {
         _this.name = 'Temple';
         _this.namePrefix = 'Temple';
         _this.description = 'Can be only used within 10 km of a temple or a relic of your faith.';
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }

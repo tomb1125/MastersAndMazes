@@ -27,7 +27,6 @@ var applyEffectModifier = /** @class */ (function (_super) {
         var _this = this;
         var debuffFactory = new effectFactory_1.EffectFactory(aff).filter(function (eff) { return eff.subtype === effect_1.Effect.Subtype.Debuff; });
         _this = _super.call(this) || this;
-        _this.longDescription = '';
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? debuffFactory.items.items.length * utils_1.Utils.EFFECT_WEIGHT_MOD : 0; };
         _this.effect = debuffFactory.get(1)[0];
