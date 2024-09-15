@@ -197,8 +197,8 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
 
   }
 
-  public getDescription(): string { //TODO rework, incorporate descriptive numbers
-    return '' +
+  public getDescription(longDescription?: boolean): string { //TODO rework, incorporate descriptive numbers
+    let desc =  '' +
       '<b>Name: ' + this.generateName() +
       '</b><br><b>Chance</b>: ' + Math.ceil(this.chance * 100) + '%' +
       '<br><b>Damage</b>: ' + (this.damage.description ? this.damage.getDescription() : Utils.valueToDiceRoll(this.damage.getValue())) +
@@ -208,6 +208,12 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
       '<br><b>Description</b>: ' + this.coreDescription + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
       '<br><b>Type</b>: ' + Attack.Subtype[this.subtype] + 
       '<br><b>Cooldown</b>: ' + Ability.Cooldown[this.cooldown];
+
+    if(longDescription) {
+      desc += '<br><b>Rulings</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum  + (mod.longDescription === undefined ? '' : ', ' + mod.longDescription); }, '').slice(2);
+    }
+
+    return desc;
 
   }
 

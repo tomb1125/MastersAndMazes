@@ -33,14 +33,18 @@ var Utility = /** @class */ (function (_super) {
         _this.type = ability_1.Ability.Type.Utility;
         return _this;
     }
-    Utility.prototype.getDescription = function () {
-        return '' +
+    Utility.prototype.getDescription = function (longDescription) {
+        var desc = '' +
             '<b>Name: ' + this.generateName() +
             '<br>Chance</b>: ' + Math.ceil(this.chance * 100) + '%' +
             '<br><b>Modifiers</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + ', ' + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
             '<br><b>Components</b>: ' + this.objects.reduce(function (sum, mod) { return sum + ', ' + mod.name; }, '').slice(2) +
             '<br><b>Description</b>: ' + this.description + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
             '<br><b>Cooldown</b>: ' + ability_1.Ability.Cooldown[this.cooldown];
+        if (longDescription) {
+            desc += '<br><b>Rulings</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + (mod.longDescription === undefined ? '' : ', ' + mod.longDescription); }, '').slice(2);
+        }
+        return desc;
     };
     Utility.prototype.generateName = function () {
         return this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.namePrefix; }, '').slice(1) + (this.modifiers.length > 0 ? ' ' : '') +

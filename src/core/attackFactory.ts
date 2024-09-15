@@ -1,7 +1,7 @@
 import { AffectsWeight } from "./affectsWeight";
 import { Factory } from "./factory";
-import { Utility } from "./utility";
 import { WeightedList } from "./weightedList";
+import { Attack } from "./attack";
 
 //factory imports
 import { poisonedDartAttack } from "./attackRepository/rogueAttacks/poisonedDartAttack";
@@ -27,7 +27,7 @@ export class AttackFactory extends Factory {
     }
     
     public get(count: number) {
-        return super.get(count) as Utility[];
+        return super.get(count) as Attack[];
     }
     
     public filter(z: (x: any) => boolean): AttackFactory {

@@ -33,15 +33,20 @@ export class Utility extends Activity implements CanAffectModifier, HasWeigth {
         this.type = Ability.Type.Utility;
     }
 
-    public getDescription(): string {
-
-      return '' +
+    public getDescription(longDescription?: boolean): string {
+      let desc: string = '' +
       '<b>Name: ' + this.generateName() +
       '<br>Chance</b>: ' + Math.ceil(this.chance * 100) + '%' +
       '<br><b>Modifiers</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + ', ' + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
       '<br><b>Components</b>: ' + this.objects.reduce(function (sum, mod) { return sum + ', ' + mod.name }, '').slice(2) +
       '<br><b>Description</b>: ' + this.description + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
-      '<br><b>Cooldown</b>: ' + Ability.Cooldown[this.cooldown];      
+      '<br><b>Cooldown</b>: ' + Ability.Cooldown[this.cooldown];    
+
+      if(longDescription) {
+        desc += '<br><b>Rulings</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum  + (mod.longDescription === undefined ? '' : ', ' + mod.longDescription); }, '').slice(2);
+      }
+
+      return desc;
     }
 
     public generateName(): string {

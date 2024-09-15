@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Utils = void 0;
+var rule_1 = require("./rule");
 var Utils = /** @class */ (function () {
     function Utils() {
     }
@@ -103,6 +104,9 @@ var Utils = /** @class */ (function () {
     Utils.D = function (value) {
         return Math.ceil(Utils.random() * value);
     };
+    Utils.getRule = function (name) {
+        return Utils.rules.filter(function (r) { return r.name === name; })[0];
+    };
     Utils.DPS = 5;
     Utils.ENEMY_DPS = 10;
     Utils.POWER_PER_LEVEL = 0.2;
@@ -121,6 +125,9 @@ var Utils = /** @class */ (function () {
     Utils.RARE_MODIFIER = 0.1;
     Utils.BoonValue = Utils.DPS * 5;
     Utils.avgHealth = 25;
+    Utils.rules = [
+        new rule_1.Rule(rule_1.Rule.Name.ForcefulPush, 'Forceful Push X - move target X squares. Each square of movement must be further than the previous one. You can push into hazardoous terrain. Each square of movent that is wasted by an obstacle deals 1 damage to them<br>')
+    ];
     return Utils;
 }());
 exports.Utils = Utils;

@@ -127,7 +127,6 @@ var ModifierFactory = /** @class */ (function (_super) {
         var dps = 0;
         modifiers.forEach(function (m) {
             if (m.powerBonus) {
-                console.log('aff: ' + JSON.stringify(affector) + ' m:' + JSON.stringify(m) + ' power:' + m.powerBonus(affector));
                 dps += m.powerBonus(affector);
             }
         });

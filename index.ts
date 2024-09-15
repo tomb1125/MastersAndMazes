@@ -23,9 +23,10 @@ global.onClassChange = (val): void => {
   global.generateAbilities();
 };
 
-let showRulings = false;
+let showRulings: boolean = false;
 global.onRulingChange = (val): void => {
   showRulings = val;
+  console.log(val)
   global.generateAbilities();
 };
 
@@ -58,27 +59,27 @@ global.generateAbilities = (): void => {
     let att4 = factory2[1];
 
     description = '<br>'+ 
-      att1.getDescription() +'<br><br>'+
-      att2.getDescription() +'<br><br>'+
-      att3.getDescription() +'<br><br>'+
-      att4.getDescription() +'<br><br>'
+      att1.getDescription(showRulings) +'<br><br>'+
+      att2.getDescription(showRulings) +'<br><br>'+
+      att3.getDescription(showRulings) +'<br><br>'+
+      att4.getDescription(showRulings) +'<br><br>'
   } else if(levelMode === 0) {
   
     const utl: Utility[] = new UtilityFactory(new Ability()).get(4);
 
     description = '<br>'+ 
-      utl[0].getDescription() +'<br><br>'+
-      utl[1].getDescription() +'<br><br>'+
-      utl[2].getDescription() +'<br><br>'+
-      utl[3].getDescription() +'<br><br>'
+      utl[0].getDescription(showRulings) +'<br><br>'+
+      utl[1].getDescription(showRulings) +'<br><br>'+
+      utl[2].getDescription(showRulings) +'<br><br>'+
+      utl[3].getDescription(showRulings) +'<br><br>'
 
     
     const debugName = 'Entice Respect';
-    description = '<br>'+ 
-      new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription() +'<br><br>'+
-      new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription() +'<br><br>'+
-      new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription() +'<br><br>'+
-      new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription() +'<br><br>'
+    //description = '<br>'+ 
+      new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription(showRulings) +'<br><br>'+
+      new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription(showRulings) +'<br><br>'+
+      new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription(showRulings) +'<br><br>'+
+      new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription(showRulings) +'<br><br>'
       
   } 
 

@@ -41,7 +41,6 @@ var Factory = /** @class */ (function () {
         if (Factory.evenItems.length == 0) {
             Factory.evenItems = this.get(Factory.EVEN_LIST_SIZE);
         }
-        console.log(Factory.evenItems.length);
         var index = 0;
         var newItem = Factory.evenItems[index];
         Factory.evenItems.splice(index, 1);

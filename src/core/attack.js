@@ -172,8 +172,8 @@ var Attack = /** @class */ (function (_super) {
             this.manaCost += tempMana;
         }
     };
-    Attack.prototype.getDescription = function () {
-        return '' +
+    Attack.prototype.getDescription = function (longDescription) {
+        var desc = '' +
             '<b>Name: ' + this.generateName() +
             '</b><br><b>Chance</b>: ' + Math.ceil(this.chance * 100) + '%' +
             '<br><b>Damage</b>: ' + (this.damage.description ? this.damage.getDescription() : utils_1.Utils.valueToDiceRoll(this.damage.getValue())) +
@@ -183,6 +183,10 @@ var Attack = /** @class */ (function (_super) {
             '<br><b>Description</b>: ' + this.coreDescription + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
             '<br><b>Type</b>: ' + Attack.Subtype[this.subtype] +
             '<br><b>Cooldown</b>: ' + ability_1.Ability.Cooldown[this.cooldown];
+        if (longDescription) {
+            desc += '<br><b>Rulings</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + (mod.longDescription === undefined ? '' : ', ' + mod.longDescription); }, '').slice(2);
+        }
+        return desc;
     };
     Attack.prototype.generateName = function () {
         var damagePortion = this.damage.prefix ? this.damage.prefix + ' ' : '';

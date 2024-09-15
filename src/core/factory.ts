@@ -25,7 +25,6 @@ export class Factory {
         if(Factory.evenItems.length == 0) {
             Factory.evenItems = this.get(Factory.EVEN_LIST_SIZE);
         }
-        console.log(Factory.evenItems.length);
 
         const index = 0;
         const newItem: HasWeigth = Factory.evenItems[index]

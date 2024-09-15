@@ -15,7 +15,7 @@
             <option value="Rogue">Rogue</option>       
             <option value="Fighter">Fighter</option>          
         </select>        
-        <br>Show Rulings <input type="checkbox" name="Show All Rulings" value="false" placeholder="false" autocomplete="off" onchange="onRulingChange(this.value)">
+        <br>Show Rulings <input type="checkbox" name="Show All Rulings" placeholder="false" autocomplete="off" onchange="onRulingChange(this.checked)">
         <br><button onclick="generateAbilities()">Generate Abilities</button>
         <br><div id="output"></div>
     

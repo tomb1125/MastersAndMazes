@@ -114,7 +114,6 @@ export class ModifierFactory extends Factory {
     
     modifiers.forEach(m => {
       if(m.powerBonus) {
-        console.log('aff: ' + JSON.stringify(affector) + ' m:' + JSON.stringify(m) + ' power:' + m.powerBonus(affector))
         dps += m.powerBonus(affector);
       }
     });

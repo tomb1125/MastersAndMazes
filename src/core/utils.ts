@@ -3,6 +3,7 @@ import { CharacterContext } from "./characterContext";
 import { Factory } from "./factory";
 import { HasWeigth } from "./hasWeigth";
 import { RandomNumberGenerator } from "./randomNumberGenerator";
+import { Rule } from "./rule";
 
 export class Utils {
     public static DPS: number = 5;
@@ -124,4 +125,14 @@ export class Utils {
     public static D(value: number): number {
         return Math.ceil(Utils.random() * value) 
     }
+
+    public static rules: Rule[] = [
+        new Rule(Rule.Name.ForcefulPush, 'Forceful Push X - move target X squares. Each square of movement must be further than the previous one. You can push into hazardoous terrain. Each square of movent that is wasted by an obstacle deals 1 damage to them<br>')
+    ]
+
+    public static getRule(name: Rule.Name): Rule {
+        return Utils.rules.filter((r :Rule) => r.name === name)[0];
+    }
+
+    
 }
