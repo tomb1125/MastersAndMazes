@@ -29,7 +29,7 @@ var equipmentMaintenanceUtility = /** @class */ (function (_super) {
         _this.chance = 0.9;
         _this.value = new descriptiveNumber_1.DescriptiveNumber(10);
         _this.compensate();
-        _this.description = 'If you succeed repair and maintain equipment. You can repair weapons and armor after being damaged by acid and similar effects. Additionally until end of the day maintained armor or shield grants extra ' + _this.value.getDescription() + ' Armor Points. ';
+        _this.description = 'If you succeed repair and maintain equipment. You can repair weapons and armor after being damaged by acid and similar effects. Additionally until end of the day maintained armor or shield grants extra ' + _this.value.getDescription() + ' Armor Points (does not stack). ';
         return _this;
     }
     return equipmentMaintenanceUtility;

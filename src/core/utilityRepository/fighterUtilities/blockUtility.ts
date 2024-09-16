@@ -14,7 +14,7 @@ export class blockUtility extends Utility {
         this.chance = 0.45;
         this.value = new DescriptiveNumber(15);
         this.compensate();
-        this.description = 'Use as reaction when being attacked. If you succeed you reduce damage by '+this.value.getDescription()+'. You gain 2 Boons for chance roll if you use a shield. ';
+        this.description = 'Use as reaction when being attacked. If you succeed you reduce damage by '+this.value.getDescription()+'. You gain 2 Boons for chance roll if you use a shield otherwise you gain 1 Boon for your next Attack against source of attack. ';
 
     }
 }

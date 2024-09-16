@@ -6,6 +6,7 @@ import { Attack } from "./attack";
 //factory imports
 import { poisonedDartAttack } from "./attackRepository/rogueAttacks/poisonedDartAttack";
 import { backstabAttack } from "./attackRepository/rogueAttacks/backstabAttack";
+import { stanceAttack } from "./attackRepository/fighterAttacks/stanceAttack";
 import { radiantRayAttack } from "./attackRepository/clericAttacks/radiantRayAttack";
 import { empoweringStrikeAttack } from "./attackRepository/clericAttacks/empoweringStrikeAttack";
 import { basicSpell } from "./attackRepository/basicSpell";
@@ -17,6 +18,7 @@ export class AttackFactory extends Factory {
             this.items = new WeightedList();
             this.items.push(new poisonedDartAttack(affector));
             this.items.push(new backstabAttack(affector));
+            this.items.push(new stanceAttack(affector));
             this.items.push(new radiantRayAttack(affector));
             this.items.push(new empoweringStrikeAttack(affector));
             this.items.push(new basicSpell(affector));

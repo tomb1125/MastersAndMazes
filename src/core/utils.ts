@@ -127,7 +127,25 @@ export class Utils {
     }
 
     public static rules: Rule[] = [
-        new Rule(Rule.Name.ForcefulPush, 'Forceful Push X - move target X squares. Each square of movement must be further than the previous one. You can push into hazardoous terrain. Each square of movent that is wasted by an obstacle deals 1 damage to them<br>')
+        new Rule(Rule.Name.ForcefulPush, 
+            'Forceful Push X - move target X squares. Each square of movement must be further than the previous one. You can push into hazardoous terrain. Each square of movent that is wasted by an obstacle deals 1 damage to them<br>'
+        ),
+        new Rule(Rule.Name.Blessing, 
+            'Blessing - Blessing Points are permanent. Whenever you reach 100 or more Blessing, reduce your Blessing by 100 and roll in below table:<br>'+
+            '&ensp;1 - Remove all Scars you have.<br>'+
+            '&ensp;2 - All rolls have 1 Boon until the end of the next adventure.<br>'+
+            '&ensp;3 - Gain 10 Experience points.<br>'+
+            '&ensp;4 - Permanently gain 5 maximum Health.<br>'+
+            '&ensp;5 - Raise any of your attributes by 10, but not above 50.<br>'+
+            '&ensp;6 - Next time you see "you die" effect (eg. dying roll or corruption roll) you can ignore it.<br>'
+        ),
+        new Rule(Rule.Name.FighterStance, 
+            'Fighter Stance - choose one effect below, you benefit from it until end of encounter. Only one fighter stance can be active at a time.<br>'+
+            '&ensp;Precision - Gain 1 Boon with Weapon Attacks<br>'+
+            '&ensp;Power - Deal +2 damage with Weapon Attacks<br>'+
+            '&ensp;Endurance - At the end of each turn regain 1 Mana or 3 Mana if you have less than 5 Mana.<br>'
+        )
+    
     ]
 
     public static getRule(name: Rule.Name): Rule {

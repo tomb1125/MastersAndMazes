@@ -25,7 +25,6 @@ var bloodiedModifier = /** @class */ (function (_super) {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 1.5; };
         _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.cooldown) === ability_1.Ability.Cooldown.Encounter ? 1 : utils_1.Utils.RARE_MODIFIER; };
-        _this.weight = function () { return 1; };
         _this.name = 'Bloody';
         _this.namePrefix = 'Bloody';
         _this.description = 'Can be used only when you have half or less Health.';

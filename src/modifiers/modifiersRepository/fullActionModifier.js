@@ -15,17 +15,21 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Activity = void 0;
-var ability_1 = require("./ability");
-var Activity = /** @class */ (function (_super) {
-    __extends(Activity, _super);
-    function Activity(otherName) {
-        var _this = _super.call(this, otherName) || this;
-        _this.longDescription = '';
+exports.fullActionModifier = void 0;
+var ability_1 = require("../../core/ability");
+var modifier_1 = require("../modifier");
+var fullActionModifier = /** @class */ (function (_super) {
+    __extends(fullActionModifier, _super);
+    function fullActionModifier(affector) {
+        var _this = _super.call(this) || this;
+        _this.powerBonus = function () { return 2; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.cooldown) === ability_1.Ability.Cooldown.Encounter ? 0.75 : 0; };
+        _this.name = 'Full Action';
+        _this.namePrefix = 'Stationary';
+        _this.description = 'You must additionally use Move Action to use this power.';
+        _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
-    Activity.prototype.generate = function () {
-    };
-    return Activity;
-}(ability_1.Ability));
-exports.Activity = Activity;
+    return fullActionModifier;
+}(modifier_1.Modifier));
+exports.fullActionModifier = fullActionModifier;

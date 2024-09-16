@@ -13,5 +13,7 @@ exports.Rule = Rule;
     var Name;
     (function (Name) {
         Name[Name["ForcefulPush"] = 0] = "ForcefulPush";
+        Name[Name["Blessing"] = 1] = "Blessing";
+        Name[Name["FighterStance"] = 2] = "FighterStance";
     })(Name = Rule.Name || (Rule.Name = {}));
 })(Rule || (exports.Rule = Rule = {}));

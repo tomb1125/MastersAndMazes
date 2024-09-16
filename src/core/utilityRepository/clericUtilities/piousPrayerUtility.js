@@ -19,7 +19,9 @@ exports.piousPrayerUtility = void 0;
 var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
 var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
+var rule_1 = require("../../rule");
 var utility_1 = require("../../utility");
+var utils_1 = require("../../utils");
 var piousPrayerUtility = /** @class */ (function (_super) {
     __extends(piousPrayerUtility, _super);
     function piousPrayerUtility() {
@@ -31,6 +33,7 @@ var piousPrayerUtility = /** @class */ (function (_super) {
         _this.value = new descriptiveNumber_1.DescriptiveNumber(normalValue);
         _this.compensate();
         _this.description = 'If you are in combat, gain ' + _this.value.getDescription() + ' Blessing Points (see rules) and your next ability chance roll will gain 1 Boon. Double both values if you are fighting Undead, Devils or Demons. This ability can be only used in first two rounds of combat. ';
+        _this.longDescription = utils_1.Utils.getRule(rule_1.Rule.Name.Blessing).description;
         return _this;
     }
     return piousPrayerUtility;

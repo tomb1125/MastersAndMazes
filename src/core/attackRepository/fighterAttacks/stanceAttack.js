@@ -15,23 +15,30 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.blockUtility = void 0;
-var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
-var ability_1 = require("../../ability");
+exports.stanceAttack = void 0;
+var compensationModifier_1 = require("../../../modifiers/modifiersRepository/compensationModifier");
+var attack_1 = require("../../attack");
 var characterContext_1 = require("../../characterContext");
-var utility_1 = require("../../utility");
-var blockUtility = /** @class */ (function (_super) {
-    __extends(blockUtility, _super);
-    function blockUtility() {
-        var _this = _super.call(this, 'Block') || this;
+var rule_1 = require("../../rule");
+var utils_1 = require("../../utils");
+var stanceAttack = /** @class */ (function (_super) {
+    __extends(stanceAttack, _super);
+    function stanceAttack(affector) {
+        var _this = _super.call(this, 'Stance') || this;
+        _this.subtype = attack_1.Attack.Subtype.Weapon;
+        _this.coreDescription = 'When you hit, deal damage and enter one of the Fighter Stances. ';
+        _this.chance = 0.75;
+        _this.manaCost = 0;
+        _this.range = 1;
+        _this.subtype = attack_1.Attack.Subtype.Weapon;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
-        _this.cooldown = ability_1.Ability.Cooldown.Encounter;
-        _this.chance = 0.45;
-        _this.value = new descriptiveNumber_1.DescriptiveNumber(15);
-        _this.compensate();
-        _this.description = 'Use as reaction when being attacked. If you succeed you reduce damage by ' + _this.value.getDescription() + '. You gain 2 Boons for chance roll if you use a shield otherwise you gain 1 Boon for your next Attack against source of attack. ';
+        _this.longDescription = utils_1.Utils.getRule(rule_1.Rule.Name.FighterStance).description;
+        _this.initModifiers();
+        _this.modifiers.push(new compensationModifier_1.compensationModifier(_this, 'Fighter Stance', 0, -4));
+        _this.initDamage();
+        _this.generate();
         return _this;
     }
-    return blockUtility;
-}(utility_1.Utility));
-exports.blockUtility = blockUtility;
+    return stanceAttack;
+}(attack_1.Attack));
+exports.stanceAttack = stanceAttack;

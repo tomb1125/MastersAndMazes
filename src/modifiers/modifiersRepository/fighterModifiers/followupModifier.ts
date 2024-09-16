@@ -13,13 +13,13 @@ constructor(affector: AffectsWeight) {
         this.weight = (affector) => {
             return affector != undefined && affector.type === Ability.Type.Attack
               ? CharacterContext.classes.includes(CharacterContext.Class.Fighter)
-                ? Utils.RARE_MODIFIER * CharacterContext.IN_CLASS_MODIFIER
-                : Utils.RARE_MODIFIER * CharacterContext.OUT_OF_CLASS_WEIGHT
+                ? CharacterContext.IN_CLASS_MODIFIER
+                : CharacterContext.OUT_OF_CLASS_WEIGHT
               : 0;
           };      
         this.name = 'Followup';
         this.namePrefix = 'Followup';
         this.description = 'If the target wasn\'t bloodied as you made this attack and became bloodied after hit, you can repeat this attack against this target.';
-        this.modifierType = Modifier.Type.Constraint;
+        this.modifierType = Modifier.Type.Improvement;
     }
 }

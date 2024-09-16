@@ -210,7 +210,7 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
       '<br><b>Cooldown</b>: ' + Ability.Cooldown[this.cooldown];
 
     if(longDescription) {
-      desc += '<br><b>Rulings</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum  + (mod.longDescription === undefined ? '' : ', ' + mod.longDescription); }, '').slice(2);
+      desc += '<br><b>Rulings</b>: ' + this.longDescription + this.modifiers.reduce(function (sum, mod) { return sum  + (mod.longDescription === undefined ? '' : ', ' + mod.longDescription); }, '').slice(2);
     }
 
     return desc;

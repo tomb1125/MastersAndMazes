@@ -18,7 +18,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.followupModifier = void 0;
 var ability_1 = require("../../../core/ability");
 var characterContext_1 = require("../../../core/characterContext");
-var utils_1 = require("../../../core/utils");
 var modifier_1 = require("../../modifier");
 var followupModifier = /** @class */ (function (_super) {
     __extends(followupModifier, _super);
@@ -28,14 +27,14 @@ var followupModifier = /** @class */ (function (_super) {
         _this.weight = function (affector) {
             return affector != undefined && affector.type === ability_1.Ability.Type.Attack
                 ? characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter)
-                    ? utils_1.Utils.RARE_MODIFIER * characterContext_1.CharacterContext.IN_CLASS_MODIFIER
-                    : utils_1.Utils.RARE_MODIFIER * characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT
+                    ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER
+                    : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT
                 : 0;
         };
         _this.name = 'Followup';
         _this.namePrefix = 'Followup';
         _this.description = 'If the target wasn\'t bloodied as you made this attack and became bloodied after hit, you can repeat this attack against this target.';
-        _this.modifierType = modifier_1.Modifier.Type.Constraint;
+        _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;
     }
     return followupModifier;

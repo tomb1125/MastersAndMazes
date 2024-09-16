@@ -74,7 +74,7 @@ global.generateAbilities = function () {
 };
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./src/core/ability":62,"./src/core/attackFactory":65,"./src/core/characterContext":72,"./src/core/randomNumberGenerator":74,"./src/core/utilityFactory":77,"./src/core/utils":95}],2:[function(require,module,exports){
+},{"./src/core/ability":62,"./src/core/attackFactory":65,"./src/core/characterContext":73,"./src/core/randomNumberGenerator":75,"./src/core/utilityFactory":78,"./src/core/utils":96}],2:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ClassDetails = void 0;
@@ -128,7 +128,7 @@ var ClassUtils = /** @class */ (function () {
 }());
 exports.ClassUtils = ClassUtils;
 
-},{"../core/characterContext":72,"./classes/cleric":4,"./classes/fighter":5,"./classes/rogue":6}],4:[function(require,module,exports){
+},{"../core/characterContext":73,"./classes/cleric":4,"./classes/fighter":5,"./classes/rogue":6}],4:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -163,7 +163,7 @@ var ClericClass = /** @class */ (function (_super) {
 }(classDetails_1.ClassDetails));
 exports.ClericClass = ClericClass;
 
-},{"../../core/characterContext":72,"../classDetails":2}],5:[function(require,module,exports){
+},{"../../core/characterContext":73,"../classDetails":2}],5:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -198,7 +198,7 @@ var FighterClass = /** @class */ (function (_super) {
 }(classDetails_1.ClassDetails));
 exports.FighterClass = FighterClass;
 
-},{"../../core/characterContext":72,"../classDetails":2}],6:[function(require,module,exports){
+},{"../../core/characterContext":73,"../classDetails":2}],6:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -233,7 +233,7 @@ var RogueClass = /** @class */ (function (_super) {
 }(classDetails_1.ClassDetails));
 exports.RogueClass = RogueClass;
 
-},{"../../core/characterContext":72,"../classDetails":2}],7:[function(require,module,exports){
+},{"../../core/characterContext":73,"../classDetails":2}],7:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AbilityObject = void 0;
@@ -376,7 +376,7 @@ var AbilityObjectFactory = /** @class */ (function (_super) {
 }(factory_1.Factory));
 exports.AbilityObjectFactory = AbilityObjectFactory;
 
-},{"../core/factory":73,"../core/weightedList":96,"./abilityObjectRepository/animals/allAnimalsAbilityObject":9,"./abilityObjectRepository/animals/birdAbilityObject":10,"./abilityObjectRepository/animals/catAbilityObject":11,"./abilityObjectRepository/animals/magicalAbilityObject":12,"./abilityObjectRepository/animals/ratAbilityObject":13,"./abilityObjectRepository/animals/reptileAbilityObject":14,"./abilityObjectRepository/animals/wildAbilityObject":15,"./abilityObjectRepository/corpses/freshCorpseAbilityObject":16,"./abilityObjectRepository/corpses/humanoidCorpseAbilityObject":17,"./abilityObjectRepository/corpses/skeletonAbilityObject":18,"./abilityObjectRepository/corpses/soulStealingAbilityObject":19,"./abilityObjectRepository/corpses/unfinishedBusinessAbilityObject":20,"./abilityObjectRepository/corpses/warriorCorpseAbilityObject":21,"./abilityObjectRepository/light/blindingLightAbilityObject":22,"./abilityObjectRepository/light/colorfulLightAbilityObject":23,"./abilityObjectRepository/light/controllableLightAbilityObject":24,"./abilityObjectRepository/light/revealingLightAbilityObject":25,"./abilityObjectRepository/movements/agileMovementAbilityObject":26,"./abilityObjectRepository/movements/blinkMovementAbilityObject":27,"./abilityObjectRepository/movements/chargeMovementAbilityObject":28,"./abilityObjectRepository/movements/normalMovementAbilityObject":29,"./abilityObjectRepository/movements/straightMovementAbilityObject":30,"./abilityObjectRepository/persons/distractedHumanoidAbilityObject":31,"./abilityObjectRepository/persons/humanoidAbilityObject":32,"./abilityObjectRepository/persons/mageHumanoidAbilityObject":33,"./abilityObjectRepository/persons/scumHumanoidAbilityObject":34,"./abilityObjectRepository/persons/warriorHumanoidAbilityObject":35,"./abilityObjectRepository/questions/detailedAbilityObject":36,"./abilityObjectRepository/questions/noeDetailedAbilityObject":37,"./abilityObjectRepository/questions/oneWordAbilityObject":38,"./abilityObjectRepository/questions/yesNoAbilityObject":39,"./abilityObjectRepository/stealth/harmlessStealthAbilityObject":40,"./abilityObjectRepository/stealth/potionStealthAbilityObject":41,"./abilityObjectRepository/stealth/prowlingStealthAbilityObject":42,"./abilityObjectRepository/stealth/shadowStealthAbilityObject":43,"./abilityObjectRepository/symetricCommunications/dreamConnectionAbilityObject":44,"./abilityObjectRepository/symetricCommunications/gainUnderstandingAbilityObject":45,"./abilityObjectRepository/symetricCommunications/symetricEmpathicAbilityObject":46,"./abilityObjectRepository/symetricCommunications/symetricTelepathyAbilityObject":47}],9:[function(require,module,exports){
+},{"../core/factory":74,"../core/weightedList":97,"./abilityObjectRepository/animals/allAnimalsAbilityObject":9,"./abilityObjectRepository/animals/birdAbilityObject":10,"./abilityObjectRepository/animals/catAbilityObject":11,"./abilityObjectRepository/animals/magicalAbilityObject":12,"./abilityObjectRepository/animals/ratAbilityObject":13,"./abilityObjectRepository/animals/reptileAbilityObject":14,"./abilityObjectRepository/animals/wildAbilityObject":15,"./abilityObjectRepository/corpses/freshCorpseAbilityObject":16,"./abilityObjectRepository/corpses/humanoidCorpseAbilityObject":17,"./abilityObjectRepository/corpses/skeletonAbilityObject":18,"./abilityObjectRepository/corpses/soulStealingAbilityObject":19,"./abilityObjectRepository/corpses/unfinishedBusinessAbilityObject":20,"./abilityObjectRepository/corpses/warriorCorpseAbilityObject":21,"./abilityObjectRepository/light/blindingLightAbilityObject":22,"./abilityObjectRepository/light/colorfulLightAbilityObject":23,"./abilityObjectRepository/light/controllableLightAbilityObject":24,"./abilityObjectRepository/light/revealingLightAbilityObject":25,"./abilityObjectRepository/movements/agileMovementAbilityObject":26,"./abilityObjectRepository/movements/blinkMovementAbilityObject":27,"./abilityObjectRepository/movements/chargeMovementAbilityObject":28,"./abilityObjectRepository/movements/normalMovementAbilityObject":29,"./abilityObjectRepository/movements/straightMovementAbilityObject":30,"./abilityObjectRepository/persons/distractedHumanoidAbilityObject":31,"./abilityObjectRepository/persons/humanoidAbilityObject":32,"./abilityObjectRepository/persons/mageHumanoidAbilityObject":33,"./abilityObjectRepository/persons/scumHumanoidAbilityObject":34,"./abilityObjectRepository/persons/warriorHumanoidAbilityObject":35,"./abilityObjectRepository/questions/detailedAbilityObject":36,"./abilityObjectRepository/questions/noeDetailedAbilityObject":37,"./abilityObjectRepository/questions/oneWordAbilityObject":38,"./abilityObjectRepository/questions/yesNoAbilityObject":39,"./abilityObjectRepository/stealth/harmlessStealthAbilityObject":40,"./abilityObjectRepository/stealth/potionStealthAbilityObject":41,"./abilityObjectRepository/stealth/prowlingStealthAbilityObject":42,"./abilityObjectRepository/stealth/shadowStealthAbilityObject":43,"./abilityObjectRepository/symetricCommunications/dreamConnectionAbilityObject":44,"./abilityObjectRepository/symetricCommunications/gainUnderstandingAbilityObject":45,"./abilityObjectRepository/symetricCommunications/symetricEmpathicAbilityObject":46,"./abilityObjectRepository/symetricCommunications/symetricTelepathyAbilityObject":47}],9:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1849,7 +1849,7 @@ var DescriptiveNumberFactory = /** @class */ (function (_super) {
 }(factory_1.Factory));
 exports.DescriptiveNumberFactory = DescriptiveNumberFactory;
 
-},{"../core/factory":73,"../core/weightedList":96,"./descriptiveNumberRepository/assassinDescriptiveNumber":50,"./descriptiveNumberRepository/currentHealthDescriptiveNumber":51,"./descriptiveNumberRepository/damageTakenDescriptiveNumber":52,"./descriptiveNumberRepository/duration/d4MinuteDescriptiveNumber":53,"./descriptiveNumberRepository/duration/oneHourDescriptiveNumber":54,"./descriptiveNumberRepository/maximumDistanceDescriptiveNumber":55,"./descriptiveNumberRepository/minimumDistanceDescriptiveNumber":56,"./descriptiveNumberRepository/numberOfRalliesDescriptiveNumber":57,"./descriptiveNumberRepository/numberOfScarsDescriptiveNumber":58,"./descriptiveNumberRepository/numberOfTurnsDescriptiveNumber":59,"./descriptiveNumberRepository/potionsDrankDescriptiveNumber":60,"./descriptiveNumberRepository/small/adjacentEnemiesDescriptiveNumber":61}],50:[function(require,module,exports){
+},{"../core/factory":74,"../core/weightedList":97,"./descriptiveNumberRepository/assassinDescriptiveNumber":50,"./descriptiveNumberRepository/currentHealthDescriptiveNumber":51,"./descriptiveNumberRepository/damageTakenDescriptiveNumber":52,"./descriptiveNumberRepository/duration/d4MinuteDescriptiveNumber":53,"./descriptiveNumberRepository/duration/oneHourDescriptiveNumber":54,"./descriptiveNumberRepository/maximumDistanceDescriptiveNumber":55,"./descriptiveNumberRepository/minimumDistanceDescriptiveNumber":56,"./descriptiveNumberRepository/numberOfRalliesDescriptiveNumber":57,"./descriptiveNumberRepository/numberOfScarsDescriptiveNumber":58,"./descriptiveNumberRepository/numberOfTurnsDescriptiveNumber":59,"./descriptiveNumberRepository/potionsDrankDescriptiveNumber":60,"./descriptiveNumberRepository/small/adjacentEnemiesDescriptiveNumber":61}],50:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1885,7 +1885,7 @@ var assassinDescriptiveNumber = /** @class */ (function (_super) {
 }(descriptiveNumber_1.DescriptiveNumber));
 exports.assassinDescriptiveNumber = assassinDescriptiveNumber;
 
-},{"../../core/utils":95,"../descriptiveNumber":48}],51:[function(require,module,exports){
+},{"../../core/utils":96,"../descriptiveNumber":48}],51:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1920,7 +1920,7 @@ var currentHealthDescriptiveNumber = /** @class */ (function (_super) {
 }(descriptiveNumber_1.DescriptiveNumber));
 exports.currentHealthDescriptiveNumber = currentHealthDescriptiveNumber;
 
-},{"../../core/utils":95,"../descriptiveNumber":48}],52:[function(require,module,exports){
+},{"../../core/utils":96,"../descriptiveNumber":48}],52:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1955,7 +1955,7 @@ var damageTakenDescriptiveNumber = /** @class */ (function (_super) {
 }(descriptiveNumber_1.DescriptiveNumber));
 exports.damageTakenDescriptiveNumber = damageTakenDescriptiveNumber;
 
-},{"../../core/utils":95,"../descriptiveNumber":48}],53:[function(require,module,exports){
+},{"../../core/utils":96,"../descriptiveNumber":48}],53:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -1991,7 +1991,7 @@ var d4MinuteDescriptiveNumber = /** @class */ (function (_super) {
 }(descriptiveNumber_1.DescriptiveNumber));
 exports.d4MinuteDescriptiveNumber = d4MinuteDescriptiveNumber;
 
-},{"../../../core/utils":95,"../../descriptiveNumber":48}],54:[function(require,module,exports){
+},{"../../../core/utils":96,"../../descriptiveNumber":48}],54:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2061,7 +2061,7 @@ var maximumDistanceDescriptiveNumber = /** @class */ (function (_super) {
 }(descriptiveNumber_1.DescriptiveNumber));
 exports.maximumDistanceDescriptiveNumber = maximumDistanceDescriptiveNumber;
 
-},{"../../core/utils":95,"../descriptiveNumber":48}],56:[function(require,module,exports){
+},{"../../core/utils":96,"../descriptiveNumber":48}],56:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2096,7 +2096,7 @@ var minimumDistanceDescriptiveNumber = /** @class */ (function (_super) {
 }(descriptiveNumber_1.DescriptiveNumber));
 exports.minimumDistanceDescriptiveNumber = minimumDistanceDescriptiveNumber;
 
-},{"../../core/utils":95,"../descriptiveNumber":48}],57:[function(require,module,exports){
+},{"../../core/utils":96,"../descriptiveNumber":48}],57:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2131,7 +2131,7 @@ var numberOfRalliesDescriptiveNumber = /** @class */ (function (_super) {
 }(descriptiveNumber_1.DescriptiveNumber));
 exports.numberOfRalliesDescriptiveNumber = numberOfRalliesDescriptiveNumber;
 
-},{"../../core/utils":95,"../descriptiveNumber":48}],58:[function(require,module,exports){
+},{"../../core/utils":96,"../descriptiveNumber":48}],58:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2166,7 +2166,7 @@ var numberOfScarsDescriptiveNumber = /** @class */ (function (_super) {
 }(descriptiveNumber_1.DescriptiveNumber));
 exports.numberOfScarsDescriptiveNumber = numberOfScarsDescriptiveNumber;
 
-},{"../../core/utils":95,"../descriptiveNumber":48}],59:[function(require,module,exports){
+},{"../../core/utils":96,"../descriptiveNumber":48}],59:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2201,7 +2201,7 @@ var numberOfTurnsDescriptiveNumber = /** @class */ (function (_super) {
 }(descriptiveNumber_1.DescriptiveNumber));
 exports.numberOfTurnsDescriptiveNumber = numberOfTurnsDescriptiveNumber;
 
-},{"../../core/utils":95,"../descriptiveNumber":48}],60:[function(require,module,exports){
+},{"../../core/utils":96,"../descriptiveNumber":48}],60:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2236,7 +2236,7 @@ var potionsDrankDescriptiveNumber = /** @class */ (function (_super) {
 }(descriptiveNumber_1.DescriptiveNumber));
 exports.potionsDrankDescriptiveNumber = potionsDrankDescriptiveNumber;
 
-},{"../../core/utils":95,"../descriptiveNumber":48}],61:[function(require,module,exports){
+},{"../../core/utils":96,"../descriptiveNumber":48}],61:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2271,7 +2271,7 @@ var adjacentEnemiesDescriptiveNumber = /** @class */ (function (_super) {
 }(descriptiveNumber_1.DescriptiveNumber));
 exports.adjacentEnemiesDescriptiveNumber = adjacentEnemiesDescriptiveNumber;
 
-},{"../../../core/utils":95,"../../descriptiveNumber":48}],62:[function(require,module,exports){
+},{"../../../core/utils":96,"../../descriptiveNumber":48}],62:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Ability = void 0;
@@ -2358,7 +2358,9 @@ var ability_1 = require("./ability");
 var Activity = /** @class */ (function (_super) {
     __extends(Activity, _super);
     function Activity(otherName) {
-        return _super.call(this, otherName) || this;
+        var _this = _super.call(this, otherName) || this;
+        _this.longDescription = '';
+        return _this;
     }
     Activity.prototype.generate = function () {
     };
@@ -2553,7 +2555,7 @@ var Attack = /** @class */ (function (_super) {
             '<br><b>Type</b>: ' + Attack.Subtype[this.subtype] +
             '<br><b>Cooldown</b>: ' + ability_1.Ability.Cooldown[this.cooldown];
         if (longDescription) {
-            desc += '<br><b>Rulings</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + (mod.longDescription === undefined ? '' : ', ' + mod.longDescription); }, '').slice(2);
+            desc += '<br><b>Rulings</b>: ' + this.longDescription + this.modifiers.reduce(function (sum, mod) { return sum + (mod.longDescription === undefined ? '' : ', ' + mod.longDescription); }, '').slice(2);
         }
         return desc;
     };
@@ -2582,7 +2584,7 @@ exports.Attack = Attack;
     })(Subtype = Attack.Subtype || (Attack.Subtype = {}));
 })(Attack || (exports.Attack = Attack = {}));
 
-},{"../components/descriptiveNumber":48,"../components/descriptiveNumberFactory":49,"./../modifiers/modifierFactory":110,"./ability":62,"./activity":63,"./characterContext":72,"./utils":95}],65:[function(require,module,exports){
+},{"../components/descriptiveNumber":48,"../components/descriptiveNumberFactory":49,"./../modifiers/modifierFactory":111,"./ability":62,"./activity":63,"./characterContext":73,"./utils":96}],65:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2606,6 +2608,7 @@ var weightedList_1 = require("./weightedList");
 //factory imports
 var poisonedDartAttack_1 = require("./attackRepository/rogueAttacks/poisonedDartAttack");
 var backstabAttack_1 = require("./attackRepository/rogueAttacks/backstabAttack");
+var stanceAttack_1 = require("./attackRepository/fighterAttacks/stanceAttack");
 var radiantRayAttack_1 = require("./attackRepository/clericAttacks/radiantRayAttack");
 var empoweringStrikeAttack_1 = require("./attackRepository/clericAttacks/empoweringStrikeAttack");
 var basicSpell_1 = require("./attackRepository/basicSpell");
@@ -2618,6 +2621,7 @@ var AttackFactory = /** @class */ (function (_super) {
             _this.items = new weightedList_1.WeightedList();
             _this.items.push(new poisonedDartAttack_1.poisonedDartAttack(affector));
             _this.items.push(new backstabAttack_1.backstabAttack(affector));
+            _this.items.push(new stanceAttack_1.stanceAttack(affector));
             _this.items.push(new radiantRayAttack_1.radiantRayAttack(affector));
             _this.items.push(new empoweringStrikeAttack_1.empoweringStrikeAttack(affector));
             _this.items.push(new basicSpell_1.basicSpell(affector));
@@ -2638,7 +2642,7 @@ var AttackFactory = /** @class */ (function (_super) {
 }(factory_1.Factory));
 exports.AttackFactory = AttackFactory;
 
-},{"./attackRepository/basicAttack":66,"./attackRepository/basicSpell":67,"./attackRepository/clericAttacks/empoweringStrikeAttack":68,"./attackRepository/clericAttacks/radiantRayAttack":69,"./attackRepository/rogueAttacks/backstabAttack":70,"./attackRepository/rogueAttacks/poisonedDartAttack":71,"./factory":73,"./weightedList":96}],66:[function(require,module,exports){
+},{"./attackRepository/basicAttack":66,"./attackRepository/basicSpell":67,"./attackRepository/clericAttacks/empoweringStrikeAttack":68,"./attackRepository/clericAttacks/radiantRayAttack":69,"./attackRepository/fighterAttacks/stanceAttack":70,"./attackRepository/rogueAttacks/backstabAttack":71,"./attackRepository/rogueAttacks/poisonedDartAttack":72,"./factory":74,"./weightedList":97}],66:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2684,7 +2688,7 @@ var basicAttack = /** @class */ (function (_super) {
 }(attack_1.Attack));
 exports.basicAttack = basicAttack;
 
-},{"../../characters/classUtils":3,"../attack":64,"../characterContext":72,"../utils":95}],67:[function(require,module,exports){
+},{"../../characters/classUtils":3,"../attack":64,"../characterContext":73,"../utils":96}],67:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2730,7 +2734,7 @@ var basicSpell = /** @class */ (function (_super) {
 }(attack_1.Attack));
 exports.basicSpell = basicSpell;
 
-},{"../../characters/classUtils":3,"../attack":64,"../characterContext":72,"../utils":95}],68:[function(require,module,exports){
+},{"../../characters/classUtils":3,"../attack":64,"../characterContext":73,"../utils":96}],68:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2772,7 +2776,7 @@ var empoweringStrikeAttack = /** @class */ (function (_super) {
 }(attack_1.Attack));
 exports.empoweringStrikeAttack = empoweringStrikeAttack;
 
-},{"../../../modifiers/modifiersRepository/compensationModifier":120,"../../attack":64,"../../characterContext":72}],69:[function(require,module,exports){
+},{"../../../modifiers/modifiersRepository/compensationModifier":121,"../../attack":64,"../../characterContext":73}],69:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2814,7 +2818,53 @@ var radiantRayAttack = /** @class */ (function (_super) {
 }(attack_1.Attack));
 exports.radiantRayAttack = radiantRayAttack;
 
-},{"../../../modifiers/modifiersRepository/compensationModifier":120,"../../attack":64,"../../characterContext":72}],70:[function(require,module,exports){
+},{"../../../modifiers/modifiersRepository/compensationModifier":121,"../../attack":64,"../../characterContext":73}],70:[function(require,module,exports){
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.stanceAttack = void 0;
+var compensationModifier_1 = require("../../../modifiers/modifiersRepository/compensationModifier");
+var attack_1 = require("../../attack");
+var characterContext_1 = require("../../characterContext");
+var rule_1 = require("../../rule");
+var utils_1 = require("../../utils");
+var stanceAttack = /** @class */ (function (_super) {
+    __extends(stanceAttack, _super);
+    function stanceAttack(affector) {
+        var _this = _super.call(this, 'Stance') || this;
+        _this.subtype = attack_1.Attack.Subtype.Weapon;
+        _this.coreDescription = 'When you hit, deal damage and enter one of the Fighter Stances. ';
+        _this.chance = 0.75;
+        _this.manaCost = 0;
+        _this.range = 1;
+        _this.subtype = attack_1.Attack.Subtype.Weapon;
+        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
+        _this.longDescription = utils_1.Utils.getRule(rule_1.Rule.Name.FighterStance).description;
+        _this.initModifiers();
+        _this.modifiers.push(new compensationModifier_1.compensationModifier(_this, 'Fighter Stance', 0, -4));
+        _this.initDamage();
+        _this.generate();
+        return _this;
+    }
+    return stanceAttack;
+}(attack_1.Attack));
+exports.stanceAttack = stanceAttack;
+
+},{"../../../modifiers/modifiersRepository/compensationModifier":121,"../../attack":64,"../../characterContext":73,"../../rule":76,"../../utils":96}],71:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2856,7 +2906,7 @@ var backstabAttack = /** @class */ (function (_super) {
 }(attack_1.Attack));
 exports.backstabAttack = backstabAttack;
 
-},{"../../../modifiers/modifiersRepository/compensationModifier":120,"../../attack":64,"../../characterContext":72}],71:[function(require,module,exports){
+},{"../../../modifiers/modifiersRepository/compensationModifier":121,"../../attack":64,"../../characterContext":73}],72:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2898,7 +2948,7 @@ var poisonedDartAttack = /** @class */ (function (_super) {
 }(attack_1.Attack));
 exports.poisonedDartAttack = poisonedDartAttack;
 
-},{"../../../modifiers/modifiersRepository/compensationModifier":120,"../../attack":64,"../../characterContext":72}],72:[function(require,module,exports){
+},{"../../../modifiers/modifiersRepository/compensationModifier":121,"../../attack":64,"../../characterContext":73}],73:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CharacterContext = void 0;
@@ -2968,7 +3018,7 @@ exports.CharacterContext = CharacterContext;
     })(ArmorProficiency = CharacterContext.ArmorProficiency || (CharacterContext.ArmorProficiency = {}));
 })(CharacterContext || (exports.CharacterContext = CharacterContext = {}));
 
-},{"./utils":95}],73:[function(require,module,exports){
+},{"./utils":96}],74:[function(require,module,exports){
 "use strict";
 var __read = (this && this.__read) || function (o, n) {
     var m = typeof Symbol === "function" && o[Symbol.iterator];
@@ -3032,7 +3082,7 @@ var Factory = /** @class */ (function () {
 }());
 exports.Factory = Factory;
 
-},{}],74:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 "use strict";
 var __values = (this && this.__values) || function(o) {
     var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
@@ -3076,7 +3126,7 @@ var RandomNumberGenerator = /** @class */ (function () {
 }());
 exports.RandomNumberGenerator = RandomNumberGenerator;
 
-},{}],75:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Rule = void 0;
@@ -3092,10 +3142,12 @@ exports.Rule = Rule;
     var Name;
     (function (Name) {
         Name[Name["ForcefulPush"] = 0] = "ForcefulPush";
+        Name[Name["Blessing"] = 1] = "Blessing";
+        Name[Name["FighterStance"] = 2] = "FighterStance";
     })(Name = Rule.Name || (Rule.Name = {}));
 })(Rule || (exports.Rule = Rule = {}));
 
-},{}],76:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3140,7 +3192,7 @@ var Utility = /** @class */ (function (_super) {
             '<br><b>Description</b>: ' + this.description + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
             '<br><b>Cooldown</b>: ' + ability_1.Ability.Cooldown[this.cooldown];
         if (longDescription) {
-            desc += '<br><b>Rulings</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + (mod.longDescription === undefined ? '' : ', ' + mod.longDescription); }, '').slice(2);
+            desc += '<br><b>Rulings</b>: ' + this.longDescription + this.modifiers.reduce(function (sum, mod) { return sum + (mod.longDescription === undefined ? '' : ', ' + mod.longDescription); }, '').slice(2);
         }
         return desc;
     };
@@ -3192,7 +3244,7 @@ var Utility = /** @class */ (function (_super) {
 }(activity_1.Activity));
 exports.Utility = Utility;
 
-},{"../modifiers/modifierFactory":110,"../modifiers/modifiersRepository/repeatableModifier":142,"./ability":62,"./activity":63,"./characterContext":72,"./utils":95}],77:[function(require,module,exports){
+},{"../modifiers/modifierFactory":111,"../modifiers/modifiersRepository/repeatableModifier":146,"./ability":62,"./activity":63,"./characterContext":73,"./utils":96}],78:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3270,7 +3322,7 @@ var UtilityFactory = /** @class */ (function (_super) {
 }(factory_1.Factory));
 exports.UtilityFactory = UtilityFactory;
 
-},{"./factory":73,"./utilityRepository/clericUtilities/auguryUtility":78,"./utilityRepository/clericUtilities/holyHealUtility":79,"./utilityRepository/clericUtilities/lightUtility":80,"./utilityRepository/clericUtilities/piousPrayerUtility":81,"./utilityRepository/clericUtilities/restorationUtility":82,"./utilityRepository/clericUtilities/seanceUtility":83,"./utilityRepository/druidUtilities/animalSpeak":84,"./utilityRepository/fighterUtilities/blockUtility":85,"./utilityRepository/fighterUtilities/enticeRespectUtility":86,"./utilityRepository/fighterUtilities/equipmentMaintenanceUtility":87,"./utilityRepository/rogueUtilities/lockpickingUtility":88,"./utilityRepository/rogueUtilities/pickpocketUtility":89,"./utilityRepository/rogueUtilities/shadowMeldUtility":90,"./utilityRepository/rogueUtilities/shadowStrideUtility":91,"./utilityRepository/rogueUtilities/shiftBlameUtility":92,"./utilityRepository/rogueUtilities/tumbleUtility":93,"./utilityRepository/skillBonusUtility":94,"./weightedList":96}],78:[function(require,module,exports){
+},{"./factory":74,"./utilityRepository/clericUtilities/auguryUtility":79,"./utilityRepository/clericUtilities/holyHealUtility":80,"./utilityRepository/clericUtilities/lightUtility":81,"./utilityRepository/clericUtilities/piousPrayerUtility":82,"./utilityRepository/clericUtilities/restorationUtility":83,"./utilityRepository/clericUtilities/seanceUtility":84,"./utilityRepository/druidUtilities/animalSpeak":85,"./utilityRepository/fighterUtilities/blockUtility":86,"./utilityRepository/fighterUtilities/enticeRespectUtility":87,"./utilityRepository/fighterUtilities/equipmentMaintenanceUtility":88,"./utilityRepository/rogueUtilities/lockpickingUtility":89,"./utilityRepository/rogueUtilities/pickpocketUtility":90,"./utilityRepository/rogueUtilities/shadowMeldUtility":91,"./utilityRepository/rogueUtilities/shadowStrideUtility":92,"./utilityRepository/rogueUtilities/shiftBlameUtility":93,"./utilityRepository/rogueUtilities/tumbleUtility":94,"./utilityRepository/skillBonusUtility":95,"./weightedList":97}],79:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3325,7 +3377,7 @@ var auguryUtility = /** @class */ (function (_super) {
 }(utility_1.Utility));
 exports.auguryUtility = auguryUtility;
 
-},{"../../../components/abilityObjectFactory":8,"../../../components/descriptiveNumber":48,"../../ability":62,"../../characterContext":72,"../../utility":76}],79:[function(require,module,exports){
+},{"../../../components/abilityObjectFactory":8,"../../../components/descriptiveNumber":48,"../../ability":62,"../../characterContext":73,"../../utility":77}],80:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3374,7 +3426,7 @@ var holyHealUtility = /** @class */ (function (_super) {
 }(utility_1.Utility));
 exports.holyHealUtility = holyHealUtility;
 
-},{"../../../components/descriptiveNumber":48,"../../../components/descriptiveNumberFactory":49,"../../ability":62,"../../characterContext":72,"../../utility":76,"../../utils":95}],80:[function(require,module,exports){
+},{"../../../components/descriptiveNumber":48,"../../../components/descriptiveNumberFactory":49,"../../ability":62,"../../characterContext":73,"../../utility":77,"../../utils":96}],81:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3425,7 +3477,7 @@ var lightUtility = /** @class */ (function (_super) {
 }(utility_1.Utility));
 exports.lightUtility = lightUtility;
 
-},{"../../../components/abilityObjectFactory":8,"../../../components/descriptiveNumber":48,"../../../modifiers/modifiersRepository/repeatableModifier":142,"../../ability":62,"../../characterContext":72,"../../utility":76,"../../utils":95}],81:[function(require,module,exports){
+},{"../../../components/abilityObjectFactory":8,"../../../components/descriptiveNumber":48,"../../../modifiers/modifiersRepository/repeatableModifier":146,"../../ability":62,"../../characterContext":73,"../../utility":77,"../../utils":96}],82:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3447,7 +3499,9 @@ exports.piousPrayerUtility = void 0;
 var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
 var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
+var rule_1 = require("../../rule");
 var utility_1 = require("../../utility");
+var utils_1 = require("../../utils");
 var piousPrayerUtility = /** @class */ (function (_super) {
     __extends(piousPrayerUtility, _super);
     function piousPrayerUtility() {
@@ -3459,13 +3513,14 @@ var piousPrayerUtility = /** @class */ (function (_super) {
         _this.value = new descriptiveNumber_1.DescriptiveNumber(normalValue);
         _this.compensate();
         _this.description = 'If you are in combat, gain ' + _this.value.getDescription() + ' Blessing Points (see rules) and your next ability chance roll will gain 1 Boon. Double both values if you are fighting Undead, Devils or Demons. This ability can be only used in first two rounds of combat. ';
+        _this.longDescription = utils_1.Utils.getRule(rule_1.Rule.Name.Blessing).description;
         return _this;
     }
     return piousPrayerUtility;
 }(utility_1.Utility));
 exports.piousPrayerUtility = piousPrayerUtility;
 
-},{"../../../components/descriptiveNumber":48,"../../ability":62,"../../characterContext":72,"../../utility":76}],82:[function(require,module,exports){
+},{"../../../components/descriptiveNumber":48,"../../ability":62,"../../characterContext":73,"../../rule":76,"../../utility":77,"../../utils":96}],83:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3502,7 +3557,7 @@ var restorationUtility = /** @class */ (function (_super) {
 }(utility_1.Utility));
 exports.restorationUtility = restorationUtility;
 
-},{"../../ability":62,"../../characterContext":72,"../../utility":76}],83:[function(require,module,exports){
+},{"../../ability":62,"../../characterContext":73,"../../utility":77}],84:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3546,7 +3601,7 @@ var seanceUtility = /** @class */ (function (_super) {
 }(utility_1.Utility));
 exports.seanceUtility = seanceUtility;
 
-},{"../../../components/abilityObjectFactory":8,"../../../components/descriptiveNumber":48,"../../characterContext":72,"../../utility":76}],84:[function(require,module,exports){
+},{"../../../components/abilityObjectFactory":8,"../../../components/descriptiveNumber":48,"../../characterContext":73,"../../utility":77}],85:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3590,7 +3645,7 @@ var animalSpeak = /** @class */ (function (_super) {
 }(utility_1.Utility));
 exports.animalSpeak = animalSpeak;
 
-},{"../../../components/abilityObjectFactory":8,"../../../components/descriptiveNumber":48,"../../characterContext":72,"../../utility":76}],85:[function(require,module,exports){
+},{"../../../components/abilityObjectFactory":8,"../../../components/descriptiveNumber":48,"../../characterContext":73,"../../utility":77}],86:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3622,14 +3677,14 @@ var blockUtility = /** @class */ (function (_super) {
         _this.chance = 0.45;
         _this.value = new descriptiveNumber_1.DescriptiveNumber(15);
         _this.compensate();
-        _this.description = 'Use as reaction when being attacked. If you succeed you reduce damage by ' + _this.value.getDescription() + '. You gain 2 Boons for chance roll if you use a shield. ';
+        _this.description = 'Use as reaction when being attacked. If you succeed you reduce damage by ' + _this.value.getDescription() + '. You gain 2 Boons for chance roll if you use a shield otherwise you gain 1 Boon for your next Attack against source of attack. ';
         return _this;
     }
     return blockUtility;
 }(utility_1.Utility));
 exports.blockUtility = blockUtility;
 
-},{"../../../components/descriptiveNumber":48,"../../ability":62,"../../characterContext":72,"../../utility":76}],86:[function(require,module,exports){
+},{"../../../components/descriptiveNumber":48,"../../ability":62,"../../characterContext":73,"../../utility":77}],87:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3666,7 +3721,7 @@ var enticeRespectUtility = /** @class */ (function (_super) {
 }(utility_1.Utility));
 exports.enticeRespectUtility = enticeRespectUtility;
 
-},{"../../../components/abilityObjectFactory":8,"../../characterContext":72,"../../utility":76}],87:[function(require,module,exports){
+},{"../../../components/abilityObjectFactory":8,"../../characterContext":73,"../../utility":77}],88:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3698,14 +3753,14 @@ var equipmentMaintenanceUtility = /** @class */ (function (_super) {
         _this.chance = 0.9;
         _this.value = new descriptiveNumber_1.DescriptiveNumber(10);
         _this.compensate();
-        _this.description = 'If you succeed repair and maintain equipment. You can repair weapons and armor after being damaged by acid and similar effects. Additionally until end of the day maintained armor or shield grants extra ' + _this.value.getDescription() + ' Armor Points. ';
+        _this.description = 'If you succeed repair and maintain equipment. You can repair weapons and armor after being damaged by acid and similar effects. Additionally until end of the day maintained armor or shield grants extra ' + _this.value.getDescription() + ' Armor Points (does not stack). ';
         return _this;
     }
     return equipmentMaintenanceUtility;
 }(utility_1.Utility));
 exports.equipmentMaintenanceUtility = equipmentMaintenanceUtility;
 
-},{"../../../components/descriptiveNumber":48,"../../ability":62,"../../characterContext":72,"../../utility":76}],88:[function(require,module,exports){
+},{"../../../components/descriptiveNumber":48,"../../ability":62,"../../characterContext":73,"../../utility":77}],89:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3742,7 +3797,7 @@ var lockpickingUtility = /** @class */ (function (_super) {
 }(utility_1.Utility));
 exports.lockpickingUtility = lockpickingUtility;
 
-},{"../../ability":62,"../../characterContext":72,"../../utility":76}],89:[function(require,module,exports){
+},{"../../ability":62,"../../characterContext":73,"../../utility":77}],90:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3779,7 +3834,7 @@ var pickpocketUtility = /** @class */ (function (_super) {
 }(utility_1.Utility));
 exports.pickpocketUtility = pickpocketUtility;
 
-},{"../../../components/abilityObjectFactory":8,"../../characterContext":72,"../../utility":76}],90:[function(require,module,exports){
+},{"../../../components/abilityObjectFactory":8,"../../characterContext":73,"../../utility":77}],91:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3819,7 +3874,7 @@ var shadowMeldUtility = /** @class */ (function (_super) {
 }(utility_1.Utility));
 exports.shadowMeldUtility = shadowMeldUtility;
 
-},{"../../../components/abilityObjectFactory":8,"../../ability":62,"../../characterContext":72,"../../utility":76}],91:[function(require,module,exports){
+},{"../../../components/abilityObjectFactory":8,"../../ability":62,"../../characterContext":73,"../../utility":77}],92:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3859,7 +3914,7 @@ var shadowStrideUtility = /** @class */ (function (_super) {
 }(utility_1.Utility));
 exports.shadowStrideUtility = shadowStrideUtility;
 
-},{"../../../components/abilityObjectFactory":8,"../../ability":62,"../../characterContext":72,"../../utility":76}],92:[function(require,module,exports){
+},{"../../../components/abilityObjectFactory":8,"../../ability":62,"../../characterContext":73,"../../utility":77}],93:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3896,7 +3951,7 @@ var shiftBlameUtility = /** @class */ (function (_super) {
 }(utility_1.Utility));
 exports.shiftBlameUtility = shiftBlameUtility;
 
-},{"../../../components/abilityObjectFactory":8,"../../characterContext":72,"../../utility":76}],93:[function(require,module,exports){
+},{"../../../components/abilityObjectFactory":8,"../../characterContext":73,"../../utility":77}],94:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -3937,7 +3992,7 @@ var tumbleUtility = /** @class */ (function (_super) {
 }(utility_1.Utility));
 exports.tumbleUtility = tumbleUtility;
 
-},{"../../../components/abilityObjectFactory":8,"../../../components/descriptiveNumber":48,"../../ability":62,"../../characterContext":72,"../../utility":76}],94:[function(require,module,exports){
+},{"../../../components/abilityObjectFactory":8,"../../../components/descriptiveNumber":48,"../../ability":62,"../../characterContext":73,"../../utility":77}],95:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -4018,7 +4073,7 @@ var skillBonusUtility = /** @class */ (function (_super) {
 }(utility_1.Utility));
 exports.skillBonusUtility = skillBonusUtility;
 
-},{"../../characters/classUtils":3,"../../components/descriptiveNumber":48,"../characterContext":72,"../utility":76,"../utils":95}],95:[function(require,module,exports){
+},{"../../characters/classUtils":3,"../../components/descriptiveNumber":48,"../characterContext":73,"../utility":77,"../utils":96}],96:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Utils = void 0;
@@ -4147,13 +4202,24 @@ var Utils = /** @class */ (function () {
     Utils.BoonValue = Utils.DPS * 5;
     Utils.avgHealth = 25;
     Utils.rules = [
-        new rule_1.Rule(rule_1.Rule.Name.ForcefulPush, 'Forceful Push X - move target X squares. Each square of movement must be further than the previous one. You can push into hazardoous terrain. Each square of movent that is wasted by an obstacle deals 1 damage to them<br>')
+        new rule_1.Rule(rule_1.Rule.Name.ForcefulPush, 'Forceful Push X - move target X squares. Each square of movement must be further than the previous one. You can push into hazardoous terrain. Each square of movent that is wasted by an obstacle deals 1 damage to them<br>'),
+        new rule_1.Rule(rule_1.Rule.Name.Blessing, 'Blessing - Blessing Points are permanent. Whenever you reach 100 or more Blessing, reduce your Blessing by 100 and roll in below table:<br>' +
+            '&ensp;1 - Remove all Scars you have.<br>' +
+            '&ensp;2 - All rolls have 1 Boon until the end of the next adventure.<br>' +
+            '&ensp;3 - Gain 10 Experience points.<br>' +
+            '&ensp;4 - Permanently gain 5 maximum Health.<br>' +
+            '&ensp;5 - Raise any of your attributes by 10, but not above 50.<br>' +
+            '&ensp;6 - Next time you see "you die" effect (eg. dying roll or corruption roll) you can ignore it.<br>'),
+        new rule_1.Rule(rule_1.Rule.Name.FighterStance, 'Fighter Stance - choose one effect below, you benefit from it until end of encounter. Only one fighter stance can be active at a time.<br>' +
+            '&ensp;Precision - Gain 1 Boon with Weapon Attacks<br>' +
+            '&ensp;Power - Deal +2 damage with Weapon Attacks<br>' +
+            '&ensp;Endurance - At the end of each turn regain 1 Mana or 3 Mana if you have less than 5 Mana.<br>')
     ];
     return Utils;
 }());
 exports.Utils = Utils;
 
-},{"./rule":75}],96:[function(require,module,exports){
+},{"./rule":76}],97:[function(require,module,exports){
 "use strict";
 var __read = (this && this.__read) || function (o, n) {
     var m = typeof Symbol === "function" && o[Symbol.iterator];
@@ -4234,7 +4300,7 @@ var WeightedList = /** @class */ (function () {
 }());
 exports.WeightedList = WeightedList;
 
-},{"./utils":95}],97:[function(require,module,exports){
+},{"./utils":96}],98:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -4273,7 +4339,7 @@ exports.Effect = Effect;
     })(Subtype = Effect.Subtype || (Effect.Subtype = {}));
 })(Effect || (exports.Effect = Effect = {}));
 
-},{"./modifier":109}],98:[function(require,module,exports){
+},{"./modifier":110}],99:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -4337,7 +4403,7 @@ var EffectFactory = /** @class */ (function (_super) {
 }(factory_1.Factory));
 exports.EffectFactory = EffectFactory;
 
-},{"../core/factory":73,"../core/weightedList":96,"./effectRepository/damageBonusEffect":99,"./effectRepository/exposeEffect":100,"./effectRepository/guidingEffect":101,"./effectRepository/instakillEffect":102,"./effectRepository/multiclassEffects/invisibilityEffect":103,"./effectRepository/multiclassEffects/retributionEffect":104,"./effectRepository/protectedEffect":105,"./effectRepository/scalingDotEffect":106,"./effectRepository/stunEffect":107,"./effectRepository/vulnerableEffect":108}],99:[function(require,module,exports){
+},{"../core/factory":74,"../core/weightedList":97,"./effectRepository/damageBonusEffect":100,"./effectRepository/exposeEffect":101,"./effectRepository/guidingEffect":102,"./effectRepository/instakillEffect":103,"./effectRepository/multiclassEffects/invisibilityEffect":104,"./effectRepository/multiclassEffects/retributionEffect":105,"./effectRepository/protectedEffect":106,"./effectRepository/scalingDotEffect":107,"./effectRepository/stunEffect":108,"./effectRepository/vulnerableEffect":109}],100:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -4378,7 +4444,7 @@ var damageBonusEffect = /** @class */ (function (_super) {
 }(effect_1.Effect));
 exports.damageBonusEffect = damageBonusEffect;
 
-},{"../../core/ability":62,"../../core/utils":95,"../effect":97}],100:[function(require,module,exports){
+},{"../../core/ability":62,"../../core/utils":96,"../effect":98}],101:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -4415,7 +4481,7 @@ var exposeEffect = /** @class */ (function (_super) {
 }(effect_1.Effect));
 exports.exposeEffect = exposeEffect;
 
-},{"../../core/utils":95,"../effect":97}],101:[function(require,module,exports){
+},{"../../core/utils":96,"../effect":98}],102:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -4455,7 +4521,7 @@ var guidingEffect = /** @class */ (function (_super) {
 }(effect_1.Effect));
 exports.guidingEffect = guidingEffect;
 
-},{"../../core/ability":62,"../../core/utils":95,"../effect":97}],102:[function(require,module,exports){
+},{"../../core/ability":62,"../../core/utils":96,"../effect":98}],103:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -4494,7 +4560,7 @@ var instakillEffect = /** @class */ (function (_super) {
 }(effect_1.Effect));
 exports.instakillEffect = instakillEffect;
 
-},{"../../core/ability":62,"../../core/utils":95,"../effect":97}],103:[function(require,module,exports){
+},{"../../core/ability":62,"../../core/utils":96,"../effect":98}],104:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -4538,7 +4604,7 @@ var invisibilityEffect = /** @class */ (function (_super) {
 }(effect_1.Effect));
 exports.invisibilityEffect = invisibilityEffect;
 
-},{"../../../core/characterContext":72,"../../../core/utils":95,"../../effect":97}],104:[function(require,module,exports){
+},{"../../../core/characterContext":73,"../../../core/utils":96,"../../effect":98}],105:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -4582,7 +4648,7 @@ var retributionEffect = /** @class */ (function (_super) {
 }(effect_1.Effect));
 exports.retributionEffect = retributionEffect;
 
-},{"../../../core/characterContext":72,"../../../core/utils":95,"../../effect":97}],105:[function(require,module,exports){
+},{"../../../core/characterContext":73,"../../../core/utils":96,"../../effect":98}],106:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -4621,7 +4687,7 @@ var protectedEffect = /** @class */ (function (_super) {
 }(effect_1.Effect));
 exports.protectedEffect = protectedEffect;
 
-},{"../../core/utils":95,"../effect":97}],106:[function(require,module,exports){
+},{"../../core/utils":96,"../effect":98}],107:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -4662,7 +4728,7 @@ var scalingDotEffect = /** @class */ (function (_super) {
 }(effect_1.Effect));
 exports.scalingDotEffect = scalingDotEffect;
 
-},{"../../core/ability":62,"../../core/utils":95,"../effect":97}],107:[function(require,module,exports){
+},{"../../core/ability":62,"../../core/utils":96,"../effect":98}],108:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -4700,7 +4766,7 @@ var stunEffect = /** @class */ (function (_super) {
 }(effect_1.Effect));
 exports.stunEffect = stunEffect;
 
-},{"../../core/ability":62,"../../core/utils":95,"../effect":97}],108:[function(require,module,exports){
+},{"../../core/ability":62,"../../core/utils":96,"../effect":98}],109:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -4737,7 +4803,7 @@ var vulnerableEffect = /** @class */ (function (_super) {
 }(effect_1.Effect));
 exports.vulnerableEffect = vulnerableEffect;
 
-},{"../../core/utils":95,"../effect":97}],109:[function(require,module,exports){
+},{"../../core/utils":96,"../effect":98}],110:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Modifier = void 0;
@@ -4764,7 +4830,7 @@ exports.Modifier = Modifier;
     })(Type = Modifier.Type || (Modifier.Type = {}));
 })(Modifier || (exports.Modifier = Modifier = {}));
 
-},{}],110:[function(require,module,exports){
+},{}],111:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -4805,13 +4871,16 @@ var multipleModifier_1 = require("./modifiersRepository/multipleModifier");
 var undeadBaneModifier_1 = require("./modifiersRepository/multiclassModifiers/undeadBaneModifier");
 var cleanModifier_1 = require("./modifiersRepository/multiclassModifiers/cleanModifier");
 var momentumModifier_1 = require("./modifiersRepository/momentumModifier");
+var mobileModifier_1 = require("./modifiersRepository/mobileModifier");
 var managainModifier_1 = require("./modifiersRepository/managainModifier");
 var lifestealModifier_1 = require("./modifiersRepository/lifestealModifier");
 var laylineModifier_1 = require("./modifiersRepository/laylineModifier");
 var instinctiveModifier_1 = require("./modifiersRepository/instinctiveModifier");
 var grazedModifier_1 = require("./modifiersRepository/grazedModifier");
 var gainEffectModifier_1 = require("./modifiersRepository/gainEffectModifier");
+var fullActionModifier_1 = require("./modifiersRepository/fullActionModifier");
 var forcefulModifier_1 = require("./modifiersRepository/forcefulModifier");
+var weaponmasterModifier_1 = require("./modifiersRepository/fighterModifiers/weaponmasterModifier");
 var legendaryWeaponModifier_1 = require("./modifiersRepository/fighterModifiers/legendaryWeaponModifier");
 var followupModifier_1 = require("./modifiersRepository/fighterModifiers/followupModifier");
 var breachingModifier_1 = require("./modifiersRepository/fighterModifiers/breachingModifier");
@@ -4854,13 +4923,16 @@ var ModifierFactory = /** @class */ (function (_super) {
             _this.items.push(new undeadBaneModifier_1.undeadBaneModifier(affector));
             _this.items.push(new cleanModifier_1.cleanModifier(affector));
             _this.items.push(new momentumModifier_1.momentumModifier(affector));
+            _this.items.push(new mobileModifier_1.mobileModifier(affector));
             _this.items.push(new managainModifier_1.managainModifier(affector));
             _this.items.push(new lifestealModifier_1.lifestealModifier(affector));
             _this.items.push(new laylineModifier_1.laylineModifier(affector));
             _this.items.push(new instinctiveModifier_1.instinctiveModifier(affector));
             _this.items.push(new grazedModifier_1.grazedModifier(affector));
             _this.items.push(new gainEffectModifier_1.gainEffectModifier(affector));
+            _this.items.push(new fullActionModifier_1.fullActionModifier(affector));
             _this.items.push(new forcefulModifier_1.forcefulModifier(affector));
+            _this.items.push(new weaponmasterModifier_1.weaponmasterModifier(affector));
             _this.items.push(new legendaryWeaponModifier_1.legendaryWeaponModifier(affector));
             _this.items.push(new followupModifier_1.followupModifier(affector));
             _this.items.push(new breachingModifier_1.breachingModifier(affector));
@@ -4912,7 +4984,7 @@ var ModifierFactory = /** @class */ (function (_super) {
 }(factory_1.Factory));
 exports.ModifierFactory = ModifierFactory;
 
-},{"../core/factory":73,"../core/weightedList":96,"./modifiersRepository/applyEffectModifier":111,"./modifiersRepository/bloodiedModifier":112,"./modifiersRepository/cleaveModifier":113,"./modifiersRepository/clericModifiers/candleModifier":114,"./modifiersRepository/clericModifiers/episcopalModifier":115,"./modifiersRepository/clericModifiers/pacifistModifier":116,"./modifiersRepository/clericModifiers/preachingModifier":117,"./modifiersRepository/clericModifiers/pristineModifier":118,"./modifiersRepository/clericModifiers/templeModifier":119,"./modifiersRepository/compensationModifier":120,"./modifiersRepository/exhaustingModifer":121,"./modifiersRepository/fastModifier":122,"./modifiersRepository/fighterModifiers/armoredModifier":123,"./modifiersRepository/fighterModifiers/battleModifier":124,"./modifiersRepository/fighterModifiers/breachingModifier":125,"./modifiersRepository/fighterModifiers/followupModifier":126,"./modifiersRepository/fighterModifiers/legendaryWeaponModifier":127,"./modifiersRepository/forcefulModifier":128,"./modifiersRepository/gainEffectModifier":129,"./modifiersRepository/grazedModifier":130,"./modifiersRepository/instinctiveModifier":131,"./modifiersRepository/laylineModifier":132,"./modifiersRepository/lifestealModifier":133,"./modifiersRepository/managainModifier":134,"./modifiersRepository/momentumModifier":135,"./modifiersRepository/multiclassModifiers/cleanModifier":136,"./modifiersRepository/multiclassModifiers/undeadBaneModifier":137,"./modifiersRepository/multipleModifier":138,"./modifiersRepository/nightlyModifier":139,"./modifiersRepository/opportunistModifier":140,"./modifiersRepository/piercingModifier":141,"./modifiersRepository/repeatableModifier":142,"./modifiersRepository/restedModifer":143,"./modifiersRepository/rogueModifiers/cityModifier":144,"./modifiersRepository/rogueModifiers/daggerModifier":145,"./modifiersRepository/rogueModifiers/greedyModifier":146,"./modifiersRepository/rogueModifiers/luckyModifier":147,"./modifiersRepository/rogueModifiers/sneakyModifier":148,"./modifiersRepository/selfHealModifier":149,"./modifiersRepository/signatureModifier":150,"./modifiersRepository/ultimateModifier":151,"./modifiersRepository/unlockedModifier":152,"./modifiersRepository/vengefulModifier":153}],111:[function(require,module,exports){
+},{"../core/factory":74,"../core/weightedList":97,"./modifiersRepository/applyEffectModifier":112,"./modifiersRepository/bloodiedModifier":113,"./modifiersRepository/cleaveModifier":114,"./modifiersRepository/clericModifiers/candleModifier":115,"./modifiersRepository/clericModifiers/episcopalModifier":116,"./modifiersRepository/clericModifiers/pacifistModifier":117,"./modifiersRepository/clericModifiers/preachingModifier":118,"./modifiersRepository/clericModifiers/pristineModifier":119,"./modifiersRepository/clericModifiers/templeModifier":120,"./modifiersRepository/compensationModifier":121,"./modifiersRepository/exhaustingModifer":122,"./modifiersRepository/fastModifier":123,"./modifiersRepository/fighterModifiers/armoredModifier":124,"./modifiersRepository/fighterModifiers/battleModifier":125,"./modifiersRepository/fighterModifiers/breachingModifier":126,"./modifiersRepository/fighterModifiers/followupModifier":127,"./modifiersRepository/fighterModifiers/legendaryWeaponModifier":128,"./modifiersRepository/fighterModifiers/weaponmasterModifier":129,"./modifiersRepository/forcefulModifier":130,"./modifiersRepository/fullActionModifier":131,"./modifiersRepository/gainEffectModifier":132,"./modifiersRepository/grazedModifier":133,"./modifiersRepository/instinctiveModifier":134,"./modifiersRepository/laylineModifier":135,"./modifiersRepository/lifestealModifier":136,"./modifiersRepository/managainModifier":137,"./modifiersRepository/mobileModifier":138,"./modifiersRepository/momentumModifier":139,"./modifiersRepository/multiclassModifiers/cleanModifier":140,"./modifiersRepository/multiclassModifiers/undeadBaneModifier":141,"./modifiersRepository/multipleModifier":142,"./modifiersRepository/nightlyModifier":143,"./modifiersRepository/opportunistModifier":144,"./modifiersRepository/piercingModifier":145,"./modifiersRepository/repeatableModifier":146,"./modifiersRepository/restedModifer":147,"./modifiersRepository/rogueModifiers/cityModifier":148,"./modifiersRepository/rogueModifiers/daggerModifier":149,"./modifiersRepository/rogueModifiers/greedyModifier":150,"./modifiersRepository/rogueModifiers/luckyModifier":151,"./modifiersRepository/rogueModifiers/sneakyModifier":152,"./modifiersRepository/selfHealModifier":153,"./modifiersRepository/signatureModifier":154,"./modifiersRepository/ultimateModifier":155,"./modifiersRepository/unlockedModifier":156,"./modifiersRepository/vengefulModifier":157}],112:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -4956,7 +5028,7 @@ var applyEffectModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.applyEffectModifier = applyEffectModifier;
 
-},{"../../core/ability":62,"../../core/utils":95,"../effect":97,"../effectFactory":98,"../modifier":109}],112:[function(require,module,exports){
+},{"../../core/ability":62,"../../core/utils":96,"../effect":98,"../effectFactory":99,"../modifier":110}],113:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -4984,7 +5056,6 @@ var bloodiedModifier = /** @class */ (function (_super) {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 1.5; };
         _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.cooldown) === ability_1.Ability.Cooldown.Encounter ? 1 : utils_1.Utils.RARE_MODIFIER; };
-        _this.weight = function () { return 1; };
         _this.name = 'Bloody';
         _this.namePrefix = 'Bloody';
         _this.description = 'Can be used only when you have half or less Health.';
@@ -4995,7 +5066,7 @@ var bloodiedModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.bloodiedModifier = bloodiedModifier;
 
-},{"../../core/ability":62,"../../core/utils":95,"../modifier":109}],113:[function(require,module,exports){
+},{"../../core/ability":62,"../../core/utils":96,"../modifier":110}],114:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5032,7 +5103,7 @@ var cleaveModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.cleaveModifier = cleaveModifier;
 
-},{"../../core/ability":62,"../modifier":109}],114:[function(require,module,exports){
+},{"../../core/ability":62,"../modifier":110}],115:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5069,7 +5140,7 @@ var candleModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.candleModifier = candleModifier;
 
-},{"../../../core/characterContext":72,"../../modifier":109}],115:[function(require,module,exports){
+},{"../../../core/characterContext":73,"../../modifier":110}],116:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5107,7 +5178,7 @@ var episcopalModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.episcopalModifier = episcopalModifier;
 
-},{"../../../core/characterContext":72,"../../../core/utils":95,"../../modifier":109}],116:[function(require,module,exports){
+},{"../../../core/characterContext":73,"../../../core/utils":96,"../../modifier":110}],117:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5144,7 +5215,7 @@ var pacifistModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.pacifistModifier = pacifistModifier;
 
-},{"../../../core/characterContext":72,"../../modifier":109}],117:[function(require,module,exports){
+},{"../../../core/characterContext":73,"../../modifier":110}],118:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5188,7 +5259,7 @@ var preachingModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.preachingModifier = preachingModifier;
 
-},{"../../../core/ability":62,"../../../core/characterContext":72,"../../modifier":109}],118:[function(require,module,exports){
+},{"../../../core/ability":62,"../../../core/characterContext":73,"../../modifier":110}],119:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5225,7 +5296,7 @@ var pristineModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.pristineModifier = pristineModifier;
 
-},{"../../../core/characterContext":72,"../../modifier":109}],119:[function(require,module,exports){
+},{"../../../core/characterContext":73,"../../modifier":110}],120:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5262,7 +5333,7 @@ var templeModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.templeModifier = templeModifier;
 
-},{"../../../core/characterContext":72,"../../modifier":109}],120:[function(require,module,exports){
+},{"../../../core/characterContext":73,"../../modifier":110}],121:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5304,7 +5375,7 @@ var compensationModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.compensationModifier = compensationModifier;
 
-},{"../../core/utils":95,"../modifier":109}],121:[function(require,module,exports){
+},{"../../core/utils":96,"../modifier":110}],122:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5341,7 +5412,7 @@ var exhaustingModifer = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.exhaustingModifer = exhaustingModifer;
 
-},{"../../core/ability":62,"../modifier":109}],122:[function(require,module,exports){
+},{"../../core/ability":62,"../modifier":110}],123:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5379,7 +5450,7 @@ var fastModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.fastModifier = fastModifier;
 
-},{"../../core/ability":62,"../../core/utils":95,"../modifier":109}],123:[function(require,module,exports){
+},{"../../core/ability":62,"../../core/utils":96,"../modifier":110}],124:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5416,7 +5487,7 @@ var armoredModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.armoredModifier = armoredModifier;
 
-},{"../../../core/characterContext":72,"../../modifier":109}],124:[function(require,module,exports){
+},{"../../../core/characterContext":73,"../../modifier":110}],125:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5437,7 +5508,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.battleModifier = void 0;
 var ability_1 = require("../../../core/ability");
 var characterContext_1 = require("../../../core/characterContext");
-var utils_1 = require("../../../core/utils");
 var modifier_1 = require("../../modifier");
 var battleModifier = /** @class */ (function (_super) {
     __extends(battleModifier, _super);
@@ -5447,8 +5517,8 @@ var battleModifier = /** @class */ (function (_super) {
         _this.weight = function (affector) {
             return affector != undefined && affector.type === ability_1.Ability.Type.Attack
                 ? characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter)
-                    ? utils_1.Utils.RARE_MODIFIER * characterContext_1.CharacterContext.IN_CLASS_MODIFIER
-                    : utils_1.Utils.RARE_MODIFIER * characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT
+                    ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER
+                    : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT
                 : 0;
         };
         _this.name = 'Battle';
@@ -5461,7 +5531,7 @@ var battleModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.battleModifier = battleModifier;
 
-},{"../../../core/ability":62,"../../../core/characterContext":72,"../../../core/utils":95,"../../modifier":109}],125:[function(require,module,exports){
+},{"../../../core/ability":62,"../../../core/characterContext":73,"../../modifier":110}],126:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5498,7 +5568,7 @@ var breachingModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.breachingModifier = breachingModifier;
 
-},{"../../../core/characterContext":72,"../../modifier":109}],126:[function(require,module,exports){
+},{"../../../core/characterContext":73,"../../modifier":110}],127:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5519,7 +5589,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.followupModifier = void 0;
 var ability_1 = require("../../../core/ability");
 var characterContext_1 = require("../../../core/characterContext");
-var utils_1 = require("../../../core/utils");
 var modifier_1 = require("../../modifier");
 var followupModifier = /** @class */ (function (_super) {
     __extends(followupModifier, _super);
@@ -5529,21 +5598,21 @@ var followupModifier = /** @class */ (function (_super) {
         _this.weight = function (affector) {
             return affector != undefined && affector.type === ability_1.Ability.Type.Attack
                 ? characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter)
-                    ? utils_1.Utils.RARE_MODIFIER * characterContext_1.CharacterContext.IN_CLASS_MODIFIER
-                    : utils_1.Utils.RARE_MODIFIER * characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT
+                    ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER
+                    : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT
                 : 0;
         };
         _this.name = 'Followup';
         _this.namePrefix = 'Followup';
         _this.description = 'If the target wasn\'t bloodied as you made this attack and became bloodied after hit, you can repeat this attack against this target.';
-        _this.modifierType = modifier_1.Modifier.Type.Constraint;
+        _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;
     }
     return followupModifier;
 }(modifier_1.Modifier));
 exports.followupModifier = followupModifier;
 
-},{"../../../core/ability":62,"../../../core/characterContext":72,"../../../core/utils":95,"../../modifier":109}],127:[function(require,module,exports){
+},{"../../../core/ability":62,"../../../core/characterContext":73,"../../modifier":110}],128:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5588,7 +5657,51 @@ var legendaryWeaponModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.legendaryWeaponModifier = legendaryWeaponModifier;
 
-},{"../../../core/ability":62,"../../../core/characterContext":72,"../../../core/utils":95,"../../modifier":109}],128:[function(require,module,exports){
+},{"../../../core/ability":62,"../../../core/characterContext":73,"../../../core/utils":96,"../../modifier":110}],129:[function(require,module,exports){
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.weaponmasterModifier = void 0;
+var ability_1 = require("../../../core/ability");
+var characterContext_1 = require("../../../core/characterContext");
+var modifier_1 = require("../../modifier");
+var weaponmasterModifier = /** @class */ (function (_super) {
+    __extends(weaponmasterModifier, _super);
+    function weaponmasterModifier(affector) {
+        var _this = _super.call(this) || this;
+        _this.powerMultiplier = function () { return 0.4; };
+        _this.weight = function (affector) {
+            return affector != undefined && affector.type === ability_1.Ability.Type.Attack
+                ? characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter)
+                    ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER
+                    : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT
+                : 0;
+        };
+        _this.name = 'Weaponmaster';
+        _this.namePrefix = 'Weaponmasers';
+        _this.description = 'Repeat this attack for each unique Fighter\'s Stance you\'ve entered this combat, without paying mana cost.';
+        _this.modifierType = modifier_1.Modifier.Type.Improvement;
+        return _this;
+    }
+    return weaponmasterModifier;
+}(modifier_1.Modifier));
+exports.weaponmasterModifier = weaponmasterModifier;
+
+},{"../../../core/ability":62,"../../../core/characterContext":73,"../../modifier":110}],130:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5628,7 +5741,44 @@ var forcefulModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.forcefulModifier = forcefulModifier;
 
-},{"../../core/ability":62,"../../core/rule":75,"../../core/utils":95,"../modifier":109}],129:[function(require,module,exports){
+},{"../../core/ability":62,"../../core/rule":76,"../../core/utils":96,"../modifier":110}],131:[function(require,module,exports){
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.fullActionModifier = void 0;
+var ability_1 = require("../../core/ability");
+var modifier_1 = require("../modifier");
+var fullActionModifier = /** @class */ (function (_super) {
+    __extends(fullActionModifier, _super);
+    function fullActionModifier(affector) {
+        var _this = _super.call(this) || this;
+        _this.powerBonus = function () { return 2; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.cooldown) === ability_1.Ability.Cooldown.Encounter ? 0.75 : 0; };
+        _this.name = 'Full Action';
+        _this.namePrefix = 'Stationary';
+        _this.description = 'You must additionally use Move Action to use this power.';
+        _this.modifierType = modifier_1.Modifier.Type.Constraint;
+        return _this;
+    }
+    return fullActionModifier;
+}(modifier_1.Modifier));
+exports.fullActionModifier = fullActionModifier;
+
+},{"../../core/ability":62,"../modifier":110}],132:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5671,7 +5821,7 @@ var gainEffectModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.gainEffectModifier = gainEffectModifier;
 
-},{"../../core/ability":62,"../../core/utils":95,"../effect":97,"../effectFactory":98,"../modifier":109}],130:[function(require,module,exports){
+},{"../../core/ability":62,"../../core/utils":96,"../effect":98,"../effectFactory":99,"../modifier":110}],133:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5706,7 +5856,7 @@ var grazedModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.grazedModifier = grazedModifier;
 
-},{"../modifier":109}],131:[function(require,module,exports){
+},{"../modifier":110}],134:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5743,7 +5893,7 @@ var instinctiveModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.instinctiveModifier = instinctiveModifier;
 
-},{"../../core/ability":62,"../modifier":109}],132:[function(require,module,exports){
+},{"../../core/ability":62,"../modifier":110}],135:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5781,7 +5931,7 @@ var laylineModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.laylineModifier = laylineModifier;
 
-},{"../../core/ability":62,"../modifier":109}],133:[function(require,module,exports){
+},{"../../core/ability":62,"../modifier":110}],136:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5818,7 +5968,7 @@ var lifestealModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.lifestealModifier = lifestealModifier;
 
-},{"../../core/ability":62,"../modifier":109}],134:[function(require,module,exports){
+},{"../../core/ability":62,"../modifier":110}],137:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5855,7 +6005,44 @@ var managainModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.managainModifier = managainModifier;
 
-},{"../../core/ability":62,"../modifier":109}],135:[function(require,module,exports){
+},{"../../core/ability":62,"../modifier":110}],138:[function(require,module,exports){
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.mobileModifier = void 0;
+var ability_1 = require("../../core/ability");
+var modifier_1 = require("../modifier");
+var mobileModifier = /** @class */ (function (_super) {
+    __extends(mobileModifier, _super);
+    function mobileModifier(affector) {
+        var _this = _super.call(this) || this;
+        _this.powerBonus = function () { return -2; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.cooldown) === ability_1.Ability.Cooldown.Encounter ? 0.75 : 0; };
+        _this.name = 'Mobile';
+        _this.namePrefix = 'Mobile';
+        _this.description = 'Before you use this ability you may move 5 squares.';
+        _this.modifierType = modifier_1.Modifier.Type.Improvement;
+        return _this;
+    }
+    return mobileModifier;
+}(modifier_1.Modifier));
+exports.mobileModifier = mobileModifier;
+
+},{"../../core/ability":62,"../modifier":110}],139:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5895,7 +6082,7 @@ var momentumModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.momentumModifier = momentumModifier;
 
-},{"../../components/descriptiveNumber":48,"../../core/ability":62,"../../core/utils":95,"../modifier":109}],136:[function(require,module,exports){
+},{"../../components/descriptiveNumber":48,"../../core/ability":62,"../../core/utils":96,"../modifier":110}],140:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5937,7 +6124,7 @@ var cleanModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.cleanModifier = cleanModifier;
 
-},{"../../../core/characterContext":72,"../../modifier":109}],137:[function(require,module,exports){
+},{"../../../core/characterContext":73,"../../modifier":110}],141:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -5982,7 +6169,7 @@ var undeadBaneModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.undeadBaneModifier = undeadBaneModifier;
 
-},{"../../../core/ability":62,"../../../core/characterContext":72,"../../modifier":109}],138:[function(require,module,exports){
+},{"../../../core/ability":62,"../../../core/characterContext":73,"../../modifier":110}],142:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6036,7 +6223,7 @@ var multipleModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.multipleModifier = multipleModifier;
 
-},{"../../components/descriptiveNumber":48,"../../core/ability":62,"../../core/weightedList":96,"../modifier":109}],139:[function(require,module,exports){
+},{"../../components/descriptiveNumber":48,"../../core/ability":62,"../../core/weightedList":97,"../modifier":110}],143:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6072,7 +6259,7 @@ var nightlyModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.nightlyModifier = nightlyModifier;
 
-},{"../modifier":109}],140:[function(require,module,exports){
+},{"../modifier":110}],144:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6109,7 +6296,7 @@ var opportunistModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.opportunistModifier = opportunistModifier;
 
-},{"../../core/ability":62,"../modifier":109}],141:[function(require,module,exports){
+},{"../../core/ability":62,"../modifier":110}],145:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6146,7 +6333,7 @@ var piercingModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.piercingModifier = piercingModifier;
 
-},{"../../core/ability":62,"../modifier":109}],142:[function(require,module,exports){
+},{"../../core/ability":62,"../modifier":110}],146:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6201,7 +6388,7 @@ var repeatableModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.repeatableModifier = repeatableModifier;
 
-},{"../../components/descriptiveNumber":48,"../../core/weightedList":96,"../modifier":109}],143:[function(require,module,exports){
+},{"../../components/descriptiveNumber":48,"../../core/weightedList":97,"../modifier":110}],147:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6237,7 +6424,7 @@ var restedModifer = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.restedModifer = restedModifer;
 
-},{"../modifier":109}],144:[function(require,module,exports){
+},{"../modifier":110}],148:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6274,7 +6461,7 @@ var cityModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.cityModifier = cityModifier;
 
-},{"../../../core/characterContext":72,"../../modifier":109}],145:[function(require,module,exports){
+},{"../../../core/characterContext":73,"../../modifier":110}],149:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6318,7 +6505,7 @@ var daggerModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.daggerModifier = daggerModifier;
 
-},{"../../../core/ability":62,"../../../core/characterContext":72,"../../modifier":109}],146:[function(require,module,exports){
+},{"../../../core/ability":62,"../../../core/characterContext":73,"../../modifier":110}],150:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6356,7 +6543,7 @@ var greedyModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.greedyModifier = greedyModifier;
 
-},{"../../../core/characterContext":72,"../../modifier":109}],147:[function(require,module,exports){
+},{"../../../core/characterContext":73,"../../modifier":110}],151:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6393,7 +6580,7 @@ var luckyModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.luckyModifier = luckyModifier;
 
-},{"../../../core/characterContext":72,"../../modifier":109}],148:[function(require,module,exports){
+},{"../../../core/characterContext":73,"../../modifier":110}],152:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6430,7 +6617,7 @@ var sneakyModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.sneakyModifier = sneakyModifier;
 
-},{"../../../core/characterContext":72,"../../modifier":109}],149:[function(require,module,exports){
+},{"../../../core/characterContext":73,"../../modifier":110}],153:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6471,7 +6658,7 @@ var selfHealModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.selfHealModifier = selfHealModifier;
 
-},{"../../components/descriptiveNumber":48,"../../core/ability":62,"../../core/utils":95,"../modifier":109}],150:[function(require,module,exports){
+},{"../../components/descriptiveNumber":48,"../../core/ability":62,"../../core/utils":96,"../modifier":110}],154:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6508,7 +6695,7 @@ var signatureModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.signatureModifier = signatureModifier;
 
-},{"../../core/ability":62,"../modifier":109}],151:[function(require,module,exports){
+},{"../../core/ability":62,"../modifier":110}],155:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6545,7 +6732,7 @@ var ultimateModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.ultimateModifier = ultimateModifier;
 
-},{"../../core/ability":62,"../modifier":109}],152:[function(require,module,exports){
+},{"../../core/ability":62,"../modifier":110}],156:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6582,7 +6769,7 @@ var unlockedModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.unlockedModifier = unlockedModifier;
 
-},{"../../core/ability":62,"../modifier":109}],153:[function(require,module,exports){
+},{"../../core/ability":62,"../modifier":110}],157:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6619,4 +6806,4 @@ var vengefulModifier = /** @class */ (function (_super) {
 }(modifier_1.Modifier));
 exports.vengefulModifier = vengefulModifier;
 
-},{"../../core/ability":62,"../modifier":109}]},{},[1]);
+},{"../../core/ability":62,"../modifier":110}]},{},[1]);

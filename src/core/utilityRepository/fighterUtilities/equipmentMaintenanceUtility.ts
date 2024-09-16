@@ -16,7 +16,7 @@ export class equipmentMaintenanceUtility extends Utility {
         this.chance = 0.9      
         this.value =  new DescriptiveNumber(10);
         this.compensate();
-        this.description = 'If you succeed repair and maintain equipment. You can repair weapons and armor after being damaged by acid and similar effects. Additionally until end of the day maintained armor or shield grants extra '+this.value.getDescription()+' Armor Points. ';
+        this.description = 'If you succeed repair and maintain equipment. You can repair weapons and armor after being damaged by acid and similar effects. Additionally until end of the day maintained armor or shield grants extra '+this.value.getDescription()+' Armor Points (does not stack). ';
 
     }
 }

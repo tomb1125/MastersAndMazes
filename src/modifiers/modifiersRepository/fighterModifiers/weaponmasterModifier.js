@@ -15,15 +15,15 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.battleModifier = void 0;
+exports.weaponmasterModifier = void 0;
 var ability_1 = require("../../../core/ability");
 var characterContext_1 = require("../../../core/characterContext");
 var modifier_1 = require("../../modifier");
-var battleModifier = /** @class */ (function (_super) {
-    __extends(battleModifier, _super);
-    function battleModifier(affector) {
+var weaponmasterModifier = /** @class */ (function (_super) {
+    __extends(weaponmasterModifier, _super);
+    function weaponmasterModifier(affector) {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 1.5; };
+        _this.powerMultiplier = function () { return 0.4; };
         _this.weight = function (affector) {
             return affector != undefined && affector.type === ability_1.Ability.Type.Attack
                 ? characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter)
@@ -31,12 +31,12 @@ var battleModifier = /** @class */ (function (_super) {
                     : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT
                 : 0;
         };
-        _this.name = 'Battle';
-        _this.namePrefix = 'Battle';
-        _this.description = 'Can only be used when you are adjacent to two enemies.';
-        _this.modifierType = modifier_1.Modifier.Type.Constraint;
+        _this.name = 'Weaponmaster';
+        _this.namePrefix = 'Weaponmasers';
+        _this.description = 'Repeat this attack for each unique Fighter\'s Stance you\'ve entered this combat, without paying mana cost.';
+        _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;
     }
-    return battleModifier;
+    return weaponmasterModifier;
 }(modifier_1.Modifier));
-exports.battleModifier = battleModifier;
+exports.weaponmasterModifier = weaponmasterModifier;

@@ -12,6 +12,8 @@ export namespace Rule
 {
     export enum Name
     {
-        ForcefulPush
+        ForcefulPush,
+        Blessing,
+        FighterStance
     }
 }

@@ -184,7 +184,7 @@ var Attack = /** @class */ (function (_super) {
             '<br><b>Type</b>: ' + Attack.Subtype[this.subtype] +
             '<br><b>Cooldown</b>: ' + ability_1.Ability.Cooldown[this.cooldown];
         if (longDescription) {
-            desc += '<br><b>Rulings</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + (mod.longDescription === undefined ? '' : ', ' + mod.longDescription); }, '').slice(2);
+            desc += '<br><b>Rulings</b>: ' + this.longDescription + this.modifiers.reduce(function (sum, mod) { return sum + (mod.longDescription === undefined ? '' : ', ' + mod.longDescription); }, '').slice(2);
         }
         return desc;
     };

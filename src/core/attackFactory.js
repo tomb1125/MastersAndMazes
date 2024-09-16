@@ -21,6 +21,7 @@ var weightedList_1 = require("./weightedList");
 //factory imports
 var poisonedDartAttack_1 = require("./attackRepository/rogueAttacks/poisonedDartAttack");
 var backstabAttack_1 = require("./attackRepository/rogueAttacks/backstabAttack");
+var stanceAttack_1 = require("./attackRepository/fighterAttacks/stanceAttack");
 var radiantRayAttack_1 = require("./attackRepository/clericAttacks/radiantRayAttack");
 var empoweringStrikeAttack_1 = require("./attackRepository/clericAttacks/empoweringStrikeAttack");
 var basicSpell_1 = require("./attackRepository/basicSpell");
@@ -33,6 +34,7 @@ var AttackFactory = /** @class */ (function (_super) {
             _this.items = new weightedList_1.WeightedList();
             _this.items.push(new poisonedDartAttack_1.poisonedDartAttack(affector));
             _this.items.push(new backstabAttack_1.backstabAttack(affector));
+            _this.items.push(new stanceAttack_1.stanceAttack(affector));
             _this.items.push(new radiantRayAttack_1.radiantRayAttack(affector));
             _this.items.push(new empoweringStrikeAttack_1.empoweringStrikeAttack(affector));
             _this.items.push(new basicSpell_1.basicSpell(affector));

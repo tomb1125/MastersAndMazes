@@ -17,6 +17,7 @@ Standard Actions:
  - Run - Move number of squares equal to your speed.
  - Gain Mana - Gain 5 mana and place mana drain marker on your location until end of combat. 
    You cannot make this action while within 5 squares of mana drain marker.
+ - Escape - If you are not surrounded by enemies, roll D10. On 4+ you are removed from combat and may take one unconscious person with you.
 Move Actions:
  - Move number of squares equal to your speed
  - Push adjacent enemy no larger than you 3 squares but not on dangerous terrain.
@@ -33,8 +34,9 @@ which effectively means you deal +10 damage for 3 turns.
 Whenever ability can repeat, note that repeats cannot loop.
 
 HEALTH AND DYING:
-After each combat regain all Mana.
-After rest (8 hours with sleep) regain 10 Health
+After each combat regain all Mana and Armor Points
+After rest (8 hours with sleep) regain 10 Health.
+At the start of each combat gain Armor Points from your equipment, they are reduced before health, when you take damage.
 
 When you are reduced to 0 HP, gain 1 Experience Point and roll for dying: Roll D10 and add number of your Scars:
 1-9 - You become unconscious until end of combat. After combat regain 1 HP and gain 1 Scar.
@@ -92,7 +94,7 @@ Whenever you gain a level:
 
 NICHE RULES
 Corruption.
-Corruption points are permaments. Corruption points cannot be removed by abilities unless they are directly mentioned. When you reach 100 or more Corruption, reduce your corruption by 100 and roll in below table. 
+Corruption points are permament. Corruption points cannot be removed by abilities unless they are directly mentioned. When you reach 100 or more Corruption, reduce your corruption by 100 and roll in below table. 
 1 - Gain 5 Scars then roll for dying.
 2 - Permamently lose 5 maximum Health. This effect cannot be removed by abilities.
 3 - Lose 10 Strength, lose 10 Dexterity, lose 10 Constitution (3 separete effects).

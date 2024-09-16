@@ -15,17 +15,21 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Activity = void 0;
-var ability_1 = require("./ability");
-var Activity = /** @class */ (function (_super) {
-    __extends(Activity, _super);
-    function Activity(otherName) {
-        var _this = _super.call(this, otherName) || this;
-        _this.longDescription = '';
+exports.mobileModifier = void 0;
+var ability_1 = require("../../core/ability");
+var modifier_1 = require("../modifier");
+var mobileModifier = /** @class */ (function (_super) {
+    __extends(mobileModifier, _super);
+    function mobileModifier(affector) {
+        var _this = _super.call(this) || this;
+        _this.powerBonus = function () { return -2; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.cooldown) === ability_1.Ability.Cooldown.Encounter ? 0.75 : 0; };
+        _this.name = 'Mobile';
+        _this.namePrefix = 'Mobile';
+        _this.description = 'Before you use this ability you may move 5 squares.';
+        _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;
     }
-    Activity.prototype.generate = function () {
-    };
-    return Activity;
-}(ability_1.Ability));
-exports.Activity = Activity;
+    return mobileModifier;
+}(modifier_1.Modifier));
+exports.mobileModifier = mobileModifier;

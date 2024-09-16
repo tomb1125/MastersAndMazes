@@ -42,7 +42,7 @@ var Utility = /** @class */ (function (_super) {
             '<br><b>Description</b>: ' + this.description + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
             '<br><b>Cooldown</b>: ' + ability_1.Ability.Cooldown[this.cooldown];
         if (longDescription) {
-            desc += '<br><b>Rulings</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + (mod.longDescription === undefined ? '' : ', ' + mod.longDescription); }, '').slice(2);
+            desc += '<br><b>Rulings</b>: ' + this.longDescription + this.modifiers.reduce(function (sum, mod) { return sum + (mod.longDescription === undefined ? '' : ', ' + mod.longDescription); }, '').slice(2);
         }
         return desc;
     };

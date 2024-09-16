@@ -4,11 +4,11 @@ import { CharacterContext } from "../../../core/characterContext";
 import { Utils } from "../../../core/utils";
 import { Modifier } from "../../modifier";
 
-export class battleModifier extends Modifier {
+export class weaponmasterModifier extends Modifier {
     
 constructor(affector: AffectsWeight) {
         super();
-        this.powerMultiplier = () => 1.5; 
+        this.powerMultiplier = () => 0.4; 
 
         this.weight = (affector) => {
             return affector != undefined && affector.type === Ability.Type.Attack
@@ -17,9 +17,9 @@ constructor(affector: AffectsWeight) {
                 : CharacterContext.OUT_OF_CLASS_WEIGHT
               : 0;
           };      
-        this.name = 'Battle';
-        this.namePrefix = 'Battle';
-        this.description = 'Can only be used when you are adjacent to two enemies.';
-        this.modifierType = Modifier.Type.Constraint;
+        this.name = 'Weaponmaster';
+        this.namePrefix = 'Weaponmasers';
+        this.description = 'Repeat this attack for each unique Fighter\'s Stance you\'ve entered this combat, without paying mana cost.';
+        this.modifierType = Modifier.Type.Improvement;
     }
 }
