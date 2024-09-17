@@ -8,7 +8,7 @@ export class weaponmasterModifier extends Modifier {
     
 constructor(affector: AffectsWeight) {
         super();
-        this.powerMultiplier = () => 0.4; 
+        this.powerMultiplier = () => 0.6; 
 
         this.weight = (affector) => {
             return affector != undefined && affector.type === Ability.Type.Attack
