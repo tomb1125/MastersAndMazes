@@ -24,6 +24,7 @@ export class Utils {
 
     public static EFFECT_WEIGHT_MOD: number = 1.1;
     public static RARE_MODIFIER: number = 0.1;
+    public static COMMON_MODIFIER: number = 0.75;
 
     public static BoonValue: number = Utils.DPS * 5;
     public static avgHealth: number = 25;

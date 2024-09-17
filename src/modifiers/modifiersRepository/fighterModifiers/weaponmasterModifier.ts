@@ -14,11 +14,11 @@ constructor(affector: AffectsWeight) {
             return affector != undefined && affector.type === Ability.Type.Attack
               ? CharacterContext.classes.includes(CharacterContext.Class.Fighter)
                 ? CharacterContext.IN_CLASS_MODIFIER
-                : CharacterContext.OUT_OF_CLASS_WEIGHT
+                : 0
               : 0;
           };      
         this.name = 'Weaponmaster';
-        this.namePrefix = 'Weaponmasers';
+        this.namePrefix = 'Weaponmasters';
         this.description = 'Repeat this attack for each unique Fighter\'s Stance you\'ve entered this combat, without paying mana cost.';
         this.modifierType = Modifier.Type.Improvement;
     }

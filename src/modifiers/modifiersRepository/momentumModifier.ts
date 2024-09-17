@@ -11,7 +11,7 @@ export class momentumModifier extends Modifier {
     constructor(affector: AffectsWeight) {
         super();
         this.numericComponents = [new DescriptiveNumber(Math.ceil(Utils.random()* 4))];
-        this.weight = (x?: AffectsWeight) => {return x?.cooldown === Ability.Cooldown.Encounter ? 1 : 0}
+        this.weight = (x?: AffectsWeight) => {return x?.cooldown === Ability.Cooldown.Encounter ? Utils.COMMON_MODIFIER : 0}
         this.name = 'Inertia '+this.numericComponents[0].getValue(); 
         this.namePrefix = 'Inertia';
         this.description = 'Can be only used when you fail ability chance roll with '+this.numericComponents[0].getValue()+' '+(this.numericComponents[0].getValue() === 1 ? 'ability' : 'abilities')+' in a row. ';

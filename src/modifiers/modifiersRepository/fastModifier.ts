@@ -9,7 +9,7 @@ export class fastModifier extends Modifier {
     constructor(affector: AffectsWeight) {
         super();
         this.powerBonus = () => {return - Utils.DPS};
-        this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Attack ? 1 : 0}
+        this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Attack ? Utils.COMMON_MODIFIER : 0}
         this.name = 'Fast'
         this.namePrefix = 'Fast';
         this.description = 'You can use Swift Action to use this ability.';

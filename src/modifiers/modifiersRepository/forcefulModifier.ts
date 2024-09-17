@@ -10,7 +10,7 @@ export class forcefulModifier extends Modifier {
     constructor(affector: AffectsWeight) {
         super();
         this.powerBonus = (x: CanAffectModifier) => -3; 
-        this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Attack ? 1 : 0}
+        this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Attack ? Utils.COMMON_MODIFIER : 0}
         this.name = 'Forceful';
         this.namePrefix = 'Forceful';
         this.description = 'When you hit, push target forcefully 5 squares. ';
