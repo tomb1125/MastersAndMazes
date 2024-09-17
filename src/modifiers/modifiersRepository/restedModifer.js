@@ -16,12 +16,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.restedModifer = void 0;
+var utils_1 = require("../../core/utils");
 var modifier_1 = require("../modifier");
 var restedModifer = /** @class */ (function (_super) {
     __extends(restedModifer, _super);
     function restedModifer(affector) {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 1.3; };
+        _this.weight = function () { return utils_1.Utils.COMMON_MODIFIER; };
         _this.name = 'Rested';
         _this.namePrefix = 'Rested';
         _this.description = 'Can only be used if you managed to rest well during last night.';

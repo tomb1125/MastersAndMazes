@@ -123,6 +123,7 @@ var Utils = /** @class */ (function () {
     Utils.AVG_LONGEST_DISTANCE = 20;
     Utils.EFFECT_WEIGHT_MOD = 1.1;
     Utils.RARE_MODIFIER = 0.1;
+    Utils.COMMON_MODIFIER = 0.75;
     Utils.BoonValue = Utils.DPS * 5;
     Utils.avgHealth = 25;
     Utils.rules = [

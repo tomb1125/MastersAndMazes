@@ -4,7 +4,6 @@ import { AffectsWeight } from "../core/affectsWeight";
 import { Factory } from "../core/factory";
 //factory imports
 import { vengefulModifier } from "./modifiersRepository/vengefulModifier";
-import { unlockedModifier } from "./modifiersRepository/unlockedModifier";
 import { ultimateModifier } from "./modifiersRepository/ultimateModifier";
 import { signatureModifier } from "./modifiersRepository/signatureModifier";
 import { selfHealModifier } from "./modifiersRepository/selfHealModifier";
@@ -23,6 +22,7 @@ import { undeadBaneModifier } from "./modifiersRepository/multiclassModifiers/un
 import { cleanModifier } from "./modifiersRepository/multiclassModifiers/cleanModifier";
 import { momentumModifier } from "./modifiersRepository/momentumModifier";
 import { mobileModifier } from "./modifiersRepository/mobileModifier";
+import { masterfulModifier } from "./modifiersRepository/masterfulModifier";
 import { managainModifier } from "./modifiersRepository/managainModifier";
 import { lifestealModifier } from "./modifiersRepository/lifestealModifier";
 import { laylineModifier } from "./modifiersRepository/laylineModifier";
@@ -47,6 +47,7 @@ import { pacifistModifier } from "./modifiersRepository/clericModifiers/pacifist
 import { episcopalModifier } from "./modifiersRepository/clericModifiers/episcopalModifier";
 import { candleModifier } from "./modifiersRepository/clericModifiers/candleModifier";
 import { cleaveModifier } from "./modifiersRepository/cleaveModifier";
+import { brightModifier } from "./modifiersRepository/brightModifier";
 import { bloodiedModifier } from "./modifiersRepository/bloodiedModifier";
 import { applyEffectModifier } from "./modifiersRepository/applyEffectModifier";
 export class ModifierFactory extends Factory {
@@ -56,7 +57,6 @@ export class ModifierFactory extends Factory {
         if(list === undefined) {
             this.items = new WeightedList();
             this.items.push(new vengefulModifier(affector));
-            this.items.push(new unlockedModifier(affector));
             this.items.push(new ultimateModifier(affector));
             this.items.push(new signatureModifier(affector));
             this.items.push(new selfHealModifier(affector));
@@ -75,6 +75,7 @@ export class ModifierFactory extends Factory {
             this.items.push(new cleanModifier(affector));
             this.items.push(new momentumModifier(affector));
             this.items.push(new mobileModifier(affector));
+            this.items.push(new masterfulModifier(affector));
             this.items.push(new managainModifier(affector));
             this.items.push(new lifestealModifier(affector));
             this.items.push(new laylineModifier(affector));
@@ -99,6 +100,7 @@ export class ModifierFactory extends Factory {
             this.items.push(new episcopalModifier(affector));
             this.items.push(new candleModifier(affector));
             this.items.push(new cleaveModifier(affector));
+            this.items.push(new brightModifier(affector));
             this.items.push(new bloodiedModifier(affector));
             this.items.push(new applyEffectModifier(affector));
         } else {

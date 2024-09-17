@@ -15,22 +15,22 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.exhaustingModifer = void 0;
+exports.masterfulModifier = void 0;
 var ability_1 = require("../../core/ability");
 var utils_1 = require("../../core/utils");
 var modifier_1 = require("../modifier");
-var exhaustingModifer = /** @class */ (function (_super) {
-    __extends(exhaustingModifer, _super);
-    function exhaustingModifer(affector) {
+var masterfulModifier = /** @class */ (function (_super) {
+    __extends(masterfulModifier, _super);
+    function masterfulModifier(affector) {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 2.5; };
-        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.cooldown) != ability_1.Ability.Cooldown.Encounter ? 0.3 : utils_1.Utils.COMMON_MODIFIER; };
-        _this.name = 'Exhausting';
-        _this.namePrefix = 'Exhausting';
-        _this.description = 'After you use this ability, reduce your health to 1.';
+        _this.powerMultiplier = function () { return 1.6; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.cooldown) === ability_1.Ability.Cooldown.Encounter ? utils_1.Utils.COMMON_MODIFIER : 0; };
+        _this.name = 'Masterful';
+        _this.namePrefix = 'Masterful';
+        _this.description = 'Can only be used when you rolled 01-20 on your first D100 roll last turn. ';
         _this.modifierType = modifier_1.Modifier.Type.Constraint;
         return _this;
     }
-    return exhaustingModifer;
+    return masterfulModifier;
 }(modifier_1.Modifier));
-exports.exhaustingModifer = exhaustingModifer;
+exports.masterfulModifier = masterfulModifier;

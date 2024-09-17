@@ -24,7 +24,7 @@ var fastModifier = /** @class */ (function (_super) {
     function fastModifier(affector) {
         var _this = _super.call(this) || this;
         _this.powerBonus = function () { return -utils_1.Utils.DPS; };
-        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? utils_1.Utils.COMMON_MODIFIER : 0; };
         _this.name = 'Fast';
         _this.namePrefix = 'Fast';
         _this.description = 'You can use Swift Action to use this ability.';

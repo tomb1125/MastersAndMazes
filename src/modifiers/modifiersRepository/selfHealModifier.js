@@ -27,7 +27,7 @@ var selfHealModifier = /** @class */ (function (_super) {
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         _this.numericComponents = [new descriptiveNumber_1.DescriptiveNumber(utils_1.Utils.D(10))]; //[new DescriptiveNumberFactory(affector).filter((x: DescriptiveNumber) => x.type === DescriptiveNumber.Type.Small).get(1)[0] as DescriptiveNumber];
         _this.name = 'Self Heal ' + _this.numericComponents[0].getValue();
-        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.cooldown) === ability_1.Ability.Cooldown.Encounter ? 1 : 0; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.cooldown) === ability_1.Ability.Cooldown.Encounter ? utils_1.Utils.COMMON_MODIFIER : 0; };
         _this.namePrefix = 'Healing';
         _this.description = 'When you hit, heal yourself ' + _this.numericComponents[0].getDescription() + '.';
         _this.powerBonus = function () { return -_this.numericComponents[0].getValue(); };

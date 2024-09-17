@@ -27,7 +27,7 @@ var gainEffectModifier = /** @class */ (function (_super) {
         var _this = _super.call(this) || this;
         var buffFactory = new effectFactory_1.EffectFactory(aff).filter(function (eff) { return eff.subtype === effect_1.Effect.Subtype.Buff; });
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
-        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.cooldown) === ability_1.Ability.Cooldown.Encounter ? buffFactory.items.items.length * utils_1.Utils.EFFECT_WEIGHT_MOD : 0; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.cooldown) === ability_1.Ability.Cooldown.Encounter ? buffFactory.items.items.length * utils_1.Utils.EFFECT_WEIGHT_MOD * utils_1.Utils.COMMON_MODIFIER : 0; };
         _this.effect = buffFactory.get(1)[0];
         _this.description = 'When you succeed roll, also gain an effect: ' + _this.effect.description;
         _this.namePrefix = _this.effect.namePrefix;

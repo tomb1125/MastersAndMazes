@@ -17,13 +17,14 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.managainModifier = void 0;
 var ability_1 = require("../../core/ability");
+var utils_1 = require("../../core/utils");
 var modifier_1 = require("../modifier");
 var managainModifier = /** @class */ (function (_super) {
     __extends(managainModifier, _super);
     function managainModifier(affector) {
         var _this = _super.call(this) || this;
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
-        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? utils_1.Utils.COMMON_MODIFIER : 0; };
         _this.name = 'Mana Gain';
         _this.namePrefix = 'Mana Leeching';
         _this.description = 'When you hit, gain mana equal to damage taken by enemy.';

@@ -23,16 +23,16 @@ var weaponmasterModifier = /** @class */ (function (_super) {
     __extends(weaponmasterModifier, _super);
     function weaponmasterModifier(affector) {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 0.4; };
+        _this.powerMultiplier = function () { return 0.5; };
         _this.weight = function (affector) {
             return affector != undefined && affector.type === ability_1.Ability.Type.Attack
                 ? characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter)
                     ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER
-                    : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT
+                    : 0
                 : 0;
         };
         _this.name = 'Weaponmaster';
-        _this.namePrefix = 'Weaponmasers';
+        _this.namePrefix = 'Weaponmasters';
         _this.description = 'Repeat this attack for each unique Fighter\'s Stance you\'ve entered this combat, without paying mana cost.';
         _this.modifierType = modifier_1.Modifier.Type.Improvement;
         return _this;

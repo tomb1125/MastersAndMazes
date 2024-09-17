@@ -20,7 +20,6 @@ var weightedList_1 = require("../core/weightedList");
 var factory_1 = require("../core/factory");
 //factory imports
 var vengefulModifier_1 = require("./modifiersRepository/vengefulModifier");
-var unlockedModifier_1 = require("./modifiersRepository/unlockedModifier");
 var ultimateModifier_1 = require("./modifiersRepository/ultimateModifier");
 var signatureModifier_1 = require("./modifiersRepository/signatureModifier");
 var selfHealModifier_1 = require("./modifiersRepository/selfHealModifier");
@@ -39,6 +38,7 @@ var undeadBaneModifier_1 = require("./modifiersRepository/multiclassModifiers/un
 var cleanModifier_1 = require("./modifiersRepository/multiclassModifiers/cleanModifier");
 var momentumModifier_1 = require("./modifiersRepository/momentumModifier");
 var mobileModifier_1 = require("./modifiersRepository/mobileModifier");
+var masterfulModifier_1 = require("./modifiersRepository/masterfulModifier");
 var managainModifier_1 = require("./modifiersRepository/managainModifier");
 var lifestealModifier_1 = require("./modifiersRepository/lifestealModifier");
 var laylineModifier_1 = require("./modifiersRepository/laylineModifier");
@@ -63,6 +63,7 @@ var pacifistModifier_1 = require("./modifiersRepository/clericModifiers/pacifist
 var episcopalModifier_1 = require("./modifiersRepository/clericModifiers/episcopalModifier");
 var candleModifier_1 = require("./modifiersRepository/clericModifiers/candleModifier");
 var cleaveModifier_1 = require("./modifiersRepository/cleaveModifier");
+var brightModifier_1 = require("./modifiersRepository/brightModifier");
 var bloodiedModifier_1 = require("./modifiersRepository/bloodiedModifier");
 var applyEffectModifier_1 = require("./modifiersRepository/applyEffectModifier");
 var ModifierFactory = /** @class */ (function (_super) {
@@ -72,7 +73,6 @@ var ModifierFactory = /** @class */ (function (_super) {
         if (list === undefined) {
             _this.items = new weightedList_1.WeightedList();
             _this.items.push(new vengefulModifier_1.vengefulModifier(affector));
-            _this.items.push(new unlockedModifier_1.unlockedModifier(affector));
             _this.items.push(new ultimateModifier_1.ultimateModifier(affector));
             _this.items.push(new signatureModifier_1.signatureModifier(affector));
             _this.items.push(new selfHealModifier_1.selfHealModifier(affector));
@@ -91,6 +91,7 @@ var ModifierFactory = /** @class */ (function (_super) {
             _this.items.push(new cleanModifier_1.cleanModifier(affector));
             _this.items.push(new momentumModifier_1.momentumModifier(affector));
             _this.items.push(new mobileModifier_1.mobileModifier(affector));
+            _this.items.push(new masterfulModifier_1.masterfulModifier(affector));
             _this.items.push(new managainModifier_1.managainModifier(affector));
             _this.items.push(new lifestealModifier_1.lifestealModifier(affector));
             _this.items.push(new laylineModifier_1.laylineModifier(affector));
@@ -115,6 +116,7 @@ var ModifierFactory = /** @class */ (function (_super) {
             _this.items.push(new episcopalModifier_1.episcopalModifier(affector));
             _this.items.push(new candleModifier_1.candleModifier(affector));
             _this.items.push(new cleaveModifier_1.cleaveModifier(affector));
+            _this.items.push(new brightModifier_1.brightModifier(affector));
             _this.items.push(new bloodiedModifier_1.bloodiedModifier(affector));
             _this.items.push(new applyEffectModifier_1.applyEffectModifier(affector));
         }

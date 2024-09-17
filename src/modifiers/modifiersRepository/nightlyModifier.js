@@ -16,12 +16,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.nightlyModifier = void 0;
+var utils_1 = require("../../core/utils");
 var modifier_1 = require("../modifier");
 var nightlyModifier = /** @class */ (function (_super) {
     __extends(nightlyModifier, _super);
     function nightlyModifier(affector) {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 1.35; };
+        _this.weight = function () { return utils_1.Utils.COMMON_MODIFIER; };
         _this.name = 'Nightly';
         _this.namePrefix = 'Nightly';
         _this.description = 'Can be used only in the night.';

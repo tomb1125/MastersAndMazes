@@ -16,12 +16,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.grazedModifier = void 0;
+var utils_1 = require("../../core/utils");
 var modifier_1 = require("../modifier");
 var grazedModifier = /** @class */ (function (_super) {
     __extends(grazedModifier, _super);
     function grazedModifier(affector) {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 1.2; };
+        _this.weight = function () { return utils_1.Utils.COMMON_MODIFIER; };
         _this.name = 'Grazed';
         _this.namePrefix = 'Grazed';
         _this.description = 'When you add this ability to your character gain 2 Scars (each Scar brings character slightly closer to death, see rules for more).';

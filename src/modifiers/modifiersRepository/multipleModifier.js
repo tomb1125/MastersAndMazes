@@ -18,6 +18,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.multipleModifier = void 0;
 var descriptiveNumber_1 = require("../../components/descriptiveNumber");
 var ability_1 = require("../../core/ability");
+var utils_1 = require("../../core/utils");
 var weightedList_1 = require("../../core/weightedList");
 var modifier_1 = require("../modifier");
 var multipleModifier = /** @class */ (function (_super) {
@@ -39,7 +40,7 @@ var multipleModifier = /** @class */ (function (_super) {
         five.name = 'Quintiple';
         multiDistribution.items = [two, three, four, five];
         _this.numericComponents = multiDistribution.get(1);
-        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? utils_1.Utils.COMMON_MODIFIER : 0; };
         _this.powerMultiplier = function () { return 0.8 / _this.numericComponents[0].getValue(); };
         _this.name = 'Multi ' + _this.numericComponents[0].getValue();
         _this.namePrefix = _this.numericComponents[0].name;

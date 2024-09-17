@@ -25,7 +25,7 @@ var forcefulModifier = /** @class */ (function (_super) {
     function forcefulModifier(affector) {
         var _this = _super.call(this) || this;
         _this.powerBonus = function (x) { return -3; };
-        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? utils_1.Utils.COMMON_MODIFIER : 0; };
         _this.name = 'Forceful';
         _this.namePrefix = 'Forceful';
         _this.description = 'When you hit, push target forcefully 5 squares. ';

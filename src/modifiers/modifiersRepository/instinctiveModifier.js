@@ -17,13 +17,14 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.instinctiveModifier = void 0;
 var ability_1 = require("../../core/ability");
+var utils_1 = require("../../core/utils");
 var modifier_1 = require("../modifier");
 var instinctiveModifier = /** @class */ (function (_super) {
     __extends(instinctiveModifier, _super);
     function instinctiveModifier(affector) {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function (x) { return 0.9; };
-        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? 1 : 0; };
+        _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.type) === ability_1.Ability.Type.Attack ? utils_1.Utils.COMMON_MODIFIER : 0; };
         _this.name = 'Instinct';
         _this.namePrefix = 'Instinctive';
         _this.description = 'If you are stunned, you can use this ability as a swift action. You can ignore Banes when rolling for this ability. ';
