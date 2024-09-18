@@ -11,6 +11,7 @@ import { shadowStrideUtility } from "./utilityRepository/rogueUtilities/shadowSt
 import { shadowMeldUtility } from "./utilityRepository/rogueUtilities/shadowMeldUtility";
 import { pickpocketUtility } from "./utilityRepository/rogueUtilities/pickpocketUtility";
 import { lockpickingUtility } from "./utilityRepository/rogueUtilities/lockpickingUtility";
+import { muscleTrainingUtility } from "./utilityRepository/fighterUtilities/muscleTrainingUtility";
 import { lineInSandUtility } from "./utilityRepository/fighterUtilities/lineInSandUtility";
 import { formationUtility } from "./utilityRepository/fighterUtilities/formationUtility";
 import { equipmentMaintenanceUtility } from "./utilityRepository/fighterUtilities/equipmentMaintenanceUtility";
@@ -35,6 +36,7 @@ export class UtilityFactory extends Factory {
             this.items.push(new shadowMeldUtility());
             this.items.push(new pickpocketUtility());
             this.items.push(new lockpickingUtility());
+            this.items.push(new muscleTrainingUtility());
             this.items.push(new lineInSandUtility());
             this.items.push(new formationUtility());
             this.items.push(new equipmentMaintenanceUtility());

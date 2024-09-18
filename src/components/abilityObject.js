@@ -12,6 +12,7 @@ var AbilityObject = /** @class */ (function () {
         this.isPerson = false;
         this.isQuestion = false;
         this.isStealth = false;
+        this.isTraining = false;
         this.name = name;
     }
     return AbilityObject;

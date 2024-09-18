@@ -4,6 +4,10 @@ import { WeightedList } from "../core/weightedList";
 import { AbilityObject } from "./abilityObject";
 
 //factory imports
+import { teachingTrainingAbilityObject } from "./abilityObjectRepository/training/teachingTrainingAbilityObject";
+import { rigidTrainingAbilityObject } from "./abilityObjectRepository/training/rigidTrainingAbilityObject";
+import { normalTrainingAbilityObject } from "./abilityObjectRepository/training/normalTrainingAbilityObject";
+import { casualTrainingAbilityObject } from "./abilityObjectRepository/training/casualTrainingAbilityObject";
 import { symetricTelepathyAbilityObject } from "./abilityObjectRepository/symetricCommunications/symetricTelepathyAbilityObject";
 import { symetricEmpathicAbilityObject } from "./abilityObjectRepository/symetricCommunications/symetricEmpathicAbilityObject";
 import { gainUnderstandingAbilityObject } from "./abilityObjectRepository/symetricCommunications/gainUnderstandingAbilityObject";
@@ -48,6 +52,10 @@ export class AbilityObjectFactory extends Factory {
         super(affector);
         if(list === undefined) {
             this.items = new WeightedList();
+            this.items.push(new teachingTrainingAbilityObject());
+            this.items.push(new rigidTrainingAbilityObject());
+            this.items.push(new normalTrainingAbilityObject());
+            this.items.push(new casualTrainingAbilityObject());
             this.items.push(new symetricTelepathyAbilityObject());
             this.items.push(new symetricEmpathicAbilityObject());
             this.items.push(new gainUnderstandingAbilityObject());

@@ -7,7 +7,7 @@ export class exhaustingModifer extends Modifier {
     
     constructor(affector: AffectsWeight) {
         super();
-        this.powerMultiplier = () => {return 2.5};
+        this.powerMultiplier = (x?: AffectsWeight) => {return x?.cooldown != Ability.Cooldown.Encounter ? 1.75 : 2.5};
         this.weight = (x?: AffectsWeight) => {return x?.cooldown != Ability.Cooldown.Encounter ? 0.3 : Utils.COMMON_MODIFIER}
         this.name = 'Exhausting';
         this.namePrefix = 'Exhausting';

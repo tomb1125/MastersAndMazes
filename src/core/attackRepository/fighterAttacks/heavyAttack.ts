@@ -12,7 +12,7 @@ export class heavyAttack extends Attack {
     constructor(affector?: AffectsWeight) {
         super('Heavy Strike');
         this.subtype = Attack.Subtype.Weapon;
-        this.coreDescription = 'When you hit, deal damage. This ability treats any bonuses to damage, from Abilities and Weapons, as doubled. '
+        this.coreDescription = 'When you hit, deal damage. This ability treats any bonuses to damage, from Abilities and Weapons, as doubled. You may exit your Fighter\'s Stance to reroll chance roll for this Attack. '
         this.chance = 0.3;
         this.manaCost = 0;
         this.range = 1;        

@@ -15,18 +15,18 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.colorfulLightAbilityObject = void 0;
+exports.teachingTrainingAbilityObject = void 0;
 var abilityObject_1 = require("../../abilityObject");
-var colorfulLightAbilityObject = /** @class */ (function (_super) {
-    __extends(colorfulLightAbilityObject, _super);
-    function colorfulLightAbilityObject() {
-        var _this = _super.call(this, 'Colorful') || this;
-        _this.description = 'The light can have any color you want and you can change its color by swift action. ';
-        _this.rarity = 1;
-        _this.prefix = 'Colorful';
-        _this.isLight = true;
+var teachingTrainingAbilityObject = /** @class */ (function (_super) {
+    __extends(teachingTrainingAbilityObject, _super);
+    function teachingTrainingAbilityObject() {
+        var _this = _super.call(this, 'Teaching') || this;
+        _this.description = 'One of your allies benefit from this training as well. ';
+        _this.rarity = 2;
+        _this.prefix = 'Teaching';
+        _this.isTraining = true;
         return _this;
     }
-    return colorfulLightAbilityObject;
+    return teachingTrainingAbilityObject;
 }(abilityObject_1.AbilityObject));
-exports.colorfulLightAbilityObject = colorfulLightAbilityObject;
+exports.teachingTrainingAbilityObject = teachingTrainingAbilityObject;

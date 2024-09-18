@@ -15,23 +15,25 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.blockUtility = void 0;
+exports.muscleTrainingUtility = void 0;
+var abilityObjectFactory_1 = require("../../../components/abilityObjectFactory");
 var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
 var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
-var blockUtility = /** @class */ (function (_super) {
-    __extends(blockUtility, _super);
-    function blockUtility() {
-        var _this = _super.call(this, 'Block') || this;
+var muscleTrainingUtility = /** @class */ (function (_super) {
+    __extends(muscleTrainingUtility, _super);
+    function muscleTrainingUtility() {
+        var _this = _super.call(this, 'Muscle Training') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
-        _this.cooldown = ability_1.Ability.Cooldown.Encounter;
-        _this.chance = 0.45;
-        _this.value = new descriptiveNumber_1.DescriptiveNumber(15);
+        _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isTraining; }).get(1)[0]);
+        _this.cooldown = ability_1.Ability.Cooldown.Adventure;
+        _this.chance = 0.7;
+        _this.value = new descriptiveNumber_1.DescriptiveNumber(10);
         _this.compensate();
-        _this.description = 'Use as reaction when being attacked. If you succeed you reduce damage by ' + _this.value.getDescription() + '. You gain 2 Boons for chance roll if you use a shield otherwise you gain 1 Boon for your next Attack against source of the attack. ';
+        _this.description = 'You can only perform this action when you have access to gymnasium, arena or other traning ground. Until end of Adventure increase your Strenght, Dexterity or Constitution by ' + _this.value.getDescription() + ' (but not above 70). Also gain 1 Experience Point. ' + _this.objects[0].description;
         return _this;
     }
-    return blockUtility;
+    return muscleTrainingUtility;
 }(utility_1.Utility));
-exports.blockUtility = blockUtility;
+exports.muscleTrainingUtility = muscleTrainingUtility;

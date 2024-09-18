@@ -12,7 +12,6 @@ export class equipmentMaintenanceUtility extends Utility {
         super('Equipment Maintenance');        
         this.weight = () => {return CharacterContext.classes.includes(CharacterContext.Class.Fighter) ? CharacterContext.IN_CLASS_MODIFIER : CharacterContext.OUT_OF_CLASS_WEIGHT}
 
-        this.cooldown = Ability.Cooldown.Daily; 
         this.chance = 0.9      
         this.value =  new DescriptiveNumber(10);
         this.compensate();

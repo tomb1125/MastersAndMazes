@@ -34,7 +34,7 @@ var stanceAttack = /** @class */ (function (_super) {
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.longDescription = utils_1.Utils.getRule(rule_1.Rule.Name.FighterStance).description;
         _this.initModifiers();
-        _this.modifiers.push(new compensationModifier_1.compensationModifier(_this, 'Fighter Stance', 0, -4));
+        _this.modifiers.push(new compensationModifier_1.compensationModifier(_this, 'Fighter Stance', 0, -1 * utils_1.Utils.PERMAMENT_DURATION_MODIFIER));
         _this.initDamage();
         _this.generate();
         return _this;

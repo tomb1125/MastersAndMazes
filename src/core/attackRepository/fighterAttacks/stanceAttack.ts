@@ -22,7 +22,7 @@ export class stanceAttack extends Attack {
         this.longDescription = Utils.getRule(Rule.Name.FighterStance).description;
 
         this.initModifiers();
-        this.modifiers.push(new compensationModifier(this, 'Fighter Stance', 0, -4))
+        this.modifiers.push(new compensationModifier(this, 'Fighter Stance', 0, - 1 * Utils.PERMAMENT_DURATION_MODIFIER))
         this.initDamage();        
         this.generate();
     }

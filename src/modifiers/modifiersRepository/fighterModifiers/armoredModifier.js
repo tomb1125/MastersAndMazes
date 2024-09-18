@@ -16,6 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.armoredModifier = void 0;
+var ability_1 = require("../../../core/ability");
 var characterContext_1 = require("../../../core/characterContext");
 var modifier_1 = require("../../modifier");
 var armoredModifier = /** @class */ (function (_super) {
@@ -23,7 +24,13 @@ var armoredModifier = /** @class */ (function (_super) {
     function armoredModifier(affector) {
         var _this = _super.call(this) || this;
         _this.powerMultiplier = function () { return 1.25; };
-        _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
+        _this.weight = function (affector) {
+            return affector != undefined && affector.type === ability_1.Ability.Type.Attack
+                ? characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter)
+                    ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER
+                    : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT
+                : 0;
+        };
         _this.name = 'Armored';
         _this.namePrefix = 'Armored';
         _this.description = 'Can only used while you have Armor Points.';

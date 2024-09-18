@@ -121,6 +121,7 @@ var Utils = /** @class */ (function () {
     Utils.AVG_POTIONS = 2.5;
     Utils.AVG_CLOSTEST_DISTANCE = 10;
     Utils.AVG_LONGEST_DISTANCE = 20;
+    Utils.PERMAMENT_DURATION_MODIFIER = Utils.getDurationCoeficient(10);
     Utils.EFFECT_WEIGHT_MOD = 1.1;
     Utils.RARE_MODIFIER = 0.1;
     Utils.COMMON_MODIFIER = 0.75;
@@ -135,10 +136,10 @@ var Utils = /** @class */ (function () {
             '&ensp;4 - Permanently gain 5 maximum Health.<br>' +
             '&ensp;5 - Raise any of your attributes by 10, but not above 50.<br>' +
             '&ensp;6 - Next time you see "you die" effect (eg. dying roll or corruption roll) you can ignore it.<br>'),
-        new rule_1.Rule(rule_1.Rule.Name.FighterStance, 'Fighter Stance - choose one effect below, you benefit from it until end of encounter. Only one fighter stance can be active at a time.<br>' +
+        new rule_1.Rule(rule_1.Rule.Name.FighterStance, 'Fighter\'s Stance - choose one effect below, you benefit from it until end of encounter. Only one fighter stance can be active at a time. You cannot enter Stance while not in combat, every Stance immidietly ends at the end of combat.<br>' +
             '&ensp;Precision - Gain 1 Boon with Weapon Attacks<br>' +
             '&ensp;Power - Deal +2 damage with Weapon Attacks<br>' +
-            '&ensp;Endurance - At the end of each turn regain 1 Mana or 3 Mana if you have less than 5 Mana.<br>')
+            '&ensp;Preparation - When you leave this stance, gain 10 Mana.<br>')
     ];
     return Utils;
 }());

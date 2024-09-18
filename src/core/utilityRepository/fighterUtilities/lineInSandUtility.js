@@ -17,7 +17,6 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.lineInSandUtility = void 0;
 var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
-var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
 var utility_1 = require("../../utility");
 var lineInSandUtility = /** @class */ (function (_super) {
@@ -25,11 +24,10 @@ var lineInSandUtility = /** @class */ (function (_super) {
     function lineInSandUtility() {
         var _this = _super.call(this, 'Line in a Sand') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
-        _this.cooldown = ability_1.Ability.Cooldown.Encounter;
-        _this.chance = 0.65;
+        _this.chance = 0.8; //TODO add value.
         _this.value = new descriptiveNumber_1.DescriptiveNumber(3);
         _this.compensate();
-        _this.description = 'Draw a line on a ground before any combat, standing on one side of this line. In the nearest combat you gain 1 Boon for all Attacks against enemies who crossed the line to your side or made a ranged attack through it to your side. This does not work on enemies who crossed the line before combat (should you draw it too far).';
+        _this.description = 'Draw a line on a ground, standing on one side of this line. In the current or nearest combat you gain 1 Boon for all Attacks against enemies who crossed the line to your side or made a ranged attack through it to your side. This does not work on enemies who crossed the line before combat (should you draw it too far). This bonus does not stack with other "Lines in Sand". ';
         return _this;
     }
     return lineInSandUtility;

@@ -21,6 +21,7 @@ export class Utils {
     public static AVG_POTIONS: number = 2.5;
     public static AVG_CLOSTEST_DISTANCE: number = 10;
     public static AVG_LONGEST_DISTANCE: number = 20;
+    public static PERMAMENT_DURATION_MODIFIER: number = Utils.getDurationCoeficient(10);
 
     public static EFFECT_WEIGHT_MOD: number = 1.1;
     public static RARE_MODIFIER: number = 0.1;
@@ -141,10 +142,10 @@ export class Utils {
             '&ensp;6 - Next time you see "you die" effect (eg. dying roll or corruption roll) you can ignore it.<br>'
         ),
         new Rule(Rule.Name.FighterStance, 
-            'Fighter Stance - choose one effect below, you benefit from it until end of encounter. Only one fighter stance can be active at a time.<br>'+
+            'Fighter\'s Stance - choose one effect below, you benefit from it until end of encounter. Only one fighter stance can be active at a time. You cannot enter Stance while not in combat, every Stance immidietly ends at the end of combat.<br>'+
             '&ensp;Precision - Gain 1 Boon with Weapon Attacks<br>'+
             '&ensp;Power - Deal +2 damage with Weapon Attacks<br>'+
-            '&ensp;Endurance - At the end of each turn regain 1 Mana or 3 Mana if you have less than 5 Mana.<br>'
+            '&ensp;Preparation - When you leave this stance, gain 10 Mana.<br>'
         )
     
     ]

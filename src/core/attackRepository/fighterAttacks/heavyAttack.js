@@ -24,7 +24,7 @@ var heavyAttack = /** @class */ (function (_super) {
     function heavyAttack(affector) {
         var _this = _super.call(this, 'Heavy Strike') || this;
         _this.subtype = attack_1.Attack.Subtype.Weapon;
-        _this.coreDescription = 'When you hit, deal damage. This ability treats any bonuses to damage, from Abilities and Weapons, as doubled. ';
+        _this.coreDescription = 'When you hit, deal damage. This ability treats any bonuses to damage, from Abilities and Weapons, as doubled. You may exit your Fighter\'s Stance to reroll chance roll for this Attack. ';
         _this.chance = 0.3;
         _this.manaCost = 0;
         _this.range = 1;

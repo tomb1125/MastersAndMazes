@@ -19,6 +19,10 @@ exports.AbilityObjectFactory = void 0;
 var factory_1 = require("../core/factory");
 var weightedList_1 = require("../core/weightedList");
 //factory imports
+var teachingTrainingAbilityObject_1 = require("./abilityObjectRepository/training/teachingTrainingAbilityObject");
+var rigidTrainingAbilityObject_1 = require("./abilityObjectRepository/training/rigidTrainingAbilityObject");
+var normalTrainingAbilityObject_1 = require("./abilityObjectRepository/training/normalTrainingAbilityObject");
+var casualTrainingAbilityObject_1 = require("./abilityObjectRepository/training/casualTrainingAbilityObject");
 var symetricTelepathyAbilityObject_1 = require("./abilityObjectRepository/symetricCommunications/symetricTelepathyAbilityObject");
 var symetricEmpathicAbilityObject_1 = require("./abilityObjectRepository/symetricCommunications/symetricEmpathicAbilityObject");
 var gainUnderstandingAbilityObject_1 = require("./abilityObjectRepository/symetricCommunications/gainUnderstandingAbilityObject");
@@ -64,6 +68,10 @@ var AbilityObjectFactory = /** @class */ (function (_super) {
         var _this = _super.call(this, affector) || this;
         if (list === undefined) {
             _this.items = new weightedList_1.WeightedList();
+            _this.items.push(new teachingTrainingAbilityObject_1.teachingTrainingAbilityObject());
+            _this.items.push(new rigidTrainingAbilityObject_1.rigidTrainingAbilityObject());
+            _this.items.push(new normalTrainingAbilityObject_1.normalTrainingAbilityObject());
+            _this.items.push(new casualTrainingAbilityObject_1.casualTrainingAbilityObject());
             _this.items.push(new symetricTelepathyAbilityObject_1.symetricTelepathyAbilityObject());
             _this.items.push(new symetricEmpathicAbilityObject_1.symetricEmpathicAbilityObject());
             _this.items.push(new gainUnderstandingAbilityObject_1.gainUnderstandingAbilityObject());

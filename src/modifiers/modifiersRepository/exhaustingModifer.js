@@ -23,7 +23,7 @@ var exhaustingModifer = /** @class */ (function (_super) {
     __extends(exhaustingModifer, _super);
     function exhaustingModifer(affector) {
         var _this = _super.call(this) || this;
-        _this.powerMultiplier = function () { return 2.5; };
+        _this.powerMultiplier = function (x) { return (x === null || x === void 0 ? void 0 : x.cooldown) != ability_1.Ability.Cooldown.Encounter ? 1.75 : 2.5; };
         _this.weight = function (x) { return (x === null || x === void 0 ? void 0 : x.cooldown) != ability_1.Ability.Cooldown.Encounter ? 0.3 : utils_1.Utils.COMMON_MODIFIER; };
         _this.name = 'Exhausting';
         _this.namePrefix = 'Exhausting';
