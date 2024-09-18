@@ -8,7 +8,7 @@
     "buildFactories": "node scripts/buildFactories.js",
     "browserify": "browserify index.js -o main.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cleanJs" : "rm .\\src\\**\\**\\**\\*.js,.\\src\\**\\**\\*.js ,.\\src\\**\\*.js,.\\src\\*.js,.\\main.js,.\\index.js"
+    "cleanJs" : "rm .\src\**\**\**\*.js,.\src\**\**\*.js ,.\src\**\*.js,.\src\*.js,.\main.js,.\index.js"
   },
   "author": "",
   "lib": "es2015",
