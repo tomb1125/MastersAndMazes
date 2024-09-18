@@ -16,7 +16,6 @@ import { restedModifer } from "./modifiersRepository/restedModifer";
 import { repeatableModifier } from "./modifiersRepository/repeatableModifier";
 import { piercingModifier } from "./modifiersRepository/piercingModifier";
 import { opportunistModifier } from "./modifiersRepository/opportunistModifier";
-import { nightlyModifier } from "./modifiersRepository/nightlyModifier";
 import { multipleModifier } from "./modifiersRepository/multipleModifier";
 import { undeadBaneModifier } from "./modifiersRepository/multiclassModifiers/undeadBaneModifier";
 import { cleanModifier } from "./modifiersRepository/multiclassModifiers/cleanModifier";
@@ -69,7 +68,6 @@ export class ModifierFactory extends Factory {
             this.items.push(new repeatableModifier(affector));
             this.items.push(new piercingModifier(affector));
             this.items.push(new opportunistModifier(affector));
-            this.items.push(new nightlyModifier(affector));
             this.items.push(new multipleModifier(affector));
             this.items.push(new undeadBaneModifier(affector));
             this.items.push(new cleanModifier(affector));

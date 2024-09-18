@@ -12,7 +12,7 @@ export class backstabAttack extends Attack {
         this.chance = 0.8;
         this.manaCost = 0;
         this.range = 1;
-        this.coreDescription = 'When you hit, deal damage. Double this damage if an enemy is not aware of you, is Stunned, is affected by Rogue\'s Poison or both is adjacent to your ally and did not attack you last turn';
+        this.coreDescription = 'When you hit, deal damage. Double this damage if an enemy is not aware of you, is Stunned, is affected by Rogue\'s Poison or both is adjacent to your ally and did not attack you last turn. ';
         this.subtype = Attack.Subtype.Spell;
         this.initModifiers();
         this.modifiers.push(new compensationModifier(this, 'Backstab', 0.75, 0))
