@@ -30,8 +30,6 @@ var animalSpeak = /** @class */ (function (_super) {
         _this.duration = new descriptiveNumber_1.DescriptiveNumber(1);
         _this.duration.description = 'ten minutes'; //new DescriptiveNumberFactory(this).filter((x: DescriptiveNumber) => x.type === DescriptiveNumber.Type.UtilityDuration).get(1)[0] as DescriptiveNumber;
         _this.chance = 0.5
-            / _this.objects[0].rarity
-            / _this.objects[1].rarity
             / _this.duration.getValue();
         _this.description = 'You can communicate with ' + _this.objects[1].description + ' for ' + _this.duration.getDescription() + '. ' + _this.objects[0].description;
         _this.compensate();

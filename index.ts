@@ -9,6 +9,7 @@ import { AttackFactory } from "./src/core/attackFactory";
 
 global.onSeedChange = (val): void => {
   CharacterContext.seed = val;
+  global.generateAbilities();
 };
 
 global.onLevelChange = (val): void => {
@@ -26,7 +27,6 @@ global.onClassChange = (val): void => {
 let showRulings: boolean = false;
 global.onRulingChange = (val): void => {
   showRulings = val;
-  console.log(val)
   global.generateAbilities();
 };
 

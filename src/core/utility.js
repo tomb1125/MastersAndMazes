@@ -57,6 +57,9 @@ var Utility = /** @class */ (function (_super) {
             _this.modifiers.push(mod);
         });
         this.chance = this.chance * modifierFactory_1.ModifierFactory.getDPSMultiplier(this.modifiers, this);
+        this.objects.forEach(function (obj) {
+            _this.chance /= obj.rarity;
+        });
         var bonus = modifierFactory_1.ModifierFactory.getDPSBonus(this.modifiers, this);
         if (bonus != 0) {
             if (this.value) {

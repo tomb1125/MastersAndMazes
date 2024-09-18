@@ -9,8 +9,8 @@ export class brightModifier extends Modifier {
         super();
         this.powerMultiplier = () => {return 1.5};
         this.weight = (x?: AffectsWeight) => {return x?.cooldown === Ability.Cooldown.Encounter ? Utils.COMMON_MODIFIER : 0} 
-        this.name = 'Masterful'
-        this.namePrefix = 'Masterful';
+        this.name = 'Bright'
+        this.namePrefix = 'Bright';
         this.description = 'Can only be used in bright light. ';
         this.modifierType = Modifier.Type.Constraint;
     }

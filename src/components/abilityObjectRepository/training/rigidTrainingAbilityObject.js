@@ -21,7 +21,7 @@ var rigidTrainingAbilityObject = /** @class */ (function (_super) {
     __extends(rigidTrainingAbilityObject, _super);
     function rigidTrainingAbilityObject() {
         var _this = _super.call(this, 'Rigid Training') || this;
-        _this.description = 'As long as you benefit from training reduce your maximum Health by 8. ';
+        _this.description = 'As long as you benefit from training reduce your maximum Health by 5. ';
         _this.rarity = 0.7;
         _this.prefix = 'Rigid';
         _this.isTraining = true;

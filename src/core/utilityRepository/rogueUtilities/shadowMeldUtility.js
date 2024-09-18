@@ -27,8 +27,7 @@ var shadowMeldUtility = /** @class */ (function (_super) {
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isStealth; }).get(1)[0]);
         _this.cooldown = ability_1.Ability.Cooldown.Daily;
-        _this.chance = 1.6
-            / _this.objects[0].rarity;
+        _this.chance = 1.6;
         _this.description = 'You slowly becoome almost undetectable, this effect lasts until you move. ' + _this.objects[0].description;
         _this.compensate();
         return _this;

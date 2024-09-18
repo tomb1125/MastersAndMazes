@@ -10,6 +10,7 @@ var randomNumberGenerator_1 = require("./src/core/randomNumberGenerator");
 var attackFactory_1 = require("./src/core/attackFactory");
 global.onSeedChange = function (val) {
     characterContext_1.CharacterContext.seed = val;
+    global.generateAbilities();
 };
 global.onLevelChange = function (val) {
     characterContext_1.CharacterContext.level = val;
@@ -24,7 +25,6 @@ global.onClassChange = function (val) {
 var showRulings = false;
 global.onRulingChange = function (val) {
     showRulings = val;
-    console.log(val);
     global.generateAbilities();
 };
 global.generateAbilities = function () {
@@ -1812,7 +1812,7 @@ var rigidTrainingAbilityObject = /** @class */ (function (_super) {
     __extends(rigidTrainingAbilityObject, _super);
     function rigidTrainingAbilityObject() {
         var _this = _super.call(this, 'Rigid Training') || this;
-        _this.description = 'As long as you benefit from training reduce your maximum Health by 8. ';
+        _this.description = 'As long as you benefit from training reduce your maximum Health by 5. ';
         _this.rarity = 0.7;
         _this.prefix = 'Rigid';
         _this.isTraining = true;
@@ -3397,6 +3397,9 @@ var Utility = /** @class */ (function (_super) {
             _this.modifiers.push(mod);
         });
         this.chance = this.chance * modifierFactory_1.ModifierFactory.getDPSMultiplier(this.modifiers, this);
+        this.objects.forEach(function (obj) {
+            _this.chance /= obj.rarity;
+        });
         var bonus = modifierFactory_1.ModifierFactory.getDPSBonus(this.modifiers, this);
         if (bonus != 0) {
             if (this.value) {
@@ -3550,8 +3553,7 @@ var auguryUtility = /** @class */ (function (_super) {
         _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isQuestion; }).get(1)[0]);
         _this.cooldown = ability_1.Ability.Cooldown.Adventure;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Cleric) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
-        var tempChance = 1.5
-            / _this.objects[0].rarity;
+        var tempChance = 1.5;
         if (tempChance > 2) {
             numberOfQuestions = new descriptiveNumber_1.DescriptiveNumber(3);
         }
@@ -3786,8 +3788,6 @@ var seanceUtility = /** @class */ (function (_super) {
         _this.duration = new descriptiveNumber_1.DescriptiveNumber(1);
         _this.duration.description = 'ten minutes';
         _this.chance = 0.85
-            / _this.objects[0].rarity
-            / _this.objects[1].rarity
             / _this.duration.getValue();
         _this.description = 'You can communicate with ' + _this.objects[1].description + ' for ' + _this.duration.getDescription() + '. ' + _this.objects[0].description;
         _this.compensate();
@@ -3830,8 +3830,6 @@ var animalSpeak = /** @class */ (function (_super) {
         _this.duration = new descriptiveNumber_1.DescriptiveNumber(1);
         _this.duration.description = 'ten minutes'; //new DescriptiveNumberFactory(this).filter((x: DescriptiveNumber) => x.type === DescriptiveNumber.Type.UtilityDuration).get(1)[0] as DescriptiveNumber;
         _this.chance = 0.5
-            / _this.objects[0].rarity
-            / _this.objects[1].rarity
             / _this.duration.getValue();
         _this.description = 'You can communicate with ' + _this.objects[1].description + ' for ' + _this.duration.getDescription() + '. ' + _this.objects[0].description;
         _this.compensate();
@@ -4178,8 +4176,7 @@ var shadowMeldUtility = /** @class */ (function (_super) {
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isStealth; }).get(1)[0]);
         _this.cooldown = ability_1.Ability.Cooldown.Daily;
-        _this.chance = 1.6
-            / _this.objects[0].rarity;
+        _this.chance = 1.6;
         _this.description = 'You slowly becoome almost undetectable, this effect lasts until you move. ' + _this.objects[0].description;
         _this.compensate();
         return _this;
@@ -4218,8 +4215,7 @@ var shadowStrideUtility = /** @class */ (function (_super) {
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Rogue) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.objects.push(new abilityObjectFactory_1.AbilityObjectFactory(_this).filter(function (x) { return x.isStealth; }).get(1)[0]);
         _this.cooldown = ability_1.Ability.Cooldown.Daily;
-        _this.chance = 1.4
-            / _this.objects[0].rarity;
+        _this.chance = 1.4;
         _this.description = 'You move about 50 meters in half a minute, being almost undetectable. ' + _this.objects[0].description;
         _this.compensate();
         return _this;

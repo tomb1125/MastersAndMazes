@@ -8,6 +8,7 @@ var randomNumberGenerator_1 = require("./src/core/randomNumberGenerator");
 var attackFactory_1 = require("./src/core/attackFactory");
 global.onSeedChange = function (val) {
     characterContext_1.CharacterContext.seed = val;
+    global.generateAbilities();
 };
 global.onLevelChange = function (val) {
     characterContext_1.CharacterContext.level = val;
@@ -22,7 +23,6 @@ global.onClassChange = function (val) {
 var showRulings = false;
 global.onRulingChange = function (val) {
     showRulings = val;
-    console.log(val);
     global.generateAbilities();
 };
 global.generateAbilities = function () {
