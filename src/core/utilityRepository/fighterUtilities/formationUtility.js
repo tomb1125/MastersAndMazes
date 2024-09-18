@@ -15,27 +15,26 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.heavyAttack = void 0;
-var compensationModifier_1 = require("../../../modifiers/modifiersRepository/compensationModifier");
-var attack_1 = require("../../attack");
+exports.formationUtility = void 0;
+var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
+var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
-var heavyAttack = /** @class */ (function (_super) {
-    __extends(heavyAttack, _super);
-    function heavyAttack(affector) {
-        var _this = _super.call(this, 'Heavy Strike') || this;
-        _this.subtype = attack_1.Attack.Subtype.Weapon;
-        _this.coreDescription = 'When you hit, deal damage. This ability treats any bonuses to damage, from Abilities and Weapons, as doubled. ';
-        _this.chance = 0.3;
-        _this.manaCost = 0;
-        _this.range = 1;
-        _this.subtype = attack_1.Attack.Subtype.Weapon;
+var rule_1 = require("../../rule");
+var utility_1 = require("../../utility");
+var utils_1 = require("../../utils");
+var formationUtility = /** @class */ (function (_super) {
+    __extends(formationUtility, _super);
+    function formationUtility() {
+        var _this = _super.call(this, 'Block') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
-        _this.initModifiers();
-        _this.modifiers.push(new compensationModifier_1.compensationModifier(_this, 'Heavy', 0, -2));
-        _this.initDamage();
-        _this.generate();
+        _this.cooldown = ability_1.Ability.Cooldown.Encounter;
+        _this.chance = 0.65;
+        _this.value = new descriptiveNumber_1.DescriptiveNumber(3);
+        _this.compensate();
+        _this.description = 'As a swift action choose two (you may select them in any order): you and one adjacent ally regain ' + _this.value.getDescription() + ' Armor Points; you and one adjacent move ' + _this.value.getDescription() + ' squares; forcefully push one adjacent enemy ' + _this.value.getDescription() + ' squares';
+        _this.longDescription = utils_1.Utils.getRule(rule_1.Rule.Name.ForcefulPush).description;
         return _this;
     }
-    return heavyAttack;
-}(attack_1.Attack));
-exports.heavyAttack = heavyAttack;
+    return formationUtility;
+}(utility_1.Utility));
+exports.formationUtility = formationUtility;
