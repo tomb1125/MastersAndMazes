@@ -15,26 +15,23 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.formationUtility = void 0;
+exports.lineInSandUtility = void 0;
 var descriptiveNumber_1 = require("../../../components/descriptiveNumber");
 var ability_1 = require("../../ability");
 var characterContext_1 = require("../../characterContext");
-var rule_1 = require("../../rule");
 var utility_1 = require("../../utility");
-var utils_1 = require("../../utils");
-var formationUtility = /** @class */ (function (_super) {
-    __extends(formationUtility, _super);
-    function formationUtility() {
-        var _this = _super.call(this, 'Formation') || this;
+var lineInSandUtility = /** @class */ (function (_super) {
+    __extends(lineInSandUtility, _super);
+    function lineInSandUtility() {
+        var _this = _super.call(this, 'Line in a Sand') || this;
         _this.weight = function () { return characterContext_1.CharacterContext.classes.includes(characterContext_1.CharacterContext.Class.Fighter) ? characterContext_1.CharacterContext.IN_CLASS_MODIFIER : characterContext_1.CharacterContext.OUT_OF_CLASS_WEIGHT; };
         _this.cooldown = ability_1.Ability.Cooldown.Encounter;
         _this.chance = 0.65;
         _this.value = new descriptiveNumber_1.DescriptiveNumber(3);
         _this.compensate();
-        _this.description = 'As a swift action choose two (you may select them in any order): you and one adjacent ally regain ' + _this.value.getDescription() + ' Armor Points; you and one adjacent ally move ' + _this.value.getDescription() + ' squares; forcefully push one adjacent enemy ' + _this.value.getDescription() + ' squares. ';
-        _this.longDescription = utils_1.Utils.getRule(rule_1.Rule.Name.ForcefulPush).description;
+        _this.description = 'Draw a line on a ground before any combat, standing on one side of this line. In the nearest combat you gain 1 Boon for all Attacks against enemies who crossed the line to your side or made a ranged attack through it to your side. This does not work on enemies who crossed the line before combat (should you draw it too far).';
         return _this;
     }
-    return formationUtility;
+    return lineInSandUtility;
 }(utility_1.Utility));
-exports.formationUtility = formationUtility;
+exports.lineInSandUtility = lineInSandUtility;

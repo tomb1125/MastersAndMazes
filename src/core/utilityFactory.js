@@ -26,6 +26,7 @@ var shadowStrideUtility_1 = require("./utilityRepository/rogueUtilities/shadowSt
 var shadowMeldUtility_1 = require("./utilityRepository/rogueUtilities/shadowMeldUtility");
 var pickpocketUtility_1 = require("./utilityRepository/rogueUtilities/pickpocketUtility");
 var lockpickingUtility_1 = require("./utilityRepository/rogueUtilities/lockpickingUtility");
+var lineInSandUtility_1 = require("./utilityRepository/fighterUtilities/lineInSandUtility");
 var formationUtility_1 = require("./utilityRepository/fighterUtilities/formationUtility");
 var equipmentMaintenanceUtility_1 = require("./utilityRepository/fighterUtilities/equipmentMaintenanceUtility");
 var enticeRespectUtility_1 = require("./utilityRepository/fighterUtilities/enticeRespectUtility");
@@ -50,6 +51,7 @@ var UtilityFactory = /** @class */ (function (_super) {
             _this.items.push(new shadowMeldUtility_1.shadowMeldUtility());
             _this.items.push(new pickpocketUtility_1.pickpocketUtility());
             _this.items.push(new lockpickingUtility_1.lockpickingUtility());
+            _this.items.push(new lineInSandUtility_1.lineInSandUtility());
             _this.items.push(new formationUtility_1.formationUtility());
             _this.items.push(new equipmentMaintenanceUtility_1.equipmentMaintenanceUtility());
             _this.items.push(new enticeRespectUtility_1.enticeRespectUtility());
