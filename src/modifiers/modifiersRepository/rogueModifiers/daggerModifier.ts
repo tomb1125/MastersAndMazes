@@ -7,7 +7,7 @@ export class daggerModifier extends Modifier {
     
     constructor(affector: AffectsWeight) {
         super();
-        this.powerMultiplier = () => 1.3; 
+        this.powerMultiplier = () => 1.4; 
 
         this.weight = (affector) => {
             return affector != undefined && affector.type === Ability.Type.Attack
