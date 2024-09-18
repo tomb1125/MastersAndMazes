@@ -10,7 +10,6 @@ export class Modifier implements HasWeigth {
     powerBonus: (x: CanAffectModifier) => number = (x: CanAffectModifier) => {return 0};
     powerMultiplier: (x: CanAffectModifier) => number = (x: CanAffectModifier) => {return 1};
     modifierType: Modifier.Type;
-    elements: Ability.Element[];
     weight: (x?: AffectsWeight) => number = (x?: AffectsWeight) => {return 1};
     chance: number = 1;
     numericComponents: DescriptiveNumber[];

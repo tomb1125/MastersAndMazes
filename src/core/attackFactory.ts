@@ -9,7 +9,7 @@ import { backstabAttack } from "./attackRepository/rogueAttacks/backstabAttack";
 import { stanceAttack } from "./attackRepository/fighterAttacks/stanceAttack";
 import { heavyAttack } from "./attackRepository/fighterAttacks/heavyAttack";
 import { radiantRayAttack } from "./attackRepository/clericAttacks/radiantRayAttack";
-import { empoweringStrikeAttack } from "./attackRepository/clericAttacks/empoweringStrikeAttack";
+import { divineStrikeAttack } from "./attackRepository/clericAttacks/divineStrikeAttack";
 import { basicSpell } from "./attackRepository/basicSpell";
 import { basicAttack } from "./attackRepository/basicAttack";
 export class AttackFactory extends Factory {
@@ -22,7 +22,7 @@ export class AttackFactory extends Factory {
             this.items.push(new stanceAttack(affector));
             this.items.push(new heavyAttack(affector));
             this.items.push(new radiantRayAttack(affector));
-            this.items.push(new empoweringStrikeAttack(affector));
+            this.items.push(new divineStrikeAttack(affector));
             this.items.push(new basicSpell(affector));
             this.items.push(new basicAttack(affector));
         } else {

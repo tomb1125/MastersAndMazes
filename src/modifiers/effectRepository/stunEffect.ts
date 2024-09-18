@@ -12,8 +12,6 @@ export class stunEffect extends Effect {
         this.name = 'Stun'; 
         this.namePrefix = 'Stunning'; 
         this.description = 'Stunned - character cannot take actions. Stunned ends at the end of a turn.';
-        this.subtype = Effect.Subtype.Debuff;
-        this.elements =  [[Ability.Element.Physical, Ability.Element.Ice].sort(() => 0.5 - Utils.random())[1]];
-       
+        this.subtype = Effect.Subtype.Debuff;       
     }
 }
