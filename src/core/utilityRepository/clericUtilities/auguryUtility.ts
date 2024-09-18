@@ -16,8 +16,7 @@ export class auguryUtility extends Utility {
         this.objects.push(new AbilityObjectFactory(this).filter((x: AbilityObject) => x.isQuestion).get(1)[0]);
         this.cooldown = Ability.Cooldown.Adventure;
         this.weight = () => {return CharacterContext.classes.includes(CharacterContext.Class.Cleric) ? CharacterContext.IN_CLASS_MODIFIER : CharacterContext.OUT_OF_CLASS_WEIGHT}
-        let tempChance: number = 1.5
-            / this.objects[0].rarity 
+        let tempChance: number = 1.5;
 
         if(tempChance > 2) {
             numberOfQuestions = new DescriptiveNumber(3);

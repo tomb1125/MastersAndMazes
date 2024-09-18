@@ -61,6 +61,9 @@ export class Utility extends Activity implements CanAffectModifier, HasWeigth {
       })
 
       this.chance = this.chance * ModifierFactory.getDPSMultiplier(this.modifiers, this)
+      this.objects.forEach((obj: AbilityObject) => {
+        this.chance /= obj.rarity;
+      })
       
       const bonus = ModifierFactory.getDPSBonus(this.modifiers, this);
       if(bonus != 0) {

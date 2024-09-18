@@ -14,7 +14,6 @@ export class shadowMeldUtility extends Utility {
 
         this.cooldown = Ability.Cooldown.Daily;
         this.chance = 1.6 
-            / this.objects[0].rarity 
         this.description = 'You slowly becoome almost undetectable, this effect lasts until you move. '+this.objects[0].description;
         this.compensate();
     }
