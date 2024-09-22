@@ -1,3 +1,4 @@
+import { ClassDetails } from "../../characters/classDetails";
 import { ClassUtils } from "../../characters/classUtils";
 import { AffectsWeight } from "../affectsWeight";
 import { Attack } from "../attack";
@@ -20,6 +21,10 @@ export class basicSpell extends Attack {
                 return 0.2;
             }
         }
+        
+        const classRoll = Utils.D(CharacterContext.classes.length) - 1;
+        const characterClass: ClassDetails = ClassUtils.getClass(CharacterContext.Class[CharacterContext.classes[classRoll]])
+        this.elements = [characterClass.elements.sort(() => 0.5 - Utils.random())[0]];
         this.subtype = Attack.Subtype.Spell;
         this.coreDescription = 'When you hit, deal damage. '
         this.generate();

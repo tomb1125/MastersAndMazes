@@ -1,3 +1,4 @@
+import { ClassDetails } from "../../characters/classDetails";
 import { ClassUtils } from "../../characters/classUtils";
 import { AffectsWeight } from "../affectsWeight";
 import { Attack } from "../attack";
@@ -14,7 +15,8 @@ export class basicAttack extends Attack {
         this.weight = (x?: AffectsWeight) => {
             
             const classRoll = Utils.D(CharacterContext.classes.length) - 1;
-            const primaryStat = ClassUtils.getClass(CharacterContext.Class[CharacterContext.classes[classRoll]]).primaryAttribute;
+            const characterClass: ClassDetails = ClassUtils.getClass(CharacterContext.Class[CharacterContext.classes[classRoll]])
+            const primaryStat = characterClass.primaryAttribute;
 
             if([CharacterContext.Attribute.Strength, CharacterContext.Attribute.Dexterity, CharacterContext.Attribute.Constitution].includes(primaryStat)) {
                 return 1;
@@ -23,6 +25,9 @@ export class basicAttack extends Attack {
             }
         }
         
+        const classRoll = Utils.D(CharacterContext.classes.length) - 1;
+        const characterClass: ClassDetails = ClassUtils.getClass(CharacterContext.Class[CharacterContext.classes[classRoll]])
+        this.elements = [characterClass.elements.sort(() => 0.5 - Utils.random())[0]];
         this.generate();
     }
 }

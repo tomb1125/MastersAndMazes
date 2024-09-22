@@ -18,7 +18,7 @@ export class invisibilityEffect extends Effect {
         };
         this.name = 'Invisibilty '+this.duration ; 
         this.namePrefix = 'Vanishing'; 
-        this.description = 'Invisibilty - if you moved while invisible, you cannot be targeted by enemies without truesight and are considered hidden until you attack. This effect lasts '+this.duration+' turns.';
+        this.description = 'Invisibilty - whenever you move you become untargetable until you attack. This effect lasts '+this.duration+' turns and does not end with attacking.';
         this.subtype = Effect.Subtype.Buff;
       
     }

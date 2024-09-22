@@ -4,6 +4,7 @@ import { Utility } from "./utility";
 import { WeightedList } from "./weightedList";
 
 //factory imports
+import { invisibilityUtility } from "./utilityRepository/wizardUtilities/invisibilityUtility";
 import { skillBonusUtility } from "./utilityRepository/skillBonusUtility";
 import { tumbleUtility } from "./utilityRepository/rogueUtilities/tumbleUtility";
 import { shiftBlameUtility } from "./utilityRepository/rogueUtilities/shiftBlameUtility";
@@ -29,6 +30,7 @@ export class UtilityFactory extends Factory {
         super(affector);
         if(list === undefined) {
             this.items = new WeightedList();
+            this.items.push(new invisibilityUtility());
             this.items.push(new skillBonusUtility());
             this.items.push(new tumbleUtility());
             this.items.push(new shiftBlameUtility());

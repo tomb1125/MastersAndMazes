@@ -24,6 +24,11 @@ export class Modifier implements HasWeigth {
         this.name = otherName;
       }
     }
+
+    silence(): void {
+      this.namePrefix = '';
+      this.name = '';
+    }
     
   }
 

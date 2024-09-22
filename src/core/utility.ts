@@ -37,7 +37,7 @@ export class Utility extends Activity implements CanAffectModifier, HasWeigth {
       let desc: string = '' +
       '<b>Name: ' + this.generateName() +
       '<br>Chance</b>: ' + Math.ceil(this.chance * 100) + '%' +
-      '<br><b>Modifiers</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + ', ' + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
+      '<br><b>Modifiers</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + (mod.name != '' ? ', ' : '') + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
       '<br><b>Components</b>: ' + this.objects.reduce(function (sum, mod) { return sum + ', ' + mod.name }, '').slice(2) +
       '<br><b>Description</b>: ' + this.description + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
       '<br><b>Cooldown</b>: ' + Ability.Cooldown[this.cooldown];    
@@ -66,19 +66,21 @@ export class Utility extends Activity implements CanAffectModifier, HasWeigth {
       })
       
       const bonus = ModifierFactory.getDPSBonus(this.modifiers, this);
-      if(bonus != 0) {
+      if(bonus < 0) {
+        this.chance *= Utils.getDPS(CharacterContext.level) / (Utils.getDPS(CharacterContext.level) - bonus)
+      } else if(bonus != 0) {
         if(this.value) {
-          this.value.addBonus(bonus * this.value.getValue() / Utils.getDPS(1))
+          this.value.addBonus(bonus * this.value.getValue() / Utils.getDPS(CharacterContext.level))
         } else {
           this.chance += bonus / Utils.getDPS(CharacterContext.level);
         }
       }
 
       const repeat: repeatableModifier = new repeatableModifier();
-      if(this.chance > 1) {
+      if(this.chance > 1) { 
         if(this.cooldown === Ability.Cooldown.Encounter) {
           if(!this.value) {
-            throw 'cooldown ability with no value to compensate '+JSON.stringify(this);
+            throw 'encounter cooldown ability with no value to compensate '+JSON.stringify(this);
           }
 
           const newChanceNumeric: number = 0.9;

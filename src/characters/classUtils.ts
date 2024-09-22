@@ -3,6 +3,7 @@ import { ClassDetails } from "./classDetails";
 import { ClericClass } from "./classes/cleric";
 import { RogueClass } from "./classes/rogue";
 import { FighterClass } from "./classes/fighter";
+import { WizardClass } from "./classes/wizard";
 
 export class ClassUtils {
   
@@ -28,6 +29,8 @@ export class ClassUtils {
         return new RogueClass();
       } else if(className === 'Fighter') {
         return new FighterClass();
+      } else if(className === 'Wizard') {
+        return new WizardClass();
       } else {
         throw 'unsupported class '+className;
       }

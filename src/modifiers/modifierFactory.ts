@@ -3,6 +3,7 @@ import { Modifier } from "./modifier"
 import { AffectsWeight } from "../core/affectsWeight";
 import { Factory } from "../core/factory";
 //factory imports
+import { manaFumeModifier } from "./modifiersRepository/wizardModifiers/manaFumeModifier";
 import { vengefulModifier } from "./modifiersRepository/vengefulModifier";
 import { ultimateModifier } from "./modifiersRepository/ultimateModifier";
 import { signatureModifier } from "./modifiersRepository/signatureModifier";
@@ -18,6 +19,7 @@ import { piercingModifier } from "./modifiersRepository/piercingModifier";
 import { opportunistModifier } from "./modifiersRepository/opportunistModifier";
 import { multipleModifier } from "./modifiersRepository/multipleModifier";
 import { undeadBaneModifier } from "./modifiersRepository/multiclassModifiers/undeadBaneModifier";
+import { siegeModifier } from "./modifiersRepository/multiclassModifiers/siegeModifier";
 import { cleanModifier } from "./modifiersRepository/multiclassModifiers/cleanModifier";
 import { momentumModifier } from "./modifiersRepository/momentumModifier";
 import { mobileModifier } from "./modifiersRepository/mobileModifier";
@@ -55,6 +57,7 @@ export class ModifierFactory extends Factory {
         super(affector);
         if(list === undefined) {
             this.items = new WeightedList();
+            this.items.push(new manaFumeModifier(affector));
             this.items.push(new vengefulModifier(affector));
             this.items.push(new ultimateModifier(affector));
             this.items.push(new signatureModifier(affector));
@@ -70,6 +73,7 @@ export class ModifierFactory extends Factory {
             this.items.push(new opportunistModifier(affector));
             this.items.push(new multipleModifier(affector));
             this.items.push(new undeadBaneModifier(affector));
+            this.items.push(new siegeModifier(affector));
             this.items.push(new cleanModifier(affector));
             this.items.push(new momentumModifier(affector));
             this.items.push(new mobileModifier(affector));

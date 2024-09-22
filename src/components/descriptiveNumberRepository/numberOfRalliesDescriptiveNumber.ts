@@ -7,7 +7,7 @@ export class numberOfRalliesDescriptiveNumber extends DescriptiveNumber {
         super(Utils.AVG_RALLIES);  
         this.prefix = 'Stalwart'  
         this.lowValue = 0;    
-        this.description = 'the number of times you rallied today (see rules)';
+        this.description = 'the number of times you rolled for dying today.';
         this.type = DescriptiveNumber.Type.Common;
     }
 }

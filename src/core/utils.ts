@@ -17,7 +17,7 @@ export class Utils {
     public static AVG_ENEMIES_PER_PLAYER: number = 2;
     public static AVG_TURN: number = 4;
     public static AVG_SCARS: number = 2.5;
-    public static AVG_RALLIES: number = 0.8;
+    public static AVG_RALLIES: number = 1.1;
     public static AVG_POTIONS: number = 2.5;
     public static AVG_CLOSTEST_DISTANCE: number = 10;
     public static AVG_LONGEST_DISTANCE: number = 20;

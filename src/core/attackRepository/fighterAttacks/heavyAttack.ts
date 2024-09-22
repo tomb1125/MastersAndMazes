@@ -1,5 +1,6 @@
 import { ClassUtils } from "../../../characters/classUtils";
 import { compensationModifier } from "../../../modifiers/modifiersRepository/compensationModifier";
+import { Ability } from "../../ability";
 import { AffectsWeight } from "../../affectsWeight";
 import { Attack } from "../../attack";
 import { CharacterContext } from "../../characterContext";
@@ -16,7 +17,7 @@ export class heavyAttack extends Attack {
         this.chance = 0.3;
         this.manaCost = 0;
         this.range = 1;        
-        this.subtype = Attack.Subtype.Weapon;
+        this.elements = [Ability.Element.Heavy];
 
         this.weight = () => {return CharacterContext.classes.includes(CharacterContext.Class.Fighter) ? CharacterContext.IN_CLASS_MODIFIER : CharacterContext.OUT_OF_CLASS_WEIGHT}
 

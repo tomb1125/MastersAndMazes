@@ -11,7 +11,7 @@ export class mobileModifier extends Modifier {
         this.weight = (x?: AffectsWeight) => {return x?.cooldown === Ability.Cooldown.Encounter ? 0.75 * Utils.COMMON_MODIFIER : 0}
         this.name = 'Mobile';
         this.namePrefix = 'Mobile';
-        this.description = 'Before you use this ability you may move 5 squares.';
+        this.description = 'Before or after you use this ability you may move 5 squares.';
         this.modifierType = Modifier.Type.Improvement;
     }
 }

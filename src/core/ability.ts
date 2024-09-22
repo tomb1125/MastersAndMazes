@@ -13,6 +13,8 @@ export class Ability implements AffectsWeight {
       if (otherName !== undefined) {
         this.name = otherName;
       }
+
+      this.elements = [];
     }
 
     generate() {

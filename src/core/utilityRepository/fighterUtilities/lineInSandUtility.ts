@@ -15,7 +15,7 @@ export class lineInSandUtility extends Utility {
         this.chance = 0.8; //TODO add value.
         this.value = new DescriptiveNumber(3);
         this.compensate();
-        this.description = 'Draw a line on a ground, standing on one side of this line. In the current or nearest combat you gain 1 Boon for all Attacks against enemies who crossed the line to your side or made a ranged attack through it to your side. This does not work on enemies who crossed the line before combat (should you draw it too far). This bonus does not stack with other "Lines in Sand". ';
+        this.description = 'Draw a line on a ground, standing on one side of this line. In the current or nearest combat you gain 1 Boon for all Attacks against enemies who crossed the line to your side or made a ranged attack through it to your side. This does not work on enemies who crossed the line before combat (should you draw it outside combat map). This bonus does not stack with other "Lines in Sand". ';
 
     }
 }

@@ -8,12 +8,18 @@ import { Modifier } from "../modifier";
 
 export class gainEffectModifier extends Modifier {
     
-    constructor(aff: AffectsWeight) {
+    constructor(aff: AffectsWeight, effect?: Effect) {
         super();
         let buffFactory: EffectFactory = new EffectFactory(aff).filter((eff: Effect) => eff.subtype === Effect.Subtype.Buff);
         this.modifierType = Modifier.Type.Improvement;
         this.weight = (x?: AffectsWeight) => {return x?.cooldown === Ability.Cooldown.Encounter ? buffFactory.items.items.length * Utils.EFFECT_WEIGHT_MOD * Utils.COMMON_MODIFIER : 0}
-        this.effect = buffFactory.get(1)[0] as Effect;
+
+        if(effect) {
+            this.effect = effect;
+        } else {
+            this.effect = buffFactory.get(1)[0] as Effect;
+        }
+        
         this.description = 'When you succeed roll, also gain an effect: '+this.effect.description;
         this.namePrefix = this.effect.namePrefix;
         this.name = 'Gain '+this.effect.name;

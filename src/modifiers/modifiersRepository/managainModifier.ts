@@ -13,7 +13,7 @@ export class managainModifier extends Modifier {
         this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Attack ? Utils.COMMON_MODIFIER : 0}
         this.name = 'Mana Gain'; 
         this.namePrefix = 'Mana Leeching'; 
-        this.description = 'When you hit, gain mana equal to damage taken by enemy.';
+        this.description = 'When you hit, gain mana equal to damage dealt.';
         this.powerMultiplier = (x: CanAffectModifier) => {return 0.75};
     }
 }

@@ -13,7 +13,7 @@ export class lifestealModifier extends Modifier {
         this.weight = (x?: AffectsWeight) => {return x?.type === Ability.Type.Attack ? Utils.COMMON_MODIFIER : 0}
         this.name = 'Lifesteal'; 
         this.namePrefix = 'Leeching'; 
-        this.description = 'When you hit, heal yourself equal to damage taken by enemy.';
+        this.description = 'When you hit, heal yourself equal to damage dealt.';
         this.powerMultiplier = (x: CanAffectModifier) => {return 0.55}; //TODO this should be bonus equal to damage... however damage is set after modifiers...s
     }
 }
