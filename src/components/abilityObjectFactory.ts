@@ -34,6 +34,11 @@ import { revealingLightAbilityObject } from "./abilityObjectRepository/light/rev
 import { controllableLightAbilityObject } from "./abilityObjectRepository/light/controllableLightAbilityObject";
 import { colorfulLightAbilityObject } from "./abilityObjectRepository/light/colorfulLightAbilityObject";
 import { blindingLightAbilityObject } from "./abilityObjectRepository/light/blindingLightAbilityObject";
+import { stillIllussionAbilityObject } from "./abilityObjectRepository/illusions/stillIllussionAbilityObject";
+import { soundIllussionAbilityObject } from "./abilityObjectRepository/illusions/soundIllussionAbilityObject";
+import { shadowyIllussionAbilityObject } from "./abilityObjectRepository/illusions/shadowyIllussionAbilityObject";
+import { perfectIllussionAbilityObject } from "./abilityObjectRepository/illusions/perfectIllussionAbilityObject";
+import { commonIllussionAbilityObject } from "./abilityObjectRepository/illusions/commonIllussionAbilityObject";
 import { warriorCorpseAbilityObject } from "./abilityObjectRepository/corpses/warriorCorpseAbilityObject";
 import { unfinishedBusinessAbilityObject } from "./abilityObjectRepository/corpses/unfinishedBusinessAbilityObject";
 import { soulStealingAbilityObject } from "./abilityObjectRepository/corpses/soulStealingAbilityObject";
@@ -82,6 +87,11 @@ export class AbilityObjectFactory extends Factory {
             this.items.push(new controllableLightAbilityObject());
             this.items.push(new colorfulLightAbilityObject());
             this.items.push(new blindingLightAbilityObject());
+            this.items.push(new stillIllussionAbilityObject());
+            this.items.push(new soundIllussionAbilityObject());
+            this.items.push(new shadowyIllussionAbilityObject());
+            this.items.push(new perfectIllussionAbilityObject());
+            this.items.push(new commonIllussionAbilityObject());
             this.items.push(new warriorCorpseAbilityObject());
             this.items.push(new unfinishedBusinessAbilityObject());
             this.items.push(new soulStealingAbilityObject());

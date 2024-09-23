@@ -11,6 +11,7 @@ export class AbilityObject implements HasWeigth {
     isAnimal : boolean = false;
     isCommunication : boolean = false;
     isCorpse : boolean = false;
+    isIllusion : boolean = false;
     isLight: boolean = false;
     isMovement: boolean = false;
     isPerson: boolean = false;
