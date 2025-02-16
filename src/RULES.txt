@@ -38,7 +38,7 @@ After each combat regain all Mana and Armor Points
 After rest (8 hours with sleep) regain 10 Health.
 At the start of each combat gain Armor Points from your equipment, they are reduced before health, when you take damage.
 
-When you are reduced to 0 HP, gain 1 Experience Point and roll for dying: Roll D10 and add number of your Scars:
+When you are reduced to 0 HP, gain 1 Experience Point and roll for Dying: Roll D10 and add number of your Scars:
 1-9 - You become unconscious until end of combat. After combat regain 1 HP and gain 1 Scar.
 10 - You rally! Set your HP to 1 and until start of your turn you have 30% chance to ignore any damage.
 11-20 - roll D10 again: 1-3 you die, 4-10 you rally as above.
@@ -81,7 +81,7 @@ Streetwise (CHA)
 0 Scars. Each time you are close to death, add a Scar. The more Scars you have the more likely you are to die or perform heroic deeds. If you have more than 10 Scars things start to become really dangereus.
 
 LEVELING UP
-Whenever you win a combat encounter, gain 2 XP
+Whenever you win an encounter, gain 2 XP
 At the end of an adventure GM grants extra XP.
 Certain abilities grant XP.
 At the end of adventure check your XP, your character has a level for each 10 XP.

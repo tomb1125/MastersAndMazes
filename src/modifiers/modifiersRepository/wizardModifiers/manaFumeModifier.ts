@@ -17,7 +17,7 @@ export class manaFumeModifier extends Modifier {
           };                
         this.name = 'Mana Fume';
         this.namePrefix = 'Fuming';
-        this.description = 'If you hit and are left with 4 or less Mana, gain 10 Mana.';
+        this.description = 'If you\'ve hit and have 4 or less Mana, gain 10 Mana.';
         this.modifierType = Modifier.Type.Improvement;
     }
 }

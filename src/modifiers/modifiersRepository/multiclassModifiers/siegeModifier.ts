@@ -7,7 +7,7 @@ export class siegeModifier extends Modifier {
     
     constructor(affector: AffectsWeight) {
         super();
-        this.powerMultiplier = () => 1.6; 
+        this.powerMultiplier = () => 1.3; 
         this.weight = (affector) => {
           return affector != undefined && affector.type === Ability.Type.Attack
             ? CharacterContext.classes.includes(CharacterContext.Class.Wizard) ||
@@ -18,7 +18,7 @@ export class siegeModifier extends Modifier {
         };
         this.name = 'Siege';
         this.namePrefix = 'Siege';
-        this.description = 'Can be only if you are 10 or more squares away from target.';
+        this.description = 'Can be only used if you are 10 or more squares away from target.';
         this.modifierType = Modifier.Type.Constraint;
     }
 }

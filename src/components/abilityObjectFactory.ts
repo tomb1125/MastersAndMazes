@@ -38,6 +38,7 @@ import { stillIllussionAbilityObject } from "./abilityObjectRepository/illusions
 import { soundIllussionAbilityObject } from "./abilityObjectRepository/illusions/soundIllussionAbilityObject";
 import { shadowyIllussionAbilityObject } from "./abilityObjectRepository/illusions/shadowyIllussionAbilityObject";
 import { perfectIllussionAbilityObject } from "./abilityObjectRepository/illusions/perfectIllussionAbilityObject";
+import { detailedIllussionAbilityObject } from "./abilityObjectRepository/illusions/detailedIllussionAbilityObject";
 import { commonIllussionAbilityObject } from "./abilityObjectRepository/illusions/commonIllussionAbilityObject";
 import { warriorCorpseAbilityObject } from "./abilityObjectRepository/corpses/warriorCorpseAbilityObject";
 import { unfinishedBusinessAbilityObject } from "./abilityObjectRepository/corpses/unfinishedBusinessAbilityObject";
@@ -45,6 +46,10 @@ import { soulStealingAbilityObject } from "./abilityObjectRepository/corpses/sou
 import { skeletonAbilityObject } from "./abilityObjectRepository/corpses/skeletonAbilityObject";
 import { humanoidCorpseAbilityObject } from "./abilityObjectRepository/corpses/humanoidCorpseAbilityObject";
 import { freshCorpseAbilityObject } from "./abilityObjectRepository/corpses/freshCorpseAbilityObject";
+import { stoneMaterialAbilityObject } from "./abilityObjectRepository/bulkMaterials/stoneMaterialAbilityObject";
+import { paperMaterialAbilityObject } from "./abilityObjectRepository/bulkMaterials/paperMaterialAbilityObject";
+import { forceMaterialAbilityObject } from "./abilityObjectRepository/bulkMaterials/forceMaterialAbilityObject";
+import { brickMaterialAbilityObject } from "./abilityObjectRepository/bulkMaterials/brickMaterialAbilityObject";
 import { wildAbilityObject } from "./abilityObjectRepository/animals/wildAbilityObject";
 import { reptileAbilityObject } from "./abilityObjectRepository/animals/reptileAbilityObject";
 import { ratAbilityObject } from "./abilityObjectRepository/animals/ratAbilityObject";
@@ -91,6 +96,7 @@ export class AbilityObjectFactory extends Factory {
             this.items.push(new soundIllussionAbilityObject());
             this.items.push(new shadowyIllussionAbilityObject());
             this.items.push(new perfectIllussionAbilityObject());
+            this.items.push(new detailedIllussionAbilityObject());
             this.items.push(new commonIllussionAbilityObject());
             this.items.push(new warriorCorpseAbilityObject());
             this.items.push(new unfinishedBusinessAbilityObject());
@@ -98,6 +104,10 @@ export class AbilityObjectFactory extends Factory {
             this.items.push(new skeletonAbilityObject());
             this.items.push(new humanoidCorpseAbilityObject());
             this.items.push(new freshCorpseAbilityObject());
+            this.items.push(new stoneMaterialAbilityObject());
+            this.items.push(new paperMaterialAbilityObject());
+            this.items.push(new forceMaterialAbilityObject());
+            this.items.push(new brickMaterialAbilityObject());
             this.items.push(new wildAbilityObject());
             this.items.push(new reptileAbilityObject());
             this.items.push(new ratAbilityObject());

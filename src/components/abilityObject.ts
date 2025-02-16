@@ -9,6 +9,7 @@ export class AbilityObject implements HasWeigth {
     weight = (x?: AffectsWeight) => {return 1};
     
     isAnimal : boolean = false;
+    isBulkMaterial : boolean = false;
     isCommunication : boolean = false;
     isCorpse : boolean = false;
     isIllusion : boolean = false;

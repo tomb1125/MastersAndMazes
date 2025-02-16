@@ -9,3 +9,4 @@ add attack factory x pleyers
 
 utility: change to use value;
 like a prayer
+stop generating when toggling rulings
