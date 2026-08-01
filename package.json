@@ -11,7 +11,8 @@
     "cleanJs": "node scripts/cleanJs.js"
   },
   "author": "",
-  "license": "ISC",
+  "license": "UNLICENSED",
+  "private": true,
   "devDependencies": {
     "typescript": "^5.4.5"
   }
