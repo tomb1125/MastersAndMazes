@@ -1,8 +1,8 @@
-import { AbilityObject } from "../../../components/abilityObject";
-import { AbilityObjectFactory } from "../../../components/abilityObjectFactory";
-import { Ability } from "../../ability";
-import { CharacterContext } from "../../characterContext";
-import { Utility } from "../../utility";
+import { AbilityObject } from "../../../components/abilityObject.js";
+import { AbilityObjectFactory } from "../../../components/abilityObjectFactory.js";
+import { Ability } from "../../ability.js";
+import { CharacterContext } from "../../characterContext.js";
+import { Utility } from "../../utility.js";
 
 
 export class shiftBlameUtility extends Utility {

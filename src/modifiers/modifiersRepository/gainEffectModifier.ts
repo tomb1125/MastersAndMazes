@@ -1,10 +1,10 @@
-import { Ability } from "../../core/ability";
-import { AffectsWeight } from "../../core/affectsWeight";
-import { CanAffectModifier } from "../../core/canAffectModifier";
-import { Utils } from "../../core/utils";
-import { Effect } from "../effect";
-import { EffectFactory } from "../effectFactory";
-import { Modifier } from "../modifier";
+import { Ability } from "../../core/ability.js";
+import { AffectsWeight } from "../../core/affectsWeight.js";
+import { CanAffectModifier } from "../../core/canAffectModifier.js";
+import { Utils } from "../../core/utils.js";
+import { Effect } from "../effect.js";
+import { EffectFactory } from "../effectFactory.js";
+import { Modifier } from "../modifier.js";
 
 export class gainEffectModifier extends Modifier {
     

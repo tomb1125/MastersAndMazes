@@ -1,9 +1,9 @@
-import { AbilityObject } from "../../../components/abilityObject";
-import { AbilityObjectFactory } from "../../../components/abilityObjectFactory";
-import { DescriptiveNumber } from "../../../components/descriptiveNumber";
-import { Ability } from "../../ability";
-import { CharacterContext } from "../../characterContext";
-import { Utility } from "../../utility";
+import { AbilityObject } from "../../../components/abilityObject.js";
+import { AbilityObjectFactory } from "../../../components/abilityObjectFactory.js";
+import { DescriptiveNumber } from "../../../components/descriptiveNumber.js";
+import { Ability } from "../../ability.js";
+import { CharacterContext } from "../../characterContext.js";
+import { Utility } from "../../utility.js";
 
 
 export class muscleTrainingUtility extends Utility {

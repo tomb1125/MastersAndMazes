@@ -1,11 +1,11 @@
-import { AbilityObject } from "../../../components/abilityObject";
-import { AbilityObjectFactory } from "../../../components/abilityObjectFactory";
-import { DescriptiveNumber } from "../../../components/descriptiveNumber";
-import { invisibilityEffect } from "../../../modifiers/effectRepository/multiclassEffects/invisibilityEffect";
-import { gainEffectModifier } from "../../../modifiers/modifiersRepository/gainEffectModifier";
-import { Ability } from "../../ability";
-import { CharacterContext } from "../../characterContext";
-import { Utility } from "../../utility";
+import { AbilityObject } from "../../../components/abilityObject.js";
+import { AbilityObjectFactory } from "../../../components/abilityObjectFactory.js";
+import { DescriptiveNumber } from "../../../components/descriptiveNumber.js";
+import { invisibilityEffect } from "../../../modifiers/effectRepository/multiclassEffects/invisibilityEffect.js";
+import { gainEffectModifier } from "../../../modifiers/modifiersRepository/gainEffectModifier.js";
+import { Ability } from "../../ability.js";
+import { CharacterContext } from "../../characterContext.js";
+import { Utility } from "../../utility.js";
 
 
 export class invisibilityUtility extends Utility {

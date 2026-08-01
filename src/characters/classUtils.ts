@@ -1,9 +1,9 @@
-import { CharacterContext } from "../core/characterContext";
-import { ClassDetails } from "./classDetails";
-import { ClericClass } from "./classes/cleric";
-import { RogueClass } from "./classes/rogue";
-import { FighterClass } from "./classes/fighter";
-import { WizardClass } from "./classes/wizard";
+import { CharacterContext } from "../core/characterContext.js";
+import { ClassDetails } from "./classDetails.js";
+import { ClericClass } from "./classes/cleric.js";
+import { RogueClass } from "./classes/rogue.js";
+import { FighterClass } from "./classes/fighter.js";
+import { WizardClass } from "./classes/wizard.js";
 
 export class ClassUtils {
   

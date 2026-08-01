@@ -2,22 +2,17 @@
   "name": "mastersandgods",
   "version": "1.0.0",
   "description": "cool rpg about beating monsters to death with a stick",
-  "main": "main.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "tsc --lib \"es6\",\"dom\" --downlevelIteration .\\index.ts",
+    "build": "tsc",
     "buildFactories": "node scripts/buildFactories.js",
-    "browserify": "browserify index.js -o main.js",
+    "serve": "node scripts/serve.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cleanJs" : "rm .\\src\\**\\**\\**\\*.js,.\\src\\**\\**\\*.js ,.\\src\\**\\*.js,.\\src\\*.js,.\\main.js,.\\index.js"
+    "cleanJs": "node scripts/cleanJs.js"
   },
   "author": "",
-  "lib": "es2015",
   "license": "ISC",
   "devDependencies": {
     "typescript": "^5.4.5"
-  },
-  "dependencies": {
-    "@types/node": "^20.14.2",
-    "file-system": "^2.2.2"
   }
 }

@@ -59,7 +59,7 @@ Object.keys(factories).forEach(key => {
             if(file.includes('.ts')) {
                 const className = file.replace('.ts','');
                 const affector = repoDir.hasAffector ? 'affector' : '';
-                factoryData = factoryData.replace(TAG, TAG+'\nimport { '+className+' } from "'+repoDir.relatedDir+className+'";')
+                factoryData = factoryData.replace(TAG, TAG+'\nimport { '+className+' } from "'+repoDir.relatedDir+className+'.js";')
                 factoryData = factoryData.replace("new WeightedList\(\);", 'new WeightedList();\n            this.items.push(new '+className+'('+affector+'));')
 
             } else if(!file.endsWith('.js') && !file.endsWith('.ts')) {
@@ -68,7 +68,7 @@ Object.keys(factories).forEach(key => {
                     if(subfolderFile.includes('.ts')) {
                         const className = subfolderFile.replace('.ts','');
                         const affector = repoDir.hasAffector ? 'affector' : '';
-                        factoryData = factoryData.replace(TAG, TAG+'\nimport { '+className+' } from "'+repoDir.relatedDir+file+'/'+className+'";')
+                        factoryData = factoryData.replace(TAG, TAG+'\nimport { '+className+' } from "'+repoDir.relatedDir+file+'/'+className+'.js";')
                         factoryData = factoryData.replace("new WeightedList\(\);", 'new WeightedList();\n            this.items.push(new '+className+'('+affector+'));')
         
                     } 

@@ -1,4 +1,4 @@
-import { Ability } from "./ability";
+import { Ability } from "./ability.js";
 
 export interface AffectsWeight {
     type?: Ability.Type;

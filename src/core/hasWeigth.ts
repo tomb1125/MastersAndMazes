@@ -1,4 +1,4 @@
-import { AffectsWeight } from "./affectsWeight";
+import { AffectsWeight } from "./affectsWeight.js";
 
 export interface HasWeigth {
     weight: (x?: AffectsWeight) => number;

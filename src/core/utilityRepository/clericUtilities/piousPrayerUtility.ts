@@ -1,10 +1,10 @@
-import { DescriptiveNumber } from "../../../components/descriptiveNumber";
-import { DescriptiveNumberFactory } from "../../../components/descriptiveNumberFactory";
-import { Ability } from "../../ability";
-import { CharacterContext } from "../../characterContext";
-import { Rule } from "../../rule";
-import { Utility } from "../../utility";
-import { Utils } from "../../utils";
+import { DescriptiveNumber } from "../../../components/descriptiveNumber.js";
+import { DescriptiveNumberFactory } from "../../../components/descriptiveNumberFactory.js";
+import { Ability } from "../../ability.js";
+import { CharacterContext } from "../../characterContext.js";
+import { Rule } from "../../rule.js";
+import { Utility } from "../../utility.js";
+import { Utils } from "../../utils.js";
 
 
 export class piousPrayerUtility extends Utility {

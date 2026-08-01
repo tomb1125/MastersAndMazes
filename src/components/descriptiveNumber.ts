@@ -1,5 +1,5 @@
-import { AffectsWeight } from "../core/affectsWeight";
-import { HasWeigth } from "../core/hasWeigth";
+import { AffectsWeight } from "../core/affectsWeight.js";
+import { HasWeigth } from "../core/hasWeigth.js";
 
 export class DescriptiveNumber implements HasWeigth{
     protected value: number;

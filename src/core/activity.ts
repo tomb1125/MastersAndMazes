@@ -1,5 +1,5 @@
-import { Modifier } from "../modifiers/modifier";
-import { Ability } from "./ability";
+import { Modifier } from "../modifiers/modifier.js";
+import { Ability } from "./ability.js";
 export class Activity extends Ability {
     range : number;
     modifiers: Modifier[];

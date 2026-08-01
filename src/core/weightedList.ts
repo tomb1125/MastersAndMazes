@@ -1,6 +1,6 @@
-import { AffectsWeight } from "./affectsWeight";
-import { HasWeigth } from "./hasWeigth"
-import { Utils } from "./utils"
+import { AffectsWeight } from "./affectsWeight.js";
+import { HasWeigth } from "./hasWeigth.js"
+import { Utils } from "./utils.js"
 
 
 export class WeightedList {

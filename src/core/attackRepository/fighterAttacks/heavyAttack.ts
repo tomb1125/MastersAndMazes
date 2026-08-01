@@ -1,11 +1,11 @@
-import { ClassUtils } from "../../../characters/classUtils";
-import { compensationModifier } from "../../../modifiers/modifiersRepository/compensationModifier";
-import { Ability } from "../../ability";
-import { AffectsWeight } from "../../affectsWeight";
-import { Attack } from "../../attack";
-import { CharacterContext } from "../../characterContext";
-import { Rule } from "../../rule";
-import { Utils } from "../../utils";
+import { ClassUtils } from "../../../characters/classUtils.js";
+import { compensationModifier } from "../../../modifiers/modifiersRepository/compensationModifier.js";
+import { Ability } from "../../ability.js";
+import { AffectsWeight } from "../../affectsWeight.js";
+import { Attack } from "../../attack.js";
+import { CharacterContext } from "../../characterContext.js";
+import { Rule } from "../../rule.js";
+import { Utils } from "../../utils.js";
 
 
 export class heavyAttack extends Attack {

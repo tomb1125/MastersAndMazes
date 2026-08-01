@@ -1,37 +1,49 @@
-import { Attack } from "./src/core/attack";
-import { Utils } from "./src/core/utils";
-import { UtilityFactory } from "./src/core/utilityFactory";
-import { Utility } from "./src/core/utility";
-import { CharacterContext } from "./src/core/characterContext";
-import { Ability } from "./src/core/ability";
-import { RandomNumberGenerator } from "./src/core/randomNumberGenerator";
-import { AttackFactory } from "./src/core/attackFactory";
+import { Attack } from "./src/core/attack.js";
+import { Utils } from "./src/core/utils.js";
+import { UtilityFactory } from "./src/core/utilityFactory.js";
+import { Utility } from "./src/core/utility.js";
+import { CharacterContext } from "./src/core/characterContext.js";
+import { Ability } from "./src/core/ability.js";
+import { RandomNumberGenerator } from "./src/core/randomNumberGenerator.js";
+import { AttackFactory } from "./src/core/attackFactory.js";
 
-global.onSeedChange = (val): void => {
+// The inline handlers in index.html call these by bare name, so they have to
+// live on window — a module script no longer shares scope with the document.
+declare global {
+  interface Window {
+    onSeedChange(val: string): void;
+    onLevelChange(val: number): void;
+    onClassChange(val: string): void;
+    onRulingChange(val: boolean): void;
+    generateAbilities(): void;
+  }
+}
+
+window.onSeedChange = (val): void => {
   CharacterContext.seed = val;
-  global.generateAbilities();
+  window.generateAbilities();
 };
 
-global.onLevelChange = (val): void => {
+window.onLevelChange = (val): void => {
   CharacterContext.level = val as number;
-  global.generateAbilities();
+  window.generateAbilities();
 };
 
-global.onClassChange = (val): void => {
+window.onClassChange = (val): void => {
   CharacterContext.classes = [
     Number(Object.keys(CharacterContext.Class).find(cls => CharacterContext.Class[cls] === val) as any as string)
   ];
-  global.generateAbilities();
+  window.generateAbilities();
 };
 
 let showRulings: boolean = false;
-global.onRulingChange = (val): void => {
+window.onRulingChange = (val): void => {
   showRulings = val;
-  global.generateAbilities();
+  window.generateAbilities();
 };
 
 
-global.generateAbilities = (): void => {
+window.generateAbilities = (): void => {
   let currentSeed = '';
   if(CharacterContext.seed) {
     currentSeed = CharacterContext.seed;

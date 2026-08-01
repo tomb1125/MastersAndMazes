@@ -1,7 +1,7 @@
-import { DescriptiveNumber } from "../../../components/descriptiveNumber";
-import { Ability } from "../../ability";
-import { CharacterContext } from "../../characterContext";
-import { Utility } from "../../utility";
+import { DescriptiveNumber } from "../../../components/descriptiveNumber.js";
+import { Ability } from "../../ability.js";
+import { CharacterContext } from "../../characterContext.js";
+import { Utility } from "../../utility.js";
 
 
 export class blockUtility extends Utility {

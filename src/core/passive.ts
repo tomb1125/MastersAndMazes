@@ -1,4 +1,4 @@
-import { Ability } from "./ability";
+import { Ability } from "./ability.js";
 export class Passive extends Ability {
    
     constructor(otherName?: string) {

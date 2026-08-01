@@ -1,8 +1,8 @@
-import { AbilityObject } from "../../../components/abilityObject";
-import { AbilityObjectFactory } from "../../../components/abilityObjectFactory";
-import { DescriptiveNumber } from "../../../components/descriptiveNumber";
-import { CharacterContext } from "../../characterContext";
-import { Utility } from "../../utility";
+import { AbilityObject } from "../../../components/abilityObject.js";
+import { AbilityObjectFactory } from "../../../components/abilityObjectFactory.js";
+import { DescriptiveNumber } from "../../../components/descriptiveNumber.js";
+import { CharacterContext } from "../../characterContext.js";
+import { Utility } from "../../utility.js";
 
 
 export class seanceUtility extends Utility {

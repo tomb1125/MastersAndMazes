@@ -1,15 +1,15 @@
-import { AbilityObject } from "../components/abilityObject";
-import { DescriptiveNumber } from "../components/descriptiveNumber";
-import { Modifier } from "../modifiers/modifier";
-import { repeatableModifier } from "../modifiers/modifiersRepository/repeatableModifier";
-import { Ability } from "./ability";
-import { Activity } from "./activity";
-import { AffectsWeight } from "./affectsWeight";
-import { HasWeigth } from "./hasWeigth";
-import { CanAffectModifier } from "./canAffectModifier";
-import { ModifierFactory } from "../modifiers/modifierFactory";
-import { Utils } from "./utils";
-import { CharacterContext } from "./characterContext";
+import { AbilityObject } from "../components/abilityObject.js";
+import { DescriptiveNumber } from "../components/descriptiveNumber.js";
+import { Modifier } from "../modifiers/modifier.js";
+import { repeatableModifier } from "../modifiers/modifiersRepository/repeatableModifier.js";
+import { Ability } from "./ability.js";
+import { Activity } from "./activity.js";
+import { AffectsWeight } from "./affectsWeight.js";
+import { HasWeigth } from "./hasWeigth.js";
+import { CanAffectModifier } from "./canAffectModifier.js";
+import { ModifierFactory } from "../modifiers/modifierFactory.js";
+import { Utils } from "./utils.js";
+import { CharacterContext } from "./characterContext.js";
 
 export class Utility extends Activity implements CanAffectModifier, HasWeigth {
     weight = (x?: AffectsWeight) => {return 1};

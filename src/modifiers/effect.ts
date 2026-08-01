@@ -1,4 +1,4 @@
-import { Modifier } from "./modifier"
+import { Modifier } from "./modifier.js"
 
 export abstract class Effect extends Modifier {
     subtype: Effect.Subtype;

@@ -1,9 +1,9 @@
-import { ModifierFactory } from "../modifiers/modifierFactory";
-import { CharacterContext } from "./characterContext";
-import { Factory } from "./factory";
-import { HasWeigth } from "./hasWeigth";
-import { RandomNumberGenerator } from "./randomNumberGenerator";
-import { Rule } from "./rule";
+import { ModifierFactory } from "../modifiers/modifierFactory.js";
+import { CharacterContext } from "./characterContext.js";
+import { Factory } from "./factory.js";
+import { HasWeigth } from "./hasWeigth.js";
+import { RandomNumberGenerator } from "./randomNumberGenerator.js";
+import { Rule } from "./rule.js";
 
 export class Utils {
     public static DPS: number = 5;

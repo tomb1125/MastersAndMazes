@@ -1,3 +1,9 @@
+node_modules/
 
+# build output
+dist/
+main.js
+
+# legacy in-place tsc output (pre-outDir builds)
 src/**/*.js
 index.js

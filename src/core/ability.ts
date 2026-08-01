@@ -1,4 +1,4 @@
-import { AffectsWeight } from "./affectsWeight";
+import { AffectsWeight } from "./affectsWeight.js";
 
 export class Ability implements AffectsWeight {
     readonly name: string;

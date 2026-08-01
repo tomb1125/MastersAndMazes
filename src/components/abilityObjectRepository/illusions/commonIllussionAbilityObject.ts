@@ -1,4 +1,4 @@
-import { AbilityObject } from "../../abilityObject";
+import { AbilityObject } from "../../abilityObject.js";
 
 export class commonIllussionAbilityObject extends AbilityObject {
     

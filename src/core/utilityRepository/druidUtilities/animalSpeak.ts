@@ -1,10 +1,10 @@
-import { AbilityObject } from "../../../components/abilityObject";
-import { AbilityObjectFactory } from "../../../components/abilityObjectFactory";
-import { DescriptiveNumber } from "../../../components/descriptiveNumber";
-import { DescriptiveNumberFactory } from "../../../components/descriptiveNumberFactory";
-import { ModifierFactory } from "../../../modifiers/modifierFactory";
-import { CharacterContext } from "../../characterContext";
-import { Utility } from "../../utility";
+import { AbilityObject } from "../../../components/abilityObject.js";
+import { AbilityObjectFactory } from "../../../components/abilityObjectFactory.js";
+import { DescriptiveNumber } from "../../../components/descriptiveNumber.js";
+import { DescriptiveNumberFactory } from "../../../components/descriptiveNumberFactory.js";
+import { ModifierFactory } from "../../../modifiers/modifierFactory.js";
+import { CharacterContext } from "../../characterContext.js";
+import { Utility } from "../../utility.js";
 
 export class animalSpeak extends Utility {
 

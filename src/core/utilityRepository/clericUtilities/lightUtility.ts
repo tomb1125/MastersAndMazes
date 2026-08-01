@@ -1,12 +1,12 @@
-import { AbilityObject } from "../../../components/abilityObject";
-import { AbilityObjectFactory } from "../../../components/abilityObjectFactory";
-import { DescriptiveNumber } from "../../../components/descriptiveNumber";
-import { ModifierFactory } from "../../../modifiers/modifierFactory";
-import { repeatableModifier } from "../../../modifiers/modifiersRepository/repeatableModifier";
-import { Ability } from "../../ability";
-import { CharacterContext } from "../../characterContext";
-import { Utility } from "../../utility";
-import { Utils } from "../../utils";
+import { AbilityObject } from "../../../components/abilityObject.js";
+import { AbilityObjectFactory } from "../../../components/abilityObjectFactory.js";
+import { DescriptiveNumber } from "../../../components/descriptiveNumber.js";
+import { ModifierFactory } from "../../../modifiers/modifierFactory.js";
+import { repeatableModifier } from "../../../modifiers/modifiersRepository/repeatableModifier.js";
+import { Ability } from "../../ability.js";
+import { CharacterContext } from "../../characterContext.js";
+import { Utility } from "../../utility.js";
+import { Utils } from "../../utils.js";
 
 
 export class lightUtility extends Utility {

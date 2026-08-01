@@ -1,7 +1,7 @@
-import { DescriptiveNumber } from "../../components/descriptiveNumber";
-import { AffectsWeight } from "../../core/affectsWeight";
-import { WeightedList } from "../../core/weightedList";
-import { Modifier } from "../modifier";
+import { DescriptiveNumber } from "../../components/descriptiveNumber.js";
+import { AffectsWeight } from "../../core/affectsWeight.js";
+import { WeightedList } from "../../core/weightedList.js";
+import { Modifier } from "../modifier.js";
 
 export class repeatableModifier extends Modifier {
     

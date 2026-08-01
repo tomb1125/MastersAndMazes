@@ -1,9 +1,9 @@
-import { ClassDetails } from "../../characters/classDetails";
-import { ClassUtils } from "../../characters/classUtils";
-import { AffectsWeight } from "../affectsWeight";
-import { Attack } from "../attack";
-import { CharacterContext } from "../characterContext";
-import { Utils } from "../utils";
+import { ClassDetails } from "../../characters/classDetails.js";
+import { ClassUtils } from "../../characters/classUtils.js";
+import { AffectsWeight } from "../affectsWeight.js";
+import { Attack } from "../attack.js";
+import { CharacterContext } from "../characterContext.js";
+import { Utils } from "../utils.js";
 
 export class basicAttack extends Attack {
 

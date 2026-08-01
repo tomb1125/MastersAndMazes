@@ -1,5 +1,5 @@
-import { DescriptiveNumber } from "../components/descriptiveNumber";
-import { Ability } from "./ability";
+import { DescriptiveNumber } from "../components/descriptiveNumber.js";
+import { Ability } from "./ability.js";
 
 export interface CanAffectModifier {
     range?: number;

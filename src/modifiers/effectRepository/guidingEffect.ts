@@ -1,8 +1,8 @@
-import { Ability } from "../../core/ability";
-import { CanAffectModifier } from "../../core/canAffectModifier";
-import { Utils } from "../../core/utils";
-import { Effect } from "../effect";
-import { Modifier } from "../modifier";
+import { Ability } from "../../core/ability.js";
+import { CanAffectModifier } from "../../core/canAffectModifier.js";
+import { Utils } from "../../core/utils.js";
+import { Effect } from "../effect.js";
+import { Modifier } from "../modifier.js";
 
 export class guidingEffect extends Effect {
     

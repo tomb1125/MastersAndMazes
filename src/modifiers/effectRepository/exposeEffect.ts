@@ -1,6 +1,6 @@
-import { CanAffectModifier } from "../../core/canAffectModifier";
-import { Utils } from "../../core/utils";
-import { Effect } from "../effect";
+import { CanAffectModifier } from "../../core/canAffectModifier.js";
+import { Utils } from "../../core/utils.js";
+import { Effect } from "../effect.js";
 
 export class exposeEffect extends Effect {
     

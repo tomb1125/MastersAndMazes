@@ -1,7 +1,7 @@
-import { AffectsWeight } from "../../core/affectsWeight";
-import { CanAffectModifier } from "../../core/canAffectModifier";
-import { Utils } from "../../core/utils";
-import { Modifier } from "../modifier";
+import { AffectsWeight } from "../../core/affectsWeight.js";
+import { CanAffectModifier } from "../../core/canAffectModifier.js";
+import { Utils } from "../../core/utils.js";
+import { Modifier } from "../modifier.js";
 
 export class compensationModifier extends Modifier {
     name = 'Radiant Flame';

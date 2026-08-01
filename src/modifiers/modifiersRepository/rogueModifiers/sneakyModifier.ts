@@ -1,6 +1,6 @@
-import { AffectsWeight } from "../../../core/affectsWeight";
-import { CharacterContext } from "../../../core/characterContext";
-import { Modifier } from "../../modifier";
+import { AffectsWeight } from "../../../core/affectsWeight.js";
+import { CharacterContext } from "../../../core/characterContext.js";
+import { Modifier } from "../../modifier.js";
 
 export class sneakyModifier extends Modifier {
     

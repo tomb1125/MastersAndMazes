@@ -1,9 +1,9 @@
-import { compensationModifier } from "../../../modifiers/modifiersRepository/compensationModifier";
-import { Ability } from "../../ability";
-import { AffectsWeight } from "../../affectsWeight";
-import { Attack } from "../../attack";
-import { CharacterContext } from "../../characterContext";
-import { Utils } from "../../utils";
+import { compensationModifier } from "../../../modifiers/modifiersRepository/compensationModifier.js";
+import { Ability } from "../../ability.js";
+import { AffectsWeight } from "../../affectsWeight.js";
+import { Attack } from "../../attack.js";
+import { CharacterContext } from "../../characterContext.js";
+import { Utils } from "../../utils.js";
 
 export class divineStrikeAttack extends Attack {
 

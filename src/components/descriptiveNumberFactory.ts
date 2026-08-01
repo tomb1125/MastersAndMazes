@@ -1,20 +1,20 @@
-import { WeightedList } from "../core/weightedList";
-import { DescriptiveNumber } from "./descriptiveNumber";
-import { Factory } from "../core/factory";
-import { AffectsWeight } from "../core/affectsWeight";
+import { WeightedList } from "../core/weightedList.js";
+import { DescriptiveNumber } from "./descriptiveNumber.js";
+import { Factory } from "../core/factory.js";
+import { AffectsWeight } from "../core/affectsWeight.js";
 //factory imports
-import { adjacentEnemiesDescriptiveNumber } from "./descriptiveNumberRepository/small/adjacentEnemiesDescriptiveNumber";
-import { potionsDrankDescriptiveNumber } from "./descriptiveNumberRepository/potionsDrankDescriptiveNumber";
-import { numberOfTurnsDescriptiveNumber } from "./descriptiveNumberRepository/numberOfTurnsDescriptiveNumber";
-import { numberOfScarsDescriptiveNumber } from "./descriptiveNumberRepository/numberOfScarsDescriptiveNumber";
-import { numberOfRalliesDescriptiveNumber } from "./descriptiveNumberRepository/numberOfRalliesDescriptiveNumber";
-import { minimumDistanceDescriptiveNumber } from "./descriptiveNumberRepository/minimumDistanceDescriptiveNumber";
-import { maximumDistanceDescriptiveNumber } from "./descriptiveNumberRepository/maximumDistanceDescriptiveNumber";
-import { oneHourDescriptiveNumber } from "./descriptiveNumberRepository/duration/oneHourDescriptiveNumber";
-import { d4MinuteDescriptiveNumber } from "./descriptiveNumberRepository/duration/d4MinuteDescriptiveNumber";
-import { damageTakenDescriptiveNumber } from "./descriptiveNumberRepository/damageTakenDescriptiveNumber";
-import { currentHealthDescriptiveNumber } from "./descriptiveNumberRepository/currentHealthDescriptiveNumber";
-import { assassinDescriptiveNumber } from "./descriptiveNumberRepository/assassinDescriptiveNumber";
+import { adjacentEnemiesDescriptiveNumber } from "./descriptiveNumberRepository/small/adjacentEnemiesDescriptiveNumber.js";
+import { potionsDrankDescriptiveNumber } from "./descriptiveNumberRepository/potionsDrankDescriptiveNumber.js";
+import { numberOfTurnsDescriptiveNumber } from "./descriptiveNumberRepository/numberOfTurnsDescriptiveNumber.js";
+import { numberOfScarsDescriptiveNumber } from "./descriptiveNumberRepository/numberOfScarsDescriptiveNumber.js";
+import { numberOfRalliesDescriptiveNumber } from "./descriptiveNumberRepository/numberOfRalliesDescriptiveNumber.js";
+import { minimumDistanceDescriptiveNumber } from "./descriptiveNumberRepository/minimumDistanceDescriptiveNumber.js";
+import { maximumDistanceDescriptiveNumber } from "./descriptiveNumberRepository/maximumDistanceDescriptiveNumber.js";
+import { oneHourDescriptiveNumber } from "./descriptiveNumberRepository/duration/oneHourDescriptiveNumber.js";
+import { d4MinuteDescriptiveNumber } from "./descriptiveNumberRepository/duration/d4MinuteDescriptiveNumber.js";
+import { damageTakenDescriptiveNumber } from "./descriptiveNumberRepository/damageTakenDescriptiveNumber.js";
+import { currentHealthDescriptiveNumber } from "./descriptiveNumberRepository/currentHealthDescriptiveNumber.js";
+import { assassinDescriptiveNumber } from "./descriptiveNumberRepository/assassinDescriptiveNumber.js";
 export class DescriptiveNumberFactory extends Factory {
 
     constructor(affector: AffectsWeight, list?: WeightedList) {

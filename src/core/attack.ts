@@ -1,13 +1,13 @@
-import { Activity } from "./activity"
-import { Utils } from "./utils"
-import { ModifierFactory } from "./../modifiers/modifierFactory"
-import { CanAffectModifier } from "./canAffectModifier"
-import { Ability } from "./ability"
-import { DescriptiveNumber } from "../components/descriptiveNumber"
-import { CharacterContext } from "./characterContext"
-import { DescriptiveNumberFactory } from "../components/descriptiveNumberFactory"
-import { HasWeigth } from "./hasWeigth"
-import { AffectsWeight } from "./affectsWeight"
+import { Activity } from "./activity.js"
+import { Utils } from "./utils.js"
+import { ModifierFactory } from "./../modifiers/modifierFactory.js"
+import { CanAffectModifier } from "./canAffectModifier.js"
+import { Ability } from "./ability.js"
+import { DescriptiveNumber } from "../components/descriptiveNumber.js"
+import { CharacterContext } from "./characterContext.js"
+import { DescriptiveNumberFactory } from "../components/descriptiveNumberFactory.js"
+import { HasWeigth } from "./hasWeigth.js"
+import { AffectsWeight } from "./affectsWeight.js"
 
 export class Attack extends Activity implements CanAffectModifier, HasWeigth {
   static MODIFIER_CHANCE: Map<number, number> = new Map([

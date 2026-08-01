@@ -1,5 +1,5 @@
-import { Utils } from "../../core/utils";
-import { DescriptiveNumber } from "../descriptiveNumber";
+import { Utils } from "../../core/utils.js";
+import { DescriptiveNumber } from "../descriptiveNumber.js";
 
 export class numberOfTurnsDescriptiveNumber extends DescriptiveNumber {
     

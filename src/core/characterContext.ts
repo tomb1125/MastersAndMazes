@@ -1,4 +1,4 @@
-import { Utils } from "./utils";
+import { Utils } from "./utils.js";
 export class CharacterContext {
     public static level: number = 1;
     public static classes: CharacterContext.Class[] = [0];

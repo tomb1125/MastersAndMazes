@@ -1,7 +1,7 @@
-import { Ability } from "../../core/ability";
-import { CharacterContext } from "../../core/characterContext";
-import { Utils } from "../../core/utils";
-import { Effect } from "../effect";
+import { Ability } from "../../core/ability.js";
+import { CharacterContext } from "../../core/characterContext.js";
+import { Utils } from "../../core/utils.js";
+import { Effect } from "../effect.js";
 
 export class stunEffect extends Effect {
     

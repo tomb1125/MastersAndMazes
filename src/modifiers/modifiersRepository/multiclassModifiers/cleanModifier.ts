@@ -1,7 +1,7 @@
-import { Ability } from "../../../core/ability";
-import { AffectsWeight } from "../../../core/affectsWeight";
-import { CharacterContext } from "../../../core/characterContext";
-import { Modifier } from "../../modifier";
+import { Ability } from "../../../core/ability.js";
+import { AffectsWeight } from "../../../core/affectsWeight.js";
+import { CharacterContext } from "../../../core/characterContext.js";
+import { Modifier } from "../../modifier.js";
 
 export class cleanModifier extends Modifier {
     

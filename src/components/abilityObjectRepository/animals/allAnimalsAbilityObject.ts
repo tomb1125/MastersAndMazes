@@ -1,5 +1,5 @@
-import { AffectsWeight } from "../../../core/affectsWeight";
-import { AbilityObject } from "../../abilityObject";
+import { AffectsWeight } from "../../../core/affectsWeight.js";
+import { AbilityObject } from "../../abilityObject.js";
 
 export class allAnimalsAbilityObject extends AbilityObject {
     

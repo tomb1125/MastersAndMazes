@@ -1,19 +1,19 @@
-import { AffectsWeight } from "./affectsWeight";
-import { Factory } from "./factory";
-import { WeightedList } from "./weightedList";
-import { Attack } from "./attack";
+import { AffectsWeight } from "./affectsWeight.js";
+import { Factory } from "./factory.js";
+import { WeightedList } from "./weightedList.js";
+import { Attack } from "./attack.js";
 
 //factory imports
-import { fireballAttack } from "./attackRepository/wizardAttacks/fireballAttack";
-import { chainLightningAttack } from "./attackRepository/wizardAttacks/chainLightningAttack";
-import { poisonedDartAttack } from "./attackRepository/rogueAttacks/poisonedDartAttack";
-import { backstabAttack } from "./attackRepository/rogueAttacks/backstabAttack";
-import { stanceAttack } from "./attackRepository/fighterAttacks/stanceAttack";
-import { heavyAttack } from "./attackRepository/fighterAttacks/heavyAttack";
-import { divineStrikeAttack } from "./attackRepository/clericAttacks/divineStrikeAttack";
-import { divineFlameAttack } from "./attackRepository/clericAttacks/divineFlameAttack";
-import { basicSpell } from "./attackRepository/basicSpell";
-import { basicAttack } from "./attackRepository/basicAttack";
+import { fireballAttack } from "./attackRepository/wizardAttacks/fireballAttack.js";
+import { chainLightningAttack } from "./attackRepository/wizardAttacks/chainLightningAttack.js";
+import { poisonedDartAttack } from "./attackRepository/rogueAttacks/poisonedDartAttack.js";
+import { backstabAttack } from "./attackRepository/rogueAttacks/backstabAttack.js";
+import { stanceAttack } from "./attackRepository/fighterAttacks/stanceAttack.js";
+import { heavyAttack } from "./attackRepository/fighterAttacks/heavyAttack.js";
+import { divineStrikeAttack } from "./attackRepository/clericAttacks/divineStrikeAttack.js";
+import { divineFlameAttack } from "./attackRepository/clericAttacks/divineFlameAttack.js";
+import { basicSpell } from "./attackRepository/basicSpell.js";
+import { basicAttack } from "./attackRepository/basicAttack.js";
 export class AttackFactory extends Factory {
     constructor(affector: AffectsWeight, list?: WeightedList) {
         super(affector);

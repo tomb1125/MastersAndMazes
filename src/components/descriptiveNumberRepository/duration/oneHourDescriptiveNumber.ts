@@ -1,4 +1,4 @@
-import { DescriptiveNumber } from "../../descriptiveNumber";
+import { DescriptiveNumber } from "../../descriptiveNumber.js";
 
 export class oneHourDescriptiveNumber extends DescriptiveNumber {
     

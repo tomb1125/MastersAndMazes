@@ -1,18 +1,18 @@
-import { WeightedList } from "../core/weightedList";
-import { Modifier } from "./modifier"
-import { Factory } from "../core/factory";
-import { AffectsWeight } from "../core/affectsWeight";
+import { WeightedList } from "../core/weightedList.js";
+import { Modifier } from "./modifier.js"
+import { Factory } from "../core/factory.js";
+import { AffectsWeight } from "../core/affectsWeight.js";
 //factory imports
-import { vulnerableEffect } from "./effectRepository/vulnerableEffect";
-import { stunEffect } from "./effectRepository/stunEffect";
-import { scalingDotEffect } from "./effectRepository/scalingDotEffect";
-import { protectedEffect } from "./effectRepository/protectedEffect";
-import { retributionEffect } from "./effectRepository/multiclassEffects/retributionEffect";
-import { invisibilityEffect } from "./effectRepository/multiclassEffects/invisibilityEffect";
-import { instakillEffect } from "./effectRepository/instakillEffect";
-import { guidingEffect } from "./effectRepository/guidingEffect";
-import { exposeEffect } from "./effectRepository/exposeEffect";
-import { damageBonusEffect } from "./effectRepository/damageBonusEffect";
+import { vulnerableEffect } from "./effectRepository/vulnerableEffect.js";
+import { stunEffect } from "./effectRepository/stunEffect.js";
+import { scalingDotEffect } from "./effectRepository/scalingDotEffect.js";
+import { protectedEffect } from "./effectRepository/protectedEffect.js";
+import { retributionEffect } from "./effectRepository/multiclassEffects/retributionEffect.js";
+import { invisibilityEffect } from "./effectRepository/multiclassEffects/invisibilityEffect.js";
+import { instakillEffect } from "./effectRepository/instakillEffect.js";
+import { guidingEffect } from "./effectRepository/guidingEffect.js";
+import { exposeEffect } from "./effectRepository/exposeEffect.js";
+import { damageBonusEffect } from "./effectRepository/damageBonusEffect.js";
 export class EffectFactory extends Factory {
 
     constructor(affector: AffectsWeight, list?: WeightedList) {

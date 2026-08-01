@@ -1,10 +1,10 @@
-import { DescriptiveNumber } from "../../components/descriptiveNumber";
-import { DescriptiveNumberFactory } from "../../components/descriptiveNumberFactory";
-import { Ability } from "../../core/ability";
-import { AffectsWeight } from "../../core/affectsWeight";
-import { CanAffectModifier } from "../../core/canAffectModifier";
-import { Utils } from "../../core/utils";
-import { Modifier } from "../modifier";
+import { DescriptiveNumber } from "../../components/descriptiveNumber.js";
+import { DescriptiveNumberFactory } from "../../components/descriptiveNumberFactory.js";
+import { Ability } from "../../core/ability.js";
+import { AffectsWeight } from "../../core/affectsWeight.js";
+import { CanAffectModifier } from "../../core/canAffectModifier.js";
+import { Utils } from "../../core/utils.js";
+import { Modifier } from "../modifier.js";
 
 export class momentumModifier extends Modifier {
     

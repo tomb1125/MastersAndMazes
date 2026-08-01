@@ -1,8 +1,8 @@
-import { DescriptiveNumber } from "../../components/descriptiveNumber";
-import { Ability } from "../../core/ability";
-import { AffectsWeight } from "../../core/affectsWeight";
-import { Utils } from "../../core/utils";
-import { Modifier } from "../modifier";
+import { DescriptiveNumber } from "../../components/descriptiveNumber.js";
+import { Ability } from "../../core/ability.js";
+import { AffectsWeight } from "../../core/affectsWeight.js";
+import { Utils } from "../../core/utils.js";
+import { Modifier } from "../modifier.js";
 
 export class selfHealModifier extends Modifier {
     

@@ -1,9 +1,9 @@
-import { Modifier } from "../../../modifiers/modifier";
-import { compensationModifier } from "../../../modifiers/modifiersRepository/compensationModifier";
-import { Ability } from "../../ability";
-import { AffectsWeight } from "../../affectsWeight";
-import { Attack } from "../../attack";
-import { CharacterContext } from "../../characterContext";
+import { Modifier } from "../../../modifiers/modifier.js";
+import { compensationModifier } from "../../../modifiers/modifiersRepository/compensationModifier.js";
+import { Ability } from "../../ability.js";
+import { AffectsWeight } from "../../affectsWeight.js";
+import { Attack } from "../../attack.js";
+import { CharacterContext } from "../../characterContext.js";
 
 export class fireballAttack extends Attack {
 

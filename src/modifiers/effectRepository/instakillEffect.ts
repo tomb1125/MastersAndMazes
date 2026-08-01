@@ -1,6 +1,6 @@
-import { Ability } from "../../core/ability";
-import { Utils } from "../../core/utils";
-import { Effect } from "../effect";
+import { Ability } from "../../core/ability.js";
+import { Utils } from "../../core/utils.js";
+import { Effect } from "../effect.js";
 
 export class instakillEffect extends Effect {
     

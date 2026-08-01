@@ -1,9 +1,9 @@
-import { Effect } from "./effect"
-import { Ability } from "../core/ability"
-import { CanAffectModifier } from "../core/canAffectModifier"
-import { HasWeigth } from "../core/hasWeigth";
-import { DescriptiveNumber } from "../components/descriptiveNumber";
-import { AffectsWeight } from "../core/affectsWeight";
+import { Effect } from "./effect.js"
+import { Ability } from "../core/ability.js"
+import { CanAffectModifier } from "../core/canAffectModifier.js"
+import { HasWeigth } from "../core/hasWeigth.js";
+import { DescriptiveNumber } from "../components/descriptiveNumber.js";
+import { AffectsWeight } from "../core/affectsWeight.js";
 
 export class Modifier implements HasWeigth {
     name: string;

@@ -1,6 +1,6 @@
-import { AffectsWeight } from "../../core/affectsWeight";
-import { Utils } from "../../core/utils";
-import { Modifier } from "../modifier";
+import { AffectsWeight } from "../../core/affectsWeight.js";
+import { Utils } from "../../core/utils.js";
+import { Modifier } from "../modifier.js";
 
 export class grazedModifier extends Modifier {
     

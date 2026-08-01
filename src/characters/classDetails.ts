@@ -1,7 +1,7 @@
-import { Ability } from "../core/ability";
-import { CharacterContext } from "../core/characterContext";
-import { ClericClass } from "./classes/cleric";
-import { RogueClass } from "./classes/rogue";
+import { Ability } from "../core/ability.js";
+import { CharacterContext } from "../core/characterContext.js";
+import { ClericClass } from "./classes/cleric.js";
+import { RogueClass } from "./classes/rogue.js";
 
 export class ClassDetails {
     type: CharacterContext.Class;

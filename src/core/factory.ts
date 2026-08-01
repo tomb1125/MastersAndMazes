@@ -1,6 +1,6 @@
-import { AffectsWeight } from "./affectsWeight";
-import { HasWeigth } from "./hasWeigth";
-import { WeightedList } from "./weightedList";
+import { AffectsWeight } from "./affectsWeight.js";
+import { HasWeigth } from "./hasWeigth.js";
+import { WeightedList } from "./weightedList.js";
 
 export class Factory {
     items: WeightedList;

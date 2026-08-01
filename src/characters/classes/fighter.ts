@@ -1,6 +1,6 @@
-import { Ability } from "../../core/ability";
-import { CharacterContext } from "../../core/characterContext";
-import { ClassDetails } from "../classDetails";
+import { Ability } from "../../core/ability.js";
+import { CharacterContext } from "../../core/characterContext.js";
+import { ClassDetails } from "../classDetails.js";
 
 export class FighterClass extends ClassDetails {
     constructor() {

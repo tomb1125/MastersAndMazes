@@ -11,13 +11,24 @@ A browser-based, procedural generator for a tabletop-style RPG ("Monsters and Ma
 There is no test suite (`npm test` is a stub that exits 1) and no linter.
 
 ```sh
-npm run build          # tsc: compiles index.ts + all src/**/*.ts to .js IN PLACE (es6/dom libs, downlevelIteration)
-npm run browserify     # bundles index.js -> main.js (the single script index.html loads)
+npm run build          # tsc (reads tsconfig.json): compiles index.ts + src/**/*.ts to dist/ as native ES modules
+npm run serve          # zero-dependency static server on http://localhost:8080
 npm run buildFactories # regenerates the six factory .ts files from their repository folders (see below)
-npm run cleanJs        # removes all generated .js files
+npm run cleanJs        # removes dist/ plus any legacy in-place .js
 ```
 
-Typical loop: `npm run buildFactories` (only if you added/removed a repository item) → `npm run build` → `npm run browserify` → open `index.html` in a browser. The compiled `.js` files and `main.js` are gitignored; only `.ts`, `index.html`, and `styles.css` are source.
+Typical loop: `npm run buildFactories` (only if you added/removed a repository item) → `npm run build` → `npm run serve` → open `http://localhost:8080`. `dist/` is gitignored; only `.ts`, `index.html`, and `styles.css` are source.
+
+**There is no bundler.** `index.html` loads `dist/index.js` with `<script type="module">` and the browser fetches the ~186 modules itself. Two consequences:
+
+- **You cannot open `index.html` from the filesystem** — browsers block ES modules over `file://` (CORS). Always go through `npm run serve`.
+- **Every relative import must end in `.js`**, e.g. `import { Utils } from "./utils.js";` even though the file on disk is `utils.ts`. TypeScript resolves `.js` → `.ts` and passes the specifier through to the emitted output untouched; a missing extension compiles fine but 404s in the browser.
+
+The project has **no runtime or `dependencies` entries** — only `typescript` as a devDependency. Keep it that way; a bare specifier like `import x from "some-pkg"` would need a bundler or an import map to resolve.
+
+## Deployment
+
+`.github/workflows/pages.yml` builds on push to `master` and deploys to GitHub Pages: `npm ci` → `npm run build` → copy `index.html`, `styles.css`, `dist/` into `_site/` → upload/deploy. No build output is committed. The workflow needs Pages configured with **Source: GitHub Actions** in the repository settings.
 
 ## The factory generation system (important)
 
@@ -29,6 +40,7 @@ For each, it scans the paired repository directory (e.g. `utilityFactory.ts` ↔
 Consequences:
 - **Never hand-edit the import block or the push list in a factory constructor** — `buildFactories` will overwrite it. Add content by creating a new file in the repository folder and re-running the script.
 - **File name must equal the exported class name** (the script strips `.ts` to derive the class). Class names are conventionally camelCase with a lowercase first letter (e.g. `holyHealUtility`, `fireballAttack`, `sneakyModifier`).
+- The generated imports carry a `.js` extension (`from "./utilityRepository/foo.js"`) because there is no bundler — see Commands above.
 - Factories with `hasAffector: true` (`modifierFactory`, `attackFactory`) pass an `affector` argument into each constructor; the others pass none. Match your constructor signature accordingly.
 
 ## Core architecture

@@ -1,8 +1,8 @@
-import { ClassUtils } from "../../characters/classUtils";
-import { DescriptiveNumber } from "../../components/descriptiveNumber";
-import { CharacterContext } from "../characterContext";
-import { Utility } from "../utility";
-import { Utils } from "../utils";
+import { ClassUtils } from "../../characters/classUtils.js";
+import { DescriptiveNumber } from "../../components/descriptiveNumber.js";
+import { CharacterContext } from "../characterContext.js";
+import { Utility } from "../utility.js";
+import { Utils } from "../utils.js";
 
 
 export class skillBonusUtility extends Utility {
