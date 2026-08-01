@@ -19,7 +19,6 @@ export class holyHealUtility extends Utility {
         if(!this.value && Utils.random() < Utils.ATTACK_DESCRIPTIVE_NUMBER_CHANCE) {
             this.value = new DescriptiveNumberFactory(this).filter((x: DescriptiveNumber) => x.type === DescriptiveNumber.Type.Common).get(1)[0];
             this.value.addBonus(Math.ceil(normalValue - this.value.getValue()));
-            this.value.compensate();
         } else {
             this.value = new DescriptiveNumber(normalValue);
         } 
