@@ -11,13 +11,19 @@ A browser-based, procedural generator for a tabletop-style RPG ("Monsters and Ma
 There is no test suite (`npm test` is a stub that exits 1) and no linter.
 
 ```sh
+npm run dev            # tsc --watch + static server on http://localhost:8080 — the normal debug loop
 npm run build          # tsc (reads tsconfig.json): compiles index.ts + src/**/*.ts to dist/ as native ES modules
-npm run serve          # zero-dependency static server on http://localhost:8080
 npm run buildFactories # regenerates the six factory .ts files from their repository folders (see below)
-npm run cleanJs        # removes dist/ plus any legacy in-place .js
+npm run rebuild        # buildFactories → build
+npm run serve          # static server only; `npm run serve -- 8081` for another port
+npm run site           # build → assemble _site/, byte-for-byte what GitHub Pages deploys
+npm run preview        # serve _site/ on http://localhost:8080
+npm run clean          # removes dist/, _site/, and any legacy in-place .js (alias: cleanJs)
 ```
 
-Typical loop: `npm run buildFactories` (only if you added/removed a repository item) → `npm run build` → `npm run serve` → open `http://localhost:8080`. `dist/` is gitignored; only `.ts`, `index.html`, and `styles.css` are source.
+Typical loop: `npm run dev`, edit a `.ts`, wait for tsc to print *Found 0 errors*, reload the page. Only run `npm run buildFactories` when you add or remove a file in a repository folder — `dev` does not watch that generation step. `dist/` and `_site/` are gitignored; only `.ts`, `index.html`, and `styles.css` are source.
+
+**Debugging:** `sourceMap: true` is on and `serve.js` also serves the raw `.ts` files, so devtools breakpoints land in the original TypeScript rather than the emitted JS. Responses are sent `Cache-Control: no-store` so a reload never picks up a stale build.
 
 **There is no bundler.** `index.html` loads `dist/index.js` with `<script type="module">` and the browser fetches the ~186 modules itself. Two consequences:
 
@@ -28,7 +34,7 @@ The project has **no runtime or `dependencies` entries** — only `typescript` a
 
 ## Deployment
 
-`.github/workflows/pages.yml` builds on push to `master` and deploys to GitHub Pages: `npm ci` → `npm run build` → copy `index.html`, `styles.css`, `dist/` into `_site/` → upload/deploy. No build output is committed. The workflow needs Pages configured with **Source: GitHub Actions** in the repository settings.
+`.github/workflows/pages.yml` builds on push to `master` and deploys to GitHub Pages: `npm ci` → `npm run site` → upload/deploy. The workflow deliberately calls the same `npm run site` you run locally (`scripts/buildSite.js`, which copies `index.html`, `styles.css`, and `dist/` into `_site/`), so CI and local deploys cannot drift apart — verify a deploy with `npm run site && npm run preview` before pushing. No build output is committed. The workflow needs Pages configured with **Source: GitHub Actions** in the repository settings.
 
 ## The factory generation system (important)
 
@@ -69,4 +75,4 @@ this.weight = () => CharacterContext.classes.includes(CharacterContext.Class.Cle
 
 - `CharacterContext` (level, classes, seed) and `Utils` (RNG, constants) are effectively global singletons via static members — generation reads them implicitly, so order of assignment matters.
 - Many `// TODO` comments mark deliberately disabled balancing (e.g. `getDPSCoefficient` returns `1`, `OUT_OF_CLASS_WEIGHT` noted as pre-go-live). Don't "fix" these without understanding the intended value.
-- No `tsconfig.json`; compiler options are inline flags in the `build` script. New files just need to be reachable via imports from `index.ts` (directly or through a regenerated factory).
+- Compiler options live in `tsconfig.json` (`target: es2017`, `module: es2020`, `outDir: dist`, `sourceMap: true`; `scripts/` is excluded — those are plain CommonJS Node scripts, not part of the browser build). New files just need to be reachable via imports from `index.ts` (directly or through a regenerated factory).

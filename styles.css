@@ -1,0 +1,313 @@
+/* Monsters and Mazes - dark theme.
+   Layout lives here only; the generator emits plain class-annotated markup. */
+
+:root {
+  color-scheme: dark;
+
+  --bg: #0b0d12;
+  --bg-glow: #151b29;
+  --surface: #141824;
+  --surface-2: #1b2130;
+  --border: #262d3d;
+  --border-strong: #38425a;
+  --text: #e7ebf3;
+  --text-dim: #b4bdd0;
+  --text-muted: #8b95ab;
+  --accent: #e0b064;
+
+  --constraint: #f08c8c;
+  --improvement: #7fc98a;
+  --effect: #82a9f5;
+  --other: #b09ada;
+
+  --radius: 14px;
+  --radius-sm: 9px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 28px 20px 56px;
+  min-height: 100vh;
+  background:
+    radial-gradient(900px 480px at 50% -12%, var(--bg-glow), transparent 70%),
+    var(--bg);
+  color: var(--text);
+  font: 15px/1.5 "Segoe UI", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* ---------- header ---------- */
+
+.page__header {
+  margin-bottom: 18px;
+}
+
+.page__title {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+
+.page__subtitle {
+  margin: 4px 0 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* ---------- controls ---------- */
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.field__label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.field__input {
+  height: 34px;
+  padding: 0 10px;
+  min-width: 150px;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: 14px;
+}
+
+.field__input:hover {
+  border-color: var(--border-strong);
+}
+
+.field__input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(224, 176, 100, 0.16);
+}
+
+.field--checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+}
+
+.field--checkbox input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.field--checkbox .field__label {
+  cursor: pointer;
+}
+
+.button {
+  height: 34px;
+  padding: 0 18px;
+  margin-left: auto;
+  color: #1a1206;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+  transition: filter 0.15s ease, transform 0.05s ease;
+}
+
+.button:hover {
+  filter: brightness(1.08);
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+/* ---------- ability cards ---------- */
+
+.output {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  align-items: start;
+  gap: 14px;
+}
+
+.ability {
+  padding: 14px 16px 15px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.ability__name {
+  margin: 0 0 9px;
+  font-size: 17px;
+  font-weight: 650;
+  line-height: 1.25;
+  color: var(--accent);
+}
+
+/* stats as chips - one wrapping row instead of a line each */
+.ability__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 0 0 10px;
+}
+
+.stat {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 3px 9px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.stat__label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.stat__value {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.ability__core-description {
+  margin: 0 0 11px;
+  color: var(--text-dim);
+  font-size: 14px;
+}
+
+/* ---------- modifiers ---------- */
+
+.ability__section-title {
+  margin: 0 0 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.modifier-list,
+.ruling-list {
+  list-style: none;
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+}
+
+.modifier {
+  padding: 6px 0 6px 10px;
+  border-left: 2px solid var(--mod-color, var(--border-strong));
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+.modifier--constraint  { --mod-color: var(--constraint); }
+.modifier--improvement { --mod-color: var(--improvement); }
+.modifier--effect      { --mod-color: var(--effect); }
+.modifier--other       { --mod-color: var(--other); }
+
+.modifier__type {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 1px 7px;
+  border: 1px solid var(--mod-color, var(--border-strong));
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--mod-color, var(--text-muted));
+  vertical-align: 1px;
+  white-space: nowrap;
+}
+
+.modifier__name {
+  margin-right: 5px;
+  font-weight: 650;
+  color: var(--text);
+}
+
+/* only separate the label from a description that actually follows it */
+.modifier__name:not(:last-child)::after {
+  content: " \2014";
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ---------- rulings ---------- */
+
+.ability__rulings {
+  margin-top: 11px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+}
+
+.ruling {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.ruling__source {
+  margin-right: 5px;
+  font-weight: 650;
+  color: var(--text-dim);
+}
+
+.ruling__source::after {
+  content: ":";
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 20px 14px 40px;
+  }
+
+  .button {
+    margin-left: 0;
+    width: 100%;
+  }
+}

@@ -1,81 +1,103 @@
-var fs = require('fs');
-const TAG = '\/\/factory imports'
+// Regenerates the constructor bodies of the six factories from their paired
+// repository folders: everything between the //factory imports marker and the
+// `export class` line, and everything after `new WeightedList();`.
+//
+//   npm run buildFactories
+//
+// Run it after adding or removing a file in any *Repository folder. Never
+// hand-edit those generated blocks - this script overwrites them.
+const fs = require('fs');
+const path = require('path');
+
+const root = path.resolve(__dirname, '..');
+const TAG = '//factory imports';
+
 const factories = {
-    'src\\modifiers\\effectFactory.ts' : [
+    'src/modifiers/effectFactory.ts': [
         {
-            'dir' : 'src\\modifiers\\effectRepository',
-            'relatedDir' : './effectRepository/',
-            'hasAffector' : false
+            'dir': 'src/modifiers/effectRepository',
+            'relatedDir': './effectRepository/',
+            'hasAffector': false
         }
     ],
-    'src\\modifiers\\modifierFactory.ts' : [
+    'src/modifiers/modifierFactory.ts': [
         {
-            'dir' : 'src\\modifiers\\modifiersRepository',
-            'relatedDir' : './modifiersRepository/',
-            'hasAffector' : true
+            'dir': 'src/modifiers/modifiersRepository',
+            'relatedDir': './modifiersRepository/',
+            'hasAffector': true
         }
     ],
-    'src\\core\\utilityFactory.ts'  : [
+    'src/core/utilityFactory.ts': [
         {
-            'dir' : 'src\\core\\utilityRepository',
-            'relatedDir' : './utilityRepository/',
-            'hasAffector' : false
+            'dir': 'src/core/utilityRepository',
+            'relatedDir': './utilityRepository/',
+            'hasAffector': false
         }
     ],
-    'src\\components\\abilityObjectFactory.ts'  : [
+    'src/components/abilityObjectFactory.ts': [
         {
-            'dir' : 'src\\components\\abilityObjectRepository',
-            'relatedDir' : './abilityObjectRepository/',
-            'hasAffector' : false
+            'dir': 'src/components/abilityObjectRepository',
+            'relatedDir': './abilityObjectRepository/',
+            'hasAffector': false
         }
     ],
-    'src\\components\\descriptiveNumberFactory.ts'  : [
+    'src/components/descriptiveNumberFactory.ts': [
         {
-            'dir' : 'src\\components\\descriptiveNumberRepository',
-            'relatedDir' : './descriptiveNumberRepository/',
-            'hasAffector' : false
+            'dir': 'src/components/descriptiveNumberRepository',
+            'relatedDir': './descriptiveNumberRepository/',
+            'hasAffector': false
         }
     ],
-    'src\\core\\attackFactory.ts'  : [
+    'src/core/attackFactory.ts': [
         {
-            'dir' : 'src\\core\\attackRepository',
-            'relatedDir' : './attackRepository/',
-            'hasAffector' : true
+            'dir': 'src/core/attackRepository',
+            'relatedDir': './attackRepository/',
+            'hasAffector': true
         }
     ]
-}
+};
+
+let count = 0;
 
 Object.keys(factories).forEach(key => {
-    
-    let factoryData = fs.readFileSync(key,
-        { encoding: 'utf8', flag: 'r' });
-    factoryData = factoryData.replace(/\/\/(.|[\r\n])*export class/g, TAG+"\nexport class")    
+
+    const factoryPath = path.join(root, key);
+    let factoryData = fs.readFileSync(factoryPath, { encoding: 'utf8', flag: 'r' });
+    factoryData = factoryData.replace(/\/\/(.|[\r\n])*export class/g, TAG + "\nexport class")
     factoryData = factoryData.replace(/new WeightedList\(\);([^\}]|[\r\n])*/g, "new WeightedList();\n")
     factoryData = factoryData.replace(/\} else \{/g, "        } else {")
 
+    // The file name is the class name, and the import specifier keeps the .js
+    // extension because the browser loads these modules with no bundler.
+    const register = (className, specifier, hasAffector) => {
+        const affector = hasAffector ? 'affector' : '';
+        factoryData = factoryData.replace(TAG, TAG + '\nimport { ' + className + ' } from "' + specifier + '";')
+        factoryData = factoryData.replace("new WeightedList();", 'new WeightedList();\n            this.items.push(new ' + className + '(' + affector + '));')
+        count++;
+    };
+
     const repoDirs = factories[key];
     repoDirs.forEach(repoDir => {
-        fs.readdirSync(repoDir.dir).forEach(file => {
-            if(file.includes('.ts')) {
-                const className = file.replace('.ts','');
-                const affector = repoDir.hasAffector ? 'affector' : '';
-                factoryData = factoryData.replace(TAG, TAG+'\nimport { '+className+' } from "'+repoDir.relatedDir+className+'.js";')
-                factoryData = factoryData.replace("new WeightedList\(\);", 'new WeightedList();\n            this.items.push(new '+className+'('+affector+'));')
+        const repoPath = path.join(root, repoDir.dir);
+        fs.readdirSync(repoPath).forEach(file => {
+            if (file.includes('.ts')) {
+                const className = file.replace('.ts', '');
+                register(className, repoDir.relatedDir + className + '.js', repoDir.hasAffector);
 
-            } else if(!file.endsWith('.js') && !file.endsWith('.ts')) {
-                const subfolderDir = repoDir.dir + '\\' + file
+            } else if (!file.endsWith('.js') && !file.endsWith('.ts')) {
+                // One level of subfolders is walked, no deeper.
+                const subfolderDir = path.join(repoPath, file);
                 fs.readdirSync(subfolderDir).forEach(subfolderFile => {
-                    if(subfolderFile.includes('.ts')) {
-                        const className = subfolderFile.replace('.ts','');
-                        const affector = repoDir.hasAffector ? 'affector' : '';
-                        factoryData = factoryData.replace(TAG, TAG+'\nimport { '+className+' } from "'+repoDir.relatedDir+file+'/'+className+'.js";')
-                        factoryData = factoryData.replace("new WeightedList\(\);", 'new WeightedList();\n            this.items.push(new '+className+'('+affector+'));')
-        
-                    } 
-                })                
+                    if (subfolderFile.includes('.ts')) {
+                        const className = subfolderFile.replace('.ts', '');
+                        register(className, repoDir.relatedDir + file + '/' + className + '.js', repoDir.hasAffector);
+                    }
+                })
             }
         });
     });
 
-    fs.writeFileSync(key, factoryData);
+    fs.writeFileSync(factoryPath, factoryData);
 })
+
+console.log('registered ' + count + ' item(s) across ' + Object.keys(factories).length + ' factories');

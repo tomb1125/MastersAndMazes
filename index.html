@@ -1,26 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Monsters and Mazes</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <h1>Monsters and Mazes</h1>
-    <p></p>
-    <div>
-        <br>Seed <input type="text" name="CharacterName" value="" placeholder="Seed" autocomplete="off" onchange="onSeedChange(this.value)">
-        <br>Level <input type="number" name="Level" value="1" placeholder="Level" autocomplete="off" onchange="onLevelChange(this.value)">
-        <br>Class <select id="cars" autocomplete="off" onchange="onClassChange(this.value)">
-            <option value="Cleric">Cleric</option>
-            <option value="Rogue">Rogue</option>       
-            <option value="Fighter">Fighter</option>         
-            <option value="Wizard">Wizard</option>       
-        </select>        
-        <br>Show Rulings <input type="checkbox" name="Show All Rulings" placeholder="false" autocomplete="off" onchange="onRulingChange(this.checked)">
-        <br><button onclick="generateAbilities()">Generate Abilities</button>
-        <br><div id="output"></div>
+    <div class="page">
+        <header class="page__header">
+            <h1 class="page__title">Monsters and Mazes</h1>
+            <p class="page__subtitle">Seeded ability generator &mdash; odd levels roll Attacks, even levels roll Utilities.</p>
+        </header>
 
+        <div class="controls">
+            <label class="field">
+                <span class="field__label">Seed</span>
+                <input class="field__input" type="text" name="CharacterName" value="" placeholder="Seed" autocomplete="off" onchange="onSeedChange(this.value)">
+            </label>
 
+            <label class="field">
+                <span class="field__label">Level</span>
+                <input class="field__input" type="number" name="Level" value="1" min="1" placeholder="Level" autocomplete="off" onchange="onLevelChange(this.value)">
+            </label>
+
+            <label class="field">
+                <span class="field__label">Class</span>
+                <select class="field__input" id="cars" autocomplete="off" onchange="onClassChange(this.value)">
+                    <option value="Cleric">Cleric</option>
+                    <option value="Rogue">Rogue</option>
+                    <option value="Fighter">Fighter</option>
+                    <option value="Wizard">Wizard</option>
+                </select>
+            </label>
+
+            <label class="field field--checkbox">
+                <input type="checkbox" name="Show All Rulings" autocomplete="off" onchange="onRulingChange(this.checked)">
+                <span class="field__label">Show rulings</span>
+            </label>
+
+            <button class="button" type="button" onclick="generateAbilities()">Generate Abilities</button>
+        </div>
+
+        <div id="output" class="output"></div>
     </div>
 
     <script type="module" src="dist/index.js"></script>

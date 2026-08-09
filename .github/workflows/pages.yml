@@ -22,18 +22,13 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - run: npm ci
 
-      - run: npm run build
-
-      - name: Assemble site
-        run: |
-          mkdir -p _site
-          cp index.html styles.css _site/
-          cp -r dist _site/dist
+      # Same script as `npm run site` locally: tsc, then assemble _site/.
+      - run: npm run site
 
       - uses: actions/upload-pages-artifact@v3
         with:

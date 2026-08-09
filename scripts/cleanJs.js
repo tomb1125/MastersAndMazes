@@ -1,5 +1,5 @@
-// Removes build output: the dist/ tree plus any legacy .js emitted in place
-// next to the .ts sources back when tsc compiled without an outDir.
+// Removes build output: the dist/ and _site/ trees plus any legacy .js emitted
+// in place next to the .ts sources back when tsc compiled without an outDir.
 const fs = require('fs');
 const path = require('path');
 
@@ -24,7 +24,9 @@ function walk(dir) {
     if (fs.existsSync(full)) walk(full);
 });
 
-fs.rmSync(path.join(root, 'dist'), { recursive: true, force: true });
+['dist', '_site'].forEach(dir => {
+    fs.rmSync(path.join(root, dir), { recursive: true, force: true });
+});
 
 ['index.js', 'index.js.map', 'main.js'].forEach(file => {
     const full = path.join(root, file);

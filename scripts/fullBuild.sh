@@ -1,1 +1,0 @@
-npm run buildFactories; npm run build; npm run browserify

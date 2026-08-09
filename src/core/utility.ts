@@ -34,24 +34,41 @@ export class Utility extends Activity implements CanAffectModifier, HasWeigth {
     }
 
     public getDescription(longDescription?: boolean): string {
-      let desc: string = '' +
-      '<b>Name: ' + this.generateName() +
-      '<br>Chance</b>: ' + Math.ceil(this.chance * 100) + '%' +
-      '<br><b>Modifiers</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + (mod.name != '' ? ', ' : '') + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
-      '<br><b>Components</b>: ' + this.objects.reduce(function (sum, mod) { return sum + ', ' + mod.name }, '').slice(2) +
-      '<br><b>Description</b>: ' + this.description + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
-      '<br><b>Cooldown</b>: ' + Ability.Cooldown[this.cooldown];    
+      const stats: [string, string][] = [
+        ['Chance', Math.ceil(this.chance * 100) + '%'],
+        ['Cooldown', Ability.Cooldown[this.cooldown]],
+        ['Components', this.objects.map(obj => obj.name).join(', ')]
+      ];
 
-      if(longDescription) {
-        desc += '<br><b>Rulings</b>: ' + this.longDescription + this.modifiers.reduce(function (sum, mod) { return sum  + (mod.longDescription === undefined ? '' : ', ' + mod.longDescription); }, '').slice(2);
-      }
-
-      return desc;
+      return this.renderCard(
+        'utility',
+        this.generateName(),
+        stats,
+        this.description ? this.description : '',
+        longDescription
+      );
     }
 
+    //Joining only the non empty parts keeps the name free of double spaces.
     public generateName(): string {
-      return this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.namePrefix; }, '').slice(1) + (this.modifiers.length > 0 ? ' ' : '') +
-             this.objects.reduce(function (sum, mod) { return sum + ' ' + (mod.prefix === undefined ? mod.name : mod.prefix); }, '') + ' ' + this.name;
+      const parts: string[] = [];
+
+      this.modifiers.forEach(mod => {
+        if(mod.namePrefix) {
+          parts.push(mod.namePrefix);
+        }
+      });
+
+      this.objects.forEach(obj => {
+        const part = obj.prefix === undefined ? obj.name : obj.prefix;
+        if(part) {
+          parts.push(part);
+        }
+      });
+
+      parts.push(this.name);
+
+      return parts.join(' ');
     }
 
     protected compensate(): void {

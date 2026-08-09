@@ -6,9 +6,17 @@
   "scripts": {
     "build": "tsc",
     "buildFactories": "node scripts/buildFactories.js",
+    "rebuild": "npm run buildFactories && npm run build",
+    "dev": "node scripts/dev.js",
     "serve": "node scripts/serve.js",
+    "site": "npm run build && node scripts/buildSite.js",
+    "preview": "node scripts/serve.js 8080 _site",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "node scripts/cleanJs.js",
     "cleanJs": "node scripts/cleanJs.js"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "author": "",
   "license": "UNLICENSED",

@@ -198,34 +198,44 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
   }
 
   public getDescription(longDescription?: boolean): string { //TODO rework, incorporate descriptive numbers
-    let desc =  '' +
-      '<b>Name: ' + this.generateName() +
-      '</b><br><b>Chance</b>: ' + Math.ceil(this.chance * 100) + '%' +
-      '<br><b>Damage</b>: ' + (this.damage.description ? this.damage.getDescription() : Utils.valueToDiceRoll(this.damage.getValue())) +
-      '<br><b>Mana Cost</b>: ' + this.manaCost +
-      '<br><b>Range</b>: ' + this.range +
-      '<br><b>Modifiers</b>: ' + this.modifiers.reduce(function (sum, mod) { return sum + ', ' + (mod.name === undefined ? mod.namePrefix : mod.name); }, '').slice(2) +
-      '<br><b>Description</b>: ' + this.coreDescription + this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.description; }, '').slice(1) +
-      '<br><b>Type</b>: ' + Attack.Subtype[this.subtype] + 
-      '<br><b>Elements</b>: ' + this.elements.reduce(function (sum, element) { return sum + ', ' + Ability.Element[element] }, '').slice(2) + 
-      '<br><b>Cooldown</b>: ' + Ability.Cooldown[this.cooldown];
+    const stats: [string, string][] = [
+      ['Chance', Math.ceil(this.chance * 100) + '%'],
+      ['Damage', this.damage.description ? this.damage.getDescription() : Utils.valueToDiceRoll(this.damage.getValue())],
+      ['Mana', '' + this.manaCost],
+      ['Range', '' + this.range],
+      ['Attack Type', Attack.Subtype[this.subtype]],
+      ['Cooldown', Ability.Cooldown[this.cooldown]],
+      ['Elements', this.elements.map(element => Ability.Element[element]).join(', ')]
+    ];
 
-    if(longDescription) {
-      desc += '<br><b>Rulings</b>: ' + this.longDescription + this.modifiers.reduce(function (sum, mod) { return sum  + (mod.longDescription === undefined ? '' : ', ' + mod.longDescription); }, '').slice(2);
-    }
-
-    return desc;
-
+    return this.renderCard(
+      'attack',
+      this.generateName(),
+      stats,
+      this.coreDescription ? '' + this.coreDescription : '',
+      longDescription
+    );
   }
 
-  private generateName(): string { 
+  private generateName(): string {
 
-    const damagePortion = this.damage.prefix ? this.damage.prefix + ' ' : '';
+    //Silenced modifiers have a blank prefix - joining only the non empty parts
+    //keeps the name free of double spaces.
+    const parts: string[] = [];
 
-    return damagePortion +
-     this.modifiers.reduce(function (sum, mod) { return sum + ' ' + mod.namePrefix; }, '').slice(1) +
-     (this.modifiers.length > 0 ? ' ' : '') +
-     this.name;
+    if(this.damage.prefix) {
+      parts.push(this.damage.prefix);
+    }
+
+    this.modifiers.forEach(mod => {
+      if(mod.namePrefix) {
+        parts.push(mod.namePrefix);
+      }
+    });
+
+    parts.push(this.name);
+
+    return parts.join(' ');
 
   }
 }
