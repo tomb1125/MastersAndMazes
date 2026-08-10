@@ -5,7 +5,7 @@ import { ClassDetails } from "../classDetails.js";
 export class WizardClass extends ClassDetails {
     constructor() {
         super();
-        this.type = CharacterContext.Class.Rogue;
+        this.type = CharacterContext.Class.Wizard;
         this.primaryAttribute = CharacterContext.Attribute.Intelligence;
         this.secondaryAttribute = CharacterContext.Attribute.Wisdom;
         this.armorProficiency = CharacterContext.ArmorProficiency.Light;

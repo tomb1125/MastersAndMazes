@@ -1,8 +1,6 @@
 import { AbilityObject } from "../../../components/abilityObject.js";
 import { AbilityObjectFactory } from "../../../components/abilityObjectFactory.js";
 import { DescriptiveNumber } from "../../../components/descriptiveNumber.js";
-import { invisibilityEffect } from "../../../modifiers/effectRepository/multiclassEffects/invisibilityEffect.js";
-import { gainEffectModifier } from "../../../modifiers/modifiersRepository/gainEffectModifier.js";
 import { Ability } from "../../ability.js";
 import { CharacterContext } from "../../characterContext.js";
 import { Utility } from "../../utility.js";

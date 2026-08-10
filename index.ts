@@ -78,22 +78,9 @@ window.generateAbilities = (): void => {
       att4.getDescription(showRulings);
   } else if(levelMode === 0) {
 
-    const utl: Utility[] = new UtilityFactory(new Ability()).get(4);
+    const utl: Utility[] = new UtilityFactory(new Ability()).get(1);
 
-    description =
-      utl[0].getDescription(showRulings) +
-      utl[1].getDescription(showRulings) +
-      utl[2].getDescription(showRulings) +
-      utl[3].getDescription(showRulings);
-
-
-    const debugName = 'Entice Respect';
-    //description =
-      new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription(showRulings) +
-      new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription(showRulings) +
-      new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription(showRulings) +
-      new UtilityFactory(new Ability()).filter(utl => utl.name === debugName).get(1)[0].getDescription(showRulings);
-
+    description = utl[0].getDescription(showRulings);
   }
 
   outputDiv.innerHTML = description;

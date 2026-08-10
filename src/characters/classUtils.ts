@@ -1,8 +1,5 @@
 import { CharacterContext } from "../core/characterContext.js";
 import { ClassDetails } from "./classDetails.js";
-import { ClericClass } from "./classes/cleric.js";
-import { RogueClass } from "./classes/rogue.js";
-import { FighterClass } from "./classes/fighter.js";
 import { WizardClass } from "./classes/wizard.js";
 
 export class ClassUtils {
@@ -23,13 +20,7 @@ export class ClassUtils {
   ]);
 
     public static getClass(className: string): ClassDetails {
-      if(className === 'Cleric') {
-        return new ClericClass();
-      } else if(className === 'Rogue') {
-        return new RogueClass();
-      } else if(className === 'Fighter') {
-        return new FighterClass();
-      } else if(className === 'Wizard') {
+      if(className === 'Wizard') {
         return new WizardClass();
       } else {
         throw 'unsupported class '+className;
