@@ -24,6 +24,34 @@ export class WeightedList {
         return WeightedList.getRandomFromList([...this.items], num, affector);
     }
 
+    getEven(num: number, affector?: AffectsWeight): HasWeigth[] {
+        if(num <= 0) {
+            return [];
+        }
+
+        // Zero-weight items are dropped up front: they can never be drawn, and leaving
+        // them in would let a pass run out of weight and throw.
+        const pool: HasWeigth[] = this.items.filter(item => item.weight(affector) > 0);
+        if(pool.length === 0) {
+            throw 'cannot evenly draw '+num+' items, no item in list of '+this.items.length+' has weight';
+        }
+
+        const drawn: HasWeigth[] = [];
+        let pass: HasWeigth[] = [];
+
+        while(drawn.length < num) {
+            if(pass.length === 0) {
+                pass = [...pool];
+            }
+
+            const item: HasWeigth = WeightedList.getRandomFromList(pass, 1, affector)[0];
+            drawn.push(item);
+            pass = pass.filter(n => n !== item);
+        }
+
+        return drawn;
+    }
+
     private static getRandomFromList(array: HasWeigth[], num: number, affector?: AffectsWeight): HasWeigth[] {
         if(array.length < num) {
             throw 'cannot find '+num+' items in array with '+array.length+' elements';

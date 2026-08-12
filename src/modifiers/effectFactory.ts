@@ -23,5 +23,9 @@ export class EffectFactory extends Factory {
     public filter(z: (x: any) => boolean): EffectFactory {
         return super.filter(z) as EffectFactory;
     }
+
+    // No vendorFilter override: effects are reached only through modifiers, so a vendor
+    // narrows them by way of its modifierFilter. Add a Vendor.effectFilter slot here if
+    // that stops being true.
     
 }

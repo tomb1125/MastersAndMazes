@@ -2,6 +2,7 @@ import { WeightedList } from "../core/weightedList.js";
 import { Modifier } from "./modifier.js"
 import { AffectsWeight } from "../core/affectsWeight.js";
 import { Factory } from "../core/factory.js";
+import { ContentFilter, Vendor } from "../core/vendor.js";
 //factory imports
 import { manaFumeModifier } from "./modifiersRepository/wizardModifiers/manaFumeModifier.js";
 import { repeatableModifier } from "./modifiersRepository/repeatableModifier.js";
@@ -30,6 +31,10 @@ export class ModifierFactory extends Factory {
 
     public filter(z: (x: any) => boolean): ModifierFactory {
         return super.filter(z) as ModifierFactory;
+    }
+
+    protected vendorFilter(): ContentFilter {
+        return Vendor.active ? Vendor.active.modifierFilter : Vendor.ALL;
     }
 
     

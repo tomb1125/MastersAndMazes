@@ -6,6 +6,8 @@ import { CharacterContext } from "./src/core/characterContext.js";
 import { Ability } from "./src/core/ability.js";
 import { RandomNumberGenerator } from "./src/core/randomNumberGenerator.js";
 import { AttackFactory } from "./src/core/attackFactory.js";
+import { Vendor } from "./src/core/vendor.js";
+import { VENDORS } from "./src/core/vendors.js";
 
 // The inline handlers in index.html call these by bare name, so they have to
 // live on window — a module script no longer shares scope with the document.
@@ -13,11 +15,15 @@ declare global {
   interface Window {
     onSeedChange(val: string): void;
     onLevelChange(val: number): void;
-    onClassChange(val: string): void;
+    onVendorChange(val: string): void;
     onRulingChange(val: boolean): void;
     generateAbilities(): void;
   }
 }
+
+// The class picker is gone from the page; CharacterContext.classes keeps the default set
+// at the bottom of characterContext.ts, and abilities are narrowed by vendor instead.
+let activeVendor: Vendor = VENDORS[0];
 
 window.onSeedChange = (val): void => {
   CharacterContext.seed = val;
@@ -29,10 +35,11 @@ window.onLevelChange = (val): void => {
   window.generateAbilities();
 };
 
-window.onClassChange = (val): void => {
-  CharacterContext.classes = [
-    Number(Object.keys(CharacterContext.Class).find(cls => CharacterContext.Class[cls] === val) as any as string)
-  ];
+window.onVendorChange = (val): void => {
+  const picked = VENDORS.find(vendor => vendor.name === val);
+  if(picked) {
+    activeVendor = picked;
+  }
   window.generateAbilities();
 };
 
@@ -51,7 +58,9 @@ window.generateAbilities = (): void => {
     currentSeed = ''+Math.random();
   }
 
-  currentSeed += CharacterContext.level + CharacterContext.classes.join('');
+  // The vendor is part of the seed so switching shops rerolls rather than redrawing a
+  // correlated hand from the same random stream.
+  currentSeed += CharacterContext.level + activeVendor.name;
   Utils.gen = new RandomNumberGenerator(currentSeed);
 
   var outputDiv = document.getElementById('output');
@@ -60,31 +69,42 @@ window.generateAbilities = (): void => {
   }
 
   let levelMode: number = CharacterContext.level % 2;
-  let description: string = '';
 
-  if(levelMode === 1) {
-    let factory1 = new AttackFactory(new Ability()).get(2);
-    let factory2 = new AttackFactory(new Ability()).get(2);
-    let att1 = factory1[0];
-    let att2 = factory1[1];
-    let att3 = factory2[0];
-    let att4 = factory2[1];
+  // Everything the vendor trains is generated inside train(), so the factories built deep
+  // in Attack/Utility see its stock too.
+  const description: string = activeVendor.train((): string => {
+    if(levelMode === 1) {
+      const attacks: Attack[] = [
+        ...new AttackFactory(new Ability()).get(2),
+        ...new AttackFactory(new Ability()).get(2)
+      ];
 
-    //The cards are laid out by the .output grid in styles.css, so no separators here.
-    description =
-      att1.getDescription(showRulings) +
-      att2.getDescription(showRulings) +
-      att3.getDescription(showRulings) +
-      att4.getDescription(showRulings);
-  } else if(levelMode === 0) {
+      //The cards are laid out by the .output grid in styles.css, so no separators here.
+      return attacks.map(attack => attack.getDescription(showRulings)).join('');
+    }
 
-    const utl: Utility[] = new UtilityFactory(new Ability()).get(1);
+    if(levelMode === 0) {
+      const utl: Utility[] = new UtilityFactory(new Ability()).get(1);
+      return utl.map(utility => utility.getDescription(showRulings)).join('');
+    }
 
-    description = utl[0].getDescription(showRulings);
-  }
+    return '';
+  });
 
   outputDiv.innerHTML = description;
 };
+
+// Fills the vendor picklist from VENDORS so the page and the code cannot drift apart.
+const vendorPicklist = document.getElementById('vendor') as HTMLSelectElement | null;
+if(vendorPicklist) {
+  VENDORS.forEach(vendor => {
+    const option = document.createElement('option');
+    option.value = vendor.name;
+    option.text = vendor.name;
+    vendorPicklist.add(option);
+  });
+  vendorPicklist.value = activeVendor.name;
+}
 
 
 

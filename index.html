@@ -26,10 +26,9 @@
             </label>
 
             <label class="field">
-                <span class="field__label">Class</span>
-                <select class="field__input" id="cars" autocomplete="off" onchange="onClassChange(this.value)">
-                    <option value="Wizard">Wizard</option>
-                </select>
+                <span class="field__label">Vendor</span>
+                <!-- Options are filled in from src/core/vendors.ts on load. -->
+                <select class="field__input" id="vendor" name="Vendor" autocomplete="off" onchange="onVendorChange(this.value)"></select>
             </label>
 
             <label class="field field--checkbox">

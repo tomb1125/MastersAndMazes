@@ -2,6 +2,7 @@ import { WeightedList } from "../core/weightedList.js";
 import { DescriptiveNumber } from "./descriptiveNumber.js";
 import { Factory } from "../core/factory.js";
 import { AffectsWeight } from "../core/affectsWeight.js";
+import { ContentFilter, Vendor } from "../core/vendor.js";
 //factory imports
 import { currentHealthDescriptiveNumber } from "./descriptiveNumberRepository/currentHealthDescriptiveNumber.js";
 export class DescriptiveNumberFactory extends Factory {
@@ -22,5 +23,9 @@ export class DescriptiveNumberFactory extends Factory {
 
     public filter(z: (x: any) => boolean): DescriptiveNumberFactory {
         return super.filter(z) as DescriptiveNumberFactory;
+    }
+
+    protected vendorFilter(): ContentFilter {
+        return Vendor.active ? Vendor.active.descriptiveNumberFilter : Vendor.ALL;
     }
 }

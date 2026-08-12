@@ -2,6 +2,7 @@ import { AffectsWeight } from "./affectsWeight.js";
 import { Factory } from "./factory.js";
 import { WeightedList } from "./weightedList.js";
 import { Attack } from "./attack.js";
+import { ContentFilter, Vendor } from "./vendor.js";
 
 //factory imports
 import { fireballAttack } from "./attackRepository/wizardAttacks/fireballAttack.js";
@@ -26,5 +27,9 @@ export class AttackFactory extends Factory {
     
     public filter(z: (x: any) => boolean): AttackFactory {
         return super.filter(z) as AttackFactory;
+    }
+
+    protected vendorFilter(): ContentFilter {
+        return Vendor.active ? Vendor.active.abilityFilter : Vendor.ALL;
     }
 }
