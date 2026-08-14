@@ -6,6 +6,11 @@
 //
 // Run it after adding or removing a file in any *Repository folder. Never
 // hand-edit those generated blocks - this script overwrites them.
+//
+// A factory can also draw from a *Tables folder, where flat content lives as rows
+// of a table rather than one class per file (see abilityObjectTable.ts). Each of
+// those files exports one builder function named after the file, returning the
+// items to push. Both sources land in the same list.
 const fs = require('fs');
 const path = require('path');
 
@@ -38,6 +43,11 @@ const factories = {
         {
             'dir': 'src/components/abilityObjectRepository',
             'relatedDir': './abilityObjectRepository/',
+            'hasAffector': false
+        },
+        {
+            'tableDir': 'src/components/abilityObjectTables',
+            'relatedDir': './abilityObjectTables/',
             'hasAffector': false
         }
     ],
@@ -76,8 +86,30 @@ Object.keys(factories).forEach(key => {
         count++;
     };
 
+    const registerTable = (functionName, specifier, hasAffector) => {
+        const affector = hasAffector ? 'affector' : '';
+        factoryData = factoryData.replace(TAG, TAG + '\nimport { ' + functionName + ' } from "' + specifier + '";')
+        factoryData = factoryData.replace("new WeightedList();", 'new WeightedList();\n            '
+            + functionName + '(' + affector + ').forEach(x => this.items.push(x));')
+        count++;
+    };
+
     const repoDirs = factories[key];
     repoDirs.forEach(repoDir => {
+
+        if (repoDir.tableDir) {
+            const tablePath = path.join(root, repoDir.tableDir);
+            if (fs.existsSync(tablePath)) {
+                fs.readdirSync(tablePath).forEach(file => {
+                    if (file.endsWith('.ts')) {
+                        const functionName = file.replace('.ts', '');
+                        registerTable(functionName, repoDir.relatedDir + functionName + '.js', repoDir.hasAffector);
+                    }
+                });
+            }
+            return;
+        }
+
         const repoPath = path.join(root, repoDir.dir);
         fs.readdirSync(repoPath).forEach(file => {
             if (file.includes('.ts')) {
@@ -85,7 +117,6 @@ Object.keys(factories).forEach(key => {
                 register(className, repoDir.relatedDir + className + '.js', repoDir.hasAffector);
 
             } else if (!file.endsWith('.js') && !file.endsWith('.ts')) {
-                // One level of subfolders is walked, no deeper.
                 const subfolderDir = path.join(repoPath, file);
                 fs.readdirSync(subfolderDir).forEach(subfolderFile => {
                     if (subfolderFile.includes('.ts')) {

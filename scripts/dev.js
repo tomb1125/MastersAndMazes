@@ -22,7 +22,7 @@ const tsc = require.resolve('typescript/bin/tsc');
 
 const compiler = spawn(
     process.execPath,
-    [tsc, '--watch', '--preserveWatchOutput'], // keep the server log visible
+    [tsc, '--watch', '--preserveWatchOutput'],
     { cwd: root, stdio: 'inherit' }
 );
 

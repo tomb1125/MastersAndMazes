@@ -45,7 +45,6 @@ body {
   margin: 0 auto;
 }
 
-/* ---------- header ---------- */
 
 .page__header {
   margin-bottom: 18px;
@@ -64,7 +63,6 @@ body {
   font-size: 13px;
 }
 
-/* ---------- controls ---------- */
 
 .controls {
   display: flex;
@@ -154,7 +152,6 @@ body {
   transform: translateY(1px);
 }
 
-/* ---------- ability cards ---------- */
 
 .output {
   display: grid;
@@ -178,7 +175,6 @@ body {
   color: var(--accent);
 }
 
-/* stats as chips - one wrapping row instead of a line each */
 .ability__stats {
   display: flex;
   flex-wrap: wrap;
@@ -217,7 +213,6 @@ body {
   font-size: 14px;
 }
 
-/* ---------- modifiers ---------- */
 
 .ability__section-title {
   margin: 0 0 6px;
@@ -270,14 +265,12 @@ body {
   color: var(--text);
 }
 
-/* only separate the label from a description that actually follows it */
 .modifier__name:not(:last-child)::after {
   content: " \2014";
   color: var(--text-muted);
   font-weight: 400;
 }
 
-/* ---------- rulings ---------- */
 
 .ability__rulings {
   margin-top: 11px;

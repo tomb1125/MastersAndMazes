@@ -27,5 +27,6 @@ export class EffectFactory extends Factory {
     // No vendorFilter override: effects are reached only through modifiers, so a vendor
     // narrows them by way of its modifierFilter. Add a Vendor.effectFilter slot here if
     // that stops being true.
+
     
 }

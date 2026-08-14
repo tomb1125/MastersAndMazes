@@ -34,7 +34,6 @@ function serve(port = 8080, rootDir = projectRoot) {
         const url = decodeURIComponent(req.url.split('?')[0]);
         const file = path.resolve(root, '.' + (url === '/' ? '/index.html' : url));
 
-        // Don't serve anything outside the served root.
         if (file !== root && !file.startsWith(root + path.sep)) {
             res.writeHead(403).end('Forbidden');
             return;
@@ -47,7 +46,6 @@ function serve(port = 8080, rootDir = projectRoot) {
             }
             res.writeHead(200, {
                 'Content-Type': types[path.extname(file)] || 'application/octet-stream',
-                // Never let the browser cache a stale build between recompiles.
                 'Cache-Control': 'no-store'
             });
             res.end(data);

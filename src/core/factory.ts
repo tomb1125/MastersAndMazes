@@ -31,9 +31,6 @@ export class Factory {
     }
 
     /**
-     * The slot of the active vendor's stock this factory draws from. Overridden by every
-     * factory that a vendor can narrow; the default sells the whole repository.
-     *
      * Declared below the constructor on purpose - scripts/buildFactories.js rewrites the
      * constructor body only, so overrides placed here survive regeneration.
      */
@@ -41,7 +38,6 @@ export class Factory {
         return Vendor.ALL;
     }
 
-    /** The item pool as narrowed by the active vendor. */
     private stock(): WeightedList {
         const filtered = this.items.filter(this.vendorFilter());
 
@@ -56,11 +52,6 @@ export class Factory {
             && list.items.reduce((sum: number, item: HasWeigth) => sum + item.weight(this.affector), 0) > 0;
     }
 
-    /**
-     * Draws count items spread evenly across the repository, refilling once it is
-     * exhausted - so unlike get() this works on a repository smaller than count, down to
-     * a single item. Honours the active vendor's stock.
-     */
     public getEvenly(count: number): HasWeigth[] {
         const pool = Vendor.active === null ? this.items : this.stock();
         return pool.getEven(count, this.affector);

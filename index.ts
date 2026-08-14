@@ -21,8 +21,6 @@ declare global {
   }
 }
 
-// The class picker is gone from the page; CharacterContext.classes keeps the default set
-// at the bottom of characterContext.ts, and abilities are narrowed by vendor instead.
 let activeVendor: Vendor = VENDORS[0];
 
 window.onSeedChange = (val): void => {
@@ -79,7 +77,6 @@ window.generateAbilities = (): void => {
         ...new AttackFactory(new Ability()).get(2)
       ];
 
-      //The cards are laid out by the .output grid in styles.css, so no separators here.
       return attacks.map(attack => attack.getDescription(showRulings)).join('');
     }
 
@@ -94,7 +91,6 @@ window.generateAbilities = (): void => {
   outputDiv.innerHTML = description;
 };
 
-// Fills the vendor picklist from VENDORS so the page and the code cannot drift apart.
 const vendorPicklist = document.getElementById('vendor') as HTMLSelectElement | null;
 if(vendorPicklist) {
   VENDORS.forEach(vendor => {

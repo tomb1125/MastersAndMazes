@@ -14,8 +14,6 @@ export class Activity extends Ability {
 
     }
 
-    //Shared card markup for Attacks and Utilities. It is class annotated and
-    //free of <br> - styles.css owns every bit of the layout.
     protected renderCard(variant: string, name: string, stats: [string, string][], coreDescription: string, longDescription?: boolean): string {
       return '<article class="ability ability--' + variant + '">' +
         '<h3 class="ability__name">' + name + '</h3>' +
@@ -79,9 +77,6 @@ export class Activity extends Ability {
       '</section>';
     }
 
-    //The prefix is the part that ends up inside the ability name, so labelling
-    //the bullet with it lets the reader map a name fragment to its rule. Only
-    //silenced or prefix-less modifiers fall back to the full name.
     protected static getModifierName(mod: Modifier): string {
       const label = mod.namePrefix ? mod.namePrefix : mod.name;
 

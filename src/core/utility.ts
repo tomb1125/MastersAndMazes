@@ -49,7 +49,6 @@ export class Utility extends Activity implements CanAffectModifier, HasWeigth {
       );
     }
 
-    //Joining only the non empty parts keeps the name free of double spaces.
     public generateName(): string {
       const parts: string[] = [];
 

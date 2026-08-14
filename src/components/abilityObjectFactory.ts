@@ -5,15 +5,13 @@ import { AbilityObject } from "./abilityObject.js";
 import { ContentFilter, Vendor } from "../core/vendor.js";
 
 //factory imports
-import { paperMaterialAbilityObject } from "./abilityObjectRepository/bulkMaterials/paperMaterialAbilityObject.js";
-import { brickMaterialAbilityObject } from "./abilityObjectRepository/bulkMaterials/brickMaterialAbilityObject.js";
+import { bulkMaterials } from "./abilityObjectTables/bulkMaterials.js";
 export class AbilityObjectFactory extends Factory {
     constructor(affector: AffectsWeight, list?: WeightedList) {
         super(affector);
         if(list === undefined) {
             this.items = new WeightedList();
-            this.items.push(new paperMaterialAbilityObject());
-            this.items.push(new brickMaterialAbilityObject());
+            bulkMaterials().forEach(x => this.items.push(x));
         } else {
             this.items = list;
         }

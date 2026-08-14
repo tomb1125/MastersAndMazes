@@ -22,7 +22,6 @@ for (const file of ['index.html', 'styles.css']) {
     fs.copyFileSync(path.join(root, file), path.join(out, file));
 }
 
-// dist/ only - node_modules and the .ts sources are not part of the deploy.
 fs.cpSync(path.join(root, 'dist'), path.join(out, 'dist'), { recursive: true });
 
 console.log('assembled ' + out);

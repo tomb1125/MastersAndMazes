@@ -159,7 +159,7 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
       //if(this.damage.description != null) {
         this.damage.addBonus(1);
       //}
-      
+
       this.chance = Math.min(1, this.chance + 0.1);
       this.range = (this.range === 1 ? 0 : this.range) + 5;
     }
@@ -219,8 +219,6 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
 
   private generateName(): string {
 
-    //Silenced modifiers have a blank prefix - joining only the non empty parts
-    //keeps the name free of double spaces.
     const parts: string[] = [];
 
     if(this.damage.prefix) {

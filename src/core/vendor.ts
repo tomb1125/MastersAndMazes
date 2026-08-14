@@ -23,16 +23,12 @@ export type ContentFilter = (x: any) => boolean;
  * function.
  */
 export interface VendorStock {
-    /** Class names, e.g. 'grazedModifier'. Matched case-insensitively. */
     types?: string[];
-    /** Display names, e.g. 'Grazed'. Matched case-insensitively. */
     names?: string[];
-    /** Escape hatch for stock that is not expressible as a name list. */
     where?: ContentFilter;
 }
 
 export interface VendorStockList {
-    /** Applied to both AttackFactory and UtilityFactory. */
     abilities?: VendorStock;
     modifiers?: VendorStock;
     abilityObjects?: VendorStock;
@@ -48,7 +44,6 @@ export class Vendor {
     abilityObjectFilter: ContentFilter = Vendor.ALL;
     descriptiveNumberFilter: ContentFilter = Vendor.ALL;
 
-    /** The vendor generation is currently running under, or null for the open world. */
     public static active: Vendor | null = null;
 
     public static readonly ALL: ContentFilter = () => true;
@@ -63,12 +58,6 @@ export class Vendor {
         this.descriptiveNumberFilter = Vendor.compile(this.stock.descriptiveNumbers);
     }
 
-    /**
-     * Runs generation with this vendor active. Restores the previous vendor afterwards,
-     * so nesting and thrown errors cannot leave the scope stuck open.
-     *
-     *   const attacks = basicTrainer.train(() => new AttackFactory(new Ability()).get(2));
-     */
     public train<T>(generate: () => T): T {
         const previous = Vendor.active;
         Vendor.active = this;
@@ -79,11 +68,6 @@ export class Vendor {
         }
     }
 
-    /**
-     * Turns a stock descriptor into the predicate Factory consumes. Class names come from
-     * constructor.name, which is reliable here because there is no bundler and therefore
-     * no minification.
-     */
     public static compile(stock?: VendorStock): ContentFilter {
         if (!stock) {
             return Vendor.ALL;
@@ -100,8 +84,7 @@ export class Vendor {
             if (stock.where && stock.where(x)) {
                 return true;
             }
-            if (types.length > 0 && x && x.constructor
-                && types.includes(('' + x.constructor.name).toLowerCase())) {
+            if (types.length > 0 && types.includes(Vendor.typeNameOf(x))) {
                 return true;
             }
             if (names.length > 0 && x && x.name != null
@@ -110,6 +93,13 @@ export class Vendor {
             }
             return false;
         };
+    }
+
+    private static typeNameOf(x: any): string {
+        if (x && x.typeName) {
+            return ('' + x.typeName).toLowerCase();
+        }
+        return x && x.constructor ? ('' + x.constructor.name).toLowerCase() : '';
     }
 
     private static lowercase(values?: string[]): string[] {
