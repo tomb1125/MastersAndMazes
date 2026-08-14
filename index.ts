@@ -71,7 +71,15 @@ window.generateAbilities = (): void => {
   // Everything the vendor trains is generated inside train(), so the factories built deep
   // in Attack/Utility see its stock too.
   const description: string = activeVendor.train((): string => {
-    if(levelMode === 1) {
+    const sellsAttacks: boolean = new AttackFactory(new Ability()).stocksAnything();
+    const sellsUtilities: boolean = new UtilityFactory(new Ability()).stocksAnything();
+
+    // Level parity only picks which kind is preferred. A vendor that stocks none of that
+    // kind teaches the other one instead, so a utilities-only trainer is worth visiting
+    // at every level rather than half of them.
+    const attacksWanted: boolean = levelMode === 1 ? sellsAttacks : !sellsUtilities;
+
+    if(attacksWanted && sellsAttacks) {
       const attacks: Attack[] = [
         ...new AttackFactory(new Ability()).get(2),
         ...new AttackFactory(new Ability()).get(2)
@@ -80,7 +88,7 @@ window.generateAbilities = (): void => {
       return attacks.map(attack => attack.getDescription(showRulings)).join('');
     }
 
-    if(levelMode === 0) {
+    if(sellsUtilities) {
       const utl: Utility[] = new UtilityFactory(new Ability()).get(1);
       return utl.map(utility => utility.getDescription(showRulings)).join('');
     }
@@ -88,7 +96,11 @@ window.generateAbilities = (): void => {
     return '';
   });
 
-  outputDiv.innerHTML = description;
+  // A vendor is allowed to stock nothing at all, so an empty result is a real answer here
+  // rather than a generation failure.
+  outputDiv.innerHTML = description === ''
+    ? '<p class="output__empty">' + activeVendor.name + ' has nothing to teach.</p>'
+    : description;
 };
 
 const vendorPicklist = document.getElementById('vendor') as HTMLSelectElement | null;

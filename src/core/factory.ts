@@ -23,7 +23,7 @@ export class Factory {
         // expected rather than an authoring error - clamp instead of letting WeightedList
         // throw. Outside a vendor the throw is left in place.
         const stock = this.stock();
-        if(count <= 0 || stock.items.length === 0) {
+        if(count <= 0 || !this.isSelectable(stock)) {
             return [];
         }
 
@@ -38,13 +38,31 @@ export class Factory {
         return Vendor.ALL;
     }
 
+    /**
+     * Whether an empty vendor stock is an answer or an accident. It is an answer for the
+     * ability factories - a vendor that teaches no attacks should sell none - so they
+     * override this to true. It is an accident for the component factories, which are
+     * built halfway through assembling an ability that has already been committed to:
+     * handing back nothing there strands callers like wallUtility, which indexes straight
+     * into the result. Those fall back to the full pool instead.
+     */
+    protected canSellNothing(): boolean {
+        return false;
+    }
+
     private stock(): WeightedList {
         const filtered = this.items.filter(this.vendorFilter());
 
-        // Stock that is empty, or that only holds items the class cannot roll (weight 0),
-        // would throw out of WeightedList. Fall back to the unnarrowed pool so a vendor
-        // and class combination can never break generation.
-        return this.isSelectable(filtered) ? filtered : this.items;
+        if(this.isSelectable(filtered) || this.canSellNothing()) {
+            return filtered;
+        }
+
+        return this.items;
+    }
+
+    /** Whether the active vendor stocks anything this factory could actually roll. */
+    public stocksAnything(): boolean {
+        return this.isSelectable(Vendor.active === null ? this.items : this.stock());
     }
 
     private isSelectable(list: WeightedList): boolean {
@@ -53,8 +71,12 @@ export class Factory {
     }
 
     public getEvenly(count: number): HasWeigth[] {
-        const pool = Vendor.active === null ? this.items : this.stock();
-        return pool.getEven(count, this.affector);
+        if(Vendor.active === null) {
+            return this.items.getEven(count, this.affector);
+        }
+
+        const stock = this.stock();
+        return this.isSelectable(stock) ? stock.getEven(count, this.affector) : [];
     }
 
     public filter(z: (x: any) => boolean): Factory {

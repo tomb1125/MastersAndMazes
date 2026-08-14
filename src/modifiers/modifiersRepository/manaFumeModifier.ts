@@ -1,12 +1,12 @@
-import { Ability } from "../../../core/ability.js";
-import { AffectsWeight } from "../../../core/affectsWeight.js";
-import { Modifier } from "../../modifier.js";
+import { Ability } from "../../core/ability.js";
+import { AffectsWeight } from "../../core/affectsWeight.js";
+import { Modifier } from "../modifier.js";
 
 export class manaFumeModifier extends Modifier {
-    
+
     constructor(affector: AffectsWeight) {
         super();
-        this.powerBonus = () => -5; 
+        this.powerBonus = () => -5;
         this.weight = (affector) => {
             return affector != undefined && affector.type === Ability.Type.Attack ? 1 : 0;
           };

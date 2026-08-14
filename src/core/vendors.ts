@@ -8,11 +8,20 @@ import { Vendor } from "./vendor.js";
  * Stock is declared by class name, which is how the repository files are named.
  */
 export const BASIC_TRAINER: Vendor = new Vendor("Basic Trainer", {
-    abilities: { types: ["basicAttack", "basicSpell"] }
+    attacks: { types: ["basicAttack", "basicSpell"] }
 });
 
 export const GRAZED_TRAINER: Vendor = new Vendor("Grazed Trainer", {
     modifiers: { types: ["grazedModifier"] }
 });
 
-export const VENDORS: Vendor[] = [BASIC_TRAINER, GRAZED_TRAINER];
+/**
+ * Teaches no combat at all - a character trains utilities here and nothing else, which is
+ * why index.ts gives it utilities at every level rather than only even ones.
+ */
+export const WIZARD: Vendor = new Vendor("Wizard", {
+    attacks: Vendor.NOTHING,
+    utilities: { types: ["wallUtility"] }
+});
+
+export const VENDORS: Vendor[] = [BASIC_TRAINER, GRAZED_TRAINER, WIZARD];

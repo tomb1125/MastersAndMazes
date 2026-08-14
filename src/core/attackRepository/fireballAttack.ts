@@ -1,8 +1,7 @@
-import { Modifier } from "../../../modifiers/modifier.js";
-import { compensationModifier } from "../../../modifiers/modifiersRepository/compensationModifier.js";
-import { Ability } from "../../ability.js";
-import { AffectsWeight } from "../../affectsWeight.js";
-import { Attack } from "../../attack.js";
+import { compensationModifier } from "../../modifiers/modifiersRepository/compensationModifier.js";
+import { Ability } from "../ability.js";
+import { AffectsWeight } from "../affectsWeight.js";
+import { Attack } from "../attack.js";
 
 export class fireballAttack extends Attack {
 

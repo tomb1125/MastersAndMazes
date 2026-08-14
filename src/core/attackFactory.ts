@@ -5,7 +5,7 @@ import { Attack } from "./attack.js";
 import { ContentFilter, Vendor } from "./vendor.js";
 
 //factory imports
-import { fireballAttack } from "./attackRepository/wizardAttacks/fireballAttack.js";
+import { fireballAttack } from "./attackRepository/fireballAttack.js";
 import { basicSpell } from "./attackRepository/basicSpell.js";
 import { basicAttack } from "./attackRepository/basicAttack.js";
 export class AttackFactory extends Factory {
@@ -30,6 +30,10 @@ export class AttackFactory extends Factory {
     }
 
     protected vendorFilter(): ContentFilter {
-        return Vendor.active ? Vendor.active.abilityFilter : Vendor.ALL;
+        return Vendor.active ? Vendor.active.attackFilter : Vendor.ALL;
+    }
+
+    protected canSellNothing(): boolean {
+        return true;
     }
 }

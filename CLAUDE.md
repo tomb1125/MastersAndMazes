@@ -41,7 +41,7 @@ The project has **no runtime or `dependencies` entries** — only `typescript` a
 `scripts/buildFactories.js` **rewrites the constructor bodies** of six factory files:
 `effectFactory.ts`, `modifierFactory.ts`, `utilityFactory.ts`, `abilityObjectFactory.ts`, `descriptiveNumberFactory.ts`, `attackFactory.ts`.
 
-For each, it scans the paired repository directory (e.g. `utilityFactory.ts` ↔ `src/core/utilityRepository/`), walking one level of subfolders, and emits an `import` plus a `this.items.push(new <ClassName>(...))` line for every `.ts` file. It replaces everything between the `//factory imports` marker and the `export class` line, and everything after `new WeightedList();`.
+For each, it scans the paired repository directory (e.g. `utilityFactory.ts` ↔ `src/core/utilityRepository/`), walking one level of subfolders, and emits an `import` plus a `this.items.push(new <ClassName>(...))` line for every `.ts` file. Every repository is flat today — the subfolder walk is still supported, but see the vendor rule below for how content may and may not be grouped. It replaces everything between the `//factory imports` marker and the `export class` line, and everything after `new WeightedList();`.
 
 Consequences:
 - **Never hand-edit the import block or the push list in a factory constructor** — `buildFactories` will overwrite it. Add content by creating a new file in the repository folder and re-running the script.
@@ -55,7 +55,11 @@ Consequences:
 
 **Weighted random selection:** everything selectable implements `HasWeigth` (a `weight(affector?)` function). `WeightedList.get(n, affector)` does weighted sampling without replacement. `Factory` (base of every `*Factory`) holds a `WeightedList` and an `affector` (`AffectsWeight`).
 
-**Abilities are narrowed by vendor, never by character class.** Which content a character can get is decided by the active `Vendor`'s stock (`src/core/vendor.ts`), not by a class affinity on the content itself. Generation must never read a selected class — there is deliberately no `CharacterContext.classes` to read. `weight` stays for genuine rolling odds (rarity, or a component that only makes sense on one kind of ability, e.g. `manaFumeModifier` returning `0` unless the affector is an `Attack`); leave it at the default `1` when the vendor is the only thing that should gate availability. Content still lives in class-named folders (`wizardAttacks/`, `wizardModifiers/`) — that is flavour grouping, not a linkage.
+**Abilities are narrowed by vendor, never by character class.** Which content a character can get is decided by the active `Vendor`'s stock (`src/core/vendor.ts`), not by a class affinity on the content itself. Generation must never read a selected class — there is deliberately no `CharacterContext.classes` to read. `weight` stays for genuine rolling odds (rarity, or a component that only makes sense on one kind of ability, e.g. `manaFumeModifier` returning `0` unless the affector is an `Attack`); leave it at the default `1` when the vendor is the only thing that should gate availability. Repository folders are flat and must not be grouped by class — no `wizardAttacks/`, no `wizardModifiers/`. If a repository grows enough to need subfolders, split it on something the generator actually reads (subtype, element, rarity), never on a character class.
+
+**Vendor stock slots** (`VendorStockList` in `src/core/vendor.ts`): `abilities` is shorthand covering both ability factories; `attacks` and `utilities` override it individually; `modifiers`, `abilityObjects`, and `descriptiveNumbers` cover the components. **An omitted slot stocks everything**, so refusing a slot has to be explicit — `attacks: Vendor.NOTHING`, which is how the `Wizard` vendor sells utilities only. Prefer the narrow slot over `abilities` when declaring a vendor: `abilities` silently narrows utilities too, which is rarely what a "teaches these attacks" vendor means.
+
+Empty stock means two different things depending on the factory, controlled by `Factory.canSellNothing()`. The ability factories override it to `true` — a vendor that stocks no attacks sells none. The component factories leave it `false` and fall back to the full pool, because they are built midway through assembling an ability that is already committed to; returning nothing there strands callers like `wallUtility`, which indexes straight into `get(1)[0]`. `Factory.stocksAnything()` asks whether the active vendor stocks anything rollable, which is how `index.ts` decides what to generate.
 
 **Composition of an ability:** Attacks/Utilities are assembled from smaller weighted components, each with its own repository + factory:
 - `Modifier` (`src/modifiers/`) — name prefixes + `powerBonus`/`powerMultiplier` functions that feed the power budget, optionally an `Effect`.
@@ -67,7 +71,7 @@ Consequences:
 
 **Determinism:** all randomness goes through `Utils.random()`, backed by `Utils.gen` (a `RandomNumberGenerator` seeded in `index.ts` from `seed + level + vendor name`). Do not call `Math.random()` directly — it breaks seed reproducibility.
 
-**Entry point:** `index.ts` attaches `onSeedChange`/`onLevelChange`/`onVendorChange`/`onRulingChange`/`generateAbilities` to `window`. Level parity chooses the path: odd → `AttackFactory().get(2)`, even → `UtilityFactory().get(4)`. `getDescription(showRulings)` produces the HTML; the `showRulings` flag appends the `<b>Rulings</b>` long-description block.
+**Entry point:** `index.ts` attaches `onSeedChange`/`onLevelChange`/`onVendorChange`/`onRulingChange`/`generateAbilities` to `window`. Level parity only chooses the **preferred** kind — odd → attacks (two `AttackFactory().get(2)` draws), even → utilities (`UtilityFactory().get(1)`). If the active vendor stocks none of the preferred kind it teaches the other instead, which is what makes a utilities-only vendor like `Wizard` useful at every level; a vendor stocking neither renders a "has nothing to teach" note. `getDescription(showRulings)` produces the HTML; the `showRulings` flag appends the `<b>Rulings</b>` long-description block.
 
 ## Conventions & gotchas
 

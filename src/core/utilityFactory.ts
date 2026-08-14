@@ -5,7 +5,7 @@ import { ContentFilter, Vendor } from "./vendor.js";
 import { WeightedList } from "./weightedList.js";
 
 //factory imports
-import { wallUtility } from "./utilityRepository/wizardUtilities/wallUtility.js";
+import { wallUtility } from "./utilityRepository/wallUtility.js";
 export class UtilityFactory extends Factory {
     constructor(affector: AffectsWeight, list?: WeightedList) {
         super(affector);
@@ -27,6 +27,10 @@ export class UtilityFactory extends Factory {
     }
 
     protected vendorFilter(): ContentFilter {
-        return Vendor.active ? Vendor.active.abilityFilter : Vendor.ALL;
+        return Vendor.active ? Vendor.active.utilityFilter : Vendor.ALL;
+    }
+
+    protected canSellNothing(): boolean {
+        return true;
     }
 }

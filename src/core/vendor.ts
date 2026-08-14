@@ -28,8 +28,16 @@ export interface VendorStock {
     where?: ContentFilter;
 }
 
+/**
+ * `abilities` is shorthand for both ability slots; `attacks` and `utilities` override it
+ * when a vendor stocks the two differently - a trainer that teaches no combat at all is
+ * `attacks: Vendor.NOTHING`. An omitted slot stocks everything, which is why refusing to
+ * stock a slot has to be said out loud.
+ */
 export interface VendorStockList {
     abilities?: VendorStock;
+    attacks?: VendorStock;
+    utilities?: VendorStock;
     modifiers?: VendorStock;
     abilityObjects?: VendorStock;
     descriptiveNumbers?: VendorStock;
@@ -39,7 +47,8 @@ export class Vendor {
     name: string;
     stock: VendorStockList;
 
-    abilityFilter: ContentFilter = Vendor.ALL;
+    attackFilter: ContentFilter = Vendor.ALL;
+    utilityFilter: ContentFilter = Vendor.ALL;
     modifierFilter: ContentFilter = Vendor.ALL;
     abilityObjectFilter: ContentFilter = Vendor.ALL;
     descriptiveNumberFilter: ContentFilter = Vendor.ALL;
@@ -48,11 +57,17 @@ export class Vendor {
 
     public static readonly ALL: ContentFilter = () => true;
 
+    /** Stock descriptor matching no content, for a slot a vendor deliberately refuses. */
+    public static readonly NOTHING: VendorStock = { where: () => false };
+
     constructor(name: string, stock?: VendorStockList) {
         this.name = name;
         this.stock = stock ? stock : {};
 
-        this.abilityFilter = Vendor.compile(this.stock.abilities);
+        this.attackFilter = Vendor.compile(this.stock.attacks !== undefined
+            ? this.stock.attacks : this.stock.abilities);
+        this.utilityFilter = Vendor.compile(this.stock.utilities !== undefined
+            ? this.stock.utilities : this.stock.abilities);
         this.modifierFilter = Vendor.compile(this.stock.modifiers);
         this.abilityObjectFilter = Vendor.compile(this.stock.abilityObjects);
         this.descriptiveNumberFilter = Vendor.compile(this.stock.descriptiveNumbers);

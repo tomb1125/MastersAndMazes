@@ -8,7 +8,7 @@ export class Ability implements AffectsWeight {
     manaCost: number;
     type: Ability.Type;
     elements: Ability.Element[];
-   
+
     constructor(otherName?: string) {
       if (otherName !== undefined) {
         this.name = otherName;
