@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A browser-based, procedural generator for a tabletop-style RPG ("Monsters and Mazes" / "Masters and Mazes"). Given a **seed**, **level**, and **class**, it deterministically rolls a set of balanced character abilities (Attacks on odd levels, Utilities on even levels) and renders their descriptions into `index.html`. There is no game engine or runtime combat — the entire codebase is a weighted-random content generator plus a power-budget balancer.
+A browser-based, procedural generator for a tabletop-style RPG ("Monsters and Mazes" / "Masters and Mazes"). Given a **seed**, **level**, and **vendor**, it deterministically rolls a set of balanced character abilities (Attacks on odd levels, Utilities on even levels) and renders their descriptions into `index.html`. There is no game engine or runtime combat — the entire codebase is a weighted-random content generator plus a power-budget balancer.
 
 ## Commands
 
@@ -53,11 +53,9 @@ Consequences:
 
 **Class hierarchy:** `Ability` (`src/core/ability.ts`, base — name, chance, cooldown, elements, mana) → `Activity` (adds range, modifiers) → `Attack` and `Utility`. `Ability` also defines the shared enums (`Type`, `Source`, `Element`, `Cooldown`) in a merged namespace.
 
-**Weighted random selection:** everything selectable implements `HasWeigth` (a `weight(affector?)` function). `WeightedList.get(n, affector)` does weighted sampling without replacement. `Factory` (base of every `*Factory`) holds a `WeightedList` and an `affector` (`AffectsWeight`). A class-affinity `weight` is the standard mechanism for making a class's own content likely and other classes' content nearly impossible — see `CharacterContext.IN_CLASS_MODIFIER` (1.7) vs `OUT_OF_CLASS_WEIGHT` (~0), used like:
-```ts
-this.weight = () => CharacterContext.classes.includes(CharacterContext.Class.Cleric)
-    ? CharacterContext.IN_CLASS_MODIFIER : CharacterContext.OUT_OF_CLASS_WEIGHT;
-```
+**Weighted random selection:** everything selectable implements `HasWeigth` (a `weight(affector?)` function). `WeightedList.get(n, affector)` does weighted sampling without replacement. `Factory` (base of every `*Factory`) holds a `WeightedList` and an `affector` (`AffectsWeight`).
+
+**Abilities are narrowed by vendor, never by character class.** Which content a character can get is decided by the active `Vendor`'s stock (`src/core/vendor.ts`), not by a class affinity on the content itself. Generation must never read a selected class — there is deliberately no `CharacterContext.classes` to read. `weight` stays for genuine rolling odds (rarity, or a component that only makes sense on one kind of ability, e.g. `manaFumeModifier` returning `0` unless the affector is an `Attack`); leave it at the default `1` when the vendor is the only thing that should gate availability. Content still lives in class-named folders (`wizardAttacks/`, `wizardModifiers/`) — that is flavour grouping, not a linkage.
 
 **Composition of an ability:** Attacks/Utilities are assembled from smaller weighted components, each with its own repository + factory:
 - `Modifier` (`src/modifiers/`) — name prefixes + `powerBonus`/`powerMultiplier` functions that feed the power budget, optionally an `Effect`.
@@ -67,9 +65,9 @@ this.weight = () => CharacterContext.classes.includes(CharacterContext.Class.Cle
 
 **The balancing pass (`compensate()`):** the heart of the generator. Both `Attack.compensate()` and `Utility.compensate()` reconcile a generated ability against a fixed DPS/power budget (`Utils.getDPS`, `CharacterContext.getDPS`), adjusting chance, mana cost, damage/value, range coefficients, and even injecting extra modifiers (`MODIFIER_CHANCE` maps) or a `repeatableModifier` when power overflows. When editing generation, preserve the budget math here rather than fudging output numbers. Balancing constants live in `src/core/utils.ts` and `src/core/characterContext.ts`.
 
-**Determinism:** all randomness goes through `Utils.random()`, backed by `Utils.gen` (a `RandomNumberGenerator` seeded in `index.ts` from `seed + level + classes`). Do not call `Math.random()` directly — it breaks seed reproducibility.
+**Determinism:** all randomness goes through `Utils.random()`, backed by `Utils.gen` (a `RandomNumberGenerator` seeded in `index.ts` from `seed + level + vendor name`). Do not call `Math.random()` directly — it breaks seed reproducibility.
 
-**Entry point:** `index.ts` attaches `onSeedChange`/`onLevelChange`/`onClassChange`/`onRulingChange`/`generateAbilities` to `global`. Level parity chooses the path: odd → `AttackFactory().get(2)`, even → `UtilityFactory().get(4)`. `getDescription(showRulings)` produces the HTML; the `showRulings` flag appends the `<b>Rulings</b>` long-description block.
+**Entry point:** `index.ts` attaches `onSeedChange`/`onLevelChange`/`onVendorChange`/`onRulingChange`/`generateAbilities` to `window`. Level parity chooses the path: odd → `AttackFactory().get(2)`, even → `UtilityFactory().get(4)`. `getDescription(showRulings)` produces the HTML; the `showRulings` flag appends the `<b>Rulings</b>` long-description block.
 
 ## Conventions & gotchas
 
@@ -78,6 +76,7 @@ this.weight = () => CharacterContext.classes.includes(CharacterContext.Class.Cle
   2. **A note about an uncommon interaction** — something a reader cannot infer from the code because the reason lives somewhere else: another file, the build script, a browser or platform constraint, a deliberate non-obvious tradeoff. `Factory.vendorFilter` being declared below the constructor so `buildFactories.js` doesn't overwrite it, `.ts` served as `text/plain` so devtools can fetch sourcemapped originals, or `AbilityObject.typeName` existing because table rows all share one constructor. If removing the comment would let someone break the thing by accident, keep it.
   3. **Anything the repo owner wrote themselves.** Their `//TODO`s, question marks on enum members, commented-out formulas, and notes-to-self are records of intent — never delete or reword them, even when they look like clutter or contain typos. If unsure who wrote a comment, `git blame` it and leave it alone.
   - `//factory imports` in the six factory files is a functional marker `scripts/buildFactories.js` matches on, not a comment. Leave it.
-- Some balancing is deliberately disabled and looks like a bug: `Utils.getDPSCoefficient` returns a flat `1`, `Utils.getDPS` ignores its `level` argument, `CharacterContext.OUT_OF_CLASS_WEIGHT` is `0.0001` pending go-live, and `compensationModifier`/`repeatableModifier` are weight-`0` on purpose. The owner's `//TODO` comments at each site record the intended values — don't "fix" the code or drop the comments.
-- `CharacterContext` (level, classes, seed) and `Utils` (RNG, constants) are effectively global singletons via static members — generation reads them implicitly, so order of assignment matters.
+- Some balancing is deliberately disabled and looks like a bug: `Utils.getDPSCoefficient` returns a flat `1`, `Utils.getDPS` ignores its `level` argument, and `compensationModifier`/`repeatableModifier` are weight-`0` on purpose. The owner's `//TODO` comments at each site record the intended values — don't "fix" the code or drop the comments.
+- `CharacterContext` (level, seed) and `Utils` (RNG, constants) are effectively global singletons via static members — generation reads them implicitly, so order of assignment matters. It also holds the `Class`/`Attribute`/`Skill`/`ArmorProficiency` enums, which describe characters as data; nothing in generation reads them.
+- `src/characters/` (`ClassDetails`, `ClassUtils`, `classes/wizard.ts`) is currently unreferenced — it was the class-linkage model. Nothing imports it, so the browser never fetches it. Kept for a future character sheet; don't wire it back into generation.
 - Compiler options live in `tsconfig.json` (`target: es2017`, `module: es2020`, `outDir: dist`, `sourceMap: true`; `scripts/` is excluded — those are plain CommonJS Node scripts, not part of the browser build). New files just need to be reachable via imports from `index.ts` (directly or through a regenerated factory).

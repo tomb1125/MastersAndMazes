@@ -1,8 +1,6 @@
-import { ClassDetails } from "../../characters/classDetails.js";
-import { ClassUtils } from "../../characters/classUtils.js";
+import { Ability } from "../ability.js";
 import { AffectsWeight } from "../affectsWeight.js";
 import { Attack } from "../attack.js";
-import { CharacterContext } from "../characterContext.js";
 import { Utils } from "../utils.js";
 
 export class basicSpell extends Attack {
@@ -10,21 +8,7 @@ export class basicSpell extends Attack {
     constructor(affector?: AffectsWeight) {
         super('Basic Spell');
 
-        this.weight = (x?: AffectsWeight) => {
-            
-            const classRoll = Utils.D(CharacterContext.classes.length) - 1;
-            const primaryStat = ClassUtils.getClass(CharacterContext.Class[CharacterContext.classes[classRoll]]).primaryAttribute;
-
-            if([CharacterContext.Attribute.Intelligence, CharacterContext.Attribute.Wisdom, CharacterContext.Attribute.Charisma].includes(primaryStat)) {
-                return 1;
-            } else {
-                return 0.2;
-            }
-        }
-        
-        const classRoll = Utils.D(CharacterContext.classes.length) - 1;
-        const characterClass: ClassDetails = ClassUtils.getClass(CharacterContext.Class[CharacterContext.classes[classRoll]])
-        this.elements = [characterClass.elements.sort(() => 0.5 - Utils.random())[0]];
+        this.elements = [Ability.MAGIC_ELEMENTS[Utils.D(Ability.MAGIC_ELEMENTS.length) - 1]];
         this.subtype = Attack.Subtype.Spell;
         this.coreDescription = 'When you hit, deal damage. '
         this.generate();

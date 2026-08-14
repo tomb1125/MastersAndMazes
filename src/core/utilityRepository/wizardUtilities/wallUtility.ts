@@ -2,15 +2,13 @@ import { AbilityObject } from "../../../components/abilityObject.js";
 import { AbilityObjectFactory } from "../../../components/abilityObjectFactory.js";
 import { DescriptiveNumber } from "../../../components/descriptiveNumber.js";
 import { Ability } from "../../ability.js";
-import { CharacterContext } from "../../characterContext.js";
 import { Utility } from "../../utility.js";
 
 
 export class wallUtility extends Utility {
 
     constructor() {
-        super('Wall');        
-        this.weight = () => {return CharacterContext.classes.includes(CharacterContext.Class.Wizard) ? CharacterContext.IN_CLASS_MODIFIER : CharacterContext.OUT_OF_CLASS_WEIGHT}
+        super('Wall');
         this.objects.push(new AbilityObjectFactory(this).filter((x: AbilityObject) => x.isBulkMaterial).get(1)[0]);
 
         this.cooldown = Ability.Cooldown.Encounter; 

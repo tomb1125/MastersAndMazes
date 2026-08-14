@@ -3,13 +3,11 @@ import { compensationModifier } from "../../../modifiers/modifiersRepository/com
 import { Ability } from "../../ability.js";
 import { AffectsWeight } from "../../affectsWeight.js";
 import { Attack } from "../../attack.js";
-import { CharacterContext } from "../../characterContext.js";
 
 export class fireballAttack extends Attack {
 
     constructor(affector?: AffectsWeight) {
         super('Fireball');
-        this.weight = () => {return CharacterContext.classes.includes(CharacterContext.Class.Wizard) ? CharacterContext.IN_CLASS_MODIFIER : CharacterContext.OUT_OF_CLASS_WEIGHT}
         this.chance = 0.8;
         this.manaCost = 3;
         this.range = 15;

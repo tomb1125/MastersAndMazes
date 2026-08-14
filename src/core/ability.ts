@@ -59,6 +59,28 @@ export class Ability implements AffectsWeight {
         Tactic
       }
 
+      /**
+       * The elements a weapon attack and a spell can respectively roll. Content picks from
+       * one of these by subtype - abilities are narrowed by vendor, not by a character
+       * class, so there is no per-class element list to draw from.
+       */
+      export const WEAPON_ELEMENTS: Element[] = [
+        Element.Heavy,
+        Element.Finesse,
+        Element.Tactic
+      ];
+
+      export const MAGIC_ELEMENTS: Element[] = [
+        Element.Dark,
+        Element.Emotion,
+        Element.Fire,
+        Element.Force,
+        Element.Ice,
+        Element.Lightning,
+        Element.Poison,
+        Element.Radiant
+      ];
+
       export enum Cooldown
       {
         Encounter,
