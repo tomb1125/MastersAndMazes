@@ -2,6 +2,8 @@ import { AffectsWeight } from "../core/affectsWeight.js";
 import { HasWeigth } from "../core/hasWeigth.js";
 
 export class DescriptiveNumber implements HasWeigth{
+    static readonly MARKER: string = '*';
+
     protected value: number;
     lowValue: number;
 
@@ -34,6 +36,14 @@ export class DescriptiveNumber implements HasWeigth{
         
         throw 'Undefined Descriptive Number Error';
 
+    }
+
+    public static renderMarker(): string {
+        return '<span class="value-marker">' + DescriptiveNumber.MARKER + '</span>';
+    }
+
+    public getInlineValue(): string {
+        return this.description ? DescriptiveNumber.renderMarker() : this.getDescription();
     }
 
     public getValue() : number {

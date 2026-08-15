@@ -200,7 +200,7 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
   public getDescription(longDescription?: boolean): string { //TODO rework, incorporate descriptive numbers
     const stats: [string, string][] = [
       ['Chance', Math.ceil(this.chance * 100) + '%'],
-      ['Damage', this.damage.description ? this.damage.getDescription() : Utils.valueToDiceRoll(this.damage.getValue())],
+      ['Damage', this.damage.description ? DescriptiveNumber.renderMarker() : Utils.valueToDiceRoll(this.damage.getValue())],
       ['Mana', '' + this.manaCost],
       ['Range', '' + this.range],
       ['Attack Type', Attack.Subtype[this.subtype]],
@@ -215,6 +215,13 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
       this.coreDescription ? '' + this.coreDescription : '',
       longDescription
     );
+  }
+
+  protected override getDescriptiveNumbers(): [string, DescriptiveNumber][] {
+    return [
+      ['Damage', this.damage],
+      ['Target', this.target]
+    ];
   }
 
   private generateName(): string {

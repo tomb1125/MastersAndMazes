@@ -19,6 +19,7 @@
   --improvement: #7fc98a;
   --effect: #82a9f5;
   --other: #b09ada;
+  --value: #5ec8e0;
 
   --radius: 14px;
   --radius-sm: 9px;
@@ -234,6 +235,8 @@ body {
 }
 
 .modifier-list,
+.component-list,
+.value-list,
 .ruling-list {
   list-style: none;
   display: grid;
@@ -281,6 +284,65 @@ body {
   font-weight: 400;
 }
 
+
+.ability__components,
+.ability__values {
+  margin-top: 11px;
+}
+
+.component,
+.value {
+  padding: 6px 0 6px 10px;
+  border-left: 2px solid var(--border-strong);
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+.value {
+  border-left-color: var(--value);
+}
+
+.component__name {
+  margin-right: 5px;
+  font-weight: 650;
+  color: var(--text);
+}
+
+.component__name:not(:last-child)::after {
+  content: " \2014";
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.value__type {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 1px 7px;
+  border: 1px solid var(--value);
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--value);
+  vertical-align: 1px;
+  white-space: nowrap;
+}
+
+.value-marker {
+  font-weight: 700;
+  color: var(--value);
+}
+
+.value .value-marker {
+  margin-right: 5px;
+}
+
+.value .value-marker::after {
+  content: " \2014";
+  color: var(--text-muted);
+  font-weight: 400;
+}
 
 .ability__rulings {
   margin-top: 11px;

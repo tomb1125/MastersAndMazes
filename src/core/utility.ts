@@ -36,8 +36,7 @@ export class Utility extends Activity implements CanAffectModifier, HasWeigth {
     public getDescription(longDescription?: boolean): string {
       const stats: [string, string][] = [
         ['Chance', Math.ceil(this.chance * 100) + '%'],
-        ['Cooldown', Ability.Cooldown[this.cooldown]],
-        ['Components', this.objects.map(obj => obj.name).join(', ')]
+        ['Cooldown', Ability.Cooldown[this.cooldown]]
       ];
 
       return this.renderCard(
@@ -47,6 +46,17 @@ export class Utility extends Activity implements CanAffectModifier, HasWeigth {
         this.description ? this.description : '',
         longDescription
       );
+    }
+
+    protected override getObjects(): AbilityObject[] {
+      return this.objects;
+    }
+
+    protected override getDescriptiveNumbers(): [string, DescriptiveNumber][] {
+      return [
+        ['Value', this.value],
+        ['Duration', this.duration]
+      ];
     }
 
     public generateName(): string {

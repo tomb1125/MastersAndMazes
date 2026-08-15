@@ -1,3 +1,5 @@
+import { AbilityObject } from "../components/abilityObject.js";
+import { DescriptiveNumber } from "../components/descriptiveNumber.js";
 import { Modifier } from "../modifiers/modifier.js";
 import { Ability } from "./ability.js";
 export class Activity extends Ability {
@@ -27,8 +29,18 @@ export class Activity extends Ability {
         '</dl>' +
         (coreDescription ? '<p class="ability__core-description">' + coreDescription + '</p>' : '') +
         this.renderModifiers() +
+        this.renderObjects() +
+        this.renderDescriptiveNumbers() +
         (longDescription ? this.renderRulings() : '') +
       '</article>';
+    }
+
+    protected getObjects(): AbilityObject[] {
+      return [];
+    }
+
+    protected getDescriptiveNumbers(): [string, DescriptiveNumber][] {
+      return [];
     }
 
     protected renderModifiers(): string {
@@ -49,6 +61,47 @@ export class Activity extends Ability {
               (mod.description ? '<span class="modifier__description">' + mod.description + '</span>' : '') +
             '</li>';
           }).join('') +
+        '</ul>' +
+      '</section>';
+    }
+
+    protected renderObjects(): string {
+      const objects = this.getObjects();
+
+      if(objects.length === 0) {
+        return '';
+      }
+
+      return '<section class="ability__components">' +
+        '<h4 class="ability__section-title">Components</h4>' +
+        '<ul class="component-list">' +
+          objects.map(obj =>
+            '<li class="component">' +
+              '<span class="component__name">' + obj.name + '</span>' +
+              (obj.description ? '<span class="component__description">' + obj.description + '</span>' : '') +
+            '</li>'
+          ).join('') +
+        '</ul>' +
+      '</section>';
+    }
+
+    protected renderDescriptiveNumbers(): string {
+      const described = this.getDescriptiveNumbers().filter(([, number]) => number && number.description);
+
+      if(described.length === 0) {
+        return '';
+      }
+
+      return '<section class="ability__values">' +
+        '<h4 class="ability__section-title">Values</h4>' +
+        '<ul class="value-list">' +
+          described.map(([label, number]) =>
+            '<li class="value">' +
+              '<span class="value__type">' + label + '</span>' +
+              DescriptiveNumber.renderMarker() +
+              '<span class="value__description">' + number.getDescription() + '</span>' +
+            '</li>'
+          ).join('') +
         '</ul>' +
       '</section>';
     }

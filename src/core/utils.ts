@@ -11,7 +11,7 @@ export class Utils {
 
     public static POWER_PER_LEVEL: number = 0.2;
     public static BASIC_ATTACK_DPS: number = 2.5
-    public static ATTACK_DESCRIPTIVE_NUMBER_CHANCE: number = 0.25;
+    public static ATTACK_DESCRIPTIVE_NUMBER_CHANCE: number = 0.75;
     public static AVG_ENEMIES_ADJACENT: number = 1.9;
     public static AVG_PLAYERS: number = 3;
     public static AVG_ENEMIES_PER_PLAYER: number = 2;
