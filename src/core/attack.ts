@@ -11,7 +11,6 @@ import { AffectsWeight } from "./affectsWeight.js"
 
 export class Attack extends Activity implements CanAffectModifier, HasWeigth {
   static MODIFIER_CHANCE: Map<number, number> = new Map([
-    [0.1, 0],
     [0.7, 1],
     [1, 2],
     [1.2, 3],
@@ -24,7 +23,7 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
   coreDescription: String;
   weight: (x?: AffectsWeight) => number = () => {return 1};
 
- 
+
   constructor(otherName?: string) {
     super(otherName);
     this.cooldown = Ability.Cooldown.Encounter;
@@ -43,7 +42,9 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
   }
 
   private initCommon() {
-    this.manaCost = 0;
+    if(this.manaCost === undefined) {
+      this.manaCost = 0;
+    }
     this.target = new DescriptiveNumber(1);
   }
 
@@ -200,7 +201,7 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
   public getDescription(longDescription?: boolean): string { //TODO rework, incorporate descriptive numbers
     const stats: [string, string][] = [
       ['Chance', Math.ceil(this.chance * 100) + '%'],
-      ['Damage', this.damage.description ? DescriptiveNumber.renderMarker() : Utils.valueToDiceRoll(this.damage.getValue())],
+      ['Damage', this.damage.description ? this.damage.getDescription() : Utils.valueToDiceRoll(this.damage.getValue())],
       ['Mana', '' + this.manaCost],
       ['Range', '' + this.range],
       ['Attack Type', Attack.Subtype[this.subtype]],
@@ -215,13 +216,6 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
       this.coreDescription ? '' + this.coreDescription : '',
       longDescription
     );
-  }
-
-  protected override getDescriptiveNumbers(): [string, DescriptiveNumber][] {
-    return [
-      ['Damage', this.damage],
-      ['Target', this.target]
-    ];
   }
 
   private generateName(): string {
