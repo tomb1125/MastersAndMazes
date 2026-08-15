@@ -18,6 +18,7 @@ export class Modifier implements HasWeigth {
     description: string;
     longDescription: string;
     effect: Effect;
+    typeName: string = this.constructor.name;
 
     constructor(otherName?: string) {
       if (otherName !== undefined) {

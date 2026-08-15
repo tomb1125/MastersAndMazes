@@ -43,8 +43,8 @@ export class Factory {
      * ability factories - a vendor that teaches no attacks should sell none - so they
      * override this to true. It is an accident for the component factories, which are
      * built halfway through assembling an ability that has already been committed to:
-     * handing back nothing there strands callers like wallUtility, which indexes straight
-     * into the result. Those fall back to the full pool instead.
+     * handing back nothing there strands callers like buildUtilities, which indexes
+     * straight into the result. Those fall back to the full pool instead.
      */
     protected canSellNothing(): boolean {
         return false;

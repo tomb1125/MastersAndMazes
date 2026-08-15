@@ -5,7 +5,8 @@ import { Vendor } from "./vendor.js";
  * need to be rolled rather than picked, this becomes a vendorRepository folder plus a
  * vendorFactory registered in scripts/buildFactories.js.
  *
- * Stock is declared by class name, which is how the repository files are named.
+ * Stock is declared by typeName: the class name for a repository entry, and the row's own
+ * typeName for content that lives in a table.
  */
 export const BASIC_TRAINER: Vendor = new Vendor("Basic Trainer", {
     attacks: { types: ["basicAttack", "basicSpell"] }

@@ -9,6 +9,8 @@ export class Ability implements AffectsWeight {
     type: Ability.Type;
     elements: Ability.Element[];
 
+    typeName: string = this.constructor.name;
+
     constructor(otherName?: string) {
       if (otherName !== undefined) {
         this.name = otherName;

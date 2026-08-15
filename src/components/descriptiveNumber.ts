@@ -13,6 +13,7 @@ export class DescriptiveNumber implements HasWeigth{
     description: string;
     type: DescriptiveNumber.Type = DescriptiveNumber.Type.Common;
     weight = (x?: AffectsWeight) => {return 1};
+    typeName: string = this.constructor.name;
 
     constructor(value?: number) {
         this.value = value == undefined ? 0 : value;

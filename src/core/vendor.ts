@@ -3,7 +3,7 @@
  * "the shop that only sells basic attacks", "the trainer that only teaches Grazed".
  *
  * It is an ambient scope rather than a container of factories. Factories are built
- * ad-hoc deep inside generation (Attack.initModifiers, wallUtility, applyEffectModifier),
+ * ad-hoc deep inside generation (Attack.initModifiers, buildUtilities, applyEffectModifier),
  * so a vendor cannot hand its own instances to those call sites. Instead the active
  * vendor is read by Factory.get(), the same way generation implicitly reads
  * CharacterContext and Utils.

@@ -5,13 +5,13 @@ import { ContentFilter, Vendor } from "./vendor.js";
 import { WeightedList } from "./weightedList.js";
 
 //factory imports
-import { wallUtility } from "./utilityRepository/wallUtility.js";
+import { constructions } from "./utilityTables/constructions.js";
 export class UtilityFactory extends Factory {
     constructor(affector: AffectsWeight, list?: WeightedList) {
         super(affector);
         if(list === undefined) {
             this.items = new WeightedList();
-            this.items.push(new wallUtility());
+            constructions().forEach(x => this.items.push(x));
         } else {
             this.items = list;
         }

@@ -23,6 +23,11 @@ const factories = {
             'dir': 'src/modifiers/effectRepository',
             'relatedDir': './effectRepository/',
             'hasAffector': false
+        },
+        {
+            'tableDir': 'src/modifiers/effectTables',
+            'relatedDir': './effectTables/',
+            'hasAffector': false
         }
     ],
     'src/modifiers/modifierFactory.ts': [
@@ -30,12 +35,22 @@ const factories = {
             'dir': 'src/modifiers/modifiersRepository',
             'relatedDir': './modifiersRepository/',
             'hasAffector': true
+        },
+        {
+            'tableDir': 'src/modifiers/modifierTables',
+            'relatedDir': './modifierTables/',
+            'hasAffector': false
         }
     ],
     'src/core/utilityFactory.ts': [
         {
             'dir': 'src/core/utilityRepository',
             'relatedDir': './utilityRepository/',
+            'hasAffector': false
+        },
+        {
+            'tableDir': 'src/core/utilityTables',
+            'relatedDir': './utilityTables/',
             'hasAffector': false
         }
     ],
@@ -56,6 +71,11 @@ const factories = {
             'dir': 'src/components/descriptiveNumberRepository',
             'relatedDir': './descriptiveNumberRepository/',
             'hasAffector': false
+        },
+        {
+            'tableDir': 'src/components/descriptiveNumberTables',
+            'relatedDir': './descriptiveNumberTables/',
+            'hasAffector': false
         }
     ],
     'src/core/attackFactory.ts': [
@@ -63,6 +83,11 @@ const factories = {
             'dir': 'src/core/attackRepository',
             'relatedDir': './attackRepository/',
             'hasAffector': true
+        },
+        {
+            'tableDir': 'src/core/attackTables',
+            'relatedDir': './attackTables/',
+            'hasAffector': false
         }
     ]
 };
@@ -110,7 +135,13 @@ Object.keys(factories).forEach(key => {
             return;
         }
 
+        // A repository emptied out into tables is missing on a fresh clone, since git
+        // does not carry empty directories.
         const repoPath = path.join(root, repoDir.dir);
+        if (!fs.existsSync(repoPath)) {
+            return;
+        }
+
         fs.readdirSync(repoPath).forEach(file => {
             if (file.includes('.ts')) {
                 const className = file.replace('.ts', '');

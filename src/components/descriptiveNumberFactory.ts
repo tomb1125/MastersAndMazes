@@ -4,14 +4,14 @@ import { Factory } from "../core/factory.js";
 import { AffectsWeight } from "../core/affectsWeight.js";
 import { ContentFilter, Vendor } from "../core/vendor.js";
 //factory imports
-import { currentHealthDescriptiveNumber } from "./descriptiveNumberRepository/currentHealthDescriptiveNumber.js";
+import { commonNumbers } from "./descriptiveNumberTables/commonNumbers.js";
 export class DescriptiveNumberFactory extends Factory {
 
     constructor(affector: AffectsWeight, list?: WeightedList) {
         super(affector);
         if(list === undefined) {
             this.items = new WeightedList();
-            this.items.push(new currentHealthDescriptiveNumber());
+            commonNumbers().forEach(x => this.items.push(x));
         } else {
             this.items = list;
         }

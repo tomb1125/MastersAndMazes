@@ -70,7 +70,7 @@ export class Utility extends Activity implements CanAffectModifier, HasWeigth {
       return parts.join(' ');
     }
 
-    protected compensate(): void {
+    public compensate(): void {
       const extraMods: Modifier[] = Utils.getNumberFromValueMap(Utility.MODIFIER_CHANCE, new ModifierFactory(this)) as Modifier[];
       extraMods.forEach(mod => {
         this.modifiers.push(mod);

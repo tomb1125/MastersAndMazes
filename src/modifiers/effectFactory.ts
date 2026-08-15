@@ -3,14 +3,14 @@ import { Modifier } from "./modifier.js"
 import { Factory } from "../core/factory.js";
 import { AffectsWeight } from "../core/affectsWeight.js";
 //factory imports
-import { stunEffect } from "./effectRepository/stunEffect.js";
+import { debuffs } from "./effectTables/debuffs.js";
 export class EffectFactory extends Factory {
 
     constructor(affector: AffectsWeight, list?: WeightedList) {
         super(affector);
         if(list === undefined) {
             this.items = new WeightedList();
-            this.items.push(new stunEffect());
+            debuffs().forEach(x => this.items.push(x));
         } else {
             this.items = list;
         }

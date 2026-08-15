@@ -5,17 +5,17 @@ import { Attack } from "./attack.js";
 import { ContentFilter, Vendor } from "./vendor.js";
 
 //factory imports
+import { weapons } from "./attackTables/weapons.js";
+import { spells } from "./attackTables/spells.js";
 import { fireballAttack } from "./attackRepository/fireballAttack.js";
-import { basicSpell } from "./attackRepository/basicSpell.js";
-import { basicAttack } from "./attackRepository/basicAttack.js";
 export class AttackFactory extends Factory {
     constructor(affector: AffectsWeight, list?: WeightedList) {
         super(affector);
         if(list === undefined) {
             this.items = new WeightedList();
+            weapons().forEach(x => this.items.push(x));
+            spells().forEach(x => this.items.push(x));
             this.items.push(new fireballAttack(affector));
-            this.items.push(new basicSpell(affector));
-            this.items.push(new basicAttack(affector));
         } else {
             this.items = list;
         }
