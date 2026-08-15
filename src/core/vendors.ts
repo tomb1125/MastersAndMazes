@@ -17,8 +17,10 @@ export const GRAZED_TRAINER: Vendor = new Vendor("Grazed Trainer", {
 });
 
 /**
- * Teaches no combat at all - a character trains utilities here and nothing else, which is
- * why index.ts gives it utilities at every level rather than only even ones.
+ * Stocks no attacks, which is what makes it the worked example of Vendor.NOTHING and of
+ * index.ts teaching the other kind at every level. That is a demonstration and not a
+ * statement that a class sells no combat - this vendor gains an attacks stock once it has
+ * a spell list worth selling.
  */
 export const WIZARD: Vendor = new Vendor("Wizard", {
     attacks: Vendor.NOTHING,

@@ -47,6 +47,21 @@ window.onRulingChange = (val): void => {
   window.generateAbilities();
 };
 
+const ABILITIES_PER_VISIT: number = 4;
+
+// Drawn one at a time from a factory built per ability, so the count never depends on how
+// deep the vendor's stock is: an ability is rolled in its constructor, and a vendor with a
+// single thing in stock teaches four different rolls of it rather than one.
+const teach = (openFactory: () => AttackFactory | UtilityFactory): string => {
+  const abilities: (Attack | Utility)[] = [];
+
+  for(let i = 0; i < ABILITIES_PER_VISIT; i++) {
+    const drawn: (Attack | Utility)[] = openFactory().get(1);
+    abilities.push(...drawn);
+  }
+
+  return abilities.map(ability => ability.getDescription(showRulings)).join('');
+};
 
 window.generateAbilities = (): void => {
   let currentSeed = '';
@@ -75,22 +90,16 @@ window.generateAbilities = (): void => {
     const sellsUtilities: boolean = new UtilityFactory(new Ability()).stocksAnything();
 
     // Level parity only picks which kind is preferred. A vendor that stocks none of that
-    // kind teaches the other one instead, so a utilities-only trainer is worth visiting
-    // at every level rather than half of them.
+    // kind teaches the other one instead, so a vendor narrow enough to sell one kind is
+    // worth visiting at every level rather than half of them.
     const attacksWanted: boolean = levelMode === 1 ? sellsAttacks : !sellsUtilities;
 
     if(attacksWanted && sellsAttacks) {
-      const attacks: Attack[] = [
-        ...new AttackFactory(new Ability()).get(2),
-        ...new AttackFactory(new Ability()).get(2)
-      ];
-
-      return attacks.map(attack => attack.getDescription(showRulings)).join('');
+      return teach(() => new AttackFactory(new Ability()));
     }
 
     if(sellsUtilities) {
-      const utl: Utility[] = new UtilityFactory(new Ability()).get(1);
-      return utl.map(utility => utility.getDescription(showRulings)).join('');
+      return teach(() => new UtilityFactory(new Ability()));
     }
 
     return '';
