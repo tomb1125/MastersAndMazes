@@ -3,7 +3,7 @@ import { DescriptiveNumber } from "../components/descriptiveNumber.js";
 import { Modifier } from "../modifiers/modifier.js";
 import { Ability } from "./ability.js";
 export class Activity extends Ability {
-    range : number;
+    range : Ability.Range;
     modifiers: Modifier[];
     longDescription: String;
 

@@ -11,7 +11,7 @@ export interface AttackRow {
     chance: number;
     damage: number;
     manaCost: number;
-    range: number;
+    range: Ability.Range;
     cooldown?: Ability.Cooldown;
     elements?: Ability.Element[];
     weight?: (x?: AffectsWeight) => number;

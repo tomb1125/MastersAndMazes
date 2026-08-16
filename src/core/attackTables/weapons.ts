@@ -1,3 +1,4 @@
+import { Ability } from "../ability.js";
 import { Attack } from "../attack.js";
 import { AttackRow, buildAttacks } from "../attackTable.js";
 
@@ -9,7 +10,7 @@ const ROWS: AttackRow[] = [
         chance: 0.6,
         damage: 5,
         manaCost: 1,
-        range: 15
+        range: Ability.Range.Medium
     }
 ];
 

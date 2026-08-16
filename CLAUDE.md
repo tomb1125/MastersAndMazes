@@ -64,7 +64,7 @@ Every factory has a `*Table.ts` next to it (`modifierTable.ts`, `attackTable.ts`
 
 ## Core architecture
 
-**Class hierarchy:** `Ability` (`src/core/ability.ts`, base — name, chance, cooldown, elements, mana) → `Activity` (adds range, modifiers) → `Attack` and `Utility`. `Ability` also defines the shared enums (`Type`, `Source`, `Element`, `Cooldown`) in a merged namespace.
+**Class hierarchy:** `Ability` (`src/core/ability.ts`, base — name, chance, cooldown, elements, mana) → `Activity` (adds range, modifiers) → `Attack` and `Utility`. `Ability` also defines the shared enums (`Type`, `Source`, `Element`, `Cooldown`, `Range`) in a merged namespace. `Range` members carry their distance in squares as the enum value (`Touch = 1`, `Short = 5`, `Medium = 10`, `Long = 20`), and `Ability.RANGES` lists them in order for stepping between them.
 
 **Weighted random selection:** everything selectable implements `HasWeigth` (a `weight(affector?)` function). `WeightedList.get(n, affector)` does weighted sampling without replacement. `Factory` (base of every `*Factory`) holds a `WeightedList` and an `affector` (`AffectsWeight`).
 

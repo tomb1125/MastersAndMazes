@@ -109,7 +109,7 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
       //}
 
       this.chance = Math.min(1, this.chance + 0.1);
-      this.range = (this.range === 1 ? 0 : this.range) + 5;
+
     }
     
   }
@@ -150,7 +150,7 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
       ['Chance', Math.ceil(this.chance * 100) + '%'],
       ['Damage', this.damage.description ? this.damage.getInlineValue() : Utils.valueToDiceRoll(this.damage.getValue())],
       ['Mana', '' + this.manaCost],
-      ['Range', '' + this.range],
+      ['Range', Ability.Range[this.range]],
       ['Attack Type', Attack.Subtype[this.subtype]],
       ['Cooldown', Ability.Cooldown[this.cooldown]],
       ['Elements', this.elements.map(element => Ability.Element[element]).join(', ')]

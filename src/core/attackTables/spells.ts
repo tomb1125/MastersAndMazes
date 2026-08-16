@@ -10,7 +10,7 @@ const ROWS: AttackRow[] = [
         chance: 0.6,
         damage: 10,
         manaCost: 1,
-        range: 15
+        range: Ability.Range.Medium
     },
     {
         typeName: 'fireballAttack',
@@ -19,7 +19,7 @@ const ROWS: AttackRow[] = [
         chance: 0.7,
         damage: 5,
         manaCost: 3,
-        range: 15,
+        range: Ability.Range.Medium,
         elements: [Ability.Element.Fire]
     }
 ];

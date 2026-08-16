@@ -90,6 +90,21 @@ export class Ability implements AffectsWeight {
         Adventure
       }
 
+      export enum Range
+      {
+        Touch = 1,
+        Short = 5,
+        Medium = 10,
+        Long = 20
+      }
+
+      export const RANGES: Range[] = [
+        Range.Touch,
+        Range.Short,
+        Range.Medium,
+        Range.Long
+      ];
+
       export enum Attribute
       {
         Strength,

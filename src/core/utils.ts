@@ -1,4 +1,5 @@
 import { ModifierFactory } from "../modifiers/modifierFactory.js";
+import { Ability } from "./ability.js";
 import { CharacterContext } from "./characterContext.js";
 import { Factory } from "./factory.js";
 import { HasWeigth } from "./hasWeigth.js";
@@ -46,13 +47,11 @@ export class Utils {
         return Utils.DPS; //+ Utils.POWER_PER_LEVEL * (level - 1)
     }
     
-    public static getRangeCoeficient(range: number): number {
-        if(range <= 1) return 1;
-        if(range <= 5) return 0.95;
-        if(range <= 10) return 0.90;
-        if(range <= 15) return 0.85;
-        if(range <= 20) return 0.80;
-        if(range <= 25) return 0.75;
+    public static getRangeCoeficient(range: Ability.Range): number {
+        if(range === Ability.Range.Touch) return 1;
+        if(range === Ability.Range.Short) return 0.95;
+        if(range === Ability.Range.Medium) return 0.90;
+        if(range === Ability.Range.Long) return 0.80;
 
         throw 'unsupported range '+range;
 
