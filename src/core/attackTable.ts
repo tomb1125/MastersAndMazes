@@ -29,9 +29,9 @@ export function buildAttacks(
         attack.manaCost = row.manaCost;
         attack.range = row.range;
 
-        // finalAdjustments and compensate both mutate the damage, so it has to be a new
-        // instance per draw - a DescriptiveNumber held in the row literal would collect
-        // every bonus every generated copy of the row was ever given.
+        // Compensation mutates the damage, so it has to be a new instance per draw - a
+        // DescriptiveNumber held in the row literal would collect every bonus every
+        // generated copy of the row was ever given.
         attack.damage = new DescriptiveNumber(row.damage);
 
         if(row.cooldown !== undefined) {

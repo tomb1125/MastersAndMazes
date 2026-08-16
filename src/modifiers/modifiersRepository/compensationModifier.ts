@@ -1,6 +1,5 @@
 import { AffectsWeight } from "../../core/affectsWeight.js";
 import { CanAffectModifier } from "../../core/canAffectModifier.js";
-import { Utils } from "../../core/utils.js";
 import { Modifier } from "../modifier.js";
 
 export class compensationModifier extends Modifier {
@@ -16,7 +15,7 @@ export class compensationModifier extends Modifier {
             this.powerMultiplier = () => mult;
         }
         if(bonus) {
-            this.powerBonus = (x: CanAffectModifier) => {return x.chance != null && x.range != null ?  x.chance / Utils.getRangeCoeficient(x.range) * bonus : -1000000 };
+            this.powerBonus = (x: CanAffectModifier) => {return x.chance != null && x.range != null ?  x.chance * bonus : -1000000 };
         }
     }
 }

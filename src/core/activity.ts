@@ -2,6 +2,13 @@ import { AbilityObject } from "../components/abilityObject.js";
 import { DescriptiveNumber } from "../components/descriptiveNumber.js";
 import { Modifier } from "../modifiers/modifier.js";
 import { Ability } from "./ability.js";
+
+export interface StatChange {
+    better: boolean;
+    up: boolean;
+    detail: string;
+}
+
 export class Activity extends Ability {
     range : Ability.Range;
     modifiers: Modifier[];
@@ -16,14 +23,14 @@ export class Activity extends Ability {
 
     }
 
-    protected renderCard(variant: string, name: string, stats: [string, string][], coreDescription: string, longDescription?: boolean): string {
+    protected renderCard(variant: string, name: string, stats: [string, string, StatChange?][], coreDescription: string, longDescription?: boolean): string {
       return '<article class="ability ability--' + variant + '">' +
         '<h3 class="ability__name">' + name + '</h3>' +
         '<dl class="ability__stats">' +
-          stats.filter(([, value]) => value !== '').map(([label, value]) =>
-            '<div class="stat">' +
+          stats.filter(([, value]) => value !== '').map(([label, value, change]) =>
+            '<div class="stat' + Activity.getStatChangeClass(change) + '">' +
               '<dt class="stat__label">' + label + '</dt>' +
-              '<dd class="stat__value">' + value + '</dd>' +
+              '<dd class="stat__value">' + value + Activity.renderStatDelta(change) + '</dd>' +
             '</div>'
           ).join('') +
         '</dl>' +
@@ -128,6 +135,20 @@ export class Activity extends Ability {
             }).join('') +
           '</ul>') +
       '</section>';
+    }
+
+    protected static getStatChangeClass(change: StatChange): string {
+      return change === undefined ? '' : (change.better ? ' stat--better' : ' stat--worse');
+    }
+
+    protected static renderStatDelta(change: StatChange): string {
+      if(change === undefined) {
+        return '';
+      }
+
+      return '<span class="stat__delta" title="' + change.detail + '">' +
+        (change.up ? '&#9650;' : '&#9660;') +
+      '</span>';
     }
 
     protected static getModifierName(mod: Modifier): string {

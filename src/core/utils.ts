@@ -1,5 +1,4 @@
 import { ModifierFactory } from "../modifiers/modifierFactory.js";
-import { Ability } from "./ability.js";
 import { CharacterContext } from "./characterContext.js";
 import { Factory } from "./factory.js";
 import { HasWeigth } from "./hasWeigth.js";
@@ -37,25 +36,8 @@ export class Utils {
         return this.gen.random();// Math.random();
     };
 
-    //since High Accuracy and Low Accuracy attacks are easily exploitable. Thus we provide bonus to Medium Accuracy attacks.
-    public static getDPSCoefficient(chance: number): number {
-        //return 1.1 - 0.2 * Math.abs(0.5 - chance);
-        return 1; //TODO restore
-    }
-
     public static getDPS(level: number) {
         return Utils.DPS; //+ Utils.POWER_PER_LEVEL * (level - 1)
-    }
-    
-    public static getRangeCoeficient(range: Ability.Range): number {
-        if(range === Ability.Range.Touch) return 1;
-        if(range === Ability.Range.Short) return 0.95;
-        if(range === Ability.Range.Medium) return 0.90;
-        if(range === Ability.Range.Long) return 0.80;
-
-        throw 'unsupported range '+range;
-
-        //return (21 + range )/(20 + 2 * range)
     }
 
     public static getDurationCoeficient(dur: number): number {

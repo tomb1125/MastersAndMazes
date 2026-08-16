@@ -218,6 +218,26 @@ body {
   color: var(--text);
 }
 
+.stat--better  { --stat-change: var(--improvement); }
+.stat--worse   { --stat-change: var(--constraint); }
+
+.stat--better,
+.stat--worse {
+  border-color: var(--stat-change);
+}
+
+.stat--better .stat__value,
+.stat--worse .stat__value {
+  color: var(--stat-change);
+}
+
+.stat__delta {
+  margin-left: 4px;
+  font-size: 9px;
+  vertical-align: 1px;
+  color: var(--stat-change);
+}
+
 .ability__core-description {
   margin: 0 0 11px;
   color: var(--text-dim);

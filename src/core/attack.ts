@@ -1,13 +1,14 @@
-import { Activity } from "./activity.js"
+import { Activity, StatChange } from "./activity.js"
+import { Compensation } from "../modifiers/compensation.js"
 import { Utils } from "./utils.js"
 import { ModifierFactory } from "./../modifiers/modifierFactory.js"
 import { CanAffectModifier } from "./canAffectModifier.js"
 import { Ability } from "./ability.js"
 import { DescriptiveNumber } from "../components/descriptiveNumber.js"
-import { CharacterContext } from "./characterContext.js"
 import { DescriptiveNumberFactory } from "../components/descriptiveNumberFactory.js"
 import { HasWeigth } from "./hasWeigth.js"
 import { AffectsWeight } from "./affectsWeight.js"
+import { AttackCompensationService } from "./attackCompensationService.js"
 
 export class Attack extends Activity implements CanAffectModifier, HasWeigth {
   static ALTERATION_CHANCE: Map<number, number> = new Map([
@@ -20,6 +21,7 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
   damage: DescriptiveNumber;
   subtype: Attack.Subtype;
   coreDescription: String;
+  compensation: Compensation;
   weight: (x?: AffectsWeight) => number = () => {return 1};
 
 
@@ -30,24 +32,10 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
   }
 
   generate() {
+    const compensation = new AttackCompensationService(this);
+
     this.initAlterations();
-    this.finalAdjustments();
-    this.compensate();
-  }
-
-  public getPower(): number {
-    let power = 
-      (this.damage.getValue() *      
-      this.chance                
-      / Utils.getRangeCoeficient(this.range)
-      / Utils.getDPSCoefficient(this.chance)
-      - ModifierFactory.getDPSBonus(this.modifiers, this)
-      ) / ModifierFactory.getDPSMultiplier(this.modifiers, this)
-      - CharacterContext.getDPS() 
-      - this.manaCost;
-
-    return power;
-     
+    compensation.compensate();
   }
 
   //TODO split modifiers and improvements
@@ -102,54 +90,11 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
     return true;
   }
 
-  private finalAdjustments() {
-    if(this.subtype === Attack.Subtype.Spell) { //TODO allow for disabling compensation
-      //if(this.damage.description != null) {
-        this.damage.addBonus(1);
-      //}
-
-      this.chance = Math.min(1, this.chance + 0.1);
-
-    }
-    
-  }
-
-  public compensate() {
-      if(this.damage.getValue() < 3.5 && this.damage.description == undefined) {
-        this.damage = new DescriptiveNumber(3.5);
-      }
-      
-      const maxChance = 0.9;
-
-      if(this.chance > maxChance) {
-        this.chance = maxChance;
-      }
-
-      let tempMana: number = Math.ceil(this.getPower() - 0.00001);
-
-      if(this.manaCost + tempMana < 0) {
-        this.chance += 0.1;
-        if(this.chance > maxChance) {
-          this.damage.addBonus(1);
-          this.damage.compensate(); ///= new DescriptiveNumber(this.damage.getValue()+1); //TODO allow DescriptiveNumbers to get static bonuses
-        }
-
-        this.compensate();
-
-      } else if(this.manaCost + tempMana > 10 && this.chance > 0.4) {
-        this.chance -= 0.1;
-        this.compensate();
-      } else {
-        this.manaCost += tempMana;
-      }
-
-  }
-
   public getDescription(longDescription?: boolean): string { //TODO rework, incorporate descriptive numbers
-    const stats: [string, string][] = [
-      ['Chance', Math.ceil(this.chance * 100) + '%'],
-      ['Damage', this.damage.description ? this.damage.getInlineValue() : Utils.valueToDiceRoll(this.damage.getValue())],
-      ['Mana', '' + this.manaCost],
+    const stats: [string, string, StatChange?][] = [
+      ['Chance', Math.ceil(this.chance * 100) + '%', this.compensationOf('Chance')],
+      ['Damage', this.damage.description ? this.damage.getInlineValue() : Utils.valueToDiceRoll(this.damage.getValue()), this.compensationOf('Damage')],
+      ['Mana', '' + this.manaCost, this.compensationOf('Mana')],
       ['Range', Ability.Range[this.range]],
       ['Attack Type', Attack.Subtype[this.subtype]],
       ['Cooldown', Ability.Cooldown[this.cooldown]],
@@ -169,6 +114,10 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
     return [
       ['Damage', this.damage]
     ];
+  }
+
+  private compensationOf(stat: string): StatChange {
+    return this.compensation && this.compensation.property === stat ? this.compensation : undefined;
   }
 
   private generateName(): string {
