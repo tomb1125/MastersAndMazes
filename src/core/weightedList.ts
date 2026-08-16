@@ -20,6 +20,10 @@ export class WeightedList {
         this.items.push(item);
     }
 
+    totalWeight(affector?: AffectsWeight): number {
+        return this.items.reduce((sum: number, item: HasWeigth) => sum + item.weight(affector), 0);
+    }
+
     get(num: number, affector?: AffectsWeight, banList?: WeightedList): HasWeigth[] {
         return WeightedList.getRandomFromList([...this.items], num, affector);
     }

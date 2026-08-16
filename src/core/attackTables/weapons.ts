@@ -5,7 +5,11 @@ const ROWS: AttackRow[] = [
     {
         typeName: 'basicAttack',
         name: 'Basic Attack',
-        coreDescription: 'When you hit, deal damage. '
+        coreDescription: 'When you hit, deal damage. ',
+        chance: 0.6,
+        damage: 5,
+        manaCost: 1,
+        range: 15
     }
 ];
 

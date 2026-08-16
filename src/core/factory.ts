@@ -66,8 +66,12 @@ export class Factory {
     }
 
     private isSelectable(list: WeightedList): boolean {
-        return list.items.length > 0
-            && list.items.reduce((sum: number, item: HasWeigth) => sum + item.weight(this.affector), 0) > 0;
+        return list.items.length > 0 && list.totalWeight(this.affector) > 0;
+    }
+
+    /** How much weight the active vendor stocks, for weighing one factory against another. */
+    public getTotalWeight(): number {
+        return (Vendor.active === null ? this.items : this.stock()).totalWeight(this.affector);
     }
 
     public getEvenly(count: number): HasWeigth[] {

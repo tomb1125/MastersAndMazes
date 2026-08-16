@@ -1,3 +1,4 @@
+import { DescriptiveNumber } from "../components/descriptiveNumber.js";
 import { Ability } from "./ability.js";
 import { AffectsWeight } from "./affectsWeight.js";
 import { Attack } from "./attack.js";
@@ -7,9 +8,10 @@ export interface AttackRow {
     typeName: string;
     name: string;
     coreDescription: string;
-    chance?: number;
-    manaCost?: number;
-    range?: number;
+    chance: number;
+    damage: number;
+    manaCost: number;
+    range: number;
     cooldown?: Ability.Cooldown;
     elements?: Ability.Element[];
     weight?: (x?: AffectsWeight) => number;
@@ -23,16 +25,15 @@ export function buildAttacks(
         const attack = new Attack(row.name);
         attack.typeName = row.typeName;
         attack.coreDescription = row.coreDescription;
+        attack.chance = row.chance;
+        attack.manaCost = row.manaCost;
+        attack.range = row.range;
 
-        if(row.chance !== undefined) {
-            attack.chance = row.chance;
-        }
-        if(row.manaCost !== undefined) {
-            attack.manaCost = row.manaCost;
-        }
-        if(row.range !== undefined) {
-            attack.range = row.range;
-        }
+        // finalAdjustments and compensate both mutate the damage, so it has to be a new
+        // instance per draw - a DescriptiveNumber held in the row literal would collect
+        // every bonus every generated copy of the row was ever given.
+        attack.damage = new DescriptiveNumber(row.damage);
+
         if(row.cooldown !== undefined) {
             attack.cooldown = row.cooldown;
         }

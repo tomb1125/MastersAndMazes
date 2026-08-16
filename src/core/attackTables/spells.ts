@@ -6,13 +6,18 @@ const ROWS: AttackRow[] = [
     {
         typeName: 'basicSpell',
         name: 'Basic Spell',
-        coreDescription: 'When you hit, deal damage. '
+        coreDescription: 'When you hit, deal damage.',
+        chance: 0.6,
+        damage: 10,
+        manaCost: 1,
+        range: 15
     },
     {
         typeName: 'fireballAttack',
         name: 'Fireball',
-        coreDescription: 'When you hit, deal damage, then deal half of this damage to enemies within 2 squares.  ',
-        chance: 0.8,
+        coreDescription: 'When you hit, deal damage, then deal 5 to nearby enemies.',
+        chance: 0.7,
+        damage: 5,
         manaCost: 3,
         range: 15,
         elements: [Ability.Element.Fire]

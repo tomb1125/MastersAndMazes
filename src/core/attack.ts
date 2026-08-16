@@ -10,7 +10,7 @@ import { HasWeigth } from "./hasWeigth.js"
 import { AffectsWeight } from "./affectsWeight.js"
 
 export class Attack extends Activity implements CanAffectModifier, HasWeigth {
-  static MODIFIER_CHANCE: Map<number, number> = new Map([
+  static ALTERATION_CHANCE: Map<number, number> = new Map([
     [0.7, 1],
     [1, 2],
     [1.2, 3],
@@ -18,7 +18,6 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
   ]);
 
   damage: DescriptiveNumber;
-  target: DescriptiveNumber;
   subtype: Attack.Subtype;
   coreDescription: String;
   weight: (x?: AffectsWeight) => number = () => {return 1};
@@ -31,94 +30,9 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
   }
 
   generate() {
-    this.initCommon();
-    this.initType();
-    this.initModifiers();
-    this.initChance();
-    this.initRange();
-    this.initDamage();
+    this.initAlterations();
     this.finalAdjustments();
     this.compensate();
-  }
-
-  private initCommon() {
-    if(this.manaCost === undefined) {
-      this.manaCost = 0;
-    }
-    this.target = new DescriptiveNumber(1);
-  }
-
-  private initType() {
-    if(this.subtype === undefined) {
-      const roll = Utils.random();
-      if(roll > 0.5) {      
-        this.subtype = Attack.Subtype.Weapon;
-      } else {
-        this.subtype = Attack.Subtype.Spell;
-      }
-    }
-  }
-
-  private initChance() {
-    if(!this.chance) {
-      this.chance = (Math.floor(Utils.random() * 13) + 4)/20;
-    }
-  }
-
-  private initRange() {
-    if(!this.range) {
-      if(this.subtype === Attack.Subtype.Weapon) {
-        this.range = 1;
-      } else {
-        this.range = (Math.ceil(Utils.random() * 3) * 5)
-      }
-    }
-  }
-
-  public setDamage(num: number) {
-    this.rollForDescriptiveDamage();
-    if(!this.damage) {
-      this.damage = new DescriptiveNumber(num);
-    }
-  }
-
-  private rollForDescriptiveDamage() {
-    if(!this.damage && Utils.random() < Utils.ATTACK_DESCRIPTIVE_NUMBER_CHANCE) {
-      this.damage = new DescriptiveNumberFactory(this).filter((x: DescriptiveNumber) => x.type === DescriptiveNumber.Type.Common).get(1)[0];
-    }
-  }
-  
-  public initDamage() {
-    let tempDamage = this.getTempDamage();
-    if(tempDamage > 30 && this.chance < 0.3) {
-        this.chance += 0.1;
-    }
-
-    this.rollForDescriptiveDamage();
-
-    if(!this.damage) { 
-      this.damage = new DescriptiveNumber(tempDamage);
-    } else {
-      if(tempDamage > 0) {
-        this.chance = this.chance * tempDamage / this.damage.getValue();
-      } else {
-        //I can't shake suspition something should be here
-      }
-
-    }
-  }
-
-  public getTempDamage(): number {
-    return (
-      (
-        this.manaCost +
-        CharacterContext.getDPS()
-      ) * ModifierFactory.getDPSMultiplier(this.modifiers, this)
-      + ModifierFactory.getDPSBonus(this.modifiers, this)
-    )
-    * Utils.getRangeCoeficient(this.range)
-    * Utils.getDPSCoefficient(this.chance)
-    / this.chance 
   }
 
   public getPower(): number {
@@ -137,22 +51,55 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
   }
 
   //TODO split modifiers and improvements
-  public initModifiers() {
-    const roll = Utils.random();
-    let numberOfModifiers: number = -1;
-    if(!this.modifiers) {
-      Attack.MODIFIER_CHANCE.forEach((value: number, key: number) => {
-        if(roll <= key && numberOfModifiers === -1) {
-          numberOfModifiers = value;
-        }
-
-        if(numberOfModifiers > 0) {
-          this.modifiers = new ModifierFactory(this).get(numberOfModifiers);
-        } else {
-          this.modifiers = [];
-        }
-      });
+  private initAlterations() {
+    if(this.modifiers) {
+      return;
     }
+
+    this.modifiers = [];
+
+    const modifiers = new ModifierFactory(this);
+    const numbers = new DescriptiveNumberFactory(this)
+      .filter((x: DescriptiveNumber) => x.type === DescriptiveNumber.Type.Common);
+
+    let alterations: number = this.rollAlterationCount();
+
+    if(alterations > 0 && this.rollDescriptiveDamage(numbers, modifiers)) {
+      alterations--;
+    }
+
+    if(alterations > 0) {
+      this.modifiers = modifiers.get(alterations);
+    }
+  }
+
+  private rollAlterationCount(): number {
+    const roll = Utils.random();
+    let count: number = -1;
+
+    Attack.ALTERATION_CHANCE.forEach((value: number, key: number) => {
+      if(roll <= key && count === -1) {
+        count = value;
+      }
+    });
+
+    return count === -1 ? 0 : count;
+  }
+
+  // The two pools are weighed against each other rather than rolled against a fixed
+  // chance, so the split follows what the vendor stocks: a shop deep in modifiers
+  // flavours the damage far less often than one whose modifier shelf is nearly bare.
+  private rollDescriptiveDamage(numbers: DescriptiveNumberFactory, modifiers: ModifierFactory): boolean {
+    const numberWeight: number = numbers.getTotalWeight();
+    const modifierWeight: number = modifiers.getTotalWeight();
+
+    if(numberWeight <= 0 || Utils.random() * (numberWeight + modifierWeight) >= numberWeight) {
+      return false;
+    }
+
+    this.damage = numbers.get(1)[0];
+
+    return true;
   }
 
   private finalAdjustments() {
@@ -201,7 +148,7 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
   public getDescription(longDescription?: boolean): string { //TODO rework, incorporate descriptive numbers
     const stats: [string, string][] = [
       ['Chance', Math.ceil(this.chance * 100) + '%'],
-      ['Damage', this.damage.description ? this.damage.getDescription() : Utils.valueToDiceRoll(this.damage.getValue())],
+      ['Damage', this.damage.description ? this.damage.getInlineValue() : Utils.valueToDiceRoll(this.damage.getValue())],
       ['Mana', '' + this.manaCost],
       ['Range', '' + this.range],
       ['Attack Type', Attack.Subtype[this.subtype]],
@@ -216,6 +163,12 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
       this.coreDescription ? '' + this.coreDescription : '',
       longDescription
     );
+  }
+
+  protected override getDescriptiveNumbers(): [string, DescriptiveNumber][] {
+    return [
+      ['Damage', this.damage]
+    ];
   }
 
   private generateName(): string {
