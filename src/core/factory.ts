@@ -74,6 +74,16 @@ export class Factory {
         return (Vendor.active === null ? this.items : this.stock()).totalWeight(this.affector);
     }
 
+    /**
+     * How many distinct items the active vendor stocks that could actually be drawn. Only
+     * rollable ones are counted: get() of the full count draws without replacement, and a
+     * zero-weight item left in the tally would leave the last draw with no weight to spend.
+     */
+    public getStockCount(): number {
+        const stock = Vendor.active === null ? this.items : this.stock();
+        return stock.items.filter(item => item.weight(this.affector) > 0).length;
+    }
+
     public getEvenly(count: number): HasWeigth[] {
         if(Vendor.active === null) {
             return this.items.getEven(count, this.affector);
