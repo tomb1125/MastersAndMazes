@@ -20,7 +20,10 @@ export interface UtilityRow {
 // The three steps at the end are ordered, and reordering them fails silently: compensate
 // divides the chance by the rarity of the components, and a description quotes the value
 // compensate just settled on rather than the one the row asked for.
-export function buildUtilities(rows: UtilityRow[]): Utility[] {
+export function buildUtilities(
+    rows: UtilityRow[],
+    categorise?: (utility: Utility) => void): Utility[] {
+
     return rows.map(row => {
         const utility = new Utility(row.name);
         utility.typeName = row.typeName;
@@ -37,6 +40,9 @@ export function buildUtilities(rows: UtilityRow[]): Utility[] {
         }
         if(row.weight) {
             utility.weight = row.weight;
+        }
+        if(categorise) {
+            categorise(utility);
         }
 
         if(row.objects) {

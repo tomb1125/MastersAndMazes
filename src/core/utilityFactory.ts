@@ -6,12 +6,14 @@ import { WeightedList } from "./weightedList.js";
 
 //factory imports
 import { constructions } from "./utilityTables/constructions.js";
+import { wizardUtilities } from "./utilityTables/classUtilities/wizardUtilities.js";
 export class UtilityFactory extends Factory {
     constructor(affector: AffectsWeight, list?: WeightedList) {
         super(affector);
         if(list === undefined) {
             this.items = new WeightedList();
             constructions().forEach(x => this.items.push(x));
+            wizardUtilities().forEach(x => this.items.push(x));
         } else {
             this.items = list;
         }

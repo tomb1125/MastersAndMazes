@@ -10,7 +10,8 @@
 // A factory can also draw from a *Tables folder, where flat content lives as rows
 // of a table rather than one class per file (see abilityObjectTable.ts). Each of
 // those files exports one builder function named after the file, returning the
-// items to push. Both sources land in the same list.
+// items to push. Both sources are walked one subfolder deep, and both land in the
+// same list.
 const fs = require('fs');
 const path = require('path');
 
@@ -129,6 +130,14 @@ Object.keys(factories).forEach(key => {
                     if (file.endsWith('.ts')) {
                         const functionName = file.replace('.ts', '');
                         registerTable(functionName, repoDir.relatedDir + functionName + '.js', repoDir.hasAffector);
+
+                    } else if (fs.statSync(path.join(tablePath, file)).isDirectory()) {
+                        fs.readdirSync(path.join(tablePath, file)).forEach(subfolderFile => {
+                            if (subfolderFile.endsWith('.ts')) {
+                                const functionName = subfolderFile.replace('.ts', '');
+                                registerTable(functionName, repoDir.relatedDir + file + '/' + functionName + '.js', repoDir.hasAffector);
+                            }
+                        });
                     }
                 });
             }

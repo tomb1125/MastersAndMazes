@@ -10,6 +10,7 @@ import { CanAffectModifier } from "./canAffectModifier.js";
 import { ModifierFactory } from "../modifiers/modifierFactory.js";
 import { Utils } from "./utils.js";
 import { CharacterContext } from "./characterContext.js";
+import { Vendor } from "./vendor.js";
 
 export class Utility extends Activity implements CanAffectModifier, HasWeigth {
     weight = (x?: AffectsWeight) => {return 1};
@@ -81,10 +82,12 @@ export class Utility extends Activity implements CanAffectModifier, HasWeigth {
     }
 
     public compensate(): void {
-      const extraMods: Modifier[] = Utils.getNumberFromValueMap(Utility.MODIFIER_CHANCE, new ModifierFactory(this)) as Modifier[];
-      extraMods.forEach(mod => {
-        this.modifiers.push(mod);
-      })
+      if(Vendor.altersAbilities()) {
+        const extraMods: Modifier[] = Utils.getNumberFromValueMap(Utility.MODIFIER_CHANCE, new ModifierFactory(this)) as Modifier[];
+        extraMods.forEach(mod => {
+          this.modifiers.push(mod);
+        })
+      }
 
       this.chance = this.chance * ModifierFactory.getDPSMultiplier(this.modifiers, this)
       this.objects.forEach((obj: AbilityObject) => {

@@ -14,6 +14,10 @@ export class Activity extends Ability {
     modifiers: Modifier[];
     longDescription: String;
 
+    // The tag a vendor narrows its stock by, alongside typeName and name - a whole table of
+    // rows is tagged at once through its categorise callback.
+    subtype: string;
+
     constructor(otherName?: string) {
       super(otherName);
       this.longDescription = '';

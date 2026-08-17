@@ -53,7 +53,7 @@ export class AttackCompensationService {
     public compensate(): void {
         this.enforceLimits();
 
-        const candidates: Candidate[] = [this.chanceKnob(), this.damageKnob(), this.manaKnob()]
+        const candidates: Candidate[] = this.shuffled([this.chanceKnob(), this.damageKnob(), this.manaKnob()])
             .map(knob => this.attempt(knob));
         const fitting: Candidate[] = candidates.filter(candidate => candidate.fits);
         const chosen: Candidate = fitting.length > 0 ? fitting[0] : this.closest(candidates);
@@ -62,6 +62,18 @@ export class AttackCompensationService {
         chosen.apply();
 
         this.note(chosen.knob, before, chosen.knob.read());
+    }
+
+    private shuffled(knobs: Knob[]): Knob[] {
+        for(let i = knobs.length - 1; i > 0; i--) {
+            const j: number = Math.floor(Utils.random() * (i + 1));
+            const swapped: Knob = knobs[i];
+
+            knobs[i] = knobs[j];
+            knobs[j] = swapped;
+        }
+
+        return knobs;
     }
 
     private chanceKnob(): Knob {

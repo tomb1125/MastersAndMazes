@@ -44,15 +44,15 @@ export function buildAttacks(
             categorise(attack);
         }
 
-        attack.elements = row.elements ? row.elements : [rollElement(attack.subtype)];
+        attack.elements = row.elements ? row.elements : [rollElement(attack.attackType)];
         attack.generate();
 
         return attack;
     });
 }
 
-function rollElement(subtype: Attack.Subtype): Ability.Element {
-    const pool: Ability.Element[] = subtype === Attack.Subtype.Spell
+function rollElement(attackType: Attack.AttackType): Ability.Element {
+    const pool: Ability.Element[] = attackType === Attack.AttackType.Spell
         ? Ability.MAGIC_ELEMENTS
         : Ability.WEAPON_ELEMENTS;
 

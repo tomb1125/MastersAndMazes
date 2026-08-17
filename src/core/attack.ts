@@ -9,6 +9,7 @@ import { DescriptiveNumberFactory } from "../components/descriptiveNumberFactory
 import { HasWeigth } from "./hasWeigth.js"
 import { AffectsWeight } from "./affectsWeight.js"
 import { AttackCompensationService } from "./attackCompensationService.js"
+import { Vendor } from "./vendor.js"
 
 export class Attack extends Activity implements CanAffectModifier, HasWeigth {
   static ALTERATION_CHANCE: Map<number, number> = new Map([
@@ -19,7 +20,7 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
   ]);
 
   damage: DescriptiveNumber;
-  subtype: Attack.Subtype;
+  attackType: Attack.AttackType;
   coreDescription: String;
   compensation: Compensation;
   weight: (x?: AffectsWeight) => number = () => {return 1};
@@ -45,6 +46,10 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
     }
 
     this.modifiers = [];
+
+    if(!Vendor.altersAbilities()) {
+      return;
+    }
 
     const modifiers = new ModifierFactory(this);
     const numbers = new DescriptiveNumberFactory(this)
@@ -96,7 +101,7 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
       ['Damage', this.damage.description ? this.damage.getInlineValue() : Utils.valueToDiceRoll(this.damage.getValue()), this.compensationOf('Damage')],
       ['Mana', '' + this.manaCost, this.compensationOf('Mana')],
       ['Range', Ability.Range[this.range]],
-      ['Attack Type', Attack.Subtype[this.subtype]],
+      ['Attack Type', Attack.AttackType[this.attackType]],
       ['Cooldown', Ability.Cooldown[this.cooldown]],
       ['Elements', this.elements.map(element => Ability.Element[element]).join(', ')]
     ];
@@ -142,7 +147,7 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
 }
 
 export namespace Attack {
-  export enum Subtype {
+  export enum AttackType {
     Weapon,
     Spell
   }

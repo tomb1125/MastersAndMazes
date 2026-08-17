@@ -16,7 +16,8 @@ export type ContentFilter = (x: any) => boolean;
 /**
  * Declarative description of what one vendor keeps in stock for a single content slot.
  * An item is in stock if it matches ANY listed criterion; an empty descriptor stocks
- * everything.
+ * everything. `subtypes` is the broad one - a whole authored table tags itself with a
+ * subtype, so a vendor can stock it without naming each row.
  *
  * Kept alongside the compiled predicate so a vendor stays serialisable - the app is
  * seed-reproducible, and a shared "level 5 Wizard at this vendor" link cannot carry a
@@ -24,6 +25,7 @@ export type ContentFilter = (x: any) => boolean;
  */
 export interface VendorStock {
     types?: string[];
+    subtypes?: string[];
     names?: string[];
     where?: ContentFilter;
 }
@@ -46,6 +48,7 @@ export interface VendorStockList {
 export class Vendor {
     name: string;
     stock: VendorStockList;
+    alterations: boolean;
 
     attackFilter: ContentFilter = Vendor.ALL;
     utilityFilter: ContentFilter = Vendor.ALL;
@@ -60,9 +63,17 @@ export class Vendor {
     /** Stock descriptor matching no content, for a slot a vendor deliberately refuses. */
     public static readonly NOTHING: VendorStock = { where: () => false };
 
-    constructor(name: string, stock?: VendorStockList) {
+    /**
+     * Passed as the third constructor argument by a vendor that teaches its abilities
+     * exactly as authored - nothing is rolled on top of them, so a row is taught with the
+     * numbers its author wrote. Mostly for class vendors, whose spell list is the point.
+     */
+    public static readonly NO_ALTERATIONS: boolean = false;
+
+    constructor(name: string, stock?: VendorStockList, alterations?: boolean) {
         this.name = name;
         this.stock = stock ? stock : {};
+        this.alterations = alterations !== false;
 
         this.attackFilter = Vendor.compile(this.stock.attacks !== undefined
             ? this.stock.attacks : this.stock.abilities);
@@ -83,15 +94,25 @@ export class Vendor {
         }
     }
 
+    /**
+     * Whether the active vendor lets a generated ability be altered - an attack rolling
+     * modifiers or a flavoured damage number, a utility rolling extra modifiers. Outside a
+     * vendor everything is alterable, which is how generation behaves with no shop open.
+     */
+    public static altersAbilities(): boolean {
+        return Vendor.active === null || Vendor.active.alterations;
+    }
+
     public static compile(stock?: VendorStock): ContentFilter {
         if (!stock) {
             return Vendor.ALL;
         }
 
         const types = Vendor.lowercase(stock.types);
+        const subtypes = Vendor.lowercase(stock.subtypes);
         const names = Vendor.lowercase(stock.names);
 
-        if (types.length === 0 && names.length === 0 && !stock.where) {
+        if (types.length === 0 && subtypes.length === 0 && names.length === 0 && !stock.where) {
             return Vendor.ALL;
         }
 
@@ -100,6 +121,10 @@ export class Vendor {
                 return true;
             }
             if (types.length > 0 && types.includes(Vendor.typeNameOf(x))) {
+                return true;
+            }
+            if (subtypes.length > 0 && x && x.subtype != null
+                && subtypes.includes(('' + x.subtype).toLowerCase())) {
                 return true;
             }
             if (names.length > 0 && x && x.name != null

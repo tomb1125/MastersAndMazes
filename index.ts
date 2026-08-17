@@ -81,28 +81,24 @@ window.generateAbilities = (): void => {
     throw 'null output';
   }
 
-  let levelMode: number = CharacterContext.level % 2;
-
   // Everything the vendor trains is generated inside train(), so the factories built deep
   // in Attack/Utility see its stock too.
   const description: string = activeVendor.train((): string => {
-    const sellsAttacks: boolean = new AttackFactory(new Ability()).stocksAnything();
-    const sellsUtilities: boolean = new UtilityFactory(new Ability()).stocksAnything();
+    // Which kind a draw teaches follows nothing but the two pools as this vendor stocks
+    // them, weighed against each other the way an attack weighs modifiers against
+    // descriptive numbers. The level never enters into it: a vendor sells attacks because
+    // its stock says so, so refusing a kind is said with a filter and in no other way.
+    const attackWeight: number = new AttackFactory(new Ability()).getTotalWeight();
+    const utilityWeight: number = new UtilityFactory(new Ability()).getTotalWeight();
+    const stockedWeight: number = attackWeight + utilityWeight;
 
-    // Level parity only picks which kind is preferred. A vendor that stocks none of that
-    // kind teaches the other one instead, so a vendor narrow enough to sell one kind is
-    // worth visiting at every level rather than half of them.
-    const attacksWanted: boolean = levelMode === 1 ? sellsAttacks : !sellsUtilities;
-
-    if(attacksWanted && sellsAttacks) {
-      return teach(() => new AttackFactory(new Ability()));
+    if(stockedWeight <= 0) {
+      return '';
     }
 
-    if(sellsUtilities) {
-      return teach(() => new UtilityFactory(new Ability()));
-    }
-
-    return '';
+    return teach(() => Utils.random() * stockedWeight < attackWeight
+      ? new AttackFactory(new Ability())
+      : new UtilityFactory(new Ability()));
   });
 
   // A vendor is allowed to stock nothing at all, so an empty result is a real answer here

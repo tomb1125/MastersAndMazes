@@ -8,12 +8,12 @@ const ROWS: AttackRow[] = [
         name: 'Basic Attack',
         coreDescription: 'When you hit, deal damage. ',
         chance: 0.6,
-        damage: 5,
-        manaCost: 1,
-        range: Ability.Range.Medium
+        damage: 10,
+        manaCost: 0,
+        range: Ability.Range.Touch
     }
 ];
 
 export function weapons(): Attack[] {
-    return buildAttacks(ROWS, attack => attack.subtype = Attack.Subtype.Weapon);
+    return buildAttacks(ROWS, attack => attack.attackType = Attack.AttackType.Weapon);
 }
