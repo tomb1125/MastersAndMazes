@@ -19,12 +19,16 @@ export class Compensation extends Modifier implements StatChange {
     constructor(property: string, before: string, after: string, raised: boolean, better: boolean) {
         super(Compensation.nameOf(property, raised));
 
+        const move: string = raised ? ' raised' : ' lowered';
+        const quotable: boolean = before !== undefined && after !== undefined;
+
         this.property = property;
         this.up = raised;
         this.better = better;
-        this.detail = property + ' was ' + before + ' before compensation';
-        this.description = property + (raised ? ' raised from ' : ' lowered from ')
-            + before + ' to ' + after + ' to balance the rest of the attack.';
+        this.detail = quotable
+            ? property + ' was ' + before + ' before compensation'
+            : property + ' was' + move + ' by compensation';
+        this.description = property + move + (quotable ? ' from ' + before + ' to ' + after : '');
         this.modifierType = better ? Modifier.Type.Improvement : Modifier.Type.Constraint;
     }
 

@@ -94,18 +94,20 @@ const teachRolls = (): (Attack | Utility)[] => {
     : new UtilityFactory(new Ability()));
 };
 
-window.generateAbilities = (): void => {
-  let currentSeed = '';
-  if(CharacterContext.seed) {
-    currentSeed = CharacterContext.seed;
-  } else {
-    currentSeed = ''+Math.random();
+const showSeed = (seed: string): void => {
+  const seedEcho = document.getElementById('seed-echo');
+  if(seedEcho) {
+    seedEcho.textContent = seed;
   }
+};
+
+window.generateAbilities = (): void => {
+  const rolledSeed: string = CharacterContext.seed ? CharacterContext.seed : '' + Math.random();
+  showSeed(rolledSeed);
 
   // The vendor is part of the seed so switching shops rerolls rather than redrawing a
   // correlated hand from the same random stream.
-  currentSeed += CharacterContext.level + activeVendor.name;
-  Utils.gen = new RandomNumberGenerator(currentSeed);
+  Utils.gen = new RandomNumberGenerator(rolledSeed + CharacterContext.level + activeVendor.name);
 
   var outputDiv = document.getElementById('output');
   if(outputDiv == null) {

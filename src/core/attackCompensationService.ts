@@ -99,9 +99,9 @@ export class AttackCompensationService {
             step: 1,
             limit: solved => Math.max(AttackCompensationService.MIN_DAMAGE, solved),
             fits: solved => solved >= AttackCompensationService.MIN_DAMAGE,
-            format: value => this.attack.damage.description
-                ? Math.round(value) + ''
-                : Utils.valueToDiceRoll(value),
+            // Flavoured damage renders as a marker rather than a figure, so there is no before and
+            // after the card could quote - the compensation then only states which way it moved.
+            format: value => this.attack.damage.description ? undefined : Utils.valueToDiceRoll(value),
             higherIsBetter: true
         };
     }

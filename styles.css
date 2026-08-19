@@ -386,6 +386,21 @@ body {
   content: ":";
 }
 
+.seed-echo {
+  margin: 26px 0 0;
+  text-align: right;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  opacity: 0.22;
+  user-select: all;
+  transition: opacity 0.15s ease;
+}
+
+.seed-echo:hover {
+  opacity: 0.75;
+}
+
 @media (max-width: 640px) {
   body {
     padding: 20px 14px 40px;

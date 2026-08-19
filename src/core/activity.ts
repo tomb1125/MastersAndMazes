@@ -62,7 +62,7 @@ export class Activity extends Ability {
       return '<section class="ability__modifiers">' +
         '<h4 class="ability__section-title">Modifiers</h4>' +
         '<ul class="modifier-list">' +
-          this.modifiers.map(mod => {
+          Activity.byModifierType(this.modifiers).map(mod => {
             const type = Activity.getModifierTypeName(mod);
             const name = Activity.getModifierName(mod);
 
@@ -118,7 +118,7 @@ export class Activity extends Ability {
     }
 
     protected renderRulings(): string {
-      const ruledModifiers = this.modifiers.filter(mod => mod.longDescription);
+      const ruledModifiers = Activity.byModifierType(this.modifiers).filter(mod => mod.longDescription);
 
       if(!this.longDescription && ruledModifiers.length === 0) {
         return '';
@@ -159,6 +159,15 @@ export class Activity extends Ability {
       const label = mod.namePrefix ? mod.namePrefix : mod.name;
 
       return label === undefined ? '' : label.trim();
+    }
+
+    protected static byModifierType(modifiers: Modifier[]): Modifier[] {
+      return modifiers.slice().sort((first, second) =>
+        Activity.getModifierTypeRank(first) - Activity.getModifierTypeRank(second));
+    }
+
+    private static getModifierTypeRank(mod: Modifier): number {
+      return mod.modifierType === undefined ? Modifier.Type.Other : mod.modifierType;
     }
 
     protected static getModifierTypeName(mod: Modifier): string {

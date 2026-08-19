@@ -4,9 +4,9 @@ import { AttackRow, buildAttacks } from "../../attackTable.js";
 
 const ROWS: AttackRow[] = [
     {
-        typeName: 'wizardMagicMissile',
+        typeName: 'wizardMagicManaBurn',
         name: 'Magic Missile',
-        coreDescription: 'When you hit, deal damage. You can split the damage between two targets within 5 squares of each other.',
+        coreDescription: 'When you hit, deal damage and additional damage equal to mana spent last turn.',
         chance: 0.9,
         damage: 8,
         manaCost: 1,
