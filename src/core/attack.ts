@@ -83,6 +83,10 @@ export class Attack extends Activity implements CanAffectModifier, HasWeigth {
   // chance, so the split follows what the vendor stocks: a shop deep in modifiers
   // flavours the damage far less often than one whose modifier shelf is nearly bare.
   private rollDescriptiveDamage(numbers: DescriptiveNumberFactory, modifiers: ModifierFactory): boolean {
+    if(this.damage.description) {
+      return false;
+    }
+
     const numberWeight: number = numbers.getTotalWeight();
     const modifierWeight: number = modifiers.getTotalWeight();
 

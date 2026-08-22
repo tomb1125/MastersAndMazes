@@ -32,4 +32,8 @@ export const WIZARD: Vendor = new Vendor("Wizard", {
     abilities: { subtypes: ["wizard"] }
 }, Vendor.NO_ALTERATIONS);
 
-export const VENDORS: Vendor[] = [BASIC_TRAINER, GRAZED_TRAINER, WIZARD];
+export const FIGHTER: Vendor = new Vendor("Fighter", {
+    abilities: { subtypes: ["fighter"] }
+}, Vendor.NO_ALTERATIONS);
+
+export const VENDORS: Vendor[] = [BASIC_TRAINER, GRAZED_TRAINER, WIZARD, FIGHTER];

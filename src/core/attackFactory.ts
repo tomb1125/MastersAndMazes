@@ -8,6 +8,7 @@ import { ContentFilter, Vendor } from "./vendor.js";
 import { weapons } from "./attackTables/weapons.js";
 import { spells } from "./attackTables/spells.js";
 import { wizardAttacks } from "./attackTables/classAttacks/wizardAttacks.js";
+import { fighterAttacks } from "./attackTables/classAttacks/fighterAttacks.js";
 export class AttackFactory extends Factory {
     constructor(affector: AffectsWeight, list?: WeightedList) {
         super(affector);
@@ -16,6 +17,7 @@ export class AttackFactory extends Factory {
             weapons().forEach(x => this.items.push(x));
             spells().forEach(x => this.items.push(x));
             wizardAttacks().forEach(x => this.items.push(x));
+            fighterAttacks().forEach(x => this.items.push(x));
         } else {
             this.items = list;
         }

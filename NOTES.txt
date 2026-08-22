@@ -1,0 +1,16 @@
+green (Balance)
+STR
+red (Anger)
+DEX
+blue (Focus)
+INT
+white (Connection)
+CHA
+black (Guile)
+PER
+
+
+Mana
+Critical Hiy
+
+Fatigue and Chance for damage.

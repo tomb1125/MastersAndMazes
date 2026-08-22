@@ -10,6 +10,7 @@ export interface AttackRow {
     coreDescription: string;
     chance: number;
     damage: number;
+    damageDescription?: string;
     manaCost: number;
     range: Ability.Range;
     cooldown?: Ability.Cooldown;
@@ -33,6 +34,10 @@ export function buildAttacks(
         // DescriptiveNumber held in the row literal would collect every bonus every
         // generated copy of the row was ever given.
         attack.damage = new DescriptiveNumber(row.damage);
+
+        if(row.damageDescription !== undefined) {
+            attack.damage.description = row.damageDescription;
+        }
 
         if(row.cooldown !== undefined) {
             attack.cooldown = row.cooldown;
