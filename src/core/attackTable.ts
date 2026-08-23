@@ -4,19 +4,29 @@ import { AffectsWeight } from "./affectsWeight.js";
 import { Attack } from "./attack.js";
 import { Utils } from "./utils.js";
 
-export interface AttackRow {
+interface AttackRowFields {
     typeName: string;
     name: string;
     coreDescription: string;
     chance: number;
-    damage: number;
-    damageDescription?: string;
     manaCost: number;
     range: Ability.Range;
     cooldown?: Ability.Cooldown;
     elements?: Ability.Element[];
     weight?: (x?: AffectsWeight) => number;
 }
+
+interface FlatDamage {
+    damage: number;
+    damageDescription?: never;
+}
+
+interface DescribedDamage {
+    damage?: never;
+    damageDescription: string;
+}
+
+export type AttackRow = AttackRowFields & (FlatDamage | DescribedDamage);
 
 export function buildAttacks(
     rows: AttackRow[],
