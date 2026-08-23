@@ -26,10 +26,6 @@ export class AttackFactory extends Factory {
     public get(count: number) {
         return super.get(count) as Attack[];
     }
-    
-    public filter(z: (x: any) => boolean): AttackFactory {
-        return super.filter(z) as AttackFactory;
-    }
 
     protected vendorFilter(): ContentFilter {
         return Vendor.active ? Vendor.active.attackFilter : Vendor.ALL;

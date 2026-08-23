@@ -52,13 +52,6 @@ export class DescriptiveNumber implements HasWeigth{
         return multiplier * this.value + bonus;
     }
 
-    public getLowValue() : number {
-        let lowValue = this.lowValue ? this.lowValue : this.value;
-        let multiplier = this.multiplier ? this.multiplier : 1;
-        let bonus = this.bonus ? this.bonus : 0;
-        return multiplier * lowValue + bonus;
-    }
-
     public addBonus(val: number) : void {
         if(this.bonus === undefined) {
             this.bonus = 0;

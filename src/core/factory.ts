@@ -10,9 +10,6 @@ export class Factory {
     constructor(affector: AffectsWeight) {
         this.affector = affector;
     }
-    public getAll(): WeightedList {
-        return this.items;
-    }
 
     public get(count: number): HasWeigth[] {
         if(Vendor.active === null) {
@@ -60,11 +57,6 @@ export class Factory {
         return this.items;
     }
 
-    /** Whether the active vendor stocks anything this factory could actually roll. */
-    public stocksAnything(): boolean {
-        return this.isSelectable(Vendor.active === null ? this.items : this.stock());
-    }
-
     private isSelectable(list: WeightedList): boolean {
         return list.items.length > 0 && list.totalWeight(this.affector) > 0;
     }
@@ -82,15 +74,6 @@ export class Factory {
     public getStockCount(): number {
         const stock = Vendor.active === null ? this.items : this.stock();
         return stock.items.filter(item => item.weight(this.affector) > 0).length;
-    }
-
-    public getEvenly(count: number): HasWeigth[] {
-        if(Vendor.active === null) {
-            return this.items.getEven(count, this.affector);
-        }
-
-        const stock = this.stock();
-        return this.isSelectable(stock) ? stock.getEven(count, this.affector) : [];
     }
 
     public filter(z: (x: any) => boolean): Factory {

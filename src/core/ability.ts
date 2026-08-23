@@ -18,10 +18,6 @@ export class Ability implements AffectsWeight {
 
       this.elements = [];
     }
-
-    generate() {
-
-    }
   }
   export namespace Ability
   {
@@ -109,7 +105,6 @@ export class Ability implements AffectsWeight {
       {
         Strength,
         Dexterity,
-        Constitution,
         Intelligence,
         Wisdom,
         Charisma

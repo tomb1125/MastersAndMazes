@@ -29,10 +29,6 @@ export class ModifierFactory extends Factory {
         return super.get(count) as Modifier[];
     }
 
-    public filter(z: (x: any) => boolean): ModifierFactory {
-        return super.filter(z) as ModifierFactory;
-    }
-
     protected vendorFilter(): ContentFilter {
         return Vendor.active ? Vendor.active.modifierFilter : Vendor.ALL;
     }

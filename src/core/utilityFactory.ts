@@ -25,10 +25,6 @@ export class UtilityFactory extends Factory {
     public get(count: number) {
         return super.get(count) as Utility[];
     }
-    
-    public filter(z: (x: any) => boolean): UtilityFactory {
-        return super.filter(z) as UtilityFactory;
-    }
 
     protected vendorFilter(): ContentFilter {
         return Vendor.active ? Vendor.active.utilityFilter : Vendor.ALL;

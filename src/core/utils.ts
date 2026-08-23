@@ -21,7 +21,6 @@ export class Utils {
     public static AVG_POTIONS: number = 2.5;
     public static AVG_CLOSTEST_DISTANCE: number = 10;
     public static AVG_LONGEST_DISTANCE: number = 20;
-    public static PERMAMENT_DURATION_MODIFIER: number = Utils.getDurationCoeficient(10);
 
     public static EFFECT_WEIGHT_MOD: number = 1.1;
     public static RARE_MODIFIER: number = 0.1;
@@ -39,22 +38,6 @@ export class Utils {
     public static getDPS(level: number) {
         return Utils.DPS; //+ Utils.POWER_PER_LEVEL * (level - 1)
     }
-
-    public static getDurationCoeficient(dur: number): number {
-        let coef: number = 0;
-        if(dur >= 1) coef += 0.7;
-        if(dur >= 2) coef += 0.6;
-        if(dur >= 3) coef += 0.5;
-        if(dur >= 4) coef += 0.4;
-        if(dur >= 5) coef += 0.3;
-        if(dur >= 6) coef += 0.2;
-        if(dur >= 7) {
-            coef += (dur - 6) * 0.1
-        }
-        
-        return coef;
-    }
-    
 
     public static valueToDiceRoll(num: number): string {
         if(num < 0) throw('damage too low to represent');

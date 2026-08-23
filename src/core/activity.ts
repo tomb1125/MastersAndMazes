@@ -23,10 +23,6 @@ export class Activity extends Ability {
       this.longDescription = '';
     }
 
-    override generate() {
-
-    }
-
     protected renderCard(variant: string, name: string, stats: [string, string, StatChange?][], coreDescription: string, longDescription?: boolean): string {
       return '<article class="ability ability--' + variant + '">' +
         '<h3 class="ability__name">' + name + '</h3>' +

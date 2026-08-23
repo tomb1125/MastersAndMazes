@@ -1,11 +1,6 @@
-import { Utils } from "./utils.js";
 export class CharacterContext {
     public static level: number = 1;
     public static seed: string;
-
-    public static getDPS() {
-        return Utils.getDPS(CharacterContext.level);
-    }
 }
 
 export namespace CharacterContext
@@ -42,18 +37,15 @@ export namespace CharacterContext
 
     export enum Skill {
         Athletics,
-        Intimidation,
-
-        Acrobatics,
-        Stealth,
-
         Endurance,
-        Survival,
+
+        Skulldudgery,
+        Stealth,
 
         Knowledge, 
         Crafting,
 
-        Medicine,
+        Survival,
         Perception,
 
         Persuasion,
