@@ -11,6 +11,14 @@ PER
 
 
 Mana
-Critical Hiy
+Critical Hits
 
 Fatigue and Chance for damage.
+
+JESZCZE RAZ
+- i od teraz do końca walki (pozytyw)
+- ale od teraz do końca walki (negatyw)
+- zbieranie każdego ataku typu
+- za każdy sukces
+- za każdą porażkę
+- 

@@ -1,0 +1,235 @@
+OLD_ITEMS - inventory of generator content on the `master` branch (pre-refactor)
+Source: git branch master. One line per item: Name - short description.
+
+=========================
+MODIFIERS (src/modifiers/modifiersRepository/)
+=========================
+
+-- Generic constraints --
+Bloodied - usable only at half Health or less.
+Bright - usable only in bright light.
+Exhausting - after use, your Health drops to 1.
+Full Action - costs a Move Action on top of the normal action.
+Grazed - taking the ability grants you 2 Scars.
+Layline - usable only next to a place of power.
+Masterful - usable only if you rolled 01-20 on your first D100 last turn.
+Inertia (momentum) - usable only after failing N ability chance rolls in a row.
+Opportunist - usable only against enemies that rolled 90-00 last turn.
+Rested - usable only after a good night's rest.
+Signature - first signature ability each combat gets 1 Boon and +2 damage.
+Ultimate - usable only on turn 8 or later.
+Vengeance - usable only against an enemy that hit or affected you last turn.
+
+-- Generic improvements --
+Apply Effect - on hit, applies a rolled debuff effect.
+Gain Effect - on a successful roll, you also gain a rolled buff effect.
+Cleave - repeat the action once free against an adjacent target.
+Fast - can be used with a Swift Action.
+Forceful - on hit, push the target 5 squares.
+Instinct - usable as a swift action while stunned, and ignores Banes.
+Lifesteal - on hit, heal yourself for damage dealt.
+Mana Gain - on hit, gain mana equal to damage dealt.
+Mobile - move 5 squares before or after using the ability.
+Multi N - repeat the action N-1 more times free, same target.
+Piercing - on hit, damage Health directly and reduce Armor by the same amount.
+Repeat N - N charges before cooldown; a failed roll may be retried with a charge.
+Self Heal N - on hit, heal yourself a described amount.
+
+-- Cleric modifiers --
+Ritual (candle) - usable only inside a chalk ritual circle of radius 5.
+Episcopal - usable only by a Bishop or someone blessed by a pope.
+Pacifist - one Bane per creature you dropped to 0 HP today.
+Sermon (preaching) - usable only after preaching to at least 10 people.
+Pristine - usable only while undamaged.
+Temple - usable only within 10 km of a temple or relic of your faith.
+
+-- Fighter modifiers --
+Armored - usable only while you have Armor Points.
+Battle - usable only while adjacent to two enemies.
+Breaching - usable only in a room whose door you kicked down.
+Followup - repeat the attack if the hit made the target bloodied.
+Legendary - usable only with a legendary weapon.
+Weaponmaster - repeat the attack once per unique Stance entered this combat.
+
+-- Rogue modifiers --
+City - usable only inside city walls.
+Dagger - usable only while wielding a dagger.
+Greedy - usable only when the action will earn you wealth.
+Sneaky - usable only if you started last turn hidden.
+Trinket - grants a personal trinket; unusable if you lose it.
+
+-- Wizard modifiers --
+Mana Fume - on hit with 4 or less Mana, gain 10 Mana.
+
+-- Multiclass modifiers --
+Clean - usable only with clean clothes and while dry.
+Siege - usable only from 10 or more squares away.
+Evil Bane - repeat the attack once against undead, demons or devils.
+
+-- Generator-internal (weight 0 / not stock) --
+compensationModifier - carrier for a fixed power adjustment on authored attacks.
+
+=========================
+EFFECTS (src/modifiers/effectRepository/)
+=========================
+
+Empower N (damageBonus) - buff: +N bonus damage on your abilities for a few turns.
+Guide N (guiding) - buff: N Boons on ability chance rolls for a few turns.
+Protection (protected) - buff: D10 chance to ignore incoming damage/effects for a few turns.
+Invisibility (multiclass) - buff: untargetable when you move, does not break on attacking.
+Retribution (multiclass) - buff: damage dealt to you is reflected back ignoring resistances.
+Expose N - debuff: attackers gain N Boons against the target until end of your next turn.
+Instakill - debuff: if applied successfully the target dies.
+Scaling DoT - debuff: target retakes this power's damage at the end of each turn.
+Stun - debuff: target cannot act; ends at end of turn.
+Vulnerable N - debuff: target takes +N bonus damage for 1 turn.
+
+=========================
+ABILITY OBJECTS (src/components/abilityObjectRepository/) - number in brackets is rarity
+=========================
+
+-- Animals --
+AllAnimals - any animal (1).
+Bird - any bird (0.5).
+Cat - any feline (0.2).
+Magical - any elemental, magical or enhanced animal (0.4).
+Rat - any rat or rodent (0.3).
+Reptile - any reptile or amphibian (0.4).
+Wild - any wild, non-domesticated animal (0.7).
+
+-- Bulk materials --
+Brick Material - 50 Health per square, crumbles at end of enemy turn (2).
+Force Material - indestructible, lasts 3 turns (1.5).
+Paper Material - 1 Health per square, passable at extra movement cost (0.3).
+Stone Material - 20 Health per square, crumbles at end of enemy turn (1).
+
+-- Corpses --
+Fresh Corpse - a humanoid corpse 3 days old or less (1.1).
+Humanoid Corpse - any humanoid corpse (1.4).
+Skeleton - a humanoid dead at least 10 years (0.7).
+Soul Steal - anyone you killed or helped kill; they cooperate out of fear (0.5).
+Unfinished Business - a corpse of someone with unfinished business (1).
+Warrior Corpse - a corpse of a warrior or someone with fighting spirit (0.8).
+
+-- Illusions --
+Common Illusion - all senses, touch only partly; ramming through it dispells it (1).
+Detailed Illusion - all senses, can fabricate detail beyond your knowledge (1).
+Perfect Illusion - flawless on every sense and self-adjusting to keep the deception (3).
+Shadowy Illusion - all senses, but bright light quickly reveals it (0.7).
+Sound Illusion - affects sound only (0.4).
+Still Illusion - affects sight only (0.3).
+
+-- Light --
+Blinding - enemies in the area get 1 Bane on attacks, non-stacking (4).
+Colorful - any color, changeable with a swift action (1).
+Controllable - can be moved 10 m or toggled with a swift action (1.1).
+Revealing - reveals invisible creatures and illusions (1.4).
+
+-- Movements --
+Agile Movement - jump and climb any surface as part of the move (1.2).
+Blink Movement - teleport to the destination instead of moving (1.3).
+Charge Movement - push each adjacent enemy 2 squares while moving (1.2).
+Normal Movement - plain movement, no rider (1).
+Straigth Movement - must be made in a straight line (0.9).
+
+-- Persons --
+Distracted Humanoid - any distracted humanoid (1.2).
+Humanoid - any humanoid (1.6).
+Mage - any mage, cleric or practitioner of magic (0.8).
+Scum - any citizen, peasant, thief or someone of lower standing (0.7).
+Warrior - any warrior, soldier or someone of martial abilities (0.8).
+
+-- Questions --
+Detailed - truthful answer in one or two sentences with relevant detail (3).
+Noe - truthful one-sentence answer, but the question may not contain the letter e (0.7).
+One Word - truthful one-word answer; may not be a yes/no question (0.9).
+Yes/No - truthful answer to a yes or no question (1.2).
+
+-- Stealth --
+Harmless Stealth - your first attack within 10 minutes has 3 Banes (0.7).
+Potion Stealth - requires drinking a rare Invisibility Potion; you start with 5 (1).
+Prowling Stealth - your first attack within 10 minutes deals +10 damage (1.6).
+Shadow Stealth - any bright light immediately reveals you (1.4).
+
+-- Symmetric communications --
+Dream Connection - no immediate effect; you talk to the target in tonight's dream (0.6).
+Gain Understanding - both speak your own languages yet understand each other (1).
+Symetric Empathy - sense and send emotions while close to each other (0.8).
+Symetric Telepathy - read each other's minds while close to each other (1.2).
+
+-- Training --
+Casual Training - benefits lost when you drop to 0 Health (0.5).
+Common Training - plain training, no rider (1).
+Rigid Training - -5 maximum Health while the training lasts (0.7).
+Teaching - one ally benefits from the training as well (2).
+
+=========================
+DESCRIPTIVE NUMBERS (src/components/descriptiveNumberRepository/)
+=========================
+
+assassin - the number of enemies you defeated today (prefix Killers).
+currentHealth - your current health (prefix Vital).
+damageTaken - your current damage taken (prefix Enraged).
+maximumDistance - the distance to your starting location this combat (prefix Runners).
+minimumDistance - the distance to the closest ally in combat (prefix Loners).
+numberOfRallies - the number of times you rolled for dying today (prefix Stalwart).
+numberOfScars - the number of your Scars (prefix Veterans).
+numberOfTurns - the number of rounds passed in combat (prefix Growing).
+potionsDrank - the number of potions you drank today (prefix Thirsty).
+adjacentEnemies - the number of enemies adjacent to you (small type, prefix Battle).
+d4Minutes - a duration of 1, 5 or 10 minutes (utility duration).
+oneHour - a duration of one hour (utility duration, prefix Hourly).
+
+=========================
+ATTACKS (src/core/attackRepository/)
+=========================
+
+Basic Attack - plain weapon attack; on hit, deal damage.
+Basic Spell - plain spell attack; on hit, deal damage.
+Divine Flame (cleric) - fire spell marking the enemy with light and 1 Bane for the encounter.
+Divine Strike (cleric) - grants 5 Righteous Lights allies can spend to heal 5 or gain a Boon.
+Heavy Strike (fighter) - melee attack treating damage bonuses as doubled; may exit a Stance to reroll.
+Stance (fighter) - melee attack that also enters one of the Fighter Stances.
+Backstab (rogue) - melee attack with doubled damage against unaware, stunned or poisoned targets.
+Poisoned Dart (rogue) - ranged attack applying Rogue's Poison, bursting for 50 damage after 3 turns.
+Chain Lightning (wizard) - hits 3 targets in range along a lightning line with no sharp angles.
+Fireball (wizard) - hits one target, then splashes half damage within 2 squares.
+
+=========================
+UTILITIES (src/core/utilityRepository/)
+=========================
+
+-- Cleric --
+Augury - after meditating, ask a higher power one to three questions.
+Heal - restore health to yourself and one ally within 5 squares.
+Light - shine a light of a chosen radius at a point in range until end of encounter.
+Prayer - gain Blessing Points and a Boon; both doubled against Undead, Devils and Demons.
+Restoration - hour-long ritual removing a wound effect and one Scar, or earning 150G in a city.
+Seance - communicate with a corpse for ten minutes.
+
+-- Druid --
+Speak (animalSpeak) - communicate with an animal for ten minutes.
+
+-- Fighter --
+Block - reaction reducing incoming damage; extra Boons with a shield.
+Entice Respect - win respect among a kind of person until end of day.
+Equipment Maintenance - repair gear and grant bonus Armor Points until end of day.
+Formation - swift action choosing two of: armor to an ally, movement, or a forceful push.
+Line in a Sand - draw a line; gain 1 Boon against enemies who cross it.
+Muscle Training - at a training ground, raise Strength, Dexterity or Constitution for the adventure.
+
+-- Rogue --
+Lockpicking - open a lock silently and without leaving a trace.
+Pickpocketing - steal one object from a person; failure may raise suspicion.
+Shadow Meld - become nearly undetectable until you move.
+Shadow Stride - move about 50 m in half a minute, nearly undetectable.
+Shift Blame - shift an accusation onto someone else for about 15 minutes.
+Tumble - reaction to move away from an attack and dodge it behind cover.
+
+-- Wizard --
+Illusion - create a room-sized illusion lasting about 10 minutes, fixed at casting.
+Invisibility - restore Mana and gain the Invisibility effect.
+Wall - create a thin wall of chosen length and 3 squares height.
+
+-- Generic --
+Skill Bonus - gain Boons on rolls for one skill for the duration of an encounter.
